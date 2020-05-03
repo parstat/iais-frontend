@@ -1,28 +1,29 @@
+import jwt from "jsonwebtoken";
 import router from "@/router";
 import { authService } from "@/services";
 
 const state = {
-  idToken: localStorage.getItem("token") || null,
-  userId: localStorage.getItem("userId") || null,
+  token: localStorage.getItem("token") || null,
+  user: localStorage.getItem("user") || null,
   status: null //[LOGGED, INVALID_CREDENTIALS, USER_EXISTS]
 };
 
 const mutations = {
-  AUTH_USER(state, userData) {
-    state.idToken = userData.token;
-    state.userId = userData.userId;
+  AUTH_USER(state, { token, user }) {
+    state.token = token;
+    state.user = user;
 
     //store auth data in browser storage
-    localStorage.setItem("token", userData.token);
-    localStorage.setItem("userId", userData.userId);
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", user);
   },
   CLEAR_AUTH_DATA(state) {
-    state.idToken = null;
-    state.userId = null;
+    state.token = null;
+    state.user = null;
 
     //remove auth data from browser storage
     localStorage.removeItem("token");
-    localStorage.removeItem("userId");
+    localStorage.removeItem("user");
   },
   SET_STATUS(state, status) {
     state.status = status;
@@ -33,9 +34,15 @@ const actions = {
   login({ commit }, authData) {
     authService.login(authData).then(
       data => {
+        var decoded = jwt.decode(data.token, { complete: true });
+        console.log(decoded.header);
+        console.log(decoded.payload);
+
+        const user = decoded.payload;
+
         commit("AUTH_USER", {
-          token: data.idToken,
-          userId: data.localId
+          token: data.token,
+          user: user
         });
 
         commit("SET_STATUS", "LOGGED");
@@ -48,12 +55,36 @@ const actions = {
       }
     );
   },
+  mockLogin({ commit }) {
+    const token = process.env.VUE_APP_DEV_SERVER_AUTH_TOKEN;
+    // get the decoded payload ignoring signature, no secretOrPrivateKey needed
+    var decoded = jwt.decode(token, { complete: true });
+    console.log(decoded.header);
+    console.log(decoded.payload);
+
+    const user = decoded.payload;
+
+    commit("AUTH_USER", {
+      token,
+      user
+    });
+
+    commit("SET_STATUS", "LOGGED");
+
+    router.push("/"); //Go to main page
+  },
   register({ commit }, authData) {
     authService.register(authData).then(
       data => {
+        var decoded = jwt.decode(data.token, { complete: true });
+        console.log(decoded.header);
+        console.log(decoded.payload);
+
+        const user = decoded.payload;
+
         commit("AUTH_USER", {
-          token: data.idToken,
-          userId: data.localId
+          token: data.token,
+          user: user
         });
 
         commit("SET_STATUS", "LOGGED");
@@ -76,10 +107,10 @@ const getters = {
     return state.user;
   },
   isAuthenticated(state) {
-    return state.idToken !== null;
+    return state.token !== null;
   },
   token(state) {
-    return state.idToken;
+    return state.token;
   },
   status(state) {
     return state.status;
