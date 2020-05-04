@@ -4,7 +4,7 @@ import Vuex from "vuex";
 import { auth } from "./modules/auth";
 import { coreui } from "./modules/coreui";
 import { message } from "./modules/message";
-import { statisticalProcess } from "./modules/statisticalProcess";
+import { statisticalProgram } from "./modules/statisticalProgram";
 
 Vue.use(Vuex);
 
@@ -13,6 +13,6 @@ export default new Vuex.Store({
     auth,
     coreui,
     message,
-    statisticalProcess
+    statisticalProgram
   }
 });

@@ -1,2 +1,2 @@
 export * from "./auth.service";
-export * from "./statisticalProcess.service";
+export * from "./statisticalProgram.service";

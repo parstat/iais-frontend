@@ -34,10 +34,9 @@ const actions = {
   login({ commit }, authData) {
     authService.login(authData).then(
       data => {
+        //decode JWT token
         var decoded = jwt.decode(data.token, { complete: true });
-        console.log(decoded.header);
         console.log(decoded.payload);
-
         const user = decoded.payload;
 
         commit("AUTH_USER", {
@@ -57,11 +56,10 @@ const actions = {
   },
   mockLogin({ commit }) {
     const token = process.env.VUE_APP_DEV_SERVER_AUTH_TOKEN;
-    // get the decoded payload ignoring signature, no secretOrPrivateKey needed
+    //decode JWT token
     var decoded = jwt.decode(token, { complete: true });
-    console.log(decoded.header);
+    //console.log(decoded.header);
     console.log(decoded.payload);
-
     const user = decoded.payload;
 
     commit("AUTH_USER", {
@@ -76,10 +74,9 @@ const actions = {
   register({ commit }, authData) {
     authService.register(authData).then(
       data => {
+        //decode JWT token
         var decoded = jwt.decode(data.token, { complete: true });
-        console.log(decoded.header);
         console.log(decoded.payload);
-
         const user = decoded.payload;
 
         commit("AUTH_USER", {

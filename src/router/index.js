@@ -1,11 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import store from "@/store";
+import { Role } from "@/common";
+
 import Login from "@/views/auth/Login";
 import Register from "@/views/auth/Register";
 import Home from "@/views/Home";
-
-import store from "@/store";
 
 Vue.use(VueRouter);
 
@@ -23,51 +24,60 @@ const routes = [
     redirect: "/metadata",
     name: "Home",
     component: Home,
+    meta: { authorize: [] },
     children: [
       {
         path: "metadata",
         name: "Metadata",
-        component: () => import("../views/metadata/Metadata")
+        component: () => import("../views/metadata/Metadata"),
+        meta: { authorize: [] }
       },
       {
         path: "metadata/referential",
-        name: "StatisticalProcessList",
+        name: "StatisticalProgramList",
         component: () =>
-          import("../views/metadata/referential/StatisticalProcessList")
+          import("../views/metadata/referential/StatisticalProgramList"),
+        meta: { authorize: [] }
       },
       {
         path: "metadata/referential/edit/:id",
-        name: "StatisticalProcessEdit",
+        name: "StatisticalProgramEdit",
         component: () =>
-          import("../views/metadata/referential/StatisticalProcessEdit")
+          import("../views/metadata/referential/StatisticalProgramEdit"),
+        meta: { authorize: [Role.Admin] }
       },
       {
         path: "metadata/referential/view/:id",
-        name: "StatisticalProcessView",
+        name: "StatisticalProgramView",
         component: () =>
-          import("../views/metadata/referential/StatisticalProcessView")
+          import("../views/metadata/referential/StatisticalProgramView"),
+        meta: { authorize: [] }
       },
       {
         path: "metadata/referential/delete/:id",
-        name: "StatisticalProcessDelete",
+        name: "StatisticalProgramDelete",
         component: () =>
-          import("../views/metadata/referential/StatisticalProcessDelete")
+          import("../views/metadata/referential/StatisticalProgramDelete"),
+        meta: { authorize: [Role.Admin] }
       },
       {
         path: "metadata/referential/add",
-        name: "StatisticalProcessAdd",
+        name: "StatisticalProgramAdd",
         component: () =>
-          import("../views/metadata/referential/StatisticalProcessAdd")
+          import("../views/metadata/referential/StatisticalProgramAdd"),
+        meta: { authorize: [Role.Admin] }
       },
       {
         path: "metadata/process",
         name: "Process",
-        component: () => import("../views/metadata/process/BusinessProcesses")
+        component: () => import("../views/metadata/process/BusinessProcesses"),
+        meta: { authorize: [] }
       },
       {
         path: "metadata/structural",
         name: "Structural",
-        component: () => import("../views/metadata/structural/Datasets")
+        component: () => import("../views/metadata/structural/Datasets"),
+        meta: { authorize: [] }
       }
     ]
   },
@@ -82,15 +92,24 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ["/login", "/register"];
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = store.getters.isAuthenticated;
+  const { authorize } = to.meta;
+  const currentUser = store.getters.user;
 
-  if (authRequired && !loggedIn) {
-    next("/login");
-  } else {
-    next();
+  if (authorize) {
+    if (!currentUser) {
+      // not logged in so redirect to login page with the return url
+      return next({ path: "/login", query: { returnUrl: to.path } });
+    }
+
+    // check if route is restricted by role
+    if (authorize.length && !authorize.includes(currentUser.role)) {
+      // role not authorised so redirect to home page
+      store.dispatch("error", "You are not authorized!");
+      return next({ path: "/" });
+    }
   }
+
+  next();
 });
 
 export default router;

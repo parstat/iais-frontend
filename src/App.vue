@@ -8,6 +8,7 @@
 export default {
   name: "app",
   created() {
+    //TEST: Simulate user auto-login
     this.$store.dispatch("mockLogin");
   }
 };

@@ -11,8 +11,8 @@ axios.defaults.baseURL = process.env.VUE_APP_DEV_SERVER;
 
 axios.interceptors.request.use(config => {
   let token = store.getters.token;
-  if (token && !("Authorization" in config.headers)) {
-    config.headers["Authorization"] = `Bearer ${token}`;
+  if (token && !("jwt-auth" in config.headers)) {
+    config.headers["jwt-auth"] = token;
   }
   return config;
 });
