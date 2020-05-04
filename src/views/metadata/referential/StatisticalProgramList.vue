@@ -29,19 +29,19 @@
               </thead>
               <tbody>
                 <tr
-                  v-for="statisticalProcess in statisticalProcesses"
-                  :key="statisticalProcess.id"
+                  v-for="statisticalProgram in statisticalPrograms"
+                  :key="statisticalProgram.id"
                 >
-                  <td>{{ statisticalProcess.name }}</td>
-                  <td>{{ statisticalProcess.acronym }}</td>
-                  <td>{{ statisticalProcess.responsibleName }}</td>
-                  <td>{{ statisticalProcess.responsibleDivision }}</td>
+                  <td>{{ statisticalProgram.name }}</td>
+                  <td>{{ statisticalProgram.acronym }}</td>
+                  <td>{{ statisticalProgram.responsibleName }}</td>
+                  <td>{{ statisticalProgram.responsibleDivision }}</td>
                   <td>
                     <router-link
                       tag="a"
                       :to="{
-                        name: 'StatisticalProcessEdit',
-                        params: { id: statisticalProcess.id }
+                        name: 'statisticalProgramEdit',
+                        params: { id: statisticalProgram.id }
                       }"
                     >
                       <CIcon name="cilPencil"></CIcon>
@@ -51,8 +51,8 @@
                     <router-link
                       tag="a"
                       :to="{
-                        name: 'StatisticalProcessView',
-                        params: { id: statisticalProcess.id }
+                        name: 'statisticalProgramView',
+                        params: { id: statisticalProgram.id }
                       }"
                     >
                       <CIcon name="cilMagnifyingGlass"></CIcon>
@@ -62,8 +62,8 @@
                     <router-link
                       tag="a"
                       :to="{
-                        name: 'StatisticalProcessDelete',
-                        params: { id: statisticalProcess.id }
+                        name: 'statisticalProgramDelete',
+                        params: { id: statisticalProgram.id }
                       }"
                     >
                       <CIcon name="cilTrash"></CIcon>
@@ -84,10 +84,10 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["statisticalProcesses"])
+    ...mapGetters(["statisticalPrograms"])
   },
   created() {
-    this.$store.dispatch("getStatisticalProcesses");
+    this.$store.dispatch("getStatisticalPrograms");
   }
 };
 </script>

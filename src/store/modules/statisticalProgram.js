@@ -16,7 +16,7 @@ const mutations = {
 };
 
 const actions = {
-  getstatisticalPrograms({ commit, getters, dispatch }) {
+  getStatisticalPrograms({ commit, getters, dispatch }) {
     statisticalProgramService.getAll(getters.token).then(
       data => {
         commit("SET_STATISTICAL_PROGRAMS", data);
@@ -28,7 +28,7 @@ const actions = {
       }
     );
   },
-  getstatisticalProgramById({ commit, getters, dispatch }, id) {
+  getStatisticalProgramById({ commit, getters, dispatch }, id) {
     statisticalProgramService.getById(getters.token, id).then(
       data => {
         commit("SET_STATISTICAL_PROGRAM", data);
@@ -39,7 +39,7 @@ const actions = {
       }
     );
   },
-  savestatisticalProgram({ getters, dispatch }, formData) {
+  saveStatisticalProgram({ getters, dispatch }, formData) {
     statisticalProgramService.save(getters.token, formData).then(
       data => {
         console.log(data);
@@ -52,7 +52,7 @@ const actions = {
       }
     );
   },
-  deletestatisticalProgram({ getters, dispatch }, formData) {
+  deleteStatisticalProgram({ getters, dispatch }, formData) {
     statisticalProgramService.delete(getters.token, formData).then(
       data => {
         console.log(data);
@@ -65,7 +65,7 @@ const actions = {
       }
     );
   },
-  updatestatisticalProgram({ getters, dispatch }, formData) {
+  updateStatisticalProgram({ getters, dispatch }, formData) {
     statisticalProgramService.update(getters.token, formData).then(
       data => {
         console.log(data);

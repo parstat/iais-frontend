@@ -31,10 +31,10 @@ const actions = {
 };
 
 const getters = {
-  type(state) {
+  type: state => {
     return state.type;
   },
-  message(state) {
+  message: state => {
     return state.message;
   }
 };

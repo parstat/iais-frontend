@@ -100,16 +100,16 @@ const actions = {
   }
 };
 const getters = {
-  user(state) {
+  user: state => {
     return state.user;
   },
-  isAuthenticated(state) {
+  isAuthenticated: state => {
     return state.token !== null;
   },
-  token(state) {
+  token: state => {
     return state.token;
   },
-  status(state) {
+  status: state => {
     return state.status;
   }
 };

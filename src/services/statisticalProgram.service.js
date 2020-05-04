@@ -8,23 +8,13 @@ export const statisticalProgramService = {
   delete: _delete
 };
 
-function getAll(token) {
+function getAll() {
   return new Promise((resolve, reject) => {
-    axios.get("/statisticalProgrames.json" + "?auth=" + token).then(
+    axios.get("/statistical/programs?language=en").then(
       response => {
-        var statisticalProgrames = [];
-        for (const [key, value] of Object.entries(response.data)) {
-          //console.log(key, value);
-          statisticalProgrames.push({
-            id: key,
-            name: value.name,
-            acronym: value.acronym,
-            responsibleName: value.responsibleName,
-            responsibleDivision: value.responsibleDivision
-          });
-        }
-        //console.log(statisticalProgrames);
-        resolve(statisticalProgrames);
+        var statisticalPrograms = response.data; 
+        console.log(statisticalPrograms);
+        resolve(statisticalPrograms);
       },
       error => {
         console.log("[ERROR - status] " + error.response.status);
@@ -43,7 +33,7 @@ function getById(token, id) {
   return new Promise((resolve, reject) => {
     axios
       .get(
-        "/statisticalProgrames.json" +
+        "/statisticalPrograms.json" +
           "?auth=" +
           token +
           '&orderBy="$key"' +
@@ -82,7 +72,7 @@ function getById(token, id) {
 
 function save(token, formData) {
   return new Promise((resolve, reject) => {
-    axios.post("/statisticalProgrames.json" + "?auth=" + token, formData).then(
+    axios.post("/statisticalPrograms.json" + "?auth=" + token, formData).then(
       response => {
         //console.log(response.data);
         resolve(response.data);
@@ -112,7 +102,7 @@ function update(token, formData) {
     };
     axios
       .patch(
-        "/statisticalProgrames.json" + "?auth=" + token,
+        "/statisticalPrograms.json" + "?auth=" + token,
         statisticalProgram
       )
       .then(
@@ -148,7 +138,7 @@ function _delete(token, formData) {
   return new Promise((resolve, reject) => {
     axios
       .delete(
-        "/statisticalProgrames/" + formData.id + ".json" + "?auth=" + token
+        "/statisticalPrograms/" + formData.id + ".json" + "?auth=" + token
       )
       .then(
         response => {
