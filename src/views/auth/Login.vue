@@ -15,7 +15,7 @@
                   v-if="showGlobalError"
                   class="text-center"
                 >
-                  <span>Incorrect email or password!</span>
+                  <span>Incorrect username or password!</span>
                 </CAlert>
                 <div class="form-group">
                   <div class="input-group">
@@ -27,8 +27,8 @@
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Email"
-                      v-model.trim="email"
+                      placeholder="Username"
+                      v-model.trim="username"
                     />
                   </div>
                 </div>
@@ -79,7 +79,7 @@ export default {
   name: "Login",
   data() {
     return {
-      email: "",
+      username: "",
       password: ""
     };
   },
@@ -96,7 +96,7 @@ export default {
   methods: {
     handleSubmit() {
       const formData = {
-        email: this.email,
+        username: this.username,
         password: this.password
       };
       this.$store.dispatch("login", formData);

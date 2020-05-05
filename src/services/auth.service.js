@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosAuth = axios.create({
-  baseURL: "https://identitytoolkit.googleapis.com/v1" //authentication server
+  baseURL: " http://localhost:8080/api/v1/security" //authentication server
 });
 
 export const authService = {
@@ -9,21 +9,19 @@ export const authService = {
   register
 };
 
-function login({ email, password }) {
+function login({ username, password }) {
   return new Promise((resolve, reject) => {
     axiosAuth
       .post(
-        "/accounts:signInWithPassword?key=" +
-          process.env.VUE_APP_DEV_SERVER_API_KEY,
+        "/signin?language=ENG",
         {
-          email: email,
-          password: password,
-          returnSecureToken: true
+          username: username,
+          password: password
         }
       )
       .then(
         response => {
-          //console.log(response);
+          console.log(response);
           const data = {
             idToken: response.data.idToken,
             userId: response.data.localId
@@ -31,8 +29,8 @@ function login({ email, password }) {
           resolve(data);
         },
         error => {
-          //console.log(error.response.data.error.code);
-          //console.log(error.response.data.error.message);
+          console.log(error.response.data.error.code);
+          console.log(error.response.data.error.message);
           const err = {
             code: error.response.data.error.code,
             message: error.response.data.error.message
@@ -43,13 +41,12 @@ function login({ email, password }) {
   });
 }
 
-function register({ email, password }) {
+function register({ username, password }) {
   return new Promise((resolve, reject) => {
     axiosAuth
       .post("/accounts:signUp?key=" + process.env.VUE_APP_DEV_SERVER_API_KEY, {
-        email: email,
-        password: password,
-        returnSecureToken: true
+        username: username,
+        password: password
       })
       .then(
         response => {
