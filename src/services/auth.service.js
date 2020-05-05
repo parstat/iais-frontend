@@ -12,13 +12,10 @@ export const authService = {
 function login({ username, password }) {
   return new Promise((resolve, reject) => {
     axiosAuth
-      .post(
-        "/signin?language=ENG",
-        {
-          username: username,
-          password: password
-        }
-      )
+      .post("/signin?language=ENG", {
+        username: username,
+        password: password
+      })
       .then(
         response => {
           console.log(response);

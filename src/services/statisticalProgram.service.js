@@ -12,7 +12,7 @@ function getAll() {
   return new Promise((resolve, reject) => {
     axios.get("/statistical/programs?language=en").then(
       response => {
-        var statisticalPrograms = response.data; 
+        var statisticalPrograms = response.data;
         console.log(statisticalPrograms);
         resolve(statisticalPrograms);
       },
@@ -101,10 +101,7 @@ function update(token, formData) {
       }
     };
     axios
-      .patch(
-        "/statisticalPrograms.json" + "?auth=" + token,
-        statisticalProgram
-      )
+      .patch("/statisticalPrograms.json" + "?auth=" + token, statisticalProgram)
       .then(
         response => {
           var statisticalProgram = null;
