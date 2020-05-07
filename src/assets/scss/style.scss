@@ -1,6 +1,7 @@
 // Import styles
 @import "~@coreui/coreui/scss/coreui";
 
+/* Layout */
 .c-header.c-header-fixed {
   border: 0;
   -webkit-box-shadow: 0 2px 2px 0 rgba(60, 75, 100, 0.14),
@@ -55,7 +56,13 @@ button:focus {
   border-bottom: none;
 }
 
-/* Validation styles*/
+/* Forms */
+
+.form-group {
+  margin-bottom: 0.2rem;
+}
+
+/* Validation styles */
 
 .help-block {
   visibility: hidden;

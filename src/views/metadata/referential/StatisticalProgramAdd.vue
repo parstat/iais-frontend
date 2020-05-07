@@ -7,6 +7,20 @@
         </header>
         <div class="card-body">
           <div class="form-group">
+            <label for="localId">Survey id</label>
+            <input
+              id="localId"
+              type="text"
+              class="form-control"
+              :class="{ 'is-invalid': $v.localId.$error }"
+              placeholder="Survey id"
+              v-model.trim="localId"
+            />
+            <span class="help-block" :class="{ show: $v.localId.$error }">
+              Please enter survey id.
+            </span>
+          </div>
+          <div class="form-group">
             <label for="name">Survey name</label>
             <input
               id="name"
@@ -35,37 +49,17 @@
             </span>
           </div>
           <div class="form-group">
-            <label for="responsible">Responsible name</label>
+            <label for="description">Survey description</label>
             <input
-              id="responsibleName"
+              id="description"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.responsibleName.$error }"
-              placeholder="Survey responsible"
-              v-model.trim="responsibleName"
+              :class="{ 'is-invalid': $v.description.$error }"
+              placeholder="Survey description"
+              v-model.trim="description"
             />
-            <span
-              class="help-block"
-              :class="{ show: $v.responsibleName.$error }"
-            >
-              Please enter responsible name.
-            </span>
-          </div>
-          <div class="form-group">
-            <label for="responsible">Responsible division</label>
-            <input
-              id="responsibleDivision"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': $v.responsibleDivision.$error }"
-              placeholder="Responsible division"
-              v-model.trim="responsibleDivision"
-            />
-            <span
-              class="help-block"
-              :class="{ show: $v.responsibleDivision.$error }"
-            >
-              Please enter responsible division.
+            <span class="help-block" :class="{ show: $v.description.$error }">
+              Please enter survey description.
             </span>
           </div>
         </div>
@@ -98,24 +92,24 @@ import { required } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
+      localId: "",
       name: "",
       acronym: "",
-      responsibleName: "",
-      responsibleDivision: "",
+      description: "",
       disabled: false
     };
   },
   validations: {
+    localId: {
+      required
+    },
     name: {
       required
     },
     acronym: {
       required
     },
-    responsibleName: {
-      required
-    },
-    responsibleDivision: {
+    description: {
       required
     }
   },
@@ -125,27 +119,22 @@ export default {
       if (!this.$v.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
+          localId: this.localId,
           name: this.name,
           acronym: this.acronym,
-          responsibleName: this.responsibleName,
-          responsibleDivision: this.responsibleDivision
+          description: this.description
         };
-        this.$store.dispatch("saveStatisticalProcess", formData);
+        this.$store.dispatch("saveStatisticalProgram", formData);
         console.log(formData);
       }
     },
     handleReset() {
+      this.localId = "";
       this.name = "";
       this.acronym = "";
-      this.responsibleName = "";
-      this.responsibleDivision = "";
+      this.description = "";
       this.$v.$reset();
     }
   }
 };
 </script>
-<style scoped>
-.form-group {
-  margin-bottom: 0.2rem;
-}
-</style>

@@ -27,7 +27,7 @@ function login({ username, password }) {
     axiosAuth.post("/signin", qs.stringify(requestBody), config).then(
       response => {
         console.log(response);
-        const token = response.headers["jwt-auth"]
+        const token = response.headers["jwt-auth"];
         const data = {
           token: token,
           user: response.data
@@ -35,11 +35,10 @@ function login({ username, password }) {
         resolve(data);
       },
       error => {
-        console.log(error.response.data.error.code);
-        console.log(error.response.data.error.message);
+        console.log(error.code);
         const err = {
-          code: error.response.data.error.code,
-          message: error.response.data.error.message
+          code: error.response.status,
+          message: error.response.data.code
         };
         reject(err);
       }

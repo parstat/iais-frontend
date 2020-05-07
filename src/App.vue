@@ -8,8 +8,8 @@
 export default {
   name: "app",
   created() {
-    //TEST: Simulate user auto-login
-    //this.$store.dispatch("mockLogin");
+    //Manage browser refresh F5
+    this.$store.dispatch("reloadCredentials");
   }
 };
 </script>

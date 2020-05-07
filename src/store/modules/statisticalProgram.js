@@ -28,8 +28,8 @@ const actions = {
       }
     );
   },
-  getStatisticalProgramById({ commit, getters, dispatch }, id) {
-    statisticalProgramService.getById(getters.token, id).then(
+  getStatisticalProgramById({ commit, dispatch }, id) {
+    statisticalProgramService.getById(id).then(
       data => {
         commit("SET_STATISTICAL_PROGRAM", data);
       },
@@ -39,8 +39,8 @@ const actions = {
       }
     );
   },
-  saveStatisticalProgram({ getters, dispatch }, formData) {
-    statisticalProgramService.save(getters.token, formData).then(
+  saveStatisticalProgram({ dispatch }, formData) {
+    statisticalProgramService.save(formData).then(
       data => {
         console.log(data);
         dispatch("success", "Statistical process saved!");
@@ -52,8 +52,8 @@ const actions = {
       }
     );
   },
-  deleteStatisticalProgram({ getters, dispatch }, formData) {
-    statisticalProgramService.delete(getters.token, formData).then(
+  deleteStatisticalProgram({ dispatch }, formData) {
+    statisticalProgramService.delete(formData).then(
       data => {
         console.log(data);
         dispatch("success", "Statistical process deleted!");
@@ -65,8 +65,8 @@ const actions = {
       }
     );
   },
-  updateStatisticalProgram({ getters, dispatch }, formData) {
-    statisticalProgramService.update(getters.token, formData).then(
+  updateStatisticalProgram({ dispatch }, formData) {
+    statisticalProgramService.update(formData).then(
       data => {
         console.log(data);
         dispatch("success", "Statistical process updated!");

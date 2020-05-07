@@ -1,5 +1,5 @@
 <template>
-  <div class="row" v-if="statisticalProcess">
+  <div class="row" v-if="statisticalProgram">
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
@@ -7,12 +7,22 @@
         </header>
         <div class="card-body">
           <div class="form-group">
+            <label for="name">Survey id</label>
+            <input
+              id="localId"
+              type="text"
+              class="form-control"
+              v-model.trim="statisticalProgram.localId"
+              disabled
+            />
+          </div>
+          <div class="form-group">
             <label for="name">Survey name</label>
             <input
               id="name"
               type="text"
               class="form-control"
-              v-model.trim="statisticalProcess.name"
+              v-model.trim="statisticalProgram.name"
               disabled
             />
           </div>
@@ -22,27 +32,17 @@
               id="acronym"
               type="text"
               class="form-control"
-              v-model.trim="statisticalProcess.acronym"
+              v-model.trim="statisticalProgram.acronym"
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="responsible">Responsible name</label>
+            <label for="responsible">Survey description</label>
             <input
-              id="responsibleName"
+              id="description"
               type="text"
               class="form-control"
-              v-model.trim="statisticalProcess.responsibleName"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <label for="responsible">Responsible division</label>
-            <input
-              id="responsibleDivision"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalProcess.responsibleDivision"
+              v-model.trim="statisticalProgram.description"
               disabled
             />
           </div>
@@ -71,16 +71,16 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["statisticalProcess"])
+    ...mapGetters(["statisticalProgram"])
   },
   methods: {
     handleDelete() {
       this.disabled = true; //disable button
-      this.$store.dispatch("deleteStatisticalProcess", this.statisticalProcess);
+      this.$store.dispatch("deleteStatisticalProgram", this.statisticalProgram);
     }
   },
   created() {
-    this.$store.dispatch("getStatisticalProcessById", this.$route.params.id);
+    this.$store.dispatch("getStatisticalProgramById", this.$route.params.id);
   }
 };
 </script>

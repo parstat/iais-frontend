@@ -1,4 +1,5 @@
 import axios from "axios";
+import qs from "querystring";
 
 export const statisticalProgramService = {
   getAll,
@@ -10,7 +11,7 @@ export const statisticalProgramService = {
 
 function getAll() {
   return new Promise((resolve, reject) => {
-    axios.get("/statistical/programs?language=en").then(
+    axios.get("/referential/statistical/programs?language=en").then(
       response => {
         var statisticalPrograms = response.data;
         console.log(statisticalPrograms);
@@ -31,31 +32,11 @@ function getAll() {
 
 function getById(id) {
   return new Promise((resolve, reject) => {
-    axios.get("/statistical/programs/" + id + "?language=en").then(
+    axios.get("/referential/statistical/programs/" + id + "?language=en").then(
       response => {
         var statisticalProgram = response.data;
         console.log(statisticalProgram);
         resolve(statisticalProgram);
-      },
-        error => {
-          console.log("[ERROR - status] " + error.response.status);
-          console.log("[ERROR - message] " + error.response.data.error);
-          const err = {
-            status: error.response.status,
-            message: error.response.data.error
-          };
-          reject(err);
-        }
-      );
-  });
-}
-
-function save(token, formData) {
-  return new Promise((resolve, reject) => {
-    axios.post("/statisticalPrograms.json" + "?auth=" + token, formData).then(
-      response => {
-        //console.log(response.data);
-        resolve(response.data);
       },
       error => {
         console.log("[ERROR - status] " + error.response.status);
@@ -67,6 +48,53 @@ function save(token, formData) {
         reject(err);
       }
     );
+  });
+}
+
+function save(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    const requestBody = {
+      name: formData.name,
+      acronym: formData.acronym,
+      language: "ENG",
+      description: formData.description,
+      status: "CURRENT",
+      budget: 2000,
+      funding: "NBS",
+      dateInitiated: "2018-05-10T10:00:00",
+      dateEnded: "2018-08-10T10:00:00",
+      owner: 1,
+      maintainer: 3,
+      contact: 2
+    };
+
+    axios
+      .put(
+        "close/referential/statistical/programs/" + formData.localId,
+        qs.stringify(requestBody),
+        config
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          console.log("[ERROR - status] " + error.response.status);
+          console.log("[ERROR - message] " + error.response.data.error);
+          const err = {
+            status: error.response.status,
+            message: error.response.data.error
+          };
+          reject(err);
+        }
+      );
   });
 }
 

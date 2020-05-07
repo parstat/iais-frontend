@@ -1,5 +1,5 @@
 <template>
-  <div class="row" v-if="statisticalProcess">
+  <div class="row" v-if="statisticalProgram">
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
@@ -7,18 +7,35 @@
         </header>
         <div class="card-body">
           <div class="form-group">
+            <label for="localId">Id</label>
+            <input
+              id="localId"
+              type="text"
+              class="form-control"
+              :class="{ 'is-invalid': $v.statisticalProgram.localId.$error }"
+              placeholder="Identifier"
+              v-model.trim="statisticalProgram.localId"
+            />
+            <span
+              class="help-block"
+              :class="{ show: $v.statisticalProgram.localId.$error }"
+            >
+              Please enter survey id.
+            </span>
+          </div>
+          <div class="form-group">
             <label for="name">Survey name</label>
             <input
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.statisticalProcess.name.$error }"
+              :class="{ 'is-invalid': $v.statisticalProgram.name.$error }"
               placeholder="Survey name"
-              v-model.trim="statisticalProcess.name"
+              v-model.trim="statisticalProgram.name"
             />
             <span
               class="help-block"
-              :class="{ show: $v.statisticalProcess.name.$error }"
+              :class="{ show: $v.statisticalProgram.name.$error }"
             >
               Please enter survey name.
             </span>
@@ -29,55 +46,34 @@
               id="acronym"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.statisticalProcess.acronym.$error }"
+              :class="{ 'is-invalid': $v.statisticalProgram.acronym.$error }"
               placeholder="Survey acronym"
-              v-model.trim="statisticalProcess.acronym"
+              v-model.trim="statisticalProgram.acronym"
             />
             <span
               class="help-block"
-              :class="{ show: $v.statisticalProcess.acronym.$error }"
+              :class="{ show: $v.statisticalProgram.acronym.$error }"
             >
               Please enter an acronym.
             </span>
           </div>
           <div class="form-group">
-            <label for="responsible">Responsible name</label>
+            <label for="description">Survey description</label>
             <input
-              id="responsibleName"
+              id="description"
               type="text"
               class="form-control"
               :class="{
-                'is-invalid': $v.statisticalProcess.responsibleName.$error
+                'is-invalid': $v.statisticalProgram.description.$error
               }"
-              placeholder="Survey responsible"
-              v-model.trim="statisticalProcess.responsibleName"
+              placeholder="Survey description"
+              v-model.trim="statisticalProgram.description"
             />
             <span
               class="help-block"
-              :class="{ show: $v.statisticalProcess.responsibleName.$error }"
+              :class="{ show: $v.statisticalProgram.description.$error }"
             >
-              Please enter responsible name.
-            </span>
-          </div>
-          <div class="form-group">
-            <label for="responsible">Responsible division</label>
-            <input
-              id="responsibleDivision"
-              type="text"
-              class="form-control"
-              :class="{
-                'is-invalid': $v.statisticalProcess.responsibleDivision.$error
-              }"
-              placeholder="Responsible division"
-              v-model.trim="statisticalProcess.responsibleDivision"
-            />
-            <span
-              class="help-block"
-              :class="{
-                show: $v.statisticalProcess.responsibleDivision.$error
-              }"
-            >
-              Please enter responsible division.
+              Please enter an description.
             </span>
           </div>
         </div>
@@ -115,20 +111,20 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["statisticalProcess"])
+    ...mapGetters(["statisticalProgram"])
   },
   validations: {
-    statisticalProcess: {
+    statisticalProgram: {
+      localId: {
+        required
+      },
       name: {
         required
       },
       acronym: {
         required
       },
-      responsibleName: {
-        required
-      },
-      responsibleDivision: {
+      description: {
         required
       }
     }
@@ -139,21 +135,19 @@ export default {
       if (!this.$v.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
-          id: this.statisticalProcess.id,
-          name: this.statisticalProcess.name,
-          acronym: this.statisticalProcess.acronym,
-          responsibleName: this.statisticalProcess.responsibleName,
-          responsibleDivision: this.statisticalProcess.responsibleDivision
+          localId: this.statisticalProgram.localId,
+          name: this.statisticalProgram.name,
+          acronym: this.statisticalProgram.acronym,
+          description: this.statisticalProgram.description
         };
-        this.$store.dispatch("updateStatisticalProcess", formData);
+        this.$store.dispatch("updatestatisticalProgram", formData);
         console.log(formData);
       }
     },
     handleReset() {
-      this.statisticalProcess.name = "";
-      this.statisticalProcess.acronym = "";
-      this.statisticalProcess.responsibleName = "";
-      this.statisticalProcess.responsibleDivision = "";
+      this.statisticalProgram.name = "";
+      this.statisticalProgram.acronym = "";
+      this.statisticalProgram.description = "";
       this.$v.$reset();
     }
   },
@@ -162,4 +156,3 @@ export default {
   }
 };
 </script>
-<style></style>

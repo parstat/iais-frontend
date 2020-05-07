@@ -15,7 +15,6 @@ const mutations = {
 
     //store auth data in browser storage
     localStorage.setItem("token", token);
-    localStorage.setItem("user", user);
   },
   CLEAR_AUTH_DATA(state) {
     state.token = null;
@@ -23,7 +22,6 @@ const mutations = {
 
     //remove auth data from browser storage
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
   },
   SET_STATUS(state, status) {
     state.status = status;
@@ -54,22 +52,21 @@ const actions = {
       }
     );
   },
-  mockLogin({ commit }) {
-    const token = process.env.VUE_APP_DEV_SERVER_AUTH_TOKEN;
-    //decode JWT token
-    var decoded = jwt.decode(token, { complete: true });
-    //console.log(decoded.header);
-    console.log(decoded.payload);
-    const user = decoded.payload;
+  reloadCredentials({ commit }) {
+    const token = localStorage.getItem("token");
+    if (token) {
+      //decode JWT token
+      var decoded = jwt.decode(token, { complete: true });
+      const user = decoded.payload;
+      console.log(user);
 
-    commit("AUTH_USER", {
-      token,
-      user
-    });
+      commit("AUTH_USER", {
+        token,
+        user
+      });
 
-    commit("SET_STATUS", "LOGGED");
-
-    router.push("/"); //Go to main page
+      commit("SET_STATUS", "LOGGED");
+    }
   },
   register({ commit }, authData) {
     authService.register(authData).then(
