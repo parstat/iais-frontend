@@ -36,8 +36,8 @@ const actions = {
       data => {
         //decode JWT token
         var decoded = jwt.decode(data.token, { complete: true });
-        console.log(decoded.payload);
         const user = decoded.payload;
+        console.log(user);
 
         commit("AUTH_USER", {
           token: data.token,

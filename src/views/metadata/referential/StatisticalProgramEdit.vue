@@ -158,7 +158,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("getStatisticalProcessById", this.$route.params.id);
+    this.$store.dispatch("getStatisticalProgramById", this.$route.params.id);
   }
 };
 </script>

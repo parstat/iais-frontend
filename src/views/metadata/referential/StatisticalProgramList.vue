@@ -20,10 +20,10 @@
             <table class="table">
               <thead>
                 <tr>
+                  <th scope="col">Id</th>
                   <th scope="col">Survey Name</th>
                   <th scope="col">Acronym</th>
-                  <th scope="col">Responsible Name</th>
-                  <th scope="col">Responsible Division</th>
+                  <th scope="col">Description</th>
                   <th scope="col" colspan="3" width="3%"></th>
                 </tr>
               </thead>
@@ -32,15 +32,15 @@
                   v-for="statisticalProgram in statisticalPrograms"
                   :key="statisticalProgram.id"
                 >
+                  <td>{{ statisticalProgram.localId }}</td>
                   <td>{{ statisticalProgram.name }}</td>
                   <td>{{ statisticalProgram.acronym }}</td>
-                  <td>{{ statisticalProgram.responsibleName }}</td>
-                  <td>{{ statisticalProgram.responsibleDivision }}</td>
+                  <td>{{ statisticalProgram.description }}</td>
                   <td>
                     <router-link
                       tag="a"
                       :to="{
-                        name: 'statisticalProgramEdit',
+                        name: 'StatisticalProgramEdit',
                         params: { id: statisticalProgram.id }
                       }"
                     >
@@ -51,7 +51,7 @@
                     <router-link
                       tag="a"
                       :to="{
-                        name: 'statisticalProgramView',
+                        name: 'StatisticalProgramView',
                         params: { id: statisticalProgram.id }
                       }"
                     >
@@ -62,7 +62,7 @@
                     <router-link
                       tag="a"
                       :to="{
-                        name: 'statisticalProgramDelete',
+                        name: 'StatisticalProgramDelete',
                         params: { id: statisticalProgram.id }
                       }"
                     >

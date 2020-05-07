@@ -44,7 +44,7 @@ const routes = [
         name: "StatisticalProgramEdit",
         component: () =>
           import("../views/metadata/referential/StatisticalProgramEdit"),
-        meta: { authorize: [Role.Admin] }
+        meta: { authorize: [Role.Admin, Role.User] }
       },
       {
         path: "metadata/referential/view/:id",
@@ -58,14 +58,14 @@ const routes = [
         name: "StatisticalProgramDelete",
         component: () =>
           import("../views/metadata/referential/StatisticalProgramDelete"),
-        meta: { authorize: [Role.Admin] }
+        meta: { authorize: [Role.Admin, Role.User] }
       },
       {
         path: "metadata/referential/add",
         name: "StatisticalProgramAdd",
         component: () =>
           import("../views/metadata/referential/StatisticalProgramAdd"),
-        meta: { authorize: [Role.Admin] }
+        meta: { authorize: [Role.Admin, Role.User] }
       },
       {
         path: "metadata/process",

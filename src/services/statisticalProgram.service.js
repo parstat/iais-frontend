@@ -29,34 +29,14 @@ function getAll() {
   });
 }
 
-function getById(token, id) {
+function getById(id) {
   return new Promise((resolve, reject) => {
-    axios
-      .get(
-        "/statisticalPrograms.json" +
-          "?auth=" +
-          token +
-          '&orderBy="$key"' +
-          '&equalTo="' +
-          id +
-          '"'
-      )
-      .then(
-        response => {
-          var statisticalProgram = null;
-          for (const [key, value] of Object.entries(response.data)) {
-            //console.log(key, value);
-            statisticalProgram = {
-              id: key,
-              name: value.name,
-              acronym: value.acronym,
-              responsibleName: value.responsibleName,
-              responsibleDivision: value.responsibleDivision
-            };
-          }
-          //console.log(statisticalProgram);
-          resolve(statisticalProgram);
-        },
+    axios.get("/statistical/programs/" + id + "?language=en").then(
+      response => {
+        var statisticalProgram = response.data;
+        console.log(statisticalProgram);
+        resolve(statisticalProgram);
+      },
         error => {
           console.log("[ERROR - status] " + error.response.status);
           console.log("[ERROR - message] " + error.response.data.error);
