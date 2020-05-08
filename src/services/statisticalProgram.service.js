@@ -62,21 +62,21 @@ function save(formData) {
     const requestBody = {
       name: formData.name,
       acronym: formData.acronym,
-      language: "ENG",
       description: formData.description,
+      //language: "en",
       status: "CURRENT",
       budget: 2000,
       funding: "NBS",
       dateInitiated: "2018-05-10T10:00:00",
       dateEnded: "2018-08-10T10:00:00",
-      owner: 1,
-      maintainer: 3,
-      contact: 2
+      //owner: 1,
+      //maintainer: 3,
+      //contact: 2
     };
 
     axios
       .put(
-        "close/referential/statistical/programs/" + formData.localId,
+        "close/referential/statistical/programs/" + formData.localId + "?language=en",
         qs.stringify(requestBody),
         config
       )
