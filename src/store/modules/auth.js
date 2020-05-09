@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import router from "@/router";
 import { authService } from "@/services";
+import { Role } from "@/common";
 
 const state = {
   token: localStorage.getItem("token") || null,
@@ -108,6 +109,12 @@ const getters = {
   },
   status: state => {
     return state.status;
+  },
+  isAdmin: state => {
+    return state.user.role == Role.Admin;
+  },
+  isUser: state => {
+    return state.user.role == Role.User;
   }
 };
 

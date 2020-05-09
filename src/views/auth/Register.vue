@@ -35,9 +35,7 @@
                   <span
                     class="help-block"
                     :class="{ show: $v.username.$error }"
-                  >
-                    Please enter your username.
-                  </span>
+                  >Please enter your username.</span>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -52,9 +50,44 @@
                     placeholder="Email"
                     v-model.trim="email"
                   />
-                  <span class="help-block" :class="{ show: $v.email.$error }">
-                    Please enter a valid email address.
-                  </span>
+                  <span
+                    class="help-block"
+                    :class="{ show: $v.email.$error }"
+                  >Please enter a valid email address.</span>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <CIcon name="cilUser"></CIcon>
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    :class="{ invalid: $v.fullname.$error }"
+                    placeholder="Full name"
+                    v-model.trim="fullname"
+                  />
+                  <span
+                    class="help-block"
+                    :class="{ show: $v.fullname.$error }"
+                  >Please enter your fullname.</span>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <CIcon name="cilSettings"></CIcon>
+                    </div>
+                  </div>
+                  <select class="form-control" v-model="role">
+                    <option disabled value="">Please select a role</option>
+                    <option value="USER">USER</option>
+                    <option value="ADMIN">ADMIN</option>
+                  </select>
+                  <span
+                    class="help-block"
+                    :class="{ show: $v.role.$error }"
+                  >Please select a role.</span>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -72,9 +105,7 @@
                   <span
                     class="help-block"
                     :class="{ show: $v.password.$error }"
-                  >
-                    Password should contain at least 6 characters.
-                  </span>
+                  >Password should contain at least 6 characters.</span>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -93,13 +124,9 @@
                   <span
                     class="help-block"
                     :class="{ show: $v.confirmPassword.$error }"
-                  >
-                    Passwords are different
-                  </span>
+                  >Passwords are different</span>
                 </div>
-                <CButton color="success" block @click.prevent="handleSubmit()"
-                  >Create Account</CButton
-                >
+                <CButton color="success" block @click.prevent="handleSubmit()">Create Account</CButton>
               </CForm>
             </CCardBody>
           </CCard>
@@ -118,6 +145,8 @@ export default {
     return {
       username: "",
       email: "",
+      fullname: "",
+      role: "",
       password: "",
       confirmPassword: ""
     };
@@ -140,6 +169,12 @@ export default {
       required,
       email
     },
+    fullname: {
+      required
+    },
+    role: {
+      required
+    },
     password: {
       required,
       minLen: minLength(6)
@@ -154,9 +189,12 @@ export default {
       if (!this.$v.$invalid) {
         const formData = {
           username: this.username,
-          email: this.email.trim(),
+          email: this.email,
+          fullname: this.fullname,
+          role: this.role,
           password: this.password
         };
+        console.log(formData);
         this.$store.dispatch("register", formData);
       }
     }

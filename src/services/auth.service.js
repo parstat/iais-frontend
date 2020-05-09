@@ -35,7 +35,7 @@ function login({ username, password }) {
         resolve(data);
       },
       error => {
-        console.log(error.code);
+        console.log(error.response.data.code);
         const err = {
           code: error.response.status,
           message: error.response.data.code
@@ -46,31 +46,40 @@ function login({ username, password }) {
   });
 }
 
-function register({ username, password }) {
+function register({ username, email, fullname, role, password }) {
   return new Promise((resolve, reject) => {
-    axiosAuth
-      .post("/accounts:signUp?key=" + process.env.VUE_APP_DEV_SERVER_API_KEY, {
-        username: username,
-        password: password
-      })
-      .then(
-        response => {
-          //console.log(response);
-          const data = {
-            idToken: response.data.idToken,
-            userId: response.data.localId
-          };
-          resolve(data);
-        },
-        error => {
-          //console.log(error.response.data.error.code);
-          //console.log(error.response.data.error.message);
-          const err = {
-            code: error.response.data.error.code,
-            message: error.response.data.error.message
-          };
-          reject(err);
-        }
-      );
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    const requestBody = {
+      username: username,
+      email: email,
+      name: fullname,
+      role: role,
+      password: password
+    };
+
+    axiosAuth.post("/signup?language=ENG", qs.stringify(requestBody), config).then(
+      response => {
+        console.log(response);
+        const token = response.headers["jwt-auth"];
+        const data = {
+          token: token,
+          user: response.data
+        };
+        resolve(data);
+      },
+      error => {
+        console.log(error.response.data.code);
+        const err = {
+          code: error.response.status,
+          message: error.response.data.code
+        };
+        reject(err);
+      }
+    );
   });
 }

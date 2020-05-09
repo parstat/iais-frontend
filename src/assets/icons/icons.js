@@ -1,5 +1,6 @@
 import { cifUs, cifBr, cifIn, cifFr, cifEs, cifPl } from "@coreui/icons";
 import {
+  cilAddressBook,
   cilArrowRight,
   cilArrowCircleRight,
   cilAt,
@@ -15,6 +16,7 @@ import {
   cilChevronTop,
   cilCheckCircle,
   cilCode,
+  cilContact,
   cilCommentSquare,
   cilCursor,
   cilDrop,
@@ -58,6 +60,7 @@ import {
 export const iconsSet = Object.assign(
   {},
   {
+    cilAddressBook,
     cilArrowRight,
     cilArrowCircleRight,
     cilAt,
@@ -73,6 +76,7 @@ export const iconsSet = Object.assign(
     cilChevronTop,
     cilCheckCircle,
     cilCode,
+    cilContact,
     cilCommentSquare,
     cilCursor,
     cilDrop,

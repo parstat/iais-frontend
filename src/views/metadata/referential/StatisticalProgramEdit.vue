@@ -7,7 +7,7 @@
         </header>
         <div class="card-body">
           <div class="form-group">
-            <label for="localId">Id</label>
+            <label for="localId">Local Id</label>
             <input
               id="localId"
               type="text"
@@ -135,12 +135,13 @@ export default {
       if (!this.$v.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
+          id: this.statisticalProgram.id,
           localId: this.statisticalProgram.localId,
           name: this.statisticalProgram.name,
           acronym: this.statisticalProgram.acronym,
           description: this.statisticalProgram.description
         };
-        this.$store.dispatch("updatestatisticalProgram", formData);
+        this.$store.dispatch("updateStatisticalProgram", formData);
         console.log(formData);
       }
     },

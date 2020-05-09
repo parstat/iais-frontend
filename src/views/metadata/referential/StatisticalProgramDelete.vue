@@ -76,7 +76,7 @@ export default {
   methods: {
     handleDelete() {
       this.disabled = true; //disable button
-      this.$store.dispatch("deleteStatisticalProgram", this.statisticalProgram);
+      this.$store.dispatch("deleteStatisticalProgram", this.$route.params.id);
     }
   },
   created() {

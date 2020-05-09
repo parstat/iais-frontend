@@ -52,8 +52,8 @@ const actions = {
       }
     );
   },
-  deleteStatisticalProgram({ dispatch }, formData) {
-    statisticalProgramService.delete(formData).then(
+  deleteStatisticalProgram({ dispatch }, id) {
+    statisticalProgramService.delete(id).then(
       data => {
         console.log(data);
         dispatch("success", "Statistical process deleted!");

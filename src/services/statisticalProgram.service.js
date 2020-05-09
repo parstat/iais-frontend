@@ -18,11 +18,10 @@ function getAll() {
         resolve(statisticalPrograms);
       },
       error => {
-        console.log("[ERROR - status] " + error.response.status);
-        console.log("[ERROR - message] " + error.response.data.error);
+        console.log(error.response.data.code);
         const err = {
-          status: error.response.status,
-          message: error.response.data.error
+          code: error.response.status,
+          message: error.response.data.code
         };
         reject(err);
       }
@@ -39,11 +38,10 @@ function getById(id) {
         resolve(statisticalProgram);
       },
       error => {
-        console.log("[ERROR - status] " + error.response.status);
-        console.log("[ERROR - message] " + error.response.data.error);
+        console.log(error.response.data.code);
         const err = {
-          status: error.response.status,
-          message: error.response.data.error
+          code: error.response.status,
+          message: error.response.data.code
         };
         reject(err);
       }
@@ -72,7 +70,9 @@ function save(formData) {
 
     axios
       .put(
-        "close/referential/statistical/programs/" + formData.localId + "?language=en",
+        "close/referential/statistical/programs/" +
+          formData.localId +
+          "?language=en",
         qs.stringify(requestBody),
         config
       )
@@ -82,11 +82,10 @@ function save(formData) {
           resolve(response.data);
         },
         error => {
-          console.log("[ERROR - status] " + error.response.status);
-          console.log("[ERROR - message] " + error.response.data.error);
+          console.log(error.response.data.code);
           const err = {
-            status: error.response.status,
-            message: error.response.data.error
+            code: error.response.status,
+            message: error.response.data.code
           };
           reject(err);
         }
@@ -94,40 +93,43 @@ function save(formData) {
   });
 }
 
-function update(token, formData) {
+function update(formData) {
   return new Promise((resolve, reject) => {
-    let statisticalProgram = {
-      [formData.id]: {
-        name: formData.name,
-        acronym: formData.acronym,
-        responsibleName: formData.responsibleName,
-        responsibleDivision: formData.responsibleDivision
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
       }
     };
+
+    const requestBody = {
+      name: formData.name,
+      acronym: formData.acronym,
+      description: formData.description,
+      status: "CURRENT",
+      budget: 2000,
+      funding: "NBS",
+      dateInitiated: "2018-05-10T10:00:00",
+      dateEnded: "2018-08-10T10:00:00"
+    };
+
     axios
-      .patch("/statisticalPrograms.json" + "?auth=" + token, statisticalProgram)
+      .patch(
+        "close/referential/statistical/programs/" +
+          formData.id +
+          "?language=en",
+        qs.stringify(requestBody),
+        config
+      )
       .then(
         response => {
-          var statisticalProgram = null;
-          for (const [key, value] of Object.entries(response.data)) {
-            //console.log(key, value);
-            statisticalProgram = {
-              id: key,
-              name: value.name,
-              acronym: value.acronym,
-              responsibleName: value.responsibleName,
-              responsibleDivision: value.responsibleDivision
-            };
-          }
-          //console.log(statisticalProgram);
-          resolve(statisticalProgram);
+          //console.log(response.data);
+          resolve(response.data);
         },
         error => {
-          console.log("[ERROR - status] " + error.response.status);
-          console.log("[ERROR - message] " + error.response.data.error);
+          console.log(error.response.data.code);
           const err = {
-            status: error.response.status,
-            message: error.response.data.error
+            code: error.response.status,
+            message: error.response.data.code
           };
           reject(err);
         }
@@ -135,22 +137,19 @@ function update(token, formData) {
   });
 }
 
-function _delete(token, formData) {
+function _delete(id) {
   return new Promise((resolve, reject) => {
     axios
-      .delete(
-        "/statisticalPrograms/" + formData.id + ".json" + "?auth=" + token
-      )
+      .delete("close/referential/statistical/programs/" + id)
       .then(
         response => {
           resolve(response);
         },
         error => {
-          console.log("[ERROR - status] " + error.response.status);
-          console.log("[ERROR - message] " + error.response.data.error);
+          console.log(error.response.data.code);
           const err = {
-            status: error.response.status,
-            message: error.response.data.error
+            code: error.response.status,
+            message: error.response.data.code
           };
           reject(err);
         }

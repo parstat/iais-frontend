@@ -21,7 +21,7 @@
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <div class="input-group-text">
-                        <CIcon name="cilAt"></CIcon>
+                        <CIcon name="cilUser"></CIcon>
                       </div>
                     </div>
                     <input
@@ -53,6 +53,7 @@
                       color="primary"
                       class="btn-block"
                       @click.prevent="handleSubmit"
+                      :disabled="disableSubmit"
                       >Sign in</CButton
                     >
                   </CCol>
@@ -80,7 +81,8 @@ export default {
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      disableSubmit: false
     };
   },
   computed: {
@@ -95,6 +97,7 @@ export default {
   },
   methods: {
     handleSubmit() {
+      this.disableSubmit = true;
       const formData = {
         username: this.username,
         password: this.password

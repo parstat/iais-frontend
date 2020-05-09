@@ -36,7 +36,7 @@
                   <td>{{ statisticalProgram.name }}</td>
                   <td>{{ statisticalProgram.acronym }}</td>
                   <td>{{ statisticalProgram.description }}</td>
-                  <td>
+                  <td v-if="isAdmin">
                     <router-link
                       tag="a"
                       :to="{
@@ -47,7 +47,7 @@
                       <CIcon name="cilPencil"></CIcon>
                     </router-link>
                   </td>
-                  <td>
+                  <td v-if="isUser">
                     <router-link
                       tag="a"
                       :to="{
@@ -58,7 +58,7 @@
                       <CIcon name="cilMagnifyingGlass"></CIcon>
                     </router-link>
                   </td>
-                  <td>
+                  <td v-if="isAdmin">
                     <router-link
                       tag="a"
                       :to="{
@@ -84,7 +84,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["statisticalPrograms"])
+    ...mapGetters(["statisticalPrograms", "isAdmin", "isUser"])
   },
   created() {
     this.$store.dispatch("getStatisticalPrograms");
