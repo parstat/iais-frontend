@@ -32,10 +32,9 @@
                     placeholder="User name"
                     v-model.trim="username"
                   />
-                  <span
-                    class="help-block"
-                    :class="{ show: $v.username.$error }"
-                  >Please enter your username.</span>
+                  <span class="help-block" :class="{ show: $v.username.$error }"
+                    >Please enter your username.</span
+                  >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -50,10 +49,9 @@
                     placeholder="Email"
                     v-model.trim="email"
                   />
-                  <span
-                    class="help-block"
-                    :class="{ show: $v.email.$error }"
-                  >Please enter a valid email address.</span>
+                  <span class="help-block" :class="{ show: $v.email.$error }"
+                    >Please enter a valid email address.</span
+                  >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -68,10 +66,9 @@
                     placeholder="Full name"
                     v-model.trim="fullname"
                   />
-                  <span
-                    class="help-block"
-                    :class="{ show: $v.fullname.$error }"
-                  >Please enter your fullname.</span>
+                  <span class="help-block" :class="{ show: $v.fullname.$error }"
+                    >Please enter your fullname.</span
+                  >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -84,10 +81,9 @@
                     <option value="USER">USER</option>
                     <option value="ADMIN">ADMIN</option>
                   </select>
-                  <span
-                    class="help-block"
-                    :class="{ show: $v.role.$error }"
-                  >Please select a role.</span>
+                  <span class="help-block" :class="{ show: $v.role.$error }"
+                    >Please select a role.</span
+                  >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -102,10 +98,9 @@
                     placeholder="Password"
                     v-model="password"
                   />
-                  <span
-                    class="help-block"
-                    :class="{ show: $v.password.$error }"
-                  >Password should contain at least 6 characters.</span>
+                  <span class="help-block" :class="{ show: $v.password.$error }"
+                    >Password should contain at least 6 characters.</span
+                  >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -124,9 +119,12 @@
                   <span
                     class="help-block"
                     :class="{ show: $v.confirmPassword.$error }"
-                  >Passwords are different</span>
+                    >Passwords are different</span
+                  >
                 </div>
-                <CButton color="success" block @click.prevent="handleSubmit()">Create Account</CButton>
+                <CButton color="success" block @click.prevent="handleSubmit()"
+                  >Create Account</CButton
+                >
               </CForm>
             </CCardBody>
           </CCard>

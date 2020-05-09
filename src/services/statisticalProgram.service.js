@@ -139,20 +139,18 @@ function update(formData) {
 
 function _delete(id) {
   return new Promise((resolve, reject) => {
-    axios
-      .delete("close/referential/statistical/programs/" + id)
-      .then(
-        response => {
-          resolve(response);
-        },
-        error => {
-          console.log(error.response.data.code);
-          const err = {
-            code: error.response.status,
-            message: error.response.data.code
-          };
-          reject(err);
-        }
-      );
+    axios.delete("close/referential/statistical/programs/" + id).then(
+      response => {
+        resolve(response);
+      },
+      error => {
+        console.log(error.response.data.code);
+        const err = {
+          code: error.response.status,
+          message: error.response.data.code
+        };
+        reject(err);
+      }
+    );
   });
 }

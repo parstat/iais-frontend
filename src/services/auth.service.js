@@ -62,24 +62,26 @@ function register({ username, email, fullname, role, password }) {
       password: password
     };
 
-    axiosAuth.post("/signup?language=ENG", qs.stringify(requestBody), config).then(
-      response => {
-        console.log(response);
-        const token = response.headers["jwt-auth"];
-        const data = {
-          token: token,
-          user: response.data
-        };
-        resolve(data);
-      },
-      error => {
-        console.log(error.response.data.code);
-        const err = {
-          code: error.response.status,
-          message: error.response.data.code
-        };
-        reject(err);
-      }
-    );
+    axiosAuth
+      .post("/signup?language=ENG", qs.stringify(requestBody), config)
+      .then(
+        response => {
+          console.log(response);
+          const token = response.headers["jwt-auth"];
+          const data = {
+            token: token,
+            user: response.data
+          };
+          resolve(data);
+        },
+        error => {
+          console.log(error.response.data.code);
+          const err = {
+            code: error.response.status,
+            message: error.response.data.code
+          };
+          reject(err);
+        }
+      );
   });
 }
