@@ -72,9 +72,7 @@ function save(formData) {
 
     axios
       .put(
-        "close/referential/statistical/programs/" +
-          formData.localId +
-          "?language=en",
+        "close/referential/statistical/programs/" + formData.localId + "?language=en",
         qs.stringify(requestBody),
         config
       )
