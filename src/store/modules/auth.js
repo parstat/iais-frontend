@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import router from "@/router";
 import { authService } from "@/services";
 import { Role } from "@/common";
+import { Agent } from "@/common";
 
 const state = {
   token: localStorage.getItem("token") || null,
@@ -69,7 +70,7 @@ const actions = {
       commit("SET_STATUS", "LOGGED");
     }
   },
-  register({ commit }, authData) {
+  register({ commit, dispatch }, authData) {
     authService.register(authData).then(
       data => {
         //decode JWT token
@@ -83,6 +84,16 @@ const actions = {
         });
 
         commit("SET_STATUS", "LOGGED");
+
+        //Save agent
+        const agentData = {
+          name: user.name,
+          description: "",
+          account: user.user,
+          type: Agent.Individual,
+          localId: user.email
+        };
+        dispatch("saveAgent", agentData);
 
         router.push("/"); //Go to main page
       },
