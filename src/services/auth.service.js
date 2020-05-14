@@ -2,7 +2,7 @@ import axios from "axios";
 import qs from "querystring";
 
 const axiosAuth = axios.create({
-  baseURL: "http://20.188.39.80:8080/api/v1/security" //authentication server
+  baseURL: "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/security" //authentication server
 });
 
 export const authService = {
