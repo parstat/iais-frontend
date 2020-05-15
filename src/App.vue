@@ -10,6 +10,8 @@ export default {
   created() {
     //Manage browser refresh F5
     this.$store.dispatch("reloadCredentials");
+    //Clear messages
+    this.$store.dispatch("clear");
   }
 };
 </script>

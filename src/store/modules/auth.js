@@ -105,7 +105,7 @@ const actions = {
   },
   logout({ commit }) {
     commit("CLEAR_AUTH_DATA");
-    router.push("/login");
+    router.push("/");
   }
 };
 const getters = {

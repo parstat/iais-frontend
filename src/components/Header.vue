@@ -15,8 +15,8 @@
     </CHeaderBrand>
     <CHeaderNav class="d-md-down-none mr-auto">
       <CHeaderNavItem class="px-3">
-        <CHeaderNavLink>
-          Settings
+        <CHeaderNavLink v-if="isAuthenticated">
+          Admin
         </CHeaderNavLink>
       </CHeaderNavItem>
     </CHeaderNav>
@@ -26,20 +26,23 @@
     <CSubheader class="justify-content-between px-3">
       <!--CBreadcrumbRouter class="border-0 mb-0" /-->
       <app-header-breadcrumb></app-header-breadcrumb>
-      <app-header-back-btn></app-header-back-btn>
+      <!--app-header-back-btn></app-header-back-btn-->
     </CSubheader>
   </CHeader>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import HeaderDropdownAccnt from "./HeaderDropdownAccnt";
-import HeaderBackBtn from "./HeaderBackBtn";
 import BreadCrumb from "./BreadCrumb";
 
 export default {
+    computed: {
+    ...mapGetters(["isAuthenticated"])
+  },
   components: {
     "app-header-dropdown-account": HeaderDropdownAccnt,
-    "app-header-back-btn": HeaderBackBtn,
     "app-header-breadcrumb": BreadCrumb
   }
 };

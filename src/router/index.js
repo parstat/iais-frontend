@@ -13,11 +13,13 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/login",
-    component: Login
+    component: Login,
+    meta: { authorize: [] }
   },
   {
     path: "/register",
-    component: Register
+    component: Register,
+    meta: { authorize: [] }
   },
   {
     path: "/",
@@ -51,7 +53,7 @@ const routes = [
         name: "StatisticalProgramView",
         component: () =>
           import("../views/metadata/referential/StatisticalProgramView"),
-        meta: { authorize: [Role.User] }
+        meta: { authorize: [] }
       },
       {
         path: "metadata/referential/delete/:id",
@@ -65,7 +67,7 @@ const routes = [
         name: "StatisticalProgramAdd",
         component: () =>
           import("../views/metadata/referential/StatisticalProgramAdd"),
-        meta: { authorize: [] }
+        meta: { authorize: [Role.Admin] }
       },
       {
         path: "metadata/process",
@@ -94,17 +96,9 @@ router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
   const { authorize } = to.meta;
   const isAuthenticated = store.getters.isAuthenticated;
-  const currentUser = store.getters.user;
-
-  if (authorize) {
+  
+  if (authorize.length) {
     if (!isAuthenticated) {
-      // not logged in so redirect to login page with the return url
-      return next({ path: "/login", query: { returnUrl: to.path } });
-    }
-
-    // check if route is restricted by role
-    if (authorize.length && !authorize.includes(currentUser.role)) {
-      // role not authorised so redirect to home page
       store.dispatch("error", "You are not authorized!");
       return next({ path: "/" });
     }

@@ -78,6 +78,13 @@ function save(formData) {
       )
       .then(
         response => {
+          if(response.status == 500){ //unauthorized access to close resource
+            const err = {
+              code: response.status,
+              message: response.message
+            };
+            reject(err);
+          } 
           //console.log(response.data);
           resolve(response.data);
         },
@@ -122,6 +129,13 @@ function update(formData) {
       )
       .then(
         response => {
+          if(response.status == 500){ //unauthorized access to close resource
+            const err = {
+              code: response.status,
+              message: response.message
+            };
+            reject(err);
+          }
           //console.log(response.data);
           resolve(response.data);
         },
@@ -141,6 +155,13 @@ function _delete(id) {
   return new Promise((resolve, reject) => {
     axios.delete("close/referential/statistical/programs/" + id).then(
       response => {
+        if(response.status == 500){ //unauthorized access to close resource
+          const err = {
+            code: response.status,
+            message: response.message
+          };
+          reject(err);
+        }
         resolve(response);
       },
       error => {

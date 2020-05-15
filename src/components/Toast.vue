@@ -16,10 +16,8 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters(["message", "type"])
-  },
-  created() {
-    this.$store.dispatch("clear"); //clear messages
   }
+  
 };
 </script>
 

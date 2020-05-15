@@ -9,13 +9,36 @@ import Vuelidate from "vuelidate";
 
 axios.defaults.baseURL = process.env.VUE_APP_DEV_SERVER;
 
-axios.interceptors.request.use(config => {
-  let token = store.getters.token;
-  if (token && !("jwt-auth" in config.headers)) {
-    config.headers["jwt-auth"] = token;
+//request interceptor
+axios.interceptors.request.use(
+  config => {
+    const token = store.getters.token;
+    if (token && !("jwt-auth" in config.headers)) {
+      config.headers["jwt-auth"] = token;
+    }
+    return config;
+  },
+  error => {
+    Promise.reject(error);
   }
-  return config;
-});
+);
+
+//response interceptor
+axios.interceptors.response.use(
+  response => {
+    return response;
+  },
+  error => {
+    console.warn("Error status", error.response.status);
+    // return Promise.reject(error)
+    if (error.response) {
+      //redirect to login page
+      return error.response.data;
+    } else {
+      return Promise.reject(error);
+    }
+  }
+);
 
 Vue.config.productionTip = false;
 Vue.use(CoreuiVue);
