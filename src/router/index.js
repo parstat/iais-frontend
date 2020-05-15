@@ -96,7 +96,7 @@ router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
   const { authorize } = to.meta;
   const isAuthenticated = store.getters.isAuthenticated;
-  
+
   if (authorize.length) {
     if (!isAuthenticated) {
       store.dispatch("error", "You are not authorized!");

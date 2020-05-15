@@ -38,7 +38,7 @@ import HeaderDropdownAccnt from "./HeaderDropdownAccnt";
 import BreadCrumb from "./BreadCrumb";
 
 export default {
-    computed: {
+  computed: {
     ...mapGetters(["isAuthenticated"])
   },
   components: {

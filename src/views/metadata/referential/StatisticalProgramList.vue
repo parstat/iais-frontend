@@ -29,7 +29,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="statisticalProgram in statisticalPrograms" :key="statisticalProgram.id">
+                <tr
+                  v-for="statisticalProgram in statisticalPrograms"
+                  :key="statisticalProgram.id"
+                >
                   <td>{{ statisticalProgram.localId }}</td>
                   <td>{{ statisticalProgram.name }}</td>
                   <td>{{ statisticalProgram.acronym }}</td>
@@ -39,9 +42,9 @@
                       <router-link
                         tag="a"
                         :to="{
-                        name: 'StatisticalProgramEdit',
-                        params: { id: statisticalProgram.id }
-                      }"
+                          name: 'StatisticalProgramEdit',
+                          params: { id: statisticalProgram.id }
+                        }"
                       >
                         <CIcon name="cilPencil"></CIcon>
                       </router-link>
@@ -50,9 +53,9 @@
                       <router-link
                         tag="a"
                         :to="{
-                        name: 'StatisticalProgramDelete',
-                        params: { id: statisticalProgram.id }
-                      }"
+                          name: 'StatisticalProgramDelete',
+                          params: { id: statisticalProgram.id }
+                        }"
                       >
                         <CIcon name="cilTrash"></CIcon>
                       </router-link>
@@ -63,9 +66,9 @@
                       <router-link
                         tag="a"
                         :to="{
-                        name: 'StatisticalProgramView',
-                        params: { id: statisticalProgram.id }
-                      }"
+                          name: 'StatisticalProgramView',
+                          params: { id: statisticalProgram.id }
+                        }"
                       >
                         <CIcon name="cilMagnifyingGlass"></CIcon>
                       </router-link>

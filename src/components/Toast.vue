@@ -17,7 +17,6 @@ export default {
   computed: {
     ...mapGetters(["message", "type"])
   }
-  
 };
 </script>
 

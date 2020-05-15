@@ -1,6 +1,11 @@
 <template>
   <div v-if="isAuthenticated">
-    <CDropdown inNav class="c-header-nav-items" placement="bottom-end" add-menu-classes="pt-0">
+    <CDropdown
+      inNav
+      class="c-header-nav-items"
+      placement="bottom-end"
+      add-menu-classes="pt-0"
+    >
       <template #toggler>
         <CHeaderNavLink>
           <div class="c-avatar">
@@ -11,12 +16,8 @@
       <CDropdownHeader tag="div" class="text-center" color="light">
         <strong>Settings</strong>
       </CDropdownHeader>
-      <CDropdownItem>
-        <CIcon name="cil-user" />Profile
-      </CDropdownItem>
-      <CDropdownItem>
-        <CIcon name="cil-settings" />Settings
-      </CDropdownItem>
+      <CDropdownItem> <CIcon name="cil-user" />Profile </CDropdownItem>
+      <CDropdownItem> <CIcon name="cil-settings" />Settings </CDropdownItem>
       <CDropdownDivider />
       <CDropdownItem @click="logout">
         <CIcon name="cil-lock-locked" />Logout
