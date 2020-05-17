@@ -18,10 +18,12 @@ const mutations = {
 const actions = {
   multipleLogin({ commit }) {
     commit("SET_STATUS", AuthStatus.MultipleLogin);
+    commit("SET_ERROR_MSG", "You are logged in an other device!");
     router.push("/login");
   },
   tokenExpired({ commit }) {
     commit("SET_STATUS", AuthStatus.TokenExpired);
+    commit("SET_ERROR_MSG", "Your token has exipred!");
     router.push("/login");
   },
   unauthorized({ commit }, error) {

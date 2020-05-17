@@ -8,7 +8,8 @@ import { AuthStatus } from "@/common";
 const state = {
   token: localStorage.getItem("token") || null,
   user: null,
-  status: null
+  status: null,
+  errorMsg: null
 };
 
 const mutations = {
@@ -28,6 +29,9 @@ const mutations = {
   },
   SET_STATUS(state, status) {
     state.status = status;
+  },
+  SET_ERROR_MSG(state, errorMsg) {
+    state.errorMsg = errorMsg;
   }
 };
 
@@ -52,6 +56,7 @@ const actions = {
       error => {
         console.log(error);
         commit("SET_STATUS", AuthStatus.InvalidCredentials);
+        commit("SET_ERROR_MSG", "Incorrect username or password!");
       }
     );
   },
@@ -121,6 +126,9 @@ const getters = {
   },
   status: state => {
     return state.status;
+  },
+  errorMsg: state => {
+    return state.errorMsg;
   },
   isAdmin: state => {
     return state.user.role == Role.Admin;

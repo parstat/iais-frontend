@@ -10,7 +10,7 @@
             </CCardHeader>
             <CCardBody>
               <CForm>
-                <CAlert color="danger" v-if="errorMsg.length > 0" class="text-center">
+                <CAlert color="danger" v-if="errorMsg" class="text-center">
                   <span>{{ errorMsg }}</span>
                 </CAlert>
                 <div class="form-group">
@@ -45,13 +45,20 @@
                 </div>
                 <CRow>
                   <CCol col="12">
-                    <CButton color="primary" class="btn-block" @click.prevent="handleSubmit">Sign in</CButton>
+                    <CButton
+                      color="primary"
+                      class="btn-block"
+                      @click.prevent="handleSubmit"
+                      >Sign in</CButton
+                    >
                   </CCol>
                 </CRow>
                 <CRow>
                   <CCol col="12" class="register">
                     <span>New to IAIS?</span>
-                    <router-link tag="a" to="/register">Create an account</router-link>
+                    <router-link tag="a" to="/register"
+                      >Create an account</router-link
+                    >
                   </CCol>
                 </CRow>
               </CForm>
@@ -64,7 +71,7 @@
 </template>
 
 <script>
-import { AuthStatus } from "@/common";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Login",
@@ -75,18 +82,7 @@ export default {
     };
   },
   computed: {
-    errorMsg() {
-      const status = this.$store.getters.status;
-      //console.log(status);
-      if (status == AuthStatus.InvalidCredentials) {
-        return "Incorrect username or password!";
-      } else if (status == AuthStatus.MultipleLogin) {
-        return "You are logged in an other device!";
-      } else if (status == AuthStatus.TokenExpired) {
-        return "Your token has exipred!";
-      }
-      return "";
-    }
+    ...mapGetters(["errorMsg"])
   },
   methods: {
     handleSubmit() {
