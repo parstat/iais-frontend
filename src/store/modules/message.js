@@ -6,11 +6,11 @@ const state = {
 const mutations = {
   SUCCESS(state, message) {
     state.type = "toast-success";
-    state.message = message;
+    state.message = Date.now() + "#" + message; //force message update
   },
   ERROR(state, message) {
     state.type = "toast-error";
-    state.message = message;
+    state.message = Date.now() + "#" + message; //force message update
   },
   CLEAR(state) {
     state.type = null;

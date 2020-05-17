@@ -18,12 +18,7 @@ function getAll() {
         resolve(statisticalPrograms);
       },
       error => {
-        console.log(error.response.data.code);
-        const err = {
-          code: error.response.status,
-          message: error.response.data.code
-        };
-        reject(err);
+        reject(error);
       }
     );
   });
@@ -38,12 +33,7 @@ function getById(id) {
         resolve(statisticalProgram);
       },
       error => {
-        console.log(error.response.data.code);
-        const err = {
-          code: error.response.status,
-          message: error.response.data.code
-        };
-        reject(err);
+        reject(error);
       }
     );
   });
@@ -78,24 +68,11 @@ function save(formData) {
       )
       .then(
         response => {
-          if (response.status == 500) {
-            //unauthorized access to close resource
-            const err = {
-              code: response.status,
-              message: response.message
-            };
-            reject(err);
-          }
           //console.log(response.data);
           resolve(response.data);
         },
         error => {
-          console.log(error.response.data.code);
-          const err = {
-            code: error.response.status,
-            message: error.response.data.code
-          };
-          reject(err);
+          reject(error);
         }
       );
   });
@@ -130,24 +107,11 @@ function update(formData) {
       )
       .then(
         response => {
-          if (response.status == 500) {
-            //unauthorized access to close resource
-            const err = {
-              code: response.status,
-              message: response.message
-            };
-            reject(err);
-          }
           //console.log(response.data);
           resolve(response.data);
         },
         error => {
-          console.log(error.response.data.code);
-          const err = {
-            code: error.response.status,
-            message: error.response.data.code
-          };
-          reject(err);
+          reject(error);
         }
       );
   });
@@ -157,23 +121,10 @@ function _delete(id) {
   return new Promise((resolve, reject) => {
     axios.delete("close/referential/statistical/programs/" + id).then(
       response => {
-        if (response.status == 500) {
-          //unauthorized access to close resource
-          const err = {
-            code: response.status,
-            message: response.message
-          };
-          reject(err);
-        }
         resolve(response);
       },
       error => {
-        console.log(error.response.data.code);
-        const err = {
-          code: error.response.status,
-          message: error.response.data.code
-        };
-        reject(err);
+        reject(error);
       }
     );
   });

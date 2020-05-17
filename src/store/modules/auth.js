@@ -3,11 +3,12 @@ import router from "@/router";
 import { authService } from "@/services";
 import { Role } from "@/common";
 import { Agent } from "@/common";
+import { AuthStatus } from "@/common";
 
 const state = {
   token: localStorage.getItem("token") || null,
-  user: localStorage.getItem("user") || null,
-  status: null //[LOGGED, INVALID_CREDENTIALS, USER_EXISTS]
+  user: null,
+  status: null
 };
 
 const mutations = {
@@ -44,13 +45,13 @@ const actions = {
           user: user
         });
 
-        commit("SET_STATUS", "LOGGED");
+        commit("SET_STATUS", AuthStatus.Logged);
 
         router.push("/"); //Go to main page
       },
       error => {
         console.log(error);
-        commit("SET_STATUS", "INVALID_CREDENTIALS");
+        commit("SET_STATUS", AuthStatus.InvalidCredentials);
       }
     );
   },
@@ -67,7 +68,7 @@ const actions = {
         user
       });
 
-      commit("SET_STATUS", "LOGGED");
+      commit("SET_STATUS", AuthStatus.Logged);
     }
   },
   register({ commit, dispatch }, authData) {
@@ -83,7 +84,7 @@ const actions = {
           user: user
         });
 
-        commit("SET_STATUS", "LOGGED");
+        commit("SET_STATUS", AuthStatus.Logged);
 
         //Save agent
         const agentData = {
@@ -99,7 +100,7 @@ const actions = {
       },
       error => {
         console.log(error);
-        commit("SET_STATUS", "USER_EXISTS");
+        commit("SET_STATUS", AuthStatus.UserExists);
       }
     );
   },

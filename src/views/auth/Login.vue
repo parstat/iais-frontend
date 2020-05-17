@@ -3,19 +3,15 @@
     <CContainer fluid>
       <CRow class="justify-content-center">
         <CCol sm="6" md="6" lg="4">
-          <CCard class="mx-4 mb-0"
-            ><CCardHeader align="center">
+          <CCard class="mx-4 mb-0">
+            <CCardHeader align="center">
               <img src="img/logo.png" class="logo" />
               <h3>Sign in to IAIS</h3>
             </CCardHeader>
             <CCardBody>
               <CForm>
-                <CAlert
-                  color="danger"
-                  v-if="showGlobalError"
-                  class="text-center"
-                >
-                  <span>Incorrect username or password!</span>
+                <CAlert color="danger" v-if="errorMsg.length > 0" class="text-center">
+                  <span>{{ errorMsg }}</span>
                 </CAlert>
                 <div class="form-group">
                   <div class="input-group">
@@ -49,20 +45,13 @@
                 </div>
                 <CRow>
                   <CCol col="12">
-                    <CButton
-                      color="primary"
-                      class="btn-block"
-                      @click.prevent="handleSubmit"
-                      >Sign in</CButton
-                    >
+                    <CButton color="primary" class="btn-block" @click.prevent="handleSubmit">Sign in</CButton>
                   </CCol>
                 </CRow>
                 <CRow>
                   <CCol col="12" class="register">
                     <span>New to IAIS?</span>
-                    <router-link tag="a" to="/register">
-                      Create an account
-                    </router-link>
+                    <router-link tag="a" to="/register">Create an account</router-link>
                   </CCol>
                 </CRow>
               </CForm>
@@ -75,6 +64,8 @@
 </template>
 
 <script>
+import { AuthStatus } from "@/common";
+
 export default {
   name: "Login",
   data() {
@@ -84,13 +75,17 @@ export default {
     };
   },
   computed: {
-    showGlobalError() {
+    errorMsg() {
       const status = this.$store.getters.status;
       //console.log(status);
-      if (status == "INVALID_CREDENTIALS") {
-        return true;
+      if (status == AuthStatus.InvalidCredentials) {
+        return "Incorrect username or password!";
+      } else if (status == AuthStatus.MultipleLogin) {
+        return "You are logged in an other device!";
+      } else if (status == AuthStatus.TokenExpired) {
+        return "Your token has exipred!";
       }
-      return false;
+      return "";
     }
   },
   methods: {

@@ -3,7 +3,7 @@
     <CToaster :autohide="3000" position="top-center">
       <template v-if="message">
         <CToast :key="message" :show="true" :class="type">
-          {{ message }}
+          {{ getMessage }}
         </CToast>
       </template>
     </CToaster>
@@ -15,7 +15,10 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["message", "type"])
+    ...mapGetters(["message", "type"]),
+    getMessage() {
+      return this.message.split("#").pop();
+    }
   }
 };
 </script>

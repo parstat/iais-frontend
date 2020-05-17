@@ -16,25 +16,23 @@ const mutations = {
 };
 
 const actions = {
-  getStatisticalPrograms({ commit, getters, dispatch }) {
+  getStatisticalPrograms({ commit, getters }) {
     statisticalProgramService.getAll(getters.token).then(
       data => {
         commit("SET_STATISTICAL_PROGRAMS", data);
         commit("SET_STATISTICAL_PROGRAM", null); //clear statistical process
       },
       error => {
-        dispatch("error", "[" + error.status + "] " + error.message);
         console.log(error);
       }
     );
   },
-  getStatisticalProgramById({ commit, dispatch }, id) {
+  getStatisticalProgramById({ commit }, id) {
     statisticalProgramService.getById(id).then(
       data => {
         commit("SET_STATISTICAL_PROGRAM", data);
       },
       error => {
-        dispatch("error", "[" + error.status + "] " + error.message);
         console.log(error);
       }
     );
@@ -47,7 +45,6 @@ const actions = {
         router.push("/metadata/referential");
       },
       error => {
-        dispatch("error", "[" + error.status + "] " + error.message);
         console.log(error);
       }
     );
@@ -60,7 +57,6 @@ const actions = {
         router.push("/metadata/referential");
       },
       error => {
-        dispatch("error", "[" + error.status + "] " + error.message);
         console.log(error);
       }
     );
@@ -73,7 +69,6 @@ const actions = {
         router.push("/metadata/referential");
       },
       error => {
-        dispatch("error", "[" + error.status + "] " + error.message);
         console.log(error);
       }
     );

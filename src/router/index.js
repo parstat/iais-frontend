@@ -6,6 +6,8 @@ import { Role } from "@/common";
 
 import Login from "@/views/auth/Login";
 import Register from "@/views/auth/Register";
+import Error from "@/views/error/Error";
+import Unauthorized from "@/views/error/Unauthorized";
 import Home from "@/views/Home";
 
 Vue.use(VueRouter);
@@ -19,6 +21,16 @@ const routes = [
   {
     path: "/register",
     component: Register,
+    meta: { authorize: [] }
+  },
+  {
+    path: "/error",
+    component: Error,
+    meta: { authorize: [] }
+  },
+  {
+    path: "/unauthorized",
+    component: Unauthorized,
     meta: { authorize: [] }
   },
   {
@@ -93,18 +105,22 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
+  // redirect to unauthorized page if not logged in and trying to access a restricted page
   const { authorize } = to.meta;
   const isAuthenticated = store.getters.isAuthenticated;
 
   if (authorize.length) {
     if (!isAuthenticated) {
-      store.dispatch("error", "You are not authorized!");
-      return next({ path: "/" });
+      const err = {
+        code: 401,
+        message: "You cannot access this page!"
+      };
+      store.dispatch("unauthorized", err);
     }
   }
 
   next();
 });
+
 
 export default router;

@@ -29,14 +29,33 @@ axios.interceptors.response.use(
     return response;
   },
   error => {
-    console.warn("Error status", error.response.status);
-    // return Promise.reject(error)
-    if (error.response) {
-      //redirect to login page
-      return error.response.data;
-    } else {
-      return Promise.reject(error);
+    console.log("Error status", error.response.status);
+    var err = {
+      code: error.response.status,
+      message: ""
+    };
+    // Unauthotized access
+    if (error.response.status === 401) {
+      //User logged
+      if ("jwt-auth" in error.response.headers) {
+        //redirect to login page
+        store.dispatch("multipleLogin");
+      } else {
+        //unauthorized
+        err.message = "You cannot access this page!";
+        store.dispatch("unauthorized", err);
+      }
+    } else if (error.response.status === 500) {
+      if (error.response.data.message.includes("AuthenticatedFilter")) {
+        //redirect to login page
+        store.dispatch("tokenExpired");
+      } else {
+        //internal server error
+        err.message = error.response.data.message;
+        store.dispatch("serverError", err);
+      }
     }
+    return Promise.reject(error);
   }
 );
 
