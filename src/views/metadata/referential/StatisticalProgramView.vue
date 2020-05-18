@@ -71,7 +71,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["statisticalProgram"])
+    ...mapGetters("statisticalProgram", ["statisticalProgram"])
   },
   methods: {
     handleBack() {
@@ -80,7 +80,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("getStatisticalProgramById", this.$route.params.id);
+    this.$store.dispatch("statisticalProgram/getById", this.$route.params.id);
   }
 };
 </script>

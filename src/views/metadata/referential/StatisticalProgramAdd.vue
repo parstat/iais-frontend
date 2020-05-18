@@ -124,7 +124,7 @@ export default {
           acronym: this.acronym,
           description: this.description
         };
-        this.$store.dispatch("saveStatisticalProgram", formData);
+        this.$store.dispatch("statisticalProgram/save", formData);
         console.log(formData);
       }
     },

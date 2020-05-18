@@ -9,9 +9,9 @@ export default {
   name: "app",
   created() {
     //Manage browser refresh F5
-    this.$store.dispatch("reloadCredentials");
+    this.$store.dispatch("auth/reloadCredentials");
     //Clear messages
-    this.$store.dispatch("clear");
+    this.$store.dispatch("message/clear");
   }
 };
 </script>

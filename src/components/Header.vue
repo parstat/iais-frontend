@@ -39,7 +39,7 @@ import BreadCrumb from "./BreadCrumb";
 
 export default {
   computed: {
-    ...mapGetters(["isAuthenticated"])
+    ...mapGetters("auth", ["isAuthenticated"])
   },
   components: {
     "app-header-dropdown-account": HeaderDropdownAccnt,

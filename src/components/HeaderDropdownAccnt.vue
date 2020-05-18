@@ -39,11 +39,11 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["isAuthenticated"])
+    ...mapGetters("auth", ["isAuthenticated"])
   },
   methods: {
     logout() {
-      this.$store.dispatch("logout");
+      this.$store.dispatch("auth/logout");
     }
   }
 };

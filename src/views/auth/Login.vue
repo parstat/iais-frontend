@@ -74,7 +74,6 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "Login",
   data() {
     return {
       username: "",
@@ -82,7 +81,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["errorMsg"])
+    ...mapGetters("auth", ["errorMsg"])
   },
   methods: {
     handleSubmit() {
@@ -90,7 +89,7 @@ export default {
         username: this.username,
         password: this.password
       };
-      this.$store.dispatch("login", formData);
+      this.$store.dispatch("auth/login", formData);
     }
   }
 };

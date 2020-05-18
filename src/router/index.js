@@ -107,7 +107,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // redirect to unauthorized page if not logged in and trying to access a restricted page
   const { authorize } = to.meta;
-  const isAuthenticated = store.getters.isAuthenticated;
+  const isAuthenticated = store.getters["auth/isAuthenticated"];
 
   if (authorize.length) {
     if (!isAuthenticated) {
@@ -115,7 +115,7 @@ router.beforeEach((to, from, next) => {
         code: 401,
         message: "You cannot access this page!"
       };
-      store.dispatch("unauthorized", err);
+      store.dispatch("error/unauthorized", err);
     }
   }
 

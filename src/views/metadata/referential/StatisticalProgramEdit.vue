@@ -111,7 +111,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["statisticalProgram"])
+    ...mapGetters("statisticalProgram", ["statisticalProgram"])
   },
   validations: {
     statisticalProgram: {
@@ -141,7 +141,7 @@ export default {
           acronym: this.statisticalProgram.acronym,
           description: this.statisticalProgram.description
         };
-        this.$store.dispatch("updateStatisticalProgram", formData);
+        this.$store.dispatch("statisticalProgram/update", formData);
         console.log(formData);
       }
     },
@@ -153,7 +153,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("getStatisticalProgramById", this.$route.params.id);
+    this.$store.dispatch("statisticalProgram/getById", this.$route.params.id);
   }
 };
 </script>

@@ -15,7 +15,8 @@
         </div>
         <div class="clearfix mb-3">
           <router-link tag="a" to="/">
-            <CIcon name="cilHome"></CIcon> <span>Go to home page</span>
+            <CIcon name="cilHome"></CIcon>
+            <span>&nbsp;Go to home page</span>
           </router-link>
         </div>
       </CCol>
@@ -28,7 +29,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["msg"])
+    ...mapGetters("error", ["msg"])
   }
 };
 </script>

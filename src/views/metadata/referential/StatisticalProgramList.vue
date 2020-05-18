@@ -89,10 +89,11 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["statisticalPrograms", "isAuthenticated"])
+    ...mapGetters("auth", ["isAuthenticated"]),
+    ...mapGetters("statisticalProgram", ["statisticalPrograms"])
   },
   created() {
-    this.$store.dispatch("getStatisticalPrograms");
+    this.$store.dispatch("statisticalProgram/getAll");
   }
 };
 </script>

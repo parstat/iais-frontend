@@ -136,6 +136,7 @@
 
 <script>
 import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Register",
@@ -150,9 +151,8 @@ export default {
     };
   },
   computed: {
+    ...mapGetters("auth", ["status"]),
     showGlobalError() {
-      const status = this.$store.getters.status;
-      //console.log(status);
       if (status == "USER_EXISTS") {
         return true;
       }
@@ -193,7 +193,7 @@ export default {
           password: this.password
         };
         console.log(formData);
-        this.$store.dispatch("register", formData);
+        this.$store.dispatch("auth/register", formData);
       }
     }
   }

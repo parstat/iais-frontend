@@ -98,6 +98,7 @@ const getters = {
 };
 
 export const coreui = {
+  namespaced: true,
   state,
   mutations,
   actions,

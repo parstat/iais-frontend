@@ -21,7 +21,7 @@ import nav from "./_nav";
 export default {
   nav,
   computed: {
-    ...mapGetters({
+    ...mapGetters("coreui", {
       show: "sidebarShow",
       minimize: "sidebarMinimize"
     })

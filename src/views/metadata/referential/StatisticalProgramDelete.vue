@@ -71,16 +71,16 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["statisticalProgram"])
+    ...mapGetters("statisticalProgram", ["statisticalProgram"])
   },
   methods: {
     handleDelete() {
       this.disabled = true; //disable button
-      this.$store.dispatch("deleteStatisticalProgram", this.$route.params.id);
+      this.$store.dispatch("statisticalProgram/delete", this.$route.params.id);
     }
   },
   created() {
-    this.$store.dispatch("getStatisticalProgramById", this.$route.params.id);
+    this.$store.dispatch("statisticalProgram/getById", this.$route.params.id);
   }
 };
 </script>

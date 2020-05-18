@@ -16,7 +16,7 @@ const mutations = {
 };
 
 const actions = {
-  getStatisticalPrograms({ commit, getters }) {
+  getAll({ commit, getters }) {
     statisticalProgramService.getAll(getters.token).then(
       data => {
         commit("SET_STATISTICAL_PROGRAMS", data);
@@ -27,7 +27,7 @@ const actions = {
       }
     );
   },
-  getStatisticalProgramById({ commit }, id) {
+  getById({ commit }, id) {
     statisticalProgramService.getById(id).then(
       data => {
         commit("SET_STATISTICAL_PROGRAM", data);
@@ -37,11 +37,13 @@ const actions = {
       }
     );
   },
-  saveStatisticalProgram({ dispatch }, formData) {
+  save({ dispatch }, formData) {
     statisticalProgramService.save(formData).then(
       data => {
         console.log(data);
-        dispatch("success", "Statistical process saved!");
+        dispatch("message/success", "Statistical process saved!", {
+          root: true
+        });
         router.push("/metadata/referential");
       },
       error => {
@@ -49,11 +51,13 @@ const actions = {
       }
     );
   },
-  deleteStatisticalProgram({ dispatch }, id) {
+  delete({ dispatch }, id) {
     statisticalProgramService.delete(id).then(
       data => {
         console.log(data);
-        dispatch("success", "Statistical process deleted!");
+        dispatch("message/success", "Statistical process deleted!", {
+          root: true
+        });
         router.push("/metadata/referential");
       },
       error => {
@@ -61,11 +65,13 @@ const actions = {
       }
     );
   },
-  updateStatisticalProgram({ dispatch }, formData) {
+  update({ dispatch }, formData) {
     statisticalProgramService.update(formData).then(
       data => {
         console.log(data);
-        dispatch("success", "Statistical process updated!");
+        dispatch("message/success", "Statistical process updated!", {
+          root: true
+        });
         router.push("/metadata/referential");
       },
       error => {
@@ -85,6 +91,7 @@ const getters = {
 };
 
 export const statisticalProgram = {
+  namespaced: true,
   state,
   mutations,
   actions,

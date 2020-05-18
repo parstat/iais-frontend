@@ -40,6 +40,7 @@ const getters = {
 };
 
 export const message = {
+  namespaced: true,
   state,
   mutations,
   actions,

@@ -12,7 +12,7 @@ axios.defaults.baseURL = process.env.VUE_APP_DEV_SERVER;
 //request interceptor
 axios.interceptors.request.use(
   config => {
-    const token = store.getters.token;
+    const token = store.getters["auth/token"];
     if (token && !("jwt-auth" in config.headers)) {
       config.headers["jwt-auth"] = token;
     }
@@ -39,20 +39,19 @@ axios.interceptors.response.use(
       //User logged
       if ("jwt-auth" in error.response.headers) {
         //redirect to login page
-        store.dispatch("multipleLogin");
+        store.dispatch("error/multipleLogin");
       } else {
         //unauthorized
-        err.message = "You cannot access this page!";
-        store.dispatch("unauthorized", err);
+        store.dispatch("error/unauthorized", err);
       }
     } else if (error.response.status === 500) {
       if (error.response.data.message.includes("AuthenticatedFilter")) {
         //redirect to login page
-        store.dispatch("tokenExpired");
+        store.dispatch("error/tokenExpired");
       } else {
         //internal server error
         err.message = error.response.data.message;
-        store.dispatch("serverError", err);
+        store.dispatch("error/serverError", err);
       }
     }
     return Promise.reject(error);

@@ -16,11 +16,11 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["backButton"])
+    ...mapGetters("coreui", ["backButton"])
   },
   watch: {
     $route(to) {
-      this.$store.dispatch("setBackButton", {
+      this.$store.dispatch("coreui/setBackButton", {
         currentRoute: this.$route,
         destinationRoute: to
       });
@@ -28,7 +28,7 @@ export default {
   },
   created() {
     //page reload
-    this.$store.dispatch("setBackButton", {
+    this.$store.dispatch("coreui/setBackButton", {
       currentRoute: this.$route,
       destinationRoute: this.$route
     });

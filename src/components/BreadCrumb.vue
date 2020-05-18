@@ -22,7 +22,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["breadcrumbs"])
+    ...mapGetters("coreui", ["breadcrumbs"])
   },
   methods: {
     upperCaseFirst(str) {
@@ -31,12 +31,12 @@ export default {
   },
   watch: {
     $route() {
-      this.$store.dispatch("createBreadcrumbs", this.$route);
+      this.$store.dispatch("coreui/createBreadcrumbs", this.$route);
     }
   },
   created() {
     //page reload
-    this.$store.dispatch("createBreadcrumbs", this.$route);
+    this.$store.dispatch("coreui/createBreadcrumbs", this.$route);
   }
 };
 </script>
