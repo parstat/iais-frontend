@@ -62,6 +62,21 @@
               Please enter survey description.
             </span>
           </div>
+          <div class="form-group">
+            <label for="maintainer">Maintainer</label>
+            <input
+              id="maintainer"
+              type="text"
+              class="form-control"
+              :class="{ 'is-invalid': $v.maintainer.$error }"
+              placeholder="Maintainer"
+              v-model.trim="maintainer"
+              @change="retrieveData"
+            />
+            <span class="help-block" :class="{ show: $v.maintainer.$error }">
+              Please enter a maintainer.
+            </span>
+          </div>
         </div>
         <div class="card-footer">
           <CButton
@@ -96,6 +111,7 @@ export default {
       name: "",
       acronym: "",
       description: "",
+      maintainer: "",
       disabled: false
     };
   },
@@ -111,6 +127,9 @@ export default {
     },
     description: {
       required
+    },
+    maintainer: {
+      required
     }
   },
   methods: {
@@ -122,7 +141,8 @@ export default {
           localId: this.localId,
           name: this.name,
           acronym: this.acronym,
-          description: this.description
+          description: this.description,
+          maintainer: this.maintainer
         };
         this.$store.dispatch("statisticalProgram/save", formData);
         console.log(formData);
@@ -133,7 +153,11 @@ export default {
       this.name = "";
       this.acronym = "";
       this.description = "";
+      this.maintainer = "";
       this.$v.$reset();
+    },
+    retrieveData(){
+      console.log(this.maintainer);
     }
   }
 };

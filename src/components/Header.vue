@@ -3,22 +3,42 @@
     <CToggler
       in-header
       class="ml-3 d-lg-none"
-      @click="$store.dispatch('toggleSidebarMobile')"
+      @click="$store.dispatch('coreui/toggleSidebarMobile')"
     />
     <CToggler
       in-header
       class="ml-3 d-md-down-none"
-      @click="$store.dispatch('toggleSidebarDesktop')"
+      @click="$store.dispatch('coreui/toggleSidebarDesktop')"
     />
     <CHeaderBrand class="mx-auto d-lg-none" to="/">
       <img src="/img/logo.png" height="40" />
     </CHeaderBrand>
     <CHeaderNav class="d-md-down-none mr-auto">
-      <CHeaderNavItem class="px-3">
-        <CHeaderNavLink v-if="isAuthenticated">
-          Admin
-        </CHeaderNavLink>
-      </CHeaderNavItem>
+      <CDropdown
+        inNav
+        class="c-header-nav-items"
+        placement="bottom"
+        add-menu-classes="dropdown-menu-right pt-0"
+      >
+        <template #toggler>
+          <CHeaderNavLink>
+            <div class="c-header-nav-first">Artifacts</div>
+          </CHeaderNavLink>
+        </template>
+
+        <CDropdownHeader tag="div" class="text-center" color="light">
+          <strong>Referential</strong>
+        </CDropdownHeader>
+        <CDropdownItem>
+          <CIcon name="cil-user" />Agent
+        </CDropdownItem>
+        <CDropdownItem>
+          <CIcon name="cil-terminal" />Software
+        </CDropdownItem>
+        <CDropdownItem>
+          <CIcon name="cil-terminal" />Methodology
+        </CDropdownItem>
+      </CDropdown>
     </CHeaderNav>
     <CHeaderNav class="mr-4">
       <app-header-dropdown-account />
@@ -47,3 +67,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.c-header-nav {
+  padding-left: 0.5rem;
+}
+.c-icon {
+  margin-right: 0.4rem;
+}
+</style>
