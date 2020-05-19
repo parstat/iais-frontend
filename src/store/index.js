@@ -5,8 +5,8 @@ import { auth } from "./modules/auth";
 import { error } from "./modules/error";
 import { coreui } from "./modules/coreui";
 import { message } from "./modules/message";
-import { statisticalProgram } from "./modules/statisticalProgram";
-import { agent } from "./modules/agent";
+import { statisticalProgram } from "./modules/referential/statisticalProgram";
+import { agent } from "./modules/referential/agent";
 
 Vue.use(Vuex);
 

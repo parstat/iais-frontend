@@ -2,20 +2,19 @@ import axios from "axios";
 import qs from "querystring";
 
 export const statisticalProgramService = {
-  getAll,
-  getById,
+  findAll,
+  findById,
   save,
   update,
   delete: _delete
 };
 
-function getAll() {
+function findAll() {
   return new Promise((resolve, reject) => {
     axios.get("/referential/statistical/programs?language=en").then(
       response => {
-        var statisticalPrograms = response.data;
-        console.log(statisticalPrograms);
-        resolve(statisticalPrograms);
+        //console.log(response.data);
+        resolve(response.data);
       },
       error => {
         reject(error);
@@ -24,13 +23,12 @@ function getAll() {
   });
 }
 
-function getById(id) {
+function findById(id) {
   return new Promise((resolve, reject) => {
     axios.get("/referential/statistical/programs/" + id + "?language=en").then(
       response => {
-        var statisticalProgram = response.data;
-        console.log(statisticalProgram);
-        resolve(statisticalProgram);
+        //console.log(response.data);
+        resolve(response.data);
       },
       error => {
         reject(error);
@@ -121,7 +119,8 @@ function _delete(id) {
   return new Promise((resolve, reject) => {
     axios.delete("close/referential/statistical/programs/" + id).then(
       response => {
-        resolve(response);
+        //console.log(response.data);
+        resolve(response.data);
       },
       error => {
         reject(error);

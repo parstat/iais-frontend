@@ -80,7 +80,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("statisticalProgram/getById", this.$route.params.id);
+    this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
   }
 };
 </script>

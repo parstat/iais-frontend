@@ -2,48 +2,51 @@ import axios from "axios";
 import qs from "querystring";
 
 export const agentService = {
-  getAll,
-  getById,
+  findAll,
+  findById,
+  findByType,
   save,
   update,
   delete: _delete
 };
 
-function getAll() {
+function findAll() {
   return new Promise((resolve, reject) => {
     axios.get("/referential/agents?language=en").then(
       response => {
-        var agents = response.data;
-        console.log(agents);
-        resolve(agents);
+        console.log(response.data);
+        resolve(response.data);
       },
       error => {
-        console.log(error.response.data.code);
-        const err = {
-          code: error.response.status,
-          message: error.response.data.code
-        };
-        reject(err);
+        reject(error);
       }
     );
   });
 }
 
-function getById(id) {
+function findById(id) {
   return new Promise((resolve, reject) => {
     axios.get("/referential/agents/" + id + "?language=en").then(
       response => {
-        var agent = response.data;
-        console.log(agent);
-        resolve(agent);
+        console.log(response.data);
+        resolve(response.data);
       },
       error => {
-        console.log(error.response.data.code);
-        const err = {
-          code: error.response.status,
-          message: error.response.data.code
-        };
-        reject(err);
+        reject(error);
+      }
+    );
+  });
+}
+
+function findByType(type) {
+  return new Promise((resolve, reject) => {
+    axios.get("/referential/agents/?language=en&type=" + type).then(
+      response => {
+        console.log(response.data);
+        resolve(response.data);
+      },
+      error => {
+        reject(error);
       }
     );
   });
@@ -81,12 +84,7 @@ function save(formData) {
           resolve(response.data);
         },
         error => {
-          console.log(error.response.data.code);
-          const err = {
-            code: error.response.status,
-            message: error.response.data.code
-          };
-          reject(err);
+          reject(error);
         }
       );
   });
@@ -121,12 +119,7 @@ function update(formData) {
           resolve(response.data);
         },
         error => {
-          console.log(error.response.data.code);
-          const err = {
-            code: error.response.status,
-            message: error.response.data.code
-          };
-          reject(err);
+          reject(error);
         }
       );
   });
@@ -136,15 +129,11 @@ function _delete(id) {
   return new Promise((resolve, reject) => {
     axios.delete("close/referential/agents/" + id).then(
       response => {
-        resolve(response);
+        //console.log(response.data);
+        resolve(response.data);
       },
       error => {
-        console.log(error.response.data.code);
-        const err = {
-          code: error.response.status,
-          message: error.response.data.code
-        };
-        reject(err);
+        reject(error);
       }
     );
   });

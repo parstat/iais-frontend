@@ -16,8 +16,8 @@ const mutations = {
 };
 
 const actions = {
-  getAll({ commit, getters }) {
-    statisticalProgramService.getAll(getters.token).then(
+  findAll({ commit }) {
+    statisticalProgramService.findAll().then(
       data => {
         commit("SET_STATISTICAL_PROGRAMS", data);
         commit("SET_STATISTICAL_PROGRAM", null); //clear statistical process
@@ -27,8 +27,8 @@ const actions = {
       }
     );
   },
-  getById({ commit }, id) {
-    statisticalProgramService.getById(id).then(
+  findById({ commit }, id) {
+    statisticalProgramService.findById(id).then(
       data => {
         commit("SET_STATISTICAL_PROGRAM", data);
       },

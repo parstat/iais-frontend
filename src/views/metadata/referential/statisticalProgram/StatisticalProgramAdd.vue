@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           <strong>Statistical process</strong>
         </header>
@@ -16,9 +16,9 @@
               placeholder="Survey id"
               v-model.trim="localId"
             />
-            <span class="help-block" :class="{ show: $v.localId.$error }">
-              Please enter survey id.
-            </span>
+            <span class="help-block" :class="{ show: $v.localId.$error }"
+              >Please enter survey id.</span
+            >
           </div>
           <div class="form-group">
             <label for="name">Survey name</label>
@@ -30,9 +30,9 @@
               placeholder="Survey name"
               v-model.trim="name"
             />
-            <span class="help-block" :class="{ show: $v.name.$error }">
-              Please enter survey name.
-            </span>
+            <span class="help-block" :class="{ show: $v.name.$error }"
+              >Please enter survey name.</span
+            >
           </div>
           <div class="form-group">
             <label for="acronym">Survey acronym</label>
@@ -44,9 +44,9 @@
               placeholder="Survey acronym"
               v-model.trim="acronym"
             />
-            <span class="help-block" :class="{ show: $v.acronym.$error }">
-              Please enter an acronym.
-            </span>
+            <span class="help-block" :class="{ show: $v.acronym.$error }"
+              >Please enter an acronym.</span
+            >
           </div>
           <div class="form-group">
             <label for="description">Survey description</label>
@@ -58,24 +58,9 @@
               placeholder="Survey description"
               v-model.trim="description"
             />
-            <span class="help-block" :class="{ show: $v.description.$error }">
-              Please enter survey description.
-            </span>
-          </div>
-          <div class="form-group">
-            <label for="maintainer">Maintainer</label>
-            <input
-              id="maintainer"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': $v.maintainer.$error }"
-              placeholder="Maintainer"
-              v-model.trim="maintainer"
-              @change="retrieveData"
-            />
-            <span class="help-block" :class="{ show: $v.maintainer.$error }">
-              Please enter a maintainer.
-            </span>
+            <span class="help-block" :class="{ show: $v.description.$error }"
+              >Please enter survey description.</span
+            >
           </div>
         </div>
         <div class="card-footer">
@@ -102,7 +87,9 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
+import { Agent } from "@/common";
 
 export default {
   data() {
@@ -114,6 +101,9 @@ export default {
       maintainer: "",
       disabled: false
     };
+  },
+  computed: {
+    ...mapGetters("agent", ["agentsByType"])
   },
   validations: {
     localId: {
@@ -128,7 +118,13 @@ export default {
     description: {
       required
     },
+    owner: {
+      required
+    },
     maintainer: {
+      required
+    },
+    contact: {
       required
     }
   },
@@ -142,7 +138,9 @@ export default {
           name: this.name,
           acronym: this.acronym,
           description: this.description,
-          maintainer: this.maintainer
+          owner: this.owner,
+          maintainer: this.maintainer,
+          contact: this.contact
         };
         this.$store.dispatch("statisticalProgram/save", formData);
         console.log(formData);
@@ -153,12 +151,16 @@ export default {
       this.name = "";
       this.acronym = "";
       this.description = "";
+      this.owner = "";
       this.maintainer = "";
+      this.contact = "";
       this.$v.$reset();
-    },
-    retrieveData(){
-      console.log(this.maintainer);
     }
+  },
+  created() {
+    this.$store.dispatch("agent/findByType", Agent.Organization);
+    this.$store.dispatch("agent/findByType", Agent.Division);
+    this.$store.dispatch("agent/findByType", Agent.Individual);
   }
 };
 </script>

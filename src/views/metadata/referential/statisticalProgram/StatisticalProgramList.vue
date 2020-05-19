@@ -93,7 +93,7 @@ export default {
     ...mapGetters("statisticalProgram", ["statisticalPrograms"])
   },
   created() {
-    this.$store.dispatch("statisticalProgram/getAll");
+    this.$store.dispatch("statisticalProgram/findAll");
   }
 };
 </script>

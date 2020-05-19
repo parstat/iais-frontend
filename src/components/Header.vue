@@ -29,12 +29,8 @@
         <CDropdownHeader tag="div" class="text-center" color="light">
           <strong>Referential</strong>
         </CDropdownHeader>
-        <CDropdownItem>
-          <CIcon name="cil-user" />Agent
-        </CDropdownItem>
-        <CDropdownItem>
-          <CIcon name="cil-terminal" />Software
-        </CDropdownItem>
+        <CDropdownItem> <CIcon name="cil-user" />Agent </CDropdownItem>
+        <CDropdownItem> <CIcon name="cil-terminal" />Software </CDropdownItem>
         <CDropdownItem>
           <CIcon name="cil-terminal" />Methodology
         </CDropdownItem>
