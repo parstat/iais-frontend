@@ -22,9 +22,11 @@ jobs:
       run: docker build . --file Dockerfile --tag parstat.azurecr.io/iais-frontend:latest
     - name: Docker repository setup
       uses: azure/docker-login@v1
+      env:
+        REGISTER_PASSWORD: ${{ secrets.REGISTER_PASSWORD }} 
       with:
         login-server: parstat.azurecr.io # default: index.docker.io
         username: parstat
-        password: ${{ secrets.REGISTER_PASSWORD }}
+        password: $REGISTER_PASSWORD
     - name: Pushing Docker Image
       run: docker push parstat.azurecr.io/iais-frontend:latest
