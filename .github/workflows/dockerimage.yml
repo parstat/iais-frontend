@@ -14,13 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the app
-      run: |
-          npm install
-          npm run build
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag parstat.azurecr.io/iais-frontend:latest
-    - name: Docker Image push
+    - name: Docker Repository Configuration
       uses: azure/docker-login@v1
       env:
         REGISTER_PASSWORD: ${{ secrets.REGISTER_PASSWORD }} 
@@ -28,4 +22,11 @@ jobs:
         login-server: parstat.azurecr.io # default: index.docker.io
         username: parstat
         password: $REGISTER_PASSWORD
-    - run: docker push parstat.azurecr.io/iais-frontend:latest
+    - name: Build the app
+      run: |
+          npm install
+          npm run build
+    - name: Build and Push the Docker image
+      run: |
+        docker build . --file Dockerfile --tag parstat.azurecr.io/iais-frontend:latest
+        docker push parstat.azurecr.io/iais-frontend:latest
