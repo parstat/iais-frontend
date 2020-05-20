@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag parstat.azurecr.io/iais-frontend:latest
+    - name: Pushing Docker Image
+      uses: azure/docker-login@v1
+      with:
+        login-server: parstat.azurecr.io # default: index.docker.io
+        username: parstat
+        password: ${{ REGISTER_PASSWORD }}
+      run: docker push parstat.azurecr.io/iais-frontend:latest
