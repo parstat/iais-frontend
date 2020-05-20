@@ -62,6 +62,39 @@
               >Please enter survey description.</span
             >
           </div>
+          <div class="form-group" v-if="owners">
+            <label for="description">Organization</label>
+            <v-select
+              label="name"
+              :options="owners"
+              v-model="owner"
+            ></v-select>
+            <span class="help-block" :class="{ show: $v.owner.$error }"
+              >Please select an Organization.</span
+            >
+          </div>
+          <div class="form-group" v-if="maintainers">
+            <label for="description">Division</label>
+            <v-select
+              label="name"
+              :options="maintainers"
+              v-model="maintainer"
+            ></v-select>
+            <span class="help-block" :class="{ show: $v.maintainer.$error }"
+              >Please select a division.</span
+            >
+          </div>
+          <div class="form-group" v-if="contacts">
+            <label for="description">Contact person</label>
+            <v-select
+              label="name"
+              :options="contacts"
+              v-model="contact"
+            ></v-select>
+            <span class="help-block" :class="{ show: $v.contact.$error }"
+              >Please select a contact person.</span
+            >
+          </div>
         </div>
         <div class="card-footer">
           <CButton
@@ -98,12 +131,14 @@ export default {
       name: "",
       acronym: "",
       description: "",
+      owner: "",
       maintainer: "",
+      contact: "",
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("agent", ["agentsByType"])
+    ...mapGetters("agent", ["owners", "maintainers", "contacts"])
   },
   validations: {
     localId: {
@@ -118,12 +153,12 @@ export default {
     description: {
       required
     },
-    owner: {
+    /* owner: {
       required
     },
     maintainer: {
       required
-    },
+    }, */
     contact: {
       required
     }
@@ -138,11 +173,11 @@ export default {
           name: this.name,
           acronym: this.acronym,
           description: this.description,
-          owner: this.owner,
-          maintainer: this.maintainer,
-          contact: this.contact
+          owner: this.owner.id,
+          maintainer: this.maintainer.id,
+          contact: this.contact.id
         };
-        this.$store.dispatch("statisticalProgram/save", formData);
+        //this.$store.dispatch("statisticalProgram/save", formData);
         console.log(formData);
       }
     },
@@ -164,3 +199,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.vs__selected-options{
+  padding: 0 2px 6px 2px;
+}
+</style>

@@ -6,6 +6,7 @@ import CoreuiVue from "@coreui/vue";
 import { iconsSet as icons } from "@/assets/icons/icons.js";
 import axios from "axios";
 import Vuelidate from "vuelidate";
+import vSelect from "vue-select";
 
 axios.defaults.baseURL = process.env.VUE_APP_DEV_SERVER;
 
@@ -61,6 +62,7 @@ axios.interceptors.response.use(
 Vue.config.productionTip = false;
 Vue.use(CoreuiVue);
 Vue.use(Vuelidate);
+Vue.component("v-select", vSelect);
 
 new Vue({
   router,

@@ -1,9 +1,12 @@
 import { agentService } from "@/services";
+import { Agent } from "../../../common/agents";
 
 const state = {
   agents: [],
   agent: null,
-  agentsByType: {}
+  owners: [],
+  maintainers: [],
+  contacts: []
 };
 
 const mutations = {
@@ -12,7 +15,17 @@ const mutations = {
   },
   SET_AGENTS_BY_TYPE(state, agents) {
     for (let [key, value] of Object.entries(agents)) {
-      state.agentsByType[key] = value;
+      switch (key) {
+        case Agent.Individual:
+          state.contacts = value;
+          break;
+        case Agent.Division:
+          state.maintainers = value;
+          break;
+        case Agent.Organization:
+          state.owners = value;
+          break;
+      }
     }
   },
   SET_AGENT(state, agent) {
@@ -101,11 +114,17 @@ const getters = {
   agents: state => {
     return state.agents;
   },
-  agentsByType: state => {
-    return state.agentsByType;
-  },
   agent: state => {
     return state.agent;
+  },
+  owners: state => {
+    return state.owners;
+  },
+  maintainers: state => {
+    return state.maintainers;
+  },
+  contacts: state => {
+    return state.contacts;
   }
 };
 
