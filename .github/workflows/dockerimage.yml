@@ -21,6 +21,6 @@ jobs:
       with:
         login-server: parstat.azurecr.io # default: index.docker.io
         username: parstat
-        password: ${{ REGISTER_PASSWORD }}
+        password: ${{ secrets.REGISTER_PASSWORD }}
     - name: Pushing Docker Image
       run: docker push parstat.azurecr.io/iais-frontend:latest
