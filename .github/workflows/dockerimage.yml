@@ -20,7 +20,7 @@ jobs:
           npm run build
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag parstat.azurecr.io/iais-frontend:latest
-    - name: Docker repository setup
+    - name: Docker Image push
       uses: azure/docker-login@v1
       env:
         REGISTER_PASSWORD: ${{ secrets.REGISTER_PASSWORD }} 
@@ -28,5 +28,4 @@ jobs:
         login-server: parstat.azurecr.io # default: index.docker.io
         username: parstat
         password: $REGISTER_PASSWORD
-    - name: Pushing Docker Image
-      run: docker push parstat.azurecr.io/iais-frontend:latest
+    - run: docker push parstat.azurecr.io/iais-frontend:latest
