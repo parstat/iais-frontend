@@ -64,11 +64,7 @@
           </div>
           <div class="form-group" v-if="owners">
             <label for="description">Organization</label>
-            <v-select
-              label="name"
-              :options="owners"
-              v-model="owner"
-            ></v-select>
+            <v-select label="name" :options="owners" v-model="owner"></v-select>
             <span class="help-block" :class="{ show: $v.owner.$error }"
               >Please select an Organization.</span
             >
@@ -201,7 +197,7 @@ export default {
 </script>
 
 <style scoped>
-.vs__selected-options{
+.vs__selected-options {
   padding: 0 2px 6px 2px;
 }
 </style>
