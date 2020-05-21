@@ -46,7 +46,7 @@ function login({ username, password }) {
   });
 }
 
-function register({ username, email, fullname, role, password }) {
+function register({ username, email, fullname, password }) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
@@ -58,7 +58,7 @@ function register({ username, email, fullname, role, password }) {
       username: username,
       email: email,
       name: fullname,
-      role: role,
+      role: "USER",
       password: password
     };
 

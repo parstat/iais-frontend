@@ -13,8 +13,9 @@ function findAll() {
   return new Promise((resolve, reject) => {
     axios.get("/referential/statistical/programs?language=en").then(
       response => {
-        //console.log(response.data);
-        resolve(response.data);
+        var data = response.data ? response.data : [];
+        console.log(data);
+        resolve(data);
       },
       error => {
         reject(error);
@@ -27,8 +28,9 @@ function findById(id) {
   return new Promise((resolve, reject) => {
     axios.get("/referential/statistical/programs/" + id + "?language=en").then(
       response => {
-        //console.log(response.data);
-        resolve(response.data);
+        var data = response.data ? response.data : {};
+        console.log(data);
+        resolve(data);
       },
       error => {
         reject(error);
@@ -49,9 +51,11 @@ function save(formData) {
       name: formData.name,
       acronym: formData.acronym,
       description: formData.description,
+      owner: formData.owner,
+      maintainer: formData.maintainer,
+      contact: formData.contact,
       status: "CURRENT",
-      budget: 2000,
-      funding: "NBS",
+      budget: 0,
       dateInitiated: "2018-05-10T10:00:00",
       dateEnded: "2018-08-10T10:00:00"
     };
@@ -88,9 +92,11 @@ function update(formData) {
       name: formData.name,
       acronym: formData.acronym,
       description: formData.description,
+      owner: formData.owner,
+      maintainer: formData.maintainer,
+      contact: formData.contact,
       status: "CURRENT",
-      budget: 2000,
-      funding: "NBS",
+      budget: 0,
       dateInitiated: "2018-05-10T10:00:00",
       dateEnded: "2018-08-10T10:00:00"
     };

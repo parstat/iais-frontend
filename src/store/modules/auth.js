@@ -9,23 +9,28 @@ const state = {
   token: localStorage.getItem("token") || null,
   user: null,
   status: null,
-  errorMsg: null
+  errorMsg: null,
+  role: localStorage.getItem("role") || ""
 };
 
 const mutations = {
   AUTH_USER(state, { token, user }) {
     state.token = token;
     state.user = user;
+    state.role = user.role;
 
     //store auth data in browser storage
     localStorage.setItem("token", token);
+    localStorage.setItem("role", user.role);
   },
   CLEAR_AUTH_DATA(state) {
     state.token = null;
     state.user = null;
+    state.role = "";
 
     //remove auth data from browser storage
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
   },
   SET_STATUS(state, status) {
     state.status = status;
@@ -99,7 +104,9 @@ const actions = {
           type: Agent.Individual,
           localId: user.email
         };
-        dispatch("saveAgent", agentData);
+        dispatch("agent/save", agentData, {
+          root: true
+        });
 
         router.push("/"); //Go to main page
       },
@@ -111,7 +118,8 @@ const actions = {
   },
   logout({ commit }) {
     commit("CLEAR_AUTH_DATA");
-    router.push("/");
+    // eslint-disable-next-line no-unused-vars
+    router.push("/").catch(err => {});
   }
 };
 const getters = {
@@ -130,11 +138,14 @@ const getters = {
   errorMsg: state => {
     return state.errorMsg;
   },
+  role: state => {
+    return state.role;
+  },
   isAdmin: state => {
-    return state.user.role == Role.Admin;
+    return state.role == Role.Admin;
   },
   isUser: state => {
-    return state.user.role == Role.User;
+    return state.role == Role.USer;
   }
 };
 

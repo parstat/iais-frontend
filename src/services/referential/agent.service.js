@@ -28,8 +28,9 @@ function findById(id) {
   return new Promise((resolve, reject) => {
     axios.get("/referential/agents/" + id + "?language=en").then(
       response => {
-        console.log(response.data);
-        resolve(response.data);
+        var data = response.data ? response.data : null;
+        console.log(data);
+        resolve(data);
       },
       error => {
         reject(error);
@@ -42,8 +43,9 @@ function findByType(type) {
   return new Promise((resolve, reject) => {
     axios.get("/referential/agents/?language=en&type=" + type).then(
       response => {
-        console.log(response.data);
-        resolve(response.data);
+        var data = response.data ? response.data : [];
+        console.log(data);
+        resolve(data);
       },
       error => {
         reject(error);

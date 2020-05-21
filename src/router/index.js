@@ -118,9 +118,10 @@ router.beforeEach((to, from, next) => {
   // redirect to unauthorized page if not logged in and trying to access a restricted page
   const { authorize } = to.meta;
   const isAuthenticated = store.getters["auth/isAuthenticated"];
+  const userRole = store.getters["auth/role"];
 
   if (authorize.length) {
-    if (!isAuthenticated) {
+    if (!isAuthenticated || !authorize.includes(userRole)) {
       const err = {
         code: 401,
         message: "You cannot access this page!"

@@ -76,6 +76,45 @@
               Please enter an description.
             </span>
           </div>
+          <div class="form-group" v-if="owners">
+            <label for="description">Organization</label>
+            <v-select
+              label="name"
+              :options="owners"
+              v-model="statisticalProgram.owner"
+            ></v-select>
+            <span
+              class="help-block"
+              :class="{ show: $v.statisticalProgram.owner.$error }"
+              >Please select an Organization.</span
+            >
+          </div>
+          <div class="form-group" v-if="maintainers">
+            <label for="description">Division</label>
+            <v-select
+              label="name"
+              :options="maintainers"
+              v-model="statisticalProgram.maintainer"
+            ></v-select>
+            <span
+              class="help-block"
+              :class="{ show: $v.statisticalProgram.maintainer.$error }"
+              >Please select a division.</span
+            >
+          </div>
+          <div class="form-group" v-if="contacts">
+            <label for="description">Contact person</label>
+            <v-select
+              label="name"
+              :options="contacts"
+              v-model="statisticalProgram.contact"
+            ></v-select>
+            <span
+              class="help-block"
+              :class="{ show: $v.statisticalProgram.contact.$error }"
+              >Please select a contact person.</span
+            >
+          </div>
         </div>
         <div class="card-footer">
           <CButton
@@ -85,7 +124,7 @@
             style="margin-right:0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Save</CButton
+            >Update</CButton
           >
           <CButton
             color="danger"
@@ -103,6 +142,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
+import { Agent } from "@/common";
 
 export default {
   data() {
@@ -111,7 +151,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
+    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
+    ...mapGetters("agent", ["owners", "maintainers", "contacts"])
   },
   validations: {
     statisticalProgram: {
@@ -126,6 +167,15 @@ export default {
       },
       description: {
         required
+      },
+      owner: {
+        required
+      },
+      maintainer: {
+        required
+      },
+      contact: {
+        required
       }
     }
   },
@@ -139,7 +189,10 @@ export default {
           localId: this.statisticalProgram.localId,
           name: this.statisticalProgram.name,
           acronym: this.statisticalProgram.acronym,
-          description: this.statisticalProgram.description
+          description: this.statisticalProgram.description,
+          owner: this.statisticalProgram.owner.id,
+          maintainer: this.statisticalProgram.maintainer.id,
+          contact: this.statisticalProgram.contact.id
         };
         this.$store.dispatch("statisticalProgram/update", formData);
         console.log(formData);
@@ -154,6 +207,9 @@ export default {
   },
   created() {
     this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
+    this.$store.dispatch("agent/findByType", Agent.Organization);
+    this.$store.dispatch("agent/findByType", Agent.Division);
+    this.$store.dispatch("agent/findByType", Agent.Individual);
   }
 };
 </script>

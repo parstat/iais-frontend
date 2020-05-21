@@ -73,21 +73,6 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cilSettings"></CIcon>
-                    </div>
-                  </div>
-                  <select class="form-control" v-model="role">
-                    <option disabled value="">Please select a role</option>
-                    <option value="USER">USER</option>
-                    <option value="ADMIN">ADMIN</option>
-                  </select>
-                  <span class="help-block" :class="{ show: $v.role.$error }"
-                    >Please select a role.</span
-                  >
-                </div>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
                       <CIcon name="cil-lock-locked"></CIcon>
                     </div>
                   </div>
@@ -145,7 +130,6 @@ export default {
       username: "",
       email: "",
       fullname: "",
-      role: "",
       password: "",
       confirmPassword: ""
     };
@@ -170,9 +154,6 @@ export default {
     fullname: {
       required
     },
-    role: {
-      required
-    },
     password: {
       required,
       minLen: minLength(6)
@@ -189,7 +170,6 @@ export default {
           username: this.username,
           email: this.email,
           fullname: this.fullname,
-          role: this.role,
           password: this.password
         };
         console.log(formData);

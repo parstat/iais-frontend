@@ -6,7 +6,7 @@
           Statistical processes
           <div class="card-header-actions">
             <router-link
-              v-if="isAuthenticated"
+              v-if="isAdmin"
               tag="a"
               to="/metadata/referential/add"
               class="card-header-action"
@@ -25,6 +25,9 @@
                   <th scope="col">Survey Name</th>
                   <th scope="col">Acronym</th>
                   <th scope="col">Description</th>
+                  <th scope="col">Owner</th>
+                  <th scope="col">Maintainer</th>
+                  <th scope="col">Contact</th>
                   <th scope="col" colspan="2" width="2%"></th>
                 </tr>
               </thead>
@@ -37,7 +40,10 @@
                   <td>{{ statisticalProgram.name }}</td>
                   <td>{{ statisticalProgram.acronym }}</td>
                   <td>{{ statisticalProgram.description }}</td>
-                  <template v-if="isAuthenticated">
+                  <td>{{ statisticalProgram.owner.name }}</td>
+                  <td>{{ statisticalProgram.maintainer.name }}</td>
+                  <td>{{ statisticalProgram.contact.name }}</td>
+                  <template v-if="isAdmin">
                     <td>
                       <router-link
                         tag="a"
@@ -89,7 +95,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters("auth", ["isAuthenticated"]),
+    ...mapGetters("auth", ["isAdmin"]),
     ...mapGetters("statisticalProgram", ["statisticalPrograms"])
   },
   created() {

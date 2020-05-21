@@ -149,12 +149,12 @@ export default {
     description: {
       required
     },
-    /* owner: {
+    owner: {
       required
     },
     maintainer: {
       required
-    }, */
+    },
     contact: {
       required
     }
@@ -173,7 +173,7 @@ export default {
           maintainer: this.maintainer.id,
           contact: this.contact.id
         };
-        //this.$store.dispatch("statisticalProgram/save", formData);
+        this.$store.dispatch("statisticalProgram/save", formData);
         console.log(formData);
       }
     },
