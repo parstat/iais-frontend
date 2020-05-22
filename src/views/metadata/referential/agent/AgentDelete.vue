@@ -65,7 +65,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "StatisticalProgramDelete",
+  name: "AgentDelete",
   data() {
     return {
       disabled: false

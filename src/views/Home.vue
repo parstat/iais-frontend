@@ -31,6 +31,10 @@ export default {
     "app-footer": Footer,
     "app-sidebar": Sidebar,
     "app-toast": Toast
+  },
+  created(){
+    console.log("Metadata");
+    this.$store.dispatch("coreui/clearContext");
   }
 };
 </script>

@@ -52,9 +52,9 @@
             color="primary"
             shape="square"
             size="sm"
-            @click.prevent="handleDelete()"
+            @click.prevent="handleBack()"
             :disabled="disabled"
-            >Delete</CButton
+            >Back</CButton
           >
         </div>
       </div>
@@ -65,7 +65,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "StatisticalProgramDelete",
+  name: "AgentView",
   data() {
     return {
       disabled: false
@@ -75,9 +75,9 @@ export default {
     ...mapGetters("statisticalProgram", ["statisticalProgram"])
   },
   methods: {
-    handleDelete() {
+    handleBack() {
       this.disabled = true; //disable button
-      this.$store.dispatch("statisticalProgram/delete", this.$route.params.id);
+      this.$router.push("/metadata/referential");
     }
   },
   created() {

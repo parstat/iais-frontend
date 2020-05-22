@@ -56,6 +56,15 @@ const routes = [
         meta: { authorize: [] }
       },
       {
+        path: "metadata/referential/add",
+        name: "StatisticalProgramAdd",
+        component: () =>
+          import(
+            "../views/metadata/referential/statisticalProgram/StatisticalProgramAdd"
+          ),
+        meta: { authorize: [Role.Admin] }
+      },
+      {
         path: "metadata/referential/edit/:id",
         name: "StatisticalProgramEdit",
         component: () =>
@@ -83,12 +92,43 @@ const routes = [
         meta: { authorize: [Role.Admin] }
       },
       {
-        path: "metadata/referential/add",
-        name: "StatisticalProgramAdd",
+        path: "metadata/referential/gsim",
+        name: "ReferentialGsimConcepts",
+        component: () => import("../views/metadata/referential/GsimConcepts"),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/agent",
+        name: "AgentList",
         component: () =>
-          import(
-            "../views/metadata/referential/statisticalProgram/StatisticalProgramAdd"
-          ),
+          import("../views/metadata/referential/agent/AgentList"),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/agent/add",
+        name: "AgentAdd",
+        component: () => import("../views/metadata/referential/agent/AgentAdd"),
+        meta: { authorize: [Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/agent/edit/:id",
+        name: "AgentEdit",
+        component: () =>
+          import("../views/metadata/referential/agent/AgentEdit"),
+        meta: { authorize: [Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/agent/view/:id",
+        name: "AgentView",
+        component: () =>
+          import("../views/metadata/referential/agent/AgentView"),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/agent/delete/:id",
+        name: "AgentDelete",
+        component: () =>
+          import("../views/metadata/referential/agent/AgentDelete"),
         meta: { authorize: [Role.Admin] }
       },
       {

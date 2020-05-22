@@ -65,6 +65,7 @@
 import { mapGetters } from "vuex";
 
 export default {
+  name: "StatisticalProgramView",
   data() {
     return {
       disabled: false

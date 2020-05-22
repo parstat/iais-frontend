@@ -3,16 +3,16 @@
     <div class="col-12">
       <div class="card">
         <header class="card-header">
-          Statistical processes
+          Agents
           <div class="card-header-actions">
             <router-link
               v-if="isAdmin"
               tag="a"
-              to="/metadata/referential/add"
+              to="/metadata/referential/gsim/agent/add"
               class="card-header-action"
             >
               <CIcon name="cilPlus"></CIcon>
-              <span>New process</span>
+              <span>New agent</span>
             </router-link>
           </div>
         </header>
@@ -22,43 +22,31 @@
               <thead>
                 <tr>
                   <th scope="col">Id</th>
-                  <th scope="col">Survey Name</th>
-                  <th scope="col">Acronym</th>
+                  <th scope="col">Name</th>
                   <th scope="col">Description</th>
-                  <th scope="col">Owner</th>
-                  <th scope="col">Maintainer</th>
-                  <th scope="col">Contact</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Parent</th>
                   <th scope="col" colspan="2" width="2%"></th>
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  v-for="statisticalProgram in statisticalPrograms"
-                  :key="statisticalProgram.id"
-                >
-                  <td>{{ statisticalProgram.localId }}</td>
-                  <td>{{ statisticalProgram.name }}</td>
-                  <td>{{ statisticalProgram.acronym }}</td>
-                  <td>{{ statisticalProgram.description }}</td>
-                  <td v-if="statisticalProgram.owner">
-                    {{ statisticalProgram.owner.name }}
+                <tr v-for="agent in agents" :key="agent.id">
+                  <td>{{ agent.id }}</td>
+                  <td>{{ agent.name }}</td>
+                  <td v-if="agent.description">
+                    {{ agent.description }}
                   </td>
                   <td v-else class="pl-4">&ndash;</td>
-                  <td v-if="statisticalProgram.maintainer">
-                    {{ statisticalProgram.maintainer.name }}
-                  </td>
-                  <td v-else class="pl-4">&ndash;</td>
-                  <td v-if="statisticalProgram.contact">
-                    {{ statisticalProgram.contact.name }}
-                  </td>
+                  <td>{{ agent.type | capitalize }}</td>
+                  <td v-if="agent.parent">{{ agent.parent.name }}</td>
                   <td v-else class="pl-4">&ndash;</td>
                   <template v-if="isAdmin">
                     <td>
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalProgramEdit',
-                          params: { id: statisticalProgram.id }
+                          name: 'AgentEdit',
+                          params: { id: agent.id }
                         }"
                       >
                         <CIcon name="cilPencil"></CIcon>
@@ -68,8 +56,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalProgramDelete',
-                          params: { id: statisticalProgram.id }
+                          name: 'AgentDelete',
+                          params: { id: agent.id }
                         }"
                       >
                         <CIcon name="cilTrash"></CIcon>
@@ -81,8 +69,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalProgramView',
-                          params: { id: statisticalProgram.id }
+                          name: 'agentView',
+                          params: { id: agent.id }
                         }"
                       >
                         <CIcon name="cilMagnifyingGlass"></CIcon>
@@ -104,13 +92,13 @@ import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
 export default {
-  name: "StatisticalProgramList",
+  name: "AgentList",
   computed: {
     ...mapGetters("auth", ["isAdmin"]),
-    ...mapGetters("statisticalProgram", ["statisticalPrograms"])
+    ...mapGetters("agent", ["agents"])
   },
   created() {
-    this.$store.dispatch("statisticalProgram/findAll");
+    this.$store.dispatch("agent/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
   }
 };

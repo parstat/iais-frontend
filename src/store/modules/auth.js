@@ -118,8 +118,9 @@ const actions = {
   },
   logout({ commit }) {
     commit("CLEAR_AUTH_DATA");
-    // eslint-disable-next-line no-unused-vars
-    router.push("/").catch(err => {});
+    if (router.currentRoute.path != "/metadata") {
+      router.push("/");
+    }
   }
 };
 const getters = {

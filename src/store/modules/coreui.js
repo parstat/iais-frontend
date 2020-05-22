@@ -1,16 +1,18 @@
+import { Context } from "@/common";
+
 const state = {
   sidebarShow: "responsive",
   sidebarMinimize: false,
+  context: "",
+  isReferential: false,
+  isStructural: false,
+  isProcess: false,
   breadcrumbs: [
     {
       path: "metadata",
       to: "/metadata"
     }
-  ],
-  backButton: {
-    show: false,
-    url: "/"
-  }
+  ]
 };
 
 const mutations = {
@@ -22,11 +24,30 @@ const mutations = {
     const sidebarClosed = [false, "responsive"].includes(state.sidebarShow);
     state.sidebarShow = sidebarClosed ? true : "responsive";
   },
+  SET_CONTEXT(state, context) {
+    state.context = context;
+    switch (context) {
+      case Context.Referential:
+        state.isReferential = true;
+        break;
+      case Context.Structural:
+        state.isStructural = true;
+        break;
+      case Context.Process:
+        state.isProcess = true;
+        break;
+      default:
+        break;
+    }
+  },
+  CLEAR_CONTEXT(state) {
+    state.context = "";
+    state.isReferential = false;
+    state.isProcess = false;
+    state.isStructural = false;
+  },
   CREATE_BREADCRUMBS(state, breadcrumbs) {
     state.breadcrumbs = breadcrumbs;
-  },
-  SET_BACK_BUTTON(state, backButton) {
-    state.backButton = backButton;
   },
   set(state, [variable, value]) {
     state[variable] = value;
@@ -37,11 +58,15 @@ const actions = {
   toggleSidebarDesktop({ commit }) {
     commit("TOGGLE_SIDEBAR_DESKTOP");
   },
-
   toggleSidebarMobile({ commit }) {
     commit("TOGGLE_SIDEBAR_MOBILE");
   },
-
+  setContext({ commit }, context) {
+    commit("SET_CONTEXT", context);
+  },
+  clearContext({ commit }) {
+    commit("CLEAR_CONTEXT");
+  },
   createBreadcrumbs({ commit }, route) {
     let pathArray = route.path.split("/");
     pathArray.shift();
@@ -51,34 +76,21 @@ const actions = {
       pathArray.pop();
     }
     let breadcrumbs = pathArray.reduce((breadcrumbArray, path, idx) => {
+      var to = "/";
+      if (idx > 0) {
+        for (var i = 0; i < idx; i++) {
+          to += breadcrumbArray[i].path + "/";
+        }
+      }
+      to += path;
+      //console.log(to);
       breadcrumbArray.push({
         path: path,
-        to: breadcrumbArray[idx - 1]
-          ? "/" + breadcrumbArray[idx - 1].path + "/" + path
-          : "/" + path
+        to: to
       });
       return breadcrumbArray;
     }, []);
     commit("CREATE_BREADCRUMBS", breadcrumbs);
-  },
-
-  setBackButton({ commit }, { currentRoute, destinationRoute }) {
-    let backButton = {};
-    var pathArray = destinationRoute.path.split("/");
-    //console.log(destinationRoute.params);
-    if (Object.keys(destinationRoute.params).length > 0) {
-      //if route has a parameter remove it from array
-      pathArray.pop();
-    }
-    var parentPath = "";
-    for (let i = 0; i < pathArray.length - 1; i++) {
-      parentPath += pathArray[i] + "/";
-    }
-
-    backButton.show = currentRoute.name != "Metadata";
-    backButton.url = parentPath == "/" ? "/" : parentPath.slice(0, -1);
-
-    commit("SET_BACK_BUTTON", backButton);
   }
 };
 
@@ -89,11 +101,20 @@ const getters = {
   sidebarMinimize: state => {
     return state.sidebarMinimize;
   },
+  context: state => {
+    return state.context;
+  },
+  isReferential: state => {
+    return state.isReferential;
+  },
+  isStructural: state => {
+    return state.isStructural;
+  },
+  isProcess: state => {
+    return state.isProcess;
+  },
   breadcrumbs: state => {
     return state.breadcrumbs;
-  },
-  backButton: state => {
-    return state.backButton;
   }
 };
 

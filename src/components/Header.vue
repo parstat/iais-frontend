@@ -14,7 +14,7 @@
       <img src="/img/logo.png" height="40" />
     </CHeaderBrand>
     <CHeaderNav class="d-md-down-none mr-auto">
-      <CDropdown
+      <!--CDropdown
         inNav
         class="c-header-nav-items"
         placement="bottom"
@@ -34,7 +34,7 @@
         <CDropdownItem>
           <CIcon name="cil-terminal" />Methodology
         </CDropdownItem>
-      </CDropdown>
+      </CDropdown-->
     </CHeaderNav>
     <CHeaderNav class="mr-4">
       <app-header-dropdown-account />
@@ -42,7 +42,7 @@
     <CSubheader class="justify-content-between px-3">
       <!--CBreadcrumbRouter class="border-0 mb-0" /-->
       <app-header-breadcrumb></app-header-breadcrumb>
-      <!--app-header-back-btn></app-header-back-btn-->
+      <app-header-nav></app-header-nav>
     </CSubheader>
   </CHeader>
 </template>
@@ -52,6 +52,7 @@ import { mapGetters } from "vuex";
 
 import HeaderDropdownAccnt from "./HeaderDropdownAccnt";
 import BreadCrumb from "./BreadCrumb";
+import HeaderNav from "./HeaderNav";
 
 export default {
   computed: {
@@ -59,7 +60,8 @@ export default {
   },
   components: {
     "app-header-dropdown-account": HeaderDropdownAccnt,
-    "app-header-breadcrumb": BreadCrumb
+    "app-header-breadcrumb": BreadCrumb,
+    "app-header-nav": HeaderNav
   }
 };
 </script>

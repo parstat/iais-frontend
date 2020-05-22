@@ -9,7 +9,7 @@ export default [
         icon: "cil-home",
         badge: {
           color: "primary",
-          text: "NEW"
+          text: "Alpha"
         }
       },
       {

@@ -64,6 +64,12 @@ Vue.use(CoreuiVue);
 Vue.use(Vuelidate);
 Vue.component("v-select", vSelect);
 
+Vue.filter("capitalize", function(value) {
+  if (!value) return "";
+  value = value.toString().toLowerCase();
+  return value.charAt(0).toUpperCase() + value.slice(1);
+});
+
 new Vue({
   router,
   store,
