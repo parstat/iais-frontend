@@ -145,7 +145,7 @@ import { required } from "vuelidate/lib/validators";
 import { Agent } from "@/common";
 
 export default {
-    name: "StatisticalProgramEdit",
+  name: "StatisticalProgramEdit",
 
   data() {
     return {

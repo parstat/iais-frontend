@@ -64,7 +64,12 @@
           </div>
           <div class="form-group" v-if="owners">
             <label for="description">Organization</label>
-            <v-select label="name" :options="owners" v-model="owner"></v-select>
+            <v-select
+              label="name"
+              :options="owners"
+              v-model="owner"
+              placeholder="Select an organization"
+            ></v-select>
             <span class="help-block" :class="{ show: $v.owner.$error }"
               >Please select an Organization.</span
             >
@@ -75,6 +80,7 @@
               label="name"
               :options="maintainers"
               v-model="maintainer"
+              placeholder="Select a division"
             ></v-select>
             <span class="help-block" :class="{ show: $v.maintainer.$error }"
               >Please select a division.</span
@@ -86,6 +92,7 @@
               label="name"
               :options="contacts"
               v-model="contact"
+              placeholder="Select a contact person"
             ></v-select>
             <span class="help-block" :class="{ show: $v.contact.$error }"
               >Please select a contact person.</span
@@ -196,9 +203,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.vs__selected-options {
-  padding: 0 2px 6px 2px;
-}
-</style>

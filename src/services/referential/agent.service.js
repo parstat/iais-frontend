@@ -65,7 +65,6 @@ function save(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
-      account: formData.account,
       type: formData.type,
       local_id: formData.localId
     };
@@ -103,9 +102,7 @@ function update(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
-      account: formData.account,
       type: formData.type,
-      parent: formData.parent,
       local_id: formData.localId
     };
 

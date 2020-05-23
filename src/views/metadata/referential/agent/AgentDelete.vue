@@ -1,48 +1,48 @@
 <template>
-  <div class="row" v-if="statisticalProgram">
+  <div class="row" v-if="agent">
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Statistical process</strong>
+          <strong>Agent</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
-            <label for="name">Survey id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalProgram.localId"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <label for="name">Survey name</label>
+            <label for="name">Name</label>
             <input
               id="name"
               type="text"
               class="form-control"
-              v-model.trim="statisticalProgram.name"
+              v-model.trim="agent.name"
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="acronym">Survey acronym</label>
-            <input
-              id="acronym"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalProgram.acronym"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <label for="responsible">Survey description</label>
+            <label for="responsible">Description</label>
             <input
               id="description"
               type="text"
               class="form-control"
-              v-model.trim="statisticalProgram.description"
+              v-model.trim="agent.description"
+              disabled
+            />
+          </div>
+          <div class="form-group" v-if="agent.account">
+            <label for="responsible">Account</label>
+            <input
+              id="account"
+              type="text"
+              class="form-control"
+              v-model.trim="agent.account.name"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="responsible">Type</label>
+            <input
+              id="type"
+              type="text"
+              class="form-control"
+              v-model.trim="agent.type"
               disabled
             />
           </div>
@@ -72,16 +72,16 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
+    ...mapGetters("agent", ["agent"])
   },
   methods: {
     handleDelete() {
       this.disabled = true; //disable button
-      this.$store.dispatch("statisticalProgram/delete", this.$route.params.id);
+      this.$store.dispatch("agent/delete", this.$route.params.id);
     }
   },
   created() {
-    this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
+    this.$store.dispatch("agent/findById", this.$route.params.id);
   }
 };
 </script>

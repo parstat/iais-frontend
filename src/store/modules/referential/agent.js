@@ -1,5 +1,6 @@
+import router from "@/router";
 import { agentService } from "@/services";
-import { Agent } from "../../../common/agents";
+import { Agent } from "@/common";
 
 const state = {
   agents: [],
@@ -24,6 +25,8 @@ const mutations = {
           break;
         case Agent.Organization:
           state.owners = value;
+          break;
+        default:
           break;
       }
     }
@@ -76,6 +79,7 @@ const actions = {
         dispatch("message/success", "Statistical process saved!", {
           root: true
         });
+        router.push("/metadata/referential/gsim/agent");
       },
       error => {
         console.log(error);
@@ -89,6 +93,7 @@ const actions = {
         dispatch("message/success", "Agent deleted!", {
           root: true
         });
+        router.push("/metadata/referential/gsim/agent");
       },
       error => {
         console.log(error);
@@ -102,6 +107,7 @@ const actions = {
         dispatch("message/success", "Agent updated!", {
           root: true
         });
+        router.push("/metadata/referential/gsim/agent");
       },
       error => {
         console.log(error);

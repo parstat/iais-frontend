@@ -45,6 +45,10 @@ axios.interceptors.response.use(
         //unauthorized
         store.dispatch("error/unauthorized", err);
       }
+    } else if (error.response.status === 400) {
+      //Bad request
+      err.message = error.response.data.message;
+      store.dispatch("error/serverError", err);
     } else if (error.response.status === 500) {
       if (error.response.data.message.includes("AuthenticatedFilter")) {
         //redirect to login page

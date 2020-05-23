@@ -1,119 +1,57 @@
 <template>
-  <div class="row" v-if="statisticalProgram">
+  <div class="row" v-if="agent">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
-          <strong>Statistical process</strong>
+          <strong>Agent</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
-            <label for="localId">Local Id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': $v.statisticalProgram.localId.$error }"
-              placeholder="Identifier"
-              v-model.trim="statisticalProgram.localId"
-            />
-            <span
-              class="help-block"
-              :class="{ show: $v.statisticalProgram.localId.$error }"
-            >
-              Please enter survey id.
-            </span>
-          </div>
-          <div class="form-group">
-            <label for="name">Survey name</label>
+            <label for="name">Name</label>
             <input
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.statisticalProgram.name.$error }"
-              placeholder="Survey name"
-              v-model.trim="statisticalProgram.name"
+              :class="{ 'is-invalid': $v.agent.name.$error }"
+              placeholder="Agent name"
+              v-model.trim="agent.name"
             />
-            <span
-              class="help-block"
-              :class="{ show: $v.statisticalProgram.name.$error }"
+            <span class="help-block" :class="{ show: $v.agent.name.$error }"
+              >Please enter agent name.</span
             >
-              Please enter survey name.
-            </span>
           </div>
           <div class="form-group">
-            <label for="acronym">Survey acronym</label>
-            <input
-              id="acronym"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': $v.statisticalProgram.acronym.$error }"
-              placeholder="Survey acronym"
-              v-model.trim="statisticalProgram.acronym"
-            />
-            <span
-              class="help-block"
-              :class="{ show: $v.statisticalProgram.acronym.$error }"
-            >
-              Please enter an acronym.
-            </span>
-          </div>
-          <div class="form-group">
-            <label for="description">Survey description</label>
+            <label for="description">Description</label>
             <input
               id="description"
               type="text"
               class="form-control"
-              :class="{
-                'is-invalid': $v.statisticalProgram.description.$error
-              }"
-              placeholder="Survey description"
-              v-model.trim="statisticalProgram.description"
+              placeholder="Agent description"
+              v-model.trim="agent.description"
             />
-            <span
-              class="help-block"
-              :class="{ show: $v.statisticalProgram.description.$error }"
-            >
-              Please enter an description.
-            </span>
+            <span class="help-block"> Please enter an agent</span>
           </div>
-          <div class="form-group" v-if="owners">
-            <label for="description">Organization</label>
+          <div class="form-group">
+            <label for="account">Type</label>
             <v-select
-              label="name"
-              :options="owners"
-              v-model="statisticalProgram.owner"
+              label="type"
+              :options="types"
+              v-model="agent.type"
+              placeholder="Select a type"
             ></v-select>
-            <span
-              class="help-block"
-              :class="{ show: $v.statisticalProgram.owner.$error }"
-              >Please select an Organization.</span
+            <span class="help-block" :class="{ show: $v.agent.type.$error }"
+              >Please select a type.</span
             >
           </div>
-          <div class="form-group" v-if="maintainers">
-            <label for="description">Division</label>
-            <v-select
-              label="name"
-              :options="maintainers"
-              v-model="statisticalProgram.maintainer"
-            ></v-select>
-            <span
-              class="help-block"
-              :class="{ show: $v.statisticalProgram.maintainer.$error }"
-              >Please select a division.</span
-            >
-          </div>
-          <div class="form-group" v-if="contacts">
-            <label for="description">Contact person</label>
-            <v-select
-              label="name"
-              :options="contacts"
-              v-model="statisticalProgram.contact"
-            ></v-select>
-            <span
-              class="help-block"
-              :class="{ show: $v.statisticalProgram.contact.$error }"
-              >Please select a contact person.</span
-            >
+          <div class="form-group">
+            <label for="localId">Local id</label>
+            <input
+              id="localId"
+              type="text"
+              class="form-control"
+              placeholder="Local id"
+              v-model.trim="agent.localId"
+            />
           </div>
         </div>
         <div class="card-footer">
@@ -152,30 +90,21 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
-    ...mapGetters("agent", ["owners", "maintainers", "contacts"])
+    ...mapGetters("agent", ["agent"]),
+    types() {
+      var types = [];
+      for (const key of Object.keys(Agent)) {
+        types.push(Agent[key]);
+      }
+      return types;
+    }
   },
   validations: {
-    statisticalProgram: {
-      localId: {
-        required
-      },
+    agent: {
       name: {
         required
       },
-      acronym: {
-        required
-      },
-      description: {
-        required
-      },
-      owner: {
-        required
-      },
-      maintainer: {
-        required
-      },
-      contact: {
+      type: {
         required
       }
     }
@@ -186,31 +115,32 @@ export default {
       if (!this.$v.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
-          id: this.statisticalProgram.id,
-          localId: this.statisticalProgram.localId,
-          name: this.statisticalProgram.name,
-          acronym: this.statisticalProgram.acronym,
-          description: this.statisticalProgram.description,
-          owner: this.statisticalProgram.owner.id,
-          maintainer: this.statisticalProgram.maintainer.id,
-          contact: this.statisticalProgram.contact.id
+          id: this.agent.id,
+          name: this.agent.name,
+          description: this.agent.description,
+          type: this.agent.type,
+          localId: this.agent.localId
         };
-        this.$store.dispatch("statisticalProgram/update", formData);
+        this.$store.dispatch("agent/update", formData);
         console.log(formData);
       }
     },
     handleReset() {
-      this.statisticalProgram.name = "";
-      this.statisticalProgram.acronym = "";
-      this.statisticalProgram.description = "";
+      this.agent.name = "";
+      this.agent.description = "";
+      this.agent.type = "";
+      this.agent.localId = "";
       this.$v.$reset();
     }
   },
   created() {
-    this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
-    this.$store.dispatch("agent/findByType", Agent.Organization);
-    this.$store.dispatch("agent/findByType", Agent.Division);
-    this.$store.dispatch("agent/findByType", Agent.Individual);
+    this.$store.dispatch("agent/findById", this.$route.params.id);
   }
 };
 </script>
+
+<style scoped>
+.vs__selected-options {
+  padding: 0 2px 6px 2px;
+}
+</style>

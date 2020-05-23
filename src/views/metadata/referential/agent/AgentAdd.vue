@@ -31,18 +31,14 @@
             />
             <span class="help-block"> Please enter an agent</span>
           </div>
-          <div class="form-group" v-if="accounts">
-            <label for="account">Account</label>
-            <v-select label="name" :options="owners" v-model="owner"></v-select>
-          </div>
           <div class="form-group">
-            <label for="name">Type</label>
-            <select class="form-control" v-model="type">
-              <option disabled value="">Please select a type</option>
-              <option value="ORGANIZATION ">Organization</option>
-              <option value="DIVISION ">Division</option>
-              <option value="INDIVIDUAL">Individual</option>
-            </select>
+            <label for="account">Type</label>
+            <v-select
+              label="type"
+              :options="types"
+              v-model="type"
+              placeholder="Select a type"
+            ></v-select>
             <span class="help-block" :class="{ show: $v.type.$error }"
               >Please select a type.</span
             >
@@ -82,8 +78,8 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
+import { Agent } from "@/common";
 
 export default {
   name: "AgentAdd",
@@ -91,7 +87,6 @@ export default {
     return {
       name: "",
       description: "",
-      account: null,
       type: "",
       parent: "",
       localId: "",
@@ -99,7 +94,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("auth", ["owners", "maintainers", "contacts"])
+    types() {
+      var types = [];
+      for (const key of Object.keys(Agent)) {
+        types.push(Agent[key]);
+      }
+      return types;
+    }
   },
   validations: {
     name: {
@@ -120,25 +121,20 @@ export default {
         const formData = {
           name: this.name,
           description: this.description,
-          account: this.account ? this.account.id : "",
           type: this.type,
           localId: this.localId
         };
-        //this.$store.dispatch("agent/save", formData);
+        this.$store.dispatch("agent/save", formData);
         console.log(formData);
       }
     },
     handleReset() {
       this.name = "";
       this.description = "";
-      this.account = "";
       this.type = "";
       this.localId = "";
       this.$v.$reset();
     }
-  },
-  created() {
-    this.$store.dispatch("auth/findAll");
   }
 };
 </script>

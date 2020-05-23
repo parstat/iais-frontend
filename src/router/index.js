@@ -62,7 +62,7 @@ const routes = [
           import(
             "../views/metadata/referential/statisticalProgram/StatisticalProgramAdd"
           ),
-        meta: { authorize: [Role.Admin] }
+        meta: { authorize: [Role.User, Role.Admin] }
       },
       {
         path: "metadata/referential/edit/:id",
@@ -71,7 +71,7 @@ const routes = [
           import(
             "../views/metadata/referential/statisticalProgram/StatisticalProgramEdit"
           ),
-        meta: { authorize: [Role.Admin] }
+        meta: { authorize: [Role.User, Role.Admin] }
       },
       {
         path: "metadata/referential/view/:id",
@@ -108,14 +108,14 @@ const routes = [
         path: "metadata/referential/gsim/agent/add",
         name: "AgentAdd",
         component: () => import("../views/metadata/referential/agent/AgentAdd"),
-        meta: { authorize: [Role.Admin] }
+        meta: { authorize: [Role.User, Role.Admin] }
       },
       {
         path: "metadata/referential/gsim/agent/edit/:id",
         name: "AgentEdit",
         component: () =>
           import("../views/metadata/referential/agent/AgentEdit"),
-        meta: { authorize: [Role.Admin] }
+        meta: { authorize: [Role.User, Role.Admin] }
       },
       {
         path: "metadata/referential/gsim/agent/view/:id",

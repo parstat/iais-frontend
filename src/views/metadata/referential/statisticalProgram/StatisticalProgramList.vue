@@ -6,7 +6,7 @@
           Statistical processes
           <div class="card-header-actions">
             <router-link
-              v-if="isAdmin"
+              v-if="isAuthenticated"
               tag="a"
               to="/metadata/referential/add"
               class="card-header-action"
@@ -52,7 +52,7 @@
                     {{ statisticalProgram.contact.name }}
                   </td>
                   <td v-else class="pl-4">&ndash;</td>
-                  <template v-if="isAdmin">
+                  <template v-if="isAuthenticated">
                     <td>
                       <router-link
                         tag="a"
@@ -64,7 +64,7 @@
                         <CIcon name="cilPencil"></CIcon>
                       </router-link>
                     </td>
-                    <td>
+                    <td v-if="isAdmin">
                       <router-link
                         tag="a"
                         :to="{
@@ -106,7 +106,7 @@ import { Context } from "@/common";
 export default {
   name: "StatisticalProgramList",
   computed: {
-    ...mapGetters("auth", ["isAdmin"]),
+    ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("statisticalProgram", ["statisticalPrograms"])
   },
   created() {

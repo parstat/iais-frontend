@@ -83,3 +83,25 @@ button:focus {
 .show {
   visibility: visible;
 }
+
+/* V-Select*/
+.vs__dropdown-toggle{
+  border: 1px solid #ced2d8;
+}
+.vs__selected, .vs__dropdown-option{
+  color: #768192;
+}
+.vs__dropdown-option--highlight{
+  color: white;
+  background-color:	#3399ff;
+}
+
+.vs__selected-options {
+  padding: 2px 3px 2px 6px;
+}
+.vs_actions{
+  padding: 3px 6px 0 3px;
+}
+.vs__clear{
+  padding-bottom: 5px;
+}
