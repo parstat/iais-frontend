@@ -69,7 +69,7 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'agentView',
+                          name: 'AgentView',
                           params: { id: agent.id }
                         }"
                       >

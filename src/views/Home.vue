@@ -32,7 +32,7 @@ export default {
     "app-sidebar": Sidebar,
     "app-toast": Toast
   },
-  created(){
+  created() {
     console.log("Metadata");
     this.$store.dispatch("coreui/clearContext");
   }
