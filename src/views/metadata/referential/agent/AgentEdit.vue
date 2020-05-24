@@ -37,6 +37,7 @@
               label="type"
               :options="types"
               v-model="agent.type"
+              :class="{ 'is-invalid': $v.agent.type.$error }"
               placeholder="Select a type"
             ></v-select>
             <span class="help-block" :class="{ show: $v.agent.type.$error }"

@@ -67,6 +67,10 @@ button:focus {
   margin-bottom: 0.2rem;
 }
 
+.form-mandatory {
+  margin-top: 0.4rem;
+  color: #321fdb;
+}
 /* Validation styles */
 
 .help-block {
@@ -85,6 +89,9 @@ button:focus {
 }
 
 /* V-Select*/
+.vs__search::placeholder{
+  color: #768192;
+}
 .vs__dropdown-toggle{
   border: 1px solid #ced2d8;
 }
@@ -95,7 +102,6 @@ button:focus {
   color: white;
   background-color:	#3399ff;
 }
-
 .vs__selected-options {
   padding: 2px 3px 2px 6px;
 }
@@ -104,4 +110,7 @@ button:focus {
 }
 .vs__clear{
   padding-bottom: 5px;
+}
+.is-invalid > .vs__dropdown-toggle {
+  border-color: #e55353;
 }

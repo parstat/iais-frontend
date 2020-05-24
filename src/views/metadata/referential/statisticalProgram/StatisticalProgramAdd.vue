@@ -7,7 +7,7 @@
         </header>
         <div class="card-body">
           <div class="form-group">
-            <label for="localId">Survey id</label>
+            <label for="localId">Survey id*</label>
             <input
               id="localId"
               type="text"
@@ -21,7 +21,7 @@
             >
           </div>
           <div class="form-group">
-            <label for="name">Survey name</label>
+            <label for="name">Survey name*</label>
             <input
               id="name"
               type="text"
@@ -35,7 +35,7 @@
             >
           </div>
           <div class="form-group">
-            <label for="acronym">Survey acronym</label>
+            <label for="acronym">Survey acronym*</label>
             <input
               id="acronym"
               type="text"
@@ -49,7 +49,7 @@
             >
           </div>
           <div class="form-group">
-            <label for="description">Survey description</label>
+            <label for="description">Survey description*</label>
             <input
               id="description"
               type="text"
@@ -63,11 +63,12 @@
             >
           </div>
           <div class="form-group" v-if="owners">
-            <label for="description">Organization</label>
+            <label for="description">Organization*</label>
             <v-select
               label="name"
               :options="owners"
               v-model="owner"
+              :class="{ 'is-invalid': $v.owner.$error }"
               placeholder="Select an organization"
             ></v-select>
             <span class="help-block" :class="{ show: $v.owner.$error }"
@@ -75,11 +76,12 @@
             >
           </div>
           <div class="form-group" v-if="maintainers">
-            <label for="description">Division</label>
+            <label for="description">Division*</label>
             <v-select
               label="name"
               :options="maintainers"
               v-model="maintainer"
+              :class="{ 'is-invalid': $v.maintainer.$error }"
               placeholder="Select a division"
             ></v-select>
             <span class="help-block" :class="{ show: $v.maintainer.$error }"
@@ -87,17 +89,19 @@
             >
           </div>
           <div class="form-group" v-if="contacts">
-            <label for="description">Contact person</label>
+            <label for="description">Contact person*</label>
             <v-select
               label="name"
               :options="contacts"
               v-model="contact"
+              :class="{ 'is-invalid': $v.contact.$error }"
               placeholder="Select a contact person"
             ></v-select>
             <span class="help-block" :class="{ show: $v.contact.$error }"
               >Please select a contact person.</span
             >
           </div>
+          <div class="form-mandatory">*Mandatory fields</div>
         </div>
         <div class="card-footer">
           <CButton

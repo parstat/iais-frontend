@@ -81,6 +81,7 @@
             <v-select
               label="name"
               :options="owners"
+              :class="{ 'is-invalid': $v.statisticalProgram.owner.$error }"
               v-model="statisticalProgram.owner"
             ></v-select>
             <span
@@ -94,6 +95,7 @@
             <v-select
               label="name"
               :options="maintainers"
+              :class="{ 'is-invalid': $v.statisticalProgram.maintainer.$error }"
               v-model="statisticalProgram.maintainer"
             ></v-select>
             <span
@@ -107,6 +109,7 @@
             <v-select
               label="name"
               :options="contacts"
+              :class="{ 'is-invalid': $v.statisticalProgram.contact.$error }"
               v-model="statisticalProgram.contact"
             ></v-select>
             <span

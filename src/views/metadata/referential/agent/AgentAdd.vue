@@ -7,7 +7,7 @@
         </header>
         <div class="card-body">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Name*</label>
             <input
               id="name"
               type="text"
@@ -29,14 +29,15 @@
               placeholder="Agent description"
               v-model.trim="description"
             />
-            <span class="help-block"> Please enter an agent</span>
+            <span class="help-block">Please enter a description</span>
           </div>
           <div class="form-group">
-            <label for="account">Type</label>
+            <label for="account">Type*</label>
             <v-select
               label="type"
               :options="types"
               v-model="type"
+              :class="{ 'is-invalid': $v.type.$error }"
               placeholder="Select a type"
             ></v-select>
             <span class="help-block" :class="{ show: $v.type.$error }"
@@ -44,15 +45,20 @@
             >
           </div>
           <div class="form-group">
-            <label for="localId">Local id</label>
+            <label for="localId">Local id*</label>
             <input
               id="localId"
               type="text"
               class="form-control"
+              :class="{ 'is-invalid': $v.localId.$error }"
               placeholder="Local id"
               v-model.trim="localId"
             />
+            <span class="help-block" :class="{ show: $v.localId.$error }"
+              >Please specify a local id.</span
+            >
           </div>
+          <div class="form-mandatory">*Mandatory fields</div>
         </div>
         <div class="card-footer">
           <CButton
@@ -106,10 +112,10 @@ export default {
     name: {
       required
     },
-    description: {
+    type: {
       required
     },
-    type: {
+    localId: {
       required
     }
   },
