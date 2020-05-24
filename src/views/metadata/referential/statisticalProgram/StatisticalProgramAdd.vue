@@ -3,7 +3,8 @@
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
-          <strong>Statistical process</strong>
+          <CIcon name="cilFolderOpen"></CIcon>
+          <strong>Description</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -62,6 +63,36 @@
               >Please enter survey description.</span
             >
           </div>
+          <div class="form-mandatory">*Mandatory fields</div>
+        </div>
+        <div class="card-footer">
+          <CButton
+            color="primary"
+            shape="square"
+            size="sm"
+            style="margin-right:0.3rem"
+            @click.prevent="handleSubmit()"
+            :disabled="disabled"
+            >Save</CButton
+          >
+          <CButton
+            color="danger"
+            shape="square"
+            size="sm"
+            @click.prevent="handleReset()"
+            :disabled="disabled"
+            >Reset</CButton
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="card">
+        <header class="card-header">
+          <CIcon name="cilUser"></CIcon>
+          <strong>Agents</strong>
+        </header>
+        <div class="card-body">
           <div class="form-group" v-if="owners">
             <label for="description">Organization*</label>
             <v-select
@@ -101,26 +132,27 @@
               >Please select a contact person.</span
             >
           </div>
-          <div class="form-mandatory">*Mandatory fields</div>
         </div>
-        <div class="card-footer">
-          <CButton
-            color="primary"
-            shape="square"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click.prevent="handleSubmit()"
-            :disabled="disabled"
-            >Save</CButton
-          >
-          <CButton
-            color="danger"
-            shape="square"
-            size="sm"
-            @click.prevent="handleReset()"
-            :disabled="disabled"
-            >Reset</CButton
-          >
+      </div>
+      <div class="card">
+        <header class="card-header">
+          <CIcon name="cilBank"></CIcon>
+          <strong>Legal references</strong>
+        </header>
+        <div class="card-body">
+          <div class="form-group" v-if="owners">
+            <label for="description">Organization*</label>
+            <v-select
+              label="name"
+              :options="owners"
+              v-model="owner"
+              :class="{ 'is-invalid': $v.owner.$error }"
+              placeholder="Select an organization"
+            ></v-select>
+            <span class="help-block" :class="{ show: $v.owner.$error }"
+              >Please select an Organization.</span
+            >
+          </div>
         </div>
       </div>
     </div>

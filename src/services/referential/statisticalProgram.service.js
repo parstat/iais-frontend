@@ -6,6 +6,9 @@ export const statisticalProgramService = {
   findById,
   save,
   update,
+  updateOwner,
+  updateMaintainer,
+  updateContact,
   delete: _delete
 };
 
@@ -92,9 +95,6 @@ function update(formData) {
       name: formData.name,
       acronym: formData.acronym,
       description: formData.description,
-      owner: formData.owner,
-      maintainer: formData.maintainer,
-      contact: formData.contact,
       status: "CURRENT",
       budget: 0,
       dateInitiated: "2018-05-10T10:00:00",
@@ -108,6 +108,72 @@ function update(formData) {
           "?language=en",
         qs.stringify(requestBody),
         config
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function updateOwner(formData) {
+  return new Promise((resolve, reject) => {
+    axios
+      .put(
+        "close/referential/statistical/programs/" +
+          formData.id +
+          "/owner/" +
+          formData.owner +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function updateContact(formData) {
+  return new Promise((resolve, reject) => {
+    axios
+      .put(
+        "close/referential/statistical/programs/" +
+          formData.id +
+          "/contact/" +
+          formData.contact +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function updateMaintainer(formData) {
+  return new Promise((resolve, reject) => {
+    axios
+      .put(
+        "close/referential/statistical/programs/" +
+          formData.id +
+          "/maintainer/" +
+          formData.maintainer +
+          "?language=en"
       )
       .then(
         response => {

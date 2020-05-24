@@ -78,6 +78,39 @@ const actions = {
         console.log(error);
       }
     );
+  },
+  // eslint-disable-next-line no-unused-vars
+  updateOwner({ commit }, formData) {
+    statisticalProgramService.updateOwner(formData).then(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+  // eslint-disable-next-line no-unused-vars
+  updateMaintainer({ commit }, formData) {
+    statisticalProgramService.updateMaintainer(formData).then(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+  // eslint-disable-next-line no-unused-vars
+  updateContact({ commit }, formData) {
+    statisticalProgramService.updateContact(formData).then(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 

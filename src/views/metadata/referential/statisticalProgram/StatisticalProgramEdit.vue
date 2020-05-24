@@ -200,6 +200,9 @@ export default {
           contact: this.statisticalProgram.contact.id
         };
         this.$store.dispatch("statisticalProgram/update", formData);
+        this.$store.dispatch("statisticalProgram/updateOwner", formData);
+        this.$store.dispatch("statisticalProgram/updateMaintainer", formData);
+        this.$store.dispatch("statisticalProgram/updateContact", formData);
         console.log(formData);
       }
     },
