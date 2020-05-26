@@ -51,8 +51,10 @@ function save(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
+      link: formData.link ? formData.link : "",
+      version: formData.version ? formData.version : "",
       type: formData.type,
-      local_id: formData.localId
+      localId: formData.localId
     };
 
     axios
@@ -84,13 +86,17 @@ function update(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
+      link: formData.link ? formData.link : "",
+      version: formData.version ? formData.version : "",
       type: formData.type,
-      local_id: formData.localId
+      localId: formData.localId
     };
 
     axios
       .patch(
-        "close/referential/agents/" + formData.id + "?language=en",
+        "close/referential/legislative/references/" +
+          formData.id +
+          "?language=en",
         qs.stringify(requestBody),
         config
       )
@@ -108,7 +114,7 @@ function update(formData) {
 
 function _delete(id) {
   return new Promise((resolve, reject) => {
-    axios.delete("close/referential/agents/" + id).then(
+    axios.delete("close/referential/legislative/references/" + id).then(
       response => {
         //console.log(response.data);
         resolve(response.data);

@@ -25,7 +25,7 @@
                   <th scope="col">Name</th>
                   <th scope="col">Description</th>
                   <th scope="col">Type</th>
-                  <th scope="col">Parent</th>
+                  <th scope="col">Local id</th>
                   <th scope="col" colspan="2" width="2%"></th>
                 </tr>
               </thead>
@@ -41,10 +41,9 @@
                   </td>
                   <td v-else class="pl-4">&ndash;</td>
                   <td>{{ legislativeReference.type | capitalize }}</td>
-                  <td v-if="legislativeReference.parent">
-                    {{ legislativeReference.parent.name }}
+                  <td>
+                    {{ legislativeReference.localId }}
                   </td>
-                  <td v-else class="pl-4">&ndash;</td>
                   <template v-if="isAuthenticated">
                     <td>
                       <router-link

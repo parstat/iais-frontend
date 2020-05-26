@@ -85,10 +85,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.form-control:disabled,
-.form-control[readonly] {
-  background-color: #ebedef;
-  opacity: 1;
-}
-</style>

@@ -71,6 +71,14 @@ button:focus {
   margin-top: 0.4rem;
   color: #321fdb;
 }
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #ebedef;
+  opacity: 1;
+  margin-bottom: 1rem;
+}
+
 /* Validation styles */
 
 .help-block {

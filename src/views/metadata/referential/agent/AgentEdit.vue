@@ -140,9 +140,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.vs__selected-options {
-  padding: 0 2px 6px 2px;
-}
-</style>

@@ -1,9 +1,9 @@
 <template>
-  <div class="row" v-if="agent">
+  <div class="row" v-if="legislativeReference">
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Agent</strong>
+          <strong>Legislative reference</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -12,7 +12,7 @@
               id="name"
               type="text"
               class="form-control"
-              v-model.trim="agent.name"
+              v-model.trim="legislativeReference.name"
               disabled
             />
           </div>
@@ -22,17 +22,7 @@
               id="description"
               type="text"
               class="form-control"
-              v-model.trim="agent.description"
-              disabled
-            />
-          </div>
-          <div class="form-group" v-if="agent.account">
-            <label for="responsible">Account</label>
-            <input
-              id="account"
-              type="text"
-              class="form-control"
-              v-model.trim="agent.account.name"
+              v-model.trim="legislativeReference.description"
               disabled
             />
           </div>
@@ -42,7 +32,17 @@
               id="type"
               type="text"
               class="form-control"
-              v-model.trim="agent.type"
+              v-model.trim="legislativeReference.type"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="responsible">Local id</label>
+            <input
+              id="localId"
+              type="text"
+              class="form-control"
+              v-model.trim="legislativeReference.localId"
               disabled
             />
           </div>
@@ -65,30 +65,29 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "AgentDelete",
+  name: "legislativeReferenceDelete",
   data() {
     return {
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("agent", ["agent"])
+    ...mapGetters("legislativeReference", ["legislativeReference"])
   },
   methods: {
     handleDelete() {
       this.disabled = true; //disable button
-      this.$store.dispatch("agent/delete", this.$route.params.id);
+      this.$store.dispatch(
+        "legislativeReference/delete",
+        this.$route.params.id
+      );
     }
   },
   created() {
-    this.$store.dispatch("agent/findById", this.$route.params.id);
+    this.$store.dispatch(
+      "legislativeReference/findById",
+      this.$route.params.id
+    );
   }
 };
 </script>
-<style scoped>
-.form-control:disabled,
-.form-control[readonly] {
-  background-color: #ebedef;
-  opacity: 1;
-}
-</style>

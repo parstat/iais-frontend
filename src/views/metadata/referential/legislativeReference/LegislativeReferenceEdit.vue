@@ -1,9 +1,9 @@
 <template>
-  <div class="row" v-if="agent">
+  <div class="row" v-if="legislativeReference">
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
-          <strong>Agent</strong>
+          <strong>legislativeReference</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -12,12 +12,14 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.agent.name.$error }"
-              placeholder="Agent name"
-              v-model.trim="agent.name"
+              :class="{ 'is-invalid': $v.legislativeReference.name.$error }"
+              placeholder="legislativeReference name"
+              v-model.trim="legislativeReference.name"
             />
-            <span class="help-block" :class="{ show: $v.agent.name.$error }"
-              >Please enter agent name.</span
+            <span
+              class="help-block"
+              :class="{ show: $v.legislativeReference.name.$error }"
+              >Please enter legislativeReference name.</span
             >
           </div>
           <div class="form-group">
@@ -26,21 +28,25 @@
               id="description"
               type="text"
               class="form-control"
-              placeholder="Agent description"
-              v-model.trim="agent.description"
+              placeholder="legislativeReference description"
+              v-model.trim="legislativeReference.description"
             />
-            <span class="help-block"> Please enter an agent</span>
+            <span class="help-block">
+              Please enter an legislativeReference</span
+            >
           </div>
           <div class="form-group">
             <label for="account">Type</label>
             <v-select
               label="type"
               :options="types"
-              v-model="agent.type"
-              :class="{ 'is-invalid': $v.agent.type.$error }"
+              v-model="legislativeReference.type"
+              :class="{ 'is-invalid': $v.legislativeReference.type.$error }"
               placeholder="Select a type"
             ></v-select>
-            <span class="help-block" :class="{ show: $v.agent.type.$error }"
+            <span
+              class="help-block"
+              :class="{ show: $v.legislativeReference.type.$error }"
               >Please select a type.</span
             >
           </div>
@@ -51,7 +57,7 @@
               type="text"
               class="form-control"
               placeholder="Local id"
-              v-model.trim="agent.localId"
+              v-model.trim="legislativeReference.localId"
             />
           </div>
         </div>
@@ -82,31 +88,34 @@
 <script>
 import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
-import { Agent } from "@/common";
+import { Regulation } from "@/common";
 
 export default {
-  name: "AgentEdit",
+  name: "LegislativeReferenceEdit",
   data() {
     return {
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("agent", ["agent"]),
+    ...mapGetters("legislativeReference", ["legislativeReference"]),
     types() {
       var types = [];
-      for (const key of Object.keys(Agent)) {
-        types.push(Agent[key]);
+      for (const key of Object.keys(Regulation)) {
+        types.push(Regulation[key]);
       }
       return types;
     }
   },
   validations: {
-    agent: {
+    legislativeReference: {
       name: {
         required
       },
       type: {
+        required
+      },
+      localId: {
         required
       }
     }
@@ -117,32 +126,33 @@ export default {
       if (!this.$v.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
-          id: this.agent.id,
-          name: this.agent.name,
-          description: this.agent.description,
-          type: this.agent.type,
-          localId: this.agent.localId
+          id: this.legislativeReference.id,
+          name: this.legislativeReference.name,
+          description: this.legislativeReference.description,
+          type: this.legislativeReference.type,
+          link: this.legislativeReference.link,
+          version: this.legislativeReference.version,
+          localId: this.legislativeReference.localId
         };
-        this.$store.dispatch("agent/update", formData);
+        this.$store.dispatch("legislativeReference/update", formData);
         console.log(formData);
       }
     },
     handleReset() {
-      this.agent.name = "";
-      this.agent.description = "";
-      this.agent.type = "";
-      this.agent.localId = "";
+      this.legislativeReference.name = "";
+      this.legislativeReference.description = "";
+      this.legislativeReference.type = "";
+      this.legislativeReference.link = "";
+      this.legislativeReference.version = "";
+      this.legislativeReference.localId = "";
       this.$v.$reset();
     }
   },
   created() {
-    this.$store.dispatch("agent/findById", this.$route.params.id);
+    this.$store.dispatch(
+      "legislativeReference/findById",
+      this.$route.params.id
+    );
   }
 };
 </script>
-
-<style scoped>
-.vs__selected-options {
-  padding: 0 2px 6px 2px;
-}
-</style>

@@ -32,6 +32,28 @@
             <span class="help-block">Please enter a description</span>
           </div>
           <div class="form-group">
+            <label for="link">Link</label>
+            <input
+              id="link"
+              type="text"
+              class="form-control"
+              placeholder="Regulation link"
+              v-model.trim="link"
+            />
+            <span class="help-block">Please enter a link</span>
+          </div>
+          <div class="form-group">
+            <label for="version">Version</label>
+            <input
+              id="version"
+              type="text"
+              class="form-control"
+              placeholder="Regulation version"
+              v-model.trim="version"
+            />
+            <span class="help-block">Please enter a version</span>
+          </div>
+          <div class="form-group">
             <label for="account">Type*</label>
             <v-select
               label="type"
