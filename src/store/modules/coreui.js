@@ -4,6 +4,7 @@ const state = {
   sidebarShow: "responsive",
   sidebarMinimize: false,
   context: "",
+  isLoading: false,
   isReferential: false,
   isStructural: false,
   isProcess: false,
@@ -23,6 +24,9 @@ const mutations = {
   TOGGLE_SIDEBAR_MOBILE(state) {
     const sidebarClosed = [false, "responsive"].includes(state.sidebarShow);
     state.sidebarShow = sidebarClosed ? true : "responsive";
+  },
+  SET_LOADING(state, isLoading){
+    state.isLoading = isLoading;
   },
   SET_CONTEXT(state, context) {
     state.context = context;
@@ -60,6 +64,9 @@ const actions = {
   },
   toggleSidebarMobile({ commit }) {
     commit("TOGGLE_SIDEBAR_MOBILE");
+  },
+  loading({ commit }, isLoading) {
+    commit("SET_CONTEXT", isLoading);
   },
   setContext({ commit }, context) {
     commit("SET_CONTEXT", context);
@@ -103,6 +110,9 @@ const getters = {
   },
   context: state => {
     return state.context;
+  },
+  isLoading: state => {
+    return state.isLoading;
   },
   isReferential: state => {
     return state.isReferential;

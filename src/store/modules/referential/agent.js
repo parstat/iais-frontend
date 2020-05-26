@@ -76,7 +76,7 @@ const actions = {
     agentService.save(formData).then(
       data => {
         console.log(data);
-        dispatch("message/success", "Statistical process saved!", {
+        dispatch("message/success", "Agent saved!", {
           root: true
         });
         router.push("/metadata/referential/gsim/agent");

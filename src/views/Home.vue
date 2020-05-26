@@ -33,7 +33,6 @@ export default {
     "app-toast": Toast
   },
   created() {
-    console.log("Metadata");
     this.$store.dispatch("coreui/clearContext");
   }
 };

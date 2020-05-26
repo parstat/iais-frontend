@@ -51,9 +51,11 @@
         </header>
         <div class="card-body">
           This section contains the list of regulations.
-          <p class="section-link disabled">
-            <span>Go to legislative reference section &nbsp;</span>
-            <CIcon name="cilArrowCircleRight"></CIcon>
+          <p class="section-link">
+            <router-link tag="a" :to="{ name: 'LegislativeReferenceList' }"
+              >Go to legislative reference section</router-link
+            >
+            <CIcon class="icon-link" name="cilArrowCircleRight"></CIcon>
           </p>
         </div>
       </div>

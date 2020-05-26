@@ -132,6 +132,51 @@ const routes = [
         meta: { authorize: [Role.Admin] }
       },
       {
+        path: "metadata/referential/gsim/regulation",
+        name: "LegislativeReferenceList",
+        component: () =>
+          import(
+            "../views/metadata/referential/legislativeReference/LegislativeReferenceList"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/regulation/add",
+        name: "LegislativeReferenceAdd",
+        component: () =>
+          import(
+            "../views/metadata/referential/legislativeReference/LegislativeReferenceAdd"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/regulation/edit/:id",
+        name: "LegislativeReferenceEdit",
+        component: () =>
+          import(
+            "../views/metadata/referential/legislativeReference/LegislativeReferenceEdit"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/regulation/view/:id",
+        name: "LegislativeReferenceView",
+        component: () =>
+          import(
+            "../views/metadata/referential/legislativeReference/LegislativeReferenceView"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/regulation/delete/:id",
+        name: "LegislativeReferenceDelete",
+        component: () =>
+          import(
+            "../views/metadata/referential/legislativeReference/LegislativeReferenceDelete"
+          ),
+        meta: { authorize: [Role.Admin] }
+      },
+      {
         path: "metadata/process",
         name: "Process",
         component: () => import("../views/metadata/process/BusinessProcesses"),

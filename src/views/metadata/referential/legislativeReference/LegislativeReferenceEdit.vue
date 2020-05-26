@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row" v-if="agent">
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
@@ -7,16 +7,16 @@
         </header>
         <div class="card-body">
           <div class="form-group">
-            <label for="name">Name*</label>
+            <label for="name">Name</label>
             <input
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.name.$error }"
+              :class="{ 'is-invalid': $v.agent.name.$error }"
               placeholder="Agent name"
-              v-model.trim="name"
+              v-model.trim="agent.name"
             />
-            <span class="help-block" :class="{ show: $v.name.$error }"
+            <span class="help-block" :class="{ show: $v.agent.name.$error }"
               >Please enter agent name.</span
             >
           </div>
@@ -27,38 +27,33 @@
               type="text"
               class="form-control"
               placeholder="Agent description"
-              v-model.trim="description"
+              v-model.trim="agent.description"
             />
-            <span class="help-block">Please enter a description</span>
+            <span class="help-block"> Please enter an agent</span>
           </div>
           <div class="form-group">
-            <label for="account">Type*</label>
+            <label for="account">Type</label>
             <v-select
               label="type"
               :options="types"
-              v-model="type"
-              :class="{ 'is-invalid': $v.type.$error }"
+              v-model="agent.type"
+              :class="{ 'is-invalid': $v.agent.type.$error }"
               placeholder="Select a type"
             ></v-select>
-            <span class="help-block" :class="{ show: $v.type.$error }"
+            <span class="help-block" :class="{ show: $v.agent.type.$error }"
               >Please select a type.</span
             >
           </div>
           <div class="form-group">
-            <label for="localId">Local id*</label>
+            <label for="localId">Local id</label>
             <input
               id="localId"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.localId.$error }"
               placeholder="Local id"
-              v-model.trim="localId"
+              v-model.trim="agent.localId"
             />
-            <span class="help-block" :class="{ show: $v.localId.$error }"
-              >Please specify a local id.</span
-            >
           </div>
-          <div class="form-mandatory">*Mandatory fields</div>
         </div>
         <div class="card-footer">
           <CButton
@@ -68,7 +63,7 @@
             style="margin-right:0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Save</CButton
+            >Update</CButton
           >
           <CButton
             color="danger"
@@ -83,23 +78,21 @@
     </div>
   </div>
 </template>
+
 <script>
+import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
 import { Agent } from "@/common";
 
 export default {
-  name: "AgentAdd",
+  name: "AgentEdit",
   data() {
     return {
-      name: "",
-      description: "",
-      type: "",
-      parent: "",
-      localId: "",
       disabled: false
     };
   },
   computed: {
+    ...mapGetters("agent", ["agent"]),
     types() {
       var types = [];
       for (const key of Object.keys(Agent)) {
@@ -109,14 +102,13 @@ export default {
     }
   },
   validations: {
-    name: {
-      required
-    },
-    type: {
-      required
-    },
-    localId: {
-      required
+    agent: {
+      name: {
+        required
+      },
+      type: {
+        required
+      }
     }
   },
   methods: {
@@ -125,22 +117,32 @@ export default {
       if (!this.$v.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
-          name: this.name,
-          description: this.description,
-          type: this.type,
-          localId: this.localId
+          id: this.agent.id,
+          name: this.agent.name,
+          description: this.agent.description,
+          type: this.agent.type,
+          localId: this.agent.localId
         };
-        this.$store.dispatch("agent/save", formData);
+        this.$store.dispatch("agent/update", formData);
         console.log(formData);
       }
     },
     handleReset() {
-      this.name = "";
-      this.description = "";
-      this.type = "";
-      this.localId = "";
+      this.agent.name = "";
+      this.agent.description = "";
+      this.agent.type = "";
+      this.agent.localId = "";
       this.$v.$reset();
     }
+  },
+  created() {
+    this.$store.dispatch("agent/findById", this.$route.params.id);
   }
 };
 </script>
+
+<style scoped>
+.vs__selected-options {
+  padding: 0 2px 6px 2px;
+}
+</style>

@@ -17,7 +17,10 @@
           </div>
         </header>
         <div class="card-body">
-          <div class="table-responsive">
+          <div v-if="isLoading">
+            <tile></tile>
+          </div>
+          <div class="table-responsive" v-else>
             <table class="table">
               <thead>
                 <tr>
@@ -95,6 +98,7 @@ export default {
   name: "AgentList",
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
+    ...mapGetters("coreui", ["isLoading"]),
     ...mapGetters("agent", ["agents"])
   },
   created() {

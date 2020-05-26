@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
-          <strong>Agent</strong>
+          <strong>Legislative reference</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -85,16 +85,17 @@
 </template>
 <script>
 import { required } from "vuelidate/lib/validators";
-import { Agent } from "@/common";
+import { Regulation } from "@/common";
 
 export default {
-  name: "AgentAdd",
+  name: "LegislativeReferenceAdd",
   data() {
     return {
       name: "",
       description: "",
       type: "",
-      parent: "",
+      link: "",
+      version: "",
       localId: "",
       disabled: false
     };
@@ -102,8 +103,8 @@ export default {
   computed: {
     types() {
       var types = [];
-      for (const key of Object.keys(Agent)) {
-        types.push(Agent[key]);
+      for (const key of Object.keys(Regulation)) {
+        types.push(Regulation[key]);
       }
       return types;
     }
@@ -128,9 +129,11 @@ export default {
           name: this.name,
           description: this.description,
           type: this.type,
+          link: this.link,
+          version: this.version,
           localId: this.localId
         };
-        this.$store.dispatch("agent/save", formData);
+        this.$store.dispatch("legislativeReference/save", formData);
         console.log(formData);
       }
     },
@@ -138,6 +141,8 @@ export default {
       this.name = "";
       this.description = "";
       this.type = "";
+      this.link = "";
+      this.version = "";
       this.localId = "";
       this.$v.$reset();
     }

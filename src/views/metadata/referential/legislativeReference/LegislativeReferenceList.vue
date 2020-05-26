@@ -3,56 +3,46 @@
     <div class="col-12">
       <div class="card">
         <header class="card-header">
-          Statistical processes
+          Legislative references
           <div class="card-header-actions">
             <router-link
               v-if="isAuthenticated"
               tag="a"
-              to="/metadata/referential/add"
+              to="/metadata/referential/gsim/regulation/add"
               class="card-header-action"
             >
               <CIcon name="cilPlus"></CIcon>
-              <span>New process</span>
+              <span>New regulation</span>
             </router-link>
           </div>
         </header>
         <div class="card-body">
-          <div v-if="isLoading">
-            <tile></tile>
-          </div>
-          <div class="table-responsive" v-else>
+          <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
                   <th scope="col">Id</th>
-                  <th scope="col">Survey Name</th>
-                  <th scope="col">Acronym</th>
+                  <th scope="col">Name</th>
                   <th scope="col">Description</th>
-                  <th scope="col">Owner</th>
-                  <th scope="col">Maintainer</th>
-                  <th scope="col">Contact</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Parent</th>
                   <th scope="col" colspan="2" width="2%"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr
-                  v-for="statisticalProgram in statisticalPrograms"
-                  :key="statisticalProgram.id"
+                  v-for="legislativeReference in legislativeReferences"
+                  :key="legislativeReference.id"
                 >
-                  <td>{{ statisticalProgram.localId }}</td>
-                  <td>{{ statisticalProgram.name }}</td>
-                  <td>{{ statisticalProgram.acronym }}</td>
-                  <td>{{ statisticalProgram.description }}</td>
-                  <td v-if="statisticalProgram.owner">
-                    {{ statisticalProgram.owner.name }}
+                  <td>{{ legislativeReference.id }}</td>
+                  <td>{{ legislativeReference.name }}</td>
+                  <td v-if="legislativeReference.description">
+                    {{ legislativeReference.description }}
                   </td>
                   <td v-else class="pl-4">&ndash;</td>
-                  <td v-if="statisticalProgram.maintainer">
-                    {{ statisticalProgram.maintainer.name }}
-                  </td>
-                  <td v-else class="pl-4">&ndash;</td>
-                  <td v-if="statisticalProgram.contact">
-                    {{ statisticalProgram.contact.name }}
+                  <td>{{ legislativeReference.type | capitalize }}</td>
+                  <td v-if="legislativeReference.parent">
+                    {{ legislativeReference.parent.name }}
                   </td>
                   <td v-else class="pl-4">&ndash;</td>
                   <template v-if="isAuthenticated">
@@ -60,8 +50,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalProgramEdit',
-                          params: { id: statisticalProgram.id }
+                          name: 'LegislativeReferenceEdit',
+                          params: { id: legislativeReference.id }
                         }"
                       >
                         <CIcon name="cilPencil"></CIcon>
@@ -71,8 +61,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalProgramDelete',
-                          params: { id: statisticalProgram.id }
+                          name: 'LegislativeReferenceDelete',
+                          params: { id: legislativeReference.id }
                         }"
                       >
                         <CIcon name="cilTrash"></CIcon>
@@ -84,8 +74,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalProgramView',
-                          params: { id: statisticalProgram.id }
+                          name: 'LegislativeReferenceView',
+                          params: { id: legislativeReference.id }
                         }"
                       >
                         <CIcon name="cilMagnifyingGlass"></CIcon>
@@ -107,14 +97,13 @@ import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
 export default {
-  name: "StatisticalProgramList",
+  name: "LegislativeReferenceList",
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("statisticalProgram", ["statisticalPrograms"])
+    ...mapGetters("legislativeReference", ["legislativeReferences"])
   },
   created() {
-    this.$store.dispatch("statisticalProgram/findAll");
+    this.$store.dispatch("legislativeReference/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
   }
 };

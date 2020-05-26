@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
-          <CIcon name="cilFolderOpen"></CIcon>
+          <CIcon name="cilFile"></CIcon>
           <strong>Description</strong>
         </header>
         <div class="card-body">
@@ -132,6 +132,7 @@
               >Please select a contact person.</span
             >
           </div>
+          <div class="form-mandatory">*Mandatory fields</div>
         </div>
       </div>
       <div class="card">
@@ -153,6 +154,7 @@
               >Please select an Organization.</span
             >
           </div>
+          <div class="form-mandatory">*Mandatory fields</div>
         </div>
       </div>
     </div>

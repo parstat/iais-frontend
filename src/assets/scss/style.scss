@@ -114,3 +114,8 @@ button:focus {
 .is-invalid > .vs__dropdown-toggle {
   border-color: #e55353;
 }
+
+/* Spinner */
+.spinner > div {
+  background-color: #321fdb !important;
+}
