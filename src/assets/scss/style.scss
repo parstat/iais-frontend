@@ -127,3 +127,27 @@ button:focus {
 .spinner > div {
   background-color: #321fdb !important;
 }
+
+/* Material design icons */
+.icon-span{
+  vertical-align: middle;
+}
+.material-design-icon {
+  vertical-align: text-bottom;
+  height: 1.2em!important;
+  width: 1.2em!important;
+}
+ 
+.material-design-icon > .material-design-icon__svg {
+  height: 1.2em!important;
+  width: 1.2em!important;
+}
+.material-design-icon.icon-2x {
+  height: 2em;
+  width: 2em;
+}
+ 
+.material-design-icon.icon-2x > .material-design-icon__svg {
+  height: 2em;
+  width: 2em;
+}

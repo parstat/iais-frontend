@@ -25,7 +25,7 @@ const mutations = {
     const sidebarClosed = [false, "responsive"].includes(state.sidebarShow);
     state.sidebarShow = sidebarClosed ? true : "responsive";
   },
-  SET_LOADING(state, isLoading){
+  SET_LOADING(state, isLoading) {
     state.isLoading = isLoading;
   },
   SET_CONTEXT(state, context) {

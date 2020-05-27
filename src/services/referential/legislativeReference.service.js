@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosIais } from "@/common";
 import qs from "querystring";
 
 export const legislativeReferenceService = {
@@ -11,7 +11,7 @@ export const legislativeReferenceService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axios.get("/referential/legislative/references?language=en").then(
+    axiosIais.get("/referential/legislative/references?language=en").then(
       response => {
         console.log(response.data);
         resolve(response.data);
@@ -25,7 +25,7 @@ function findAll() {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axios
+    axiosIais
       .get("/referential/legislative/references/" + id + "?language=en")
       .then(
         response => {
@@ -57,7 +57,7 @@ function save(formData) {
       localId: formData.localId
     };
 
-    axios
+    axiosIais
       .post(
         "close/referential/legislative/references?language=en",
         qs.stringify(requestBody),
@@ -92,7 +92,7 @@ function update(formData) {
       localId: formData.localId
     };
 
-    axios
+    axiosIais
       .patch(
         "close/referential/legislative/references/" +
           formData.id +
@@ -114,7 +114,7 @@ function update(formData) {
 
 function _delete(id) {
   return new Promise((resolve, reject) => {
-    axios.delete("close/referential/legislative/references/" + id).then(
+    axiosIais.delete("close/referential/legislative/references/" + id).then(
       response => {
         //console.log(response.data);
         resolve(response.data);

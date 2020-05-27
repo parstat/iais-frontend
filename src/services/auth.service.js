@@ -1,9 +1,5 @@
-import axios from "axios";
+import { axiosAuth } from "@/common";
 import qs from "querystring";
-
-const axiosAuth = axios.create({
-  baseURL: "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/security" //authentication server
-});
 
 export const authService = {
   login,

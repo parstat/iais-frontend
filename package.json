@@ -16,6 +16,7 @@
     "jsonwebtoken": "^8.5.1",
     "query-string": "^6.12.1",
     "vue": "^2.6.11",
+    "vue-material-design-icons": "^4.6.0",
     "vue-router": "^3.1.5",
     "vue-select": "^3.10.3",
     "vue-spinners": "^1.0.2",

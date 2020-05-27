@@ -11,9 +11,9 @@
           GSBPM standard
           <p class="section-link">
             <router-link tag="a" :to="{ name: 'StatisticalProgramList' }"
-              >Go to referential metadata section</router-link
-            >
-            <CIcon class="icon-link" name="cilArrowCircleRight"></CIcon>
+              ><span class="icon-span">Go to referential metadata section </span
+              ><chevron-right-icon
+            /></router-link>
           </p>
         </div>
       </div>
@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Metadata"
 };
 </script>
 <style scoped>

@@ -11,8 +11,8 @@
               to="/metadata/referential/add"
               class="card-header-action"
             >
-              <CIcon name="cilPlus"></CIcon>
-              <span>New process</span>
+              <add-icon />
+              <span class="icon-span pl-1">New process</span>
             </router-link>
           </div>
         </header>
@@ -64,7 +64,7 @@
                           params: { id: statisticalProgram.id }
                         }"
                       >
-                        <CIcon name="cilPencil"></CIcon>
+                        <edit-icon />
                       </router-link>
                     </td>
                     <td v-if="isAdmin">
@@ -75,7 +75,7 @@
                           params: { id: statisticalProgram.id }
                         }"
                       >
-                        <CIcon name="cilTrash"></CIcon>
+                        <delete-icon />
                       </router-link>
                     </td>
                   </template>

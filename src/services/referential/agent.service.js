@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosIais } from "@/common";
 import qs from "querystring";
 
 export const agentService = {
@@ -12,7 +12,7 @@ export const agentService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axios.get("/referential/agents?language=en").then(
+    axiosIais.get("/referential/agents?language=en").then(
       response => {
         console.log(response.data);
         resolve(response.data);
@@ -26,7 +26,7 @@ function findAll() {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axios.get("/referential/agents/" + id + "?language=en").then(
+    axiosIais.get("/referential/agents/" + id + "?language=en").then(
       response => {
         var data = response.data ? response.data : null;
         console.log(data);
@@ -41,7 +41,7 @@ function findById(id) {
 
 function findByType(type) {
   return new Promise((resolve, reject) => {
-    axios.get("/referential/agents/?language=en&type=" + type).then(
+    axiosIais.get("/referential/agents/?language=en&type=" + type).then(
       response => {
         var data = response.data ? response.data : [];
         console.log(data);
@@ -73,7 +73,7 @@ function save(formData) {
       requestBody.parent = formData.parent;
     }
 
-    axios
+    axiosIais
       .post(
         "close/referential/agents?language=en",
         qs.stringify(requestBody),
@@ -106,7 +106,7 @@ function update(formData) {
       local_id: formData.localId
     };
 
-    axios
+    axiosIais
       .patch(
         "close/referential/agents/" + formData.id + "?language=en",
         qs.stringify(requestBody),
@@ -126,7 +126,7 @@ function update(formData) {
 
 function _delete(id) {
   return new Promise((resolve, reject) => {
-    axios.delete("close/referential/agents/" + id).then(
+    axiosIais.delete("close/referential/agents/" + id).then(
       response => {
         //console.log(response.data);
         resolve(response.data);
