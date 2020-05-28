@@ -1,10 +1,8 @@
-/* eslint-disable prettier/prettier */
 <template>
   <div class="row">
     <div class="col-sm-6 col-md-4">
       <div class="card">
         <header class="card-header">
-          <CIcon name="cilPuzzle"></CIcon>
           <span>Business Functions</span>
         </header>
         <div class="card-body">
@@ -12,9 +10,9 @@
             Something an enterprise does, or needs to do, in order to achieve
             its objectives.
           </span>
-          <p class="section-link disabled">
-            <span>Go to business functions section &nbsp;</span>
-            <CIcon name="cilArrowCircleRight"></CIcon>
+          <p class="section-link section-link-disabled">
+            <span class="icon-span">Go to business functions section</span>
+            <chevron-right-icon />
           </p>
         </div>
       </div>
@@ -22,7 +20,6 @@
     <div class="col-sm-6 col-md-4">
       <div class="card">
         <header class="card-header">
-          <CIcon name="cilPuzzle"></CIcon>
           <span>Agents</span>
           <span class="badge float-right badge-success">New</span>
         </header>
@@ -36,9 +33,9 @@
           <br />
           <p class="section-link">
             <router-link tag="a" :to="{ name: 'AgentList' }"
-              >Go to agents section</router-link
-            >
-            <CIcon class="icon-link" name="cilArrowCircleRight"></CIcon>
+              ><span class="icon-span">Go to agents section&nbsp;</span
+              ><chevron-right-icon
+            /></router-link>
           </p>
         </div>
       </div>
@@ -46,56 +43,37 @@
     <div class="col-sm-6 col-md-4">
       <div class="card">
         <header class="card-header">
-          <CIcon name="cilPuzzle"></CIcon>
           <span>Legislative references</span>
         </header>
         <div class="card-body">
           This section contains the list of regulations.
           <p class="section-link">
             <router-link tag="a" :to="{ name: 'LegislativeReferenceList' }"
-              >Go to legislative reference section</router-link
-            >
-            <CIcon class="icon-link" name="cilArrowCircleRight"></CIcon>
+              ><span class="icon-span"
+                >Go to legislative reference section&nbsp;</span
+              ><chevron-right-icon
+            /></router-link>
           </p>
         </div>
       </div>
     </div>
 
-     <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-4">
       <div class="card">
         <header class="card-header">
-          <CIcon name="cilPuzzle"></CIcon>
           <span>Statistical standard</span>
         </header>
         <div class="card-body">
           This section contains the list of statistical standards.
           <p class="section-link">
             <router-link tag="a" :to="{ name: 'StatisticalStandardList' }"
-              >Go to statistical standard section</router-link
-            >
-            <CIcon class="icon-link" name="cilArrowCircleRight"></CIcon>
+              ><span class="icon-span"
+                >Go to statistical standard section&nbsp;</span
+              ><chevron-right-icon
+            /></router-link>
           </p>
         </div>
       </div>
     </div>
-
   </div>
 </template>
-
-<style scoped>
-.card-header .c-icon {
-  padding-right: 0.3rem;
-}
-.section-link {
-  margin-top: 15px;
-}
-
-.section-link a {
-  padding-right: 0.3rem;
-  padding-top: 3px;
-}
-
-.disabled {
-  color: #ced2d8;
-}
-</style>

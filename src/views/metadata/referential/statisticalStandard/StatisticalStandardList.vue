@@ -11,8 +11,8 @@
               to="/metadata/referential/gsim/standard/add"
               class="card-header-action"
             >
-              <CIcon name="cilPlus"></CIcon>
-              <span>New standard</span>
+              <add-icon />
+              <span class="icon-span">New standard</span>
             </router-link>
           </div>
         </header>
@@ -53,7 +53,7 @@
                           params: { id: statisticalStandard.id }
                         }"
                       >
-                        <CIcon name="cilPencil"></CIcon>
+                        <edit-icon />
                       </router-link>
                     </td>
                     <td v-if="isAdmin">
@@ -64,7 +64,7 @@
                           params: { id: statisticalStandard.id }
                         }"
                       >
-                        <CIcon name="cilTrash"></CIcon>
+                        <delete-icon />
                       </router-link>
                     </td>
                   </template>
@@ -77,7 +77,7 @@
                           params: { id: statisticalStandard.id }
                         }"
                       >
-                        <CIcon name="cilMagnifyingGlass"></CIcon>
+                        <view-icon />
                       </router-link>
                     </td>
                   </template>

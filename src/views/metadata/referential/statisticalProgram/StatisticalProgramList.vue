@@ -12,7 +12,7 @@
               class="card-header-action"
             >
               <add-icon />
-              <span class="icon-span pl-1">New process</span>
+              <span class="icon-span">New process</span>
             </router-link>
           </div>
         </header>
@@ -88,7 +88,7 @@
                           params: { id: statisticalProgram.id }
                         }"
                       >
-                        <CIcon name="cilMagnifyingGlass"></CIcon>
+                        <view-icon />
                       </router-link>
                     </td>
                   </template>

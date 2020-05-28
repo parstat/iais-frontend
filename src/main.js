@@ -8,27 +8,15 @@ import Vuelidate from "vuelidate";
 import vSelect from "vue-select";
 import VueSpinners from "vue-spinners";
 
+import "@/common/materialIcons";
+
 Vue.config.productionTip = false;
+
 Vue.use(CoreuiVue);
 Vue.use(Vuelidate);
 Vue.use(VueSpinners);
+
 Vue.component("v-select", vSelect);
-
-/* Material design icons*/
-import "vue-material-design-icons/styles.css";
-import ChevronRightBoxIcon from "icons/ArrowRightBold.vue";
-import AddIcon from "icons/Plus.vue";
-import EditIcon from "icons/Pencil.vue";
-import DeleteIcon from "icons/TrashCanOutline.vue";
-import TextIcon from "icons/TextBoxOutline.vue";
-import AgentIcon from "icons/AccountOutline.vue";
-
-Vue.component("chevron-right-icon", ChevronRightBoxIcon);
-Vue.component("add-icon", AddIcon);
-Vue.component("edit-icon", EditIcon);
-Vue.component("delete-icon", DeleteIcon);
-Vue.component("text-icon", TextIcon);
-Vue.component("agent-icon", AgentIcon);
 
 Vue.filter("capitalize", function(value) {
   if (!value) return "";

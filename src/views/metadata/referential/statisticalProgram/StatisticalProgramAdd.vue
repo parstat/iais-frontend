@@ -3,8 +3,8 @@
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
-          <CIcon name="cilFile"></CIcon>
-          <strong>Description</strong>
+          <text-icon />
+          <strong class="icon-header">Description</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -89,8 +89,8 @@
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
-          <CIcon name="cilUser"></CIcon>
-          <strong>Agents</strong>
+          <user-icon />
+          <strong class="icon-header">Agents</strong>
         </header>
         <div class="card-body">
           <div class="form-group" v-if="owners">
@@ -137,8 +137,8 @@
       </div>
       <div class="card">
         <header class="card-header">
-          <CIcon name="cilBank"></CIcon>
-          <strong>Legal references</strong>
+          <regulation-icon />
+          <strong class="icon-header">Legal references</strong>
         </header>
         <div class="card-body">
           <div class="form-group" v-if="owners">

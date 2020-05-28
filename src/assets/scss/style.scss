@@ -17,7 +17,6 @@
 }
 .header-link {
   padding-left: 0.2rem;
-  padding-bottom: 1px;
 }
 .c-app:not(.c-legacy-theme):not(.c-dark-theme) .card {
   border: 0;
@@ -29,7 +28,6 @@
   box-shadow: 0 1px 1px 0 rgba(60,75,100,.14), 0 2px 1px -1px rgba(60,75,100,.12), 0 1px 3px 0 rgba(60,75,100,.2);
 }
 
-
 .card-header:not(.content-center) > .c-icon:first-child {
   margin-right: 0.1rem;
   margin-top: 0.1rem;
@@ -37,11 +35,6 @@
   width: 1.2rem;
   height: 1.2rem;
   font-size: 1.2rem;
-}
-
-.card-header-action span{
-  padding-top: 5px;
-  padding-left: 3px;
 }
 
 button:focus {
@@ -61,6 +54,17 @@ button:focus {
   border-bottom: none;
 }
 
+.section-link {
+  margin-top: 15px;
+}
+
+.section-link a {
+  padding-right: 0.3rem;
+}
+
+.section-link-disabled {
+  color: #ced2d8;
+}
 /* Forms */
 
 .form-group {
@@ -132,8 +136,12 @@ button:focus {
 .icon-span{
   vertical-align: middle;
 }
+.icon-header{
+  vertical-align: middle;
+  padding-left: 0.2rem;
+}
 .material-design-icon {
-  vertical-align: text-bottom;
+  vertical-align: middle;
   height: 1.2em!important;
   width: 1.2em!important;
 }

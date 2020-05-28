@@ -25,9 +25,9 @@
           This section contains the structural metadata of each survey
           documented in the system.
           <br />
-          <p class="section-link disabled">
-            <span>Go to structural metadata section &nbsp;</span>
-            <CIcon name="cilArrowCircleRight"></CIcon>
+          <p class="section-link section-link-disabled">
+            <span class="icon-span">Go to structural metadata section</span>
+            <chevron-right-icon />
           </p>
         </div>
       </div>
@@ -38,9 +38,9 @@
         <div class="card-body">
           This section contains the process metadata of each survey documented
           in the system.
-          <p class="section-link disabled">
-            Go to process metadata section
-            <CIcon name="cilArrowCircleRight"></CIcon>
+          <p class="section-link section-link-disabled">
+            <span class="icon-span">Go to process metadata section</span>
+            <chevron-right-icon />
           </p>
         </div>
       </div>
@@ -53,16 +53,3 @@ export default {
   name: "Metadata"
 };
 </script>
-<style scoped>
-.section-link {
-  margin-top: 15px;
-}
-
-.section-link a {
-  padding-right: 0.3rem;
-  padding-top: 3px;
-}
-.disabled {
-  color: #ced2d8;
-}
-</style>

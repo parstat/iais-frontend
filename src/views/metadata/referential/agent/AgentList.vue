@@ -11,8 +11,8 @@
               to="/metadata/referential/gsim/agent/add"
               class="card-header-action"
             >
-              <CIcon name="cilPlus"></CIcon>
-              <span>New agent</span>
+              <add-icon />
+              <span class="icon-span">New agent</span>
             </router-link>
           </div>
         </header>
@@ -52,7 +52,7 @@
                           params: { id: agent.id }
                         }"
                       >
-                        <CIcon name="cilPencil"></CIcon>
+                        <edit-icon />
                       </router-link>
                     </td>
                     <td v-if="isAdmin">
@@ -63,7 +63,7 @@
                           params: { id: agent.id }
                         }"
                       >
-                        <CIcon name="cilTrash"></CIcon>
+                        <delete-icon />
                       </router-link>
                     </td>
                   </template>
@@ -76,7 +76,7 @@
                           params: { id: agent.id }
                         }"
                       >
-                        <CIcon name="cilMagnifyingGlass"></CIcon>
+                        <view-icon />
                       </router-link>
                     </td>
                   </template>
