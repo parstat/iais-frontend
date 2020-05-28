@@ -31,9 +31,7 @@
               placeholder="statisticalStandard description"
               v-model.trim="statisticalStandard.description"
             />
-            <span class="help-block">
-              Please enter an statisticalStandard</span
-            >
+            <span class="help-block"> Please enter an statisticalStandard</span>
           </div>
           <div class="form-group">
             <label for="account">Type</label>
@@ -149,10 +147,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch(
-      "statisticalStandard/findById",
-      this.$route.params.id
-    );
+    this.$store.dispatch("statisticalStandard/findById", this.$route.params.id);
   }
 };
 </script>

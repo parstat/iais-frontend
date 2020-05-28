@@ -77,17 +77,11 @@ export default {
   methods: {
     handleDelete() {
       this.disabled = true; //disable button
-      this.$store.dispatch(
-        "statisticalStandard/delete",
-        this.$route.params.id
-      );
+      this.$store.dispatch("statisticalStandard/delete", this.$route.params.id);
     }
   },
   created() {
-    this.$store.dispatch(
-      "statisticalStandard/findById",
-      this.$route.params.id
-    );
+    this.$store.dispatch("statisticalStandard/findById", this.$route.params.id);
   }
 };
 </script>
