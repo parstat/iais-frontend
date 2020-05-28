@@ -177,6 +177,51 @@ const routes = [
         meta: { authorize: [Role.Admin] }
       },
       {
+        path: "metadata/referential/gsim/standard",
+        name: "StatisticalStandardList",
+        component: () =>
+          import(
+            "../views/metadata/referential/statisticalStandard/StatisticalStandardList"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/standard/add",
+        name: "StatisticalStandardAdd",
+        component: () =>
+          import(
+            "../views/metadata/referential/statisticalStandard/StatisticalStandardAdd"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/standard/edit/:id",
+        name: "StatisticalStandardEdit",
+        component: () =>
+          import(
+            "../views/metadata/referential/statisticalStandard/StatisticalStandardEdit"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/standard/view/:id",
+        name: "StatisticalStandardView",
+        component: () =>
+          import(
+            "../views/metadata/referential/statisticalStandard/StatisticalStandardView"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/standard/delete/:id",
+        name: "StatisticalStandardDelete",
+        component: () =>
+          import(
+            "../views/metadata/referential/statisticalStandard/StatisticalStandardDelete"
+          ),
+        meta: { authorize: [Role.Admin] }
+      },
+      {
         path: "metadata/process",
         name: "Process",
         component: () => import("../views/metadata/process/BusinessProcesses"),

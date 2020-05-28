@@ -1,9 +1,9 @@
 <template>
-  <div class="row" v-if="legislativeReference">
+  <div class="row" v-if="statisticalStandard">
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Legislative reference</strong>
+          <strong>Statistical standard</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -12,27 +12,27 @@
               id="name"
               type="text"
               class="form-control"
-              v-model.trim="legislativeReference.name"
+              v-model.trim="statisticalStandard.name"
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="name">Description</label>
+            <label for="responsible">Description</label>
             <input
               id="description"
               type="text"
               class="form-control"
-              v-model.trim="legislativeReference.description"
+              v-model.trim="statisticalStandard.description"
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="acronym">Type</label>
+            <label for="responsible">Type</label>
             <input
               id="type"
               type="text"
               class="form-control"
-              v-model.trim="legislativeReference.type"
+              v-model.trim="statisticalStandard.type"
               disabled
             />
           </div>
@@ -42,7 +42,7 @@
               id="localId"
               type="text"
               class="form-control"
-              v-model.trim="legislativeReference.localId"
+              v-model.trim="statisticalStandard.localId"
               disabled
             />
           </div>
@@ -52,44 +52,42 @@
             color="primary"
             shape="square"
             size="sm"
-            @click.prevent="handleBack()"
+            @click.prevent="handleDelete()"
             :disabled="disabled"
-            >Back</CButton
+            >Delete</CButton
           >
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import { mapGetters } from "vuex";
 
 export default {
-  name: "LegislativeReferenceView",
+  name: "statisticalStandardDelete",
   data() {
     return {
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("legislativeReference", ["legislativeReference"])
+    ...mapGetters("statisticalStandard", ["statisticalStandard"])
   },
   methods: {
-    handleBack() {
+    handleDelete() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/referential/gsim/regulation");
+      this.$store.dispatch(
+        "statisticalStandard/delete",
+        this.$route.params.id
+      );
     }
   },
   created() {
-    this.$store.dispatch("leislativeReference/findById", this.$route.params.id);
+    this.$store.dispatch(
+      "statisticalStandard/findById",
+      this.$route.params.id
+    );
   }
 };
 </script>
-<style scoped>
-.form-control:disabled,
-.form-control[readonly] {
-  background-color: #ebedef;
-  opacity: 1;
-}
-</style>

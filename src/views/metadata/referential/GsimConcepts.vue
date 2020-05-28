@@ -60,6 +60,25 @@
         </div>
       </div>
     </div>
+
+     <div class="col-sm-6 col-md-4">
+      <div class="card">
+        <header class="card-header">
+          <CIcon name="cilPuzzle"></CIcon>
+          <span>Statistical standard</span>
+        </header>
+        <div class="card-body">
+          This section contains the list of statistical standards.
+          <p class="section-link">
+            <router-link tag="a" :to="{ name: 'StatisticalStandardList' }"
+              >Go to statistical standard section</router-link
+            >
+            <CIcon class="icon-link" name="cilArrowCircleRight"></CIcon>
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 

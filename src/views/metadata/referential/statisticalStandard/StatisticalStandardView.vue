@@ -1,9 +1,9 @@
 <template>
-  <div class="row" v-if="legislativeReference">
+  <div class="row" v-if="statisticalStandard">
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Legislative reference</strong>
+          <strong>Statistical standard</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -12,7 +12,7 @@
               id="name"
               type="text"
               class="form-control"
-              v-model.trim="legislativeReference.name"
+              v-model.trim="statisticalStandard.name"
               disabled
             />
           </div>
@@ -22,27 +22,27 @@
               id="description"
               type="text"
               class="form-control"
-              v-model.trim="legislativeReference.description"
+              v-model.trim="statisticalStandard.description"
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="acronym">Type</label>
+            <label for="type">Type</label>
             <input
               id="type"
               type="text"
               class="form-control"
-              v-model.trim="legislativeReference.type"
+              v-model.trim="statisticalStandard.type"
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="responsible">Local id</label>
+            <label for="localId">Local id</label>
             <input
               id="localId"
               type="text"
               class="form-control"
-              v-model.trim="legislativeReference.localId"
+              v-model.trim="statisticalStandard.localId"
               disabled
             />
           </div>
@@ -66,23 +66,23 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "LegislativeReferenceView",
+  name: "StatisticalStandardView",
   data() {
     return {
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("legislativeReference", ["legislativeReference"])
+    ...mapGetters("statisticalStandard", ["statisticalStandard"])
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/referential/gsim/regulation");
+      this.$router.push("/metadata/referential/gsim/standard");
     }
   },
   created() {
-    this.$store.dispatch("leislativeReference/findById", this.$route.params.id);
+    this.$store.dispatch("statisticalStandard/findById", this.$route.params.id);
   }
 };
 </script>

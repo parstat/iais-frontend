@@ -8,6 +8,7 @@ import { message } from "./modules/message";
 import { statisticalProgram } from "./modules/referential/statisticalProgram";
 import { agent } from "./modules/referential/agent";
 import { legislativeReference } from "./modules/referential/legislativeReference";
+import { statisticalStandard } from "./modules/referential/statisticalStandard";
 
 Vue.use(Vuex);
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     message,
     statisticalProgram,
     agent,
-    legislativeReference
+    legislativeReference,
+    statisticalStandard
   }
 });
