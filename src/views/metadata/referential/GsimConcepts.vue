@@ -10,9 +10,11 @@
             Something an enterprise does, or needs to do, in order to achieve
             its objectives.
           </span>
-          <p class="section-link section-link-disabled">
-            <span class="icon-span">Go to business functions section</span>
-            <chevron-right-icon />
+          <p class="section-link">
+            <router-link tag="a" :to="{ name: 'BusinessFunctionList' }">
+              <span class="icon-span">Go to business functions section</span>
+              <chevron-right-icon />
+            </router-link>
           </p>
         </div>
       </div>
@@ -69,6 +71,24 @@
             <router-link tag="a" :to="{ name: 'StatisticalStandardList' }"
               ><span class="icon-span"
                 >Go to statistical standard section&nbsp;</span
+              ><chevron-right-icon
+            /></router-link>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="card">
+        <header class="card-header">
+          <span>Business service</span>
+        </header>
+        <div class="card-body">
+          This section contains the list of business services (Software).
+          <p class="section-link">
+            <router-link tag="a" :to="{ name: 'BusinessServiceList' }"
+              ><span class="icon-span"
+                >Go to business service section&nbsp;</span
               ><chevron-right-icon
             /></router-link>
           </p>

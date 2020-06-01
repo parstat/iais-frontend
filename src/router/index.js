@@ -222,6 +222,97 @@ const routes = [
         meta: { authorize: [Role.Admin] }
       },
       {
+        path: "metadata/referential/gsim/function",
+        name: "BusinessFunctionList",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessFunction/BusinessFunctionList"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/function/add",
+        name: "BusinessFunctionAdd",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessFunction/BusinessFunctionAdd"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/function/edit/:id",
+        name: "BusinessFunctionEdit",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessFunction/BusinessFunctionEdit"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/function/view/:id",
+        name: "BusinessFunctionView",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessFunction/BusinessFunctionView"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/function/delete/:id",
+        name: "BusinessFunctionDelete",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessFunction/BusinessFunctionDelete"
+          ),
+        meta: { authorize: [Role.Admin] }
+      },
+
+      {
+        path: "metadata/referential/gsim/service",
+        name: "BusinessServiceList",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessService/BusinessServiceList"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/service/add",
+        name: "BusinessServiceAdd",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessService/BusinessServiceAdd"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/service/edit/:id",
+        name: "BusinessServiceEdit",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessService/BusinessServiceEdit"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/service/view/:id",
+        name: "BusinessServiceView",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessService/BusinessServiceView"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/service/delete/:id",
+        name: "BusinessServiceDelete",
+        component: () =>
+          import(
+            "../views/metadata/referential/businessService/BusinessServiceDelete"
+          ),
+        meta: { authorize: [Role.Admin] }
+      },
+      {
         path: "metadata/process",
         name: "Process",
         component: () => import("../views/metadata/process/BusinessProcesses"),

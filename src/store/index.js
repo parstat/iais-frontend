@@ -9,6 +9,8 @@ import { statisticalProgram } from "./modules/referential/statisticalProgram";
 import { agent } from "./modules/referential/agent";
 import { legislativeReference } from "./modules/referential/legislativeReference";
 import { statisticalStandard } from "./modules/referential/statisticalStandard";
+import { businessService } from "./modules/referential/businessService";
+import { businessFunction} from "./modules/referential/businessFunction";
 
 Vue.use(Vuex);
 
@@ -21,6 +23,8 @@ export default new Vuex.Store({
     statisticalProgram,
     agent,
     legislativeReference,
-    statisticalStandard
+    statisticalStandard,
+    businessFunction,
+    businessService
   }
 });
