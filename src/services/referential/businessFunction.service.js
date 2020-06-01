@@ -51,13 +51,12 @@ function save(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
-      version: formData.version ? formData.version : "",
-      localId: formData.localId
+      version: formData.version ? formData.version : ""
     };
 
     axiosIais
-      .post(
-        "close/referential/business/functions?language=en",
+      .put(
+        "close/referential/business/functions/" + formData.localId + "?language=en",
         qs.stringify(requestBody),
         config
       )
