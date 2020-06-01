@@ -83,7 +83,6 @@
 </template>
 <script>
 import { required } from "vuelidate/lib/validators";
-import { Standard } from "@/common";
 
 export default {
   name: "BusinessFunctionAdd",
