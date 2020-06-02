@@ -3,16 +3,16 @@
     <div class="col-12">
       <div class="card">
         <header class="card-header">
-          Statistical standard
+          Process Method
           <div class="card-header-actions">
             <router-link
               v-if="isAuthenticated"
               tag="a"
-              to="/metadata/referential/gsim/standard/add"
+              to="/metadata/referential/gsim/method/add"
               class="card-header-action"
             >
               <add-icon />
-              <span class="icon-span">New standard</span>
+              <span class="icon-span">New Method</span>
             </router-link>
           </div>
         </header>
@@ -24,33 +24,30 @@
                   <th scope="col">Id</th>
                   <th scope="col">Name</th>
                   <th scope="col">Description</th>
-                  <th scope="col">Type</th>
                   <th scope="col">Local id</th>
                   <th scope="col" colspan="2" width="2%"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr
-                  v-for="statisticalStandard in statisticalStandards"
-                  :key="statisticalStandard.id"
+                  v-for="processMethod in processMethods"
+                  :key="processMethod.id"
                 >
-                  <td>{{ statisticalStandard.id }}</td>
-                  <td>{{ statisticalStandard.name }}</td>
-                  <td v-if="statisticalStandard.description">
-                    {{ statisticalStandard.description }}
+                  <td>{{ processMethod.id }}</td>
+                  <td>{{ processMethod.name }}</td>
+                  <td v-if="processMethod.description">
+                    {{ processMethod.description }}
                   </td>
-                  <td v-else class="pl-4">&ndash;</td>
-                  <td>{{ statisticalStandard.type | capitalize }}</td>
                   <td>
-                    {{ statisticalStandard.localId }}
+                    {{ processMethod.localId }}
                   </td>
                   <template v-if="isAuthenticated">
                     <td>
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalStandardEdit',
-                          params: { id: statisticalStandard.id }
+                          name: 'ProcessMethodEdit',
+                          params: { id: processMethod.id }
                         }"
                       >
                         <edit-icon />
@@ -60,8 +57,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalStandardDelete',
-                          params: { id: statisticalStandard.id }
+                          name: 'ProcessMethodDelete',
+                          params: { id: processMethod.id }
                         }"
                       >
                         <delete-icon />
@@ -73,8 +70,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalStandardView',
-                          params: { id: statisticalStandard.id }
+                          name: 'processMethodView',
+                          params: { id: processMethod.id }
                         }"
                       >
                         <view-icon />
@@ -96,13 +93,13 @@ import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
 export default {
-  name: "StatisticalStandardList",
+  name: "ProcessMethodList",
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("statisticalStandard", ["statisticalStandards"])
+    ...mapGetters("processMethod", ["processMethods"])
   },
   created() {
-    this.$store.dispatch("statisticalStandard/findAll");
+    this.$store.dispatch("processMethod/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
   }
 };

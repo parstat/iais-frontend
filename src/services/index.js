@@ -5,3 +5,4 @@ export * from "./referential/legislativeReference.service";
 export * from "./referential/statisticalStandard.service";
 export * from "./referential/businessFunction.service";
 export * from "./referential/businessService.service";
+export * from "./referential/processMethod.service";

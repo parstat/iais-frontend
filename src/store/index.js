@@ -10,7 +10,8 @@ import { agent } from "./modules/referential/agent";
 import { legislativeReference } from "./modules/referential/legislativeReference";
 import { statisticalStandard } from "./modules/referential/statisticalStandard";
 import { businessService } from "./modules/referential/businessService";
-import { businessFunction} from "./modules/referential/businessFunction";
+import { businessFunction } from "./modules/referential/businessFunction";
+import { processMethod } from "./modules/referential/processMethod";
 
 Vue.use(Vuex);
 
@@ -25,6 +26,7 @@ export default new Vuex.Store({
     legislativeReference,
     statisticalStandard,
     businessFunction,
-    businessService
+    businessService,
+    processMethod
   }
 });

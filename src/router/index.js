@@ -312,6 +312,53 @@ const routes = [
           ),
         meta: { authorize: [Role.Admin] }
       },
+
+      {
+        path: "metadata/referential/gsim/method",
+        name: "ProcessMethodList",
+        component: () =>
+          import(
+            "../views/metadata/referential/processMethod/ProcessMethodList"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/method/add",
+        name: "ProcessMethodAdd",
+        component: () =>
+          import(
+            "../views/metadata/referential/processMethod/ProcessMethodAdd"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/method/edit/:id",
+        name: "ProcessMethodEdit",
+        component: () =>
+          import(
+            "../views/metadata/referential/processMethod/ProcessMethodEdit"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/referential/gsim/method/view/:id",
+        name: "ProcessMethodView",
+        component: () =>
+          import(
+            "../views/metadata/referential/processMethod/ProcessMethodView"
+          ),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/gsim/method/delete/:id",
+        name: "ProcessMethodDelete",
+        component: () =>
+          import(
+            "../views/metadata/referential/processMethod/ProcessMethodDelete"
+          ),
+        meta: { authorize: [Role.Admin] }
+      },
+      
       {
         path: "metadata/process",
         name: "Process",

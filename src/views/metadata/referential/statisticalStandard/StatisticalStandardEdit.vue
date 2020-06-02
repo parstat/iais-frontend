@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
-          <strong>statisticalStandard</strong>
+          <strong>Statistical Standard</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -19,7 +19,7 @@
             <span
               class="help-block"
               :class="{ show: $v.statisticalStandard.name.$error }"
-              >Please enter statisticalStandard name.</span
+              >Please enter statistical standard name.</span
             >
           </div>
           <div class="form-group">
@@ -31,7 +31,7 @@
               placeholder="statisticalStandard description"
               v-model.trim="statisticalStandard.description"
             />
-            <span class="help-block"> Please enter an statisticalStandard</span>
+            <span class="help-block"> Please enter an statistical standard description</span>
           </div>
           <div class="form-group">
             <label for="account">Type</label>
