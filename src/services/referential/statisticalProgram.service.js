@@ -65,6 +65,8 @@ function save(formData) {
       dateEnded: "2018-08-10T10:00:00"
     };
 
+    const legislativeReferences = formData.legislativeReferences;
+
     axiosIais
       .put(
         "close/referential/statistical/programs/" +
@@ -75,7 +77,13 @@ function save(formData) {
       )
       .then(
         response => {
-          //console.log(response.data);
+          //save legislative references
+          for (var legislativeReference of legislativeReferences) {
+            updateLegislativeReference({
+              id: response.data.id,
+              legislative: legislativeReference.id
+            });
+          }
           resolve(response.data);
         },
         error => {
@@ -103,6 +111,14 @@ function update(formData) {
       dateEnded: "2018-08-10T10:00:00"
     };
 
+    const agents = {
+      owner: formData.owner,
+      maintainer: formData.maintainer,
+      contact: formData.contact
+    };
+
+    const legislativeReferences = formData.legislativeReferences;
+
     axiosIais
       .patch(
         "close/referential/statistical/programs/" +
@@ -110,6 +126,53 @@ function update(formData) {
           "?language=en",
         qs.stringify(requestBody),
         config
+      )
+      .then(
+        response => {
+          const statisticalProgram = response.data;
+          //console.log(response.data);
+          if (agents.owner.id != statisticalProgram.owner.id) {
+            updateOwner({
+              id: response.data.id,
+              owner: agents.owner.id
+            });
+          }
+          if (agents.maintainer.id != statisticalProgram.maintainer.id) {
+            updateMaintainer({
+              id: response.data.id,
+              maintainer: agents.maintainer.id
+            });
+          }
+          if (agents.contact.id != statisticalProgram.contact.id) {
+            updateContact({
+              id: response.data.id,
+              contact: agents.contact.id
+            });
+          }
+          for (var legislativeReference of legislativeReferences) {
+            updateLegislativeReference({
+              id: response.data.id,
+              legislative: legislativeReference.id
+            });
+          }
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function updateLegislativeReference(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .put(
+        "close/referential/statistical/programs/" +
+          formData.id +
+          "/legislative/" +
+          formData.legislative +
+          "?language=en"
       )
       .then(
         response => {

@@ -5,7 +5,7 @@ import "vue-material-design-icons/styles.css";
 
 import ChevronRightBoxIcon from "icons/ArrowRightBold.vue";
 import AddIcon from "icons/Plus.vue";
-import EditIcon from "icons/Pencil.vue";
+import EditIcon from "icons/SquareEditOutline.vue";
 import DeleteIcon from "icons/TrashCanOutline.vue";
 import ViewIcon from "icons/Magnify.vue";
 import TextIcon from "icons/TextBoxOutline.vue";

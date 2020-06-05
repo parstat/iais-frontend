@@ -1,9 +1,10 @@
 <template>
   <div class="row" v-if="statisticalProgram">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
-          <strong>Statistical process</strong>
+          <edit-icon />
+          <strong class="icon-header">Statistical process</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -19,9 +20,8 @@
             <span
               class="help-block"
               :class="{ show: $v.statisticalProgram.localId.$error }"
+              >Please enter survey id.</span
             >
-              Please enter survey id.
-            </span>
           </div>
           <div class="form-group">
             <label for="name">Survey name</label>
@@ -36,9 +36,8 @@
             <span
               class="help-block"
               :class="{ show: $v.statisticalProgram.name.$error }"
+              >Please enter survey name.</span
             >
-              Please enter survey name.
-            </span>
           </div>
           <div class="form-group">
             <label for="acronym">Survey acronym</label>
@@ -53,9 +52,8 @@
             <span
               class="help-block"
               :class="{ show: $v.statisticalProgram.acronym.$error }"
+              >Please enter an acronym.</span
             >
-              Please enter an acronym.
-            </span>
           </div>
           <div class="form-group">
             <label for="description">Survey description</label>
@@ -72,10 +70,48 @@
             <span
               class="help-block"
               :class="{ show: $v.statisticalProgram.description.$error }"
+              >Please enter an description.</span
             >
-              Please enter an description.
-            </span>
           </div>
+        </div>
+        <div class="card-footer">
+          <CButton
+            color="primary"
+            shape="square"
+            size="sm"
+            style="margin-right:0.3rem"
+            @click.prevent="handleSubmit()"
+            :disabled="disabled"
+            >Update</CButton
+          >
+          <CButton
+            color="danger"
+            shape="square"
+            size="sm"
+            @click.prevent="handleReset()"
+            :disabled="disabled"
+            >Reset</CButton
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="card">
+        <header class="card-header">
+          <user-icon />
+          <strong class="icon-header">Agents</strong>
+          <div class="card-header-actions">
+            <router-link
+              tag="a"
+              to="/metadata/referential/gsim/agent/add"
+              class="card-header-action"
+            >
+              <add-icon />
+              <span class="icon-span">Add</span>
+            </router-link>
+          </div>
+        </header>
+        <div class="card-body">
           <div class="form-group" v-if="owners">
             <label for="description">Organization</label>
             <v-select
@@ -119,24 +155,36 @@
             >
           </div>
         </div>
-        <div class="card-footer">
-          <CButton
-            color="primary"
-            shape="square"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click.prevent="handleSubmit()"
-            :disabled="disabled"
-            >Update</CButton
-          >
-          <CButton
-            color="danger"
-            shape="square"
-            size="sm"
-            @click.prevent="handleReset()"
-            :disabled="disabled"
-            >Reset</CButton
-          >
+      </div>
+      <div class="card">
+        <header class="card-header">
+          <regulation-icon />
+          <strong class="icon-header">Legislative references</strong>
+          <div class="card-header-actions">
+            <router-link
+              tag="a"
+              to="/metadata/referential/gsim/regulation/add"
+              class="card-header-action"
+            >
+              <add-icon />
+              <span class="icon-span">Add</span>
+            </router-link>
+          </div>
+        </header>
+        <div class="card-body">
+          <div class="form-group" v-if="legislativeReferences">
+            <label for="description">Legislative references</label>
+            <v-select
+              label="name"
+              :options="legislativeReferences"
+              v-model="statisticalProgram.legislativeReferences"
+              placeholder="Select legislative references"
+              multiple
+            ></v-select>
+            <span class="help-block"
+              >Please select legislative references.</span
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -157,7 +205,8 @@ export default {
   },
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
-    ...mapGetters("agent", ["owners", "maintainers", "contacts"])
+    ...mapGetters("agent", ["owners", "maintainers", "contacts"]),
+    ...mapGetters("legislativeReference", ["legislativeReferences"])
   },
   validations: {
     statisticalProgram: {
@@ -195,21 +244,24 @@ export default {
           name: this.statisticalProgram.name,
           acronym: this.statisticalProgram.acronym,
           description: this.statisticalProgram.description,
-          owner: this.statisticalProgram.owner.id,
-          maintainer: this.statisticalProgram.maintainer.id,
-          contact: this.statisticalProgram.contact.id
+          owner: this.statisticalProgram.owner,
+          maintainer: this.statisticalProgram.maintainer,
+          contact: this.statisticalProgram.contact,
+          legislativeReferences: this.statisticalProgram.legislativeReferences
         };
         this.$store.dispatch("statisticalProgram/update", formData);
-        this.$store.dispatch("statisticalProgram/updateOwner", formData);
-        this.$store.dispatch("statisticalProgram/updateMaintainer", formData);
-        this.$store.dispatch("statisticalProgram/updateContact", formData);
         console.log(formData);
       }
     },
     handleReset() {
+      this.statisticalProgram.localId = "";
       this.statisticalProgram.name = "";
       this.statisticalProgram.acronym = "";
       this.statisticalProgram.description = "";
+      this.statisticalProgram.owner = null;
+      this.statisticalProgram.maintainer = null;
+      this.statisticalProgram.contact = null;
+      this.legislativeReferences = [];
       this.$v.$reset();
     }
   },
@@ -218,6 +270,7 @@ export default {
     this.$store.dispatch("agent/findByType", Agent.Organization);
     this.$store.dispatch("agent/findByType", Agent.Division);
     this.$store.dispatch("agent/findByType", Agent.Individual);
+    this.$store.dispatch("legislativeReference/findAll");
   }
 };
 </script>

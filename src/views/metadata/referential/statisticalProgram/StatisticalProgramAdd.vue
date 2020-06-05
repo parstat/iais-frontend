@@ -4,7 +4,7 @@
       <div class="card">
         <header class="card-header">
           <text-icon />
-          <strong class="icon-header">Description</strong>
+          <strong class="icon-header">Statistical process</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
@@ -91,6 +91,16 @@
         <header class="card-header">
           <user-icon />
           <strong class="icon-header">Agents</strong>
+          <div class="card-header-actions">
+            <router-link
+              tag="a"
+              to="/metadata/referential/gsim/agent/add"
+              class="card-header-action"
+            >
+              <add-icon />
+              <span class="icon-span">Add</span>
+            </router-link>
+          </div>
         </header>
         <div class="card-body">
           <div class="form-group" v-if="owners">
@@ -132,29 +142,37 @@
               >Please select a contact person.</span
             >
           </div>
-          <div class="form-mandatory">*Mandatory fields</div>
         </div>
       </div>
       <div class="card">
         <header class="card-header">
           <regulation-icon />
-          <strong class="icon-header">Legal references</strong>
+          <strong class="icon-header">Legislative references</strong>
+          <div class="card-header-actions">
+            <router-link
+              tag="a"
+              to="/metadata/referential/gsim/regulation/add"
+              class="card-header-action"
+            >
+              <add-icon />
+              <span class="icon-span">Add</span>
+            </router-link>
+          </div>
         </header>
         <div class="card-body">
-          <div class="form-group" v-if="owners">
-            <label for="description">Organization*</label>
+          <div class="form-group" v-if="legislativeReferences">
+            <label for="description">Legislative references</label>
             <v-select
               label="name"
-              :options="owners"
-              v-model="owner"
-              :class="{ 'is-invalid': $v.owner.$error }"
-              placeholder="Select an organization"
+              :options="legislativeReferences"
+              v-model="selectedReferences"
+              placeholder="Select legislative references"
+              multiple
             ></v-select>
-            <span class="help-block" :class="{ show: $v.owner.$error }"
-              >Please select an Organization.</span
+            <span class="help-block"
+              >Please select legislative references.</span
             >
           </div>
-          <div class="form-mandatory">*Mandatory fields</div>
         </div>
       </div>
     </div>
@@ -176,11 +194,13 @@ export default {
       owner: "",
       maintainer: "",
       contact: "",
+      selectedReferences: [],
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("agent", ["owners", "maintainers", "contacts"])
+    ...mapGetters("agent", ["owners", "maintainers", "contacts"]),
+    ...mapGetters("legislativeReference", ["legislativeReferences"])
   },
   validations: {
     localId: {
@@ -217,7 +237,8 @@ export default {
           description: this.description,
           owner: this.owner.id,
           maintainer: this.maintainer.id,
-          contact: this.contact.id
+          contact: this.contact.id,
+          legislativeReferences: this.selectedReferences
         };
         this.$store.dispatch("statisticalProgram/save", formData);
         console.log(formData);
@@ -231,6 +252,7 @@ export default {
       this.owner = "";
       this.maintainer = "";
       this.contact = "";
+      this.legislativeReferences = [];
       this.$v.$reset();
     }
   },
@@ -238,6 +260,7 @@ export default {
     this.$store.dispatch("agent/findByType", Agent.Organization);
     this.$store.dispatch("agent/findByType", Agent.Division);
     this.$store.dispatch("agent/findByType", Agent.Individual);
+    this.$store.dispatch("legislativeReference/findAll");
   }
 };
 </script>

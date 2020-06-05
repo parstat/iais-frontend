@@ -3,7 +3,8 @@
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Statistical process</strong>
+          <delete-icon />
+          <strong class="icon-header">Statistical process</strong>
         </header>
         <div class="card-body">
           <div class="form-group">
