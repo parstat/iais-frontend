@@ -67,19 +67,29 @@ const actions = {
     );
   },
   reloadCredentials({ commit }) {
-    const token = localStorage.getItem("token");
+    var token = localStorage.getItem("token");
     if (token) {
       //decode JWT token
-      var decoded = jwt.decode(token, { complete: true });
-      const user = decoded.payload;
-      console.log(user);
+      authService.authenticate().then(
+        data => {
+          if (data.status === 201) {
+            token = data.token; //replace expired token
+          }
+          var decoded = jwt.decode(token, { complete: true });
+          const user = decoded.payload;
+          console.log(user);
 
-      commit("AUTH_USER", {
-        token,
-        user
-      });
-
-      commit("SET_STATUS", AuthStatus.Logged);
+          commit("AUTH_USER", {
+            token,
+            user
+          });
+          commit("SET_STATUS", AuthStatus.Logged);
+        },
+        error => {
+          console.log(error);
+          commit("CLEAR_AUTH_DATA");
+        }
+      );
     }
   },
   register({ commit, dispatch }, authData) {
