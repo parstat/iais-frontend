@@ -1,4 +1,4 @@
-import { axiosIais } from "@/common";
+import { axiosIais } from "@/http";
 import qs from "querystring";
 
 export const agentService = {

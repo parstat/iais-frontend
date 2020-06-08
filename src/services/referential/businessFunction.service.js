@@ -1,4 +1,4 @@
-import { axiosIais } from "@/common";
+import { axiosIais } from "@/http";
 import qs from "querystring";
 
 export const businessFunctionService = {
@@ -56,7 +56,9 @@ function save(formData) {
 
     axiosIais
       .put(
-        "close/referential/business/functions/" + formData.localId + "?language=en",
+        "close/referential/business/functions/" +
+          formData.localId +
+          "?language=en",
         qs.stringify(requestBody),
         config
       )
@@ -89,9 +91,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "close/referential/business/functions/" +
-          formData.id +
-          "?language=en",
+        "close/referential/business/functions/" + formData.id + "?language=en",
         qs.stringify(requestBody),
         config
       )

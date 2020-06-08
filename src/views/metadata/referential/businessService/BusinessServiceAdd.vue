@@ -51,8 +51,7 @@
               placeholder="Local id"
               v-model.trim="localId"
             />
-            <span class="help-block">Please specify the local id.</span
-            >
+            <span class="help-block">Please specify the local id.</span>
           </div>
           <div class="form-mandatory">*Mandatory fields</div>
         </div>

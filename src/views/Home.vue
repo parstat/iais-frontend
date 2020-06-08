@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="c-app">
+  <div class="c-app">
     <app-sidebar></app-sidebar>
     <CWrapper>
       <app-toast></app-toast>

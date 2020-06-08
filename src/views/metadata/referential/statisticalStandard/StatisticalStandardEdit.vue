@@ -31,7 +31,9 @@
               placeholder="statisticalStandard description"
               v-model.trim="statisticalStandard.description"
             />
-            <span class="help-block"> Please enter an statistical standard description</span>
+            <span class="help-block">
+              Please enter an statistical standard description</span
+            >
           </div>
           <div class="form-group">
             <label for="account">Type</label>

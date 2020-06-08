@@ -31,7 +31,9 @@
               placeholder="processMethod description"
               v-model.trim="processMethod.description"
             />
-            <span class="help-block"> Please enter an process method description</span>
+            <span class="help-block">
+              Please enter an process method description</span
+            >
           </div>
           <div class="form-group">
             <label for="localId">Local id</label>

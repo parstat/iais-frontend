@@ -1,4 +1,4 @@
-import { axiosAuth } from "@/common";
+import { axiosAuth } from "@/http";
 import qs from "querystring";
 
 export const authService = {
@@ -45,7 +45,6 @@ function login({ username, password }) {
 
 function logout() {
   return new Promise((resolve, reject) => {
-
     const config = {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -68,8 +67,8 @@ function logout() {
         };
         reject(err);
       }
-    )
-  })
+    );
+  });
 }
 
 function register({ username, email, fullname, password }) {

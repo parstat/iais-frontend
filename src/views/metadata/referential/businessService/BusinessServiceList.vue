@@ -31,17 +31,17 @@
               <tbody>
                 <tr
                   v-for="businessService in businessServices"
-                    :key="businessService.id"
+                  :key="businessService.id"
                 >
                   <td>{{ businessService.id }}</td>
-                   <td>
+                  <td>
                     {{ businessService.localId }}
                   </td>
                   <td>{{ businessService.name }}</td>
                   <td v-if="businessService.description">
                     {{ businessService.description }}
                   </td>
-                 
+
                   <template v-if="isAuthenticated">
                     <td>
                       <router-link

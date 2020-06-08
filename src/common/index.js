@@ -3,5 +3,4 @@ export * from "./agent";
 export * from "./authStatus";
 export * from "./context";
 export * from "./regulation";
-export * from "./axiosApi";
 export * from "./standard";

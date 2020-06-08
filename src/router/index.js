@@ -358,7 +358,7 @@ const routes = [
           ),
         meta: { authorize: [Role.Admin] }
       },
-      
+
       {
         path: "metadata/process",
         name: "Process",

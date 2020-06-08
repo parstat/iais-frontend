@@ -125,14 +125,15 @@ const actions = {
         if (router.currentRoute.path != "/metadata") {
           router.push("/");
         }
-      }, 
+      },
       error => {
         console.log(error);
         commit("CLEAR_AUTH_DATA");
         if (router.currentRoute.path != "/metadata") {
           router.push("/");
         }
-      });
+      }
+    );
   }
 };
 const getters = {

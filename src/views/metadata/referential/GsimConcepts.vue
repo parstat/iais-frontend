@@ -43,18 +43,17 @@
       </div>
     </div>
 
-     <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-4">
       <div class="card">
         <header class="card-header">
           <span>Process methods</span>
         </header>
         <div class="card-body">
-          A specification of the technique which will be used to perform the work.
-          This section contains the list of process method.
+          A specification of the technique which will be used to perform the
+          work. This section contains the list of process method.
           <p class="section-link">
             <router-link tag="a" :to="{ name: 'ProcessMethodList' }"
-              ><span class="icon-span"
-                >Go to process method section&nbsp;</span
+              ><span class="icon-span">Go to process method section&nbsp;</span
               ><chevron-right-icon
             /></router-link>
           </p>

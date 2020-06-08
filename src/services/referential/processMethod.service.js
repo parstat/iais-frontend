@@ -1,4 +1,4 @@
-import { axiosIais } from "@/common";
+import { axiosIais } from "@/http";
 import qs from "querystring";
 
 export const processMethodService = {
@@ -25,18 +25,16 @@ function findAll() {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/referential/process/methods/" + id + "?language=en")
-      .then(
-        response => {
-          var data = response.data ? response.data : null;
-          console.log(data);
-          resolve(data);
-        },
-        error => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/process/methods/" + id + "?language=en").then(
+      response => {
+        var data = response.data ? response.data : null;
+        console.log(data);
+        resolve(data);
+      },
+      error => {
+        reject(error);
+      }
+    );
   });
 }
 
@@ -90,9 +88,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "close/referential/process/methods/" +
-          formData.id +
-          "?language=en",
+        "close/referential/process/methods/" + formData.id + "?language=en",
         qs.stringify(requestBody),
         config
       )

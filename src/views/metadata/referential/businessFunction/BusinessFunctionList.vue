@@ -12,7 +12,9 @@
               class="card-header-action"
             >
               <add-icon />
-              <span class="icon-span">New business function (GSBPM sub-phase)</span>
+              <span class="icon-span"
+                >New business function (GSBPM sub-phase)</span
+              >
             </router-link>
           </div>
         </header>
@@ -32,18 +34,18 @@
               <tbody>
                 <tr
                   v-for="businessFunction in businessFunctions"
-                    :key="businessFunction.id"
+                  :key="businessFunction.id"
                 >
                   <td>{{ businessFunction.id }}</td>
-                  <td> {{ businessFunction.phase}} </td>
-                   <td>
+                  <td>{{ businessFunction.phase }}</td>
+                  <td>
                     {{ businessFunction.localId }}
                   </td>
                   <td>{{ businessFunction.name }}</td>
                   <td v-if="businessFunction.description">
                     {{ businessFunction.description }}
                   </td>
-                 
+
                   <template v-if="isAuthenticated">
                     <td>
                       <router-link

@@ -29,7 +29,9 @@
               placeholder="Business function description"
               v-model.trim="description"
             />
-            <span class="help-block" :class="{ show: $v.name.$error }">Please enter a description</span>
+            <span class="help-block" :class="{ show: $v.name.$error }"
+              >Please enter a description</span
+            >
           </div>
           <div class="form-group">
             <label for="version">Version</label>

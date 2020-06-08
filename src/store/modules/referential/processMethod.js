@@ -82,7 +82,7 @@ const actions = {
 };
 
 const getters = {
-    processMethods: state => {
+  processMethods: state => {
     return state.processMethods;
   },
   processMethod: state => {
