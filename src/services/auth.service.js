@@ -3,6 +3,7 @@ import qs from "querystring";
 
 export const authService = {
   login,
+  logout,
   register
 };
 
@@ -40,6 +41,35 @@ function login({ username, password }) {
       }
     );
   });
+}
+
+function logout() {
+  return new Promise((resolve, reject) => {
+
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    axiosAuth.post("/signout", config).then(
+      response => {
+        //console.log(response);
+        const data = {
+          status: response.status
+        };
+        resolve(data);
+      },
+      error => {
+        console.log(error.response.data.code);
+        const err = {
+          code: error.response.status,
+          message: error.response.data.code
+        };
+        reject(err);
+      }
+    )
+  })
 }
 
 function register({ username, email, fullname, password }) {

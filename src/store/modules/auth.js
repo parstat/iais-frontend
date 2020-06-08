@@ -27,6 +27,7 @@ const mutations = {
     state.token = null;
     state.user = null;
     state.role = "";
+    state.errorMsg = "";
 
     //remove auth data from browser storage
     localStorage.removeItem("token");
@@ -117,10 +118,21 @@ const actions = {
     );
   },
   logout({ commit }) {
-    commit("CLEAR_AUTH_DATA");
-    if (router.currentRoute.path != "/metadata") {
-      router.push("/");
-    }
+    authService.logout().then(
+      data => {
+        console.log(data);
+        commit("CLEAR_AUTH_DATA");
+        if (router.currentRoute.path != "/metadata") {
+          router.push("/");
+        }
+      }, 
+      error => {
+        console.log(error);
+        commit("CLEAR_AUTH_DATA");
+        if (router.currentRoute.path != "/metadata") {
+          router.push("/");
+        }
+      });
   }
 };
 const getters = {

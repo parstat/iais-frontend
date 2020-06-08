@@ -10,6 +10,21 @@ const axiosIais = axios.create({
 });
 
 //request interceptor
+axiosAuth.interceptors.request.use(
+  config => {
+    store.dispatch("coreui/loading", true);
+    const token = store.getters["auth/token"];
+    if (token && !("jwt-auth" in config.headers)) {
+      config.headers["jwt-auth"] = token;
+    }
+    return config;
+  },
+  error => {
+    Promise.reject(error);
+  }
+);
+
+//request interceptor
 axiosIais.interceptors.request.use(
   config => {
     store.dispatch("coreui/loading", true);
