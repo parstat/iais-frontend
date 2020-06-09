@@ -176,7 +176,7 @@
           </div>
           <div
             class="card-slot"
-            v-for="legislativeReference of statisticalProgram.legislativeReferences"
+            v-for="legislativeReference of selectedReferences"
             :key="legislativeReference.id"
           >
             <p class="heading">{{ legislativeReference.name }}</p>
