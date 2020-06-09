@@ -1,7 +1,11 @@
 export const Regulation = {
-  Regulation: "REGULATION",
-  Law: "LAW",
+  Amendment: "AMENDMENT",
+  Convention: "CONVENTION",
   Code: "CODE",
   GovernmentalDecision: "GOVERNMENTAL_DECISION",
-  Amendment: "AMENDMENT"
+  Law: "LAW",
+  Protocol: "PROTOCOL",
+  Recommendation: "RECOMMENDATION",
+  Regulation: "REGULATION",
+  Resolution: "RESOLUTION"
 };

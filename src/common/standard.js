@@ -5,5 +5,7 @@ export const Standard = {
   Methodologies: "METHODOLOGIES",
   Procedures: "PROCEDURES",
   Recommendations: "RECOMMENDATIONS",
+  Standards: "STANDARDS",
+  Protocols: "PROTOCOLS",
   Framework: "FRAMEWORK"
 };

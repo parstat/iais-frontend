@@ -2,10 +2,40 @@ import { axiosAuth } from "@/http";
 import qs from "querystring";
 
 export const authService = {
+  authenticate,
   login,
   logout,
   register
 };
+
+function authenticate() {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    axiosAuth.post("/authenticate", config).then(
+      response => {
+        //console.log(response);
+        const data = {
+          token: response.headers["jwt-auth"],
+          status: response.status
+        };
+        resolve(data);
+      },
+      error => {
+        console.log(error.response.data.code);
+        const err = {
+          code: error.response.status,
+          message: error.response.data.code
+        };
+        reject(err);
+      }
+    );
+  });
+}
 
 function login({ username, password }) {
   return new Promise((resolve, reject) => {
