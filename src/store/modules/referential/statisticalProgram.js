@@ -3,8 +3,7 @@ import { statisticalProgramService } from "@/services";
 
 const state = {
   statisticalPrograms: [],
-  statisticalProgram: null,
-  existingLegislativeReferences: []
+  statisticalProgram: null
 };
 
 const mutations = {
@@ -13,7 +12,6 @@ const mutations = {
   },
   SET_STATISTICAL_PROGRAM(state, statisticalProgram) {
     state.statisticalProgram = statisticalProgram;
-    state.existingLegislativeReferences = statisticalProgram.legislativeReferences;
   }
 };
 
@@ -113,6 +111,17 @@ const actions = {
         console.log(error);
       }
     );
+  },
+
+  addLegislativeReference({ commit }, formData) {
+    statisticalProgramService.addLegislativeReference(formData).then(
+      data => {
+        commit("SET_STATISTICAL_PROGRAM", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 
@@ -122,9 +131,6 @@ const getters = {
   },
   statisticalProgram: state => {
     return state.statisticalProgram;
-  },
-  existingLegislativeReferences: state => {
-    return state.existingLegislativeReferences;
   }
 };
 

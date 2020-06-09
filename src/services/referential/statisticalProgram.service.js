@@ -6,7 +6,7 @@ export const statisticalProgramService = {
   findById,
   save,
   update,
-  updateLegislativeReference,
+  addLegislativeReference,
   updateOwner,
   updateMaintainer,
   updateContact,
@@ -81,7 +81,7 @@ function save(formData) {
         response => {
           //save legislative references
           for (var legislativeReference of legislativeReferences) {
-            updateLegislativeReference({
+            addLegislativeReference({
               id: response.data.id,
               legislative: legislativeReference.id
             });
@@ -175,7 +175,7 @@ function update(formData) {
           }
 
           for (var l = 0; l < updatedReferences.length; l++) {
-            updateLegislativeReference({
+            addLegislativeReference({
               id: statisticalProgram.id,
               legislative: updatedReferences[l].id
             });
@@ -190,7 +190,7 @@ function update(formData) {
   });
 }
 
-function updateLegislativeReference(formData) {
+function addLegislativeReference(formData) {
   return new Promise((resolve, reject) => {
     axiosIais
       .put(
