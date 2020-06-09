@@ -182,6 +182,7 @@
               v-model="statisticalProgram.legislativeReferences"
               placeholder="Select legislative references"
               multiple
+              @input="updateReference"
             ></v-select>
             <span class="help-block"
               >Please select legislative references.</span
@@ -274,6 +275,9 @@ export default {
       this.statisticalProgram.contact = null;
       this.legislativeReferences = [];
       this.$v.$reset();
+    },
+    updateReference(legislativeReferences) {
+      console.log(legislativeReferences.length);
     }
   },
   created() {
