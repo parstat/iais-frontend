@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
 
 export default {
@@ -77,6 +78,9 @@ export default {
     return {
       disabled: false
     };
+  },
+  computed: {
+    ...mapGetters("businessService", ["businessService"])
   },
   validations: {
     businessService: {

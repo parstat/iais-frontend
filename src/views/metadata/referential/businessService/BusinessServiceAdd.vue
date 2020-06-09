@@ -108,7 +108,7 @@ export default {
           version: this.version,
           localId: this.localId
         };
-        this.$store.dispatch("businesService/save", formData);
+        this.$store.dispatch("businessService/save", formData);
         console.log(formData);
       }
     },

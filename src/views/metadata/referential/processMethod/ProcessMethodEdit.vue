@@ -71,10 +71,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
 
 export default {
   name: "ProcessMethodEdit",
+  computed: {
+    ...mapGetters("processMethod", ["processMethod"])
+  },
   data() {
     return {
       disabled: false
@@ -106,8 +110,6 @@ export default {
     handleReset() {
       this.processMethod.name = "";
       this.processMethod.description = "";
-      this.processMethod.type = "";
-      this.processMethod.link = "";
       this.processMethod.version = "";
       this.processMethod.localId = "";
       this.$v.$reset();

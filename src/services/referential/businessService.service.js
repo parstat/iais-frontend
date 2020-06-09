@@ -49,13 +49,14 @@ function save(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
-      version: formData.version ? formData.version : "",
-      localId: formData.localId
+      version: formData.version ? formData.version : ""
     };
 
     axiosIais
-      .post(
-        "close/referential/business/services?language=en",
+      .put(
+        "close/referential/business/services/" +
+          formData.localId +
+          "?language=en",
         qs.stringify(requestBody),
         config
       )
