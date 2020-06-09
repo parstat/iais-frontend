@@ -17,8 +17,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="name">Description</label>
-            <input
+            <label for="description">Description</label>
+            <textarea
+              rows="5"
               id="description"
               type="text"
               class="form-control"
@@ -26,27 +27,27 @@
               disabled
             />
           </div>
+          <div class="form-group">
+            <label for="localId">Local id</label>
+            <input
+              id="localId"
+              type="text"
+              class="form-control"
+              v-model.trim="processMethod.localId"
+              disabled
+            />
+          </div>
         </div>
-        <div class="form-group">
-          <label for="localId">Local id</label>
-          <input
-            id="localId"
-            type="text"
-            class="form-control"
-            v-model.trim="processMethod.localId"
-            disabled
-          />
+        <div class="card-footer">
+          <CButton
+            color="primary"
+            shape="square"
+            size="sm"
+            @click.prevent="handleBack()"
+            :disabled="disabled"
+            >Back</CButton
+          >
         </div>
-      </div>
-      <div class="card-footer">
-        <CButton
-          color="primary"
-          shape="square"
-          size="sm"
-          @click.prevent="handleBack()"
-          :disabled="disabled"
-          >Back</CButton
-        >
       </div>
     </div>
   </div>
