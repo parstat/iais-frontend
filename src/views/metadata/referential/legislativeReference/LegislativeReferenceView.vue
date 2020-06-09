@@ -83,7 +83,10 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("leislativeReference/findById", this.$route.params.id);
+    this.$store.dispatch(
+      "legislativeReference/findById",
+      this.$route.params.id
+    );
   }
 };
 </script>
