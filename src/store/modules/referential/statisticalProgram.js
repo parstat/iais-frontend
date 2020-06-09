@@ -3,7 +3,8 @@ import { statisticalProgramService } from "@/services";
 
 const state = {
   statisticalPrograms: [],
-  statisticalProgram: null
+  statisticalProgram: null,
+  existingLegislativeReferences: []
 };
 
 const mutations = {
@@ -12,6 +13,7 @@ const mutations = {
   },
   SET_STATISTICAL_PROGRAM(state, statisticalProgram) {
     state.statisticalProgram = statisticalProgram;
+    state.existingLegislativeReferences = statisticalProgram.legislativeReferences;
   }
 };
 
@@ -120,6 +122,9 @@ const getters = {
   },
   statisticalProgram: state => {
     return state.statisticalProgram;
+  },
+  existingLegislativeReferences: state => {
+    return state.existingLegislativeReferences;
   }
 };
 

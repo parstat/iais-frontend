@@ -178,21 +178,23 @@
             <label for="description">Legislative references</label>
             <v-select
               label="name"
+              @search="searchLegislativeReference"
               :options="legislativeReferences"
               v-model="statisticalProgram.legislativeReferences"
               placeholder="Select legislative references"
               multiple
-              @input="updateReference"
+              @input="addLegislativeReference"
             ></v-select>
             <span class="help-block"
               >Please select legislative references.</span
             >
           </div>
+          
           <div
             class="card-slot"
             v-for="legislativeReference of statisticalProgram.legislativeReferences"
             :key="legislativeReference.id"
-          >
+          >      
             <p class="heading">
               {{ legislativeReference.name }}
               <router-link
@@ -275,14 +277,15 @@ export default {
 
   data() {
     return {
-      disabled: false
+      disabled: false,
+      legislativeReferences: []
     };
   },
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("agent", ["owners", "maintainers", "contacts"]),
-    ...mapGetters("legislativeReference", ["legislativeReferences"]),
-    ...mapGetters("statisticalStandard", ["statisticalStandards"])
+    ...mapGetters("statisticalStandard", ["statisticalStandards"]),
+    ...mapGetters("existingLegislativeReferences", ["existingLegislativeReferences"])   
   },
   validations: {
     statisticalProgram: {
@@ -323,7 +326,6 @@ export default {
           owner: this.statisticalProgram.owner,
           maintainer: this.statisticalProgram.maintainer,
           contact: this.statisticalProgram.contact,
-          legislativeReferences: this.statisticalProgram.legislativeReferences,
           statisticalStandards: this.statisticalProgram.statisticalStandards
         };
         this.$store.dispatch("statisticalProgram/update", formData);
@@ -342,8 +344,16 @@ export default {
       this.statisticalStandards = [];
       this.$v.$reset();
     },
-    updateReference(legislativeReferences) {
-      console.log(legislativeReferences.length);
+    searchLegislativeReference(search) {
+          fetch(
+            `http://iais.francecentral.cloudapp.azure.com:8080/api/v1/referential/legislative/references?name=${escape(search)}`
+          ).then(res => {
+            res.json().then(json => (this.legislativeReferences = json));
+          });
+    },
+    addLegislativeReference(selectedLegislativeReferences) {
+      console.log(this.existingLegislativeReference);
+      console.log(selectedLegislativeReferences);
     }
   },
   created() {
