@@ -208,6 +208,59 @@
           </div>
         </div>
       </div>
+
+
+      <div class="card">
+        <header class="card-header">
+          <regulation-icon />
+          <strong class="icon-header">Statistical Standard</strong>
+          <div class="card-header-actions">
+            <router-link
+              tag="a"
+              to="/metadata/referential/gsim/standard/add"
+              class="card-header-action"
+            >
+              <add-icon />
+              <span class="icon-span">Add</span>
+            </router-link>
+          </div>
+        </header>
+        <div class="card-body">
+          <div class="form-group" v-if="statisticalStandards">
+            <label for="statisticalStandard">Statistical Standard</label>
+            <v-select
+              label="name"
+              :options="statisticalStandards"
+              v-model="statisticalProgram.statisticalStandards"
+              placeholder="Select statistical standards"
+              multiple
+            ></v-select>
+            <span class="help-block"
+              >Please select statistical standards.</span
+            >
+          </div>
+          <div
+            class="card-slot"
+            v-for="statisticalStandard of statisticalProgram.statisticalStandards"
+            :key="statisticalStandard.id"
+          >
+            <p class="heading">
+              {{ statisticalStandard.name }}
+              <router-link
+                tag="a"
+                :to="{
+                  name: 'StatisticalStandardView',
+                  params: { id: statisticalStandard.id }
+                }"
+              >
+                <view-icon />
+              </router-link>
+            </p>
+            <p class="card-text">{{ statisticalStandard.description }}</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -227,7 +280,8 @@ export default {
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("agent", ["owners", "maintainers", "contacts"]),
-    ...mapGetters("legislativeReference", ["legislativeReferences"])
+    ...mapGetters("legislativeReference", ["legislativeReferences"]),
+    ...mapGetters("statisticalStandard", ["statisticalStandards"])
   },
   validations: {
     statisticalProgram: {
@@ -268,7 +322,8 @@ export default {
           owner: this.statisticalProgram.owner,
           maintainer: this.statisticalProgram.maintainer,
           contact: this.statisticalProgram.contact,
-          legislativeReferences: this.statisticalProgram.legislativeReferences
+          legislativeReferences: this.statisticalProgram.legislativeReferences,
+          statisticalStandards: this.statisticalProgram.statisticalStandards
         };
         this.$store.dispatch("statisticalProgram/update", formData);
         console.log(formData);
@@ -283,6 +338,7 @@ export default {
       this.statisticalProgram.maintainer = null;
       this.statisticalProgram.contact = null;
       this.legislativeReferences = [];
+      this.statisticalStandards = [];
       this.$v.$reset();
     }
   },
@@ -292,6 +348,7 @@ export default {
     this.$store.dispatch("agent/findByType", Agent.Division);
     this.$store.dispatch("agent/findByType", Agent.Individual);
     this.$store.dispatch("legislativeReference/findAll");
+    this.$store.dispatch("statisticalStandard/findAll");
   }
 };
 </script>
