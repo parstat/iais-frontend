@@ -24,7 +24,8 @@
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <input
+            <textarea
+              rows="5"
               id="description"
               type="text"
               class="form-control"
@@ -69,10 +70,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
 
 export default {
   name: "BusinessFunctionEdit",
+  computed: {
+    ...mapGetters("businessFunction", ["businessFunction"])
+  },
   data() {
     return {
       disabled: false

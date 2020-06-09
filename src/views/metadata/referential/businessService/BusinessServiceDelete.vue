@@ -17,8 +17,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="responsible">Description</label>
-            <input
+            <label for="description">Description</label>
+            <textarea
+              rows="5"
               id="description"
               type="text"
               class="form-control"
@@ -27,7 +28,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="responsible">Local id</label>
+            <label for="localid">Local id</label>
             <input
               id="localId"
               type="text"

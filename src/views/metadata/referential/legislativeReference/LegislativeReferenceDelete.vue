@@ -18,7 +18,8 @@
           </div>
           <div class="form-group">
             <label for="responsible">Description</label>
-            <input
+            <textarea
+              rows="5"
               id="description"
               type="text"
               class="form-control"

@@ -17,8 +17,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="name">Description</label>
-            <input
+            <label for="description">Description</label>
+            <textarea
+              rows="5"
               id="description"
               type="text"
               class="form-control"
