@@ -51,7 +51,8 @@
           </div>
           <div class="form-group">
             <label for="description">Survey description*</label>
-            <input
+            <textarea
+              rows="5"
               id="description"
               type="text"
               class="form-control"
@@ -172,6 +173,15 @@
             <span class="help-block"
               >Please select legislative references.</span
             >
+          </div>
+          <div
+            class="card-slot"
+            v-for="legislativeReference of statisticalProgram.legislativeReferences"
+            :key="legislativeReference.id"
+          >
+            <p class="heading">{{ legislativeReference.name }}</p>
+            <p>{{ legislativeReference.description }}</p>
+            <p>{{ legislativeReference.link }}</p>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@
         </header>
         <div class="card-body">
           <div class="form-group">
-            <label for="localId">Local Id</label>
+            <label for="localId">Survey Id*</label>
             <input
               id="localId"
               type="text"
@@ -24,7 +24,7 @@
             >
           </div>
           <div class="form-group">
-            <label for="name">Survey name</label>
+            <label for="name">Survey name*</label>
             <input
               id="name"
               type="text"
@@ -40,7 +40,7 @@
             >
           </div>
           <div class="form-group">
-            <label for="acronym">Survey acronym</label>
+            <label for="acronym">Survey acronym*</label>
             <input
               id="acronym"
               type="text"
@@ -56,8 +56,9 @@
             >
           </div>
           <div class="form-group">
-            <label for="description">Survey description</label>
-            <input
+            <label for="description">Survey description*</label>
+            <textarea
+              rows="5"
               id="description"
               type="text"
               class="form-control"
@@ -73,6 +74,7 @@
               >Please enter an description.</span
             >
           </div>
+          <div class="form-mandatory">*Mandatory fields</div>
         </div>
         <div class="card-footer">
           <CButton
@@ -113,7 +115,7 @@
         </header>
         <div class="card-body">
           <div class="form-group" v-if="owners">
-            <label for="description">Organization</label>
+            <label for="description">Organization*</label>
             <v-select
               label="name"
               :options="owners"
@@ -127,7 +129,7 @@
             >
           </div>
           <div class="form-group" v-if="maintainers">
-            <label for="description">Division</label>
+            <label for="description">Division*</label>
             <v-select
               label="name"
               :options="maintainers"
@@ -141,7 +143,7 @@
             >
           </div>
           <div class="form-group" v-if="contacts">
-            <label for="description">Contact person</label>
+            <label for="description">Contact person*</label>
             <v-select
               label="name"
               :options="contacts"
@@ -184,6 +186,15 @@
             <span class="help-block"
               >Please select legislative references.</span
             >
+          </div>
+          <div
+            class="card-slot"
+            v-for="legislativeReference of statisticalProgram.legislativeReferences"
+            :key="legislativeReference.id"
+          >
+            <p class="heading">{{ legislativeReference.name }}</p>
+            <p>{{ legislativeReference.description }}</p>
+            <p>{{ legislativeReference.link }}</p>
           </div>
         </div>
       </div>
