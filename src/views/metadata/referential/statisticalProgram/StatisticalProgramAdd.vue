@@ -179,9 +179,19 @@
             v-for="legislativeReference of selectedReferences"
             :key="legislativeReference.id"
           >
-            <p class="heading">{{ legislativeReference.name }}</p>
-            <p>{{ legislativeReference.description }}</p>
-            <p>{{ legislativeReference.link }}</p>
+            <p class="heading">
+              {{ legislativeReference.name }}
+              <router-link
+                tag="a"
+                :to="{
+                  name: 'LegislativeReferenceView',
+                  params: { id: legislativeReference.id }
+                }"
+              >
+                <view-icon />
+              </router-link>
+            </p>
+            <p class="card-text">{{ legislativeReference.description }}</p>
           </div>
         </div>
       </div>

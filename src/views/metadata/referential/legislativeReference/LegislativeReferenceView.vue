@@ -18,7 +18,8 @@
           </div>
           <div class="form-group">
             <label for="name">Description</label>
-            <input
+            <textarea
+              rows="5"
               id="description"
               type="text"
               class="form-control"
@@ -82,7 +83,10 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("leislativeReference/findById", this.$route.params.id);
+    this.$store.dispatch(
+      "legislativeReference/findById",
+      this.$route.params.id
+    );
   }
 };
 </script>

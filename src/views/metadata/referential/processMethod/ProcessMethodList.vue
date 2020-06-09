@@ -70,7 +70,7 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'processMethodView',
+                          name: 'ProcessMethodView',
                           params: { id: processMethod.id }
                         }"
                       >

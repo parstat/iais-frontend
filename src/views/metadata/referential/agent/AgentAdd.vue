@@ -22,7 +22,8 @@
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <input
+            <textarea
+              rows="5"
               id="description"
               type="text"
               class="form-control"
@@ -32,7 +33,7 @@
             <span class="help-block">Please enter a description</span>
           </div>
           <div class="form-group">
-            <label for="account">Type*</label>
+            <label for="type">Type*</label>
             <v-select
               label="type"
               :options="types"
