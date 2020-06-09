@@ -6,6 +6,7 @@ export const legislativeReferenceService = {
   findById,
   save,
   update,
+  findByName,
   delete: _delete
 };
 
@@ -20,6 +21,24 @@ function findAll() {
         reject(error);
       }
     );
+  });
+}
+
+function findByName(search) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .get(
+        "/referential/legislative/references/?name=" + search + "&language=en"
+      )
+      .then(
+        response => {
+          console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
   });
 }
 

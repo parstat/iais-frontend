@@ -271,14 +271,14 @@ export default {
 
   data() {
     return {
-      disabled: false,
-      legislativeReferences: []
+      disabled: false
     };
   },
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("agent", ["owners", "maintainers", "contacts"]),
-    ...mapGetters("statisticalStandard", ["statisticalStandards"])
+    ...mapGetters("statisticalStandard", ["statisticalStandards"]),
+    ...mapGetters("legislativeReference", ["legislativeReferences"])
   },
   validations: {
     statisticalProgram: {
@@ -337,15 +337,13 @@ export default {
       this.statisticalStandards = [];
       this.$v.$reset();
     },
+
     searchLegislativeReference(search) {
-      fetch(
-        `http://iais.francecentral.cloudapp.azure.com:8080/api/v1/referential/legislative/references?name=${escape(
-          search
-        )}`
-      ).then(res => {
-        res.json().then(json => (this.legislativeReferences = json));
-      });
+      if (search.length > 2) {
+        this.$store.dispatch("legislativeReference/findByName", search);
+      }
     },
+
     addLegislativeReference(selectedLegislativeReference) {
       const formData = {
         id: this.statisticalProgram.id,
@@ -362,7 +360,7 @@ export default {
     this.$store.dispatch("agent/findByType", Agent.Organization);
     this.$store.dispatch("agent/findByType", Agent.Division);
     this.$store.dispatch("agent/findByType", Agent.Individual);
-    this.$store.dispatch("legislativeReference/findAll");
+    //this.$store.dispatch("legislativeReference/findAll");
     this.$store.dispatch("statisticalStandard/findAll");
   }
 };

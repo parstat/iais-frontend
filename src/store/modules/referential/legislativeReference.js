@@ -27,6 +27,17 @@ const actions = {
       }
     );
   },
+  findByName({ commit }, search) {
+    legislativeReferenceService.findByName(search).then(
+      data => {
+        commit("SET_LEGISLATIVE_REFERENCES", data);
+        commit("SET_LEGISLATIVE_REFERENCE", null); //clear legislativeReference
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
   findById({ commit }, id) {
     legislativeReferenceService.findById(id).then(
       data => {
