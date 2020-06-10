@@ -3,39 +3,20 @@
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Business function (GSBPM sub-phase)</strong>
+          <strong>{{ businessFunction.name }}</strong>
         </header>
         <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              v-model.trim="businessFunction.name"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Description:</strong></span>
           </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              v-model.trim="businessFunction.description"
-              disabled
-            />
+          <div class="card-slot">
+            <span>{{ businessFunction.description }}</span>
           </div>
-          <div class="form-group">
-            <label for="localId">Sub-phase number</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              v-model.trim="businessFunction.localId"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Sub-phase number:</strong></span>
+          </div>
+          <div class="card-slot">
+            <span>{{ businessFunction.localId }}</span>
           </div>
         </div>
         <div class="card-footer">

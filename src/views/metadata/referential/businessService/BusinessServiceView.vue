@@ -3,39 +3,20 @@
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Business Service (Software)</strong>
+          <strong>{{ businessService.name }}</strong>
         </header>
         <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              v-model.trim="businessService.name"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Description:</strong></span>
           </div>
-          <div class="form-group">
-            <label for="name">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              v-model.trim="businessService.description"
-              disabled
-            />
+          <div class="card-slot">
+            <span>{{ businessService.description }}</span>
           </div>
-          <div class="form-group">
-            <label for="localId">Locla id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              v-model.trim="businessService.localId"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Locla id: </strong></span>
+          </div>
+          <div class="card-slot">
+            <span>{{ businessService.localId }}</span>
           </div>
         </div>
         <div class="card-footer">

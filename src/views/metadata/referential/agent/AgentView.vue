@@ -3,49 +3,26 @@
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Agent</strong>
+          <strong>{{ agent.name }}</strong>
         </header>
         <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              v-model.trim="agent.name"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Description:</strong></span>
           </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              v-model.trim="agent.description"
-              disabled
-            />
+          <div class="card-slot">
+            <span>{{ agent.description }}</span>
           </div>
-          <div class="form-group">
-            <label for="acronym">Type</label>
-            <input
-              id="type"
-              type="text"
-              class="form-control"
-              v-model.trim="agent.type"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Type: </strong></span>
           </div>
-          <div class="form-group">
-            <label for="localId">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              v-model.trim="agent.localId"
-              disabled
-            />
+          <div class="card-slot">
+            <span>{{ agent.type }}</span>
+          </div>
+          <div class="card-group">
+            <span><strong>Local id</strong></span>
+          </div>
+          <div class="card-slot">
+            <span>{{ agent.localId }}</span>
           </div>
         </div>
         <div class="card-footer">
