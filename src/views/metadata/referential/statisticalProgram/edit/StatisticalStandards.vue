@@ -20,9 +20,9 @@
         <v-select
           label="name"
           :options="statisticalStandards"
-          v-model="statisticalProgram.statisticalStandards"
           placeholder="Select statistical standards"
-          multiple
+          @search="searchStatisticalStandard"
+          @input="addStatisticalStandard"
         ></v-select>
         <span class="help-block">Please select statistical standards.</span>
       </div>
@@ -42,6 +42,9 @@
           >
             <view-icon />
           </router-link>
+          <span v-on:click="removeStatisticalStandard(statisticalStandard)">
+            <delete-icon />
+          </span>
         </p>
         <p class="card-text">{{ statisticalStandard.description }}</p>
       </div>
@@ -63,8 +66,35 @@ export default {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("statisticalStandard", ["statisticalStandards"])
   },
+  methods: {
+    searchStatisticalStandard(search) {
+      if (search.length > 0) {
+        this.$store.dispatch("statisticalStandard/findByName", search);
+      }
+    },
+    addStatisticalStandard(selectedStatisticalStandard) {
+      const formData = {
+        id: this.statisticalProgram.id,
+        standard: selectedStatisticalStandard.id
+      };
+      this.$store.dispatch(
+        "statisticalProgram/addStatisticalStandard",
+        formData
+      );
+    },
+    removeStatisticalStandard(selectedStatisticalStandard) {
+      const formData = {
+        id: this.statisticalProgram.id,
+        standard: selectedStatisticalStandard.id
+      };
+      this.$store.dispatch(
+        "statisticalProgram/removeStatisticalStandard",
+        formData
+      );
+    }
+  },
   created() {
-    this.$store.dispatch("statisticalStandard/findAll");
+    //this.$store.dispatch("statisticalStandard/findAll");
   }
 };
 </script>

@@ -133,6 +133,28 @@ const actions = {
         console.log(error);
       }
     );
+  },
+
+  addStatisticalStandard({ commit }, formData) {
+    statisticalProgramService.addStatisticalStandard(formData).then(
+      data => {
+        commit("SET_STATISTICAL_PROGRAM", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
+  removeStatisticalStandard({ commit }, formData) {
+    statisticalProgramService.removeStatisticalStandard(formData).then(
+      data => {
+        commit("SET_STATISTICAL_PROGRAM", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 

@@ -46,7 +46,7 @@ function findByName(search) {
       )
       .then(
         response => {
-          console.log(response.data);
+          //console.log(response.data);
           resolve(response.data);
         },
         error => {

@@ -8,7 +8,9 @@ const state = {
 
 const mutations = {
   SET_STATISTICAL_STANDARDS(state, statisticalStandards) {
-    state.statisticalStandards = statisticalStandards;
+    state.statisticalStandards = statisticalStandards
+      ? statisticalStandards
+      : [];
   },
   SET_STATISTICAL_STANDARD(state, statisticalStandard) {
     state.statisticalStandard = statisticalStandard;
@@ -31,6 +33,18 @@ const actions = {
     statisticalStandardService.findById(id).then(
       data => {
         commit("SET_STATISTICAL_STANDARD", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+  findByName({ commit }, search) {
+    statisticalStandardService.findByName(search).then(
+      data => {
+        console.log(data);
+        commit("SET_STATISTICAL_STANDARDS", data);
+        commit("SET_STATISTICAL_STANDARD", null); //clear statistical standard
       },
       error => {
         console.log(error);
