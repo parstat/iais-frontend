@@ -11,16 +11,30 @@ export const legislativeReferenceService = {
 };
 
 function findAll() {
-  return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/legislative/references?language=en").then(
-      response => {
-        console.log(response.data);
-        resolve(response.data);
+  return new Promise(resolve => {
+    resolve([
+      {
+        id: 1,
+        localID: "hbsreg",
+        link: "http://www.eurostat.eu/regulation/moldova/reg123.pdf",
+        name: "HBS regulation",
+        description: "Very important regulation for hbs survey"
       },
-      error => {
-        reject(error);
+      {
+        id: 2,
+        localID: "lfsreg",
+        link: "http://www.eurostat.eu/regulation/moldova/reg123.pdf",
+        name: "LFS regulation",
+        description: "Very important regulation for LFS survey"
+      },
+      {
+        id: 3,
+        localID: "census",
+        link: "http://www.eurostat.eu/regulation/moldova/reg123.pdf",
+        name: "Census regulation",
+        description: "Very important regulation for census"
       }
-    );
+    ]);
   });
 }
 
