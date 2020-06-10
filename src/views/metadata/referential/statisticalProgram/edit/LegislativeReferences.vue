@@ -21,7 +21,7 @@
           label="name"
           :options="legislativeReferences"
           placeholder="Select legislative references"
-          v-model="legislativeReference"
+          @search="searchLegislativeReference"
           @input="addLegislativeReference"
         ></v-select>
         <span class="help-block">Please select legislative references.</span>
@@ -43,7 +43,7 @@
           >
             <view-icon />
           </router-link>
-          <span @click="deleteLegislativeReference(legislativeReference)">
+          <span v-on:click="removeLegislativeReference(legislativeReference)">
             <delete-icon />
           </span>
         </p>
@@ -59,7 +59,7 @@ export default {
   name: "StatisticalProgramEditReferences",
   data() {
     return {
-      legislativeReference: null
+      //legislativeReference: null
     };
   },
   computed: {
@@ -67,37 +67,36 @@ export default {
     ...mapGetters("legislativeReference", ["legislativeReferences"])
   },
   methods: {
+    searchLegislativeReference(search) {
+      if (search.length > 2) {
+        this.$store.dispatch("legislativeReference/findByName", search);
+      }
+    },
     addLegislativeReference(selectedLegislativeReference) {
-      console.log("Adding: " + selectedLegislativeReference.name);
-      this.statisticalProgram.legislativeReferences.push(
-        selectedLegislativeReference
-      );
-      /*const formData = {
+      const formData = {
         id: this.statisticalProgram.id,
         legislative: selectedLegislativeReference.id
       };
       this.$store.dispatch(
         "statisticalProgram/addLegislativeReference",
         formData
-      );*/
-    },
-    deleteLegislativeReference(selectedLegislativeReference) {
-      console.log("Deleting: " + selectedLegislativeReference.name);
-      this.statisticalProgram.legislativeReferences.pop(
-        selectedLegislativeReference
       );
-      /*const formData = {
-        id: this.statisticalProgram.id,
+    },
+    removeLegislativeReference(selectedLegislativeReference) {
+      console.log(this.$route.params.id);
+      const formData = {
+        id: this.$route.params.id,
         legislative: selectedLegislativeReference.id
       };
       this.$store.dispatch(
-        "statisticalProgram/deleteLegislativeReference",
+        "statisticalProgram/removeLegislativeReference",
         formData
-      );*/
+      );
     }
   },
   created() {
-    this.$store.dispatch("legislativeReference/findAll");
+    //this.$store.dispatch("legislativeReference/findAll");
+    //this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
   }
 };
 </script>

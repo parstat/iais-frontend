@@ -155,8 +155,9 @@ export default {
           acronym: this.statisticalProgram.acronym,
           description: this.statisticalProgram.description
         };
-        this.$store.dispatch("statisticalProgram/update", formData);
         console.log(formData);
+        this.$store.dispatch("statisticalProgram/update", formData);
+        
       }
     },
     handleReset() {
