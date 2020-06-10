@@ -204,9 +204,11 @@
               >
                 <view-icon />
               </router-link>
-              <delete-icon v-on:click="removeLegislativeReference(legislativeReference.id)"/>
+              <delete-icon
+                v-on:click="removeLegislativeReference(legislativeReference.id)"
+              />
             </p>
-            
+
             <p class="card-text">{{ legislativeReference.description }}</p>
           </div>
         </div>
@@ -364,7 +366,7 @@ export default {
       this.$store.dispatch(
         "statisticalProgram/removeLegislativeReference",
         formData
-      )
+      );
     }
   },
   created() {

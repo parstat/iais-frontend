@@ -157,7 +157,6 @@ export default {
         };
         console.log(formData);
         this.$store.dispatch("statisticalProgram/update", formData);
-        
       }
     },
     handleReset() {
