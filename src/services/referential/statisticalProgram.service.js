@@ -7,10 +7,10 @@ export const statisticalProgramService = {
   save,
   update,
   addLegislativeReference,
+  removeLegislativeReference,
   updateOwner,
   updateMaintainer,
   updateContact,
-  deleteLegislativeReference,
   delete: _delete
 };
 
@@ -168,7 +168,7 @@ function update(formData) {
           }
 
           for (var k = 0; k < originalReferences.length; k++) {
-            deleteLegislativeReference({
+            removeLegislativeReference({
               id: statisticalProgram.id,
               legislative: originalReferences[k].id
             });
@@ -194,6 +194,28 @@ function addLegislativeReference(formData) {
   return new Promise((resolve, reject) => {
     axiosIais
       .put(
+        "close/referential/statistical/programs/" +
+          formData.id +
+          "/legislative/" +
+          formData.legislative +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function removeLegislativeReference(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .delete(
         "close/referential/statistical/programs/" +
           formData.id +
           "/legislative/" +
@@ -289,28 +311,5 @@ function _delete(id) {
         reject(error);
       }
     );
-  });
-}
-
-function deleteLegislativeReference(formData) {
-  console.log("deleting: " + formData.id + ", " + formData.legislative);
-  return new Promise((resolve, reject) => {
-    axiosIais
-      .delete(
-        "close/referential/statistical/programs/" +
-          formData.id +
-          "/legislative/" +
-          formData.legislative +
-          "?language=en"
-      )
-      .then(
-        response => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        error => {
-          reject(error);
-        }
-      );
   });
 }

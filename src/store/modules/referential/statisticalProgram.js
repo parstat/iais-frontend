@@ -122,6 +122,27 @@ const actions = {
         console.log(error);
       }
     );
+  },
+
+  removeLegislativeReference({ commit }, formData) {
+    statisticalProgramService.removeLegislativeReference(formData).then(
+      data => {
+        statisticalProgramService.findById(formData.id).then(
+          sp => {
+            if(data.result) {
+              commit("SET_STATISTICAL_PROGRAM", sp);
+            }
+          },
+          error => {
+            console.log(error);
+          }
+        );
+       
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 

@@ -204,7 +204,9 @@
               >
                 <view-icon />
               </router-link>
+              <delete-icon v-on:click="removeLegislativeReference(legislativeReference.id)"/>
             </p>
+            
             <p class="card-text">{{ legislativeReference.description }}</p>
           </div>
         </div>
@@ -353,6 +355,16 @@ export default {
         "statisticalProgram/addLegislativeReference",
         formData
       );
+    },
+    removeLegislativeReference(id) {
+      const formData = {
+        id: this.statisticalProgram.id,
+        legislative: id
+      };
+      this.$store.dispatch(
+        "statisticalProgram/removeLegislativeReference",
+        formData
+      )
     }
   },
   created() {
