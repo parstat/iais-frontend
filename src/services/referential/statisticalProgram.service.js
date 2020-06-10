@@ -28,21 +28,53 @@ function findAll() {
     );
   });
 }
-
+// eslint-disable-next-line no-unused-vars
 function findById(id) {
-  return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/referential/statistical/programs/" + id + "?language=en")
-      .then(
-        response => {
-          var data = response.data ? response.data : {};
-          console.log(data);
-          resolve(data);
+  return new Promise(resolve => {
+    resolve({
+      localID: "tst",
+      name: "Survey",
+      acronym: "SRV",
+      description: "Test survey",
+      owner: {
+        id: 1,
+        name: "Istat",
+        type: "ORGANIZATION"
+      },
+      maintainer: {
+        id: 2,
+        name: "Methodology division",
+        type: "DIVISION"
+      },
+      contact: {
+        id: 3,
+        name: "Florian Nika",
+        type: "INDIVIDUAL"
+      },
+      legislativeReferences: [
+        {
+          id: 1,
+          localID: "hbsreg",
+          link: "http://www.eurostat.eu/regulation/moldova/reg123.pdf",
+          name: "HBS regulation",
+          description: "Very important regulation for hbs survey"
         },
-        error => {
-          reject(error);
+        {
+          id: 2,
+          localID: "lfsreg",
+          link: "http://www.eurostat.eu/regulation/moldova/reg123.pdf",
+          name: "LFS regulation",
+          description: "Very important regulation for LFS survey"
+        },
+        {
+          id: 3,
+          localID: "census",
+          link: "http://www.eurostat.eu/regulation/moldova/reg123.pdf",
+          name: "Census regulation",
+          description: "Very important regulation for census"
         }
-      );
+      ]
+    });
   });
 }
 

@@ -69,7 +69,7 @@ const routes = [
         name: "StatisticalProgramEdit",
         component: () =>
           import(
-            "../views/metadata/referential/statisticalProgram/StatisticalProgramEdit"
+            "../views/metadata/referential/statisticalProgram/edit/StatisticalProgramEdit"
           ),
         meta: { authorize: [Role.User, Role.Admin] }
       },
