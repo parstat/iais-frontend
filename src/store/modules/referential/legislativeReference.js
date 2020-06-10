@@ -8,7 +8,7 @@ const state = {
 
 const mutations = {
   SET_LEGISLATIVE_REFERENCES(state, legislativeReferences) {
-    state.legislativeReferences = legislativeReferences;
+    state.legislativeReferences = legislativeReferences ? legislativeReferences : [];
   },
   SET_LEGISLATIVE_REFERENCE(state, legislativeReference) {
     state.legislativeReference = legislativeReference;
