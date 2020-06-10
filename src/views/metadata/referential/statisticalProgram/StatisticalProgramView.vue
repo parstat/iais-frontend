@@ -3,48 +3,26 @@
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Statistical process</strong>
+          <strong>{{ statisticalProgram.name }}</strong>
         </header>
         <div class="card-body">
-          <div class="form-group">
-            <label for="name">Survey id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalProgram.localId"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Survey id</strong></span>
           </div>
-          <div class="form-group">
-            <label for="name">Survey name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalProgram.name"
-              disabled
-            />
+          <div class="card-slot">
+            <span>{{ statisticalProgram.id }}</span>
           </div>
-          <div class="form-group">
-            <label for="acronym">Survey acronym</label>
-            <input
-              id="acronym"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalProgram.acronym"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Survey Acronym</strong></span>
           </div>
-          <div class="form-group">
-            <label for="responsible">Survey description</label>
-            <input
-              id="description"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalProgram.description"
-              disabled
-            />
+          <div class="card-slot">
+            <span> {{ statisticalProgram.acronym }}</span>
+          </div>
+          <div class="card-group">
+            <span><strong>Survey description</strong></span>
+          </div>
+          <div class="card-slot">
+            <span> {{ statisticalProgram.description }}</span>
           </div>
         </div>
         <div class="card-footer">

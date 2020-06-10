@@ -3,49 +3,26 @@
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Legislative reference</strong>
+          <strong>{{ legislativeReference.name }}</strong>
         </header>
         <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              v-model.trim="legislativeReference.name"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Description:</strong></span>
           </div>
-          <div class="form-group">
-            <label for="name">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              v-model.trim="legislativeReference.description"
-              disabled
-            />
+          <div class="card-slot">
+            <span> {{ legislativeReference.description }} </span>
           </div>
-          <div class="form-group">
-            <label for="acronym">Type</label>
-            <input
-              id="type"
-              type="text"
-              class="form-control"
-              v-model.trim="legislativeReference.type"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Type: </strong></span>
           </div>
-          <div class="form-group">
-            <label for="responsible">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              v-model.trim="legislativeReference.localId"
-              disabled
-            />
+          <div class="card-slot">
+            <span> {{ legislativeReference.type }} </span>
+          </div>
+          <div class="card-group">
+            <span><strong>Id:</strong></span>
+          </div>
+          <div class="card-slot">
+            <span> {{ legislativeReference.localId }} </span>
           </div>
         </div>
         <div class="card-footer">

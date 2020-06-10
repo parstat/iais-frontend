@@ -3,49 +3,26 @@
     <div class="col-sm-12 col-md-6">
       <div class="card ">
         <header class="card-header">
-          <strong>Statistical standard</strong>
+          <strong>{{ statisticalStandard.name }}</strong>
         </header>
         <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalStandard.name"
-              disabled
-            />
+          <div class="card-group">
+            <span><strong>Descripton: </strong></span>
           </div>
-          <div class="form-group">
-            <label for="name">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalStandard.description"
-              disabled
-            />
+          <div class="card-slot">
+            <span>{{ statisticalStandard.description }}</span>
           </div>
-          <div class="form-group">
-            <label for="type">Type</label>
-            <input
-              id="type"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalStandard.type"
-              disabled
-            />
+          <div class="card-group">
+            <span class="card-text"><strong>Type: </strong></span>
           </div>
-          <div class="form-group">
-            <label for="localId">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              v-model.trim="statisticalStandard.localId"
-              disabled
-            />
+          <div class="card-slot">
+            <span>{{ statisticalStandard.type }}</span>
+          </div>
+          <div class="card-group">
+            <span class="card-text"><strong>Id: </strong></span>
+          </div>
+          <div class="card-slot">
+            <span>{{ statisticalStandard.localId }}</span>
           </div>
         </div>
         <div class="card-footer">
