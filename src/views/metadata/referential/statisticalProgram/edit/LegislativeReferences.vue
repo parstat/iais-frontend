@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     searchLegislativeReference(search) {
-      if (search.length > 2) {
+      if (search.length > 0) {
         this.$store.dispatch("legislativeReference/findByName", search);
       }
     },
@@ -83,9 +83,8 @@ export default {
       );
     },
     removeLegislativeReference(selectedLegislativeReference) {
-      console.log(this.$route.params.id);
       const formData = {
-        id: this.$route.params.id,
+        id: this.statisticalProgram.id,
         legislative: selectedLegislativeReference.id
       };
       this.$store.dispatch(
