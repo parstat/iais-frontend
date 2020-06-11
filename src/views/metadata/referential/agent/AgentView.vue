@@ -16,7 +16,14 @@
             <span><strong>Type: </strong></span>
           </div>
           <div class="card-slot">
-            <span>{{ agent.type }}</span>
+            <span>{{ agent.type | capitalize }}</span>
+          </div>
+          <div class="card-group">
+            <span><strong>Parent:</strong></span>
+          </div>
+          <div class="card-slot">
+            <span v-if="agent.parent">{{ agent.parent.name }}</span>
+            <span v-else class="pl-4">&ndash;</span>
           </div>
           <div class="card-group">
             <span><strong>Local id</strong></span>
