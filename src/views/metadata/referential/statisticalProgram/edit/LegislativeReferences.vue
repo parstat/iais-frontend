@@ -21,9 +21,20 @@
           label="name"
           :options="legislativeReferences"
           placeholder="Select legislative references"
+          :filtrable="false"
           @search="searchLegislativeReference"
           @input="addLegislativeReference"
-        ></v-select>
+        >
+          <template v-slot:no-options="{ search, searching }">
+            <template v-if="searching">
+              No results found for <em>{{ search }}</em
+              >.
+            </template>
+            <em style="opacity: 0.5;" v-else
+              >Start typing to search for a legislative reference.</em
+            >
+          </template>
+        </v-select>
         <span class="help-block">Please select legislative references.</span>
       </div>
 
@@ -54,6 +65,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+import _ from "lodash";
 
 export default {
   name: "StatisticalProgramEditReferences",
@@ -67,11 +79,23 @@ export default {
     ...mapGetters("legislativeReference", ["legislativeReferences"])
   },
   methods: {
-    searchLegislativeReference(search) {
-      if (search.length > 0) {
-        this.$store.dispatch("legislativeReference/findByName", search);
-      }
+    searchLegislativeReference(search, loading) {
+      loading(true);
+      this.search(search, loading, this);
     },
+
+    search: _.debounce((search, loading, vm) => {
+      if (search.length > 0) {
+        vm.$store
+          .dispatch("legislativeReference/findByName", escape(search))
+          .then(() => {
+            loading(false);
+          });
+      } else {
+        loading(false);
+      }
+    }, 500),
+
     addLegislativeReference(selectedLegislativeReference) {
       const formData = {
         id: this.statisticalProgram.id,

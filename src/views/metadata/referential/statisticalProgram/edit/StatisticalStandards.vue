@@ -21,9 +21,20 @@
           label="name"
           :options="statisticalStandards"
           placeholder="Select statistical standards"
+          :filtrable="false"
           @search="searchStatisticalStandard"
           @input="addStatisticalStandard"
-        ></v-select>
+        >
+          <template v-slot:no-options="{ search, searching }">
+            <template v-if="searching">
+              No results found for <em>{{ search }}</em
+              >.
+            </template>
+            <em style="opacity: 0.5;" v-else
+              >Start typing to search for a standard.</em
+            >
+          </template>
+        </v-select>
         <span class="help-block">Please select statistical standards.</span>
       </div>
       <div
@@ -53,6 +64,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+import _ from "lodash";
 
 export default {
   name: "StatisticalProgramEdit",
@@ -67,11 +79,22 @@ export default {
     ...mapGetters("statisticalStandard", ["statisticalStandards"])
   },
   methods: {
-    searchStatisticalStandard(search) {
-      if (search.length > 0) {
-        this.$store.dispatch("statisticalStandard/findByName", search);
-      }
+    searchStatisticalStandard(name, loading) {
+      loading(true);
+      this.search(name, loading, this);
     },
+    search: _.debounce((name, loading, vm) => {
+      if (name.length > 0) {
+        vm.$store
+          .dispatch("statisticalStandard/findByName", escape(name))
+          .then(() => {
+            loading(false);
+          });
+      } else {
+        loading(false);
+      }
+    }, 500),
+
     addStatisticalStandard(selectedStatisticalStandard) {
       const formData = {
         id: this.statisticalProgram.id,
