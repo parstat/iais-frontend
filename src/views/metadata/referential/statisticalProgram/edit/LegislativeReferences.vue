@@ -34,6 +34,12 @@
               >Start typing to search for a legislative reference.</em
             >
           </template>
+          <template slot="option" slot-scope="option">
+            <div class="d-center">
+              <span><strong>{{ option.name }} {{ option.version }}</strong></span> 
+              <p>{{ option.description | subStr}}</p>
+            </div>
+          </template>
         </v-select>
         <span class="help-block">Please select legislative references.</span>
       </div>
@@ -74,20 +80,28 @@ export default {
       //legislativeReference: null
     };
   },
+  filters: {
+  	subStr: function(string) {
+      if(string.length > 55) {
+        return string.substring(0,55) + '...';
+      }
+      return string;
+    }
+  },
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("legislativeReference", ["legislativeReferences"])
   },
   methods: {
-    searchLegislativeReference(search, loading) {
+    searchLegislativeReference(name, loading) {
       loading(true);
-      this.search(search, loading, this);
+      this.search(name, loading, this);
     },
 
-    search: _.debounce((search, loading, vm) => {
-      if (search.length > 0) {
+    search: _.debounce((name, loading, vm) => {
+      if (name.length > 0) {
         vm.$store
-          .dispatch("legislativeReference/findByName", escape(search))
+          .dispatch("legislativeReference/findByName", escape(name))
           .then(() => {
             loading(false);
           });

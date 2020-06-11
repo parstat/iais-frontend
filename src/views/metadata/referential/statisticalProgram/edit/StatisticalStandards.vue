@@ -34,6 +34,12 @@
               >Start typing to search for a standard.</em
             >
           </template>
+          <template slot="option" slot-scope="option">
+            <div class="d-center">
+              <span><strong>{{ option.name }} {{ option.version }}</strong></span> 
+              <p>{{ option.description | subStr }}</p>
+            </div>
+          </template>
         </v-select>
         <span class="help-block">Please select statistical standards.</span>
       </div>
@@ -73,6 +79,14 @@ export default {
     return {
       disabled: false
     };
+  },
+  filters: {
+  	subStr: function(string) {
+      if(string.length > 55) {
+        return string.substring(0,55) + '...';
+      }
+      return string;
+    }
   },
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
