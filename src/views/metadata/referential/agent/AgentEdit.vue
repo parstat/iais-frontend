@@ -46,6 +46,16 @@
             >
           </div>
           <div class="form-group">
+            <label for="parent">Parent</label>
+            <v-select
+              label="name"
+              :options="parents"
+              v-model="agent.parent"
+              placeholder="Select a parent"
+            ></v-select>
+            <span class="help-block">Please select a parent.</span>
+          </div>
+          <div class="form-group">
             <label for="localId">Local id</label>
             <input
               id="localId"
@@ -92,8 +102,13 @@ export default {
       disabled: false
     };
   },
+  watch: {
+    "agent.type": function() {
+      this.getParents(this.agent.type);
+    }
+  },
   computed: {
-    ...mapGetters("agent", ["agent"]),
+    ...mapGetters("agent", ["agent", "parents"]),
     types() {
       var types = [];
       for (const key of Object.keys(Agent)) {
@@ -122,6 +137,7 @@ export default {
           name: this.agent.name,
           description: this.agent.description,
           type: this.agent.type,
+          parent: this.agent.parent.id,
           localId: this.agent.localId
         };
         this.$store.dispatch("agent/update", formData);
@@ -134,6 +150,19 @@ export default {
       this.agent.type = "";
       this.agent.localId = "";
       this.$v.$reset();
+    },
+    getParents(type) {
+      console.log(type);
+      if (type === "DIVISION") {
+        this.$store.dispatch("agent/findByType", Agent.Organization);
+        return;
+      }
+      if (type === "INDIVIDUAL") {
+        this.$store.dispatch("agent/findByType", Agent.Division);
+        return;
+      }
+      this.$store.dispatch("agent/clearParents");
+      return;
     }
   },
   created() {

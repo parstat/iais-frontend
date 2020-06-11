@@ -7,7 +7,8 @@ const state = {
   agent: null,
   owners: [],
   maintainers: [],
-  contacts: []
+  contacts: [],
+  parents: []
 };
 
 const mutations = {
@@ -22,9 +23,11 @@ const mutations = {
           break;
         case Agent.Division:
           state.maintainers = value;
+          state.parents = value ? value : [];
           break;
         case Agent.Organization:
           state.owners = value;
+          state.parents = value ? value : [];
           break;
         default:
           break;
@@ -33,6 +36,9 @@ const mutations = {
   },
   SET_AGENT(state, agent) {
     state.agent = agent;
+  },
+  RESET_PARENTS(state) {
+    state.parents = []; //reset parents
   }
 };
 
@@ -65,12 +71,16 @@ const actions = {
           [type]: data
         };
         commit("SET_AGENTS_BY_TYPE", agents);
-        commit("SET_AGENT", null); //clear agent
+        //important to not clear the agent (used for getting parents)
+        //commit("SET_AGENT", null); //clear agent
       },
       error => {
         console.log(error);
       }
     );
+  },
+  clearParents({ commit }) {
+    commit("RESET_PARENTS");
   },
   save({ dispatch }, formData) {
     agentService.save(formData).then(
@@ -131,6 +141,9 @@ const getters = {
   },
   contacts: state => {
     return state.contacts;
+  },
+  parents: state => {
+    return state.parents;
   }
 };
 

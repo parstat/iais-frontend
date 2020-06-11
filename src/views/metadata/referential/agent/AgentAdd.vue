@@ -40,10 +40,21 @@
               v-model="type"
               :class="{ 'is-invalid': $v.type.$error }"
               placeholder="Select a type"
+              @input="getParents"
             ></v-select>
             <span class="help-block" :class="{ show: $v.type.$error }"
               >Please select a type.</span
             >
+          </div>
+          <div class="form-group">
+            <label for="parent">Parent</label>
+            <v-select
+              label="name"
+              :options="parents"
+              v-model="parent"
+              placeholder="Select a parent"
+            ></v-select>
+            <span class="help-block">Please select a parent.</span>
           </div>
           <div class="form-group">
             <label for="localId">Local id*</label>
@@ -85,6 +96,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
 import { Agent } from "@/common";
 
@@ -101,6 +113,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters("agent", ["parents"]),
     types() {
       var types = [];
       for (const key of Object.keys(Agent)) {
@@ -129,6 +142,7 @@ export default {
           name: this.name,
           description: this.description,
           type: this.type,
+          parent: this.parent.id,
           localId: this.localId
         };
         this.$store.dispatch("agent/save", formData);
@@ -141,6 +155,18 @@ export default {
       this.type = "";
       this.localId = "";
       this.$v.$reset();
+    },
+    getParents(type) {
+      if (type === "DIVISION") {
+        this.$store.dispatch("agent/findByType", Agent.Organization);
+        return;
+      }
+      if (type === "INDIVIDUAL") {
+        this.$store.dispatch("agent/findByType", Agent.Division);
+        return;
+      }
+      this.$store.dispatch("agent/clearParents");
+      return;
     }
   }
 };

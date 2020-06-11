@@ -66,6 +66,7 @@ function save(formData) {
       name: formData.name,
       description: formData.description,
       type: formData.type,
+      parent: formData.parent,
       local_id: formData.localId
     };
 
@@ -103,6 +104,7 @@ function update(formData) {
       name: formData.name,
       description: formData.description,
       type: formData.type,
+      parent: formData.parent,
       local_id: formData.localId
     };
 

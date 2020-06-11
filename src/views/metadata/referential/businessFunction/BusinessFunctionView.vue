@@ -13,6 +13,12 @@
             <span>{{ businessFunction.description }}</span>
           </div>
           <div class="card-group">
+            <span><strong>Phase:</strong></span>
+          </div>
+          <div class="card-slot">
+            <span>{{ businessFunction.phase }}</span>
+          </div>
+          <div class="card-group">
             <span><strong>Sub-phase number:</strong></span>
           </div>
           <div class="card-slot">
