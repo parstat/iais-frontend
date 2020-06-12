@@ -69,6 +69,7 @@
         <p class="card-text">{{ legislativeReference.description }}</p>
       </div>
     </div>
+    <div class="card-footer"></div>
   </div>
 </template>
 <script>

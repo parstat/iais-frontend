@@ -106,12 +106,6 @@ function update(formData) {
       dateEnded: "2018-08-10T10:00:00"
     };
 
-    const agents = {
-      owner: formData.owner,
-      maintainer: formData.maintainer,
-      contact: formData.contact
-    };
-
     axiosIais
       .patch(
         "close/referential/statistical/programs/" +
@@ -122,26 +116,6 @@ function update(formData) {
       )
       .then(
         response => {
-          const statisticalProgram = response.data;
-          //console.log(response.data);
-          if (agents.owner.id != statisticalProgram.owner.id) {
-            updateOwner({
-              id: statisticalProgram.id,
-              owner: agents.owner.id
-            });
-          }
-          if (agents.maintainer.id != statisticalProgram.maintainer.id) {
-            updateMaintainer({
-              id: statisticalProgram.id,
-              maintainer: agents.maintainer.id
-            });
-          }
-          if (agents.contact.id != statisticalProgram.contact.id) {
-            updateContact({
-              id: statisticalProgram.id,
-              contact: agents.contact.id
-            });
-          }
           resolve(response.data);
         },
         error => {

@@ -68,6 +68,7 @@
         <p class="card-text">{{ statisticalStandard.description }}</p>
       </div>
     </div>
+    <div class="card-footer"></div>
   </div>
 </template>
 <script>
