@@ -44,7 +44,7 @@ const actions = {
         dispatch("message/success", "Statistical process saved!", {
           root: true
         });
-        router.push("/metadata/referential");
+        router.push("/metadata/referential/edit/" + data.id);
       },
       error => {
         console.log(error);

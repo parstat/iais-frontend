@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-12">
       <div class="card">
         <header class="card-header">
           <text-icon />
@@ -66,28 +66,9 @@
           </div>
           <div class="form-mandatory">*Mandatory fields</div>
         </div>
-        <div class="card-footer">
-          <CButton
-            color="primary"
-            shape="square"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click.prevent="handleSubmit()"
-            :disabled="disabled"
-            >Save</CButton
-          >
-          <CButton
-            color="danger"
-            shape="square"
-            size="sm"
-            @click.prevent="handleReset()"
-            :disabled="disabled"
-            >Reset</CButton
-          >
-        </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-6">
+    <div class="col-12">
       <div class="card">
         <header class="card-header">
           <user-icon />
@@ -144,55 +125,24 @@
             >
           </div>
         </div>
-      </div>
-      <div class="card">
-        <header class="card-header">
-          <regulation-icon />
-          <strong class="icon-header">Legislative references</strong>
-          <div class="card-header-actions">
-            <router-link
-              tag="a"
-              to="/metadata/referential/gsim/regulation/add"
-              class="card-header-action"
-            >
-              <add-icon />
-              <span class="icon-span">Add</span>
-            </router-link>
-          </div>
-        </header>
-        <div class="card-body">
-          <div class="form-group" v-if="legislativeReferences">
-            <label for="description">Legislative references</label>
-            <v-select
-              label="name"
-              :options="legislativeReferences"
-              v-model="selectedReferences"
-              placeholder="Select legislative references"
-              multiple
-            ></v-select>
-            <span class="help-block"
-              >Please select legislative references.</span
-            >
-          </div>
-          <div
-            class="card-slot"
-            v-for="legislativeReference of selectedReferences"
-            :key="legislativeReference.id"
+        <div class="card-footer">
+          <CButton
+            color="primary"
+            shape="square"
+            size="sm"
+            style="margin-right:0.3rem"
+            @click.prevent="handleSubmit()"
+            :disabled="disabled"
+            >Next step >></CButton
           >
-            <p class="heading">
-              {{ legislativeReference.name }}
-              <router-link
-                tag="a"
-                :to="{
-                  name: 'LegislativeReferenceView',
-                  params: { id: legislativeReference.id }
-                }"
-              >
-                <view-icon />
-              </router-link>
-            </p>
-            <p class="card-text">{{ legislativeReference.description }}</p>
-          </div>
+          <CButton
+            color="danger"
+            shape="square"
+            size="sm"
+            @click.prevent="handleReset()"
+            :disabled="disabled"
+            >Reset</CButton
+          >
         </div>
       </div>
     </div>
@@ -214,13 +164,11 @@ export default {
       owner: "",
       maintainer: "",
       contact: "",
-      selectedReferences: [],
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("agent", ["owners", "maintainers", "contacts"]),
-    ...mapGetters("legislativeReference", ["legislativeReferences"])
+    ...mapGetters("agent", ["owners", "maintainers", "contacts"])
   },
   validations: {
     localId: {
@@ -257,8 +205,7 @@ export default {
           description: this.description,
           owner: this.owner.id,
           maintainer: this.maintainer.id,
-          contact: this.contact.id,
-          legislativeReferences: this.selectedReferences
+          contact: this.contact.id
         };
         this.$store.dispatch("statisticalProgram/save", formData);
         console.log(formData);
@@ -280,7 +227,6 @@ export default {
     this.$store.dispatch("agent/findByType", Agent.Organization);
     this.$store.dispatch("agent/findByType", Agent.Division);
     this.$store.dispatch("agent/findByType", Agent.Individual);
-    this.$store.dispatch("legislativeReference/findAll");
   }
 };
 </script>

@@ -36,7 +36,9 @@
           </template>
           <template slot="option" slot-scope="option">
             <div class="d-center">
-              <span><strong>{{ option.name }} {{ option.version }}</strong></span> 
+              <span
+                ><strong>{{ option.name }} {{ option.version }}</strong></span
+              >
               <p>{{ option.description | subStr }}</p>
             </div>
           </template>
@@ -81,9 +83,9 @@ export default {
     };
   },
   filters: {
-  	subStr: function(string) {
-      if(string.length > 55) {
-        return string.substring(0,55) + '...';
+    subStr: function(string) {
+      if (string.length > 55) {
+        return string.substring(0, 55) + "...";
       }
       return string;
     }

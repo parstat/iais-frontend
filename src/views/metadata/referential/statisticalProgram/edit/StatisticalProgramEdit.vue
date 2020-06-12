@@ -1,6 +1,6 @@
 <template>
   <div class="row" v-if="statisticalProgram">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-12">
       <div class="card">
         <header class="card-header">
           <edit-icon />
@@ -86,18 +86,10 @@
             :disabled="disabled"
             >Update</CButton
           >
-          <CButton
-            color="danger"
-            shape="square"
-            size="sm"
-            @click.prevent="handleReset()"
-            :disabled="disabled"
-            >Reset</CButton
-          >
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-6">
+    <div class="col-12">
       <app-agents></app-agents>
       <app-references></app-references>
       <app-standards></app-standards>
@@ -158,13 +150,6 @@ export default {
         console.log(formData);
         this.$store.dispatch("statisticalProgram/update", formData);
       }
-    },
-    handleReset() {
-      this.statisticalProgram.localId = "";
-      this.statisticalProgram.name = "";
-      this.statisticalProgram.acronym = "";
-      this.statisticalProgram.description = "";
-      this.$v.$reset();
     }
   },
   created() {
