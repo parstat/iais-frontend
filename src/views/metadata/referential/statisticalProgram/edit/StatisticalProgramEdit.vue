@@ -91,51 +91,81 @@
           </div>
           <CButton
             color="primary"
-            shape="square"
+            shape="pill"
             size="sm"
             style="margin-right:0.3rem"
             @click.prevent="handleSubmit()"
-            :disabled="disabled"
-            >Next step >></CButton
           >
+            Next
+          </CButton>
         </CTab>
         <CTab title="Agents">
           <app-agents></app-agents>
           <CButton
             color="primary"
-            shape="square"
+            shape="pill"
             size="sm"
             style="margin-right:0.3rem"
-            @click="setStep(3)"
-            >Next step >>
+            @click="back"
+          >
+            Back
+          </CButton>
+          <CButton
+            color="primary"
+            shape="pill"
+            size="sm"
+            style="margin-right:0.3rem"
+            @click="next"
+          >
+            Next
           </CButton>
         </CTab>
         <CTab title="Legislative References">
           <app-references></app-references>
           <CButton
             color="primary"
-            shape="square"
+            shape="pill"
             size="sm"
             style="margin-right:0.3rem"
-            @click="setStep(4)"
-            >Next step >>
+            @click="back"
+          >
+            Back
+          </CButton>
+          <CButton
+            color="primary"
+            shape="pill"
+            size="sm"
+            style="margin-right:0.3rem"
+            @click="next"
+          >
+            Next
           </CButton>
         </CTab>
         <CTab title="Statistical Standards">
           <app-standards></app-standards>
           <CButton
             color="primary"
-            shape="square"
+            shape="pill"
             size="sm"
             style="margin-right:0.3rem"
-            @click="setStep(5)"
-            >Next step >>
+            @click="back"
+          >
+            Back
+          </CButton>
+          <CButton
+            color="primary"
+            shape="pill"
+            size="sm"
+            style="margin-right:0.3rem"
+            @click="next"
+          >
+            Next
           </CButton>
         </CTab>
         <CTab title="Process Documentations">
           <CButton
             color="primary"
-            shape="square"
+            shape="pill"
             size="sm"
             style="margin-right:0.3rem"
             @click="handleBack"
@@ -201,7 +231,7 @@ export default {
         };
         //console.log(formData);
         this.$store.dispatch("statisticalProgram/update", formData).then(() => {
-          this.setStep(2);
+          this.next();
         });
       }
     },
@@ -209,8 +239,11 @@ export default {
       this.disabled = true; //disable button
       this.$router.push("/metadata/referential/");
     },
-    setStep(step) {
-      this.activeTab = step - 1;
+    next() {
+      this.activeTab++;
+    },
+    back() {
+      this.activeTab--;
     },
     updateStep(active) {
       this.activeTab = active;

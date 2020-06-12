@@ -79,11 +79,11 @@
           </div>
           <CButton
             color="primary"
-            shape="square"
+            shape="pill"
             size="sm"
             style="margin-right:0.3rem"
-            @click="setStep(2)"
-            >Next step >>
+            @click="next"
+            >Next
           </CButton>
         </CTab>
 
@@ -148,20 +148,21 @@
           </div>
           <CButton
             color="primary"
-            shape="square"
+            shape="pill"
+            size="sm"
+            style="margin-right:0.3rem"
+            @click="back"
+            :disabled="disabled"
+            >Back</CButton
+          >
+          <CButton
+            color="primary"
+            shape="pill"
             size="sm"
             style="margin-right:0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Next step >></CButton
-          >
-          <CButton
-            color="danger"
-            shape="square"
-            size="sm"
-            @click.prevent="handleReset()"
-            :disabled="disabled"
-            >Reset</CButton
+            >Next</CButton
           >
         </CTab>
         <CTab title="Legislative References" disabled> </CTab>
@@ -246,9 +247,11 @@ export default {
       this.legislativeReferences = [];
       this.$v.$reset();
     },
-
-    setStep(step) {
-      this.activeTab = step - 1;
+    next() {
+      this.activeTab++;
+    },
+    back() {
+      this.activeTab--;
     },
     updateStep(active) {
       this.activeTab = active;
