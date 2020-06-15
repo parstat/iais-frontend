@@ -8,7 +8,10 @@
             <router-link
               v-if="isAuthenticated"
               tag="a"
-              :to="{path: '/metadata/referential/documentation/add', query: {program: statisticalProgram.id }}" 
+              :to="{
+                path: '/metadata/referential/documentation/add',
+                query: { program: statisticalProgram.id }
+              }"
               class="card-header-action"
             >
               <add-icon />

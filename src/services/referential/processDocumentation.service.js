@@ -58,13 +58,15 @@ function save(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
-      local_id: formData.local_id,
+      local_id: formData.local_id
     };
 
     axiosIais
       .put(
         "close/referential/process/documentations/program/" +
-          formData.statisticalProgram + "/function/" + formData.businessFunction +
+          formData.statisticalProgram +
+          "/function/" +
+          formData.businessFunction +
           "?language=en",
         qs.stringify(requestBody),
         config

@@ -197,7 +197,10 @@ export default {
           description: this.description,
           statisticalProgram: this.statisticalProgram.id,
           businessFunction: this.businessFunction.id,
-          local_id: this.statisticalProgram.localId + "-sub-phase-" + this.businessFunction.localId
+          local_id:
+            this.statisticalProgram.localId +
+            "-sub-phase-" +
+            this.businessFunction.localId
         };
         this.$store.dispatch("processDocumentation/save", formData);
         console.log(formData);
@@ -254,14 +257,10 @@ export default {
       this.activeTab = active;
     },
     selectStatistialProgram(value) {
-      this.$store.dispatch(
-        "statisticalProgram/findById", value.id
-      );
+      this.$store.dispatch("statisticalProgram/findById", value.id);
     },
     selectBusinessFunction(value) {
-      this.$store.dispatch(
-        "businessFunction/findById", value.id
-      );
+      this.$store.dispatch("businessFunction/findById", value.id);
     }
   },
   created() {
