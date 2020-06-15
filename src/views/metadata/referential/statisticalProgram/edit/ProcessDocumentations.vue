@@ -8,7 +8,7 @@
             <router-link
               v-if="isAuthenticated"
               tag="a"
-              to="/metadata/referential/add"
+              :to="{path: '/metadata/referential/documentation/add', query: {program: statisticalProgram.id }}" 
               class="card-header-action"
             >
               <add-icon />
@@ -40,9 +40,10 @@
                   <td>{{ processDocumentation.id }}</td>
                   <td>{{ processDocumentation.businessFunction.name }}</td>
                   <td>{{ processDocumentation.name }}</td>
-                  <td v-if="statisticalProgram.maintainer">
-                    {{ statisticalProgram.maintainer.name }}
+                  <td v-if="processDocumentation.maintainer">
+                    {{ processDocumentation.maintainer.name }}
                   </td>
+                  <td v-else class="pl-4">&ndash;</td>
                   <td>{{ processDocumentation.frequency }}</td>
                   <template v-if="isAuthenticated">
                     <td>

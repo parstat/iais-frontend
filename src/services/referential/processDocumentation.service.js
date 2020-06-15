@@ -57,21 +57,14 @@ function save(formData) {
 
     const requestBody = {
       name: formData.name,
-      acronym: formData.acronym,
       description: formData.description,
-      owner: formData.owner,
-      maintainer: formData.maintainer,
-      contact: formData.contact,
-      status: "CURRENT",
-      budget: 0,
-      dateInitiated: "2018-05-10T10:00:00",
-      dateEnded: "2018-08-10T10:00:00"
+      local_id: formData.local_id,
     };
 
     axiosIais
       .put(
-        "close/referential/statistical/programs/" +
-          formData.localId +
+        "close/referential/process/documentations/program/" +
+          formData.statisticalProgram + "/function/" + formData.businessFunction +
           "?language=en",
         qs.stringify(requestBody),
         config

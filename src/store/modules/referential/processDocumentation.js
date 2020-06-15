@@ -43,12 +43,12 @@ const actions = {
     processDocumentationService.save(formData).then(
       data => {
         console.log(data);
-        dispatch("message/success", "Statistical process saved!", {
+        dispatch("message/success", "Process Documentation saved!", {
           root: true
         });
-        router.push(
-          "/metadata/referential/documentation/edit/" + data.id + "?step=2"
-        );
+        //router.push(
+        //  "/metadata/referential/documentation/edit/" + data.id + "?step=2"
+        //);
       },
       error => {
         console.log(error);

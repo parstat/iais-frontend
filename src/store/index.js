@@ -12,6 +12,7 @@ import { statisticalStandard } from "./modules/referential/statisticalStandard";
 import { businessService } from "./modules/referential/businessService";
 import { businessFunction } from "./modules/referential/businessFunction";
 import { processMethod } from "./modules/referential/processMethod";
+import { processDocumentation } from "./modules/referential/processDocumentation";
 
 Vue.use(Vuex);
 
@@ -27,6 +28,7 @@ export default new Vuex.Store({
     statisticalStandard,
     businessFunction,
     businessService,
-    processMethod
+    processMethod,
+    processDocumentation
   }
 });

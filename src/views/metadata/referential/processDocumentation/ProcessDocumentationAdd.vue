@@ -19,11 +19,12 @@
                 <v-select
                   label="name"
                   :options="statisticalPrograms"
-                  v-model="statisticalProgram"
+                  :value="statisticalProgram"
                   :class="{ 'is-invalid': $v.statisticalProgram.$error }"
                   placeholder="Select a Statistical Proccess"
                   :filtrable="false"
                   @search="searchStatisticalProrams"
+                  @input="selectStatistialProgram"
                 >
                   <template v-slot:no-options="{ search, searching }">
                     <template v-if="searching">
@@ -54,11 +55,12 @@
                 <v-select
                   label="name"
                   :options="businessFunctions"
-                  v-model="businessFunction"
+                  :value="businessFunction"
                   :class="{ 'is-invalid': $v.businessFunction.$error }"
-                  placeholder="Select an organization"
+                  placeholder="Select a GSBPM sub-phase"
                   :filtrable="false"
                   @search="searchBusinessFunctions"
+                  @input="selectBusinessFunction"
                 >
                   <template v-slot:no-options="{ search, searching }">
                     <template v-if="searching">
@@ -151,8 +153,7 @@ export default {
     return {
       name: "",
       description: "",
-      //statisticalProgram: "",
-      //businessFunction: "",
+      disabled: false,
       activeTab: 0
     };
   },
@@ -195,7 +196,8 @@ export default {
           name: this.name,
           description: this.description,
           statisticalProgram: this.statisticalProgram.id,
-          businessFunction: this.businessFunction.id
+          businessFunction: this.businessFunction.id,
+          local_id: this.statisticalProgram.localId + "-sub-phase-" + this.businessFunction.localId
         };
         this.$store.dispatch("processDocumentation/save", formData);
         console.log(formData);
@@ -250,6 +252,16 @@ export default {
     },
     updateStep(active) {
       this.activeTab = active;
+    },
+    selectStatistialProgram(value) {
+      this.$store.dispatch(
+        "statisticalProgram/findById", value.id
+      );
+    },
+    selectBusinessFunction(value) {
+      this.$store.dispatch(
+        "businessFunction/findById", value.id
+      );
     }
   },
   created() {
