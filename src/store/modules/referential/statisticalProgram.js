@@ -42,7 +42,6 @@ const actions = {
     statisticalProgramService.findByName(name).then(
       data => {
         commit("SET_STATISTICAL_PROGRAMS", data);
-        commit("SET_STATISTICAL_PROGRAM", null); //clear statistical process
       },
       error => {
         console.log(error);

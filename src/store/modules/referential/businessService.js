@@ -8,7 +8,7 @@ const state = {
 
 const mutations = {
   SET_BUSINESS_SERVICES(state, businessServices) {
-    state.businessServices = businessServices;
+    state.businessServices = businessServices ? businessServices : [];
   },
   SET_BUSINESS_SERVICE(state, businessService) {
     state.businessService = businessService;

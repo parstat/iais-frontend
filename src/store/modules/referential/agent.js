@@ -13,7 +13,7 @@ const state = {
 
 const mutations = {
   SET_AGENTS(state, agents) {
-    state.agents = agents;
+    state.agents = agents ? agents : [];
   },
   SET_AGENTS_BY_TYPE(state, agents) {
     for (let [key, value] of Object.entries(agents)) {

@@ -8,7 +8,7 @@ const state = {
 
 const mutations = {
   SET_PROCESS_METHODS(state, processMethods) {
-    state.processMethods = processMethods;
+    state.processMethods = processMethods ? processMethods : [];
   },
   SET_PROCESS_METHOD(state, processMethod) {
     state.processMethod = processMethod;

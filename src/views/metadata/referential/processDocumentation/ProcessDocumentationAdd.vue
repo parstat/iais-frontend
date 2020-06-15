@@ -24,7 +24,25 @@
                   placeholder="Select a Statistical Proccess"
                   :filtrable="false"
                   @search="searchStatisticalProrams"
-                ></v-select>
+                >
+                  <template v-slot:no-options="{ search, searching }">
+                    <template v-if="searching">
+                      No results found for <em>{{ search }}</em
+                    >.
+                    </template>
+                    <em style="opacity: 0.5;" v-else>
+                      Start typing to search for a statistical program.
+                    </em>
+                  </template>
+                  <template slot="option" slot-scope="option">
+                    <div class="d-center">
+                      <span>
+                        <strong>{{ option.name }} {{ option.version }}</strong>
+                      </span>
+                      <p>{{ option.description | subStr }}</p>
+                    </div>
+                  </template>
+                </v-select>
                 <span class="help-block" :class="{ show: $v.statisticalProgram.$error }"
                   >Please select a Statisitcal Process.</span
                 >
@@ -39,7 +57,25 @@
                   placeholder="Select an organization"
                   :filtrable="false"
                   @search="searchBusinessFunctions"
-                ></v-select>
+                >
+                  <template v-slot:no-options="{ search, searching }">
+                    <template v-if="searching">
+                      No results found for <em>{{ search }}</em
+                    >.
+                    </template>
+                    <em style="opacity: 0.5;" v-else>
+                      Start typing to search for a GSBPM sub-phase.
+                    </em>
+                  </template>
+                  <template slot="option" slot-scope="option">
+                    <div class="d-center">
+                      <span>
+                        <strong>{{ option.name }} {{ option.version }}</strong>
+                      </span>
+                      <p>{{ option.description | subStr }}</p>
+                    </div>
+                  </template>
+                </v-select>
                 <span class="help-block" :class="{ show: $v.businessFunction.$error }"
                   >Please select a GSBPM sub-phase.</span
                 >
@@ -111,15 +147,23 @@ export default {
     return {
       name: "",
       description: "",
-      statisticalProgram: "",
-      businessFunction: "",
+      //statisticalProgram: "",
+      //businessFunction: "",
       activeTab: 0
     };
   },
 
+  filters: {
+    subStr: function(string) {
+      if (string.length > 55) {
+        return string.substring(0, 65) + "...";
+      }
+      return string;
+    }
+  },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalPrograms"]),
-    ...mapGetters("businessFunction", ["businessFunctions"]),
+    ...mapGetters("statisticalProgram", ["statisticalProgram", "statisticalPrograms"]),
+    ...mapGetters("businessFunction", ["businessFunction", "businessFunctions"]),
   },
   validations: {
     name: {
@@ -202,5 +246,14 @@ export default {
       this.activeTab = active;
     }
   },
+  created() {
+    //this.$store.dispatch("legislativeReference/findAll");
+    if(this.$route.query.program) {
+      this.$store.dispatch("statisticalProgram/findById", this.$route.query.program);
+    }
+    if(this.$route.query.function) {
+       this.$store.dispatch("businessFunction/findById", this.$route.query.function);
+    }
+  }
 }
 </script>
