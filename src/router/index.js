@@ -94,11 +94,11 @@ const routes = [
       {
         path: "metadata/referential/documentation/add",
         name: "ProcessDocumentationAdd",
-        component: () => 
+        component: () =>
           import(
             "../views/metadata/referential/processDocumentation/ProcessDocumentationAdd"
           ),
-          meta: { authorize: [Role.User, Role.Admin] }
+        meta: { authorize: [Role.User, Role.Admin] }
       },
       {
         path: "metadata/referential/gsim",

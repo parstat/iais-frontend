@@ -1,41 +1,21 @@
 import { axiosIais } from "@/http";
 import qs from "querystring";
 
-export const statisticalProgramService = {
-  findAll,
+export const processDocumentationService = {
   findById,
   findByName,
   save,
   update,
-  addLegislativeReference,
-  removeLegislativeReference,
   addStatisticalStandard,
   removeStatisticalStandard,
-  updateOwner,
   updateMaintainer,
-  updateContact,
   delete: _delete
 };
-
-function findAll() {
-  return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/statistical/programs?language=en").then(
-      response => {
-        var data = response.data ? response.data : [];
-        console.log(data);
-        resolve(data);
-      },
-      error => {
-        reject(error);
-      }
-    );
-  });
-}
 
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/statistical/programs/" + id + "?language=en")
+      .get("/referential/process/documentations/" + id + "?language=en")
       .then(
         response => {
           var data = response.data ? response.data : {};
@@ -52,7 +32,9 @@ function findById(id) {
 function findByName(search) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/statistical/programs/?name=" + search + "&language=en")
+      .get(
+        "/referential/process/documentations/?name=" + search + "&language=en"
+      )
       .then(
         response => {
           //console.log(response.data);
@@ -142,56 +124,12 @@ function update(formData) {
   });
 }
 
-function addLegislativeReference(formData) {
-  return new Promise((resolve, reject) => {
-    axiosIais
-      .put(
-        "close/referential/statistical/programs/" +
-          formData.id +
-          "/legislative/" +
-          formData.legislative +
-          "?language=en"
-      )
-      .then(
-        response => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        error => {
-          reject(error);
-        }
-      );
-  });
-}
-
-function removeLegislativeReference(formData) {
-  return new Promise((resolve, reject) => {
-    axiosIais
-      .delete(
-        "close/referential/statistical/programs/" +
-          formData.id +
-          "/legislative/" +
-          formData.legislative +
-          "?language=en"
-      )
-      .then(
-        response => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        error => {
-          reject(error);
-        }
-      );
-  });
-}
-
 //Statistical standard
 function addStatisticalStandard(formData) {
   return new Promise((resolve, reject) => {
     axiosIais
       .put(
-        "close/referential/statistical/programs/" +
+        "close/referential/process/documentations/" +
           formData.id +
           "/standards/" +
           formData.standard +
@@ -213,54 +151,10 @@ function removeStatisticalStandard(formData) {
   return new Promise((resolve, reject) => {
     axiosIais
       .delete(
-        "close/referential/statistical/programs/" +
+        "close/referential/process/documentations/" +
           formData.id +
           "/standards/" +
           formData.standard +
-          "?language=en"
-      )
-      .then(
-        response => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        error => {
-          reject(error);
-        }
-      );
-  });
-}
-
-function updateOwner(formData) {
-  return new Promise((resolve, reject) => {
-    axiosIais
-      .put(
-        "close/referential/statistical/programs/" +
-          formData.id +
-          "/owner/" +
-          formData.owner +
-          "?language=en"
-      )
-      .then(
-        response => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        error => {
-          reject(error);
-        }
-      );
-  });
-}
-
-function updateContact(formData) {
-  return new Promise((resolve, reject) => {
-    axiosIais
-      .put(
-        "close/referential/statistical/programs/" +
-          formData.id +
-          "/contact/" +
-          formData.contact +
           "?language=en"
       )
       .then(
@@ -279,7 +173,7 @@ function updateMaintainer(formData) {
   return new Promise((resolve, reject) => {
     axiosIais
       .put(
-        "close/referential/statistical/programs/" +
+        "close/referential/process/documentations/" +
           formData.id +
           "/maintainer/" +
           formData.maintainer +
@@ -299,7 +193,7 @@ function updateMaintainer(formData) {
 
 function _delete(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.delete("close/referential/statistical/programs/" + id).then(
+    axiosIais.delete("close/referential/process/documentations/" + id).then(
       response => {
         //console.log(response.data);
         resolve(response.data);

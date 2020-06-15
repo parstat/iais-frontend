@@ -46,7 +46,7 @@ const actions = {
       error => {
         console.log(error);
       }
-    )
+    );
   },
   save({ dispatch }, formData) {
     businessFunctionService.save(formData).then(

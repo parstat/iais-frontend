@@ -44,9 +44,7 @@ function findById(id) {
 function findByName(search) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get(
-        "/referential/business/functions/?name=" + search + "&language=en"
-      )
+      .get("/referential/business/functions/?name=" + search + "&language=en")
       .then(
         response => {
           //console.log(response.data);

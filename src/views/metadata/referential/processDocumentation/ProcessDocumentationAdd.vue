@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+  <div class="row">
     <div class="col-12">
       <CTabs
         variant="pills"
@@ -28,7 +28,7 @@
                   <template v-slot:no-options="{ search, searching }">
                     <template v-if="searching">
                       No results found for <em>{{ search }}</em
-                    >.
+                      >.
                     </template>
                     <em style="opacity: 0.5;" v-else>
                       Start typing to search for a statistical program.
@@ -43,7 +43,9 @@
                     </div>
                   </template>
                 </v-select>
-                <span class="help-block" :class="{ show: $v.statisticalProgram.$error }"
+                <span
+                  class="help-block"
+                  :class="{ show: $v.statisticalProgram.$error }"
                   >Please select a Statisitcal Process.</span
                 >
               </div>
@@ -61,7 +63,7 @@
                   <template v-slot:no-options="{ search, searching }">
                     <template v-if="searching">
                       No results found for <em>{{ search }}</em
-                    >.
+                      >.
                     </template>
                     <em style="opacity: 0.5;" v-else>
                       Start typing to search for a GSBPM sub-phase.
@@ -76,7 +78,9 @@
                     </div>
                   </template>
                 </v-select>
-                <span class="help-block" :class="{ show: $v.businessFunction.$error }"
+                <span
+                  class="help-block"
+                  :class="{ show: $v.businessFunction.$error }"
                   >Please select a GSBPM sub-phase.</span
                 >
               </div>
@@ -120,9 +124,10 @@
             shape="pill"
             size="sm"
             style="margin-right:0.3rem"
-            @click="next"
-            >Next
-          </CButton>
+            @click.prevent="handleSubmit()"
+            :disabled="disabled"
+            >Next</CButton
+          >
         </CTab>
 
         <CTab title="Division" disabled></CTab>
@@ -131,7 +136,6 @@
         <CTab title="Inputs" disabled> </CTab>
         <CTab title="Outputs" disabled> </CTab>
         <CTab title="Quality" disabled> </CTab>
-
       </CTabs>
     </div>
   </div>
@@ -162,8 +166,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram", "statisticalPrograms"]),
-    ...mapGetters("businessFunction", ["businessFunction", "businessFunctions"]),
+    ...mapGetters("statisticalProgram", [
+      "statisticalProgram",
+      "statisticalPrograms"
+    ]),
+    ...mapGetters("businessFunction", ["businessFunction", "businessFunctions"])
   },
   validations: {
     name: {
@@ -190,7 +197,7 @@ export default {
           statisticalProgram: this.statisticalProgram.id,
           businessFunction: this.businessFunction.id
         };
-        this.$store.dispatch("statisticalProgram/save", formData);
+        this.$store.dispatch("processDocumentation/save", formData);
         console.log(formData);
       }
     },
@@ -235,7 +242,6 @@ export default {
       }
     }, 500),
 
-
     next() {
       this.activeTab++;
     },
@@ -248,12 +254,18 @@ export default {
   },
   created() {
     //this.$store.dispatch("legislativeReference/findAll");
-    if(this.$route.query.program) {
-      this.$store.dispatch("statisticalProgram/findById", this.$route.query.program);
+    if (this.$route.query.program) {
+      this.$store.dispatch(
+        "statisticalProgram/findById",
+        this.$route.query.program
+      );
     }
-    if(this.$route.query.function) {
-       this.$store.dispatch("businessFunction/findById", this.$route.query.function);
+    if (this.$route.query.function) {
+      this.$store.dispatch(
+        "businessFunction/findById",
+        this.$route.query.function
+      );
     }
   }
-}
+};
 </script>

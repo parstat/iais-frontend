@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+  <div class="row">
     <div class="col-12">
       <div class="card">
         <header class="card-header">
@@ -96,19 +96,14 @@ import { mapGetters } from "vuex";
 export default {
   name: "ProcessDocumentationsEdit",
   data() {
-    return {
-
-    };
+    return {};
   },
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("coreui", ["isLoading"])
   },
 
-  created: {
-
-  }
-
-}
+  created: {}
+};
 </script>

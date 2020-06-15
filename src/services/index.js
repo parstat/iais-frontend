@@ -6,3 +6,4 @@ export * from "./referential/statisticalStandard.service";
 export * from "./referential/businessFunction.service";
 export * from "./referential/businessService.service";
 export * from "./referential/processMethod.service";
+export * from "./referential/processDocumentation.service";
