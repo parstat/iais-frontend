@@ -117,6 +117,19 @@
                   >Please enter survey description.</span
                 >
               </div>
+              <div class="form-group">
+                <label for="frequency">Frequency*</label>
+                <v-select
+                  label="frequency"
+                  :options="frequencies"
+                  v-model="frequency"
+                  :class="{ 'is-invalid': $v.frequency.$error }"
+                  placeholder="Select a Frequence"
+                ></v-select>
+                <span class="help-block" :class="{ show: $v.frequency.$error }"
+                  >Please frequency a type.</span
+                >
+              </div>
               <div class="form-mandatory">*Mandatory fields</div>
             </div>
             <div class="card-footer"></div>
@@ -145,6 +158,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
+import { Frequency } from "@/common";
 import _ from "lodash";
 
 export default {
@@ -153,6 +167,7 @@ export default {
     return {
       name: "",
       description: "",
+      frequency: "",
       disabled: false,
       activeTab: 0
     };
@@ -171,7 +186,17 @@ export default {
       "statisticalProgram",
       "statisticalPrograms"
     ]),
-    ...mapGetters("businessFunction", ["businessFunction", "businessFunctions"])
+    ...mapGetters("businessFunction", [
+      "businessFunction",
+      "businessFunctions"
+    ]),
+    frequencies() {
+      var frequencies = [];
+      for (const key of Object.keys(Frequency)) {
+        frequencies.push(Frequency[key]);
+      }
+      return frequencies;
+    }
   },
   validations: {
     name: {
@@ -184,6 +209,9 @@ export default {
       required
     },
     businessFunction: {
+      required
+    },
+    frequency: {
       required
     }
   },
@@ -200,7 +228,8 @@ export default {
           local_id:
             this.statisticalProgram.localId +
             "-sub-phase-" +
-            this.businessFunction.localId
+            this.businessFunction.localId,
+          frequency: this.frequency
         };
         this.$store.dispatch("processDocumentation/save", formData);
         console.log(formData);
