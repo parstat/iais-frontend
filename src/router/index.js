@@ -92,6 +92,15 @@ const routes = [
         meta: { authorize: [Role.Admin] }
       },
       {
+        path: "metadata/referential/documentation/add",
+        name: "ProcessDocumentationAdd",
+        component: () => 
+          import(
+            "../views/metadata/referential/processDocumentation/ProcessDocumentationAdd"
+          ),
+          meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
         path: "metadata/referential/gsim",
         name: "ReferentialGsimConcepts",
         component: () => import("../views/metadata/referential/GsimConcepts"),

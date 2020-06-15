@@ -8,7 +8,7 @@ const state = {
 
 const mutations = {
   SET_STATISTICAL_PROGRAMS(state, statisticalPrograms) {
-    state.statisticalPrograms = statisticalPrograms;
+    state.statisticalPrograms = statisticalPrograms ? statisticalPrograms : [];
   },
   SET_STATISTICAL_PROGRAM(state, statisticalProgram) {
     state.statisticalProgram = statisticalProgram;
@@ -36,6 +36,18 @@ const actions = {
         console.log(error);
       }
     );
+  },
+
+  findByName({ commit }, name) {
+    statisticalProgramService.findByName(name).then(
+      data => {
+        commit("SET_STATISTICAL_PROGRAMS", data);
+        commit("SET_STATISTICAL_PROGRAM", null); //clear statistical process
+      },
+      error => {
+        console.log(error);
+      }
+    )
   },
   save({ dispatch }, formData) {
     statisticalProgramService.save(formData).then(

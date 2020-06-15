@@ -86,7 +86,7 @@ export default {
   filters: {
     subStr: function(string) {
       if (string.length > 55) {
-        return string.substring(0, 55) + "...";
+        return string.substring(0, 65) + "...";
       }
       return string;
     }

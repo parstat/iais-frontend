@@ -8,7 +8,7 @@ const state = {
 
 const mutations = {
   SET_BUSINESS_FUNCTIONS(state, businessFunctions) {
-    state.businessFunctions = businessFunctions;
+    state.businessFunctions = businessFunctions ? businessFunctions : [];
   },
   SET_BUSINESS_FUNCTION(state, businessFunction) {
     state.businessFunction = businessFunction;
@@ -36,6 +36,17 @@ const actions = {
         console.log(error);
       }
     );
+  },
+  findByName({ commit }, name) {
+    businessFunctionService.findByName(name).then(
+      data => {
+        commit("SET_BUSINESS_FUNCTIONS", data);
+        commit("SET_BUSINESS_FUNCTION", null); //clear business function
+      },
+      error => {
+        console.log(error);
+      }
+    )
   },
   save({ dispatch }, formData) {
     businessFunctionService.save(formData).then(

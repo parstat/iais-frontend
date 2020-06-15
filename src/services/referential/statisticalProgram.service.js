@@ -4,6 +4,7 @@ import qs from "querystring";
 export const statisticalProgramService = {
   findAll,
   findById,
+  findByName,
   save,
   update,
   addLegislativeReference,
@@ -40,6 +41,24 @@ function findById(id) {
           var data = response.data ? response.data : {};
           console.log(data);
           resolve(data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function findByName(search) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .get(
+        "/referential/statistical/programs/?name=" + search + "&language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
         },
         error => {
           reject(error);

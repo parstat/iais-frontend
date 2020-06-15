@@ -163,6 +163,7 @@
           </CButton>
         </CTab>
         <CTab title="Process Documentations">
+          <app-documentations />
           <CButton
             color="primary"
             shape="pill"
@@ -181,6 +182,7 @@
 import Agents from "./Agents";
 import LegislativeReferences from "./LegislativeReferences";
 import StatisticalStandards from "./StatisticalStandards";
+import ProcessDocumentations from "./ProcessDocumentations";
 
 import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
@@ -196,7 +198,8 @@ export default {
   components: {
     "app-agents": Agents,
     "app-references": LegislativeReferences,
-    "app-standards": StatisticalStandards
+    "app-standards": StatisticalStandards,
+    "app-documentations": ProcessDocumentations
   },
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"])

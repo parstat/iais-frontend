@@ -105,7 +105,7 @@
             </header>
             <div class="card-body">
               <div class="form-group" v-if="owners">
-                <label for="description">Organization*</label>
+                <label for="organization">Organization*</label>
                 <v-select
                   label="name"
                   :options="owners"
@@ -118,7 +118,7 @@
                 >
               </div>
               <div class="form-group" v-if="maintainers">
-                <label for="description">Division*</label>
+                <label for="division">Division*</label>
                 <v-select
                   label="name"
                   :options="maintainers"
@@ -131,7 +131,7 @@
                 >
               </div>
               <div class="form-group" v-if="contacts">
-                <label for="description">Contact person*</label>
+                <label for="contact">Contact person*</label>
                 <v-select
                   label="name"
                   :options="contacts"
