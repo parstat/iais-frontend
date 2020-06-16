@@ -10,7 +10,12 @@
               tag="a"
               :to="{
                 path: '/metadata/referential/documentation/add',
-                query: { program: statisticalProgram.id }
+                query: {
+                  program: statisticalProgram.id,
+                  function: lastDocumentation.nextSubPhase
+                    ? lastDocumentation.nextSubPhase
+                    : null
+                }
               }"
               class="card-header-action"
             >
@@ -53,8 +58,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalProgramEdit',
-                          params: { id: statisticalProgram.id }
+                          name: 'ProcessDocumentationEdit',
+                          params: { id: processDocumentation.id }
                         }"
                       >
                         <edit-icon />
@@ -64,8 +69,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalProgramDelete',
-                          params: { id: statisticalProgram.id }
+                          name: 'ProcessDocumentationDelete',
+                          params: { id: processDocumentation.id }
                         }"
                       >
                         <delete-icon />
@@ -77,8 +82,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'StatisticalProgramView',
-                          params: { id: statisticalProgram.id }
+                          name: 'ProcessDocumentationView',
+                          params: { id: processDocumentation.id }
                         }"
                       >
                         <view-icon />
@@ -105,9 +110,19 @@ export default {
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"])
-  },
+    ...mapGetters("coreui", ["isLoading"]),
 
+    lastDocumentation() {
+      var data = this.statisticalProgram.processDocumentations.slice();
+      //find the max existing id
+      var last = data.reduce((max, p) => (p.id > max ? p.id : max), data[0].id);
+      //retrunt the last documentation entered
+      var lastDocumentation = this.statisticalProgram.processDocumentations.find(
+        pd => pd.id == last
+      );
+      return lastDocumentation;
+    }
+  },
   created: {}
 };
 </script>

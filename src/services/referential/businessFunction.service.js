@@ -4,6 +4,7 @@ import qs from "querystring";
 export const businessFunctionService = {
   findAll,
   findById,
+  findByLocalId,
   findByName,
   save,
   update,
@@ -28,6 +29,25 @@ function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais
       .get("/referential/business/functions/" + id + "?language=en")
+      .then(
+        response => {
+          var data = response.data ? response.data : null;
+          console.log(data);
+          resolve(data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function findByLocalId(localId) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .get(
+        "/referential/business/functions/sub-phase/" + localId + "?language=en"
+      )
       .then(
         response => {
           var data = response.data ? response.data : null;

@@ -37,11 +37,23 @@ const actions = {
       }
     );
   },
+
+  findByLocalId({ commit }, localId) {
+    businessFunctionService.findByLocalId(localId).then(
+      data => {
+        commit("SET_BUSINESS_FUNCTION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
   findByName({ commit }, name) {
     businessFunctionService.findByName(name).then(
       data => {
         commit("SET_BUSINESS_FUNCTIONS", data);
-        commit("SET_BUSINESS_FUNCTION", null); //clear business function
+        //commit("SET_BUSINESS_FUNCTION", null); //clear business function
       },
       error => {
         console.log(error);

@@ -59,7 +59,8 @@ function save(formData) {
       name: formData.name,
       description: formData.description,
       local_id: formData.local_id,
-      frequency: formData.frequency
+      frequency: formData.frequency,
+      nextSubPhase: formData.nextSubPhase
     };
 
     axiosIais

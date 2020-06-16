@@ -51,7 +51,7 @@
                 >
               </div>
               <div class="form-group" v-if="businessFunctions">
-                <label for="statisticalProgram">Business Function*</label>
+                <label for="statisticalProgram">GSBPM Sub-phase*</label>
                 <v-select
                   label="name"
                   :options="businessFunctions"
@@ -130,6 +130,41 @@
                   >Please frequency a type.</span
                 >
               </div>
+              <div class="form-group" v-if="businessFunctions">
+                <label for="statisticalProgram">Next GSBPM Sub-phase*</label>
+                <v-select
+                  label="name"
+                  :options="businessFunctions"
+                  v-model="nextBusinessFunction"
+                  :class="{ 'is-invalid': $v.nextBusinessFunction.$error }"
+                  placeholder="Select a GSBPM sub-phase"
+                  :filtrable="false"
+                  @search="searchBusinessFunctions"
+                >
+                  <template v-slot:no-options="{ search, searching }">
+                    <template v-if="searching">
+                      No results found for <em>{{ search }}</em
+                      >.
+                    </template>
+                    <em style="opacity: 0.5;" v-else>
+                      Start typing to search for a GSBPM sub-phase.
+                    </em>
+                  </template>
+                  <template slot="option" slot-scope="option">
+                    <div class="d-center">
+                      <span>
+                        <strong>{{ option.name }} {{ option.version }}</strong>
+                      </span>
+                      <p>{{ option.description | subStr }}</p>
+                    </div>
+                  </template>
+                </v-select>
+                <span
+                  class="help-block"
+                  :class="{ show: $v.nextBusinessFunction.$error }"
+                  >Please select the next GSBPM sub-phase.</span
+                >
+              </div>
               <div class="form-mandatory">*Mandatory fields</div>
             </div>
             <div class="card-footer"></div>
@@ -169,7 +204,8 @@ export default {
       description: "",
       frequency: "",
       disabled: false,
-      activeTab: 0
+      activeTab: 0,
+      nextBusinessFunction: ""
     };
   },
 
@@ -213,6 +249,9 @@ export default {
     },
     frequency: {
       required
+    },
+    nextBusinessFunction: {
+      required
     }
   },
   methods: {
@@ -229,7 +268,8 @@ export default {
             this.statisticalProgram.localId +
             "-sub-phase-" +
             this.businessFunction.localId,
-          frequency: this.frequency
+          frequency: this.frequency,
+          nextSubPhase: this.nextBusinessFunction.localId
         };
         this.$store.dispatch("processDocumentation/save", formData);
         console.log(formData);
@@ -289,7 +329,9 @@ export default {
       this.$store.dispatch("statisticalProgram/findById", value.id);
     },
     selectBusinessFunction(value) {
-      this.$store.dispatch("businessFunction/findById", value.id);
+      if (value) {
+        this.$store.dispatch("businessFunction/findById", value.id);
+      }
     }
   },
   created() {
@@ -302,7 +344,7 @@ export default {
     }
     if (this.$route.query.function) {
       this.$store.dispatch(
-        "businessFunction/findById",
+        "businessFunction/findByLocalId",
         this.$route.query.function
       );
     }
