@@ -61,7 +61,26 @@
         >
       </div>
     </div>
-    <div class="card-footer"></div>
+    <div class="card-footer">
+      <CButton
+        color="primary"
+        shape="square"
+        size="sm"
+        style="margin-right:0.3rem"
+        @click="$emit('back')"
+      >
+        Back
+      </CButton>
+      <CButton
+        color="primary"
+        shape="square"
+        size="sm"
+        style="margin-right:0.3rem"
+        @click="$emit('next')"
+      >
+        Next
+      </CButton>
+    </div>
   </div>
 </template>
 <script>

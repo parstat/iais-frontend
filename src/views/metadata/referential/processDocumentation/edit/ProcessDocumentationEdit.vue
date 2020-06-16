@@ -122,17 +122,19 @@
               </div>
               <div class="form-mandatory">*Mandatory fields</div>
             </div>
-            <div class="card-footer"></div>
+            <div class="card-footer">
+              <CButton
+                color="primary"
+                shape="square"
+                size="sm"
+                style="margin-right:0.3rem"
+                @click.prevent="handleSubmit()"
+                :disabled="disabled"
+              >
+                Next
+              </CButton>
+            </div>
           </div>
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click.prevent="handleSubmit()"
-            :disabled="disabled"
-            >Next</CButton
-          >
         </CTab>
 
         <CTab title="Division"></CTab>

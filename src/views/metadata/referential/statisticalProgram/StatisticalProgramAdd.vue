@@ -144,26 +144,27 @@
                 >
               </div>
             </div>
-            <div class="card-footer"></div>
+            <div class="card-footer">
+              <CButton
+                color="primary"
+                shape="pill"
+                size="sm"
+                style="margin-right:0.3rem"
+                @click="back"
+                :disabled="disabled"
+                >Back</CButton
+              >
+              <CButton
+                color="primary"
+                shape="pill"
+                size="sm"
+                style="margin-right:0.3rem"
+                @click.prevent="handleSubmit()"
+                :disabled="disabled"
+                >Next</CButton
+              >
+            </div>
           </div>
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click="back"
-            :disabled="disabled"
-            >Back</CButton
-          >
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click.prevent="handleSubmit()"
-            :disabled="disabled"
-            >Next</CButton
-          >
         </CTab>
         <CTab title="Legislative References" disabled> </CTab>
         <CTab title="Statistical Standards" disabled> </CTab>

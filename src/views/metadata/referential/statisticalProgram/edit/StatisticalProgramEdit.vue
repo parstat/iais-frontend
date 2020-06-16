@@ -87,92 +87,30 @@
               </div>
               <div class="form-mandatory">*Mandatory fields</div>
             </div>
-            <div class="card-footer"></div>
+            <div class="card-footer">
+              <CButton
+                color="primary"
+                shape="square"
+                size="sm"
+                style="margin-right:0.3rem"
+                @click.prevent="handleSubmit()"
+              >
+                Next
+              </CButton>
+            </div>
           </div>
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click.prevent="handleSubmit()"
-          >
-            Next
-          </CButton>
         </CTab>
         <CTab title="Agents">
-          <app-agents></app-agents>
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click="back"
-          >
-            Back
-          </CButton>
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click="next"
-          >
-            Next
-          </CButton>
+          <app-agents @back="back" @next="next"></app-agents>
         </CTab>
         <CTab title="Legislative References">
-          <app-references></app-references>
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click="back"
-          >
-            Back
-          </CButton>
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click="next"
-          >
-            Next
-          </CButton>
+          <app-references @next="next" @back="back"></app-references>
         </CTab>
         <CTab title="Statistical Standards">
-          <app-standards></app-standards>
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click="back"
-          >
-            Back
-          </CButton>
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click="next"
-          >
-            Next
-          </CButton>
+          <app-standards @next="next" @back="back"></app-standards>
         </CTab>
         <CTab title="Process Documentations">
-          <app-documentations />
-          <CButton
-            color="primary"
-            shape="pill"
-            size="sm"
-            style="margin-right:0.3rem"
-            @click="handleBack"
-          >
-            Finish
-          </CButton>
+          <app-documentations @handleBack="handleBack" />
         </CTab>
       </CTabs>
     </div>
@@ -236,7 +174,6 @@ export default {
         this.$store.dispatch("statisticalProgram/update", formData).then(() => {
           this.next();
         });
-        this.activeTab++;
       }
     },
     handleBack() {

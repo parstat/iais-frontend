@@ -95,6 +95,17 @@
             </table>
           </div>
         </div>
+        <div class="card-footer">
+          <CButton
+            color="primary"
+            shape="square"
+            size="sm"
+            style="margin-right:0.3rem"
+            @click="$emit('handleBack')"
+          >
+            Finish
+          </CButton>
+        </div>
       </div>
     </div>
   </div>
