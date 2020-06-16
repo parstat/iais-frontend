@@ -74,7 +74,11 @@
                   <template slot="option" slot-scope="option">
                     <div class="d-center">
                       <span>
-                        <strong>{{ option.name }} {{ option.version }}</strong>
+                        <strong
+                          >{{ option.localId }} {{ option.name }} v.{{
+                            option.version
+                          }}</strong
+                        >
                       </span>
                       <p>{{ option.description | subStr }}</p>
                     </div>
@@ -131,7 +135,7 @@
                 >
               </div>
               <div class="form-group" v-if="businessFunctions">
-                <label for="statisticalProgram">Next GSBPM Sub-phase*</label>
+                <label for="nextBusinessFunction">Next GSBPM Sub-phase*</label>
                 <v-select
                   label="name"
                   :options="businessFunctions"
@@ -342,10 +346,10 @@ export default {
         this.$route.query.program
       );
     }
-    if (this.$route.query.function) {
+    if (this.$route.query.business_function) {
       this.$store.dispatch(
         "businessFunction/findByLocalId",
-        this.$route.query.function
+        this.$route.query.business_function
       );
     }
   }

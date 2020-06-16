@@ -22,7 +22,6 @@ function findAll() {
     axiosIais.get("/referential/statistical/programs?language=en").then(
       response => {
         var data = response.data ? response.data : [];
-        console.log(data);
         resolve(data);
       },
       error => {
@@ -39,7 +38,6 @@ function findById(id) {
       .then(
         response => {
           var data = response.data ? response.data : {};
-          console.log(data);
           resolve(data);
         },
         error => {

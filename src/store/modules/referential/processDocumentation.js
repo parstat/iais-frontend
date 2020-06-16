@@ -42,13 +42,12 @@ const actions = {
   save({ dispatch }, formData) {
     processDocumentationService.save(formData).then(
       data => {
-        console.log(data);
         dispatch("message/success", "Process Documentation saved!", {
           root: true
         });
-        //router.push(
-        //  "/metadata/referential/documentation/edit/" + data.id + "?step=2"
-        //);
+        router.push(
+          "/metadata/referential/documentation/edit/" + data.id + "?step=2"
+        );
       },
       error => {
         console.log(error);
@@ -59,7 +58,7 @@ const actions = {
     processDocumentationService.delete(id).then(
       data => {
         console.log(data);
-        dispatch("message/success", "Statistical process deleted!", {
+        dispatch("message/success", "Process documentation deleted!", {
           root: true
         });
         router.push("/metadata/referential/documentation");
@@ -87,6 +86,7 @@ const actions = {
     processDocumentationService.updateMaintainer(formData).then(
       data => {
         console.log(data);
+        commit("SET_PROCESS_DOCUMENTATION", data);
       },
       error => {
         console.log(error);
@@ -121,6 +121,7 @@ const getters = {
     return state.processDocumentations;
   },
   processDocumentation: state => {
+    console.log(state.processDocumentation);
     return state.processDocumentation;
   }
 };

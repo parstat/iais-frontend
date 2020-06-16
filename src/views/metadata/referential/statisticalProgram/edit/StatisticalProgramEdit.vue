@@ -236,6 +236,7 @@ export default {
         this.$store.dispatch("statisticalProgram/update", formData).then(() => {
           this.next();
         });
+        this.activeTab++;
       }
     },
     handleBack() {

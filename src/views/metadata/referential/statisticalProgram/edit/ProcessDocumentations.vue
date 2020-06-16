@@ -12,9 +12,9 @@
                 path: '/metadata/referential/documentation/add',
                 query: {
                   program: statisticalProgram.id,
-                  function: lastDocumentation.nextSubPhase
+                  business_function: lastDocumentation.nextSubPhase
                     ? lastDocumentation.nextSubPhase
-                    : null
+                    : ''
                 }
               }"
               class="card-header-action"
@@ -69,7 +69,7 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'ProcessDocumentationDelete',
+                          name: 'ProcessDocumentationEdit',
                           params: { id: processDocumentation.id }
                         }"
                       >
@@ -82,7 +82,7 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'ProcessDocumentationView',
+                          name: 'ProcessDocumentationEdit',
                           params: { id: processDocumentation.id }
                         }"
                       >
@@ -104,9 +104,7 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "ProcessDocumentationsEdit",
-  data() {
-    return {};
-  },
+
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
@@ -122,7 +120,6 @@ export default {
       );
       return lastDocumentation;
     }
-  },
-  created: {}
+  }
 };
 </script>

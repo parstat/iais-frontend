@@ -19,7 +19,6 @@ function findById(id) {
       .then(
         response => {
           var data = response.data ? response.data : {};
-          console.log(data);
           resolve(data);
         },
         error => {
@@ -94,17 +93,15 @@ function update(formData) {
 
     const requestBody = {
       name: formData.name,
-      acronym: formData.acronym,
       description: formData.description,
-      status: "CURRENT",
-      budget: 0,
-      dateInitiated: "2018-05-10T10:00:00",
-      dateEnded: "2018-08-10T10:00:00"
+      local_id: formData.local_id,
+      frequency: formData.frequency,
+      nextSubPhase: formData.nextSubPhase
     };
 
     axiosIais
       .patch(
-        "close/referential/statistical/programs/" +
+        "close/referential/process/documentations/" +
           formData.id +
           "?language=en",
         qs.stringify(requestBody),
