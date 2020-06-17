@@ -47,7 +47,7 @@
       </div>
       <div
         class="card-slot"
-        v-for="statisticalStandard of processDocumentation.statisticalStandards"
+        v-for="statisticalStandard of processDocumentation.standards"
         :key="statisticalStandard.id"
       >
         <p class="heading">
