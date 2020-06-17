@@ -33,10 +33,11 @@
               <thead>
                 <tr>
                   <th scope="col">Id</th>
-                  <th scope="col">GSBPM sub-phase</th>
+                  <th scope="col">GSBPM</th>
                   <th scope="col">Name</th>
                   <th scope="col">Maintainer</th>
                   <th scope="col">Frequency</th>
+                  <th scope="col">Next</th>
                   <th scope="col" colspan="2" width="2%"></th>
                 </tr>
               </thead>
@@ -45,7 +46,7 @@
                   v-for="processDocumentation in statisticalProgram.processDocumentations"
                   :key="processDocumentation.id"
                 >
-                  <td>{{ processDocumentation.id }}</td>
+                  <td>{{ processDocumentation.businessFunction.localId }}</td>
                   <td>{{ processDocumentation.businessFunction.name }}</td>
                   <td>{{ processDocumentation.name }}</td>
                   <td v-if="processDocumentation.maintainer">
@@ -53,6 +54,7 @@
                   </td>
                   <td v-else class="pl-4">&ndash;</td>
                   <td>{{ processDocumentation.frequency }}</td>
+                  <td>{{ processDocumentation.nextSubPhase }}</td>
                   <template v-if="isAuthenticated">
                     <td>
                       <router-link

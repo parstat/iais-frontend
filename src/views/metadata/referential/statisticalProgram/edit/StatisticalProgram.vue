@@ -143,8 +143,8 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
-    this.activeTab = this.$route.query.step ? this.$route.query.step - 1 : 0;
+    //this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
+    //this.activeTab = this.$route.query.step ? this.$route.query.step - 1 : 0;
   }
 };
 </script>

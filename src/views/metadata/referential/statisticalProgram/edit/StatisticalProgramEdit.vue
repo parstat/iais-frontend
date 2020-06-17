@@ -79,23 +79,6 @@ export default {
     }
   },
   methods: {
-    handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
-        this.disabled = true; //disable buttons
-        const formData = {
-          id: this.statisticalProgram.id,
-          localId: this.statisticalProgram.localId,
-          name: this.statisticalProgram.name,
-          acronym: this.statisticalProgram.acronym,
-          description: this.statisticalProgram.description
-        };
-        //console.log(formData);
-        this.$store.dispatch("statisticalProgram/update", formData).then(() => {
-          this.next();
-        });
-      }
-    },
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/referential/");
