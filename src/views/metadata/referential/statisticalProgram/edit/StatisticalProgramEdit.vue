@@ -1,118 +1,36 @@
 <template>
   <div class="row" v-if="statisticalProgram">
     <div class="col-12">
-      <CTabs
-        variant="pills"
-        :vertical="{ navs: 'col-md-3', content: 'col-md-9' }"
-        :active-tab="activeTab"
-        @update:activeTab="updateStep"
-      >
-        <CTab title="Basic">
-          <div class="card">
-            <header class="card-header">
-              <edit-icon />
-              <strong class="icon-header">Statistical process</strong>
-            </header>
-            <div class="card-body">
-              <div class="form-group">
-                <label for="localId">Survey Id*</label>
-                <input
-                  id="localId"
-                  type="text"
-                  class="form-control"
-                  :class="{
-                    'is-invalid': $v.statisticalProgram.localId.$error
-                  }"
-                  placeholder="Identifier"
-                  v-model.trim="statisticalProgram.localId"
-                />
-                <span
-                  class="help-block"
-                  :class="{ show: $v.statisticalProgram.localId.$error }"
-                  >Please enter survey id.</span
-                >
-              </div>
-              <div class="form-group">
-                <label for="name">Survey name*</label>
-                <input
-                  id="name"
-                  type="text"
-                  class="form-control"
-                  :class="{ 'is-invalid': $v.statisticalProgram.name.$error }"
-                  placeholder="Survey name"
-                  v-model.trim="statisticalProgram.name"
-                />
-                <span
-                  class="help-block"
-                  :class="{ show: $v.statisticalProgram.name.$error }"
-                  >Please enter survey name.</span
-                >
-              </div>
-              <div class="form-group">
-                <label for="acronym">Survey acronym*</label>
-                <input
-                  id="acronym"
-                  type="text"
-                  class="form-control"
-                  :class="{
-                    'is-invalid': $v.statisticalProgram.acronym.$error
-                  }"
-                  placeholder="Survey acronym"
-                  v-model.trim="statisticalProgram.acronym"
-                />
-                <span
-                  class="help-block"
-                  :class="{ show: $v.statisticalProgram.acronym.$error }"
-                  >Please enter an acronym.</span
-                >
-              </div>
-              <div class="form-group">
-                <label for="description">Survey description*</label>
-                <textarea
-                  rows="5"
-                  id="description"
-                  type="text"
-                  class="form-control"
-                  :class="{
-                    'is-invalid': $v.statisticalProgram.description.$error
-                  }"
-                  placeholder="Survey description"
-                  v-model.trim="statisticalProgram.description"
-                />
-                <span
-                  class="help-block"
-                  :class="{ show: $v.statisticalProgram.description.$error }"
-                  >Please enter an description.</span
-                >
-              </div>
-              <div class="form-mandatory">*Mandatory fields</div>
-            </div>
-            <div class="card-footer">
-              <CButton
-                color="primary"
-                shape="square"
-                size="sm"
-                style="margin-right:0.3rem"
-                @click.prevent="handleSubmit()"
-              >
-                Next
-              </CButton>
-            </div>
-          </div>
-        </CTab>
-        <CTab title="Agents">
-          <app-agents @back="back" @next="next"></app-agents>
-        </CTab>
-        <CTab title="Legislative References">
-          <app-references @next="next" @back="back"></app-references>
-        </CTab>
-        <CTab title="Statistical Standards">
-          <app-standards @next="next" @back="back"></app-standards>
-        </CTab>
-        <CTab title="Process Documentations">
-          <app-documentations @handleBack="handleBack" />
-        </CTab>
-      </CTabs>
+      <div class="card">
+        <div class="card-header">
+          <text-icon />
+          <strong class="icon-header">Statistical process</strong>
+        </div>
+        <div class="card-body">
+          <CTabs
+            variant="pills"
+            :vertical="{ navs: 'col-md-3', content: 'col-md-9' }"
+            :active-tab="activeTab"
+            @update:activeTab="updateStep"
+          >
+            <CTab title="Basic">
+              <app-statistical-program @next="next"></app-statistical-program>
+            </CTab>
+            <CTab title="Agents">
+              <app-agents @back="back" @next="next"></app-agents>
+            </CTab>
+            <CTab title="Legislative References">
+              <app-references @next="next" @back="back"></app-references>
+            </CTab>
+            <CTab title="Statistical Standards">
+              <app-standards @next="next" @back="back"></app-standards>
+            </CTab>
+            <CTab title="Process Documentations">
+              <app-documentations @handleBack="handleBack" />
+            </CTab>
+          </CTabs>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -121,6 +39,7 @@ import Agents from "./Agents";
 import LegislativeReferences from "./LegislativeReferences";
 import StatisticalStandards from "./StatisticalStandards";
 import ProcessDocumentations from "./ProcessDocumentations";
+import StatisticalProgram from "./StatisticalProgram";
 
 import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
@@ -137,7 +56,8 @@ export default {
     "app-agents": Agents,
     "app-references": LegislativeReferences,
     "app-standards": StatisticalStandards,
-    "app-documentations": ProcessDocumentations
+    "app-documentations": ProcessDocumentations,
+    "app-statistical-program": StatisticalProgram
   },
   computed: {
     ...mapGetters("statisticalProgram", ["statisticalProgram"])
@@ -196,3 +116,18 @@ export default {
   }
 };
 </script>
+
+<style>
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  border-left-width: 4px;
+  border-left-style: solid;
+  background-color: #f8f8f8;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  border-left-color: #321fdb;
+  color: #321fdb;
+  border-radius: unset;
+  padding-left: 0.8rem;
+}
+</style>

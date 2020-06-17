@@ -69,4 +69,10 @@ export default {
   background-color: #ebedef;
   opacity: 1;
 }
+.card-group {
+  margin-bottom: 0.5rem;
+}
+.card-slot {
+  margin-bottom: 1rem;
+}
 </style>
