@@ -82,10 +82,9 @@ const actions = {
     );
   },
   // eslint-disable-next-line no-unused-vars
-  updateMaintainer({ commit }, formData) {
-    processDocumentationService.updateMaintainer(formData).then(
+  addMaintainer({ commit }, formData) {
+    processDocumentationService.addMaintainer(formData).then(
       data => {
-        console.log(data);
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
       error => {
@@ -93,6 +92,18 @@ const actions = {
       }
     );
   },
+
+  removeMaintainer({ commit }, formData) {
+    processDocumentationService.removeMaintainer(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
   addStatisticalStandard({ commit }, formData) {
     processDocumentationService.addStatisticalStandard(formData).then(
       data => {

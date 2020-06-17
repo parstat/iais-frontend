@@ -19,16 +19,33 @@
       <v-select
         label="name"
         :options="maintainers"
-        :class="{ 'is-invalid': $v.processDocumentation.maintainer.$error }"
-        v-model="processDocumentation.maintainer"
-        @input="updateMaintainer"
+        @input="addMaintainer"
       ></v-select>
-      <span
-        class="help-block"
-        :class="{ show: $v.processDocumentation.maintainer.$error }"
-        >Please select a division.</span
+      <span class="help-block">Please select a division.</span>
+      <div
+        class="card-slot"
+        v-for="maintainer of processDocumentation.maintainers"
+        :key="maintainer.id"
       >
+        <p class="heading">
+          {{ maintainer.name }}
+          <router-link
+            tag="a"
+            :to="{
+              name: 'AgentView',
+              params: { id: maintainer.id }
+            }"
+          >
+            <view-icon />
+          </router-link>
+          <span v-on:click="removeMaintainer(maintainer)">
+            <delete-icon />
+          </span>
+        </p>
+        <p class="card-text">{{ maintainer.description }}</p>
+      </div>
     </div>
+
     <div class="card-footer">
       <CButton
         color="primary"
@@ -53,17 +70,13 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+//import { required } from "vuelidate/lib/validators";
 import { Agent } from "@/common";
 
 export default {
-  name: "ProcessDocumentationEditAgent",
+  name: "ProcessDocumentationAgentEdit",
   validations: {
-    processDocumentation: {
-      maintainer: {
-        required
-      }
-    }
+    processDocumentation: {}
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"]),
@@ -73,15 +86,20 @@ export default {
     this.$store.dispatch("agent/findByType", Agent.Division);
   },
   methods: {
-    updateMaintainer() {
-      this.$v.maintainer.$touch(); //validate field
-      if (!this.$v.maintainer.$invalid) {
-        const formData = {
-          id: this.processDocumentation.id,
-          maintainer: this.processDocumentation.maintainer.id
-        };
-        this.$store.dispatch("processDocumentation/updateMaintainer", formData);
-      }
+    addMaintainer(selectedMaintainer) {
+      const formData = {
+        id: this.processDocumentation.id,
+        maintainer: selectedMaintainer.id
+      };
+      this.$store.dispatch("processDocumentation/addMaintainer", formData);
+    },
+
+    removeMaintainer(selectedMaintainer) {
+      const formData = {
+        id: this.processDocumentation.id,
+        maintainer: selectedMaintainer.id
+      };
+      this.$store.dispatch("processDocumentation/removeMaintainer", formData);
     }
   }
 };

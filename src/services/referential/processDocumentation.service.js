@@ -8,7 +8,8 @@ export const processDocumentationService = {
   update,
   addStatisticalStandard,
   removeStatisticalStandard,
-  updateMaintainer,
+  addMaintainer,
+  removeMaintainer,
   delete: _delete
 };
 
@@ -163,10 +164,32 @@ function removeStatisticalStandard(formData) {
   });
 }
 
-function updateMaintainer(formData) {
+function addMaintainer(formData) {
   return new Promise((resolve, reject) => {
     axiosIais
       .put(
+        "close/referential/process/documentations/" +
+          formData.id +
+          "/maintainer/" +
+          formData.maintainer +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function removeMaintainer(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .delete(
         "close/referential/process/documentations/" +
           formData.id +
           "/maintainer/" +
