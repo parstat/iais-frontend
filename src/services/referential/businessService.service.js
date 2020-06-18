@@ -4,6 +4,7 @@ import qs from "querystring";
 export const businessServiceService = {
   findAll,
   findById,
+  findByName,
   save,
   update,
   delete: _delete
@@ -35,6 +36,22 @@ function findById(id) {
         reject(error);
       }
     );
+  });
+}
+
+function findByName(search) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .get("/referential/business/services/?name=" + search + "&language=en")
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
   });
 }
 

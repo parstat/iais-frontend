@@ -37,6 +37,19 @@ const actions = {
       }
     );
   },
+
+  findByName({ commit }, search) {
+    businessServiceService.findByName(search).then(
+      data => {
+        commit("SET_BUSINESS_SERVICES", data);
+        commit("SET_BUSINESS_SERVICE", null); //clear business service
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
   save({ dispatch }, formData) {
     businessServiceService.save(formData).then(
       data => {

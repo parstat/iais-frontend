@@ -10,6 +10,8 @@ export const processDocumentationService = {
   removeStatisticalStandard,
   addProcessMethod,
   removeProcessMethod,
+  addBusinessService,
+  removeBusinessService,
   addMaintainer,
   removeMaintainer,
   delete: _delete
@@ -197,6 +199,51 @@ function removeProcessMethod(formData) {
           formData.id +
           "/method/" +
           formData.method +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+//Business Service
+function addBusinessService(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .put(
+        "close/referential/process/documentations/" +
+          formData.id +
+          "/service/" +
+          formData.service +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function removeBusinessService(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .delete(
+        "close/referential/process/documentations/" +
+          formData.id +
+          "/service/" +
+          formData.service +
           "?language=en"
       )
       .then(

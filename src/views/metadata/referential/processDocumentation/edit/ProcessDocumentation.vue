@@ -222,3 +222,14 @@ export default {
   created() {}
 };
 </script>
+
+<style scoped>
+.card {
+  padding-top: 0rem;
+  scroll-padding-bottom: 0rem;
+  box-shadow: none !important;
+}
+.card-header {
+  padding-top: 0rem;
+}
+</style>

@@ -146,6 +146,27 @@ const actions = {
         console.log(error);
       }
     );
+  },
+  addBusinessService({ commit }, formData) {
+    processDocumentationService.addBusinessService(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
+  removeBusinessService({ commit }, formData) {
+    processDocumentationService.removeBusinessService(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 

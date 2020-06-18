@@ -24,7 +24,10 @@
               <app-standards @next="next" @back="back"></app-standards>
             </CTab>
             <CTab title="Process Methods">
-              <app-methods @next="next" @back="back"> </app-methods>
+              <app-methods @next="next" @back="back"></app-methods>
+            </CTab>
+            <CTab title="Business Services">
+              <app-services @next="next" @back="back"></app-services>
             </CTab>
           </CTabs>
         </div>
@@ -37,6 +40,7 @@ import Agents from "./Agents";
 import StatisticalStandards from "./StatisticalStandards";
 import ProcessDocumentation from "./ProcessDocumentation";
 import ProcessMethods from "./ProcessMethods";
+import BusinessServices from "./BusinessServices";
 
 import { mapGetters } from "vuex";
 //import { required } from "vuelidate/lib/validators";
@@ -53,7 +57,8 @@ export default {
     "app-agents": Agents,
     "app-standards": StatisticalStandards,
     "app-process-documentation": ProcessDocumentation,
-    "app-methods": ProcessMethods
+    "app-methods": ProcessMethods,
+    "app-services": BusinessServices
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"])
