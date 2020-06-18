@@ -3,6 +3,7 @@ import qs from "querystring";
 
 export const processMethodService = {
   findAll,
+  findByName,
   findById,
   save,
   update,
@@ -20,6 +21,22 @@ function findAll() {
         reject(error);
       }
     );
+  });
+}
+
+function findByName(search) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .get("/referential/process/methods/?name=" + search + "&language=en")
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
   });
 }
 

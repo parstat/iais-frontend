@@ -8,6 +8,8 @@ export const processDocumentationService = {
   update,
   addStatisticalStandard,
   removeStatisticalStandard,
+  addProcessMethod,
+  removeProcessMethod,
   addMaintainer,
   removeMaintainer,
   delete: _delete
@@ -150,6 +152,51 @@ function removeStatisticalStandard(formData) {
           formData.id +
           "/standards/" +
           formData.standard +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+//Process Method
+function addProcessMethod(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .put(
+        "close/referential/process/documentations/" +
+          formData.id +
+          "/method/" +
+          formData.method +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function removeProcessMethod(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .delete(
+        "close/referential/process/documentations/" +
+          formData.id +
+          "/method/" +
+          formData.method +
           "?language=en"
       )
       .then(

@@ -27,6 +27,19 @@ const actions = {
       }
     );
   },
+
+  findByName({ commit }, search) {
+    processMethodService.findByName(search).then(
+      data => {
+        commit("SET_PROCESS_METHODS", data);
+        commit("SET_PROCESS_METHOD", null); //clear process method
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
   findById({ commit }, id) {
     processMethodService.findById(id).then(
       data => {

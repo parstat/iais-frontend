@@ -124,6 +124,28 @@ const actions = {
         console.log(error);
       }
     );
+  },
+
+  addProcessMethod({ commit }, formData) {
+    processDocumentationService.addProcessMethod(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
+  removeProcessMethod({ commit }, formData) {
+    processDocumentationService.removeProcessMethod(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 
@@ -132,7 +154,6 @@ const getters = {
     return state.processDocumentations;
   },
   processDocumentation: state => {
-    console.log(state.processDocumentation);
     return state.processDocumentation;
   }
 };

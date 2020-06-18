@@ -23,6 +23,9 @@
             <CTab title="Statistical Standards">
               <app-standards @next="next" @back="back"></app-standards>
             </CTab>
+            <CTab title="Process Methods">
+              <app-methods @next="next" @back="back"> </app-methods>
+            </CTab>
           </CTabs>
         </div>
       </div>
@@ -33,6 +36,7 @@
 import Agents from "./Agents";
 import StatisticalStandards from "./StatisticalStandards";
 import ProcessDocumentation from "./ProcessDocumentation";
+import ProcessMethods from "./ProcessMethods";
 
 import { mapGetters } from "vuex";
 //import { required } from "vuelidate/lib/validators";
@@ -48,7 +52,8 @@ export default {
   components: {
     "app-agents": Agents,
     "app-standards": StatisticalStandards,
-    "app-process-documentation": ProcessDocumentation
+    "app-process-documentation": ProcessDocumentation,
+    "app-methods": ProcessMethods
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"])
