@@ -5,6 +5,11 @@
         <div class="card-header">
           <text-icon />
           <strong class="icon-header">Process Documentation</strong>
+          <div class="card-subtitle">
+            (sub-phase: {{ processDocumentation.businessFunction.localId }}
+            {{ processDocumentation.businessFunction.name }}, survey:
+            {{ processDocumentation.statisticalProgram.name }})
+          </div>
         </div>
         <div class="card-body">
           <CTabs
@@ -26,8 +31,11 @@
             <CTab title="Process Methods">
               <app-methods @next="next" @back="back"></app-methods>
             </CTab>
-            <CTab title="Business Services">
+            <CTab title="Business Services/Software">
               <app-services @next="next" @back="back"></app-services>
+            </CTab>
+            <CTab title="Process Inputs">
+              <app-inputs @next="next" @back="back"></app-inputs>
             </CTab>
           </CTabs>
         </div>
@@ -41,6 +49,7 @@ import StatisticalStandards from "./StatisticalStandards";
 import ProcessDocumentation from "./ProcessDocumentation";
 import ProcessMethods from "./ProcessMethods";
 import BusinessServices from "./BusinessServices";
+import ProcessInputs from "./ProcessInputs";
 
 import { mapGetters } from "vuex";
 //import { required } from "vuelidate/lib/validators";
@@ -58,7 +67,8 @@ export default {
     "app-standards": StatisticalStandards,
     "app-process-documentation": ProcessDocumentation,
     "app-methods": ProcessMethods,
-    "app-services": BusinessServices
+    "app-services": BusinessServices,
+    "app-inputs": ProcessInputs
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"])

@@ -12,8 +12,10 @@
                 path: '/metadata/referential/documentation/add',
                 query: {
                   program: statisticalProgram.id,
-                  business_function: lastDocumentation.nextSubPhase
+                  business_function: lastDocumentation
                     ? lastDocumentation.nextSubPhase
+                      ? lastDocumentation.subPhase
+                      : ''
                     : ''
                 }
               }"
@@ -124,13 +126,19 @@ export default {
     ...mapGetters("coreui", ["isLoading"]),
 
     lastDocumentation() {
-      var data = this.statisticalProgram.processDocumentations.slice();
-      //find the max existing id
-      var last = data.reduce((max, p) => (p.id > max ? p.id : max), data[0].id);
-      //retrunt the last documentation entered
-      var lastDocumentation = this.statisticalProgram.processDocumentations.find(
-        pd => pd.id == last
-      );
+      var lastDocumentation = "";
+      if (this.statisticalProgram.processDocumentations) {
+        var data = this.statisticalProgram.processDocumentations.slice();
+        //find the max existing id
+        var last = data.reduce(
+          (max, p) => (p.id > max ? p.id : max),
+          data[0].id
+        );
+        //retrunt the last documentation entered
+        lastDocumentation = this.statisticalProgram.processDocumentations.find(
+          pd => pd.id == last
+        );
+      }
       return lastDocumentation;
     }
   }

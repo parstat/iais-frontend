@@ -167,6 +167,28 @@ const actions = {
         console.log(error);
       }
     );
+  },
+
+  addProcessInput({ commit }, formData) {
+    processDocumentationService.addProcessInput(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
+  removeProcessInput({ commit }, formData) {
+    processDocumentationService.removeProcessInput(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 

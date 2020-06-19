@@ -5,6 +5,11 @@
         <div class="card-header">
           <text-icon />
           <strong class="icon-header">Process Documentation</strong>
+          <p class="card-subtitle">
+            (survey: {{ statisticalProgram ? statisticalProgram.name : "" }},
+            sub-phase: {{ businessFunction ? businessFunction.localId : "" }}
+            {{ businessFunction ? businessFunction.name : "" }})
+          </p>
         </div>
         <div class="card-body">
           <CTabs
@@ -203,10 +208,11 @@
 
             <CTab title="Divisions" disabled></CTab>
             <CTab title="Statistical Standards" disabled> </CTab>
-            <CTab title="Services/Software" disabled> </CTab>
-            <CTab title="Inputs" disabled> </CTab>
-            <CTab title="Outputs" disabled> </CTab>
-            <CTab title="Quality" disabled> </CTab>
+            <CTab title="Process Methods" disabled></CTab>
+            <CTab title="Business Services/Software" disabled> </CTab>
+            <CTab title="Process Inputs" disabled> </CTab>
+            <CTab title="Process Outputs" disabled> </CTab>
+            <CTab title="Process Quality" disabled> </CTab>
             <CTab title="Documents/Notes" disabled> </CTab>
           </CTabs>
         </div>

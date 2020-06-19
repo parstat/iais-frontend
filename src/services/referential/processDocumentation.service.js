@@ -14,6 +14,8 @@ export const processDocumentationService = {
   removeBusinessService,
   addMaintainer,
   removeMaintainer,
+  addProcessInput,
+  removeProcessInput,
   delete: _delete
 };
 
@@ -244,6 +246,62 @@ function removeBusinessService(formData) {
           formData.id +
           "/service/" +
           formData.service +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+//Business Service
+function addProcessInput(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    const requestBody = {
+      name: formData.name,
+      description: formData.description
+    };
+
+    axiosIais
+      .post(
+        "close/referential/process/documentations/" +
+          formData.documentation +
+          "/inputs/?language=en",
+        qs.stringify(requestBody),
+        config
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function removeProcessInput(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .delete(
+        "close/referential/process/documentations/" +
+          formData.documentation +
+          "/inputs/" +
+          formData.input +
           "?language=en"
       )
       .then(

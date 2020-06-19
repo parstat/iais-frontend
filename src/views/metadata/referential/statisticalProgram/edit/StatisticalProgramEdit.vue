@@ -4,7 +4,9 @@
       <div class="card">
         <div class="card-header">
           <text-icon />
-          <strong class="icon-header">Statistical process</strong>
+          <strong class="icon-header"
+            >Statistical process: {{ statisticalProgram.name }}</strong
+          >
         </div>
         <div class="card-body">
           <CTabs
