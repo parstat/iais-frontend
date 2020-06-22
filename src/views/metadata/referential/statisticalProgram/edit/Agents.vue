@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <header class="card-header">
+    <header class="card-header pt-0">
       <user-icon />
       <strong class="icon-header">Agents</strong>
       <div class="card-header-actions">
@@ -152,8 +152,5 @@ export default {
   padding-top: 0rem;
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
-}
-.card-header {
-  padding-top: 0rem;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <header class="card-header">
+  <div class="card card-plain">
+    <header class="card-header pt-0">
       <regulation-icon />
       <strong class="icon-header">Statistical Standard</strong>
       <div class="card-header-actions">
@@ -47,13 +47,13 @@
       </div>
       <div class="card-columns">
         <div
-          class="card bg-light mb-3"
+          class="card card-no-shadow bg-light mb-3"
           v-for="statisticalStandard of statisticalProgram.statisticalStandards"
           :key="statisticalStandard.id"
         >
           <div class="card-header">
-            <div class="card-title">
-              <strong>{{ statisticalStandard.name }}</strong>
+            <strong>{{ statisticalStandard.name }}</strong>
+            <div class="card-header-actions">
               <router-link
                 tag="a"
                 :to="{
@@ -165,15 +165,16 @@ export default {
 </script>
 
 <style scoped>
-.card {
+.card-plain {
   padding-top: 0rem;
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
 }
+.card-no-shadow {
+  box-shadow: none !important;
+  border: 1px solid #d8dbe0 !important;
+}
 .card-columns {
   column-count: 2;
-}
-.card-header {
-  padding-top: 1rem;
 }
 </style>

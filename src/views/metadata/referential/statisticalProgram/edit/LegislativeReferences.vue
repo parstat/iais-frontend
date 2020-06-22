@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <header class="card-header">
+  <div class="card card-plain">
+    <header class="card-header pt-0">
       <regulation-icon />
       <strong class="icon-header">Legislative references</strong>
       <div class="card-header-actions">
@@ -47,13 +47,13 @@
       </div>
       <div class="card-columns">
         <div
-          class="card bg-light mb-3"
+          class="card card-no-shadow bg-light mb-3"
           v-for="legislativeReference of statisticalProgram.legislativeReferences"
           :key="legislativeReference.id"
         >
           <div class="card-header">
-            <p class="card-title">
-              <strong>{{ legislativeReference.name }}</strong>
+            <strong>{{ legislativeReference.name }}</strong>
+            <div class="card-header-actions">
               <router-link
                 tag="a"
                 :to="{
@@ -68,7 +68,7 @@
               >
                 <delete-icon />
               </span>
-            </p>
+            </div>
           </div>
           <div class="card-body">
             <p class="card-text">{{ legislativeReference.description }}</p>
@@ -168,15 +168,16 @@ export default {
 </script>
 
 <style scoped>
-.card {
+.card-plain {
   padding-top: 0rem;
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
 }
+.card-no-shadow {
+  box-shadow: none !important;
+  border: 1px solid #d8dbe0 !important;
+}
 .card-columns {
   column-count: 2;
-}
-.card-header {
-  padding-top: 1rem;
 }
 </style>
