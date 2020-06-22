@@ -45,9 +45,7 @@
               </span>
             </div>
           </div>
-          <div class="card-body">
-            
-          </div>
+          <div class="card-body"></div>
         </div>
       </div>
     </div>
@@ -116,6 +114,7 @@ export default {
   padding-top: 0rem;
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
+  display: inline-block !important;
 }
 .card-columns {
   column-count: 2;

@@ -18,6 +18,8 @@ export const processDocumentationService = {
   removeProcessInput,
   addProcessOutput,
   removeProcessOutput,
+  addProcessQuality,
+  removeProcessQuality,
   delete: _delete
 };
 
@@ -360,6 +362,62 @@ function removeProcessOutput(formData) {
           formData.documentation +
           "/outputs/" +
           formData.output +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+//Process Quality
+function addProcessQuality(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    const requestBody = {
+      name: formData.name,
+      description: formData.description
+    };
+
+    axiosIais
+      .post(
+        "close/referential/process/documentations/" +
+          formData.documentation +
+          "/qualities/?language=en",
+        qs.stringify(requestBody),
+        config
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function removeProcessQuality(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .delete(
+        "close/referential/process/documentations/" +
+          formData.documentation +
+          "/qualities/" +
+          formData.quality +
           "?language=en"
       )
       .then(

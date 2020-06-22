@@ -2,36 +2,36 @@
   <div class="card">
     <header class="card-header">
       <regulation-icon />
-      <strong class="icon-header">Process Inputs</strong>
+      <strong class="icon-header">Process Quality</strong>
     </header>
     <div class="card-body">
       <div class="form-group">
-        <label for="name">Process input name*</label>
+        <label for="name">Process qualtiy name*</label>
         <input
-          id="input_name"
+          id="quality_name"
           type="text"
           class="form-control"
           :class="{ 'is-invalid': $v.name.$error }"
-          placeholder="Process input name"
+          placeholder="Process quality name"
           v-model.trim="name"
         />
         <span class="help-block" :class="{ show: $v.name.$error }"
-          >Please enter a process input name.</span
+          >Please enter a process quality name.</span
         >
       </div>
       <div class="form-group">
-        <label for="description">Process input description*</label>
+        <label for="description">Process quality description*</label>
         <textarea
           rows="5"
-          id="input_description"
+          id="quality_description"
           type="text"
           class="form-control"
           :class="{ 'is-invalid': $v.description.$error }"
-          placeholder="Process input description"
+          placeholder="Process quality description"
           v-model.trim="description"
         />
         <span class="help-block" :class="{ show: $v.description.$error }"
-          >Please enter the process input description.</span
+          >Please enter the process quality description.</span
         >
         <div>
           <CButton
@@ -39,7 +39,7 @@
             shape="square"
             size="sm"
             style="margin-right:0.3rem"
-            @click="addProcessInput"
+            @click="addProcessQuality"
           >
             Add
           </CButton>
@@ -47,20 +47,20 @@
       </div>
       <div class="card-columns">
         <div
-          class="card bg-light mb-3"
-          v-for="processInput of processDocumentation.processInputSpecifications"
-          :key="processInput.id"
+          class="card bg-light mb-auto"
+          v-for="processQuality of processDocumentation.processQualities"
+          :key="processQuality.id"
         >
           <div class="card-header">
             <div class="card-title">
-              <strong>{{ processInput.name }}</strong>
-              <span v-on:click="removeProcessInput(processInput)">
+              <strong>{{ processQuality.name }}</strong>
+              <span v-on:click="removeProcessQuality(processQuality)">
                 <delete-icon />
               </span>
             </div>
           </div>
           <div class="card-body">
-            <p class="card-text">{{ processInput.description }}</p>
+            <p class="card-text">{{ processQuality.description }}</p>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@ import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
 
 export default {
-  name: "ProcessDocumentationInputsEdit",
+  name: "ProcessDocumentationOutputsEdit",
 
   data() {
     return {
@@ -113,7 +113,7 @@ export default {
     }
   },
   methods: {
-    addProcessInput() {
+    addProcessQuality() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         this.disabled = true; //disable buttons
@@ -123,7 +123,7 @@ export default {
           description: this.description
         };
         this.$store
-          .dispatch("processDocumentation/addProcessInput", formData)
+          .dispatch("processDocumentation/addProcessQuality", formData)
           .then(() => {
             this.name = "";
             this.description = "";
@@ -131,12 +131,15 @@ export default {
           });
       }
     },
-    removeProcessInput(selectedProcessInput) {
+    removeProcessQuality(selectedProcessQuality) {
       const formData = {
         documentation: this.processDocumentation.id,
-        input: selectedProcessInput.id
+        quality: selectedProcessQuality.id
       };
-      this.$store.dispatch("processDocumentation/removeProcessInput", formData);
+      this.$store.dispatch(
+        "processDocumentation/removeProcessQuality",
+        formData
+      );
     }
   },
   created() {}
@@ -150,10 +153,11 @@ export default {
   box-shadow: none !important;
   display: inline-block !important;
 }
-.card-columns {
-  column-count: 2;
-}
 .card-header {
   padding-top: 0rem;
+}
+
+.card-columns {
+  column-count: 2;
 }
 </style>

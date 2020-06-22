@@ -211,6 +211,27 @@ const actions = {
         console.log(error);
       }
     );
+  },
+  addProcessQuality({ commit }, formData) {
+    processDocumentationService.addProcessQuality(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
+  removeProcessQuality({ commit }, formData) {
+    processDocumentationService.removeProcessQuality(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 

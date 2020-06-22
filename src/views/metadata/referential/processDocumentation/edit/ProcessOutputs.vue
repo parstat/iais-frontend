@@ -151,6 +151,7 @@ export default {
   padding-top: 0rem;
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
+  display: inline-block !important;
 }
 .card-header {
   padding-top: 0rem;
