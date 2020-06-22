@@ -37,6 +37,9 @@
             <CTab title="Process Inputs">
               <app-inputs @next="next" @back="back"></app-inputs>
             </CTab>
+            <CTab title="Process Outputs">
+              <app-outputs @next="next" @back="back"></app-outputs>
+            </CTab>
           </CTabs>
         </div>
       </div>
@@ -50,6 +53,7 @@ import ProcessDocumentation from "./ProcessDocumentation";
 import ProcessMethods from "./ProcessMethods";
 import BusinessServices from "./BusinessServices";
 import ProcessInputs from "./ProcessInputs";
+import ProcessOutputs from "./ProcessOutputs";
 
 import { mapGetters } from "vuex";
 //import { required } from "vuelidate/lib/validators";
@@ -68,7 +72,8 @@ export default {
     "app-process-documentation": ProcessDocumentation,
     "app-methods": ProcessMethods,
     "app-services": BusinessServices,
-    "app-inputs": ProcessInputs
+    "app-inputs": ProcessInputs,
+    "app-outputs": ProcessOutputs
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"])

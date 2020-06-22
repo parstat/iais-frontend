@@ -16,6 +16,8 @@ export const processDocumentationService = {
   removeMaintainer,
   addProcessInput,
   removeProcessInput,
+  addProcessOutput,
+  removeProcessOutput,
   delete: _delete
 };
 
@@ -260,7 +262,7 @@ function removeBusinessService(formData) {
   });
 }
 
-//Business Service
+//Process Input
 function addProcessInput(formData) {
   return new Promise((resolve, reject) => {
     const config = {
@@ -302,6 +304,62 @@ function removeProcessInput(formData) {
           formData.documentation +
           "/inputs/" +
           formData.input +
+          "?language=en"
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+//Process Output
+function addProcessOutput(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    const requestBody = {
+      name: formData.name,
+      description: formData.description
+    };
+
+    axiosIais
+      .post(
+        "close/referential/process/documentations/" +
+          formData.documentation +
+          "/outputs/?language=en",
+        qs.stringify(requestBody),
+        config
+      )
+      .then(
+        response => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function removeProcessOutput(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .delete(
+        "close/referential/process/documentations/" +
+          formData.documentation +
+          "/outputs/" +
+          formData.output +
           "?language=en"
       )
       .then(

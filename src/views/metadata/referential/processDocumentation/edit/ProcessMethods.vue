@@ -45,27 +45,33 @@
         </v-select>
         <span class="help-block">Please select a process method.</span>
       </div>
-      <div
-        class="card-slot"
-        v-for="processMethod of processDocumentation.processMethods"
-        :key="processMethod.id"
-      >
-        <p class="heading">
-          {{ processMethod.name }}
-          <router-link
-            tag="a"
-            :to="{
-              name: 'ProcessMethodView',
-              params: { id: processMethod.id }
-            }"
-          >
-            <view-icon />
-          </router-link>
-          <span v-on:click="removeProcessMethod(processMethod)">
-            <delete-icon />
-          </span>
-        </p>
-        <p class="card-text">{{ processMethod.description }}</p>
+      <div class="card-columns">
+        <div
+          class="card bg-light mb-3"
+          v-for="processMethod of processDocumentation.processMethods"
+          :key="processMethod.id"
+        >
+          <div class="card-header">
+            <div class="card-title">
+              <strong>{{ processMethod.name }}</strong>
+              <router-link
+                tag="a"
+                :to="{
+                  name: 'ProcessMethodView',
+                  params: { id: processMethod.id }
+                }"
+              >
+                <view-icon />
+              </router-link>
+              <span v-on:click="removeProcessMethod(processMethod)">
+                <delete-icon />
+              </span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ processMethod.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-footer">
@@ -159,7 +165,10 @@ export default {
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
 }
+.card-columns {
+  column-count: 2;
+}
 .card-header {
-  padding-top: 0rem;
+  padding-top: 1rem;
 }
 </style>

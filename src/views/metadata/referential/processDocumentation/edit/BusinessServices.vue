@@ -45,27 +45,33 @@
         </v-select>
         <span class="help-block">Please select a business service.</span>
       </div>
-      <div
-        class="card-slot"
-        v-for="businessService of processDocumentation.businessServices"
-        :key="businessService.id"
-      >
-        <p class="heading">
-          {{ businessService.name }}
-          <router-link
-            tag="a"
-            :to="{
-              name: 'BusinessServiceView',
-              params: { id: businessService.id }
-            }"
-          >
-            <view-icon />
-          </router-link>
-          <span v-on:click="removeBusinessService(businessService)">
-            <delete-icon />
-          </span>
-        </p>
-        <p class="card-text">{{ businessService.description }}</p>
+      <div class="card-columns">
+        <div
+          class="card bg-light mb-3"
+          v-for="businessService of processDocumentation.businessServices"
+          :key="businessService.id"
+        >
+          <div class="card-header">
+            <div class="card-title">
+              <strong>{{ businessService.name }}</strong>
+              <router-link
+                tag="a"
+                :to="{
+                  name: 'BusinessServiceView',
+                  params: { id: businessService.id }
+                }"
+              >
+                <view-icon />
+              </router-link>
+              <span v-on:click="removeBusinessService(businessService)">
+                <delete-icon />
+              </span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ businessService.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-footer">
@@ -159,7 +165,10 @@ export default {
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
 }
+.card-columns {
+  column-count: 2;
+}
 .card-header {
-  padding-top: 0rem;
+  padding-top: 1rem;
 }
 </style>

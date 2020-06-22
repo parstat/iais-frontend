@@ -189,6 +189,28 @@ const actions = {
         console.log(error);
       }
     );
+  },
+
+  addProcessOutput({ commit }, formData) {
+    processDocumentationService.addProcessOutput(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
+  removeProcessOutput({ commit }, formData) {
+    processDocumentationService.removeProcessOutput(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 

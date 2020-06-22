@@ -22,27 +22,33 @@
         @input="addMaintainer"
       ></v-select>
       <span class="help-block">Please select a division.</span>
-      <div
-        class="card-slot"
-        v-for="maintainer of processDocumentation.maintainers"
-        :key="maintainer.id"
-      >
-        <p class="heading">
-          {{ maintainer.name }}
-          <router-link
-            tag="a"
-            :to="{
-              name: 'AgentView',
-              params: { id: maintainer.id }
-            }"
-          >
-            <view-icon />
-          </router-link>
-          <span v-on:click="removeMaintainer(maintainer)">
-            <delete-icon />
-          </span>
-        </p>
-        <p class="card-text">{{ maintainer.description }}</p>
+      <div class="card-columns">
+        <div
+          class="card  bg-light mb-3"
+          v-for="maintainer of processDocumentation.maintainers"
+          :key="maintainer.id"
+        >
+          <div class="card-header">
+            <div class="card-title">
+              {{ maintainer.name }}
+              <router-link
+                tag="a"
+                :to="{
+                  name: 'AgentView',
+                  params: { id: maintainer.id }
+                }"
+              >
+                <view-icon />
+              </router-link>
+              <span v-on:click="removeMaintainer(maintainer)">
+                <delete-icon />
+              </span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ maintainer.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -111,7 +117,10 @@ export default {
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
 }
+.card-columns {
+  column-count: 2;
+}
 .card-header {
-  padding-top: 0rem;
+  padding-top: 1rem;
 }
 </style>
