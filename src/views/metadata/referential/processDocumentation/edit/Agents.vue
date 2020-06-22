@@ -30,7 +30,7 @@
         >
           <div class="card-header">
             <div class="card-title">
-              {{ maintainer.name }}
+              <strong>{{ maintainer.name }}</strong>
               <router-link
                 tag="a"
                 :to="{
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="card-body">
-            <p class="card-text">{{ maintainer.description }}</p>
+            
           </div>
         </div>
       </div>

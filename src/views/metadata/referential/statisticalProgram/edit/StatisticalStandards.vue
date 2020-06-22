@@ -45,27 +45,33 @@
         </v-select>
         <span class="help-block">Please select statistical standards.</span>
       </div>
-      <div
-        class="card-slot"
-        v-for="statisticalStandard of statisticalProgram.statisticalStandards"
-        :key="statisticalStandard.id"
-      >
-        <p class="heading">
-          {{ statisticalStandard.name }}
-          <router-link
-            tag="a"
-            :to="{
-              name: 'StatisticalStandardView',
-              params: { id: statisticalStandard.id }
-            }"
-          >
-            <view-icon />
-          </router-link>
-          <span v-on:click="removeStatisticalStandard(statisticalStandard)">
-            <delete-icon />
-          </span>
-        </p>
-        <p class="card-text">{{ statisticalStandard.description }}</p>
+      <div class="card-columns">
+        <div
+          class="card bg-light mb-3"
+          v-for="statisticalStandard of statisticalProgram.statisticalStandards"
+          :key="statisticalStandard.id"
+        >
+          <div class="card-header">
+            <div class="card-title">
+              <strong>{{ statisticalStandard.name }}</strong>
+              <router-link
+                tag="a"
+                :to="{
+                  name: 'StatisticalStandardView',
+                  params: { id: statisticalStandard.id }
+                }"
+              >
+                <view-icon />
+              </router-link>
+              <span v-on:click="removeStatisticalStandard(statisticalStandard)">
+                <delete-icon />
+              </span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ statisticalStandard.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-footer">
@@ -164,7 +170,10 @@ export default {
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
 }
+.card-columns {
+  column-count: 2;
+}
 .card-header {
-  padding-top: 0rem;
+  padding-top: 1rem;
 }
 </style>

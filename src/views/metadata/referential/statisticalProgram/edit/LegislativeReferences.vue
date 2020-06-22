@@ -45,28 +45,35 @@
         </v-select>
         <span class="help-block">Please select legislative references.</span>
       </div>
-
-      <div
-        class="card-slot"
-        v-for="legislativeReference of statisticalProgram.legislativeReferences"
-        :key="legislativeReference.id"
-      >
-        <p class="heading">
-          {{ legislativeReference.name }}
-          <router-link
-            tag="a"
-            :to="{
-              name: 'LegislativeReferenceView',
-              params: { id: legislativeReference.id }
-            }"
-          >
-            <view-icon />
-          </router-link>
-          <span v-on:click="removeLegislativeReference(legislativeReference)">
-            <delete-icon />
-          </span>
-        </p>
-        <p class="card-text">{{ legislativeReference.description }}</p>
+      <div class="card-columns">
+        <div
+          class="card bg-light mb-3"
+          v-for="legislativeReference of statisticalProgram.legislativeReferences"
+          :key="legislativeReference.id"
+        >
+          <div class="card-header">
+            <p class="card-title">
+              <strong>{{ legislativeReference.name }}</strong>
+              <router-link
+                tag="a"
+                :to="{
+                  name: 'LegislativeReferenceView',
+                  params: { id: legislativeReference.id }
+                }"
+              >
+                <view-icon />
+              </router-link>
+              <span
+                v-on:click="removeLegislativeReference(legislativeReference)"
+              >
+                <delete-icon />
+              </span>
+            </p>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ legislativeReference.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-footer">
@@ -166,7 +173,10 @@ export default {
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
 }
+.card-columns {
+  column-count: 2;
+}
 .card-header {
-  padding-top: 0rem;
+  padding-top: 1rem;
 }
 </style>
