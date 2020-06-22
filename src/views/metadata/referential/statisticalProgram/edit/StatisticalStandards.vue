@@ -47,7 +47,7 @@
       </div>
       <div class="card-columns">
         <div
-          class="card card-no-shadow bg-light mb-3"
+          class="card card-no-shadow bg-lighter mb-3"
           v-for="statisticalStandard of statisticalProgram.statisticalStandards"
           :key="statisticalStandard.id"
         >
@@ -176,5 +176,8 @@ export default {
 }
 .card-columns {
   column-count: 2;
+}
+.bg-lighter {
+  background-color: #f8f8f8 !important;
 }
 </style>

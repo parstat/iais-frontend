@@ -1,8 +1,8 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <div class="card">
-        <header class="card-header">
+      <div class="card card-plain">
+        <header class="card-header pt-0">
           <strong>{{ statisticalProgram.name }} </strong>
           <div class="card-header-actions">
             <router-link
@@ -146,12 +146,9 @@ export default {
 </script>
 
 <style scoped>
-.card {
+.card-plain {
   padding-top: 0rem;
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
-}
-.card-header {
-  padding-top: 0rem;
 }
 </style>
