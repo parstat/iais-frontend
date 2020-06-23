@@ -3,13 +3,15 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <text-icon />
-          <strong class="icon-header">Process Documentation</strong>
-          <div class="card-subtitle">
+          <p>
+            <text-icon />
+            <strong class="icon-header">Process Documentation</strong>
+          </p>
+          <h6 class="card-subtitle mb-2 text-muted">
             (sub-phase: {{ processDocumentation.businessFunction.localId }}
             {{ processDocumentation.businessFunction.name }}, survey:
             {{ processDocumentation.statisticalProgram.name }})
-          </div>
+          </h6>
         </div>
         <div class="card-body">
           <CTabs

@@ -1,9 +1,9 @@
 <template>
   <div class="card">
-    <header class="card-header">
+    <div class="card-header">
       <regulation-icon />
       <strong class="icon-header">Process Outputs</strong>
-    </header>
+    </div>
     <div class="card-body">
       <div class="form-group">
         <label for="name">Process output name*</label>
@@ -47,16 +47,18 @@
       </div>
       <div class="card-columns">
         <div
-          class="card bg-light mb-3"
+          class="card card-border bg-lighter mb-3"
           v-for="processOutput of processDocumentation.processOutputSpecifications"
           :key="processOutput.id"
         >
           <div class="card-header">
             <div class="card-title">
               <strong>{{ processOutput.name }}</strong>
-              <span v-on:click="removeProcessOutput(processOutput)">
-                <delete-icon />
-              </span>
+              <div class="card-header-actions">
+                <span v-on:click="removeProcessOutput(processOutput)">
+                  <delete-icon />
+                </span>
+              </div>
             </div>
           </div>
           <div class="card-body">
@@ -148,16 +150,19 @@ export default {
 
 <style scoped>
 .card {
-  padding-top: 0rem;
-  scroll-padding-bottom: 0rem;
   box-shadow: none !important;
-  display: inline-block !important;
+}
+.card-plain {
+  padding-top: 0rem;
+  scroll-padding-bottom: 1rem;
+}
+.card-border {
+  border: 1px solid #d8dbe0 !important;
+}
+.bg-lighter {
+  background-color: #f8f8f8 !important;
 }
 .card-header {
-  padding-top: 0rem;
-}
-
-.card-columns {
-  column-count: 2;
+  padding-top: 1rem;
 }
 </style>

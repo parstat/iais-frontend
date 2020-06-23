@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <header class="card-header">
+    <div class="card-header">
       <regulation-icon />
       <strong class="icon-header">Statistical Standard</strong>
       <div class="card-header-actions">
@@ -13,7 +13,7 @@
           <span class="icon-span">Add</span>
         </router-link>
       </div>
-    </header>
+    </div>
     <div class="card-body">
       <div class="form-group" v-if="statisticalStandards">
         <label for="statisticalStandard">Statistical Standard</label>
@@ -47,25 +47,29 @@
       </div>
       <div class="card-columns">
         <div
-          class="card bg-light mb-3"
+          class="card card-border bg-lighter mb-3"
           v-for="statisticalStandard of processDocumentation.standards"
           :key="statisticalStandard.id"
         >
           <div class="card-header">
             <div class="card-title">
               <strong>{{ statisticalStandard.name }}</strong>
-              <router-link
-                tag="a"
-                :to="{
-                  name: 'StatisticalStandardView',
-                  params: { id: statisticalStandard.id }
-                }"
-              >
-                <view-icon />
-              </router-link>
-              <span v-on:click="removeStatisticalStandard(statisticalStandard)">
-                <delete-icon />
-              </span>
+              <div class="card-header-actions">
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'StatisticalStandardView',
+                    params: { id: statisticalStandard.id }
+                  }"
+                >
+                  <view-icon />
+                </router-link>
+                <span
+                  v-on:click="removeStatisticalStandard(statisticalStandard)"
+                >
+                  <delete-icon />
+                </span>
+              </div>
             </div>
           </div>
           <div class="card-body">
@@ -166,13 +170,20 @@ export default {
 
 <style scoped>
 .card {
-  padding-top: 0rem;
-  scroll-padding-bottom: 0rem;
   box-shadow: none !important;
-  display: inline-block !important;
 }
-.card-columns {
-  column-count: 2;
+.card-plain {
+  padding-top: 0rem;
+  scroll-padding-bottom: 1rem;
+}
+.card-border {
+  border: 1px solid #d8dbe0 !important;
+}
+.bg-lighter {
+  background-color: #f8f8f8 !important;
+}
+.card-header {
+  padding-top: 0rem;
 }
 .card-header {
   padding-top: 1rem;

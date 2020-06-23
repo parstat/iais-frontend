@@ -1,6 +1,6 @@
 <template>
-  <div class="card card-plain">
-    <header class="card-header pt-0">
+  <div class="card">
+    <div class="card-header pt-0">
       <regulation-icon />
       <strong class="icon-header">Statistical Standard</strong>
       <div class="card-header-actions">
@@ -13,7 +13,7 @@
           <span class="icon-span">Add</span>
         </router-link>
       </div>
-    </header>
+    </div>
     <div class="card-body">
       <div class="form-group" v-if="statisticalStandards">
         <label for="statisticalStandard">Statistical Standard</label>
@@ -47,7 +47,7 @@
       </div>
       <div class="card-columns">
         <div
-          class="card card-no-shadow bg-lighter mb-3"
+          class="card card-border bg-lighter mb-3"
           v-for="statisticalStandard of statisticalProgram.statisticalStandards"
           :key="statisticalStandard.id"
         >
@@ -165,19 +165,20 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  box-shadow: none !important;
+}
 .card-plain {
   padding-top: 0rem;
-  scroll-padding-bottom: 0rem;
-  box-shadow: none !important;
+  scroll-padding-bottom: 1rem;
 }
-.card-no-shadow {
-  box-shadow: none !important;
+.card-border {
   border: 1px solid #d8dbe0 !important;
-}
-.card-columns {
-  column-count: 2;
 }
 .bg-lighter {
   background-color: #f8f8f8 !important;
+}
+.card-header {
+  padding-top: 1rem;
 }
 </style>

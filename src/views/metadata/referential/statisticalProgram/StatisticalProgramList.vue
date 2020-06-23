@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="card">
         <header class="card-header">
-          Statistical processes
+          <strong>Statistical processes</strong>
           <div class="card-header-actions">
             <router-link
               v-if="isAuthenticated"

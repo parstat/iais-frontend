@@ -47,16 +47,18 @@
       </div>
       <div class="card-columns">
         <div
-          class="card bg-light mb-auto"
+          class="card card-border bg-lighter mb-3"
           v-for="processQuality of processDocumentation.processQualities"
           :key="processQuality.id"
         >
           <div class="card-header">
             <div class="card-title">
               <strong>{{ processQuality.name }}</strong>
-              <span v-on:click="removeProcessQuality(processQuality)">
-                <delete-icon />
-              </span>
+              <div class="card-header-actions">
+                <span v-on:click="removeProcessQuality(processQuality)">
+                  <delete-icon />
+                </span>
+              </div>
             </div>
           </div>
           <div class="card-body">
@@ -148,16 +150,19 @@ export default {
 
 <style scoped>
 .card {
-  padding-top: 0rem;
-  scroll-padding-bottom: 0rem;
   box-shadow: none !important;
-  display: inline-block !important;
+}
+.card-plain {
+  padding-top: 0rem;
+  scroll-padding-bottom: 1rem;
+}
+.card-border {
+  border: 1px solid #d8dbe0 !important;
+}
+.bg-lighter {
+  background-color: #f8f8f8 !important;
 }
 .card-header {
-  padding-top: 0rem;
-}
-
-.card-columns {
-  column-count: 2;
+  padding-top: 1rem;
 }
 </style>

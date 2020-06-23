@@ -3,8 +3,10 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <text-icon />
-          <strong class="icon-header">Statistical process</strong>
+          <h5>
+            <text-icon />
+            <strong class="icon-header">Statistical process</strong>
+          </h5>
         </div>
         <div class="card-body">
           <CTabs

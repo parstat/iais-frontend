@@ -47,16 +47,18 @@
       </div>
       <div class="card-columns">
         <div
-          class="card bg-light mb-3"
+          class="card card-border bg-lighter mb-3"
           v-for="processInput of processDocumentation.processInputSpecifications"
           :key="processInput.id"
         >
           <div class="card-header">
             <div class="card-title">
               <strong>{{ processInput.name }}</strong>
-              <span v-on:click="removeProcessInput(processInput)">
-                <delete-icon />
-              </span>
+              <div class="card-header-actions">
+                <span v-on:click="removeProcessInput(processInput)">
+                  <delete-icon />
+                </span>
+              </div>
             </div>
           </div>
           <div class="card-body">
@@ -145,15 +147,19 @@ export default {
 
 <style scoped>
 .card {
-  padding-top: 0rem;
-  scroll-padding-bottom: 0rem;
   box-shadow: none !important;
-  display: inline-block !important;
 }
-.card-columns {
-  column-count: 2;
+.card-plain {
+  padding-top: 0rem;
+  scroll-padding-bottom: 1rem;
+}
+.card-border {
+  border: 1px solid #d8dbe0 !important;
+}
+.bg-lighter {
+  background-color: #f8f8f8 !important;
 }
 .card-header {
-  padding-top: 0rem;
+  padding-top: 1rem;
 }
 </style>

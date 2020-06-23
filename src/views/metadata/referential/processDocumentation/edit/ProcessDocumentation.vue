@@ -1,9 +1,9 @@
 <template>
   <div class="card">
-    <header class="card-header">
+    <div class="card-header">
       <text-icon />
       <strong class="icon-header">Process Documentation Basic Variables</strong>
-    </header>
+    </div>
     <div class="card-body">
       <div class="form-group">
         <label for="statisticalProgram">Statistical Process</label>
