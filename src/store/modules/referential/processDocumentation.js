@@ -232,6 +232,27 @@ const actions = {
         console.log(error);
       }
     );
+  },
+  addProcessDocument({ commit }, formData) {
+    processDocumentationService.addProcessDocument(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
+  removeProcessDocument({ commit }, formData) {
+    processDocumentationService.removeProcessDocument(formData).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 };
 

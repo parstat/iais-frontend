@@ -12,11 +12,7 @@
                 path: '/metadata/referential/documentation/add',
                 query: {
                   program: statisticalProgram.id,
-                  business_function: lastDocumentation
-                    ? lastDocumentation.nextSubPhase
-                      ? lastDocumentation.subPhase
-                      : ''
-                    : ''
+                  business_function: nextSubPhase
                 }
               }"
               class="card-header-action"
@@ -45,7 +41,9 @@
               </thead>
               <tbody>
                 <tr
-                  v-for="processDocumentation in statisticalProgram.processDocumentations"
+                  v-for="processDocumentation in sortAscDocumentations(
+                    statisticalProgram.processDocumentations
+                  )"
                   :key="processDocumentation.id"
                 >
                   <td>{{ processDocumentation.businessFunction.localId }}</td>
@@ -116,6 +114,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+import _ from "lodash";
 
 export default {
   name: "ProcessDocumentationsEdit",
@@ -125,21 +124,22 @@ export default {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
 
-    lastDocumentation() {
-      var lastDocumentation = "";
+    nextSubPhase() {
+      var nextSubPhase = "";
       if (this.statisticalProgram.processDocumentations) {
-        var data = this.statisticalProgram.processDocumentations.slice();
-        //find the max existing id
-        var last = data.reduce(
-          (max, p) => (p.id > max ? p.id : max),
-          data[0].id
-        );
-        //retrunt the last documentation entered
-        lastDocumentation = this.statisticalProgram.processDocumentations.find(
-          pd => pd.id == last
-        );
+        nextSubPhase = this.sortDescByIdDocumentations(
+          this.statisticalProgram.processDocumentations
+        )[0].nextSubPhase;
       }
-      return lastDocumentation;
+      return nextSubPhase;
+    }
+  },
+  methods: {
+    sortAscDocumentations(arrays) {
+      return _.orderBy(arrays, "businessFunction.localId", "asc");
+    },
+    sortDescByIdDocumentations(arrays) {
+      return _.orderBy(arrays, "id", "desc");
     }
   }
 };

@@ -213,7 +213,7 @@
             <CTab title="Process Inputs" disabled> </CTab>
             <CTab title="Process Outputs" disabled> </CTab>
             <CTab title="Process Quality" disabled> </CTab>
-            <CTab title="Documents/Notes" disabled> </CTab>
+            <CTab title="Process Comments/Notes" disabled> </CTab>
           </CTabs>
         </div>
       </div>

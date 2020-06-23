@@ -45,6 +45,9 @@
             <CTab title="Process Quality">
               <app-qualities @next="next" @back="back"></app-qualities>
             </CTab>
+            <CTab title="Process Comments/Notes">
+              <app-documents @finish="finish"></app-documents>
+            </CTab>
           </CTabs>
         </div>
       </div>
@@ -60,6 +63,7 @@ import BusinessServices from "./BusinessServices";
 import ProcessInputs from "./ProcessInputs";
 import ProcessOutputs from "./ProcessOutputs";
 import ProcessQualities from "./ProcessQualities";
+import ProcessDocuments from "./ProcessDocuments";
 
 import { mapGetters } from "vuex";
 //import { required } from "vuelidate/lib/validators";
@@ -80,7 +84,8 @@ export default {
     "app-services": BusinessServices,
     "app-inputs": ProcessInputs,
     "app-outputs": ProcessOutputs,
-    "app-qualities": ProcessQualities
+    "app-qualities": ProcessQualities,
+    "app-documents": ProcessDocuments
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"])
@@ -99,6 +104,13 @@ export default {
     },
     updateStep(active) {
       this.activeTab = active;
+    },
+    finish() {
+      this.$router.push(
+        "/metadata/referential/edit/" +
+          this.processDocumentation.statisticalProgram.id +
+          "?step=5"
+      );
     }
   },
   created() {
