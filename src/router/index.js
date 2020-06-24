@@ -107,7 +107,7 @@ const routes = [
           import(
             "../views/metadata/referential/processDocumentation/view/ProcessDocumentationView"
           ),
-        meta: { authorize: [Role.User, Role.Admin] }
+        meta: { authorize: [] }
       },
       {
         path: "metadata/referential/documentation/edit/:id",
