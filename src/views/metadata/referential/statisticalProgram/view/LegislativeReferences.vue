@@ -22,11 +22,6 @@
               >
                 <view-icon />
               </router-link>
-              <span
-                v-on:click="removeLegislativeReference(legislativeReference)"
-              >
-                <delete-icon />
-              </span>
             </div>
           </div>
           <div class="card-body">
