@@ -1,6 +1,5 @@
 <template>
-  <div class="col-md-12">
-    <div class="card">
+    <div class="card col-md-12">
       <div class="card-header">
         <h5>Process Documentations</h5>
       </div>
@@ -54,7 +53,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 import { mapGetters } from "vuex";
