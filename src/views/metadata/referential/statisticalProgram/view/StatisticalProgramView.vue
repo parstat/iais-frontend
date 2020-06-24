@@ -4,17 +4,18 @@
       <div class="container">
         <h1 class="display-4">
           {{ statisticalProgram.name }} ({{ statisticalProgram.acronym }})
-          <router-link v-if="isAuthenticated"
-                        tag="a"
-                        :to="{
-                          name: 'StatisticalProgramEdit',
-                          params: { id: statisticalProgram.id }
-                        }"
-                      >
-                        <edit-icon />
-                      </router-link>
+          <router-link
+            v-if="isAuthenticated"
+            tag="a"
+            :to="{
+              name: 'StatisticalProgramEdit',
+              params: { id: statisticalProgram.id }
+            }"
+          >
+            <edit-icon />
+          </router-link>
         </h1>
-        
+
         <p class="lead">{{ statisticalProgram.description }}</p>
       </div>
     </div>
