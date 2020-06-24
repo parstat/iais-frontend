@@ -61,19 +61,6 @@ export default {
 };
 </script>
 <style scoped>
-.card-plain {
-  padding-top: 0rem;
-  scroll-padding-bottom: 1rem;
-}
-.card-border {
-  border: 1px solid #d8dbe0 !important;
-}
-.bg-lighter {
-  background-color: #f8f8f8 !important;
-}
-.card-header {
-  padding-top: 1rem;
-}
 .jumbotron {
   border: 1px solid #ced2d8;
   box-shadow: 0 1px 1px 0 rgba(60, 75, 100, 0.14),

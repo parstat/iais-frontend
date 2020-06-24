@@ -2,7 +2,7 @@
   <div class="row" v-if="processDocumentation">
     <div class="jumbotron jumbotron-fluid col-lg-12">
       <div class="container">
-        <h1 class="display-4">
+        <h2 class="display-5">
           {{ processDocumentation.statisticalProgram.name }}
           <router-link
             v-if="isAuthenticated"
@@ -14,7 +14,7 @@
           >
             <edit-icon />
           </router-link>
-        </h1>
+        </h2>
 
         <p class="lead">
           {{ processDocumentation.businessFunction.localId }}
@@ -94,20 +94,18 @@ export default {
 };
 </script>
 <style scoped>
-.card {
-  box-shadow: none !important;
+.jumbotron {
+  border: 1px solid #ced2d8;
+  box-shadow: 0 1px 1px 0 rgba(60, 75, 100, 0.14),
+    0 2px 1px -1px rgba(60, 75, 100, 0.12), 0 1px 3px 0 rgba(60, 75, 100, 0.2);
 }
-.card-plain {
-  padding-top: 0rem;
-  scroll-padding-bottom: 1rem;
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 1.5rem 2rem 1rem 2rem;
+  }
 }
-.card-border {
-  border: 1px solid #d8dbe0 !important;
-}
-.bg-lighter {
-  background-color: #f8f8f8 !important;
-}
-.card-header {
-  padding-top: 1rem;
+.lead {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
 }
 </style>
