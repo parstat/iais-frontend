@@ -81,19 +81,6 @@ export default {
 };
 </script>
 <style scoped>
-.card {
-  box-shadow: none !important;
-}
-.card-plain {
-  padding-top: 0rem;
-  scroll-padding-bottom: 1rem;
-}
-.card-border {
-  border: 1px solid #d8dbe0 !important;
-}
-.bg-lighter {
-  background-color: #f8f8f8 !important;
-}
 .card-header {
   padding-top: 1rem;
 }
