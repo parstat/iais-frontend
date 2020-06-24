@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-100">
+  <div class="card w-100" v-if="processDocumentation.standards">
     <div class="card-header">
       <h5>Statistical Standards</h5>
     </div>
@@ -7,7 +7,7 @@
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="statisticalStandard of statisticalProgram.statisticalStandards"
+          v-for="statisticalStandard of processDocumentation.standards"
           :key="statisticalStandard.id"
         >
           <div class="card-header">
@@ -36,14 +36,14 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "StatisticalProgramStandardsView",
+  name: "ProcessDocumentationStandardsView",
   data() {
     return {
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
+    ...mapGetters("processDocumentation", ["processDocumentation"])
   }
 };
 </script>

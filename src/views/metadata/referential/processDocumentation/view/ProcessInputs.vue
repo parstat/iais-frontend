@@ -1,31 +1,20 @@
 <template>
-  <div class="card w-100">
+  <div class="card" v-if="processDocumentation.processInputSpecifications">
     <div class="card-header">
-      <h5>Statistical Standards</h5>
+      <h5>Process Inputs</h5>
     </div>
     <div class="card-body">
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="statisticalStandard of statisticalProgram.statisticalStandards"
-          :key="statisticalStandard.id"
+          v-for="processInputSpecification of processDocumentation.processInputSpecifications"
+          :key="processInputSpecification.id"
         >
           <div class="card-header">
-            <strong>{{ statisticalStandard.name }}</strong>
-            <div class="card-header-actions">
-              <router-link
-                tag="a"
-                :to="{
-                  name: 'StatisticalStandardView',
-                  params: { id: statisticalStandard.id }
-                }"
-              >
-                <view-icon />
-              </router-link>
-            </div>
+            <strong>{{ processInputSpecification.name }}</strong>
           </div>
           <div class="card-body">
-            <p class="card-text">{{ statisticalStandard.description }}</p>
+            <p class="card-text">{{ processInputSpecification.description }}</p>
           </div>
         </div>
       </div>
@@ -36,14 +25,14 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "StatisticalProgramStandardsView",
+  name: "ProcessDocumentationInputsView",
   data() {
     return {
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
+    ...mapGetters("processDocumentation", ["processDocumentation"])
   }
 };
 </script>

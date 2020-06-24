@@ -19,10 +19,10 @@
         <p class="lead">{{ statisticalProgram.description }}</p>
       </div>
     </div>
-    <app-agents @handleBack="handleBack"></app-agents>
+    <app-agents></app-agents>
     <app-references></app-references>
     <app-standards></app-standards>
-    <app-documentations></app-documentations>
+    <app-documentations @handleBack="handleBack"></app-documentations>
   </div>
 </template>
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card col-md-12">
+  <div class="card w-100">
     <div class="card-header">
       <h5>Process Documentations</h5>
     </div>
@@ -39,7 +39,7 @@
                   <router-link
                     tag="a"
                     :to="{
-                      name: 'ProcessDocumentationEdit',
+                      name: 'ProcessDocumentationView',
                       params: { id: processDocumentation.id }
                     }"
                   >
@@ -51,6 +51,16 @@
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="card-footer">
+      <CButton
+        color="primary"
+        shape="square"
+        size="sm"
+        @click.prevent="$emit('handleBack')"
+        :disabled="disabled"
+        >Back</CButton
+      >
     </div>
   </div>
 </template>
@@ -65,7 +75,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
+    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
+    ...mapGetters("coreui", ["isLoading"])
   }
 };
 </script>

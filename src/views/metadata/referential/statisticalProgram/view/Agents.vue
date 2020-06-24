@@ -1,5 +1,5 @@
 <template>
-  <div class="card-columns">
+  <div class="card-columns w-100">
     <div class="card">
       <div class="card-header">
         <h5>Owner</h5>
@@ -23,16 +23,6 @@
         <div class="card-slot" v-if="statisticalProgram.owner.description">
           <span> {{ statisticalProgram.owner.description }}</span>
         </div>
-      </div>
-      <div class="card-footer">
-        <CButton
-          color="primary"
-          shape="square"
-          size="sm"
-          @click.prevent="handleBack()"
-          :disabled="disabled"
-          >Back</CButton
-        >
       </div>
     </div>
     <div class="card">
@@ -61,16 +51,6 @@
         <div class="card-slot" v-if="statisticalProgram.maintainer.description">
           <span> {{ statisticalProgram.maintainer.description }}</span>
         </div>
-      </div>
-      <div class="card-footer">
-        <CButton
-          color="primary"
-          shape="square"
-          size="sm"
-          @click.prevent="handleBack()"
-          :disabled="disabled"
-          >Back</CButton
-        >
       </div>
     </div>
     <div class="card">
@@ -102,16 +82,6 @@
         <div class="card-slot" v-if="statisticalProgram.contact.localId">
           <span> {{ statisticalProgram.contact.localId }}</span>
         </div>
-      </div>
-      <div class="card-footer">
-        <CButton
-          color="primary"
-          shape="square"
-          size="sm"
-          @click.prevent="handleBack()"
-          :disabled="disabled"
-          >Back</CButton
-        >
       </div>
     </div>
   </div>

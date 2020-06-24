@@ -79,7 +79,7 @@
                       </router-link>
                     </td>
                   </template>
-                  <template v-else>
+                  <template>
                     <td>
                       <router-link
                         tag="a"

@@ -1,5 +1,5 @@
 <template>
-  <div class="card col-md-12">
+  <div class="card w-100">
     <div class="card-header">
       <h5>Legislative References</h5>
     </div>
