@@ -78,7 +78,7 @@ const routes = [
         name: "StatisticalProgramView",
         component: () =>
           import(
-            "../views/metadata/referential/statisticalProgram/StatisticalProgramView"
+            "../views/metadata/referential/statisticalProgram/view/StatisticalProgramView"
           ),
         meta: { authorize: [] }
       },
