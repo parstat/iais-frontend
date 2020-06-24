@@ -60,4 +60,5 @@ h5 {
 }
 .material-design-icon {
   margin-bottom: 0.2rem;
-}</style>
+}
+</style>
