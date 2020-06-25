@@ -102,11 +102,7 @@
             </div>
           </template>
         </v-select>
-        <span
-          class="help-block"
-          :class="{ show: $v.processDocumentation.nextSubPhase.$error }"
-          >Please select the next GSBPM sub-phase.</span
-        >
+        <span class="help-block">Please select the next GSBPM sub-phase.</span>
       </div>
       <div class="form-mandatory">*Mandatory fields</div>
     </div>

@@ -27,12 +27,12 @@
         <p v-if="processDocumentation.nextSubPhase" class="lead">
           <strong>Next Process: </strong>
           <router-link
+            v-if="nextDocumentation"
             tag="a"
             :to="{
               name: 'ProcessDocumentationView',
-              query: {
-                program: processDocumentation.statisticalProgram.id,
-                function: processDocumentation.nextSubPhase.id
+              params: {
+                id: nextDocumentation.id
               }
             }"
           >
@@ -75,15 +75,36 @@ export default {
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated"]),
-    ...mapGetters("processDocumentation", ["processDocumentation"])
+    ...mapGetters("processDocumentation", ["processDocumentation"]),
+    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
+
+    nextDocumentation() {
+      var nextDocumentation = "";
+      if (this.statisticalProgram) {
+        nextDocumentation = this.statisticalProgram.processDocumentations.find(
+          pd =>
+            pd.businessFunction.id === this.processDocumentation.nextSubPhase.id
+        );
+      }
+      return nextDocumentation;
+    }
   },
   watch: {
     $route: function(_new, _old) {
-      if (_new.query.function !== _old.query.function) {
+      if (_new.params.id !== _old.params.id) {
         this.init();
+      }
+    },
+    "processDocumentation.statisticalProgram": function() {
+      if (!this.statisticalProgram) {
+        this.$store.dispatch(
+          "statisticalProgram/findById",
+          this.processDocumentation.statisticalProgram.id
+        );
       }
     }
   },
+
   components: {
     "app-agents": Agents,
     "app-standards": StatisticalStandards,
@@ -94,6 +115,7 @@ export default {
     "app-qualities": ProcessQualities,
     "app-documents": ProcessDocuments
   },
+
   methods: {
     handleBack() {
       this.disabled = true; //disable button
@@ -103,21 +125,10 @@ export default {
       );
     },
     init() {
-      if (this.$route.query) {
-        if (this.$route.query.id) {
-          this.$store.dispatch(
-            "processDocumentation/findById",
-            this.$route.query.id
-          );
-        } else {
-          if (this.$route.query.program && this.$route.query.function) {
-            this.$store.dispatch(
-              "processDocumentation/findLatest",
-              this.$route.query
-            );
-          }
-        }
-      }
+      this.$store.dispatch(
+        "processDocumentation/findById",
+        this.$route.params.id
+      );
     }
   },
   created() {
