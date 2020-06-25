@@ -3,6 +3,7 @@ import qs from "querystring";
 
 export const processDocumentationService = {
   findById,
+  findLatest,
   findByName,
   save,
   update,
@@ -29,6 +30,28 @@ function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais
       .get("/referential/process/documentations/" + id + "?language=en")
+      .then(
+        response => {
+          var data = response.data ? response.data : {};
+          resolve(data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function findLatest(statisticalProgram, businessFunction) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .get(
+        "/referential/process/documentations/program/" +
+          statisticalProgram +
+          "/function/" +
+          businessFunction +
+          "?language=en"
+      )
       .then(
         response => {
           var data = response.data ? response.data : {};

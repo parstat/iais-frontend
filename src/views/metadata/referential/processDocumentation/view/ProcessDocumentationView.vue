@@ -26,8 +26,19 @@
         </p>
         <p v-if="processDocumentation.nextSubPhase" class="lead">
           <strong>Next Process: </strong>
-          {{ processDocumentation.nextSubPhase.localId }}
-          {{ processDocumentation.nextSubPhase.name }}
+          <router-link
+            tag="a"
+            :to="{
+              name: 'ProcessDocumentationView',
+              query: {
+                program: processDocumentation.statisticalProgram.id,
+                function: processDocumentation.nextSubPhase.id
+              }
+            }"
+          >
+            {{ processDocumentation.nextSubPhase.localId }}
+            {{ processDocumentation.nextSubPhase.name }}
+          </router-link>
         </p>
       </div>
     </div>
@@ -66,6 +77,13 @@ export default {
     ...mapGetters("auth", ["isAuthenticated"]),
     ...mapGetters("processDocumentation", ["processDocumentation"])
   },
+  watch: {
+    $route: function(_new, _old) {
+      if (_new.query.function !== _old.query.function) {
+        this.init();
+      }
+    }
+  },
   components: {
     "app-agents": Agents,
     "app-standards": StatisticalStandards,
@@ -83,13 +101,27 @@ export default {
         "/metadata/referential/view" +
           this.processDocumentation.statisticalProgram.id
       );
+    },
+    init() {
+      if (this.$route.query) {
+        if (this.$route.query.id) {
+          this.$store.dispatch(
+            "processDocumentation/findById",
+            this.$route.query.id
+          );
+        } else {
+          if (this.$route.query.program && this.$route.query.function) {
+            this.$store.dispatch(
+              "processDocumentation/findLatest",
+              this.$route.query
+            );
+          }
+        }
+      }
     }
   },
   created() {
-    this.$store.dispatch(
-      "processDocumentation/findById",
-      this.$route.params.id
-    );
+    this.init();
   }
 };
 </script>

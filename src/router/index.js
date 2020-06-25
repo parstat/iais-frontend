@@ -101,7 +101,7 @@ const routes = [
         meta: { authorize: [Role.User, Role.Admin] }
       },
       {
-        path: "metadata/referential/documentation/view/:id",
+        path: "metadata/referential/documentation/view",
         name: "ProcessDocumentationView",
         component: () =>
           import(

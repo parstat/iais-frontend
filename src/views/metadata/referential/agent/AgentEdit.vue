@@ -103,7 +103,7 @@ export default {
     };
   },
   watch: {
-    "agent.type": function() {
+    "agent.type": () => {
       this.getParents(this.agent.type);
     }
   },
@@ -152,7 +152,6 @@ export default {
       this.$v.$reset();
     },
     getParents(type) {
-      console.log(type);
       if (type === "DIVISION") {
         this.$store.dispatch("agent/findByType", Agent.Organization);
         return;

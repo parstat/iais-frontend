@@ -40,7 +40,7 @@
                     tag="a"
                     :to="{
                       name: 'ProcessDocumentationView',
-                      params: { id: processDocumentation.id }
+                      query: { id: processDocumentation.id }
                     }"
                   >
                     <view-icon />

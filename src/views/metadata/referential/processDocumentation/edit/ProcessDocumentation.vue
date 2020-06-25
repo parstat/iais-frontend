@@ -71,14 +71,11 @@
         >
       </div>
       <div class="form-group" v-if="businessFunctions">
-        <label for="nextBusinessFunction">Next GSBPM Sub-phase*</label>
+        <label for="nextBusinessFunction">Next GSBPM Sub-phase</label>
         <v-select
           label="name"
           :options="businessFunctions"
           v-model="processDocumentation.nextSubPhase"
-          :class="{
-            'is-invalid': $v.processDocumentation.nextSubPhase.$error
-          }"
           placeholder="Select a GSBPM sub-phase"
           :filtrable="false"
           @search="searchBusinessFunctions"
@@ -171,9 +168,6 @@ export default {
         required
       },
       frequency: {
-        required
-      },
-      nextSubPhase: {
         required
       }
     }

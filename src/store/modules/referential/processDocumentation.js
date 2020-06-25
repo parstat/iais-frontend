@@ -13,13 +13,26 @@ const mutations = {
       : [];
   },
   SET_PROCESS_DOCUMENTATION(state, processDocumentation) {
-    state.processDocumentation = processDocumentation;
+    state.processDocumentation = processDocumentation
+      ? processDocumentation
+      : null;
   }
 };
 
 const actions = {
   findById({ commit }, id) {
     processDocumentationService.findById(id).then(
+      data => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  },
+
+  findLatest({ commit }, query) {
+    processDocumentationService.findLatest(query.program, query.function).then(
       data => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
