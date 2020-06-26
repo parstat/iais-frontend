@@ -7,5 +7,6 @@ export const Regulation = {
   Protocol: "PROTOCOL",
   Recommendation: "RECOMMENDATION",
   Regulation: "REGULATION",
-  Resolution: "RESOLUTION"
+  Resolution: "RESOLUTION",
+  Other: "OTHER"
 };

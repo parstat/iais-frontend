@@ -1,4 +1,5 @@
 export const Frequency = {
+  Once: "ONCE",
   Daily: "DAILY",
   Weekly: "WEEKLY",
   Monthly: "MONTHLY",
