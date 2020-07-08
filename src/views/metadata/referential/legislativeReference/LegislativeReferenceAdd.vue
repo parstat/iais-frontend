@@ -13,11 +13,11 @@
               type="text"
               class="form-control"
               :class="{ 'is-invalid': $v.name.$error }"
-              placeholder="Agent name"
+              placeholder="Legislative reference name"
               v-model.trim="name"
             />
             <span class="help-block" :class="{ show: $v.name.$error }"
-              >Please enter agent name.</span
+              >Please enter a name.</span
             >
           </div>
           <div class="form-group">
@@ -27,7 +27,7 @@
               id="description"
               type="text"
               class="form-control"
-              placeholder="Agent description"
+              placeholder="Legislative reference description"
               v-model.trim="description"
             />
             <span class="help-block">Please enter a description</span>
