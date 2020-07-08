@@ -20,7 +20,7 @@
         <v-select
           label="name"
           :options="statisticalStandards"
-          placeholder="Select statistical standards"
+          placeholder="Search statistical standards"
           :filtrable="false"
           @search="searchStatisticalStandard"
           @input="addStatisticalStandard"
@@ -39,7 +39,7 @@
               <span
                 ><strong>{{ option.name }} {{ option.version }}</strong></span
               >
-              <p>{{ option.description | subStr }}</p>
+              <p v-if="option.description">{{ option.description | subStr }}</p>
             </div>
           </template>
         </v-select>
