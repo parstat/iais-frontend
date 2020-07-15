@@ -90,7 +90,7 @@
                         <div class="d-center">
                           <span>
                             <strong
-                              >{{ option.localId }} {{ option.name }} v.{{
+                              >{{ option.localId }} {{ option.name }} v{{
                                 option.version
                               }}</strong
                             >
@@ -177,10 +177,10 @@
                         <div class="d-center">
                           <span>
                             <strong
-                              >{{ option.name }} {{ option.version }}</strong
+                              >{{option.localId}} {{ option.name }} v{{ option.version }}</strong
                             >
                           </span>
-                          <p>{{ option.description | subStr }}</p>
+                          <p v-if="option.description">{{ option.description | subStr }}</p>
                         </div>
                       </template>
                     </v-select>

@@ -6,19 +6,25 @@
           <strong>{{ legislativeReference.name }}</strong>
         </header>
         <div class="card-body">
-          <div class="card-group">
+          <div class="card-text">
             <span><strong>Description:</strong></span>
           </div>
           <div class="card-slot">
             <span> {{ legislativeReference.description }} </span>
           </div>
-          <div class="card-group">
+          <div class="card-text">
             <span><strong>Type: </strong></span>
           </div>
           <div class="card-slot">
             <span> {{ legislativeReference.type }} </span>
           </div>
-          <div class="card-group">
+          <div class="card-text" v-if="legislativeReference.externalLink">
+            <span><strong>Link:</strong></span>
+          </div>
+          <div class="card-slot" v-if="legislativeReference.externalLink">
+            <a :href="legislativeReference.externalLink"> {{ legislativeReference.externalLink }} </a>
+          </div>
+          <div class="card-text">
             <span><strong>Id:</strong></span>
           </div>
           <div class="card-slot">

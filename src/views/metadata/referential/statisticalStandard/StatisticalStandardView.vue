@@ -6,19 +6,25 @@
           <strong>{{ statisticalStandard.name }}</strong>
         </header>
         <div class="card-body">
-          <div class="card-group">
+          <div class="card-text">
             <span><strong>Descripton: </strong></span>
           </div>
           <div class="card-slot">
             <span>{{ statisticalStandard.description }}</span>
           </div>
-          <div class="card-group">
+          <div class="card-text">
             <span class="card-text"><strong>Type: </strong></span>
           </div>
           <div class="card-slot">
             <span>{{ statisticalStandard.type }}</span>
           </div>
-          <div class="card-group">
+          <div class="card-text" v-if="statisticalStandard.externalLink">
+            <span class="card-text"><strong>Link: </strong></span>
+          </div>
+          <div class="card-slot"  v-if="statisticalStandard.externalLink">
+            <a :href="statisticalStandard.externalLink">{{ statisticalStandard.externalLink }}</a>
+          </div>
+          <div class="card-text">
             <span class="card-text"><strong>Id: </strong></span>
           </div>
           <div class="card-slot">
