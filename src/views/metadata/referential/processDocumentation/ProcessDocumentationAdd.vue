@@ -194,6 +194,10 @@
                       >Please select the next GSBPM sub-phase.</span
                     >
                   </div>
+                  <div>
+                    <input type="checkbox" value="Last" v-model="lastProcess" />
+                    Last process
+                  </div>
                   <div class="form-mandatory">*Mandatory fields</div>
                 </div>
                 <div class="card-footer">
@@ -239,7 +243,8 @@ export default {
       frequency: "",
       disabled: false,
       activeTab: 0,
-      nextBusinessFunction: ""
+      nextBusinessFunction: "",
+      lastProcess: false
     };
   },
 
@@ -291,6 +296,9 @@ export default {
   methods: {
     handleSubmit() {
       this.$v.$touch(); //validate form data
+      if (this.$v.nextBusinessFunction.$invalid && this.lastProcess) {
+        this.$v.nextBusinessFunction.$reset();
+      }
       if (!this.$v.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
@@ -315,6 +323,7 @@ export default {
       this.businessFunction = "";
       this.$v.$reset();
     },
+
     searchStatisticalProrams(name, loading) {
       loading(true);
       this.searchSP(name, loading, this);
