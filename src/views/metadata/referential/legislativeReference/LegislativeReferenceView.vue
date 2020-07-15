@@ -22,7 +22,9 @@
             <span><strong>Link:</strong></span>
           </div>
           <div class="card-slot" v-if="legislativeReference.externalLink">
-            <a :href="legislativeReference.externalLink"> {{ legislativeReference.externalLink }} </a>
+            <a :href="legislativeReference.externalLink">
+              {{ legislativeReference.externalLink }}
+            </a>
           </div>
           <div class="card-text">
             <span><strong>Id:</strong></span>

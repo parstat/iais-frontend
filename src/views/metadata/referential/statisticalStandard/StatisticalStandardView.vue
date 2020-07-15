@@ -21,8 +21,10 @@
           <div class="card-text" v-if="statisticalStandard.externalLink">
             <span class="card-text"><strong>Link: </strong></span>
           </div>
-          <div class="card-slot"  v-if="statisticalStandard.externalLink">
-            <a :href="statisticalStandard.externalLink">{{ statisticalStandard.externalLink }}</a>
+          <div class="card-slot" v-if="statisticalStandard.externalLink">
+            <a :href="statisticalStandard.externalLink">{{
+              statisticalStandard.externalLink
+            }}</a>
           </div>
           <div class="card-text">
             <span class="card-text"><strong>Id: </strong></span>
