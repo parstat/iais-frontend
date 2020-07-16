@@ -7,7 +7,7 @@
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="legislativeReference of statisticalProgram.legislativeReferences"
+          v-for="legislativeReference of legislativeReferences"
           :key="legislativeReference.id"
         >
           <div class="card-header">
@@ -33,18 +33,9 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  name: "StatisticalProgramLegislativesView",
-  data() {
-    return {
-      disabled: false
-    };
-  },
-  computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
-  }
+  name: "LegislativeReferencessView",
+  props: ["legislativeReferences"]
 };
 </script>
 <style scoped>

@@ -7,7 +7,7 @@
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="statisticalStandard of statisticalProgram.statisticalStandards"
+          v-for="statisticalStandard of statisticalStandards"
           :key="statisticalStandard.id"
         >
           <div class="card-header">
@@ -33,18 +33,9 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  name: "StatisticalProgramStandardsView",
-  data() {
-    return {
-      disabled: false
-    };
-  },
-  computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
-  }
+  name: "StatisticalStandardsView",
+  props: ["statisticalStandards"]
 };
 </script>
 <style scoped>

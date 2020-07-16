@@ -172,6 +172,22 @@ const getters = {
   statisticalPrograms: state => {
     return state.statisticalPrograms;
   },
+  viewStatisticalPrograms: state => {
+    var viewStatisticalPrograms = [];
+    for (var sp of state.statisticalPrograms) {
+      viewStatisticalPrograms.push({
+        id: sp.id,
+        localId: sp.localId,
+        name: sp.name,
+        acronym: sp.acronym,
+        description: sp.description,
+        owner: sp.owner ? sp.owner.name : "",
+        maintainer: sp.maintainer ? sp.maintainer.name : "",
+        contact: sp.contact ? sp.contact.name : ""
+      });
+    }
+    return viewStatisticalPrograms;
+  },
   statisticalProgram: state => {
     return state.statisticalProgram;
   }

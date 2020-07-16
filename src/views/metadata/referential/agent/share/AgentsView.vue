@@ -9,19 +9,19 @@
           <span class="mb-2"><strong>Name</strong></span>
         </div>
         <div class="card-slot">
-          <span>{{ statisticalProgram.owner.name }}</span>
+          <span>{{ owner.name }}</span>
         </div>
         <div class="card-group">
           <span class="mb-2"><strong>Type</strong></span>
         </div>
         <div class="card-slot">
-          <span> {{ statisticalProgram.owner.type }}</span>
+          <span> {{ owner.type }}</span>
         </div>
-        <div class="card-group" v-if="statisticalProgram.owner.description">
+        <div class="card-group" v-if="owner.description">
           <span class="mb-2"><strong>Description</strong></span>
         </div>
-        <div class="card-slot" v-if="statisticalProgram.owner.description">
-          <span> {{ statisticalProgram.owner.description }}</span>
+        <div class="card-slot" v-if="owner.description">
+          <span> {{ owner.description }}</span>
         </div>
       </div>
     </div>
@@ -34,22 +34,19 @@
           <span class="mb-2"><strong>Name</strong></span>
         </div>
         <div class="card-slot">
-          <span>{{ statisticalProgram.maintainer.name }}</span>
+          <span>{{ maintainer.name }}</span>
         </div>
         <div class="card-group">
           <span class="mb-2"><strong>Type</strong></span>
         </div>
         <div class="card-slot">
-          <span> {{ statisticalProgram.maintainer.type }}</span>
+          <span> {{ maintainer.type }}</span>
         </div>
-        <div
-          class="card-group"
-          v-if="statisticalProgram.maintainer.description"
-        >
+        <div class="card-group" v-if="maintainer.description">
           <span class="mb-2"><strong>Description</strong></span>
         </div>
-        <div class="card-slot" v-if="statisticalProgram.maintainer.description">
-          <span> {{ statisticalProgram.maintainer.description }}</span>
+        <div class="card-slot" v-if="maintainer.description">
+          <span> {{ maintainer.description }}</span>
         </div>
       </div>
     </div>
@@ -62,42 +59,46 @@
           <span class="mb-2"><strong>Name</strong></span>
         </div>
         <div class="card-slot">
-          <span>{{ statisticalProgram.contact.name }}</span>
+          <span>{{ contact.name }}</span>
         </div>
         <div class="card-group">
           <span class="mb-2"><strong>Type</strong></span>
         </div>
         <div class="card-slot">
-          <span> {{ statisticalProgram.contact.type }}</span>
+          <span> {{ contact.type }}</span>
         </div>
-        <div class="card-group" v-if="statisticalProgram.contact.description">
+        <div class="card-group" v-if="contact.description">
           <span class="mb-2"><strong>Description</strong></span>
         </div>
-        <div class="card-slot" v-if="statisticalProgram.contact.description">
-          <span> {{ statisticalProgram.contact.description }}</span>
+        <div class="card-slot" v-if="contact.description">
+          <span> {{ contact.description }}</span>
         </div>
-        <div class="card-group" v-if="statisticalProgram.contact.localId">
+        <div class="card-group" v-if="contact.localId">
           <span class="mb-2"><strong>Email</strong></span>
         </div>
-        <div class="card-slot" v-if="statisticalProgram.contact.localId">
-          <span> {{ statisticalProgram.contact.localId }}</span>
+        <div class="card-slot" v-if="contact.localId">
+          <span> {{ contact.localId }}</span>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  name: "StatisticalProgramAgentsView",
-  data() {
-    return {
-      disabled: false
-    };
-  },
-  computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
+  name: "AgentsView",
+  props: {
+    owner: {
+      type: Object,
+      required: true
+    },
+    maintainer: {
+      type: Object,
+      required: true
+    },
+    contact: {
+      type: Object,
+      required: true
+    }
   }
 };
 </script>

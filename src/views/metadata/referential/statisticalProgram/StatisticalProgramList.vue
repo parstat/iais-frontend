@@ -17,85 +17,56 @@
           </div>
         </header>
         <div class="card-body">
-          <div v-if="isLoading">
-            <tile></tile>
-          </div>
-          <div class="table-responsive" v-else>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Survey Name</th>
-                  <th scope="col">Acronym</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Owner</th>
-                  <th scope="col">Maintainer</th>
-                  <th scope="col">Contact</th>
-                  <th scope="col" colspan="2" width="2%"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="statisticalProgram in statisticalPrograms"
-                  :key="statisticalProgram.id"
+          <CDataTable
+            :items="viewStatisticalPrograms"
+            :fields="fields"
+            column-filter
+            table-filter
+            items-per-page-select
+            :items-per-page="5"
+            hover
+            sorter
+            pagination
+          >
+            <template #actions="{item}">
+              <td v-if="isAuthenticated" style="padding: 0.75rem 0.4rem">
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'StatisticalProgramEdit',
+                    params: { id: item.id }
+                  }"
                 >
-                  <td>{{ statisticalProgram.localId }}</td>
-                  <td>{{ statisticalProgram.name }}</td>
-                  <td>{{ statisticalProgram.acronym }}</td>
-                  <td>{{ statisticalProgram.description }}</td>
-                  <td v-if="statisticalProgram.owner">
-                    {{ statisticalProgram.owner.name }}
-                  </td>
-                  <td v-else class="pl-4">&ndash;</td>
-                  <td v-if="statisticalProgram.maintainer">
-                    {{ statisticalProgram.maintainer.name }}
-                  </td>
-                  <td v-else class="pl-4">&ndash;</td>
-                  <td v-if="statisticalProgram.contact">
-                    {{ statisticalProgram.contact.name }}
-                  </td>
-                  <td v-else class="pl-4">&ndash;</td>
-                  <template v-if="isAuthenticated">
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'StatisticalProgramEdit',
-                          params: { id: statisticalProgram.id }
-                        }"
-                      >
-                        <edit-icon />
-                      </router-link>
-                    </td>
-                    <td v-if="isAdmin">
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'StatisticalProgramDelete',
-                          params: { id: statisticalProgram.id }
-                        }"
-                      >
-                        <delete-icon />
-                      </router-link>
-                    </td>
-                  </template>
-                  <template>
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'StatisticalProgramView',
-                          params: { id: statisticalProgram.id }
-                        }"
-                      >
-                        <view-icon />
-                      </router-link>
-                    </td>
-                  </template>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                  <edit-icon />
+                </router-link>
+              </td>
+              <td style="padding: 0.75rem 0.4rem">
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'StatisticalProgramView',
+                    params: { id: item.id }
+                  }"
+                >
+                  <view-icon />
+                </router-link>
+              </td>
+              <td
+                v-if="isAuthenticated && isAdmin"
+                style="padding: 0.75rem 0.4rem"
+              >
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'StatisticalProgramDelete',
+                    params: { id: item.id }
+                  }"
+                >
+                  <delete-icon />
+                </router-link>
+              </td>
+            </template>
+          </CDataTable>
         </div>
       </div>
     </div>
@@ -108,10 +79,45 @@ import { Context } from "@/common";
 
 export default {
   name: "StatisticalProgramList",
+  data() {
+    return {
+      fields: [
+        {
+          key: "localId",
+          label: "Id"
+        },
+        {
+          key: "name",
+          label: "Survey name"
+        },
+        {
+          key: "acronym"
+        },
+        {
+          key: "description"
+        },
+        {
+          key: "owner"
+        },
+        {
+          key: "maintainer"
+        },
+        {
+          key: "contact"
+        },
+        {
+          key: "actions",
+          label: "",
+          _style: "width:1%",
+          sorter: false,
+          filter: false
+        }
+      ]
+    };
+  },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("statisticalProgram", ["statisticalPrograms"])
+    ...mapGetters("statisticalProgram", ["viewStatisticalPrograms"])
   },
   created() {
     this.$store.dispatch("statisticalProgram/findAll");

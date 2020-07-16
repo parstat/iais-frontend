@@ -21,7 +21,7 @@
           </thead>
           <tbody>
             <tr
-              v-for="processDocumentation in statisticalProgram.processDocumentations"
+              v-for="processDocumentation in processDocumentations"
               :key="processDocumentation.id"
             >
               <td>{{ processDocumentation.businessFunction.localId }}</td>
@@ -63,14 +63,9 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "StatisticalProgramStandardsView",
-  data() {
-    return {
-      disabled: false
-    };
-  },
+  name: "ProcessDocumentationsView",
+  props: ["processDocumentations"],
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("coreui", ["isLoading"])
   }
 };

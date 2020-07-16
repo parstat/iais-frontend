@@ -6,6 +6,7 @@
           {{ statisticalProgram.name }} ({{ statisticalProgram.acronym }})
           <router-link
             v-if="isAuthenticated"
+            style="float:right; font-size:smaller"
             tag="a"
             :to="{
               name: 'StatisticalProgramEdit',
@@ -18,17 +19,28 @@
         <p class="lead">{{ statisticalProgram.description }}</p>
       </div>
     </div>
-    <app-agents></app-agents>
-    <app-references></app-references>
-    <app-standards></app-standards>
-    <app-documentations @handleBack="handleBack"></app-documentations>
+    <app-agents
+      :owner="statisticalProgram.owner"
+      :maintainer="statisticalProgram.maintainer"
+      :contact="statisticalProgram.contact"
+    ></app-agents>
+    <app-references
+      :legislativeReferences="statisticalProgram.legislativeReferences"
+    ></app-references>
+    <app-standards
+      :statisticalStandards="statisticalProgram.statisticalStandards"
+    ></app-standards>
+    <app-documentations
+      :processDocumentations="statisticalProgram.processDocumentations"
+      @handleBack="handleBack"
+    ></app-documentations>
   </div>
 </template>
 <script>
-import Agents from "./Agents";
-import LegislativeReferences from "./LegislativeReferences";
-import StatisticalStandards from "./StatisticalStandards";
-import ProcessDocumentations from "./ProcessDocumentations";
+import AgentsView from "../agent/share/AgentsView";
+import LegislativeReferencesView from "../legislativeReference/share/LegislativeReferencesView";
+import StatisticalStandardsView from "../statisticalStandard/share/StatisticalStandardsView";
+import ProcessDocumentationsView from "../processDocumentation/share/ProcessDocumentationsView";
 
 import { mapGetters } from "vuex";
 
@@ -44,10 +56,10 @@ export default {
     ...mapGetters("statisticalProgram", ["statisticalProgram"])
   },
   components: {
-    "app-agents": Agents,
-    "app-references": LegislativeReferences,
-    "app-standards": StatisticalStandards,
-    "app-documentations": ProcessDocumentations
+    "app-agents": AgentsView,
+    "app-references": LegislativeReferencesView,
+    "app-standards": StatisticalStandardsView,
+    "app-documentations": ProcessDocumentationsView
   },
   methods: {
     handleBack() {
