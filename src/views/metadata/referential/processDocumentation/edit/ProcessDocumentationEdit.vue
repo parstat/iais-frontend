@@ -8,9 +8,9 @@
             <strong class="icon-header">Process Documentation</strong>
           </p>
           <h6 class="card-subtitle mb-2 text-muted">
-            (survey: {{ statisticalProgram ? statisticalProgram.name : "" }},
-            sub-phase: {{ businessFunction ? businessFunction.localId : "" }}
-            {{ businessFunction ? businessFunction.name : "" }})
+            (survey: {{ processDocumentation.statisticalProgram ? processDocumentation.statisticalProgram.name : "" }},
+            sub-phase: {{ processDocumentation.businessFunction ? processDocumentation.businessFunction.localId : "" }}
+            {{ processDocumentation.businessFunction ? processDocumentation.businessFunction.name : "" }})
           </h6>
         </div>
         <div class="card-body">
