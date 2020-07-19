@@ -32,7 +32,7 @@
     ></app-standards>
     <app-documentations
       :processDocumentations="statisticalProgram.processDocumentations"
-      @handleBack="handleBack"
+      @back="handleBack"
     ></app-documentations>
   </div>
 </template>

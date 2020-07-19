@@ -52,7 +52,7 @@
         color="primary"
         shape="square"
         size="sm"
-        @click.prevent="$emit('handleBack')"
+        @click.prevent="$emit('back')"
         :disabled="disabled"
         >Back</CButton
       >

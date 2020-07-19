@@ -101,18 +101,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
-  border-left-width: 4px;
-  border-left-style: solid;
-  background-color: #f8f8f8;
-  border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  border-left-color: #321fdb;
-  color: #321fdb;
-  border-radius: unset;
-  padding-left: 0.8rem;
-}
-</style>
