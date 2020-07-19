@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="card card-plain">
         <header class="card-header pt-0">
-          <strong>{{ statisticalProgram.name }} </strong>
+          <strong>{{ statisticalProgramName }} </strong>
           <div class="card-header-actions">
             <router-link
               v-if="isAuthenticated"
@@ -11,7 +11,7 @@
               :to="{
                 path: '/metadata/referential/documentation/add',
                 query: {
-                  program: statisticalProgram.id,
+                  program: statisticalProgramId,
                   business_function: nextSubPhase
                 }
               }"
@@ -41,7 +41,7 @@
               <tbody>
                 <tr
                   v-for="processDocumentation in sortAscDocumentations(
-                    statisticalProgram.processDocumentations
+                    documentations
                   )"
                   :key="processDocumentation.id"
                 >
@@ -98,7 +98,7 @@
             shape="square"
             size="sm"
             style="margin-right:0.3rem"
-            @click="$emit('handleBack')"
+            @click="$emit('back')"
           >
             Finish
           </CButton>
@@ -113,18 +113,15 @@ import _ from "lodash";
 
 export default {
   name: "ProcessDocumentationsEdit",
-
+  props: ["statisticalProgramName", "statisticalProgramId", "documentations"],
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-
     nextSubPhase() {
       var nextSubPhase = "";
-      if (this.statisticalProgram.processDocumentations) {
-        nextSubPhase = this.sortDescByIdDocumentations(
-          this.statisticalProgram.processDocumentations
-        )[0].nextSubPhase;
+      if (this.documentations) {
+        nextSubPhase = this.sortDescByIdDocumentations(this.documentations)[0]
+          .nextSubPhase;
       }
       return nextSubPhase;
     }

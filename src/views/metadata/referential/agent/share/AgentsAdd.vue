@@ -70,7 +70,7 @@
         shape="square"
         size="sm"
         style="margin-right:0.3rem"
-        @click.prevent="handleSubmit"
+        @click.prevent="next"
         :disabled="disabled"
         >Next</CButton
       >

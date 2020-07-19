@@ -16,7 +16,7 @@
             @update:activeTab="updateStep"
           >
             <CTab title="Basic">
-              <app-statisticalprogram-basic
+              <app-statistical-program-basic
                 :localId="localId"
                 :name="name"
                 :acronym="acronym"
@@ -53,7 +53,7 @@ export default {
     };
   },
   components: {
-    "app-statisticalprogram-basic": StatisticalProgramBasic,
+    "app-statistical-program-basic": StatisticalProgramBasic,
     "app-agents-add": AgentsAdd
   },
   methods: {

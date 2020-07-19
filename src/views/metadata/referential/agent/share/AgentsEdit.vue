@@ -20,13 +20,11 @@
         <v-select
           label="name"
           :options="owners"
-          :class="{ 'is-invalid': $v.statisticalProgram.owner.$error }"
-          v-model="statisticalProgram.owner"
+          :class="{ 'is-invalid': $v.localOwner.$error }"
+          v-model="localOwner"
           @input="updateOwner"
         ></v-select>
-        <span
-          class="help-block"
-          :class="{ show: $v.statisticalProgram.owner.$error }"
+        <span class="help-block" :class="{ show: $v.localOwner.$error }"
           >Please select an Organization.</span
         >
       </div>
@@ -35,13 +33,11 @@
         <v-select
           label="name"
           :options="maintainers"
-          :class="{ 'is-invalid': $v.statisticalProgram.maintainer.$error }"
-          v-model="statisticalProgram.maintainer"
+          :class="{ 'is-invalid': $v.localMaintainer.$error }"
+          v-model="localMaintainer"
           @input="updateMaintainer"
         ></v-select>
-        <span
-          class="help-block"
-          :class="{ show: $v.statisticalProgram.maintainer.$error }"
+        <span class="help-block" :class="{ show: $v.localMaintainer.$error }"
           >Please select a division.</span
         >
       </div>
@@ -50,13 +46,11 @@
         <v-select
           label="name"
           :options="contacts"
-          :class="{ 'is-invalid': $v.statisticalProgram.contact.$error }"
-          v-model="statisticalProgram.contact"
+          :class="{ 'is-invalid': $v.localContact.$error }"
+          v-model="localContact"
           @input="updateContact"
         ></v-select>
-        <span
-          class="help-block"
-          :class="{ show: $v.statisticalProgram.contact.$error }"
+        <span class="help-block" :class="{ show: $v.localContact.$error }"
           >Please select a contact person.</span
         >
       </div>
@@ -89,60 +83,72 @@ import { required } from "vuelidate/lib/validators";
 import { Agent } from "@/common";
 
 export default {
-  name: "StatisticalProgramEditAgent",
-  validations: {
-    statisticalProgram: {
-      owner: {
-        required
-      },
-      maintainer: {
-        required
-      },
-      contact: {
-        required
+  name: "AgentsEdit",
+  props: {
+    owner: {
+      type: Object,
+      default: function() {
+        return {};
+      }
+    },
+    maintainer: {
+      type: Object,
+      default: function() {
+        return {};
+      }
+    },
+    contact: {
+      type: Object,
+      default: function() {
+        return {};
       }
     }
   },
+  data() {
+    return {
+      localOwner: { ...this.owner },
+      localMaintainer: { ...this.maintainer },
+      localContact: { ...this.contact }
+    };
+  },
+  validations: {
+    localOwner: {
+      required
+    },
+    localMaintainer: {
+      required
+    },
+    localContact: {
+      required
+    }
+  },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("agent", ["owners", "maintainers", "contacts"])
+  },
+  methods: {
+    updateOwner() {
+      this.$v.localOwner.$touch(); //validate field
+      if (!this.$v.localOwner.$invalid) {
+        this.$emit("updateOwner", this.localOwner);
+      }
+    },
+    updateMaintainer() {
+      this.$v.localMaintainer.$touch(); //validate field
+      if (!this.$v.localMaintainer.$invalid) {
+        this.$emit("updateMaintainer", this.localMaintainer);
+      }
+    },
+    updateContact() {
+      this.$v.localContact.$touch(); //validate field
+      if (!this.$v.localContact.$invalid) {
+        this.$emit("updateContact", this.localContact);
+      }
+    }
   },
   created() {
     this.$store.dispatch("agent/findByType", Agent.Organization);
     this.$store.dispatch("agent/findByType", Agent.Division);
     this.$store.dispatch("agent/findByType", Agent.Individual);
-  },
-  methods: {
-    updateOwner() {
-      this.$v.owner.$touch(); //validate field
-      if (!this.$v.owner.$invalid) {
-        const formData = {
-          id: this.statisticalProgram.id,
-          owner: this.statisticalProgram.owner.id
-        };
-        this.$store.dispatch("statisticalProgram/updateOwner", formData);
-      }
-    },
-    updateMaintainer() {
-      this.$v.maintainer.$touch(); //validate field
-      if (!this.$v.maintainer.$invalid) {
-        const formData = {
-          id: this.statisticalProgram.id,
-          maintainer: this.statisticalProgram.maintainer.id
-        };
-        this.$store.dispatch("statisticalProgram/updateMaintainer", formData);
-      }
-    },
-    updateContact() {
-      this.$v.contact.$touch(); //validate field
-      if (!this.$v.contact.$invalid) {
-        const formData = {
-          id: this.statisticalProgram.id,
-          contact: this.statisticalProgram.contact.id
-        };
-        this.$store.dispatch("statisticalProgram/updateContact", formData);
-      }
-    }
   }
 };
 </script>

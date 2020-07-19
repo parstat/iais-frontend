@@ -48,7 +48,7 @@
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="statisticalStandard of statisticalProgram.statisticalStandards"
+          v-for="statisticalStandard of standards"
           :key="statisticalStandard.id"
         >
           <div class="card-header">
@@ -63,7 +63,7 @@
               >
                 <view-icon />
               </router-link>
-              <span v-on:click="removeStatisticalStandard(statisticalStandard)">
+              <span @click="removeStatisticalStandard(statisticalStandard)">
                 <delete-icon />
               </span>
             </div>
@@ -101,13 +101,8 @@ import { mapGetters } from "vuex";
 import _ from "lodash";
 
 export default {
-  name: "StatisticalProgramEdit",
-
-  data() {
-    return {
-      disabled: false
-    };
-  },
+  name: "StatisticalStandardsEdit",
+  props: ["standards"],
   filters: {
     subStr: function(string) {
       if (string.length > 55) {
@@ -117,7 +112,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("statisticalStandard", ["statisticalStandards"])
   },
   methods: {
@@ -136,30 +130,12 @@ export default {
         loading(false);
       }
     }, 500),
-
     addStatisticalStandard(selectedStatisticalStandard) {
-      const formData = {
-        id: this.statisticalProgram.id,
-        standard: selectedStatisticalStandard.id
-      };
-      this.$store.dispatch(
-        "statisticalProgram/addStatisticalStandard",
-        formData
-      );
+      this.$emit("addStatisticalStandard", selectedStatisticalStandard);
     },
     removeStatisticalStandard(selectedStatisticalStandard) {
-      const formData = {
-        id: this.statisticalProgram.id,
-        standard: selectedStatisticalStandard.id
-      };
-      this.$store.dispatch(
-        "statisticalProgram/removeStatisticalStandard",
-        formData
-      );
+      this.$emit("removeStatisticalStandard", selectedStatisticalStandard);
     }
-  },
-  created() {
-    //this.$store.dispatch("statisticalStandard/findAll");
   }
 };
 </script>

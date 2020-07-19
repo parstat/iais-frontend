@@ -48,7 +48,7 @@
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="legislativeReference of statisticalProgram.legislativeReferences"
+          v-for="legislativeReference of references"
           :key="legislativeReference.id"
         >
           <div class="card-header">
@@ -103,12 +103,8 @@ import { mapGetters } from "vuex";
 import _ from "lodash";
 
 export default {
-  name: "StatisticalProgramEditReferences",
-  data() {
-    return {
-      //legislativeReference: null
-    };
-  },
+  name: "ReferencesEdit",
+  props: ["references"],
   filters: {
     subStr: function(string) {
       if (string.length > 55) {
@@ -118,7 +114,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
     ...mapGetters("legislativeReference", ["legislativeReferences"])
   },
   methods: {
@@ -126,7 +121,6 @@ export default {
       loading(true);
       this.search(name, loading, this);
     },
-
     search: _.debounce((name, loading, vm) => {
       if (name.length > 0) {
         vm.$store
@@ -138,31 +132,12 @@ export default {
         loading(false);
       }
     }, 500),
-
     addLegislativeReference(selectedLegislativeReference) {
-      const formData = {
-        id: this.statisticalProgram.id,
-        legislative: selectedLegislativeReference.id
-      };
-      this.$store.dispatch(
-        "statisticalProgram/addLegislativeReference",
-        formData
-      );
+      this.$emit("addLegislativeReference", selectedLegislativeReference);
     },
     removeLegislativeReference(selectedLegislativeReference) {
-      const formData = {
-        id: this.statisticalProgram.id,
-        legislative: selectedLegislativeReference.id
-      };
-      this.$store.dispatch(
-        "statisticalProgram/removeLegislativeReference",
-        formData
-      );
+      this.$emit("removeLegislativeReference", selectedLegislativeReference);
     }
-  },
-  created() {
-    //this.$store.dispatch("legislativeReference/findAll");
-    //this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
   }
 };
 </script>
