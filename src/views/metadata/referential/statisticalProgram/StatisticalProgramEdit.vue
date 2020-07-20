@@ -15,7 +15,13 @@
             :active-tab="activeTab"
             @update:activeTab="updateStep"
           >
-            <CTab title="Basic">
+            <CTab>
+              <template #title>
+                <span>Basic</span>
+                <span class="float-right" v-if="editedBasic"
+                  ><check-icon
+                /></span>
+              </template>
               <app-statistical-program-basic
                 :localId="statisticalProgram.localId"
                 :name="statisticalProgram.name"
@@ -24,7 +30,13 @@
                 @next="handleUpdateBasic"
               />
             </CTab>
-            <CTab title="Agents">
+            <CTab>
+              <template #title>
+                <span>Agents</span>
+                <span class="float-right" v-if="editedAgents"
+                  ><check-icon
+                /></span>
+              </template>
               <app-agents-edit
                 :owner="statisticalProgram.owner"
                 :maintainer="statisticalProgram.maintainer"
@@ -33,24 +45,36 @@
                 @updateMaintainer="handleUpdateMaintainer"
                 @updateContact="handleUpdateContact"
                 @back="back"
-                @next="next"
+                @next="nextAgents"
               />
             </CTab>
-            <CTab title="Legislative References">
+            <CTab>
+              <template #title>
+                <span>Legislative References</span>
+                <span class="float-right" v-if="editedReferences"
+                  ><check-icon
+                /></span>
+              </template>
               <app-references-edit
                 :references="statisticalProgram.legislativeReferences"
                 @addLegislativeReference="handleAddLegislativeReference"
                 @removeLegislativeReference="handleRemoveLegislativeReference"
-                @next="next"
+                @next="nextReferences"
                 @back="back"
               />
             </CTab>
-            <CTab title="Statistical Standards">
+            <CTab>
+              <template #title>
+                <span>Statistical Standards</span>
+                <span class="float-right" v-if="editedStandards"
+                  ><check-icon
+                /></span>
+              </template>
               <app-standards-edit
                 :standards="statisticalProgram.statisticalStandards"
                 @addStatisticalStandard="handleAddStatisticalStandard"
                 @removeStatisticalStandard="handleRemoveStatisticalStandard"
-                @next="next"
+                @next="nextStandards"
                 @back="back"
               />
             </CTab>
@@ -81,7 +105,11 @@ export default {
   name: "StatisticalProgramEdit",
   data() {
     return {
-      activeTab: 0
+      activeTab: 0,
+      editedBasic: false,
+      editedAgents: false,
+      editedReferences: false,
+      editedStandards: false
     };
   },
   components: {
@@ -95,17 +123,23 @@ export default {
     ...mapGetters("statisticalProgram", ["statisticalProgram"])
   },
   methods: {
-    handleUpdateBasic(basic) {
-      const formData = {
-        id: this.statisticalProgram.id,
-        localId: basic.localId,
-        name: basic.name,
-        acronym: basic.acronym,
-        description: basic.description
-      };
-      this.$store.dispatch("statisticalProgram/update", formData).then(() => {
+    handleUpdateBasic(basic, fieldsChanged) {
+      if (fieldsChanged) {
+        const formData = {
+          id: this.statisticalProgram.id,
+          localId: basic.localId,
+          name: basic.name,
+          acronym: basic.acronym,
+          description: basic.description
+        };
+        this.$store.dispatch("statisticalProgram/update", formData).then(() => {
+          this.editedBasic = true;
+          this.next();
+        });
+      } else {
+        //do nothing
         this.next();
-      });
+      }
     },
     handleUpdateOwner(owner) {
       const formData = {
@@ -153,10 +187,11 @@ export default {
         id: this.statisticalProgram.id,
         standard: standard.id
       };
-      this.$store.dispatch(
-        "statisticalProgram/addStatisticalStandard",
-        formData
-      );
+      this.$store
+        .dispatch("statisticalProgram/addStatisticalStandard", formData)
+        .then(() => {
+          this.editedStandards = true;
+        });
     },
     handleRemoveStatisticalStandard(standard) {
       const formData = {
@@ -167,6 +202,18 @@ export default {
         "statisticalProgram/removeStatisticalStandard",
         formData
       );
+    },
+    nextAgents(fieldsChanged) {
+      this.editedAgents = fieldsChanged;
+      this.next();
+    },
+    nextReferences(fieldsChanged) {
+      this.editedReferences = fieldsChanged;
+      this.next();
+    },
+    nextStandards(fieldsChanged) {
+      this.editedStandards = fieldsChanged;
+      this.next();
     },
     backToList() {
       this.$router.push("/metadata/referential/");
@@ -187,3 +234,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.material-design-icon {
+  vertical-align: middle;
+  height: 0.8em !important;
+  width: 1.2em !important;
+}
+</style>

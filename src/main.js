@@ -8,7 +8,7 @@ import Vuelidate from "vuelidate";
 import vSelect from "vue-select";
 import VueSpinners from "vue-spinners";
 
-import "@/common/materialIcons";
+import "@/assets/icons/materialIcons";
 
 Vue.config.productionTip = false;
 

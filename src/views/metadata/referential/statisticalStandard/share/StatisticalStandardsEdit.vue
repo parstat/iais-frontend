@@ -89,7 +89,7 @@
         shape="square"
         size="sm"
         style="margin-right:0.3rem"
-        @click="$emit('next')"
+        @click="$emit('next', fieldChanged)"
       >
         Next
       </CButton>
@@ -103,6 +103,11 @@ import _ from "lodash";
 export default {
   name: "StatisticalStandardsEdit",
   props: ["standards"],
+  data() {
+    return {
+      fieldChanged: false
+    };
+  },
   filters: {
     subStr: function(string) {
       if (string.length > 55) {
@@ -132,9 +137,11 @@ export default {
     }, 500),
     addStatisticalStandard(selectedStatisticalStandard) {
       this.$emit("addStatisticalStandard", selectedStatisticalStandard);
+      this.fieldChanged = true;
     },
     removeStatisticalStandard(selectedStatisticalStandard) {
       this.$emit("removeStatisticalStandard", selectedStatisticalStandard);
+      this.fieldChanged = true;
     }
   }
 };

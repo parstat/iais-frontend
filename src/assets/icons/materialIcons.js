@@ -5,6 +5,7 @@ import "vue-material-design-icons/styles.css";
 
 import ChevronRightBoxIcon from "icons/ArrowRightBold.vue";
 import AddIcon from "icons/Plus.vue";
+import CheckIcon from "icons/CheckDecagram.vue";
 import EditIcon from "icons/SquareEditOutline.vue";
 import DeleteIcon from "icons/TrashCanOutline.vue";
 import ViewIcon from "icons/Magnify.vue";
@@ -16,6 +17,7 @@ import GsimOutlineIcon from "icons/PuzzleOutline.vue";
 
 Vue.component("chevron-right-icon", ChevronRightBoxIcon);
 Vue.component("add-icon", AddIcon);
+Vue.component("check-icon", CheckIcon);
 Vue.component("edit-icon", EditIcon);
 Vue.component("delete-icon", DeleteIcon);
 Vue.component("view-icon", ViewIcon);

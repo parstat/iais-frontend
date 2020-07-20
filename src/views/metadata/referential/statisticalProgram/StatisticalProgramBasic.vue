@@ -10,6 +10,7 @@
           :class="{ 'is-invalid': $v.localLocalId.$error }"
           placeholder="Survey id"
           v-model.trim="localLocalId"
+          @change="fieldChanged = true"
         />
         <span class="help-block" :class="{ show: $v.localLocalId.$error }"
           >Please enter survey id.</span
@@ -24,6 +25,7 @@
           :class="{ 'is-invalid': $v.localName.$error }"
           placeholder="Survey name"
           v-model.trim="localName"
+          @change="fieldChanged = true"
         />
         <span class="help-block" :class="{ show: $v.localName.$error }"
           >Please enter survey name.</span
@@ -38,6 +40,7 @@
           :class="{ 'is-invalid': $v.localAcronym.$error }"
           placeholder="Survey acronym"
           v-model.trim="localAcronym"
+          @change="fieldChanged = true"
         />
         <span class="help-block" :class="{ show: $v.localAcronym.$error }"
           >Please enter an acronym.</span
@@ -53,6 +56,7 @@
           :class="{ 'is-invalid': $v.localDescription.$error }"
           placeholder="Survey description"
           v-model.trim="localDescription"
+          @change="fieldChanged = true"
         />
         <span class="help-block" :class="{ show: $v.localDescription.$error }"
           >Please enter survey description.</span
@@ -84,7 +88,8 @@ export default {
       localName: this.name,
       localAcronym: this.acronym,
       localDescription: this.description,
-      disabled: false
+      disabled: false,
+      fieldChanged: false //do nothing if nothing changes
     };
   },
   validations: {
@@ -113,7 +118,8 @@ export default {
           description: this.localDescription
         };
         console.log(formData);
-        this.$emit("next", formData);
+        this.$emit("next", formData, this.fieldChanged);
+        this.fieldChanged = false;
       }
     }
   }

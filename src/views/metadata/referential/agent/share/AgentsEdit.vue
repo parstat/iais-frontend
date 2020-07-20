@@ -70,7 +70,7 @@
         shape="square"
         size="sm"
         style="margin-right:0.3rem"
-        @click="$emit('next')"
+        @click="$emit('next', fieldChanged)"
       >
         Next
       </CButton>
@@ -87,28 +87,23 @@ export default {
   props: {
     owner: {
       type: Object,
-      default: function() {
-        return {};
-      }
+      default: () => {}
     },
     maintainer: {
       type: Object,
-      default: function() {
-        return {};
-      }
+      default: () => {}
     },
     contact: {
       type: Object,
-      default: function() {
-        return {};
-      }
+      default: () => {}
     }
   },
   data() {
     return {
-      localOwner: { ...this.owner },
-      localMaintainer: { ...this.maintainer },
-      localContact: { ...this.contact }
+      localOwner: { ...this.owner }, //clone the object
+      localMaintainer: { ...this.maintainer }, //clone the object
+      localContact: { ...this.contact }, //clone the object
+      fieldChanged: false
     };
   },
   validations: {
@@ -130,18 +125,21 @@ export default {
       this.$v.localOwner.$touch(); //validate field
       if (!this.$v.localOwner.$invalid) {
         this.$emit("updateOwner", this.localOwner);
+        this.fieldChanged = true;
       }
     },
     updateMaintainer() {
       this.$v.localMaintainer.$touch(); //validate field
       if (!this.$v.localMaintainer.$invalid) {
         this.$emit("updateMaintainer", this.localMaintainer);
+        this.fieldChanged = true;
       }
     },
     updateContact() {
       this.$v.localContact.$touch(); //validate field
       if (!this.$v.localContact.$invalid) {
         this.$emit("updateContact", this.localContact);
+        this.fieldChanged = true;
       }
     }
   },

@@ -91,7 +91,7 @@
         shape="square"
         size="sm"
         style="margin-right:0.3rem"
-        @click="$emit('next')"
+        @click="$emit('next', fieldChanged)"
       >
         Next
       </CButton>
@@ -105,6 +105,11 @@ import _ from "lodash";
 export default {
   name: "ReferencesEdit",
   props: ["references"],
+  data() {
+    return {
+      fieldChanged: false
+    };
+  },
   filters: {
     subStr: function(string) {
       if (string.length > 55) {
@@ -134,9 +139,11 @@ export default {
     }, 500),
     addLegislativeReference(selectedLegislativeReference) {
       this.$emit("addLegislativeReference", selectedLegislativeReference);
+      this.fieldChanged = true;
     },
     removeLegislativeReference(selectedLegislativeReference) {
       this.$emit("removeLegislativeReference", selectedLegislativeReference);
+      this.fieldChanged = true;
     }
   }
 };
