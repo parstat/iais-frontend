@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header pt-0">
-      <regulation-icon />
+      <standard-icon />
       <strong class="icon-header">Statistical Standard</strong>
       <div class="card-header-actions">
         <router-link

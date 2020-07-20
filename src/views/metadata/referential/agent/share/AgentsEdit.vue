@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <header class="card-header pt-0">
-      <user-icon />
+      <users-icon />
       <strong class="icon-header">Agents</strong>
       <div class="card-header-actions">
         <router-link

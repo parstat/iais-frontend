@@ -3,7 +3,6 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <text-icon />
           <strong class="icon-header"
             >Statistical process: {{ statisticalProgram.name }}</strong
           >
@@ -83,7 +82,8 @@
                 :statisticalProgramName="statisticalProgram.name"
                 :statisticalProgramId="statisticalProgram.id"
                 :documentations="statisticalProgram.processDocumentations"
-                @back="backToList"
+                @back="back"
+                @next="backToList"
               />
             </CTab>
           </CTabs>
@@ -187,11 +187,10 @@ export default {
         id: this.statisticalProgram.id,
         standard: standard.id
       };
-      this.$store
-        .dispatch("statisticalProgram/addStatisticalStandard", formData)
-        .then(() => {
-          this.editedStandards = true;
-        });
+      this.$store.dispatch(
+        "statisticalProgram/addStatisticalStandard",
+        formData
+      );
     },
     handleRemoveStatisticalStandard(standard) {
       const formData = {

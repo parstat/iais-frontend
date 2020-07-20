@@ -100,6 +100,15 @@
             style="margin-right:0.3rem"
             @click="$emit('back')"
           >
+            Back
+          </CButton>
+          <CButton
+            color="primary"
+            shape="square"
+            size="sm"
+            style="margin-right:0.3rem"
+            @click="$emit('next')"
+          >
             Finish
           </CButton>
         </div>
