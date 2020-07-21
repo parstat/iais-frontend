@@ -9,8 +9,7 @@
           to="/metadata/referential/gsim/standard/add"
           class="card-header-action"
         >
-          <add-icon />
-          <span class="icon-span">Add</span>
+          <add-box-icon />
         </router-link>
       </div>
     </div>

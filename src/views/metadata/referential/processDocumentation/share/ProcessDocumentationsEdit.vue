@@ -17,8 +17,7 @@
               }"
               class="card-header-action"
             >
-              <add-icon />
-              <span class="icon-span">Add</span>
+              <add-box-icon />
             </router-link>
           </div>
         </header>

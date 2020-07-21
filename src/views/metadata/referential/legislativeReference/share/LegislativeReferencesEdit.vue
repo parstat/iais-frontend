@@ -9,8 +9,7 @@
           to="/metadata/referential/gsim/regulation/add"
           class="card-header-action"
         >
-          <add-icon />
-          <span class="icon-span">Add</span>
+          <add-box-icon />
         </router-link>
       </div>
     </div>
@@ -56,6 +55,7 @@
             <div class="card-header-actions">
               <router-link
                 tag="a"
+                class="text-dark pr-1"
                 :to="{
                   name: 'LegislativeReferenceView',
                   params: { id: legislativeReference.id }
@@ -64,6 +64,7 @@
                 <view-icon />
               </router-link>
               <span
+                class="text-dark"
                 v-on:click="removeLegislativeReference(legislativeReference)"
               >
                 <delete-icon />
@@ -162,8 +163,5 @@ export default {
 }
 .bg-lighter {
   background-color: #f8f8f8 !important;
-}
-.card-header {
-  padding-top: 1rem;
 }
 </style>

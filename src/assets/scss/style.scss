@@ -37,6 +37,19 @@
   font-size: 1.2rem;
 }
 
+.card-header-action > .material-design-icon {
+  color: #321fdb;
+  vertical-align: middle;
+  height: 1.5em!important;
+  width: 1.5em!important;
+}
+ 
+.card-header-action > .material-design-icon > .material-design-icon__svg {
+  height: 1.5em!important;
+  width: 1.5em!important;
+  bottom: 0;
+}
+
 button:focus {
   outline: none;
 }

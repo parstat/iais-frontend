@@ -11,8 +11,7 @@
               to="/metadata/referential/add"
               class="card-header-action"
             >
-              <add-icon />
-              <span class="icon-span">New process</span>
+              <add-box-icon />
             </router-link>
           </div>
         </header>
