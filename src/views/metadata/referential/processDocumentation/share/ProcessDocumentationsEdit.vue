@@ -3,7 +3,8 @@
     <div class="col-12">
       <div class="card card-plain">
         <header class="card-header pt-0">
-          <strong>{{ statisticalProgramName }} </strong>
+          <doc-icon />
+          <strong class="icon-header">Process documentation </strong>
           <div class="card-header-actions">
             <router-link
               v-if="isAuthenticated"

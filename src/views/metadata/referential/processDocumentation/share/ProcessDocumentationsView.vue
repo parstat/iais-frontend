@@ -4,48 +4,31 @@
       <h5>Process Documentations</h5>
     </div>
     <div class="card-body">
-      <div v-if="isLoading">
-        <tile></tile>
-      </div>
-      <div class="table-responsive" v-else>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">GSBPM</th>
-              <th scope="col">Name</th>
-              <th scope="col">Frequency</th>
-              <th scope="col">Next</th>
-              <th scope="col" colspan="2" width="2%"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="processDocumentation in processDocumentations"
-              :key="processDocumentation.id"
+      <CDataTable
+        :items="viewProcessDocumentation"
+        :fields="fields"
+        column-filter
+        table-filter
+        items-per-page-select
+        :items-per-page="5"
+        hover
+        sorter
+        pagination
+      >
+        <template #actions="{item}">
+          <td style="padding: 0.75rem 0.4rem">
+            <router-link
+              tag="a"
+              :to="{
+                name: 'ProcessDocumentationView',
+                params: { id: item.id }
+              }"
             >
-              <td>{{ processDocumentation.businessFunction.localId }}</td>
-              <td>{{ processDocumentation.businessFunction.name }}</td>
-              <td>{{ processDocumentation.name }}</td>
-              <td>{{ processDocumentation.frequency }}</td>
-              <td>{{ processDocumentation.nextSubPhase }}</td>
-              <template>
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'ProcessDocumentationView',
-                      params: { id: processDocumentation.id }
-                    }"
-                  >
-                    <view-icon />
-                  </router-link>
-                </td>
-              </template>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              <view-icon />
+            </router-link>
+          </td>
+        </template>
+      </CDataTable>
     </div>
     <div class="card-footer">
       <CButton
@@ -59,18 +42,61 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   name: "ProcessDocumentationsView",
   props: ["processDocumentations"],
+  data() {
+    return {
+      fields: [
+        {
+          key: "localId",
+          label: "Id"
+        },
+        {
+          key: "gsbpm",
+          label: "GSBPM"
+        },
+        {
+          key: "name"
+        },
+        {
+          key: "frequency"
+        },
+        {
+          key: "nextSubPhase",
+          label: "next"
+        },
+        {
+          key: "actions",
+          label: "",
+          _style: "width:1%",
+          sorter: false,
+          filter: false
+        }
+      ]
+    };
+  },
   computed: {
-    ...mapGetters("coreui", ["isLoading"])
+    viewProcessDocumentation() {
+      var localProcessDocs = [];
+      for (var pd of this.processDocumentations) {
+        localProcessDocs.push({
+          id: pd.id,
+          localId: pd.businessFunction.localId,
+          gsbpm: pd.businessFunction.name,
+          name: pd.name,
+          frequency: pd.frequency,
+          nextSubPhase: pd.nextSubPhase
+        });
+      }
+      return localProcessDocs;
+    }
   }
 };
 </script>
+
 <style scoped>
-.card-header {
-  padding-top: 1rem;
+h5 {
+  margin-bottom: 0.1rem;
 }
 </style>

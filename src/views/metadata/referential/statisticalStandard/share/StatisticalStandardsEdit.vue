@@ -55,6 +55,7 @@
             <div class="card-header-actions">
               <router-link
                 tag="a"
+                class="text-dark pr-1"
                 :to="{
                   name: 'StatisticalStandardView',
                   params: { id: statisticalStandard.id }
@@ -62,7 +63,10 @@
               >
                 <view-icon />
               </router-link>
-              <span @click="removeStatisticalStandard(statisticalStandard)">
+              <span
+                class="text-dark"
+                @click="removeStatisticalStandard(statisticalStandard)"
+              >
                 <delete-icon />
               </span>
             </div>
@@ -159,8 +163,5 @@ export default {
 }
 .bg-lighter {
   background-color: #f8f8f8 !important;
-}
-.card-header {
-  padding-top: 1rem;
 }
 </style>

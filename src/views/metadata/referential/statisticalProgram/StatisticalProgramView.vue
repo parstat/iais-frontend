@@ -6,7 +6,7 @@
           {{ statisticalProgram.name }} ({{ statisticalProgram.acronym }})
           <router-link
             v-if="isAuthenticated"
-            style="float:right; font-size:smaller"
+            style="float:right; font-size:1.2rem"
             tag="a"
             :to="{
               name: 'StatisticalProgramEdit',
