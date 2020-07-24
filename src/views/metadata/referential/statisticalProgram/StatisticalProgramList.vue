@@ -11,7 +11,7 @@
               to="/metadata/referential/add"
               class="card-header-action"
             >
-              <add-box-icon />
+              <add-icon /> Add
             </router-link>
           </div>
         </header>

@@ -19,22 +19,6 @@
         </span>
       </div>
       <div class="form-group">
-        <label for="name">Documentation name*</label>
-        <input
-          id="name"
-          type="text"
-          class="form-control"
-          :class="{ 'is-invalid': $v.processDocumentation.name.$error }"
-          placeholder="Survey name"
-          v-model.trim="processDocumentation.name"
-        />
-        <span
-          class="help-block"
-          :class="{ show: $v.processDocumentation.name.$error }"
-          >Please enter process documentation name.</span
-        >
-      </div>
-      <div class="form-group">
         <label for="description">Documentation description*</label>
         <textarea
           rows="5"
@@ -157,9 +141,6 @@ export default {
   },
   validations: {
     processDocumentation: {
-      name: {
-        required
-      },
       description: {
         required
       },

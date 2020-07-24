@@ -5,19 +5,13 @@
         <h5>Owner</h5>
       </div>
       <div class="card-body">
-        <div class="card-group">
+        <div>
           <span class="mb-2"><strong>Name</strong></span>
         </div>
         <div class="card-slot">
           <span>{{ owner.name }}</span>
         </div>
-        <div class="card-group">
-          <span class="mb-2"><strong>Type</strong></span>
-        </div>
-        <div class="card-slot">
-          <span> {{ owner.type }}</span>
-        </div>
-        <div class="card-group" v-if="owner.description">
+        <div v-if="owner.description">
           <span class="mb-2"><strong>Description</strong></span>
         </div>
         <div class="card-slot" v-if="owner.description">
@@ -30,19 +24,13 @@
         <h5>Division</h5>
       </div>
       <div class="card-body">
-        <div class="card-group">
+        <div>
           <span class="mb-2"><strong>Name</strong></span>
         </div>
         <div class="card-slot">
           <span>{{ maintainer.name }}</span>
         </div>
-        <div class="card-group">
-          <span class="mb-2"><strong>Type</strong></span>
-        </div>
-        <div class="card-slot">
-          <span> {{ maintainer.type }}</span>
-        </div>
-        <div class="card-group" v-if="maintainer.description">
+        <div v-if="maintainer.description">
           <span class="mb-2"><strong>Description</strong></span>
         </div>
         <div class="card-slot" v-if="maintainer.description">
@@ -55,25 +43,19 @@
         <h5>Contact</h5>
       </div>
       <div class="card-body">
-        <div class="card-group">
+        <div>
           <span class="mb-2"><strong>Name</strong></span>
         </div>
         <div class="card-slot">
           <span>{{ contact.name }}</span>
         </div>
-        <div class="card-group">
-          <span class="mb-2"><strong>Type</strong></span>
-        </div>
-        <div class="card-slot">
-          <span> {{ contact.type }}</span>
-        </div>
-        <div class="card-group" v-if="contact.description">
+        <div v-if="contact.description">
           <span class="mb-2"><strong>Description</strong></span>
         </div>
         <div class="card-slot" v-if="contact.description">
           <span> {{ contact.description }}</span>
         </div>
-        <div class="card-group" v-if="contact.localId">
+        <div v-if="contact.localId">
           <span class="mb-2"><strong>Email</strong></span>
         </div>
         <div class="card-slot" v-if="contact.localId">

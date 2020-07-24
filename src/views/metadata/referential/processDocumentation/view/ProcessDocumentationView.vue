@@ -42,6 +42,14 @@
         </p>
       </div>
     </div>
+    <div class="card w-100" v-if="processDocumentation.description">
+      <div class="card-header">
+        <h5>Description</h5>
+      </div>
+      <div class="card-body">
+        <p>{{ processDocumentation.description }}</p>
+      </div>
+    </div>
     <app-agents></app-agents>
     <app-standards></app-standards>
     <app-methods></app-methods>

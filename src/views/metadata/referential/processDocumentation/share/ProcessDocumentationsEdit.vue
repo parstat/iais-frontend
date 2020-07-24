@@ -18,7 +18,7 @@
               }"
               class="card-header-action"
             >
-              <add-box-icon />
+              <add-icon /> Add
             </router-link>
           </div>
         </header>
@@ -32,7 +32,6 @@
                 <tr>
                   <th scope="col">Id</th>
                   <th scope="col">GSBPM</th>
-                  <th scope="col">Name</th>
                   <th scope="col">Frequency</th>
                   <th scope="col">Next</th>
                   <th scope="col" colspan="2" width="2%"></th>
@@ -47,7 +46,6 @@
                 >
                   <td>{{ processDocumentation.businessFunction.localId }}</td>
                   <td>{{ processDocumentation.businessFunction.name }}</td>
-                  <td>{{ processDocumentation.name }}</td>
                   <td>{{ processDocumentation.frequency }}</td>
                   <td>{{ processDocumentation.nextSubPhase }}</td>
                   <template v-if="isAuthenticated">
