@@ -50,10 +50,16 @@
         <p>{{ processDocumentation.description }}</p>
       </div>
     </div>
-    <app-agents></app-agents>
-    <app-standards></app-standards>
-    <app-methods></app-methods>
-    <app-services></app-services>
+    <app-agents :maintainers="processDocumentation.maintainers"></app-agents>
+    <app-standards
+      :statisticalStandards="processDocumentation.statisticalStandards"
+    ></app-standards>
+    <app-methods
+      :processMethods="processDocumentation.processMethods"
+    ></app-methods>
+    <app-services
+      :businessServices="processDocumentation.businessServices"
+    ></app-services>
     <div class="card-columns w-100">
       <app-inputs></app-inputs>
       <app-outputs></app-outputs>
@@ -63,10 +69,10 @@
   </div>
 </template>
 <script>
-import Agents from "./Agents";
-import StatisticalStandards from "./StatisticalStandards";
-import ProcessMethods from "./ProcessMethods";
-import BusinessServices from "./BusinessServices";
+import AgentsView from "../../agent/share/AgentsView";
+import StatisticalStandardsView from "../../statisticalStandard/share/StatisticalStandardsView";
+import ProcessMethodsView from "../../processMethod/share/ProcessMethodsView";
+import BusinessServicesView from "../../businessService/share/BusinessServicesView";
 import ProcessInputs from "./ProcessInputs";
 import ProcessOutputs from "./ProcessOutputs";
 import ProcessQualities from "./ProcessQualities";
@@ -76,6 +82,16 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "StatisticalProgramView",
+  components: {
+    "app-agents": AgentsView,
+    "app-standards": StatisticalStandardsView,
+    "app-methods": ProcessMethodsView,
+    "app-services": BusinessServicesView,
+    "app-inputs": ProcessInputs,
+    "app-outputs": ProcessOutputs,
+    "app-qualities": ProcessQualities,
+    "app-documents": ProcessDocuments
+  },
   data() {
     return {
       disabled: false
@@ -85,7 +101,6 @@ export default {
     ...mapGetters("auth", ["isAuthenticated"]),
     ...mapGetters("processDocumentation", ["processDocumentation"]),
     ...mapGetters("statisticalProgram", ["statisticalProgram"]),
-
     nextDocumentation() {
       var nextDocumentation = "";
       if (this.statisticalProgram) {
@@ -112,18 +127,6 @@ export default {
       }
     }
   },
-
-  components: {
-    "app-agents": Agents,
-    "app-standards": StatisticalStandards,
-    "app-methods": ProcessMethods,
-    "app-services": BusinessServices,
-    "app-inputs": ProcessInputs,
-    "app-outputs": ProcessOutputs,
-    "app-qualities": ProcessQualities,
-    "app-documents": ProcessDocuments
-  },
-
   methods: {
     handleBack() {
       this.disabled = true; //disable button

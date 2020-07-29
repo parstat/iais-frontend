@@ -1,23 +1,23 @@
 <template>
-  <div class="card w-100" v-if="processDocumentation.standards">
+  <div class="card w-100" v-if="businessServices">
     <div class="card-header">
-      <h5>Statistical Standards</h5>
+      <h5>Business Services/Software</h5>
     </div>
     <div class="card-body">
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="statisticalStandard of processDocumentation.standards"
-          :key="statisticalStandard.id"
+          v-for="businessService of businessServices"
+          :key="businessService.id"
         >
           <div class="card-header">
-            <strong>{{ statisticalStandard.name }}</strong>
+            <strong>{{ businessService.name }}</strong>
             <div class="card-header-actions">
               <router-link
                 tag="a"
                 :to="{
-                  name: 'StatisticalStandardView',
-                  params: { id: statisticalStandard.id }
+                  name: 'BusinessServiceView',
+                  params: { id: businessService.id }
                 }"
               >
                 <view-icon />
@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="card-body">
-            <p class="card-text">{{ statisticalStandard.description }}</p>
+            <p class="card-text">{{ businessService.description }}</p>
           </div>
         </div>
       </div>
@@ -33,17 +33,13 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  name: "ProcessDocumentationStandardsView",
-  data() {
-    return {
-      disabled: false
-    };
-  },
-  computed: {
-    ...mapGetters("processDocumentation", ["processDocumentation"])
+  name: "ProcessServicesView",
+  props: {
+    businessServices: {
+      type: Array,
+      required: true
+    }
   }
 };
 </script>

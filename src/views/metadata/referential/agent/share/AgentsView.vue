@@ -1,5 +1,26 @@
 <template>
-  <div class="card-columns w-100">
+  <div class="card w-100" v-if="maintainers">
+    <div class="card-header">
+      <h5>Divisions</h5>
+    </div>
+    <div class="card-body">
+      <div class="card-columns">
+        <div
+          class="card card-border bg-lighter mb-3"
+          v-for="maintainer of maintainers"
+          :key="maintainer.id"
+        >
+          <div class="card-header">
+            <strong>{{ maintainer.name }}</strong>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ maintainer.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-columns w-100" v-else>
     <div class="card">
       <div class="card-header">
         <h5>Owner</h5>
@@ -70,16 +91,16 @@ export default {
   name: "AgentsView",
   props: {
     owner: {
-      type: Object,
-      required: true
+      type: Object
     },
     maintainer: {
-      type: Object,
-      required: true
+      type: Object
     },
     contact: {
-      type: Object,
-      required: true
+      type: Object
+    },
+    maintainers: {
+      type: Array
     }
   }
 };
