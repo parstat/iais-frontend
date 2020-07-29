@@ -8,6 +8,7 @@ const state = {
   isReferential: false,
   isStructural: false,
   isProcess: false,
+  isHome: true,
   breadcrumbs: [
     {
       path: "metadata",
@@ -31,6 +32,9 @@ const mutations = {
   SET_CONTEXT(state, context) {
     state.context = context;
     switch (context) {
+      case Context.Home:
+        state.isHome = true;
+        break;
       case Context.Referential:
         state.isReferential = true;
         break;
@@ -49,6 +53,7 @@ const mutations = {
     state.isReferential = false;
     state.isProcess = false;
     state.isStructural = false;
+    state.isHome = false;
   },
   CREATE_BREADCRUMBS(state, breadcrumbs) {
     state.breadcrumbs = breadcrumbs;
@@ -69,6 +74,7 @@ const actions = {
     commit("SET_CONTEXT", isLoading);
   },
   setContext({ commit }, context) {
+    commit("CLEAR_CONTEXT");
     commit("SET_CONTEXT", context);
   },
   clearContext({ commit }) {
@@ -113,6 +119,9 @@ const getters = {
   },
   isLoading: state => {
     return state.isLoading;
+  },
+  isHome: state => {
+    return state.isHome;
   },
   isReferential: state => {
     return state.isReferential;

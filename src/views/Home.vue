@@ -24,6 +24,8 @@ import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import Toast from "@/components/Toast";
 
+import { Context } from "@/common";
+
 export default {
   name: "App",
   components: {
@@ -33,7 +35,7 @@ export default {
     "app-toast": Toast
   },
   created() {
-    this.$store.dispatch("coreui/clearContext");
+    this.$store.dispatch("coreui/setContext", Context.Home);
   }
 };
 </script>
