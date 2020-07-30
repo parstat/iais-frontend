@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-100" v-if="processDocumentation.processQualities">
+  <div class="card w-100" v-if="processQualities">
     <div class="card-header">
       <h5>Process Quality</h5>
     </div>
@@ -7,7 +7,7 @@
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="processQuality of processDocumentation.processQualities"
+          v-for="processQuality of processQualities"
           :key="processQuality.id"
         >
           <div class="card-header">
@@ -22,17 +22,14 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  name: "ProcessDocumentationQualitiesView",
-  data() {
-    return {
-      disabled: false
-    };
-  },
-  computed: {
-    ...mapGetters("processDocumentation", ["processDocumentation"])
+  name: "ProcessDocumentationQualityView",
+  props: {
+    processQualities: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
   }
 };
 </script>

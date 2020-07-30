@@ -15,7 +15,6 @@
             <edit-icon />
           </router-link>
         </h2>
-
         <p class="lead">
           {{ processDocumentation.businessFunction.localId }}
           {{ processDocumentation.businessFunction.name }}
@@ -72,38 +71,39 @@
         "
       ></app-outputs>
     </div>
-    <app-qualities></app-qualities>
-    <app-documents @handleBack="handleBack"></app-documents>
+    <app-qualities
+      :processQualities="processDocumentation.processQualities"
+    ></app-qualities>
+    <app-documents
+      :documents="processDocumentation.documents"
+      :statisticalProgramId="processDocumentation.statisticalProgram.id"
+      @handleBack="handleBack"
+    ></app-documents>
   </div>
 </template>
 <script>
-import AgentsView from "../../agent/share/AgentsView";
-import StatisticalStandardsView from "../../statisticalStandard/share/StatisticalStandardsView";
-import ProcessMethodsView from "../../processMethod/share/ProcessMethodsView";
-import BusinessServicesView from "../../businessService/share/BusinessServicesView";
-import ProcessInputView from "../../processInput/ProcessInputView";
-import ProcessOutputView from "../../processOutput/ProcessOutputView";
-import ProcessQualities from "./ProcessQualities";
-import ProcessDocuments from "./ProcessDocuments";
+import AgentsView from "../agent/share/AgentsView";
+import StatisticalStandardsView from "../statisticalStandard/share/StatisticalStandardsView";
+import BusinessServicesView from "../businessService/share/BusinessServicesView";
+import ProcessInputView from "../processInput/ProcessInputView";
+import ProcessOutputView from "../processOutput/ProcessOutputView";
+import ProcessMethodView from "../processMethod/share/ProcessMethodsView";
+import ProcessQualityView from "../processQuality/ProcessQualityView";
+import ProcessDocumentView from "../processDocuments/ProcessDocumentView";
 
 import { mapGetters } from "vuex";
 
 export default {
-  name: "StatisticalProgramView",
+  name: "ProcessDocumentationView",
   components: {
     "app-agents": AgentsView,
     "app-standards": StatisticalStandardsView,
-    "app-methods": ProcessMethodsView,
+    "app-methods": ProcessMethodView,
     "app-services": BusinessServicesView,
     "app-inputs": ProcessInputView,
     "app-outputs": ProcessOutputView,
-    "app-qualities": ProcessQualities,
-    "app-documents": ProcessDocuments
-  },
-  data() {
-    return {
-      disabled: false
-    };
+    "app-qualities": ProcessQualityView,
+    "app-documents": ProcessDocumentView
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated"]),
@@ -125,19 +125,10 @@ export default {
       if (_new.params.id !== _old.params.id) {
         this.init();
       }
-    },
-    "processDocumentation.statisticalProgram": function() {
-      if (!this.statisticalProgram) {
-        this.$store.dispatch(
-          "statisticalProgram/findById",
-          this.processDocumentation.statisticalProgram.id
-        );
-      }
     }
   },
   methods: {
     handleBack() {
-      this.disabled = true; //disable button
       this.$router.push(
         "/metadata/referential/view" +
           this.processDocumentation.statisticalProgram.id

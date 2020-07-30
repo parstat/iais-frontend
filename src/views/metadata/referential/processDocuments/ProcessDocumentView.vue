@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-100" v-if="processDocumentation.documents">
+  <div class="card w-100">
     <div class="card-header">
       <h5>Comments/Notes</h5>
     </div>
@@ -7,7 +7,7 @@
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="processDocument of processDocumentation.documents"
+          v-for="processDocument of documents"
           :key="processDocument.id"
         >
           <div class="card-header">
@@ -31,42 +31,27 @@
         class="btn btn-primary btn-sm btn-square"
         :to="{
           name: 'StatisticalProgramView',
-          params: { id: processDocumentation.statisticalProgram.id }
+          params: { id: statisticalProgramId }
         }"
       >
         Back
       </router-link>
     </div>
   </div>
-  <div v-else>
-    <div class="card w-100">
-      <div class="card-body">
-        <router-link
-          tag="a"
-          class="btn btn-primary btn-sm btn-square"
-          :to="{
-            name: 'StatisticalProgramView',
-            params: { id: processDocumentation.statisticalProgram.id }
-          }"
-        >
-          Back
-        </router-link>
-      </div>
-    </div>
-  </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  name: "ProcessDocumentationDocumentsView",
-  data() {
-    return {
-      disabled: false
-    };
-  },
-  computed: {
-    ...mapGetters("processDocumentation", ["processDocumentation"])
+  name: "ProcessDocumentView",
+  props: {
+    documents: {
+      type: Array,
+      required: true,
+      default: () => []
+    },
+    statisticalProgramId: {
+      type: Number,
+      required: true
+    }
   }
 };
 </script>

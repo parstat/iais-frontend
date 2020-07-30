@@ -105,7 +105,7 @@ const routes = [
         name: "ProcessDocumentationView",
         component: () =>
           import(
-            "../views/metadata/referential/processDocumentation/view/ProcessDocumentationView"
+            "../views/metadata/referential/processDocumentation/ProcessDocumentationView"
           ),
         meta: { authorize: [] }
       },
