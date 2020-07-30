@@ -61,8 +61,16 @@
       :businessServices="processDocumentation.businessServices"
     ></app-services>
     <div class="card-columns w-100">
-      <app-inputs></app-inputs>
-      <app-outputs></app-outputs>
+      <app-inputs
+        :processInputSpecifications="
+          processDocumentation.processInputSpecifications
+        "
+      ></app-inputs>
+      <app-outputs
+        :processOutputSpecifications="
+          processDocumentation.processOutputSpecifications
+        "
+      ></app-outputs>
     </div>
     <app-qualities></app-qualities>
     <app-documents @handleBack="handleBack"></app-documents>
@@ -73,8 +81,8 @@ import AgentsView from "../../agent/share/AgentsView";
 import StatisticalStandardsView from "../../statisticalStandard/share/StatisticalStandardsView";
 import ProcessMethodsView from "../../processMethod/share/ProcessMethodsView";
 import BusinessServicesView from "../../businessService/share/BusinessServicesView";
-import ProcessInputs from "./ProcessInputs";
-import ProcessOutputs from "./ProcessOutputs";
+import ProcessInputView from "../../processInput/ProcessInputView";
+import ProcessOutputView from "../../processOutput/ProcessOutputView";
 import ProcessQualities from "./ProcessQualities";
 import ProcessDocuments from "./ProcessDocuments";
 
@@ -87,8 +95,8 @@ export default {
     "app-standards": StatisticalStandardsView,
     "app-methods": ProcessMethodsView,
     "app-services": BusinessServicesView,
-    "app-inputs": ProcessInputs,
-    "app-outputs": ProcessOutputs,
+    "app-inputs": ProcessInputView,
+    "app-outputs": ProcessOutputView,
     "app-qualities": ProcessQualities,
     "app-documents": ProcessDocuments
   },

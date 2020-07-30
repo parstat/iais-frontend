@@ -35,7 +35,13 @@
 <script>
 export default {
   name: "StatisticalStandardsView",
-  props: ["statisticalStandards"]
+  props: {
+    statisticalStandards: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
+  }
 };
 </script>
 <style scoped>

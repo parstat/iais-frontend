@@ -14,6 +14,7 @@
         hover
         sorter
         pagination
+        :sorterValue="{ column: 'localId', asc: 'true' }"
       >
         <template #actions="{item}">
           <td style="padding: 0.75rem 0.4rem">

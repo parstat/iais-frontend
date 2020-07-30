@@ -60,10 +60,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import nav from "./_nav";
 
 export default {
-  nav,
   computed: {
     ...mapGetters("coreui", {
       show: "sidebarShow",

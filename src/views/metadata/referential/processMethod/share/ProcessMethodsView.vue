@@ -38,7 +38,8 @@ export default {
   props: {
     processMethods: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     }
   }
 };

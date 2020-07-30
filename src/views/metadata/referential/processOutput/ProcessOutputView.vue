@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-if="processDocumentation.processOutputSpecifications">
+  <div class="card">
     <div class="card-header">
       <h5>Process Outputs</h5>
     </div>
@@ -7,7 +7,7 @@
       <div class="card-columns">
         <div
           class="card card-border bg-lighter mb-3"
-          v-for="processOutputSpecification of processDocumentation.processOutputSpecifications"
+          v-for="processOutputSpecification of processOutputSpecifications"
           :key="processOutputSpecification.id"
         >
           <div class="card-header">
@@ -24,17 +24,14 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   name: "ProcessDocumentationOutputsView",
-  data() {
-    return {
-      disabled: false
-    };
-  },
-  computed: {
-    ...mapGetters("processDocumentation", ["processDocumentation"])
+  props: {
+    processOutputSpecifications: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
   }
 };
 </script>

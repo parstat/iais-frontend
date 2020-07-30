@@ -35,7 +35,13 @@
 <script>
 export default {
   name: "LegislativeReferencessView",
-  props: ["legislativeReferences"]
+  props: {
+    legislativeReferences: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
+  }
 };
 </script>
 <style scoped>
