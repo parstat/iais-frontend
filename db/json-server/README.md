@@ -1,5 +1,5 @@
 # Structural metadata REST API with json-server
-A REST API jsom-server to serve structural metadata
+A REST API json-server to serve structural metadata
 
 ## What you’ll need
 In order to run the json-server, your environment should fulfill the following requirements:
