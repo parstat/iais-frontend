@@ -1,0 +1,50 @@
+ [{
+    "id" : 1,
+    "LocalId" : "NUMERIC_SEC_CODELIST",
+    "Name" : "Numeric sex codelist",
+    "Description" : null,
+    "Version" : "1.0",
+    "VersionDate" : 20210101,
+    "VersionRationale" : null,
+    "Definition" : null,
+    "NodeSetType" : "CODE_LIST",
+    "Link" : null,
+    "Nodes": [
+        {
+            "Id" : 1,
+            "Code" : "1",
+            "Label" : "Male"
+        },
+        {
+            "Id" : 2,
+            "Code" : "2",
+            "Label" : "Female"
+        }
+    ]
+},
+{
+    "id" : 2,
+    "LocalId" : "NUMERIC_SEC_CODELIST2",
+    "Name" : "Numeric sex codelist",
+    "Description" : null,
+    "Version" : "1.0",
+    "VersionDate" : 20210101,
+    "VersionRationale" : null,
+    "Definition" : null,
+    "NodeSetType" : "CODE_LIST",
+    "Link" : null,
+    "Nodes": [
+        {
+            "Id" : 1,
+            "Code" : "1",
+            "Label" : "Male"
+        },
+        {
+            "Id" : 2,
+            "Code" : "2",
+            "Label" : "Female"
+        }
+    ]
+}
+]
+

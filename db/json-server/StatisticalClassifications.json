@@ -1,0 +1,310 @@
+[
+{
+    "id" : 3,
+    "LocalId" : "CAEM_STATISTICAL_CLASSIFICATION",
+    "Name" : "CAEM Statistical Classification",
+    "Description" : null,
+    "Version" : "2018",
+    "VersionDate" : 20180101,
+    "VersionRationale" : null,
+    "Definition" : null,
+    "NodeSetType" : "STATISTICAL_CLASSIFICATION",
+    "Link" : "",
+    "Levels": [
+        {
+            "id" : 1,
+            "LocalId" : "1",
+            "Name" : "Section",
+            "Description" : null,
+            "LevelNumber" : 1
+        },
+        {
+            "id" : 2,
+            "LocalId" : "2",
+            "Name" : "Division",
+            "Description" : null,
+            "LevelNumber" : 2
+        },
+        {
+            "id" : 3,
+            "LocalId" : "3",
+            "Name" : "Group",
+            "Description" : null,
+            "LevelNumber" : 3
+        },
+        {
+            "id" : 4,
+            "LocalId" : "4",
+            "Name" : "Class",
+            "Description" : null,
+            "LevelNumber" : 4
+        }
+    ],
+    "Nodes": [
+        {
+            "id" : 5,
+            "Code" : "A",
+            "Category" :{
+                "id" : 3,
+                "Name" : "AGRICULTURĂ, SILVICULTURĂ ŞI PESCUIT"
+            },
+            "LevelId" : 1,
+            "Children": [
+                {
+                    "id" : 26,
+                    "Code" : "01",
+                    "Category" : {
+                        "id" : 24,
+                        "Name" : "Agricultură, vânătoare şi servicii anexe"
+                    },
+                    "LevelId" : 2,
+                    "Children": [
+
+                    ]
+                },
+                {
+                    "id" : 27,
+                    "Code" : "02",
+                    "Category" : {
+                        "id" : 25,
+                        "Name" : "Silvicultură şi exploatare forestieră"
+                    },
+                    "LevelId" : 2,
+                    "Children": [
+                        
+                    ]
+                },
+                {
+                    "id" : 28,
+                    "Code" : "03",
+                    "Category" : {
+                        "id" : 26,
+                        "Name" : "Pescuitul şi acvacultura"
+                    },
+                    "LevelId" : 2,
+                    "Children": [
+                        
+                    ]
+                },
+                {
+                    "id" : 29,
+                    "Code" : "05",
+                    "Category" : {
+                        "id" : 27,
+                        "Name" : "Extracţia cărbunelui superior şi inferior"
+                    },
+                    "LevelId" : 2,
+                    "Children": [
+                        
+                    ]
+                },
+                {
+                    "id" : 30,
+                    "Code" : "06",
+                    "Category" : {
+                        "id" : 28,
+                        "Name" : "Extracţia petrolului brut şi a gazelor naturale"
+                    },
+                    "LevelId" : 2,
+                    "Children": [
+                        
+                    ]
+                },
+                {
+                    "id" : 31,
+                    "Code" : "07",
+                    "Category" : {
+                        "id" : 29,
+                        "Name" : "Extracţia minereurilor metalifere"
+                    },
+                    "LevelId" : 2,
+                    "Children": [
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "id" : 6,
+            "Code" : "B",
+            "Category" : {
+                "id" : 4,
+                "Name" : "INDUSTRIA EXTRACTIVĂ"
+            },
+            "LevelId" : 1,
+            "Parent" : null
+        },
+        {
+            "id" : 7,
+            "Code" : "C",
+            "Category" : {
+                "id" : 5,
+                "Name" : "INDUSTRIA PRELUCRĂTOARE"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 8,
+            "Code" : "D",
+            "Category" : {
+                "id" : 6,
+                "Name" : "PRODUCŢIA ŞI FURNIZAREA DE ENERGIE ELECTRICĂ ŞI TERMICĂ, GAZE, APĂ CALDĂ ŞI AER CONDIŢIONAT"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 9,
+            "Code" : "E",
+            "Category" : {
+                "id" : 7,
+                "Name" : "DISTRIBUŢIA APEI; SALUBRITATE, GESTIONAREA DEŞEURILOR, ACTIVITĂŢI DE DECONTAMINARE"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 10,
+            "Code" : "F",
+            "Category" : {
+                "id" : 8,
+                "Name" : "CONSTRUCŢII"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 11,
+            "Code" : "G",
+            "Category" : {
+                "id" : 9,
+                "Name" : "COMERŢ CU RIDICATA ŞI CU AMĂNUNTUL; ÎNTREŢINEREA ŞI REPARAREA AUTOVEHICULELOR ŞI A MOTOCICLETELOR"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 12,
+            "Code" : "H",
+            "Category" : {
+                "id" : 10,
+                "Name" : "TRANSPORT ŞI DEPOZITARE"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 13,
+            "Code" : "I",
+            "Category" : {
+                "id" : 11,
+                "Name" : "ACTIVITĂŢI DE CAZARE ŞI ALIMENTAŢIE PUBLICĂ"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 14,
+            "Code" : "J",
+            "Category" : {
+                "id" : 12,
+                "Name" : "INFORMAŢII ŞI COMUNICAŢII"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 15,
+            "Code" : "K",
+            "Category" : {
+                "id" : 13,
+                "Name" : "ACTIVITĂŢI FINANCIARE ŞI ASIGURĂRI"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 16,
+            "Code" : "L",
+            "Category" : {
+                "id" : 14,
+                "Name" : "TRANZACŢII IMOBILIARE"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 17,
+            "Code" : "M",
+            "Category" : {
+                "id" : 15,
+                "Name" : "ACTIVITĂŢI PROFESIONALE, ŞTIINŢIFICE ŞI TEHNICE"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 18,
+            "Code" : "N",
+            "Category" : {
+                "id" : 16,
+                "Name" : "ACTIVITĂŢI DE SERVICII ADMINISTRATIVE ŞI ACTIVITĂŢI DE SERVICII SUPORT"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 19,
+            "Code" : "O",
+            "Category" : {
+                "id" : 17,
+                "Name" : "ADMINISTRAŢIE PUBLICĂ ŞI APĂRARE; ASIGURĂRI SOCIALE OBLIGATORII"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 20,
+            "Code" : "P",
+            "Category" : {
+                "id" : 18,
+                "Name" : "ÎNVĂŢĂMÂNT"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 21,
+            "Code" : "Q",
+            "Category" : {
+                "id" : 19,
+                "Name" : "SĂNĂTATE ŞI ASISTENŢĂ SOCIALĂ"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 22,
+            "Code" : "R",
+            "Category" : {
+                "id" : 20,
+                "Name" : "ARTĂ, ACTIVITĂŢI DE RECREERE ŞI DE AGREMENT"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 23,
+            "Code" : "S",
+            "Category" : {
+                "id" : 21,
+                "Name" : "ALTE ACTIVITĂŢI DE SERVICII"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 24,
+            "Code" : "T",
+            "Category" : {
+                "id" : 22,
+                "Name" : "ACTIVITĂŢI ALE GOSPODĂRIILOR CASNICE ÎN CALITATE DE ANGAJATOR DE PERSONAL CASNIC; ACTIVITĂŢI ALE GOSPODĂRIILOR CASNICE DE PRODUCERE DE BUNURI ŞI SERVICII DESTINATE CONSUMULUI PROPRIU"
+            },
+            "LevelId" : 1
+        },
+        {
+            "id" : 25,
+            "Code" : "U",
+            "Category" : {
+                "id" : 23,
+                "Name" : "ACTIVITĂŢI ALE ORGANIZAŢIILOR ŞI ORGANISMELOR EXTRATERITORIALE"
+            },
+            "LevelId" : 1
+        }
+    ]
+}
+]
