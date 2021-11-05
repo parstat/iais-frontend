@@ -13,6 +13,7 @@ import { businessService } from "./modules/referential/businessService";
 import { businessFunction } from "./modules/referential/businessFunction";
 import { processMethod } from "./modules/referential/processMethod";
 import { processDocumentation } from "./modules/referential/processDocumentation";
+import { variable } from "./modules/structural/variable"; //added by GV
 
 Vue.use(Vuex);
 
@@ -29,6 +30,7 @@ export default new Vuex.Store({
     businessFunction,
     businessService,
     processMethod,
-    processDocumentation
+    processDocumentation,
+    variable //added by GV
   }
 });

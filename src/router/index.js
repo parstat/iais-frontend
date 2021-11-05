@@ -392,10 +392,103 @@ const routes = [
         component: () => import("../views/metadata/process/BusinessProcesses"),
         meta: { authorize: [] }
       },
+      // Structural
       {
         path: "metadata/structural",
-        name: "Structural",
-        component: () => import("../views/metadata/structural/Datasets"),
+        name: "StructuralComponents",
+        component: () =>
+          import("../views/metadata/structural/StructuralComponents"),
+        meta: { authorize: [] }
+      },
+      /* Variable */
+      {
+        path: "metadata/structural/variable/",
+        name: "StructuralVariableList",
+        //component: () => import("../views/metadata/structural/Datasets"),
+        component: () =>
+          import("../views/metadata/structural/variable/VariableList"),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/structural/variable/add",
+        name: "VariableAdd",
+        component: () =>
+          import("../views/metadata/structural/variable/VariableAdd"),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/structural/variable/view/:id",
+        name: "VariableView",
+        component: () =>
+          import("../views/metadata/structural/variable/VariableView"),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/structural/variable/edit/:id",
+        name: "VariableEdit",
+        component: () =>
+          import("../views/metadata/structural/variable/VariableEdit"),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      {
+        path: "metadata/structural/variable/delete/:id",
+        name: "VariableDelete",
+        component: () =>
+          import("../views/metadata/structural/variable/VariableDelete"),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      //* Variable Representations View*/
+      {
+        path: "metadata/structural/variable/Representation/view/:id",
+        name: "VariableRepresentationsView",
+        component: () =>
+          import(
+            "../views/metadata/structural/variableRepresentations/VariableRepresentationsView"
+          ),
+        meta: { authorize: [] }
+      },
+      //* Statistical Classifications */
+      {
+        path: "metadata/structural/statisticalClassifications/",
+        name: "StructuralStatisticalClassificationsList",
+        component: () =>
+          import(
+            "../views/metadata/structural/statisticalClassifications/StatisticalClassificationsList"
+          ),
+        meta: { authorize: [] }
+      },
+      //Statistical Classifications View
+      {
+        path: "metadata/structural/statisticalClassifications/view/:id",
+        name: "StatisticalClassificationsView",
+        component: () =>
+          import(
+            "../views/metadata/structural/statisticalClassifications/StatisticalClassificationsView"
+          ),
+        meta: { authorize: [] }
+      },
+      //* Code List */
+      {
+        path: "metadata/structural/code/",
+        name: "StructuralCodeList",
+        component: () =>
+          import("../views/metadata/structural/codeList/CodeList"),
+        meta: { authorize: [] }
+      },
+      //Code Add
+      {
+        path: "metadata/structural/code/add",
+        name: "CodeAdd",
+        component: () =>
+          import("../views/metadata/structural/codeList/CodeAdd"),
+        meta: { authorize: [Role.User, Role.Admin] }
+      },
+      //Code View
+      {
+        path: "metadata/structural/code/view/:id",
+        name: "CodeView",
+        component: () =>
+          import("../views/metadata/structural/codeList/CodeView"),
         meta: { authorize: [] }
       }
     ]

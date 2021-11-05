@@ -37,7 +37,7 @@
       <li class="c-sidebar-nav-item">
         <router-link
           tag="a"
-          :to="{ name: 'Home' }"
+          :to="{ name: 'StructuralComponents' }"
           class="c-sidebar-nav-link"
           :class="{ 'c-active': isStructural }"
         >
