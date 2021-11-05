@@ -29,11 +29,10 @@ jobs:
       run: |
         docker build . --file Dockerfile --tag parstat.azurecr.io/iais-frontend:latest
         docker push parstat.azurecr.io/iais-frontend:latest
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
+    - name: Push to server
+      uses: appleboy/ssh-action@master
       with:
-        key: ${{ secrets.PARSTAT_KEY }}
-        name: id_rsa # optional
-        known_hosts: ${{ secrets.KNOWN_HOSTS }}
-    - name: stack deploy
-      run: ssh parstat@iais.francecentral.cloudapp.azure.com 'cd iais && docker stack deploy --compose-file docker-compose.yml --with-registry-auth iais'
+        host: ${{ secrets.SERVER_NAME }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        password: ${{ secrets.SERVER_PASSWORD }}
+        script: cd iais && docker stack deploy --compose-file docker-compose.yml --with-registry-auth iais
