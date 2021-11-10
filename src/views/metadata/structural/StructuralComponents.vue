@@ -16,13 +16,11 @@
           /><br />
           -->
           <span>
-            <strong>Variables Description:</strong> Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Ut vel tempus purus, et sodales enim.
-            Nulla et vulputate nibh. Proin pharetra pulvinar odio in commodo.
-            Morbi porttitor suscipit sodales. Donec congue aliquet iaculis.
-            Fusce faucibus dictum hendrerit. Cras eleifend erat ut sapien
-            dapibus sollicitudin. Sed elementum odio ante, ut blandit sem
-            accumsan sit amet.. <br /><br />
+            The use of a <i>Concept</i> as a characteristic of a
+            <i>Population</i> intended to be measured. The
+            <i>Variable</i> combines the meaning of a <i>Concept</i> with a
+            <i>Unit Type</i>, to define the characteristic that is to be
+            measured.<br /><br />
           </span>
 
           <footer class="card-footer">
@@ -49,13 +47,14 @@
           <br />
           -->
           <span>
-            <strong>Statistical Clasifications Description:</strong> Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Ut vel tempus purus, et
-            sodales enim. Nulla et vulputate nibh. Proin pharetra pulvinar odio
-            in commodo. Morbi porttitor suscipit sodales. Donec congue aliquet
-            iaculis. Fusce faucibus dictum hendrerit. Cras eleifend erat ut
-            sapien dapibus sollicitudin. Sed elementum odio ante, ut blandit sem
-            accumsan sit amet..<br /><br />
+            A <i>Statistical Classification</i> is a set of
+            <i>Categories</i> which may be assigned to one or more variables
+            registered in statistical surveys or administrative files, and used
+            in the production and dissemination of statistics. In a standard
+            <i>Statistical Classification</i>, the <i>Categories</i> at each
+            <i>Level</i> of the classification structure must be mutually
+            exclusive and jointly exhaustive of all objects/units in the
+            population of interest.<br /><br />
           </span>
 
           <footer class="card-footer">
@@ -89,13 +88,8 @@
           /><br />
           -->
           <span>
-            <strong>Code List Description:</strong> Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Ut vel tempus purus, et sodales enim.
-            Nulla et vulputate nibh. Proin pharetra pulvinar odio in commodo.
-            Morbi porttitor suscipit sodales. Donec congue aliquet iaculis.
-            Fusce faucibus dictum hendrerit. Cras eleifend erat ut sapien
-            dapibus sollicitudin. Sed elementum odio ante, ut blandit sem
-            accumsan sit amet..<br /><br />
+            A list of <i>Categories</i> where each <i>Category</i> has a
+            predefined <i>Code</i> assigned to it.<br /><br />
           </span>
 
           <footer class="card-footer">

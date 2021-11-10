@@ -25,9 +25,11 @@
           This section contains the structural metadata of each survey
           documented in the system.
           <br />
-          <p class="section-link section-link-disabled">
-            <span class="icon-span">Go to structural metadata section</span>
-            <chevron-right-icon />
+          <p class="section-link">
+            <router-link tag="a" :to="{ name: 'StructuralComponents' }"
+              ><span class="icon-span">Go to structural metadata section </span
+              ><chevron-right-icon
+            /></router-link>
           </p>
         </div>
       </div>

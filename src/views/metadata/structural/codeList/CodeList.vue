@@ -44,6 +44,17 @@
                       <router-link
                         tag="a"
                         :to="{
+                          name: 'CodeView',
+                          params: { id: item.id }
+                        }"
+                      >
+                        <view-icon />
+                      </router-link>
+                    </td>
+                    <td>
+                      <router-link
+                        tag="a"
+                        :to="{
                           name: 'CodeEdit',
                           params: { id: item.id }
                         }"

@@ -51,6 +51,17 @@
                       <router-link
                         tag="a"
                         :to="{
+                          name: 'StatisticalClassificationsView',
+                          params: { id: item.id }
+                        }"
+                      >
+                        <view-icon />
+                      </router-link>
+                    </td>
+                    <td>
+                      <router-link
+                        tag="a"
+                        :to="{
                           name: 'StatisticalClassificationsEdit',
                           params: { id: item.id }
                         }"

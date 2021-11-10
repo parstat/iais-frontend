@@ -47,6 +47,17 @@
                       <router-link
                         tag="a"
                         :to="{
+                          name: 'VariableView',
+                          params: { id: variable.id }
+                        }"
+                      >
+                        <view-icon />
+                      </router-link>
+                    </td>
+                    <td>
+                      <router-link
+                        tag="a"
+                        :to="{
                           name: 'VariableEdit',
                           params: { id: variable.id }
                         }"
@@ -113,7 +124,7 @@ import { mapGetters } from "vuex";
 import axios from "axios";
 
 export default {
-  name: "app",
+  name: "VariableList",
   data() {
     return {
       loading: false,
