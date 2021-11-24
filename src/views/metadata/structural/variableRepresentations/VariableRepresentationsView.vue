@@ -1,21 +1,20 @@
-<template v-if="variable">
+<template>
   <div class="row">
-    <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="variable">
+    <div class="jumbotron jumbotron-fluid col-lg-12 p-2">
       <div class=" p-3">
-        <h2 class="display-5">
-          {{ rvd.Name }}
-        </h2>
-        <p class="lead" v-if="rvd.Description">
-          <strong>Description:</strong> {{ rvd.Description }}
+        <h2 class="display-5">{{ rvd.name }}</h2>
+        <p class="lead" v-if="rvd.description">
+          <strong>Description:</strong> {{ rvd.description }}
         </p>
       </div>
     </div>
 
     <CRow class="w-100"
       ><CCol class="col-sm-6 col-md-6">
+        <!-- substantiveValueDomain -->
         <div class="card w-100">
           <header class="card-header ">
-            <h5>Value Domain</h5>
+            <h5>Substantive Value Domain</h5>
           </header>
           <div class="card-body ">
             <div class="card card-border bg-light w-100">
@@ -25,16 +24,16 @@
                     <div class="card-group ">
                       <span><strong>Name:</strong></span>
                       <div class="card-slot ">
-                        <span v-if="rvd.SubstantiveValueDomain">{{
-                          rvd.SubstantiveValueDomain.Name
+                        <span v-if="rvd.substantiveValueDomain.name">{{
+                          rvd.substantiveValueDomain.name
                         }}</span>
                       </div>
                     </div>
                     <div class="card-group ">
                       <span><strong>Type:</strong></span>
                       <div class="card-slot ">
-                        <span v-if="rvd.SubstantiveValueDomain">{{
-                          rvd.SubstantiveValueDomain.ValueDomainType
+                        <span v-if="rvd.substantiveValueDomain">{{
+                          rvd.substantiveValueDomain.type
                         }}</span>
                       </div>
                     </div>
@@ -43,16 +42,16 @@
                     <div class="card-group ">
                       <span><strong>DataType:</strong></span>
                       <div class="card-slot ">
-                        <span v-if="rvd.SubstantiveValueDomain">{{
-                          rvd.SubstantiveValueDomain.DataType
+                        <span v-if="rvd.substantiveValueDomain">{{
+                          rvd.substantiveValueDomain.dataType
                         }}</span>
                       </div>
                     </div>
                     <div class="card-group ">
-                      <span><strong>Level:</strong></span>
+                      <span><strong>Expression:</strong></span>
                       <div class="card-slot ">
-                        <span v-if="rvd.SubstantiveValueDomain">{{
-                          rvd.SubstantiveValueDomain.LevelNumber
+                        <span v-if="rvd.substantiveValueDomain">{{
+                          rvd.substantiveValueDomain.expression
                         }}</span>
                       </div>
                     </div>
@@ -63,11 +62,13 @@
 
             <div class="card w-100">
               <div class="card-header bg-secondary p-2">
-                <strong> Numeric {{ variable.Name }} CodeList </strong>
+                <strong>
+                  Numeric <i>{{ rvd.variable.name }}</i> CodeList
+                </strong>
               </div>
               <table
                 class="table table-hover "
-                v-if="rvd.SubstantiveValueDomain"
+                v-if="rvd.substantiveValueDomain"
               >
                 <thead>
                   <tr>
@@ -79,11 +80,11 @@
                 </thead>
                 <tbody>
                   <tr
-                    v-for="item in rvd.SubstantiveValueDomain.NodeSet.Nodes"
+                    v-for="item in rvd.substantiveValueDomain.valueSet"
                     :key="item.index"
                   >
-                    <td>{{ item.Code }}</td>
-                    <td>{{ item.Label }}</td>
+                    <td>{{ item.code }}</td>
+                    <td>{{ item.value }}</td>
                     <!-- Actions Buttons  
                     <template v-if="isAuthenticated">
                       <td>
@@ -134,7 +135,7 @@
         <!-- Special Value Domain-->
         <div class="card w-100 ">
           <header class="card-header ">
-            <h5>Special Value Domain</h5>
+            <h5>Sentinel Value Domain</h5>
           </header>
           <div class="card-body ">
             <div class="card card-border bg-light w-100">
@@ -144,16 +145,16 @@
                     <div class="card-group ">
                       <span><strong>Name:</strong></span>
                       <div class="card-slot ">
-                        <span v-if="rvd.SpecialValueDomain">{{
-                          rvd.SpecialValueDomain.Name
+                        <span v-if="rvd.sentinelValueDomain">{{
+                          rvd.sentinelValueDomain.name
                         }}</span>
                       </div>
                     </div>
                     <div class="card-group ">
                       <span><strong>Type:</strong></span>
                       <div class="card-slot ">
-                        <span v-if="rvd.SpecialValueDomain">{{
-                          rvd.SpecialValueDomain.ValueDomainType
+                        <span v-if="rvd.sentinelValueDomain">{{
+                          rvd.sentinelValueDomain.type
                         }}</span>
                       </div>
                     </div>
@@ -162,19 +163,22 @@
                     <div class="card-group ">
                       <span><strong>DataType:</strong></span>
                       <div class="card-slot ">
-                        <span v-if="rvd.SpecialValueDomain">{{
-                          rvd.SpecialValueDomain.DataType
+                        <span v-if="rvd.sentinelValueDomain">{{
+                          rvd.sentinelValueDomain.dataType
                         }}</span>
                       </div>
                     </div>
+                    <!--
                     <div class="card-group ">
                       <span><strong>Level:</strong></span>
                       <div class="card-slot ">
-                        <span v-if="rvd.SpecialValueDomain">{{
-                          rvd.SpecialValueDomain.LevelNumber
+                        <span v-if="rvd.sentinelValueDomain">{{
+                          rvd.sentinelValueDomain.LevelNumber
                         }}</span>
                       </div>
+                     
                     </div>
+                     -->
                   </CCol>
                 </CRow>
               </div>
@@ -182,9 +186,11 @@
 
             <div class="card w-100">
               <div class="card-header bg-secondary p-2">
-                <strong> Special {{ variable.Name }} CodeList </strong>
+                <strong>
+                  Special <i>{{ rvd.variable.name }}</i> CodeList
+                </strong>
               </div>
-              <table class="table table-hover " v-if="rvd.SpecialValueDomain">
+              <table class="table table-hover " v-if="rvd.sentinelValueDomain">
                 <thead>
                   <tr>
                     <th scope="col">Code</th>
@@ -195,11 +201,11 @@
                 </thead>
                 <tbody>
                   <tr
-                    v-for="item in rvd.SpecialValueDomain.NodeSet.Nodes"
+                    v-for="item in rvd.sentinelValueDomain.valueSet"
                     :key="item.index"
                   >
-                    <td>{{ item.Code }}</td>
-                    <td>{{ item.Label }}</td>
+                    <td>{{ item.code }}</td>
+                    <td>{{ item.value }}</td>
                     <!-- Actions Buttons  
                     <template v-if="isAuthenticated">
                       <td>
@@ -247,71 +253,15 @@
         </div>
       </CCol>
     </CRow>
-    <!-- Described Value Domain-->
-    <div class="card w-100 hidden">
-      <header class="card-header ">
-        <h5>Described Value Domain</h5>
-      </header>
-      <div class="card-body ">
-        <div class="card card-border bg-light w-50">
-          <div class="card-body w-100">
-            <CRow class="col-sm-12 col-md-12">
-              <CCol class="col-sm-6 col-md-6">
-                <div class="card-group ">
-                  <span><strong>Name:</strong></span>
-                  <div class="card-slot ">
-                    <span v-if="rvd.DescibedValueDomain">{{
-                      rvd.DescibedValueDomain.Name
-                    }}</span>
-                  </div>
-                </div>
-                <div class="card-group ">
-                  <span><strong>Type:</strong></span>
-                  <div class="card-slot ">
-                    <span v-if="rvd.DescibedValueDomain">{{
-                      rvd.DescibedValueDomain.ValueDomainType
-                    }}</span>
-                  </div>
-                </div>
-                <div class="card-group">
-                  <span><strong>Expression:</strong></span>
-                </div>
-                <div class="card-slot" v-if="rvd.DescibedValueDomain">
-                  {{ rvd.DescibedValueDomain.Expression }}
-                </div>
-              </CCol>
-              <CCol class="col-sm-6 col-md-6">
-                <div class="card-group ">
-                  <span><strong>DataType:</strong></span>
-                  <div class="card-slot ">
-                    <span v-if="rvd.DescibedValueDomain">{{
-                      rvd.DescibedValueDomain.DataType
-                    }}</span>
-                  </div>
-                </div>
-                <div class="card-group ">
-                  <span><strong>Level:</strong></span>
-                  <div class="card-slot ">
-                    <span v-if="rvd.DescibedValueDomain">{{
-                      rvd.DescibedValueDomain.LevelNumber
-                    }}</span>
-                  </div>
-                </div>
-              </CCol>
-            </CRow>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <CButton
-          color="primary"
-          shape="square"
-          size="sm"
-          @click.prevent="handleBack()"
-          :disabled="disabled"
-          >Back</CButton
-        >
-      </div>
+    <div class="card-footer">
+      <CButton
+        color="primary"
+        shape="square"
+        size="sm"
+        @click.prevent="handleBack()"
+        :disabled="disabled"
+        >Back</CButton
+      >
     </div>
   </div>
 </template>
@@ -347,38 +297,29 @@ import { mapGetters } from "vuex";
 //import { Context } from "@/common";
 import axios from "axios";
 
-//const itemId = arrayid;
-//const vid= {{variable.id}};
-
 export default {
   name: "RepresentationsView",
   data() {
     return {
       loading: false,
       disabled: false,
-      variable: [],
       rvd: [],
-      nsd: [],
       n: this.$route.params.id - 1
-      //variable.Representations[n]: []
     };
   },
 
   mounted() {
     this.loading = true;
-    axios
-      .get("http://localhost:5300/variables/" + this.$route.params.id)
-      //.get("http://iais.francecentral.cloudapp.azure.com:8080/api/v1/referential/agents")
-      .then(response => (this.variable = response.data))
-      .catch(error => console.log(error))
-      .finally(() => (this.loading = false));
 
     //rvd = Represented Variable Data
     axios
       .get(
-        "http://localhost:5300/representedVariables/" + this.$route.params.id
+        //"http://localhost:5300/representedVariables/" + this.$route.params.id
+        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenRepresentations/" +
+          this.$route.params.id +
+          "?language=en"
       )
-      .then(response => (this.rvd = response.data))
+      .then(response => (this.rvd = response.data.representedVariable))
       .catch(error => console.log(error))
       .finally(() => (this.loading = false));
   },

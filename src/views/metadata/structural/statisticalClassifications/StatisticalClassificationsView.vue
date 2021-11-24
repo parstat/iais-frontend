@@ -3,13 +3,13 @@
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="statclassif">
       <div class=" p-3">
         <h2 class="display-5">
-          {{ statclassif.Name }}
+          {{ statclassif.name }}
           <span class="lead"
-            >( {{ statclassif.Definition || statclassif.LocalId }} )</span
+            >( {{ statclassif.definition || statclassif.localId }} )</span
           >
         </h2>
         <p class="lead">
-          <strong>Description:</strong> {{ statclassif.Description }}
+          <strong>Description:</strong> {{ statclassif.description }}
         </p>
       </div>
     </div>
@@ -21,7 +21,7 @@
       <div class="card-body">
         <table
           class="table table-hover table-striped"
-          v-if="statclassif.Levels"
+          v-if="statclassif.levels"
         >
           <thead class="bg-dark">
             <tr>
@@ -34,13 +34,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in statclassif.Levels" :key="item.id">
-              <td>{{ item.Id }}</td>
-              <td>{{ item.LocalId }}</td>
-              <td>{{ item.Name }}</td>
-              <td class="justify">{{ item.Description }}</td>
-              <td>{{ item.LevelNumber }}</td>
+            <tr v-for="item in statclassif.levels" :key="item.id">
+              <td>{{ item.id }}</td>
+              <td>{{ item.localId }}</td>
+              <td>{{ item.name }}</td>
+              <td class="justify">{{ item.description }}</td>
+              <td>{{ item.levelNumber }}</td>
               <template v-if="isAuthenticated">
+                <td>
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'StatisticalClassificationsView',
+                      params: { id: statclassif.id }
+                    }"
+                  >
+                    <view-icon />
+                  </router-link>
+                </td>
                 <td>
                   <router-link
                     tag="a"
@@ -281,11 +292,14 @@ export default {
     this.loading = true;
     axios
       .get(
-        "http://localhost:5300/statisticalClassifications/" +
+        //"http://localhost:5300/statisticalClassifications/" +
+        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenStatisticalClassifications" +
           this.$route.params.id
       )
-      //.get("http://iais.francecentral.cloudapp.azure.com:8080/api/v1/referential/agents")
-      .then(response => (this.statclassif = response.data))
+      .then(
+        response =>
+          (this.statclassif = response.data.statisticalClassifications)
+      )
       .catch(error => console.log(error))
       .finally(() => (this.loading = false));
 
@@ -308,17 +322,7 @@ export default {
       this.disabled = true; //disable button
       this.$router.push("/metadata/structural/statisticalClassifications");
     },
-    /*
-    getRepresentedVariablesData() {
-      axios
-        .get(
-          "http://localhost:5300/representedVariables/" + this.$route.params.id
-        )
-        .then(response => (this.rvd = response.data))
-        .catch(error => console.log(error))
-        .finally(() => (this.loading = false));
-    }
-    */
+
     toggleDetails(itm) {
       this.$set(this.statclassif[itm.id], "_toggled", !itm._toggled);
       this.collapseDuration = 300;

@@ -490,6 +490,27 @@ const routes = [
         component: () =>
           import("../views/metadata/structural/codeList/CodeView"),
         meta: { authorize: [] }
+      },
+      // *Correspondence Tables
+      // Correspondence Table List
+      {
+        path: "metadata/structural/correspondence/",
+        name: "CorrespondenceTableList",
+        component: () =>
+          import(
+            "../views/metadata/structural/correspondenceTable/CorrespondenceTableList"
+          ),
+        meta: { authorize: [] }
+      },
+      // Correspondence Table View
+      {
+        path: "metadata/structural/correspondence/view/:id",
+        name: "CorrespondenceTableView",
+        component: () =>
+          import(
+            "../views/metadata/structural/correspondenceTable/CorrespondenceTableView"
+          ),
+        meta: { authorize: [] }
       }
     ]
   },

@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="card">
         <header class="card-header">
-          Code List
+          Correspondence Tables
           <div class="card-header-actions">
             <router-link
               v-if="isAuthenticated"
@@ -12,7 +12,7 @@
               class="card-header-action"
             >
               <add-icon />
-              <span class="icon-span">New Code</span>
+              <span class="icon-span">New Correspondence</span>
             </router-link>
           </div>
         </header>
@@ -25,26 +25,25 @@
               <thead>
                 <tr>
                   <th scope="col">Id</th>
-                  <th scope="col">LocalId</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Description</th>
-
+                  <th scope="col">Relationship</th>
+                  <th scope="col">Source Name</th>
+                  <th scope="col">Target Name</th>
                   <th scope="col" colspan="2" width="2%">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="item in items" :key="item.id">
                   <td>{{ item.id }}</td>
-                  <td>{{ item.localId }}</td>
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.description }}</td>
+                  <td>{{ item.relationship }}</td>
+                  <td>{{ item.source.name }}</td>
+                  <td>{{ item.target.namne }}</td>
 
                   <template v-if="isAuthenticated">
                     <td>
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'CodeView',
+                          name: 'CorrespondenceTableView',
                           params: { id: item.id }
                         }"
                       >
@@ -55,8 +54,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'CodeEdit',
-                          params: { id: item.id }
+                          name: 'CorrespondenceTableEdit',
+                          params: { id: items.id }
                         }"
                       >
                         <edit-icon />
@@ -66,8 +65,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'CodeDelete',
-                          params: { id: item.id }
+                          name: 'CorrespondenceTableDelete',
+                          params: { id: items.id }
                         }"
                       >
                         <delete-icon />
@@ -79,8 +78,8 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'CodeView',
-                          params: { id: item.id }
+                          name: 'CorrespondenceTableView',
+                          params: { id: items.id }
                         }"
                       >
                         <view-icon />
@@ -121,7 +120,7 @@ import { mapGetters } from "vuex";
 import axios from "axios";
 
 export default {
-  name: "CodeList",
+  name: "CorespondenceTableList",
   data() {
     return {
       loading: false,
@@ -133,9 +132,9 @@ export default {
     axios
       //.get("http://localhost:5300/codeList")
       .get(
-        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenCodeLists"
+        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenCorrespondence"
       )
-      .then(response => (this.items = response.data.codeLists))
+      .then(response => (this.items = response.data.correspondences))
       .catch(error => console.log(error))
       .finally(() => (this.loading = false));
   },

@@ -107,25 +107,28 @@
     <div class="col-sm-6 col-md-4">
       <div class="card">
         <header class="card-header">
-          <span>Corespondence Table</span>
+          <span>Correspondence Table</span>
+          <span class="badge float-right badge-success p-2">read</span>
         </header>
         <div class="card-body">
           <span>
-            <strong>Corespondence Table Description:</strong> Lorem ipsum dolor
+            <strong>Correspondence Table Description:</strong> Lorem ipsum dolor
             sit amet, consectetur adipiscing elit. Ut vel tempus purus, et
             sodales enim. Nulla et vulputate nibh. Proin pharetra pulvinar odio
             in commodo. Morbi porttitor suscipit sodales. Donec congue aliquet
             iaculis. Fusce faucibus dictum hendrerit. Cras eleifend erat ut
             sapien dapibus sollicitudin. Sed elementum odio ante, ut blandit sem
-            accumsan sit amet..
+            accumsan sit amet..<br /><br />
           </span>
-          <p class="section-link">
-            <router-link tag="a" :to="{ name: 'StatisticalStandardList' }"
-              ><span class="icon-span"
-                >Go to statistical standard section &nbsp;</span
-              ><chevron-right-icon
-            /></router-link>
-          </p>
+          <footer class="card-footer">
+            <p class="section-link" style="float:right;">
+              <router-link tag="a" :to="{ name: 'CorrespondenceTableList' }">
+                <span class="icon-span"
+                  >Go to corespondence table section &nbsp;</span
+                ><chevron-right-icon
+              /></router-link>
+            </p>
+          </footer>
         </div>
       </div>
     </div>
@@ -144,11 +147,11 @@
             dapibus sollicitudin. Sed elementum odio ante, ut blandit sem
             accumsan sit amet..
           </span>
-          <p class="section-link">
-            <router-link tag="a" :to="{ name: 'BusinessFunctionList' }">
-              <span class="icon-span">Go to data sets details &nbsp;</span>
-              <chevron-right-icon />
-            </router-link>
+          <p class="section-link section-link-disabled">
+            <!--<router-link tag="a" :to="{ name: 'BusinessFunctionList' }"> -->
+            <span class="icon-span">Go to data sets section &nbsp;</span>
+            <chevron-right-icon />
+            <!--</router-link>-->
           </p>
         </div>
       </div>

@@ -24,9 +24,6 @@
               <th scope="col">LocalId</th>
               <th scope="col">Name</th>
               <th scope="col">Description</th>
-              <th scope="col">Version</th>
-              <th scope="col">VersionDate</th>
-              <th scope="col">VersionRationale</th>
               <th scope="col" colspan="2" width="2%">Actions</th>
             </tr>
           </thead>
@@ -36,10 +33,18 @@
               <td>{{ item.localId }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.description }}</td>
-              <td>{{ item.version }}</td>
-              <td>{{ item.versionDate }}</td>
-              <td>{{ item.versionRationale }}</td>
               <template v-if="isAuthenticated">
+                <td>
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'VariableRepresentationsView',
+                      params: { id: item.id }
+                    }"
+                  >
+                    <view-icon />
+                  </router-link>
+                </td>
                 <td>
                   <router-link
                     tag="a"

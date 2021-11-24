@@ -29,7 +29,8 @@
                   <th scope="col">Name</th>
                   <th scope="col">Description</th>
                   <th scope="col">Version</th>
-                  <th scope="col">VersionDate</th>
+                  <th scope="col">Version Date</th>
+                  <th scope="col">Version Rationale</th>
                   <th scope="col">Definition</th>
                   <th scope="col">Link</th>
                   <th scope="col" colspan="2" width="2%">Actions</th>
@@ -43,6 +44,7 @@
                   <td>{{ item.description }}</td>
                   <td>{{ item.version }}</td>
                   <td>{{ item.versionDate }}</td>
+                  <td>{{ item.versionRationale }}</td>
                   <td>{{ item.definition }}</td>
                   <td>{{ item.link }}</td>
 

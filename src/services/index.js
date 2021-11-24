@@ -7,3 +7,4 @@ export * from "./referential/businessFunction.service";
 export * from "./referential/businessService.service";
 export * from "./referential/processMethod.service";
 export * from "./referential/processDocumentation.service";
+export * from "./structural/variable.service"; //added by GV
