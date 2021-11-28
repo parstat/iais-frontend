@@ -2,7 +2,7 @@ import { axiosIais } from "@/http";
 import qs from "querystring";
 //import axios from "axios";
 
-export const variableService = {
+export const statisticalClassificationService = {
   findAll,
   findById,
   save,
@@ -12,27 +12,29 @@ export const variableService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenVariables?language=en").then(
-      response => {
-        console.log(response.data.variables);
-        resolve(response.data.variables);
-      },
-      error => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .get("/structural/OpenStatisticalClassifications?language=en")
+      .then(
+        response => {
+          console.log(response.data.statisticalClassifications);
+          resolve(response.data.statisticalClassifications);
+        },
+        error => {
+          reject(error);
+        }
+      );
   });
 }
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenVariables/" + id).then(
+    axiosIais.get("/structural/OpenStatisticalClassifications/" + id).then(
       response => {
-        var data = response.data.variable ? response.data.variable : null;
+        var data = response.data.statisticalClassification
+          ? response.data.statisticalClassification
+          : null;
         console.log(data);
         resolve(data);
-        //console.log(response.data.variable);
-        //resolve(response.data.variable);
       },
       error => {
         reject(error);
@@ -58,7 +60,9 @@ function save(formData) {
 
     axiosIais
       .post(
-        "/structural/ClosedVariables" + formData.localId + "?language=en",
+        "/structural/ClosedStatisticalClassifications/" +
+          formData.localId +
+          "?language=en",
         qs.stringify(requestBody),
         config
       )
@@ -91,7 +95,9 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "/structural/ClosedVariables/" + formData.id + "?language=en",
+        "/structural/ClosedStatisticalClassifications/" +
+          formData.id +
+          "?language=en",
         qs.stringify(requestBody),
         config
       )
@@ -109,7 +115,7 @@ function update(formData) {
 
 function _delete(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.delete("/structural/ClosedVariables/" + id).then(
+    axiosIais.delete("/structural/ClosedStatisticalClassifications/" + id).then(
       response => {
         //console.log(response.data);
         resolve(response.data);

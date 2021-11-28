@@ -16,144 +16,133 @@
             </router-link>
           </div>
         </header>
-        <div class="card-body">
-          <div v-if="isLoading">
-            <tile></tile>
-          </div>
-          <div class="table-responsive" v-else>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">LocalId</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Version</th>
-                  <th scope="col">Version Date</th>
-                  <th scope="col">Version Rationale</th>
-                  <th scope="col">Definition</th>
-                  <th scope="col">Link</th>
-                  <th scope="col" colspan="2" width="2%">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="item in items" :key="item.id">
-                  <td>{{ item.id }}</td>
-                  <td>{{ item.localId }}</td>
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.description }}</td>
-                  <td>{{ item.version }}</td>
-                  <td>{{ item.versionDate }}</td>
-                  <td>{{ item.versionRationale }}</td>
-                  <td>{{ item.definition }}</td>
-                  <td>{{ item.link }}</td>
+                <div class="card-body">
+          <div class="table-responsive">
+            <CDataTable
+              :items="statisticalClassifications"
+              :fields="fields"
+              column-filter
+              table-filter
+              items-per-page-select
+              :items-per-page="5"
+              hover
+              sorter
+              pagination
+            >
+              <template #actions="{item}">
+                <td style="text-align:right; width:10%; padding-right:20px;">
+                  <span class="pl-2" v-c-tooltip="'View'">
+                    <router-link
+                      tag="a"
+                      title="View"
+                      :to="{
+                        name: 'StatisticalClassificationView',
+                        params: { id: item.id }
+                      }"
+                    >
+                      <view-icon />
+                    </router-link>
+                  </span>
+                  <span
+                    v-if="isAuthenticated"
+                    class="pl-2"
+                    v-c-tooltip="'Edit'"
+                  >
+                    <router-link
+                      tag="a"
+                      title="Edit"
+                      :to="{
+                        name: 'StatisticalClassificationEdit',
+                        params: { id: item.id }
+                      }"
+                    >
+                      <edit-icon />
+                    </router-link>
+                  </span>
 
-                  <template v-if="isAuthenticated">
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'StatisticalClassificationsView',
-                          params: { id: item.id }
-                        }"
-                      >
-                        <view-icon />
-                      </router-link>
-                    </td>
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'StatisticalClassificationsEdit',
-                          params: { id: item.id }
-                        }"
-                      >
-                        <edit-icon />
-                      </router-link>
-                    </td>
-                    <td v-if="isAdmin">
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'StatisticalClassificationsDelete',
-                          params: { id: item.id }
-                        }"
-                      >
-                        <delete-icon />
-                      </router-link>
-                    </td>
-                  </template>
-                  <template v-else>
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'StatisticalClassificationsView',
-                          params: { id: item.id }
-                        }"
-                      >
-                        <view-icon />
-                      </router-link>
-                    </td>
-                  </template>
-                </tr>
-              </tbody>
-            </table>
+                  <span
+                    v-if="isAuthenticated && isAdmin"
+                    class="pl-2"
+                    v-c-tooltip="'Delete'"
+                  >
+                    <router-link
+                      tag="a"
+                      title="Delete"
+                      :to="{
+                        name: 'StatisticalClassificationDelete',
+                        params: { id: item.id }
+                      }"
+                    >
+                      <delete-icon />
+                    </router-link>
+                  </span>
+                </td>
+              </template>
+            </CDataTable>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<!--
 <script>
 import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
 export default {
-  name: "VariableList",
-  computed: {
-    ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("variable", ["variables"])
-  },
-  created() {
-    this.$store.dispatch("vareiable/findAll");
-    this.$store.dispatch("coreui/setContext", Context.Structural);
-  }
-};
-</script>
--->
-<script>
-import { mapGetters } from "vuex";
-//import { Context } from "@/common";
-import axios from "axios";
-
-export default {
   name: "StatisticalClassificationsList",
   data() {
     return {
-      loading: false,
-      items: []
+      fields: [
+        {
+          key: "id",
+          label: "Id"
+        },
+        {
+          key: "localId",
+          label: "LocalId"
+        },
+        {
+          key: "name",
+          label: "Name"
+        },
+        {
+          key: "description",
+          label: "Description"
+        },
+        {
+          key: "version"
+        },
+        {
+          key: "versionDate"
+        },
+        {
+          key: "versionRationale"
+        },
+        {
+          key: "definition"
+        },
+        {
+          key: "link"
+        },
+        {
+          key: "actions",
+          label: "",
+          _style: "",
+          sorter: false,
+          filter: false
+        }
+      ]
     };
-  },
-  mounted() {
-    this.loading = true;
-    axios
-      //.get('https://reqres.in/api/users')
-      //.get("http://localhost:5300/statisticalClassifications")
-      //.get("http://iais.francecentral.cloudapp.azure.com:8080/api/v1/referential/agents")
-      .get(
-        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenStatisticalClassifications"
-      )
-      .then(response => (this.items = response.data.statisticalClassifications))
-      .catch(error => console.log(error))
-      .finally(() => (this.loading = false));
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"])
-    //...mapGetters("variable", ["variables"])
+    ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("statisticalClassification", ["statisticalClassifications"])
+  },
+  created() {
+    this.$store.dispatch("statisticalClassification/findAll");
+    this.$store.dispatch("coreui/setContext", Context.Structural);
   }
 };
 </script>

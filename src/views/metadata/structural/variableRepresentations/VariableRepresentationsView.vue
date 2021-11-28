@@ -20,7 +20,7 @@
             <div class="card card-border bg-light w-100">
               <div class="card-body w-100">
                 <CRow class="col-sm-12 col-md-12">
-                  <CCol class="col-sm-6 col-md-6">
+                  <CCol class="col-sm-12 col-md-6">
                     <div class="card-group ">
                       <span><strong>Name:</strong></span>
                       <div class="card-slot ">
@@ -38,7 +38,7 @@
                       </div>
                     </div>
                   </CCol>
-                  <CCol class="col-sm-6 col-md-6">
+                  <CCol class="col-sm-12 col-md-6">
                     <div class="card-group ">
                       <span><strong>DataType:</strong></span>
                       <div class="card-slot ">
@@ -50,9 +50,10 @@
                     <div class="card-group ">
                       <span><strong>Expression:</strong></span>
                       <div class="card-slot ">
-                        <span v-if="rvd.substantiveValueDomain">{{
+                        <span v-if="rvd.substantiveValueDomain.expression">{{
                           rvd.substantiveValueDomain.expression
                         }}</span>
+                        <span v-else class="default-value">no value</span>
                       </div>
                     </div>
                   </CCol>
@@ -141,13 +142,14 @@
             <div class="card card-border bg-light w-100">
               <div class="card-body w-100">
                 <CRow class="col-sm-12 col-md-12">
-                  <CCol class="col-sm-6 col-md-6">
+                  <CCol class="col-sm-12 col-md-6">
                     <div class="card-group ">
                       <span><strong>Name:</strong></span>
                       <div class="card-slot ">
                         <span v-if="rvd.sentinelValueDomain">{{
                           rvd.sentinelValueDomain.name
                         }}</span>
+                        <span v-else class="default-value">no value</span>
                       </div>
                     </div>
                     <div class="card-group ">
@@ -156,16 +158,18 @@
                         <span v-if="rvd.sentinelValueDomain">{{
                           rvd.sentinelValueDomain.type
                         }}</span>
+                        <span v-else class="default-value">no value</span>
                       </div>
                     </div>
                   </CCol>
-                  <CCol class="col-sm-6 col-md-6">
+                  <CCol class="col-sm-12 col-md-6">
                     <div class="card-group ">
                       <span><strong>DataType:</strong></span>
                       <div class="card-slot ">
                         <span v-if="rvd.sentinelValueDomain">{{
-                          rvd.sentinelValueDomain.dataType
+                          rvd.sentinelValueDomain.datatype
                         }}</span>
+                        <span v-else class="default-value">no value</span>
                       </div>
                     </div>
                     <!--
@@ -190,7 +194,7 @@
                   Special <i>{{ rvd.variable.name }}</i> CodeList
                 </strong>
               </div>
-              <table class="table table-hover " v-if="rvd.sentinelValueDomain">
+              <table class="table table-hover " v-if="rvd.specialValueDomain">
                 <thead>
                   <tr>
                     <th scope="col">Code</th>
@@ -201,10 +205,14 @@
                 </thead>
                 <tbody>
                   <tr
-                    v-for="item in rvd.sentinelValueDomain.valueSet"
+                    v-for="item in rvd.specialValueDomain.valueSet"
                     :key="item.index"
                   >
-                    <td>{{ item.code }}</td>
+                    <td>
+                      <span v-if="item.code">{{ item.code }}</span>
+                      <span v-else class="default-value">no value</span>
+                      {{ item.code }}
+                    </td>
                     <td>{{ item.value }}</td>
                     <!-- Actions Buttons  
                     <template v-if="isAuthenticated">
@@ -340,7 +348,7 @@ export default {
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/variable");
+      this.$router.push("/metadata/structural/variable/view" + this.$route.params.id);
     }
     /*
     getRepresentedVariablesData() {
@@ -368,5 +376,8 @@ export default {
 
 .hidden {
   display: none;
+}
+.default-value {
+  color: lightgray;
 }
 </style>

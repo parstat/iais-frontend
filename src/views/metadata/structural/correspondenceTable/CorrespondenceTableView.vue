@@ -4,9 +4,7 @@
       <div class=" p-3">
         <h2 class="display-5">
           {{ correspondence.relationship }}
-          <!--<span class="lead">( {{ codes.version || codes.localId }} )</span> -->
         </h2>
-        <!-- <p class="lead"><strong>Description:</strong> {{ codes.description }}</p> -->
       </div>
     </div>
     <div class="col-sm-12 col-md-4">
@@ -63,10 +61,12 @@
             <span><strong>Link: </strong></span>
           </div>
           <div class="card-slot">
-            <span>{{ correspondence.source.link }}</span>
+            <span v-if="correspondence.target.link">{{
+              correspondence.source.link
+            }}</span>
+            <span class="default-value" v-else>no value</span>
           </div>
         </div>
-        <div class="card-footer"></div>
       </div>
     </div>
     <div class="col-sm-12 col-md-4">
@@ -97,10 +97,12 @@
             <span><strong>Link: </strong></span>
           </div>
           <div class="card-slot">
-            <span>{{ correspondence.target.link }}</span>
+            <span v-if="correspondence.target.link">{{
+              correspondence.target.link
+            }}</span>
+            <span v-else class="default-value">no value</span>
           </div>
         </div>
-        <div class="card-footer"></div>
       </div>
     </div>
     <div class="col-sm-12 col-md-4">
@@ -182,7 +184,7 @@
         </div>
       </div>
     </div>
-    <div class="card-footer">
+    <div class="">
       <CButton
         color="primary"
         shape="square"
@@ -195,85 +197,36 @@
   </div>
 </template>
 
-<!--
 <script>
 import { mapGetters } from "vuex";
+//import { Context } from "@/common";
 
 export default {
-  name: "VariableView",
+  name: "CodeView",
   data() {
     return {
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("variable", ["variable"])
-  },
-  methods: {
-    handleBack() {
-      this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/variable");
-    }
-  },
-  created() {
-    this.$store.dispatch("variable/findById", this.$route.params.id);
-  }
-};
-</script>
--->
-<script>
-import { mapGetters } from "vuex";
-//import { Context } from "@/common";
-import axios from "axios";
-
-//var itemId = this.$route.params.id;
-//const vid= {{variable.id}};
-
-export default {
-  name: "CorrespondenceTableView",
-  data() {
-    return {
-      loading: false,
-      disabled: false,
-      correspondence: []
-    };
-  },
-  mounted() {
-    this.loading = true;
-    axios
-      //.get("http://localhost:5300/codeList/" + this.$route.params.id)
-      .get(
-        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural//api/v1/structural/OpenCorrespondence/" +
-          this.$route.params.id
-      )
-      .then(response => (this.correspondence = response.data.correspondence))
-      .catch(error => console.log(error))
-      .finally(() => (this.loading = false));
-  },
-  computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"])
-    //...mapGetters("variable", ["variable"])
+    ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("correspondence", ["correspondence"])
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/correspondenceTable");
+      this.$router.push("/metadata/structural/correspondence");
     }
   },
   created() {
-    //this.$store.dispatch("variable/findById", this.$route.params.id);
+    this.$store.dispatch("correspondence/findById", this.$route.params.id);
+    //this.$store.dispatch("coreui/setContext", Context.Structural);
   }
 };
 </script>
 <style scoped>
-.form-control:disabled,
-.form-control[readonly] {
-  background-color: #ebedef;
-  opacity: 1;
-}
-.center {
-  text-align: center;
-  margin: 0 auto;
+.default-value {
+  color: lightgray;
 }
 </style>

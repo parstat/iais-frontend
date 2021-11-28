@@ -2,7 +2,7 @@ import { axiosIais } from "@/http";
 import qs from "querystring";
 //import axios from "axios";
 
-export const variableService = {
+export const correspondenceService = {
   findAll,
   findById,
   save,
@@ -12,10 +12,10 @@ export const variableService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenVariables?language=en").then(
+    axiosIais.get("/structural/OpenCorrespondence?language=en").then(
       response => {
-        console.log(response.data.variables);
-        resolve(response.data.variables);
+        console.log(response.data.correspondences);
+        resolve(response.data.correspondences);
       },
       error => {
         reject(error);
@@ -26,13 +26,13 @@ function findAll() {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenVariables/" + id).then(
+    axiosIais.get("/structural/OpenCorrespondence/" + id).then(
       response => {
-        var data = response.data.variable ? response.data.variable : null;
+        var data = response.data.correspondence
+          ? response.data.correspondence
+          : null;
         console.log(data);
         resolve(data);
-        //console.log(response.data.variable);
-        //resolve(response.data.variable);
       },
       error => {
         reject(error);
@@ -58,7 +58,7 @@ function save(formData) {
 
     axiosIais
       .post(
-        "/structural/ClosedVariables" + formData.localId + "?language=en",
+        "/structural/ClosedCorrespondence/" + formData.localId + "?language=en",
         qs.stringify(requestBody),
         config
       )
@@ -91,7 +91,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "/structural/ClosedVariables/" + formData.id + "?language=en",
+        "/structural/ClosedCorrespondence/" + formData.id + "?language=en",
         qs.stringify(requestBody),
         config
       )
@@ -109,7 +109,7 @@ function update(formData) {
 
 function _delete(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.delete("/structural/ClosedVariables/" + id).then(
+    axiosIais.delete("/structural/ClosedCorrespondence/" + id).then(
       response => {
         //console.log(response.data);
         resolve(response.data);

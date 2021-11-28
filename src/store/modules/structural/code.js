@@ -1,26 +1,26 @@
 import router from "@/router";
-import { variableService } from "@/services";
+import { codeService } from "@/services";
 
 const state = {
-  variables: [],
-  variable: null
+  codes: [],
+  code: null
 };
 
 const mutations = {
-  SET_VARIABLES(state, variables) {
-    state.variables = variables ? variables : [];
+  SET_CODES(state, codes) {
+    state.codes = codes ? codes : [];
   },
-  SET_VARIABLE(state, variable) {
-    state.variable = variable;
+  SET_CODE(state, code) {
+    state.code = code;
   }
 };
 
 const actions = {
   findAll({ commit }) {
-    variableService.findAll().then(
+    codeService.findAll().then(
       data => {
-        commit("SET_VARIABLES", data);
-        commit("SET_VARIABLE", null); //clear business function
+        commit("SET_CODES", data);
+        commit("SET_CODE", null); //clear business function
         console.log(data);
       },
       error => {
@@ -29,9 +29,9 @@ const actions = {
     );
   },
   findById({ commit }, id) {
-    variableService.findById(id).then(
+    codeService.findById(id).then(
       data => {
-        commit("SET_VARIABLE", data);
+        commit("SET_CODE", data);
         console.log(data);
       },
       error => {
@@ -41,9 +41,9 @@ const actions = {
   },
 
   findByLocalId({ commit }, localId) {
-    variableService.findByLocalId(localId).then(
+    codeService.findByLocalId(localId).then(
       data => {
-        commit("SET_VARIABLE", data);
+        commit("SET_CODE", data);
       },
       error => {
         console.log(error);
@@ -52,9 +52,9 @@ const actions = {
   },
 
   findByName({ commit }, name) {
-    variableService.findByName(name).then(
+    codeService.findByName(name).then(
       data => {
-        commit("SET_VARIABLES", data);
+        commit("SET_CODES", data);
         //commit("SET_BUSINESS_FUNCTION", null); //clear business function
       },
       error => {
@@ -63,13 +63,13 @@ const actions = {
     );
   },
   save({ dispatch }, formData) {
-    variableService.save(formData).then(
+    codeService.save(formData).then(
       data => {
         console.log(data);
-        dispatch("message/success", "Variable saved!", {
+        dispatch("message/success", "Code saved!", {
           root: true
         });
-        router.push("/metadata/structuralal/variable");
+        router.push("/metadata/structuralal/code");
       },
       error => {
         console.log(error);
@@ -77,13 +77,13 @@ const actions = {
     );
   },
   delete({ dispatch }, id) {
-    variableService.delete(id).then(
+    codeService.delete(id).then(
       data => {
         console.log(data);
-        dispatch("message/success", "Variable deleted!", {
+        dispatch("message/success", "Code deleted!", {
           root: true
         });
-        router.push("/metadata/structuralal/variable");
+        router.push("/metadata/structuralal/code");
       },
       error => {
         console.log(error);
@@ -91,13 +91,13 @@ const actions = {
     );
   },
   update({ dispatch }, formData) {
-    variableService.update(formData).then(
+    codeService.update(formData).then(
       data => {
         console.log(data);
-        dispatch("message/success", "Variable updated!", {
+        dispatch("message/success", "Code updated!", {
           root: true
         });
-        router.push("/metadata/structuralal/variable");
+        router.push("/metadata/structuralal/code");
       },
       error => {
         console.log(error);
@@ -107,15 +107,15 @@ const actions = {
 };
 
 const getters = {
-  variables: state => {
-    return state.variables;
+  codes: state => {
+    return state.codes;
   },
-  variable: state => {
-    return state.variable;
+  code: state => {
+    return state.code;
   }
 };
 
-export const variable = {
+export const code = {
   namespaced: true,
   state,
   mutations,

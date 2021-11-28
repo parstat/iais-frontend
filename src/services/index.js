@@ -8,3 +8,6 @@ export * from "./referential/businessService.service";
 export * from "./referential/processMethod.service";
 export * from "./referential/processDocumentation.service";
 export * from "./structural/variable.service"; //added by GV
+export * from "./structural/code.service"; //added by GV
+export * from "./structural/correspondence.service"; //added by GV
+export * from "./structural/statisticalClassification.service"; //added by GV

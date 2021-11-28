@@ -1,14 +1,12 @@
 <template>
   <div class="row">
-    <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="codes">
+    <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="code">
       <div class=" p-3">
         <h2 class="display-5">
-          {{ codes.name }}
-          <span class="lead">( {{ codes.version || codes.localId }} )</span>
+          {{ code.name }}
+          <span class="lead">( {{ code.version || code.localId }} )</span>
         </h2>
-        <p class="lead">
-          <strong>Description:</strong> {{ codes.description }}
-        </p>
+        <p class="lead"><strong>Description:</strong> {{ code.description }}</p>
       </div>
     </div>
     <div class="card w-100">
@@ -16,7 +14,7 @@
         <h5>Code Items</h5>
       </header>
       <div class="card-body">
-        <table class="table table-hover" v-if="codes.codeItems">
+        <table class="table table-hover" v-if="code">
           <thead>
             <tr>
               <th scope="col">Id</th>
@@ -26,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in codes.codeItems" :key="item.index">
+            <tr v-for="item in code.codeItems" :key="item.index">
               <td>{{ item.id }}</td>
               <td>{{ item.code }}</td>
               <td>{{ item.value }}</td>
@@ -36,7 +34,7 @@
                     tag="a"
                     :to="{
                       name: 'CodeItemsEdit',
-                      params: { id: codes.id }
+                      params: { id: code.id }
                     }"
                   >
                     <edit-icon />
@@ -47,7 +45,7 @@
                     tag="a"
                     :to="{
                       name: 'CodeItemsDelete',
-                      params: { id: codes.id }
+                      params: { id: code.id }
                     }"
                   >
                     <delete-icon />
@@ -60,7 +58,7 @@
                     tag="a"
                     :to="{
                       name: 'CodeItemsView',
-                      params: { id: item.id }
+                      params: { id: code.id }
                     }"
                   >
                     <view-icon />
@@ -85,85 +83,31 @@
   </div>
 </template>
 
-<!--
 <script>
 import { mapGetters } from "vuex";
+//import { Context } from "@/common";
 
 export default {
-  name: "VariableView",
+  name: "CodeView",
   data() {
     return {
       disabled: false
     };
   },
   computed: {
-    ...mapGetters("variable", ["variable"])
-  },
-  methods: {
-    handleBack() {
-      this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/variable");
-    }
-  },
-  created() {
-    this.$store.dispatch("variable/findById", this.$route.params.id);
-  }
-};
-</script>
--->
-<script>
-import { mapGetters } from "vuex";
-//import { Context } from "@/common";
-import axios from "axios";
-
-//var itemId = this.$route.params.id;
-//const vid= {{variable.id}};
-
-export default {
-  name: "CodeView",
-  data() {
-    return {
-      loading: false,
-      disabled: false,
-      codes: []
-    };
-  },
-  mounted() {
-    this.loading = true;
-    axios
-      //.get("http://localhost:5300/codeList/" + this.$route.params.id)
-      .get(
-        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenCodeLists/" +
-          this.$route.params.id
-      )
-      .then(response => (this.codes = response.data.codeList))
-      .catch(error => console.log(error))
-      .finally(() => (this.loading = false));
-  },
-  computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"])
-    //...mapGetters("variable", ["variable"])
+    ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("code", ["code"])
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/codeList");
+      this.$router.push("/metadata/structural/code");
     }
   },
   created() {
-    //this.$store.dispatch("variable/findById", this.$route.params.id);
+    this.$store.dispatch("code/findById", this.$route.params.id);
+    //this.$store.dispatch("coreui/setContext", Context.Structural);
   }
 };
 </script>
-<style scoped>
-.form-control:disabled,
-.form-control[readonly] {
-  background-color: #ebedef;
-  opacity: 1;
-}
-.center {
-  text-align: center;
-  margin: 0 auto;
-}
-</style>

@@ -17,132 +17,120 @@
           </div>
         </header>
         <div class="card-body">
-          <div v-if="isLoading">
-            <tile></tile>
-          </div>
-          <div class="table-responsive" v-else>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">LocalId</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Description</th>
+          <div class="table-responsive">
+            <CDataTable
+              :items="codes"
+              :fields="fields"
+              column-filter
+              table-filter
+              items-per-page-select
+              :items-per-page="5"
+              hover
+              sorter
+              pagination
+            >
+              <template #actions="{item}">
+                <td style="text-align:right; width:10%; padding-right:20px;">
+                  <span class="pl-2" v-c-tooltip="'View'">
+                    <router-link
+                      tag="a"
+                      title="View"
+                      :to="{
+                        name: 'CodeView',
+                        params: { id: item.id }
+                      }"
+                    >
+                      <view-icon />
+                    </router-link>
+                  </span>
+                  <span
+                    v-if="isAuthenticated"
+                    class="pl-2"
+                    v-c-tooltip="'Edit'"
+                  >
+                    <router-link
+                      tag="a"
+                      title="Edit"
+                      :to="{
+                        name: 'CodeEdit',
+                        params: { id: item.id }
+                      }"
+                    >
+                      <edit-icon />
+                    </router-link>
+                  </span>
 
-                  <th scope="col" colspan="2" width="2%">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="item in items" :key="item.id">
-                  <td>{{ item.id }}</td>
-                  <td>{{ item.localId }}</td>
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.description }}</td>
-
-                  <template v-if="isAuthenticated">
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'CodeView',
-                          params: { id: item.id }
-                        }"
-                      >
-                        <view-icon />
-                      </router-link>
-                    </td>
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'CodeEdit',
-                          params: { id: item.id }
-                        }"
-                      >
-                        <edit-icon />
-                      </router-link>
-                    </td>
-                    <td v-if="isAdmin">
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'CodeDelete',
-                          params: { id: item.id }
-                        }"
-                      >
-                        <delete-icon />
-                      </router-link>
-                    </td>
-                  </template>
-                  <template v-else>
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'CodeView',
-                          params: { id: item.id }
-                        }"
-                      >
-                        <view-icon />
-                      </router-link>
-                    </td>
-                  </template>
-                </tr>
-              </tbody>
-            </table>
+                  <span
+                    v-if="isAuthenticated && isAdmin"
+                    class="pl-2"
+                    v-c-tooltip="'Delete'"
+                  >
+                    <router-link
+                      tag="a"
+                      title="Delete"
+                      :to="{
+                        name: 'CodeDelete',
+                        params: { id: item.id }
+                      }"
+                    >
+                      <delete-icon />
+                    </router-link>
+                  </span>
+                </td>
+              </template>
+            </CDataTable>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<!--
+
 <script>
 import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
 export default {
-  name: "VariableList",
-  computed: {
-    ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("variable", ["variables"])
-  },
-  created() {
-    this.$store.dispatch("vareiable/findAll");
-    this.$store.dispatch("coreui/setContext", Context.Structural);
-  }
-};
-</script>
--->
-<script>
-import { mapGetters } from "vuex";
-//import { Context } from "@/common";
-import axios from "axios";
-
-export default {
   name: "CodeList",
   data() {
     return {
-      loading: false,
-      items: []
+      fields: [
+        {
+          key: "id",
+          label: "Id"
+        },
+        {
+          key: "localId",
+          label: "LocalId"
+        },
+        {
+          key: "name",
+          label: "Code Name"
+        },
+        {
+          key: "description"
+        },
+        {
+          key: "link"
+        },
+        {
+          key: "actions",
+          label: "",
+          _style: "",
+          sorter: false,
+          filter: false
+        }
+      ]
     };
-  },
-  mounted() {
-    this.loading = true;
-    axios
-      //.get("http://localhost:5300/codeList")
-      .get(
-        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenCodeLists"
-      )
-      .then(response => (this.items = response.data.codeLists))
-      .catch(error => console.log(error))
-      .finally(() => (this.loading = false));
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"])
-    //...mapGetters("variable", ["variables"])
+    ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("code", ["codes"])
+  },
+  created() {
+    this.$store.dispatch("code/findAll");
+    this.$store.dispatch("coreui/setContext", Context.Structural);
   }
 };
 </script>

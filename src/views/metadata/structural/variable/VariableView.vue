@@ -34,18 +34,18 @@
               <td>{{ item.name }}</td>
               <td>{{ item.description }}</td>
               <template v-if="isAuthenticated">
-                <td>
+                <td v-c-tooltip="'View'">
                   <router-link
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsView',
-                      params: { id: item.id }
+                      params: { id: variable.id }
                     }"
                   >
                     <view-icon />
                   </router-link>
                 </td>
-                <td>
+                <td v-c-tooltip="'Edit'">
                   <router-link
                     tag="a"
                     :to="{
@@ -56,7 +56,7 @@
                     <edit-icon />
                   </router-link>
                 </td>
-                <td v-if="isAdmin">
+                <td v-if="isAdmin" v-c-tooltip="'Delete'">
                   <router-link
                     tag="a"
                     :to="{
@@ -74,7 +74,7 @@
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsView',
-                      params: { id: item.id }
+                      params: { id: variable.id }
                     }"
                   >
                     <view-icon />
@@ -99,9 +99,9 @@
   </div>
 </template>
 
-<!--
 <script>
 import { mapGetters } from "vuex";
+//import { Context } from "@/common";
 
 export default {
   name: "VariableView",
@@ -111,6 +111,8 @@ export default {
     };
   },
   computed: {
+    ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
+    ...mapGetters("coreui", ["isLoading"]),
     ...mapGetters("variable", ["variable"])
   },
   methods: {
@@ -121,63 +123,7 @@ export default {
   },
   created() {
     this.$store.dispatch("variable/findById", this.$route.params.id);
+    //this.$store.dispatch("coreui/setContext", Context.Structural);
   }
 };
 </script>
--->
-<script>
-import { mapGetters } from "vuex";
-//import { Context } from "@/common";
-import axios from "axios";
-
-//var itemId = this.$route.params.id;
-//const vid= {{variable.id}};
-
-export default {
-  name: "VariableView",
-  data() {
-    return {
-      loading: false,
-      disabled: false,
-      variable: []
-    };
-  },
-  mounted() {
-    this.loading = true;
-    axios
-      //.get("http://localhost:5300/variables/" + this.$route.params.id)
-      .get(
-        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenVariables/" +
-          this.$route.params.id
-      )
-      .then(response => (this.variable = response.data.variable))
-      .catch(error => console.log(error))
-      .finally(() => (this.loading = false));
-  },
-  computed: {
-    ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("coreui", ["isLoading"])
-    //...mapGetters("variable", ["variable"])
-  },
-  methods: {
-    handleBack() {
-      this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/variable");
-    }
-  },
-  created() {
-    //this.$store.dispatch("variable/findById", this.$route.params.id);
-  }
-};
-</script>
-<style scoped>
-.form-control:disabled,
-.form-control[readonly] {
-  background-color: #ebedef;
-  opacity: 1;
-}
-.center {
-  text-align: center;
-  margin: 0 auto;
-}
-</style>
