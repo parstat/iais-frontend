@@ -17,6 +17,7 @@ import { variable } from "./modules/structural/variable"; //added by GV
 import { code } from "./modules/structural/code"; //added by GV
 import { correspondence } from "./modules/structural/correspondence"; //added by GV
 import { statisticalClassification } from "./modules/structural/statisticalClassification"; //added by GV
+import { variableRepresentation } from "./modules/structural/variableRepresentation"; //added by GV
 
 Vue.use(Vuex);
 
@@ -37,6 +38,7 @@ export default new Vuex.Store({
     variable, //added by GV
     code, //added by GV
     correspondence, //added by GV
-    statisticalClassification
+    statisticalClassification,
+    variableRepresentation
   }
 });

@@ -16,7 +16,7 @@
             </router-link>
           </div>
         </header>
-                <div class="card-body">
+        <div class="card-body">
           <div class="table-responsive">
             <CDataTable
               :items="statisticalClassifications"

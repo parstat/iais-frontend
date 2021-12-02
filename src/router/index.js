@@ -392,7 +392,7 @@ const routes = [
         component: () => import("../views/metadata/process/BusinessProcesses"),
         meta: { authorize: [] }
       },
-      // Structural
+      // ********** METADATA STRUCTURAL *************************************************
       {
         path: "metadata/structural",
         name: "StructuralComponents",
@@ -404,7 +404,6 @@ const routes = [
       {
         path: "metadata/structural/variable/",
         name: "StructuralVariableList",
-        //component: () => import("../views/metadata/structural/Datasets"),
         component: () =>
           import("../views/metadata/structural/variable/VariableList"),
         meta: { authorize: [] }
@@ -439,11 +438,21 @@ const routes = [
       },
       //* Variable Representations View*/
       {
-        path: "metadata/structural/variable/Representation/view/:id",
+        path: "metadata/structural/variable/representation/view/:id",
         name: "VariableRepresentationsView",
         component: () =>
           import(
             "../views/metadata/structural/variableRepresentations/VariableRepresentationsView"
+          ),
+        meta: { authorize: [] }
+      },
+      //* Variable Representations List*/
+      {
+        path: "metadata/structural/variable/view/:id",
+        name: "VariableRepresentationsList",
+        component: () =>
+          import(
+            "../views/metadata/structural/variableRepresentations/VariableRepresentationsList"
           ),
         meta: { authorize: [] }
       },
@@ -460,10 +469,10 @@ const routes = [
       //Statistical Classifications View
       {
         path: "metadata/structural/statisticalClassifications/view/:id",
-        name: "StatisticalClassificationsView",
+        name: "StatisticalClassificationView",
         component: () =>
           import(
-            "../views/metadata/structural/statisticalClassifications/StatisticalClassificationsView"
+            "../views/metadata/structural/statisticalClassifications/StatisticalClassificationView"
           ),
         meta: { authorize: [] }
       },
