@@ -14,11 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Build the app
     - uses: actions/setup-node@v1
       with:
-        node-version: 14
+        node-version: '14'
     - run: npm install
     - run: npm run build
     - name: Docker Repository Configuration
