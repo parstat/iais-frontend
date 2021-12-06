@@ -11,7 +11,7 @@
     "@coreui/coreui": "^3.2.2",
     "@coreui/icons": "^1.0.1",
     "@coreui/vue": "^3.1.2",
-    "axios": "^0.19.2",
+    "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "jsonwebtoken": "^8.5.1",
     "lodash.debounce": "^4.0.8",
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",
-    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-plugin-eslint": "^4.5.15",
     "@vue/cli-plugin-router": "~4.2.0",
     "@vue/cli-plugin-vuex": "~4.2.0",
     "@vue/cli-service": "~4.2.0",
