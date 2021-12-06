@@ -39,7 +39,7 @@
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsView',
-                      params: { id: variable.id }
+                      params: { id: item.id }
                     }"
                   >
                     <view-icon />
@@ -50,7 +50,7 @@
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsEdit',
-                      params: { id: variable.id }
+                      params: { id: item.id }
                     }"
                   >
                     <edit-icon />
@@ -61,7 +61,7 @@
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsDelete',
-                      params: { id: variable.id }
+                      params: { id: item.id }
                     }"
                   >
                     <delete-icon />
@@ -74,7 +74,7 @@
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsView',
-                      params: { id: variable.id }
+                      params: { id: item.id }
                     }"
                   >
                     <view-icon />

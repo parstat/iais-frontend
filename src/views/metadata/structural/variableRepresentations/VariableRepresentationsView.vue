@@ -105,7 +105,7 @@
                 </CRow>
               </div>
             </div>
-
+            <!-- Numeric Variable representation CodeList-->
             <div class="card w-100">
               <div class="card-header bg-secondary p-2">
                 <strong>
@@ -113,9 +113,88 @@
                   <i>{{ variableRepresentation.variable.name }}</i> CodeList
                 </strong>
               </div>
+              <!-- @start Condition to show filtrable table if results are more then 5 lines-->
+              <div
+                class="table-responsive"
+                v-if="
+                  variableRepresentation.substantiveValueDomain.valueSet
+                    .length > 5
+                "
+              >
+                <CDataTable
+                  :items="
+                    variableRepresentation.substantiveValueDomain.valueSet
+                  "
+                  :fields="fields"
+                  column-filter
+                  table-filter
+                  items-per-page-select
+                  :items-per-page="5"
+                  hover
+                  sorter
+                  pagination
+                >
+                  <template #actions="{item}">
+                    <td
+                      style="text-align:right; width:10%; padding-right:20px;"
+                    >
+                      <span class="pl-2" v-c-tooltip="'View'">
+                        <router-link
+                          tag="a"
+                          title="View"
+                          :to="{
+                            name: 'VariableRepresentationCodeView',
+                            params: { id: item.id }
+                          }"
+                        >
+                          <view-icon />
+                        </router-link>
+                      </span>
+                      <span
+                        v-if="isAuthenticated"
+                        class="pl-2"
+                        v-c-tooltip="'Edit'"
+                      >
+                        <router-link
+                          tag="a"
+                          title="Edit"
+                          :to="{
+                            name: 'VariableRepresentationCodeEdit',
+                            params: { id: item.id }
+                          }"
+                        >
+                          <edit-icon />
+                        </router-link>
+                      </span>
+
+                      <span
+                        v-if="isAuthenticated && isAdmin"
+                        class="pl-2"
+                        v-c-tooltip="'Delete'"
+                      >
+                        <router-link
+                          tag="a"
+                          title="Delete"
+                          :to="{
+                            name: 'VariableRepresentationCodeDelete',
+                            params: { id: item.id }
+                          }"
+                        >
+                          <delete-icon />
+                        </router-link>
+                      </span>
+                    </td>
+                  </template>
+                </CDataTable>
+              </div>
+              <!-- @end Condition to show filtrable table if results are more then 5 lines-->
               <table
                 class="table table-hover "
-                v-if="variableRepresentation.substantiveValueDomain"
+                v-if="
+                  variableRepresentation.substantiveValueDomain &&
+                    variableRepresentation.substantiveValueDomain.valueSet
+                      .length < 5
+                "
               >
                 <thead>
                   <tr>
@@ -134,7 +213,14 @@
                   </tr>
                 </tbody>
               </table>
-              <h5 v-else class="default-value card-body">No data available</h5>
+              <h5
+                v-if="
+                  !variableRepresentation.substantiveValueDomain.valueSet.length
+                "
+                class="default-value card-body"
+              >
+                No data available
+              </h5>
             </div>
           </div>
         </div>
@@ -292,7 +378,25 @@ export default {
   name: "VariableRepresentationsView",
   data() {
     return {
-      disabled: false
+      disabled: false,
+      //nce: variableRepresentation.substantiveValueDomain,
+      fields: [
+        {
+          key: "code",
+          label: "Code"
+        },
+        {
+          key: "value",
+          label: "Value"
+        },
+        {
+          key: "actions",
+          label: "",
+          _style: "",
+          sorter: false,
+          filter: false
+        }
+      ]
     };
   },
   computed: {
