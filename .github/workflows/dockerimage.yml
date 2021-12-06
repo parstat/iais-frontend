@@ -16,10 +16,11 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Build the app
-      run: |
-          npm install
-          npm rebuild node-sass
-          npm run build
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14
+    - run: npm install
+    - run: npm run build
     - name: Docker Repository Configuration
       uses: azure/docker-login@v1
       with:
