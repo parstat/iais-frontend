@@ -17,7 +17,6 @@
         <table class="table table-hover" v-if="code">
           <thead>
             <tr>
-              <th scope="col">Id</th>
               <th scope="col">Code</th>
               <th scope="col">Value</th>
               <th scope="col" colspan="2" width="2%">Actions</th>
@@ -25,7 +24,6 @@
           </thead>
           <tbody>
             <tr v-for="item in code.codeItems" :key="item.index">
-              <td>{{ item.id }}</td>
               <td>{{ item.code }}</td>
               <td>{{ item.value }}</td>
               <template v-if="isAuthenticated">

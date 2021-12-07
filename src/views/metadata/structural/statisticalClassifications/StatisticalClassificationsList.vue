@@ -95,35 +95,18 @@ export default {
     return {
       fields: [
         {
-          key: "id",
-          label: "Id"
-        },
-        {
           key: "localId",
-          label: "LocalId"
+          label: "Id"
         },
         {
           key: "name",
           label: "Name"
         },
         {
-          key: "description",
-          label: "Description"
-        },
-        {
           key: "version"
         },
         {
           key: "versionDate"
-        },
-        {
-          key: "versionRationale"
-        },
-        {
-          key: "definition"
-        },
-        {
-          key: "link"
         },
         {
           key: "actions",

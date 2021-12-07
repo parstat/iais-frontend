@@ -105,11 +105,10 @@
                 </CRow>
               </div>
             </div>
-            <!-- Numeric Variable representation CodeList-->
+            <!-- Variable representation CodeList-->
             <div class="card w-100">
               <div class="card-header bg-secondary p-2">
                 <strong>
-                  Numeric
                   <i>{{ variableRepresentation.variable.name }}</i> CodeList
                 </strong>
               </div>
@@ -134,57 +133,6 @@
                   sorter
                   pagination
                 >
-                  <template #actions="{item}">
-                    <td
-                      style="text-align:right; width:10%; padding-right:20px;"
-                    >
-                      <span class="pl-2" v-c-tooltip="'View'">
-                        <router-link
-                          tag="a"
-                          title="View"
-                          :to="{
-                            name: 'VariableRepresentationCodeView',
-                            params: { id: item.id }
-                          }"
-                        >
-                          <view-icon />
-                        </router-link>
-                      </span>
-                      <span
-                        v-if="isAuthenticated"
-                        class="pl-2"
-                        v-c-tooltip="'Edit'"
-                      >
-                        <router-link
-                          tag="a"
-                          title="Edit"
-                          :to="{
-                            name: 'VariableRepresentationCodeEdit',
-                            params: { id: item.id }
-                          }"
-                        >
-                          <edit-icon />
-                        </router-link>
-                      </span>
-
-                      <span
-                        v-if="isAuthenticated && isAdmin"
-                        class="pl-2"
-                        v-c-tooltip="'Delete'"
-                      >
-                        <router-link
-                          tag="a"
-                          title="Delete"
-                          :to="{
-                            name: 'VariableRepresentationCodeDelete',
-                            params: { id: item.id }
-                          }"
-                        >
-                          <delete-icon />
-                        </router-link>
-                      </span>
-                    </td>
-                  </template>
                 </CDataTable>
               </div>
               <!-- @end Condition to show filtrable table if results are more then 5 lines-->
@@ -231,7 +179,10 @@
           <header class="card-header ">
             <h5>Sentinel Value Domain</h5>
           </header>
-          <div class="card-body ">
+          <div
+            class="card-body"
+            v-if="variableRepresentation.sentinelValueDomain"
+          >
             <div class="card card-border bg-light w-100">
               <div class="card-body w-100">
                 <CRow
@@ -242,7 +193,7 @@
                       <span><strong>Name:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="variableRepresentation.sentinelValueDomain.name"
                           >{{
                             variableRepresentation.sentinelValueDomain.name
                           }}</span
@@ -254,7 +205,10 @@
                       <span><strong>Description:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="
+                            variableRepresentation.sentinelValueDomain
+                              .description
+                          "
                           >{{
                             variableRepresentation.sentinelValueDomain
                               .description
@@ -273,10 +227,7 @@
                       <span><strong>Type:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="
-                            variableRepresentation.sentinelValueDomain.length >
-                              0
-                          "
+                          v-if="variableRepresentation.sentinelValueDomain.type"
                           >{{
                             variableRepresentation.sentinelValueDomain.type
                           }}</span
@@ -287,15 +238,14 @@
                   </CCol>
                   <CCol class="col-sm-12 col-md-6">
                     <div class="card-group ">
-                      <span><strong>DataType:</strong></span>
+                      <span><strong>Data Type:</strong></span>
                       <div class="card-slot ">
                         <span
                           v-if="
-                            variableRepresentation.sentinelValueDomain.length >
-                              0
+                            variableRepresentation.sentinelValueDomain.dataType
                           "
                           >{{
-                            variableRepresentation.sentinelValueDomain.datatype
+                            variableRepresentation.sentinelValueDomain.dataType
                           }}</span
                         >
                         <span v-else class="default-value">no value</span>
@@ -312,8 +262,8 @@
                       <div class="card-slot ">
                         <span
                           v-if="
-                            variableRepresentation.sentinelValueDomain.length >
-                              0
+                            variableRepresentation.sentinelValueDomain
+                              .expression
                           "
                           >{{
                             variableRepresentation.sentinelValueDomain
@@ -356,7 +306,6 @@
                     <td>
                       <span v-if="item.code">{{ item.code }}</span>
                       <span v-else class="default-value">no value</span>
-                      {{ item.code }}
                     </td>
                     <td>{{ item.value }}</td>
                   </tr>
@@ -365,6 +314,7 @@
               <h5 v-else class="default-value card-body">No data available</h5>
             </div>
           </div>
+          <div v-else class="default-value card-body">No data available</div>
         </div>
       </CCol>
     </CRow>
@@ -397,13 +347,6 @@ export default {
         {
           key: "value",
           label: "Value"
-        },
-        {
-          key: "actions",
-          label: "",
-          _style: "",
-          sorter: false,
-          filter: false
         }
       ]
     };
