@@ -96,12 +96,8 @@ export default {
     return {
       fields: [
         {
-          key: "id",
-          label: "Id"
-        },
-        {
           key: "localId",
-          label: "LocalId"
+          label: "Id"
         },
         {
           key: "name",

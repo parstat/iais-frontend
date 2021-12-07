@@ -20,19 +20,15 @@
         <table class="table table-hover" v-if="variable">
           <thead>
             <tr>
-              <th scope="col">Id</th>
               <th scope="col">LocalId</th>
               <th scope="col">Name</th>
-              <th scope="col">Description</th>
               <th scope="col" colspan="2" width="2%">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in variable.representations" :key="item.index">
-              <td>{{ item.id }}</td>
               <td>{{ item.localId }}</td>
               <td>{{ item.name }}</td>
-              <td>{{ item.description }}</td>
               <template v-if="isAuthenticated">
                 <td v-c-tooltip="'View'">
                   <router-link

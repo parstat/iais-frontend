@@ -231,7 +231,10 @@
           <header class="card-header ">
             <h5>Sentinel Value Domain</h5>
           </header>
-          <div class="card-body ">
+          <div
+            class="card-body"
+            v-if="variableRepresentation.sentinelValueDomain"
+          >
             <div class="card card-border bg-light w-100">
               <div class="card-body w-100">
                 <CRow
@@ -242,7 +245,7 @@
                       <span><strong>Name:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="variableRepresentation.sentinelValueDomain.name"
                           >{{
                             variableRepresentation.sentinelValueDomain.name
                           }}</span
@@ -254,7 +257,10 @@
                       <span><strong>Description:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="
+                            variableRepresentation.sentinelValueDomain
+                              .description
+                          "
                           >{{
                             variableRepresentation.sentinelValueDomain
                               .description
@@ -273,7 +279,7 @@
                       <span><strong>Type:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="variableRepresentation.sentinelValueDomain.type"
                           >{{
                             variableRepresentation.sentinelValueDomain.type
                           }}</span
@@ -284,12 +290,14 @@
                   </CCol>
                   <CCol class="col-sm-12 col-md-6">
                     <div class="card-group ">
-                      <span><strong>DataType:</strong></span>
+                      <span><strong>Data Type:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="
+                            variableRepresentation.sentinelValueDomain.dataType
+                          "
                           >{{
-                            variableRepresentation.sentinelValueDomain.datatype
+                            variableRepresentation.sentinelValueDomain.dataType
                           }}</span
                         >
                         <span v-else class="default-value">no value</span>
@@ -305,7 +313,7 @@
                       <span><strong>Expression:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="variableRepresentation.sentinelValueDomain.expression"
                           >{{
                             variableRepresentation.sentinelValueDomain
                               .expression
@@ -347,7 +355,6 @@
                     <td>
                       <span v-if="item.code">{{ item.code }}</span>
                       <span v-else class="default-value">no value</span>
-                      {{ item.code }}
                     </td>
                     <td>{{ item.value }}</td>
                   </tr>
@@ -356,6 +363,7 @@
               <h5 v-else class="default-value card-body">No data available</h5>
             </div>
           </div>
+          <div v-else class="default-value card-body">No data available</div>
         </div>
       </CCol>
     </CRow>
