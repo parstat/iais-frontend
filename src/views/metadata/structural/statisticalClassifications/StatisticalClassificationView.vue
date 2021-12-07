@@ -17,8 +17,12 @@
           >
         </h2>
         <p class="lead">
-          <strong>Description:</strong>
+          <strong>Description: </strong>
           {{ statisticalClassification.description }}
+        </p>
+        <p class="lead">
+          <strong>Link: </strong>
+          <a v-bind:href="statisticalClassification.link">{{statisticalClassification.link}} </a>
         </p>
       </div>
     </div>

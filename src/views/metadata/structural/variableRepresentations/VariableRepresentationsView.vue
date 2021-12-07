@@ -105,11 +105,10 @@
                 </CRow>
               </div>
             </div>
-            <!-- Numeric Variable representation CodeList-->
+            <!-- Variable representation CodeList-->
             <div class="card w-100">
               <div class="card-header bg-secondary p-2">
                 <strong>
-                  Numeric
                   <i>{{ variableRepresentation.variable.name }}</i> CodeList
                 </strong>
               </div>
@@ -134,57 +133,6 @@
                   sorter
                   pagination
                 >
-                  <template #actions="{item}">
-                    <td
-                      style="text-align:right; width:10%; padding-right:20px;"
-                    >
-                      <span class="pl-2" v-c-tooltip="'View'">
-                        <router-link
-                          tag="a"
-                          title="View"
-                          :to="{
-                            name: 'VariableRepresentationCodeView',
-                            params: { id: item.id }
-                          }"
-                        >
-                          <view-icon />
-                        </router-link>
-                      </span>
-                      <span
-                        v-if="isAuthenticated"
-                        class="pl-2"
-                        v-c-tooltip="'Edit'"
-                      >
-                        <router-link
-                          tag="a"
-                          title="Edit"
-                          :to="{
-                            name: 'VariableRepresentationCodeEdit',
-                            params: { id: item.id }
-                          }"
-                        >
-                          <edit-icon />
-                        </router-link>
-                      </span>
-
-                      <span
-                        v-if="isAuthenticated && isAdmin"
-                        class="pl-2"
-                        v-c-tooltip="'Delete'"
-                      >
-                        <router-link
-                          tag="a"
-                          title="Delete"
-                          :to="{
-                            name: 'VariableRepresentationCodeDelete',
-                            params: { id: item.id }
-                          }"
-                        >
-                          <delete-icon />
-                        </router-link>
-                      </span>
-                    </td>
-                  </template>
                 </CDataTable>
               </div>
               <!-- @end Condition to show filtrable table if results are more then 5 lines-->
@@ -313,7 +261,10 @@
                       <span><strong>Expression:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain.expression"
+                          v-if="
+                            variableRepresentation.sentinelValueDomain
+                              .expression
+                          "
                           >{{
                             variableRepresentation.sentinelValueDomain
                               .expression
@@ -396,13 +347,6 @@ export default {
         {
           key: "value",
           label: "Value"
-        },
-        {
-          key: "actions",
-          label: "",
-          _style: "",
-          sorter: false,
-          filter: false
         }
       ]
     };
