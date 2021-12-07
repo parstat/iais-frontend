@@ -29,6 +29,16 @@
               sorter
               pagination
             >
+              <template #sourcename="{item}">
+                <td>
+                  {{ item.source.name }}
+                </td>
+              </template>
+              <template #targetname="{item}">
+                <td>
+                  {{ item.target.name }}
+                </td>
+              </template>
               <template #actions="{item}">
                 <td style="text-align:right; width:10%; padding-right:20px;">
                   <span class="pl-2" v-c-tooltip="'View'">
@@ -59,7 +69,6 @@
                       <edit-icon />
                     </router-link>
                   </span>
-
                   <span
                     v-if="isAuthenticated && isAdmin"
                     class="pl-2"
@@ -103,16 +112,16 @@ export default {
           key: "relationship",
           label: "Relationship"
         },
-        /*
+
         {
-          key: "source",
+          key: "sourcename",
           label: "Source Name"
         },
         {
-          key: "target",
+          key: "targetname",
           label: "Target Name"
         },
-        */
+
         {
           key: "actions",
           label: "",

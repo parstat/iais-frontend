@@ -2,197 +2,98 @@
   <div class="row">
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="correspondence">
       <div class=" p-3">
-        <h2 class="display-5">
-          {{ correspondence.relationship }}
-        </h2>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <div class="card ">
-        <header class="card-header ">
-          <h5>Source</h5>
-          <div class="card-header-actions">
-            <template v-if="isAuthenticated">
-              <span>
-                <router-link
-                  tag="a"
-                  :to="{
-                    name: 'CorrespondenceTableSourceEdit',
-                    params: { id: correspondence.id }
-                  }"
-                >
-                  <edit-icon />
-                </router-link>
-              </span>
-              <span v-if="isAdmin">
-                <router-link
-                  tag="a"
-                  :to="{
-                    name: 'CorrespondenceTableSourceDelete',
-                    params: { id: correspondence.id }
-                  }"
-                >
-                  <delete-icon />
-                </router-link>
-              </span>
-            </template>
-          </div>
-        </header>
-        <div class="card-body">
-          <div class="card-group">
-            <span><strong>Id:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ correspondence.source.id }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Name: </strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ correspondence.source.name }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Version:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ correspondence.source.version }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Link: </strong></span>
-          </div>
-          <div class="card-slot">
-            <span v-if="correspondence.target.link">{{
-              correspondence.source.link
-            }}</span>
-            <span class="default-value" v-else>no value</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <div class="card ">
-        <header class="card-header ">
-          <h5>Target</h5>
-        </header>
-        <div class="card-body">
-          <div class="card-group">
-            <span><strong>Id:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ correspondence.target.id }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Name: </strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ correspondence.target.name }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Version:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ correspondence.target.version }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Link: </strong></span>
-          </div>
-          <div class="card-slot">
-            <span v-if="correspondence.target.link">{{
-              correspondence.target.link
-            }}</span>
-            <span v-else class="default-value">no value</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <div class="card ">
-        <header class="card-header ">
-          <h5>Mappings</h5>
-        </header>
-        <div class="card-body">
-          <table class="table table-hover">
-            <!-- v-if="correspondence.mappings" -->
-            <thead>
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Source Code</th>
-                <th scope="col">Target Code</th>
-                <th scope="col" colspan="2" width="2%">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="mapping in correspondence.mappings"
-                :key="mapping.index"
-              >
-                <td>{{ mapping.id }}</td>
-                <td>{{ mapping.sourceCode }}</td>
-                <td>{{ mapping.targetCode }}</td>
+        <h3>
+          Source: <i>{{ correspondence.source.name }}</i>
+        </h3>
 
-                <template v-if="isAuthenticated">
-                  <td>
+        <h3>
+          Target: <i>{{ correspondence.target.name }}</i>
+        </h3>
+        <div class="display-5">
+          Relationship: <i>{{ correspondence.relationship }}</i>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card ">
+        <div class="card-header ">
+          <h5>Mappings</h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <CDataTable
+              :items="correspondence.mappings"
+              :fields="fields"
+              column-filter
+              table-filter
+              items-per-page-select
+              :items-per-page="5"
+              hover
+              sorter
+              pagination
+            >
+              <template #actions="{item}">
+                <td style="text-align:right; width:10%; padding-right:20px;">
+                  <span class="pl-2" v-c-tooltip="'View'">
                     <router-link
                       tag="a"
+                      title="View"
                       :to="{
-                        name: 'CorrespondenceTableView',
-                        params: { id: correspondence.id }
+                        name: 'MappingsView',
+                        params: { id: item.id }
                       }"
                     >
                       <view-icon />
                     </router-link>
-                  </td>
-                  <td>
+                  </span>
+                  <span
+                    v-if="isAuthenticated"
+                    class="pl-2"
+                    v-c-tooltip="'Edit'"
+                  >
                     <router-link
                       tag="a"
+                      title="Edit"
                       :to="{
-                        name: 'CorrespondenceTableEdit',
-                        params: { id: correspondence.id }
+                        name: 'MappingsEdit',
+                        params: { id: item.id }
                       }"
                     >
                       <edit-icon />
                     </router-link>
-                  </td>
-                  <td v-if="isAdmin">
+                  </span>
+                  <span
+                    v-if="isAuthenticated && isAdmin"
+                    class="pl-2"
+                    v-c-tooltip="'Delete'"
+                  >
                     <router-link
                       tag="a"
+                      title="Delete"
                       :to="{
-                        name: 'CorrespondenceTableDelete',
-                        params: { id: correspondence.id }
+                        name: 'MappingsDelete',
+                        params: { id: item.id }
                       }"
                     >
                       <delete-icon />
                     </router-link>
-                  </td>
-                </template>
-                <template v-else>
-                  <td>
-                    <router-link
-                      tag="a"
-                      :to="{
-                        name: 'CorrespondenceTableView',
-                        params: { id: correspondence.id }
-                      }"
-                    >
-                      <view-icon />
-                    </router-link>
-                  </td>
-                </template>
-              </tr>
-            </tbody>
-          </table>
+                  </span>
+                </td>
+              </template>
+            </CDataTable>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <CButton
+            color="primary"
+            shape="square"
+            size="sm"
+            @click.prevent="handleBack()"
+            :disabled="disabled"
+            >Back</CButton
+          >
         </div>
       </div>
-    </div>
-    <div class="">
-      <CButton
-        color="primary"
-        shape="square"
-        size="sm"
-        @click.prevent="handleBack()"
-        :disabled="disabled"
-        >Back</CButton
-      >
     </div>
   </div>
 </template>
@@ -205,7 +106,28 @@ export default {
   name: "CodeView",
   data() {
     return {
-      disabled: false
+      disabled: false,
+      fields: [
+        {
+          key: "id",
+          label: "Id"
+        },
+        {
+          key: "sourceCode",
+          label: "Source Code"
+        },
+        {
+          key: "targetCode",
+          label: "Target Code"
+        },
+        {
+          key: "actions",
+          label: "",
+          _style: "",
+          sorter: false,
+          filter: false
+        }
+      ]
     };
   },
   computed: {

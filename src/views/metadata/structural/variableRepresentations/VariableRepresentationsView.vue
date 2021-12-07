@@ -118,7 +118,7 @@
                 class="table-responsive"
                 v-if="
                   variableRepresentation.substantiveValueDomain.valueSet
-                    .length > 5
+                    .length > 20
                 "
               >
                 <CDataTable
@@ -193,7 +193,7 @@
                 v-if="
                   variableRepresentation.substantiveValueDomain &&
                     variableRepresentation.substantiveValueDomain.valueSet
-                      .length < 5
+                      .length < 20
                 "
               >
                 <thead>
@@ -273,7 +273,10 @@
                       <span><strong>Type:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="
+                            variableRepresentation.sentinelValueDomain.length >
+                              0
+                          "
                           >{{
                             variableRepresentation.sentinelValueDomain.type
                           }}</span
@@ -287,7 +290,10 @@
                       <span><strong>DataType:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="
+                            variableRepresentation.sentinelValueDomain.length >
+                              0
+                          "
                           >{{
                             variableRepresentation.sentinelValueDomain.datatype
                           }}</span
@@ -305,7 +311,10 @@
                       <span><strong>Expression:</strong></span>
                       <div class="card-slot ">
                         <span
-                          v-if="variableRepresentation.sentinelValueDomain"
+                          v-if="
+                            variableRepresentation.sentinelValueDomain.length >
+                              0
+                          "
                           >{{
                             variableRepresentation.sentinelValueDomain
                               .expression
