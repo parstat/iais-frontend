@@ -177,3 +177,14 @@
     -->
   </div>
 </template>
+
+<script>
+//import { mapGetters } from "vuex";
+import { Context } from "@/common";
+export default {
+  name: "StructuralComponents",
+  created() {
+    this.$store.dispatch("coreui/setContext", Context.Structural);
+  }
+};
+</script>

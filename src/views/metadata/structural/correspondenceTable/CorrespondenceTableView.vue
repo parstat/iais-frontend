@@ -3,11 +3,19 @@
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="correspondence">
       <div class=" p-3">
         <h3>
-          Source: <i>{{ correspondence.source.name }}</i>
+          Source:
+          <i>
+            {{ correspondence.source.name }}
+            ({{ correspondence.source.version }})
+          </i>
         </h3>
 
         <h3>
-          Target: <i>{{ correspondence.target.name }}</i>
+          Target:
+          <i>
+            {{ correspondence.target.name }}
+            ({{ correspondence.target.version }})
+          </i>
         </h3>
         <div class="display-5">
           Relationship: <i>{{ correspondence.relationship }}</i>

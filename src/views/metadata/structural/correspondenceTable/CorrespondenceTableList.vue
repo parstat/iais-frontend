@@ -34,9 +34,19 @@
                   {{ item.source.name }}
                 </td>
               </template>
+              <template #sourceversion="{item}">
+                <td>
+                  {{ item.source.version }}
+                </td>
+              </template>
               <template #targetname="{item}">
                 <td>
                   {{ item.target.name }}
+                </td>
+              </template>
+              <template #targetversion="{item}">
+                <td>
+                  {{ item.target.version }}
                 </td>
               </template>
               <template #actions="{item}">
@@ -109,8 +119,16 @@ export default {
           label: "Source Name"
         },
         {
+          key: "sourceversion",
+          label: "Source Version"
+        },
+        {
           key: "targetname",
           label: "Target Name"
+        },
+        {
+          key: "targetversion",
+          label: "Target Version"
         },
         {
           key: "relationship",
