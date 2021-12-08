@@ -1,13 +1,16 @@
 <template>
   <div :style="nodeMargin">
     <b-alert show class="d-flex justify-content-between mb-1">
-      {{ node.name }}
+      {{ node.code }} {{ node.value }}
       <span
+        class="icon-span"
         v-if="hasChildren"
-        :class="toggleChildrenIcon"
         @click="toggleChildren"
         @keypress="toggleChildren"
-      />
+      >
+        <minus-icon v-if="showChildren" />
+        <add-icon v-else />
+      </span>
     </b-alert>
     <div v-if="hasChildren" v-show="showChildren">
       <TreeNode
@@ -22,7 +25,7 @@
 
 <script>
 export default {
-  name: 'TreeNode',
+  name: "TreeNode",
   props: {
     node: {
       type: Object,
@@ -36,26 +39,26 @@ export default {
   data() {
     return {
       showChildren: false
-    }
+    };
   },
   computed: {
     nodeMargin() {
       return {
-        'margin-left': `${this.spacing}px`
-      }
+        "margin-left": `${this.spacing}px`
+      };
     },
     hasChildren() {
-      const { children } = this.node
-      return children && children.length > 0
+      const { children } = this.node;
+      return children && children.length > 0;
     },
     toggleChildrenIcon() {
-      return this.showChildren ? 'fas fa-angle-down' : 'fas fa-angle-right'
+      return this.showChildren ? "cilArrowRight" : "cilArrowDown";
     }
   },
   methods: {
     toggleChildren() {
-      this.showChildren = !this.showChildren
+      this.showChildren = !this.showChildren;
     }
   }
-}
+};
 </script>
