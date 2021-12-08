@@ -32,54 +32,6 @@
               sorter
               pagination
             >
-              <template #actions="{item}">
-                <td style="text-align:right; width:10%; padding-right:20px;">
-                  <span class="pl-2" v-c-tooltip="'View'">
-                    <router-link
-                      tag="a"
-                      title="View"
-                      :to="{
-                        name: 'MappingsView',
-                        params: { id: item.id }
-                      }"
-                    >
-                      <view-icon />
-                    </router-link>
-                  </span>
-                  <span
-                    v-if="isAuthenticated"
-                    class="pl-2"
-                    v-c-tooltip="'Edit'"
-                  >
-                    <router-link
-                      tag="a"
-                      title="Edit"
-                      :to="{
-                        name: 'MappingsEdit',
-                        params: { id: item.id }
-                      }"
-                    >
-                      <edit-icon />
-                    </router-link>
-                  </span>
-                  <span
-                    v-if="isAuthenticated && isAdmin"
-                    class="pl-2"
-                    v-c-tooltip="'Delete'"
-                  >
-                    <router-link
-                      tag="a"
-                      title="Delete"
-                      :to="{
-                        name: 'MappingsDelete',
-                        params: { id: item.id }
-                      }"
-                    >
-                      <delete-icon />
-                    </router-link>
-                  </span>
-                </td>
-              </template>
             </CDataTable>
           </div>
         </div>
@@ -109,23 +61,12 @@ export default {
       disabled: false,
       fields: [
         {
-          key: "id",
-          label: "Id"
-        },
-        {
           key: "sourceCode",
           label: "Source Code"
         },
         {
           key: "targetCode",
           label: "Target Code"
-        },
-        {
-          key: "actions",
-          label: "",
-          _style: "",
-          sorter: false,
-          filter: false
         }
       ]
     };

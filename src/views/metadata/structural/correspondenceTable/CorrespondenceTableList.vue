@@ -105,15 +105,6 @@ export default {
     return {
       fields: [
         {
-          key: "id",
-          label: "Id"
-        },
-        {
-          key: "relationship",
-          label: "Relationship"
-        },
-
-        {
           key: "sourcename",
           label: "Source Name"
         },
@@ -121,7 +112,10 @@ export default {
           key: "targetname",
           label: "Target Name"
         },
-
+        {
+          key: "relationship",
+          label: "Relationship"
+        },
         {
           key: "actions",
           label: "",
