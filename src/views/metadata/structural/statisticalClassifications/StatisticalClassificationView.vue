@@ -22,7 +22,10 @@
         </p>
         <p class="lead">
           <strong>Link: </strong>
-          <a v-bind:href="statisticalClassification.link">{{statisticalClassification.link}} </a>
+          <a v-bind:href="statisticalClassification.link"
+            >{{ statisticalClassification.localId }} 
+            {{ statisticalClassification.version }}
+          </a>
         </p>
       </div>
     </div>
@@ -32,78 +35,17 @@
         <h5>Levels</h5>
       </header>
       <div class="card-body">
-        <table
-          class="table table-hover table-striped"
-          v-if="statisticalClassification.levels"
-        >
-          <thead class="bg-dark">
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">LocalId</th>
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">LevelNumber</th>
-              <th scope="col" colspan="2" width="2%">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in statisticalClassification.levels" :key="item.id">
-              <td>{{ item.id }}</td>
-              <td>{{ item.localId }}</td>
-              <td>{{ item.name }}</td>
-              <td class="justify">{{ item.description }}</td>
-              <td>{{ item.levelNumber }}</td>
-              <template v-if="isAuthenticated">
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'StatisticalClassificationView',
-                      params: { id: statisticalClassification.id }
-                    }"
-                  >
-                    <view-icon />
-                  </router-link>
-                </td>
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'StatisticalClassificationEdit',
-                      params: { id: statisticalClassification.id }
-                    }"
-                  >
-                    <edit-icon />
-                  </router-link>
-                </td>
-                <td v-if="isAdmin">
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'StatisticalClassificationDelete',
-                      params: { id: statisticalClassification.id }
-                    }"
-                  >
-                    <delete-icon />
-                  </router-link>
-                </td>
-              </template>
-              <template v-else>
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'StatisticalClassificationView',
-                      params: { id: statisticalClassification.id }
-                    }"
-                  >
-                    <view-icon />
-                  </router-link>
-                </td>
-              </template>
-            </tr>
-          </tbody>
-        </table>
+        <div class="row">
+          <CCard
+            class="col-sm-6 col-md-3"
+            v-for="level in statisticalClassification.levels"
+            :key="level.id">
+            <CCardBody>
+              <CCardTitle>{{ level.levelNumber }}. {{ level.name }}</CCardTitle>
+              <CCardText>{{ level.description }}</CCardText>
+            </CCardBody>
+          </CCard>
+        </div>
       </div>
     </div>
     <!-- statisticalClassificationItems -->
@@ -112,6 +54,12 @@
         <h5>Statistical Classification Items</h5>
       </header>
       <div class="card-body">
+        <TreeNode
+          v-for="node in statisticalClassification.rootItems"
+          :key="node.id"
+          :node="node"
+        >
+        </TreeNode>
         <table
           class="table table-hover table-striped"
           v-if="statisticalClassification.rootItems"
@@ -123,7 +71,6 @@
               <th scope="col" class="col-3">Value</th>
               <th scope="col" class="col-1">Level Number</th>
               <th scope="col" class="col-5">Children</th>
-              <th scope="col" colspan="2" width="2%">Actions</th>
             </tr>
           </thead>
           <!--statisticalClassificationItems -->
@@ -149,44 +96,7 @@
                 </p>
               </td>
 
-              <template v-if="isAuthenticated">
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'StatisticalClassificationsEdit',
-                      params: { id: statisticalClassification.id }
-                    }"
-                  >
-                    <edit-icon />
-                  </router-link>
-                </td>
-                <td v-if="isAdmin">
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'StatisticalClassificationsDelete',
-                      params: { id: statisticalClassification.id }
-                    }"
-                  >
-                    <delete-icon />
-                  </router-link>
-                </td>
-              </template>
-              <template v-else>
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'StatisticalClassificationsChildrenView',
-                      params: { id: statisticalClassification.id }
-                    }"
-                  >
-                    <view-icon />
-                  </router-link>
-                </td>
-              </template>
-            </tr>
+                          </tr>
           </tbody>
         </table>
       </div>
@@ -205,11 +115,15 @@
 </template>
 
 <script>
+import TreeNode from '@/components/TreeNode'
 import { mapGetters } from "vuex";
 //import { Context } from "@/common";
 
 export default {
   name: "StatisticalClassificationView",
+  components: {
+    TreeNode
+  },
   data() {
     return {
       disabled: false
