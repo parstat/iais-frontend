@@ -12,6 +12,7 @@
     "@coreui/icons": "^1.0.1",
     "@coreui/vue": "^3.1.2",
     "axios": "^0.24.0",
+    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "jsonwebtoken": "^8.5.1",
     "lodash.debounce": "^4.0.8",

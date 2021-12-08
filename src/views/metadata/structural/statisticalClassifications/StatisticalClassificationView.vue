@@ -23,7 +23,7 @@
         <p class="lead">
           <strong>Link: </strong>
           <a v-bind:href="statisticalClassification.link"
-            >{{ statisticalClassification.localId }} 
+            >{{ statisticalClassification.localId }}
             {{ statisticalClassification.version }}
           </a>
         </p>
@@ -39,7 +39,8 @@
           <CCard
             class="col-sm-6 col-md-3"
             v-for="level in statisticalClassification.levels"
-            :key="level.id">
+            :key="level.id"
+          >
             <CCardBody>
               <CCardTitle>{{ level.levelNumber }}. {{ level.name }}</CCardTitle>
               <CCardText>{{ level.description }}</CCardText>
@@ -60,45 +61,6 @@
           :node="node"
         >
         </TreeNode>
-        <table
-          class="table table-hover table-striped"
-          v-if="statisticalClassification.rootItems"
-        >
-          <thead class="bg-dark">
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col" class="col-1">Code</th>
-              <th scope="col" class="col-3">Value</th>
-              <th scope="col" class="col-1">Level Number</th>
-              <th scope="col" class="col-5">Children</th>
-            </tr>
-          </thead>
-          <!--statisticalClassificationItems -->
-          <tbody
-            v-for="item in statisticalClassification.rootItems"
-            :key="item.index"
-          >
-            <tr>
-              <td>{{ item.id }}</td>
-              <td>{{ item.code }}</td>
-              <td>{{ item.value }}</td>
-              <td style="width:2%;">{{ item.levelNumber }}</td>
-              <!--<td>{{ item.children.value }}</td>-->
-
-              <td>
-                <p v-for="nitem in item.children" :key="nitem.id">
-                  <a href="#">
-                    <CBadge color="secondary p-1" shape="pill"
-                      >Code: {{ nitem.code }}</CBadge
-                    >
-                    {{ nitem.value }}
-                  </a>
-                </p>
-              </td>
-
-                          </tr>
-          </tbody>
-        </table>
       </div>
       <div class="card-footer">
         <CButton
@@ -115,7 +77,7 @@
 </template>
 
 <script>
-import TreeNode from '@/components/TreeNode'
+import TreeNode from "@/components/TreeNode";
 import { mapGetters } from "vuex";
 //import { Context } from "@/common";
 

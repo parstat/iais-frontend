@@ -6,6 +6,7 @@ import CoreuiVue from "@coreui/vue";
 import { iconsSet as icons } from "@/assets/icons/icons.js";
 import Vuelidate from "vuelidate";
 import vSelect from "vue-select";
+import BootstrapVue from "bootstrap-vue";
 import VueSpinners from "vue-spinners";
 
 import "@/assets/icons/materialIcons";
@@ -15,6 +16,7 @@ Vue.config.productionTip = false;
 Vue.use(CoreuiVue);
 Vue.use(Vuelidate);
 Vue.use(VueSpinners);
+Vue.use(BootstrapVue);
 
 Vue.component("v-select", vSelect);
 

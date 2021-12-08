@@ -5,6 +5,7 @@ import "vue-material-design-icons/styles.css";
 
 import ChevronRightBoxIcon from "icons/ArrowRightBold.vue";
 import AddIcon from "icons/Plus.vue";
+import MinusIcon from "icons/Minus.vue";
 import AddBoxIcon from "icons/PlusBox.vue";
 import CheckIcon from "icons/CheckDecagram.vue";
 import EditIcon from "icons/SquareEditOutline.vue";
@@ -21,6 +22,7 @@ import StandardIcon from "icons/TextBoxCheckOutline.vue";
 
 Vue.component("chevron-right-icon", ChevronRightBoxIcon);
 Vue.component("add-icon", AddIcon);
+Vue.component("minus-icon", MinusIcon);
 Vue.component("add-box-icon", AddBoxIcon);
 Vue.component("check-icon", CheckIcon);
 Vue.component("edit-icon", EditIcon);

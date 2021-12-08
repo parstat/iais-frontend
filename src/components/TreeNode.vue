@@ -10,7 +10,7 @@
       >
         <minus-icon v-if="showChildren" />
         <add-icon v-else />
-      </span>
+    </span>
     </b-alert>
     <div v-if="hasChildren" v-show="showChildren">
       <TreeNode
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: "TreeNode",
+  name: 'TreeNode',
   props: {
     node: {
       type: Object,
@@ -39,20 +39,17 @@ export default {
   data() {
     return {
       showChildren: false
-    };
+    }
   },
   computed: {
     nodeMargin() {
       return {
-        "margin-left": `${this.spacing}px`
-      };
+        'margin-left': `${this.spacing}px`
+      }
     },
     hasChildren() {
       const { children } = this.node;
       return children && children.length > 0;
-    },
-    toggleChildrenIcon() {
-      return this.showChildren ? "cilArrowRight" : "cilArrowDown";
     }
   },
   methods: {
