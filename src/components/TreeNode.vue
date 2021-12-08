@@ -1,7 +1,11 @@
 <template>
   <div :style="nodeMargin">
     <b-alert show class="d-flex justify-content-between mb-1">
-      {{ node.code }} {{ node.value }}
+      <span>
+        <strong>{{ node.code }}: </strong>
+        {{ node.value }}
+        <i>(level: {{ node.levelNumber }}) </i>
+      </span>
       <span
         class="icon-span"
         v-if="hasChildren"
