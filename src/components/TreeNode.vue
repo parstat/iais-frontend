@@ -7,7 +7,8 @@
         </strong>
         <strong v-else>{{ node.code }}</strong>
         {{ node.value }}
-        <i>({{ node.levelName }}) </i>
+        <br v-if="node.description" />
+        <i v-if="node.description">{{ node.description }}</i>
       </span>
       <span
         class="icon-span"
