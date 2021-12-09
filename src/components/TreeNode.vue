@@ -2,10 +2,10 @@
   <div :style="nodeMargin">
     <b-alert show class="d-flex justify-content-between mb-1">
       <span>
-        <strong v-if="node.LevelName"
+        <strong v-if="node.levelName"
           >{{ node.levelName }} {{ node.code }}:
         </strong>
-        <strong v-else>{{ node.code }}</strong>
+        <strong v-else>{{ node.code }}:</strong>
         {{ node.value }}
         <br v-if="node.description" />
         <i v-if="node.description">{{ node.description }}</i>
