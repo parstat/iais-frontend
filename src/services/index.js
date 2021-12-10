@@ -12,3 +12,4 @@ export * from "./structural/code.service"; //added by GV
 export * from "./structural/correspondence.service"; //added by GV
 export * from "./structural/statisticalClassification.service"; //added by GV
 export * from "./structural/variableRepresentation.service"; //added by GV
+export * from "./structural/unitType.service";

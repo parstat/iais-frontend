@@ -69,7 +69,7 @@ const actions = {
         dispatch("message/success", "Variable saved!", {
           root: true
         });
-        router.push("/metadata/structuralal/variable");
+        router.push("/metadata/structural/variable");
       },
       error => {
         console.log(error);

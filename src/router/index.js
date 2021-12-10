@@ -520,6 +520,22 @@ const routes = [
             "../views/metadata/structural/correspondenceTable/CorrespondenceTableView"
           ),
         meta: { authorize: [] }
+      },
+      //Unit Types List
+      {
+        path: "metadata/structural/unitTypes/",
+        name: "UnitTypeList",
+        component: () =>
+          import("../views/metadata/structural/unitType/UnitTypeList"),
+        meta: { authorize: [] }
+      },
+      // Unit Type view
+      {
+        path: "metadata/structural/unitType/view/:id",
+        name: "UnitTypeView",
+        component: () =>
+          import("../views/metadata/structural/unitType/UnitTypeView"),
+        meta: { authorize: [] }
       }
     ]
   },

@@ -112,13 +112,14 @@
         </header>
         <div class="card-body">
           <span>
-            <strong>Correspondence Table Description:</strong> Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Ut vel tempus purus, et
-            sodales enim. Nulla et vulputate nibh. Proin pharetra pulvinar odio
-            in commodo. Morbi porttitor suscipit sodales. Donec congue aliquet
-            iaculis. Fusce faucibus dictum hendrerit. Cras eleifend erat ut
-            sapien dapibus sollicitudin. Sed elementum odio ante, ut blandit sem
-            accumsan sit amet..<br /><br />
+            <strong>Correspondence Table Description:</strong>A Correspondence
+            Table expresses the relationship between two Statistical
+            Classifications. These are typically: two versions from the same
+            Classification Series; Statistical Classifications from different
+            Classification Series; a variant and the version on which it is
+            based; or, different versions of a variant. In the first and last
+            examples, the Correspondence Table facilitates comparability over
+            time. Correspondence relationships are shown in both directions.<br /><br />
           </span>
           <footer class="card-footer">
             <p class="section-link" style="float:right;">
@@ -139,19 +140,38 @@
         </header>
         <div class="card-body">
           <span>
-            <strong>Data Sets Description:</strong> Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Ut vel tempus purus, et sodales enim.
-            Nulla et vulputate nibh. Proin pharetra pulvinar odio in commodo.
-            Morbi porttitor suscipit sodales. Donec congue aliquet iaculis.
-            Fusce faucibus dictum hendrerit. Cras eleifend erat ut sapien
-            dapibus sollicitudin. Sed elementum odio ante, ut blandit sem
-            accumsan sit amet..
+            <strong>Data Sets Description:</strong> A collection of data that
+            conforms to a known structure and describes aspects of one or more
+            Units.
           </span>
           <p class="section-link section-link-disabled">
             <!--<router-link tag="a" :to="{ name: 'BusinessFunctionList' }"> -->
             <span class="icon-span">Go to data sets section &nbsp;</span>
             <chevron-right-icon />
             <!--</router-link>-->
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="card">
+        <header class="card-header">
+          <span>Unit Types</span>
+        </header>
+        <div class="card-body">
+          <span>
+            <strong>Unit Types Description:</strong> A Unit Type is a class of
+            objects of interest. A Unit Type is used to describe a class or
+            group of Units based on a single characteristic, but with no
+            specification of time and geography. For example, the Unit Type of
+            “Person” groups together a set of Units based on the characteristic
+            that they are <b>Persons</b>.
+          </span>
+          <p class="section-link">
+            <router-link tag="a" :to="{ name: 'UnitTypeList' }">
+              <span class="icon-span">Go to unit types section &nbsp;</span>
+              <chevron-right-icon />
+            </router-link>
           </p>
         </div>
       </div>
