@@ -22,7 +22,7 @@
             <span><strong>Version: </strong></span>
           </div>
           <div class="card-slot">
-            <span>{{ unitType.version}}</span>
+            <span>{{ unitType.version }}</span>
           </div>
           <div class="card-group">
             <span><strong>Local id</strong></span>
