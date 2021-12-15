@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="statisticalStandard">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           <strong>{{ statisticalStandard.name }}</strong>
         </header>
@@ -55,21 +55,21 @@ export default {
   name: "StatisticalStandardView",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("statisticalStandard", ["statisticalStandard"])
+    ...mapGetters("statisticalStandard", ["statisticalStandard"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/referential/gsim/standard");
-    }
+    },
   },
   created() {
     this.$store.dispatch("statisticalStandard/findById", this.$route.params.id);
-  }
+  },
 };
 </script>
 <style scoped>

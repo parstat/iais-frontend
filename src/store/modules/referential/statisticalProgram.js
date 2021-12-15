@@ -3,7 +3,7 @@ import { statisticalProgramService } from "@/services";
 
 const state = {
   statisticalPrograms: [],
-  statisticalProgram: null
+  statisticalProgram: null,
 };
 
 const mutations = {
@@ -12,27 +12,27 @@ const mutations = {
   },
   SET_STATISTICAL_PROGRAM(state, statisticalProgram) {
     state.statisticalProgram = statisticalProgram;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     statisticalProgramService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_PROGRAMS", data);
         commit("SET_STATISTICAL_PROGRAM", null); //clear statistical process
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     statisticalProgramService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_PROGRAM", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -40,51 +40,51 @@ const actions = {
 
   findByName({ commit }, name) {
     statisticalProgramService.findByName(name).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_PROGRAMS", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     statisticalProgramService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Statistical process saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/edit/" + data.id + "?step=3");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     statisticalProgramService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Statistical process deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     statisticalProgramService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Statistical process updated!", {
-          root: true
+          root: true,
         });
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -92,10 +92,10 @@ const actions = {
   // eslint-disable-next-line no-unused-vars
   updateOwner({ commit }, formData) {
     statisticalProgramService.updateOwner(formData).then(
-      data => {
+      (data) => {
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -103,10 +103,10 @@ const actions = {
   // eslint-disable-next-line no-unused-vars
   updateMaintainer({ commit }, formData) {
     statisticalProgramService.updateMaintainer(formData).then(
-      data => {
+      (data) => {
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -114,10 +114,10 @@ const actions = {
   // eslint-disable-next-line no-unused-vars
   updateContact({ commit }, formData) {
     statisticalProgramService.updateContact(formData).then(
-      data => {
+      (data) => {
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -125,10 +125,10 @@ const actions = {
 
   addLegislativeReference({ commit }, formData) {
     statisticalProgramService.addLegislativeReference(formData).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_PROGRAM", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -136,10 +136,10 @@ const actions = {
 
   removeLegislativeReference({ commit }, formData) {
     statisticalProgramService.removeLegislativeReference(formData).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_PROGRAM", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -147,10 +147,10 @@ const actions = {
 
   addStatisticalStandard({ commit }, formData) {
     statisticalProgramService.addStatisticalStandard(formData).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_PROGRAM", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -158,21 +158,21 @@ const actions = {
 
   removeStatisticalStandard({ commit }, formData) {
     statisticalProgramService.removeStatisticalStandard(formData).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_PROGRAM", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  statisticalPrograms: state => {
+  statisticalPrograms: (state) => {
     return state.statisticalPrograms;
   },
-  viewStatisticalPrograms: state => {
+  viewStatisticalPrograms: (state) => {
     var viewStatisticalPrograms = [];
     for (var sp of state.statisticalPrograms) {
       viewStatisticalPrograms.push({
@@ -183,14 +183,14 @@ const getters = {
         description: sp.description,
         owner: sp.owner ? sp.owner.name : "",
         maintainer: sp.maintainer ? sp.maintainer.name : "",
-        contact: sp.contact ? sp.contact.name : ""
+        contact: sp.contact ? sp.contact.name : "",
       });
     }
     return viewStatisticalPrograms;
   },
-  statisticalProgram: state => {
+  statisticalProgram: (state) => {
     return state.statisticalProgram;
-  }
+  },
 };
 
 export const statisticalProgram = {
@@ -198,5 +198,5 @@ export const statisticalProgram = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

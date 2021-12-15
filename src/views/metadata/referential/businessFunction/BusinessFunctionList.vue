@@ -52,7 +52,7 @@
                         tag="a"
                         :to="{
                           name: 'BusinessFunctionEdit',
-                          params: { id: businessFunction.id }
+                          params: { id: businessFunction.id },
                         }"
                       >
                         <edit-icon />
@@ -63,7 +63,7 @@
                         tag="a"
                         :to="{
                           name: 'BusinessFunctionDelete',
-                          params: { id: businessFunction.id }
+                          params: { id: businessFunction.id },
                         }"
                       >
                         <delete-icon />
@@ -76,7 +76,7 @@
                         tag="a"
                         :to="{
                           name: 'BusinessFunctionView',
-                          params: { id: businessFunction.id }
+                          params: { id: businessFunction.id },
                         }"
                       >
                         <view-icon />
@@ -101,11 +101,11 @@ export default {
   name: "BusinessFunctionList",
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("businessFunction", ["businessFunctions"])
+    ...mapGetters("businessFunction", ["businessFunctions"]),
   },
   created() {
     this.$store.dispatch("businessFunction/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
-  }
+  },
 };
 </script>

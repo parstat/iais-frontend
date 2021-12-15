@@ -64,7 +64,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="Submit()"
             :disabled="disabled"
             >Save</CButton
@@ -92,8 +92,8 @@ let axiosConfig = {
   headers: {
     "Content-Type": "application/json;charset=UTF-8",
     Accept: "application/json",
-    "Access-Control-Allow-Origin": "*"
-  }
+    "Access-Control-Allow-Origin": "*",
+  },
 };
 
 export default {
@@ -104,9 +104,9 @@ export default {
         name: "",
         description: "",
         language: "",
-        localId: ""
+        localId: "",
       },
-      disabled: false
+      disabled: false,
       //variable: []
     };
   },
@@ -119,8 +119,8 @@ export default {
         "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenVariables" +
           this.$route.params.id
       )
-      .then(response => (this.variables = response.data.variables))
-      .catch(error => console.log(error))
+      .then((response) => (this.variables = response.data.variables))
+      .catch((error) => console.log(error))
       .finally(() => (this.loading = false));
   },
   /*
@@ -137,14 +137,14 @@ export default {
   */
   validations: {
     name: {
-      required
+      required,
     },
     description: {
-      required
+      required,
     },
     localId: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     handleSubmit() {
@@ -155,7 +155,7 @@ export default {
           name: this.name,
           description: this.description,
           language: this.language,
-          localId: this.localId
+          localId: this.localId,
         };
         this.$store.dispatch("code/save", formData);
         console.log(formData);
@@ -169,7 +169,7 @@ export default {
           axiosConfig
         )
         .then(
-          function() {
+          function () {
             alert("Code has been saved with success!");
           }.bind(this)
         );
@@ -180,8 +180,8 @@ export default {
       this.form.language = "";
       this.form.localId = "";
       this.$v.$reset();
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

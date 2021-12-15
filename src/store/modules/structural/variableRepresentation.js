@@ -3,7 +3,7 @@ import { variableRepresentationService } from "@/services";
 
 const state = {
   variableRepresentations: [],
-  variableRepresentation: null
+  variableRepresentation: null,
 };
 
 const mutations = {
@@ -14,29 +14,29 @@ const mutations = {
   },
   SET_VARIABLE_REPRESENTATION(state, variableRepresentation) {
     state.variableRepresentation = variableRepresentation;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     variableRepresentationService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_VARIABLE_REPRESENTATIONS", data);
         commit("SET_VARIABLE_REPRESENTATION", null); //clear business function
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     variableRepresentationService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_VARIABLE_REPRESENTATION", data);
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -44,10 +44,10 @@ const actions = {
 
   findByLocalId({ commit }, localId) {
     variableRepresentationService.findByLocalId(localId).then(
-      data => {
+      (data) => {
         commit("SET_VARIABLE_REPRESENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -55,65 +55,65 @@ const actions = {
 
   findByName({ commit }, name) {
     variableRepresentationService.findByName(name).then(
-      data => {
+      (data) => {
         commit("SET_VARIABLE_REPRESENTATIONS", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     variableRepresentationService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Variable Representation saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/variable/representation");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     variableRepresentationService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Variable Representation deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/variable/representation");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     variableRepresentationService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Variable Representation updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/variable/representation");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  variableRepresentations: state => {
+  variableRepresentations: (state) => {
     return state.variableRepresentations;
   },
-  variableRepresentation: state => {
+  variableRepresentation: (state) => {
     return state.variableRepresentation;
-  }
+  },
 };
 
 export const variableRepresentation = {
@@ -121,5 +121,5 @@ export const variableRepresentation = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

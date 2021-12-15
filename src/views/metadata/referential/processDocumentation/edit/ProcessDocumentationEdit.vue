@@ -86,7 +86,7 @@ export default {
   data() {
     return {
       disabled: false,
-      activeTab: 0
+      activeTab: 0,
     };
   },
   components: {
@@ -98,10 +98,10 @@ export default {
     "app-inputs": ProcessInputs,
     "app-outputs": ProcessOutputs,
     "app-qualities": ProcessQualities,
-    "app-documents": ProcessDocuments
+    "app-documents": ProcessDocuments,
   },
   computed: {
-    ...mapGetters("processDocumentation", ["processDocumentation"])
+    ...mapGetters("processDocumentation", ["processDocumentation"]),
   },
 
   methods: {
@@ -124,7 +124,7 @@ export default {
           this.processDocumentation.statisticalProgram.id +
           "?step=5"
       );
-    }
+    },
   },
   created() {
     this.$store.dispatch(
@@ -132,7 +132,7 @@ export default {
       this.$route.params.id
     );
     this.activeTab = this.$route.query.step ? this.$route.query.step - 1 : 0;
-  }
+  },
 };
 </script>
 

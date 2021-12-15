@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="agent">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           <strong>{{ agent.name }}</strong>
         </header>
@@ -54,21 +54,21 @@ export default {
   name: "AgentView",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("agent", ["agent"])
+    ...mapGetters("agent", ["agent"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/referential/gsim/agent");
-    }
+    },
   },
   created() {
     this.$store.dispatch("agent/findById", this.$route.params.id);
-  }
+  },
 };
 </script>
 <style scoped>

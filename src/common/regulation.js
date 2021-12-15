@@ -8,5 +8,5 @@ export const Regulation = {
   Recommendation: "RECOMMENDATION",
   Regulation: "REGULATION",
   Resolution: "RESOLUTION",
-  Other: "OTHER"
+  Other: "OTHER",
 };

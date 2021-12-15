@@ -61,7 +61,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Save</CButton
@@ -90,13 +90,13 @@ export default {
       description: "",
       version: "",
       localId: "",
-      disabled: false
+      disabled: false,
     };
   },
   validations: {
     name: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     handleSubmit() {
@@ -107,7 +107,7 @@ export default {
           name: this.name,
           description: this.description,
           version: this.version,
-          localId: this.localId
+          localId: this.localId,
         };
         this.$store.dispatch("businessService/save", formData);
         console.log(formData);
@@ -119,7 +119,7 @@ export default {
       this.version = "";
       this.localId = "";
       this.$v.$reset();
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="legislativeReference">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           <strong>{{ legislativeReference.name }}</strong>
         </header>
@@ -55,24 +55,24 @@ export default {
   name: "LegislativeReferenceView",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("legislativeReference", ["legislativeReference"])
+    ...mapGetters("legislativeReference", ["legislativeReference"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/referential/gsim/regulation");
-    }
+    },
   },
   created() {
     this.$store.dispatch(
       "legislativeReference/findById",
       this.$route.params.id
     );
-  }
+  },
 };
 </script>
 <style scoped>

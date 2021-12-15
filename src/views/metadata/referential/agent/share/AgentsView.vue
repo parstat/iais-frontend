@@ -92,21 +92,21 @@ export default {
   props: {
     owner: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     maintainer: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     contact: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     maintainers: {
       type: Array,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 };
 </script>
 <style scoped>

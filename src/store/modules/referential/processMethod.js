@@ -3,7 +3,7 @@ import { processMethodService } from "@/services";
 
 const state = {
   processMethods: [],
-  processMethod: null
+  processMethod: null,
 };
 
 const mutations = {
@@ -12,17 +12,17 @@ const mutations = {
   },
   SET_PROCESS_METHOD(state, processMethod) {
     state.processMethod = processMethod;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     processMethodService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_METHODS", data);
         commit("SET_PROCESS_METHOD", null); //clear process method
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -30,11 +30,11 @@ const actions = {
 
   findByName({ commit }, search) {
     processMethodService.findByName(search).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_METHODS", data);
         commit("SET_PROCESS_METHOD", null); //clear process method
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -42,65 +42,65 @@ const actions = {
 
   findById({ commit }, id) {
     processMethodService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_METHOD", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     processMethodService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Process method saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/method");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     processMethodService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Method deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/method");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     processMethodService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Method updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/method");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  processMethods: state => {
+  processMethods: (state) => {
     return state.processMethods;
   },
-  processMethod: state => {
+  processMethod: (state) => {
     return state.processMethod;
-  }
+  },
 };
 
 export const processMethod = {
@@ -108,5 +108,5 @@ export const processMethod = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

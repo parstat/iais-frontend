@@ -9,7 +9,7 @@
             tag="a"
             :to="{
               name: 'ProcessDocumentationEdit',
-              params: { id: processDocumentation.id }
+              params: { id: processDocumentation.id },
             }"
           >
             <edit-icon />
@@ -31,8 +31,8 @@
             :to="{
               name: 'ProcessDocumentationView',
               params: {
-                id: nextDocumentation.id
-              }
+                id: nextDocumentation.id,
+              },
             }"
           >
             {{ processDocumentation.nextSubPhase.localId }}
@@ -103,7 +103,7 @@ export default {
     "app-inputs": ProcessInputView,
     "app-outputs": ProcessOutputView,
     "app-qualities": ProcessQualityView,
-    "app-documents": ProcessDocumentView
+    "app-documents": ProcessDocumentView,
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated"]),
@@ -113,19 +113,19 @@ export default {
       var nextDocumentation = "";
       if (this.statisticalProgram) {
         nextDocumentation = this.statisticalProgram.processDocumentations.find(
-          pd =>
+          (pd) =>
             pd.businessFunction.id === this.processDocumentation.nextSubPhase.id
         );
       }
       return nextDocumentation;
-    }
+    },
   },
   watch: {
-    $route: function(_new, _old) {
+    $route: function (_new, _old) {
       if (_new.params.id !== _old.params.id) {
         this.init();
       }
-    }
+    },
   },
   methods: {
     handleBack() {
@@ -139,11 +139,11 @@ export default {
         "processDocumentation/findById",
         this.$route.params.id
       );
-    }
+    },
   },
   created() {
     this.init();
-  }
+  },
 };
 </script>
 <style scoped>

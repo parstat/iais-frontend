@@ -16,13 +16,13 @@
         pagination
         :sorterValue="{ column: 'localId', asc: 'true' }"
       >
-        <template #actions="{item}">
+        <template #actions="{ item }">
           <td style="padding: 0.75rem 0.4rem">
             <router-link
               tag="a"
               :to="{
                 name: 'ProcessDocumentationView',
-                params: { id: item.id }
+                params: { id: item.id },
               }"
             >
               <view-icon />
@@ -51,30 +51,30 @@ export default {
       fields: [
         {
           key: "localId",
-          label: "Id"
+          label: "Id",
         },
         {
           key: "gsbpm",
-          label: "GSBPM"
+          label: "GSBPM",
         },
         {
-          key: "name"
+          key: "name",
         },
         {
-          key: "frequency"
+          key: "frequency",
         },
         {
           key: "nextSubPhase",
-          label: "next"
+          label: "next",
         },
         {
           key: "actions",
           label: "",
           _style: "width:1%",
           sorter: false,
-          filter: false
-        }
-      ]
+          filter: false,
+        },
+      ],
     };
   },
   computed: {
@@ -87,12 +87,12 @@ export default {
           gsbpm: pd.businessFunction.name,
           name: pd.name,
           frequency: pd.frequency,
-          nextSubPhase: pd.nextSubPhase
+          nextSubPhase: pd.nextSubPhase,
         });
       }
       return localProcessDocs;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -7,17 +7,17 @@ export const statisticalStandardService = {
   findByName,
   save,
   update,
-  delete: _delete
+  delete: _delete,
 };
 
 function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/referential/statistical/standards?language=en").then(
-      response => {
+      (response) => {
         console.log(response.data);
         resolve(response.data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -29,12 +29,12 @@ function findById(id) {
     axiosIais
       .get("/referential/statistical/standards/" + id + "?language=en")
       .then(
-        response => {
+        (response) => {
           var data = response.data ? response.data : null;
           console.log(data);
           resolve(data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -48,11 +48,11 @@ function findByName(search) {
         "/referential/statistical/standards/?name=" + search + "&language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -63,8 +63,8 @@ function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
@@ -73,7 +73,7 @@ function save(formData) {
       link: formData.link ? formData.link : "",
       version: formData.version ? formData.version : "",
       type: formData.type,
-      localId: formData.localId
+      localId: formData.localId,
     };
 
     axiosIais
@@ -83,11 +83,11 @@ function save(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -98,8 +98,8 @@ function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
@@ -108,7 +108,7 @@ function update(formData) {
       link: formData.link ? formData.link : "",
       version: formData.version ? formData.version : "",
       type: formData.type,
-      localId: formData.localId
+      localId: formData.localId,
     };
 
     axiosIais
@@ -120,11 +120,11 @@ function update(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -134,11 +134,11 @@ function update(formData) {
 function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("close/referential/statistical/standards/" + id).then(
-      response => {
+      (response) => {
         //console.log(response.data);
         resolve(response.data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );

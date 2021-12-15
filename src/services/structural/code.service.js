@@ -7,17 +7,17 @@ export const codeService = {
   findById,
   save,
   update,
-  delete: _delete
+  delete: _delete,
 };
 
 function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenCodeLists?language=en").then(
-      response => {
+      (response) => {
         console.log(response.data.codeLists);
         resolve(response.data.codeLists);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -27,12 +27,12 @@ function findAll() {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenCodeLists/" + id).then(
-      response => {
+      (response) => {
         var data = response.data.codeList ? response.data.codeList : null;
         console.log(data);
         resolve(data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -43,15 +43,15 @@ function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
       name: formData.name,
       description: formData.description,
       //definition: formData.definition,
-      local_id: formData.localId
+      local_id: formData.localId,
     };
 
     axiosIais
@@ -61,11 +61,11 @@ function save(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -76,15 +76,15 @@ function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
       name: formData.name,
       description: formData.description,
       //definition: formData.definition,
-      local_id: formData.localId
+      local_id: formData.localId,
     };
 
     axiosIais
@@ -94,11 +94,11 @@ function update(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -108,11 +108,11 @@ function update(formData) {
 function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("/structural/ClosedCodeLists/" + id).then(
-      response => {
+      (response) => {
         //console.log(response.data);
         resolve(response.data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );

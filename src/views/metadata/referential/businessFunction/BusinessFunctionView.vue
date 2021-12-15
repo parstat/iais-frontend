@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="businessFunction">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           <strong>{{ businessFunction.name }}</strong>
         </header>
@@ -47,21 +47,21 @@ export default {
   name: "BusinessFunctionView",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("businessFunction", ["businessFunction"])
+    ...mapGetters("businessFunction", ["businessFunction"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/referential/gsim/function");
-    }
+    },
   },
   created() {
     this.$store.dispatch("businessFunction/findById", this.$route.params.id);
-  }
+  },
 };
 </script>
 <style scoped>

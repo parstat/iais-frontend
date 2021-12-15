@@ -3,7 +3,7 @@ import { statisticalStandardService } from "@/services";
 
 const state = {
   statisticalStandards: [],
-  statisticalStandard: null
+  statisticalStandard: null,
 };
 
 const mutations = {
@@ -14,94 +14,94 @@ const mutations = {
   },
   SET_STATISTICAL_STANDARD(state, statisticalStandard) {
     state.statisticalStandard = statisticalStandard;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     statisticalStandardService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_STANDARDS", data);
         commit("SET_STATISTICAL_STANDARD", null); //clear statistical standard
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     statisticalStandardService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_STANDARD", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findByName({ commit }, search) {
     statisticalStandardService.findByName(search).then(
-      data => {
+      (data) => {
         console.log(data);
         commit("SET_STATISTICAL_STANDARDS", data);
         commit("SET_STATISTICAL_STANDARD", null); //clear statistical standard
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     statisticalStandardService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Statistical standard saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/standard");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     statisticalStandardService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Standard deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/standard");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     statisticalStandardService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Standard updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/standard");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  statisticalStandards: state => {
+  statisticalStandards: (state) => {
     return state.statisticalStandards;
   },
-  statisticalStandard: state => {
+  statisticalStandard: (state) => {
     return state.statisticalStandard;
-  }
+  },
 };
 
 export const statisticalStandard = {
@@ -109,5 +109,5 @@ export const statisticalStandard = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

@@ -37,7 +37,7 @@
                     tag="a"
                     :to="{
                       name: 'AgentView',
-                      params: { id: maintainer.id }
+                      params: { id: maintainer.id },
                     }"
                   >
                     <view-icon />
@@ -61,7 +61,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('back')"
       >
         Back
@@ -70,7 +70,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('next')"
       >
         Next
@@ -86,11 +86,11 @@ import { Agent } from "@/common";
 export default {
   name: "ProcessDocumentationAgentEdit",
   validations: {
-    processDocumentation: {}
+    processDocumentation: {},
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"]),
-    ...mapGetters("agent", ["maintainers"])
+    ...mapGetters("agent", ["maintainers"]),
   },
   created() {
     this.$store.dispatch("agent/findByType", Agent.Division);
@@ -99,7 +99,7 @@ export default {
     addMaintainer(selectedMaintainer) {
       const formData = {
         id: this.processDocumentation.id,
-        maintainer: selectedMaintainer.id
+        maintainer: selectedMaintainer.id,
       };
       this.$store.dispatch("processDocumentation/addMaintainer", formData);
     },
@@ -107,11 +107,11 @@ export default {
     removeMaintainer(selectedMaintainer) {
       const formData = {
         id: this.processDocumentation.id,
-        maintainer: selectedMaintainer.id
+        maintainer: selectedMaintainer.id,
       };
       this.$store.dispatch("processDocumentation/removeMaintainer", formData);
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -12,6 +12,6 @@ export default {
     this.$store.dispatch("auth/reloadCredentials");
     //Clear messages
     this.$store.dispatch("message/clear");
-  }
+  },
 };
 </script>

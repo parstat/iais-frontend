@@ -32,11 +32,11 @@ export default {
     "app-header": Header,
     "app-footer": Footer,
     "app-sidebar": Sidebar,
-    "app-toast": Toast
+    "app-toast": Toast,
   },
   created() {
     this.$store.dispatch("coreui/setContext", Context.Home);
-  }
+  },
 };
 </script>
 

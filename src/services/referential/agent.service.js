@@ -7,17 +7,17 @@ export const agentService = {
   findByType,
   save,
   update,
-  delete: _delete
+  delete: _delete,
 };
 
 function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/referential/agents?language=en").then(
-      response => {
+      (response) => {
         console.log(response.data);
         resolve(response.data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -27,12 +27,12 @@ function findAll() {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais.get("/referential/agents/" + id + "?language=en").then(
-      response => {
+      (response) => {
         var data = response.data ? response.data : null;
         console.log(data);
         resolve(data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -42,12 +42,12 @@ function findById(id) {
 function findByType(type) {
   return new Promise((resolve, reject) => {
     axiosIais.get("/referential/agents/?language=en&type=" + type).then(
-      response => {
+      (response) => {
         var data = response.data ? response.data : [];
         console.log(data);
         resolve(data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -58,8 +58,8 @@ function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
@@ -67,7 +67,7 @@ function save(formData) {
       description: formData.description,
       type: formData.type,
       parent: formData.parent,
-      local_id: formData.localId
+      local_id: formData.localId,
     };
 
     if ("parent" in formData) {
@@ -81,11 +81,11 @@ function save(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -96,8 +96,8 @@ function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
@@ -105,7 +105,7 @@ function update(formData) {
       description: formData.description,
       type: formData.type,
       parent: formData.parent,
-      local_id: formData.localId
+      local_id: formData.localId,
     };
 
     axiosIais
@@ -115,11 +115,11 @@ function update(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -129,11 +129,11 @@ function update(formData) {
 function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("close/referential/agents/" + id).then(
-      response => {
+      (response) => {
         //console.log(response.data);
         resolve(response.data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );

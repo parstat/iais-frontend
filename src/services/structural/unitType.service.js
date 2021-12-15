@@ -3,7 +3,7 @@ import { axiosIais } from "@/http";
 
 export const unitTypeService = {
   findAll,
-  findById
+  findById,
   //save,
   //update,
   //delete: _delete
@@ -12,11 +12,11 @@ export const unitTypeService = {
 function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenUnitTypes?language=en").then(
-      response => {
+      (response) => {
         console.log(response.data.unitTypes);
         resolve(response.data.unitTypes);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -25,12 +25,12 @@ function findAll() {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenUnitTypes/" + id).then(
-      response => {
+      (response) => {
         var data = response.data.unitType ? response.data.unitType : null;
         console.log(data);
         resolve(data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );

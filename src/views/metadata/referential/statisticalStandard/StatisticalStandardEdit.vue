@@ -67,7 +67,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Update</CButton
@@ -95,7 +95,7 @@ export default {
   name: "StatisticalStandardEdit",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
@@ -106,20 +106,20 @@ export default {
         types.push(Standard[key]);
       }
       return types;
-    }
+    },
   },
   validations: {
     statisticalStandard: {
       name: {
-        required
+        required,
       },
       type: {
-        required
+        required,
       },
       localId: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     handleSubmit() {
@@ -133,7 +133,7 @@ export default {
           type: this.statisticalStandard.type,
           link: this.statisticalStandard.link,
           version: this.statisticalStandard.version,
-          localId: this.statisticalStandard.localId
+          localId: this.statisticalStandard.localId,
         };
         this.$store.dispatch("statisticalStandard/update", formData);
         console.log(formData);
@@ -147,10 +147,10 @@ export default {
       this.statisticalStandard.version = "";
       this.statisticalStandard.localId = "";
       this.$v.$reset();
-    }
+    },
   },
   created() {
     this.$store.dispatch("statisticalStandard/findById", this.$route.params.id);
-  }
+  },
 };
 </script>

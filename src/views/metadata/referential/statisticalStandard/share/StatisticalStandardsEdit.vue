@@ -29,7 +29,7 @@
               No results found for <em>{{ search }}</em
               >.
             </template>
-            <em style="opacity: 0.5;" v-else
+            <em style="opacity: 0.5" v-else
               >Start typing to search for a standard.</em
             >
           </template>
@@ -58,7 +58,7 @@
                 class="text-dark pr-1"
                 :to="{
                   name: 'StatisticalStandardView',
-                  params: { id: statisticalStandard.id }
+                  params: { id: statisticalStandard.id },
                 }"
               >
                 <view-icon />
@@ -82,7 +82,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('back')"
       >
         Back
@@ -91,7 +91,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('next', fieldChanged)"
       >
         Next
@@ -108,19 +108,11 @@ export default {
   props: ["standards"],
   data() {
     return {
-      fieldChanged: false
+      fieldChanged: false,
     };
   },
-  filters: {
-    subStr: function(string) {
-      if (string.length > 55) {
-        return string.substring(0, 55) + "...";
-      }
-      return string;
-    }
-  },
   computed: {
-    ...mapGetters("statisticalStandard", ["statisticalStandards"])
+    ...mapGetters("statisticalStandard", ["statisticalStandards"]),
   },
   methods: {
     searchStatisticalStandard(name, loading) {
@@ -145,8 +137,8 @@ export default {
     removeStatisticalStandard(selectedStatisticalStandard) {
       this.$emit("removeStatisticalStandard", selectedStatisticalStandard);
       this.fieldChanged = true;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -2,16 +2,16 @@ import axios from "axios";
 import store from "@/store";
 
 const axiosAuth = axios.create({
-  baseURL: process.env.VUE_APP_DEV_SERVER + "/security"
+  baseURL: process.env.VUE_APP_DEV_SERVER + "/security",
 });
 
 const axiosIais = axios.create({
-  baseURL: process.env.VUE_APP_DEV_SERVER
+  baseURL: process.env.VUE_APP_DEV_SERVER,
 });
 
 //request interceptor
 axiosAuth.interceptors.request.use(
-  config => {
+  (config) => {
     store.dispatch("coreui/loading", true);
     const token = store.getters["auth/token"];
     if (token && !("jwt-auth" in config.headers)) {
@@ -19,14 +19,14 @@ axiosAuth.interceptors.request.use(
     }
     return config;
   },
-  error => {
+  (error) => {
     Promise.reject(error);
   }
 );
 
 //request interceptor
 axiosIais.interceptors.request.use(
-  config => {
+  (config) => {
     store.dispatch("coreui/loading", true);
     const token = store.getters["auth/token"];
     if (token && !("jwt-auth" in config.headers)) {
@@ -34,23 +34,23 @@ axiosIais.interceptors.request.use(
     }
     return config;
   },
-  error => {
+  (error) => {
     Promise.reject(error);
   }
 );
 
 //response interceptor
 axiosIais.interceptors.response.use(
-  response => {
+  (response) => {
     store.dispatch("coreui/loading", false);
     return response;
   },
-  error => {
+  (error) => {
     store.dispatch("coreui/loading", false);
     console.log("Error status", error.response.status);
     var err = {
       code: error.response.status,
-      message: ""
+      message: "",
     };
     // Unauthotized access
     if (error.response.status === 401) {

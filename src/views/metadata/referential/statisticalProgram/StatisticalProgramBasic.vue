@@ -69,7 +69,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="next"
         >Next
       </CButton>
@@ -89,22 +89,22 @@ export default {
       localAcronym: this.acronym,
       localDescription: this.description,
       disabled: false,
-      fieldChanged: false //do nothing if nothing changes
+      fieldChanged: false, //do nothing if nothing changes
     };
   },
   validations: {
     localLocalId: {
-      required
+      required,
     },
     localName: {
-      required
+      required,
     },
     localAcronym: {
-      required
+      required,
     },
     localDescription: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     next() {
@@ -115,14 +115,14 @@ export default {
           localId: this.localLocalId,
           name: this.localName,
           acronym: this.localAcronym,
-          description: this.localDescription
+          description: this.localDescription,
         };
         console.log(formData);
         this.$emit("next", formData, this.fieldChanged);
         this.fieldChanged = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import { base64url as jwt } from "jose";
 import router from "@/router";
 import { authService } from "@/services";
 import { Role } from "@/common";
@@ -10,7 +10,7 @@ const state = {
   user: null,
   status: null,
   errorMsg: null,
-  role: localStorage.getItem("role") || ""
+  role: localStorage.getItem("role") || "",
 };
 
 const mutations = {
@@ -38,13 +38,13 @@ const mutations = {
   },
   SET_ERROR_MSG(state, errorMsg) {
     state.errorMsg = errorMsg;
-  }
+  },
 };
 
 const actions = {
   login({ commit }, authData) {
     authService.login(authData).then(
-      data => {
+      (data) => {
         //decode JWT token
         var decoded = jwt.decode(data.token, { complete: true });
         const user = decoded.payload;
@@ -52,14 +52,14 @@ const actions = {
 
         commit("AUTH_USER", {
           token: data.token,
-          user: user
+          user: user,
         });
 
         commit("SET_STATUS", AuthStatus.Logged);
 
         router.push("/"); //Go to main page
       },
-      error => {
+      (error) => {
         console.log(error);
         commit("SET_STATUS", AuthStatus.InvalidCredentials);
         commit("SET_ERROR_MSG", "Incorrect username or password!");
@@ -71,7 +71,7 @@ const actions = {
     if (token) {
       //decode JWT token
       authService.authenticate().then(
-        data => {
+        (data) => {
           if (data.status === 201) {
             token = data.token; //replace expired token
           }
@@ -81,11 +81,11 @@ const actions = {
 
           commit("AUTH_USER", {
             token,
-            user
+            user,
           });
           commit("SET_STATUS", AuthStatus.Logged);
         },
-        error => {
+        (error) => {
           console.log(error);
           commit("CLEAR_AUTH_DATA");
         }
@@ -94,7 +94,7 @@ const actions = {
   },
   register({ commit, dispatch }, authData) {
     authService.register(authData).then(
-      data => {
+      (data) => {
         //decode JWT token
         var decoded = jwt.decode(data.token, { complete: true });
         console.log(decoded.payload);
@@ -102,7 +102,7 @@ const actions = {
 
         commit("AUTH_USER", {
           token: data.token,
-          user: user
+          user: user,
         });
 
         commit("SET_STATUS", AuthStatus.Logged);
@@ -113,15 +113,15 @@ const actions = {
           description: "",
           account: user.user,
           type: Agent.Individual,
-          localId: user.email
+          localId: user.email,
         };
         dispatch("agent/save", agentData, {
-          root: true
+          root: true,
         });
 
         router.push("/"); //Go to main page
       },
-      error => {
+      (error) => {
         console.log(error);
         commit("SET_STATUS", AuthStatus.UserExists);
       }
@@ -129,14 +129,14 @@ const actions = {
   },
   logout({ commit }) {
     authService.logout().then(
-      data => {
+      (data) => {
         console.log(data);
         commit("CLEAR_AUTH_DATA");
         if (router.currentRoute.path != "/metadata") {
           router.push("/");
         }
       },
-      error => {
+      (error) => {
         console.log(error);
         commit("CLEAR_AUTH_DATA");
         if (router.currentRoute.path != "/metadata") {
@@ -144,33 +144,33 @@ const actions = {
         }
       }
     );
-  }
+  },
 };
 const getters = {
-  user: state => {
+  user: (state) => {
     return state.user;
   },
-  isAuthenticated: state => {
+  isAuthenticated: (state) => {
     return state.token !== null;
   },
-  token: state => {
+  token: (state) => {
     return state.token;
   },
-  status: state => {
+  status: (state) => {
     return state.status;
   },
-  errorMsg: state => {
+  errorMsg: (state) => {
     return state.errorMsg;
   },
-  role: state => {
+  role: (state) => {
     return state.role;
   },
-  isAdmin: state => {
+  isAdmin: (state) => {
     return state.role == Role.Admin;
   },
-  isUser: state => {
+  isUser: (state) => {
     return state.role == Role.USer;
-  }
+  },
 };
 
 export const auth = {
@@ -178,5 +178,5 @@ export const auth = {
   state,
   actions,
   mutations,
-  getters
+  getters,
 };

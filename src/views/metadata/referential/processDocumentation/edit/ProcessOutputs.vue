@@ -38,7 +38,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click="addProcessOutput"
           >
             Add
@@ -72,7 +72,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('back')"
       >
         Back
@@ -81,7 +81,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('next')"
       >
         Next
@@ -100,19 +100,19 @@ export default {
     return {
       name: "",
       description: "",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("processDocumentation", ["processDocumentation"])
+    ...mapGetters("processDocumentation", ["processDocumentation"]),
   },
   validations: {
     name: {
-      required
+      required,
     },
     description: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     addProcessOutput() {
@@ -122,7 +122,7 @@ export default {
         const formData = {
           documentation: this.processDocumentation.id,
           name: this.name,
-          description: this.description
+          description: this.description,
         };
         this.$store
           .dispatch("processDocumentation/addProcessOutput", formData)
@@ -136,15 +136,15 @@ export default {
     removeProcessOutput(selectedProcessOutput) {
       const formData = {
         documentation: this.processDocumentation.id,
-        output: selectedProcessOutput.id
+        output: selectedProcessOutput.id,
       };
       this.$store.dispatch(
         "processDocumentation/removeProcessOutput",
         formData
       );
-    }
+    },
   },
-  created() {}
+  created() {},
 };
 </script>
 

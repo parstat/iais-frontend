@@ -30,9 +30,9 @@ export default {
     processOutputSpecifications: {
       type: Array,
       required: true,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 };
 </script>
 <style scoped>

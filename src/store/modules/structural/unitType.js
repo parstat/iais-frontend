@@ -3,7 +3,7 @@ import { unitTypeService } from "@/services";
 
 const state = {
   unitTypes: [],
-  unitType: null
+  unitType: null,
 };
 
 const mutations = {
@@ -12,42 +12,42 @@ const mutations = {
   },
   SET_UNITTYPE(state, unitType) {
     state.unitType = unitType;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     unitTypeService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_UNITTYPES", data);
         commit("SET_UNITTYPE", null); //clear business function
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     unitTypeService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_UNITTYPE", data);
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  unitTypes: state => {
+  unitTypes: (state) => {
     return state.unitTypes;
   },
-  unitType: state => {
+  unitType: (state) => {
     return state.unitType;
-  }
+  },
 };
 
 export const unitType = {
@@ -55,5 +55,5 @@ export const unitType = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

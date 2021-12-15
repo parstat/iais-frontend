@@ -6,11 +6,11 @@
           {{ statisticalProgram.name }} ({{ statisticalProgram.acronym }})
           <router-link
             v-if="isAuthenticated"
-            style="float:right; font-size:1.2rem"
+            style="float: right; font-size: 1.2rem"
             tag="a"
             :to="{
               name: 'StatisticalProgramEdit',
-              params: { id: statisticalProgram.id }
+              params: { id: statisticalProgram.id },
             }"
           >
             <edit-icon />
@@ -48,28 +48,28 @@ export default {
   name: "StatisticalProgramView",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated"]),
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
+    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
   },
   components: {
     "app-agents": AgentsView,
     "app-references": LegislativeReferencesView,
     "app-standards": StatisticalStandardsView,
-    "app-documentations": ProcessDocumentationsView
+    "app-documentations": ProcessDocumentationsView,
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/referential");
-    }
+    },
   },
   created() {
     this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
-  }
+  },
 };
 </script>
 <style scoped>

@@ -3,7 +3,7 @@ import { businessServiceService } from "@/services";
 
 const state = {
   businessServices: [],
-  businessService: null
+  businessService: null,
 };
 
 const mutations = {
@@ -12,27 +12,27 @@ const mutations = {
   },
   SET_BUSINESS_SERVICE(state, businessService) {
     state.businessService = businessService;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     businessServiceService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_BUSINESS_SERVICES", data);
         commit("SET_BUSINESS_SERVICE", null); //clear business service
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     businessServiceService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_BUSINESS_SERVICE", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -40,11 +40,11 @@ const actions = {
 
   findByName({ commit }, search) {
     businessServiceService.findByName(search).then(
-      data => {
+      (data) => {
         commit("SET_BUSINESS_SERVICES", data);
         commit("SET_BUSINESS_SERVICE", null); //clear business service
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -52,55 +52,55 @@ const actions = {
 
   save({ dispatch }, formData) {
     businessServiceService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Business Service saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/service");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     businessServiceService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Business Service deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/service");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     businessServiceService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Business Service updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/service");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  businessServices: state => {
+  businessServices: (state) => {
     return state.businessServices;
   },
-  businessService: state => {
+  businessService: (state) => {
     return state.businessService;
-  }
+  },
 };
 
 export const businessService = {
@@ -108,5 +108,5 @@ export const businessService = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

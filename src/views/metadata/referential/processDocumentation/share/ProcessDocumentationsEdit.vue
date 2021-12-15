@@ -13,8 +13,8 @@
                 path: '/metadata/referential/documentation/add',
                 query: {
                   program: statisticalProgramId,
-                  business_function: nextSubPhase
-                }
+                  business_function: nextSubPhase,
+                },
               }"
               class="card-header-action"
             >
@@ -54,7 +54,7 @@
                         tag="a"
                         :to="{
                           name: 'ProcessDocumentationEdit',
-                          params: { id: processDocumentation.id }
+                          params: { id: processDocumentation.id },
                         }"
                       >
                         <edit-icon />
@@ -65,7 +65,7 @@
                         tag="a"
                         :to="{
                           name: 'ProcessDocumentationEdit',
-                          params: { id: processDocumentation.id }
+                          params: { id: processDocumentation.id },
                         }"
                       >
                         <delete-icon />
@@ -78,7 +78,7 @@
                         tag="a"
                         :to="{
                           name: 'ProcessDocumentationEdit',
-                          params: { id: processDocumentation.id }
+                          params: { id: processDocumentation.id },
                         }"
                       >
                         <view-icon />
@@ -95,7 +95,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click="$emit('back')"
           >
             Back
@@ -104,7 +104,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click="$emit('next')"
           >
             Finish
@@ -131,7 +131,7 @@ export default {
           .nextSubPhase;
       }
       return nextSubPhase;
-    }
+    },
   },
   methods: {
     sortAscDocumentations(arrays) {
@@ -139,8 +139,8 @@ export default {
     },
     sortDescByIdDocumentations(arrays) {
       return _.orderBy(arrays, "id", "desc");
-    }
-  }
+    },
+  },
 };
 </script>
 

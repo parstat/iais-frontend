@@ -28,9 +28,9 @@ export default {
     processInputSpecifications: {
       type: Array,
       required: true,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 };
 </script>
 <style scoped>

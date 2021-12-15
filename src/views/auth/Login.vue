@@ -74,24 +74,25 @@
 import { mapGetters } from "vuex";
 
 export default {
+  name: "LoginPage",
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
     };
   },
   computed: {
-    ...mapGetters("auth", ["errorMsg"])
+    ...mapGetters("auth", ["errorMsg"]),
   },
   methods: {
     handleSubmit() {
       const formData = {
         username: this.username,
-        password: this.password
+        password: this.password,
       };
       this.$store.dispatch("auth/login", formData);
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -9,3 +9,9 @@
     </div>
   </CFooter>
 </template>
+
+<script>
+export default {
+  name: "FooterPart",
+};
+</script>

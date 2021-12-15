@@ -50,7 +50,7 @@
                         tag="a"
                         :to="{
                           name: 'LegislativeReferenceEdit',
-                          params: { id: legislativeReference.id }
+                          params: { id: legislativeReference.id },
                         }"
                       >
                         <edit-icon />
@@ -61,7 +61,7 @@
                         tag="a"
                         :to="{
                           name: 'LegislativeReferenceDelete',
-                          params: { id: legislativeReference.id }
+                          params: { id: legislativeReference.id },
                         }"
                       >
                         <delete-icon />
@@ -74,7 +74,7 @@
                         tag="a"
                         :to="{
                           name: 'LegislativeReferenceView',
-                          params: { id: legislativeReference.id }
+                          params: { id: legislativeReference.id },
                         }"
                       >
                         <view-icon />
@@ -99,11 +99,11 @@ export default {
   name: "LegislativeReferenceList",
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("legislativeReference", ["legislativeReferences"])
+    ...mapGetters("legislativeReference", ["legislativeReferences"]),
   },
   created() {
     this.$store.dispatch("legislativeReference/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
-  }
+  },
 };
 </script>

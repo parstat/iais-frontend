@@ -67,7 +67,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Update</CButton
@@ -95,7 +95,7 @@ export default {
   name: "LegislativeReferenceEdit",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
@@ -106,20 +106,20 @@ export default {
         types.push(Regulation[key]);
       }
       return types;
-    }
+    },
   },
   validations: {
     legislativeReference: {
       name: {
-        required
+        required,
       },
       type: {
-        required
+        required,
       },
       localId: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     handleSubmit() {
@@ -133,7 +133,7 @@ export default {
           type: this.legislativeReference.type,
           link: this.legislativeReference.link,
           version: this.legislativeReference.version,
-          localId: this.legislativeReference.localId
+          localId: this.legislativeReference.localId,
         };
         this.$store.dispatch("legislativeReference/update", formData);
         console.log(formData);
@@ -147,13 +147,13 @@ export default {
       this.legislativeReference.version = "";
       this.legislativeReference.localId = "";
       this.$v.$reset();
-    }
+    },
   },
   created() {
     this.$store.dispatch(
       "legislativeReference/findById",
       this.$route.params.id
     );
-  }
+  },
 };
 </script>

@@ -48,7 +48,7 @@
                         tag="a"
                         :to="{
                           name: 'BusinessServiceEdit',
-                          params: { id: businessService.id }
+                          params: { id: businessService.id },
                         }"
                       >
                         <edit-icon />
@@ -59,7 +59,7 @@
                         tag="a"
                         :to="{
                           name: 'BusinessServiceDelete',
-                          params: { id: businessService.id }
+                          params: { id: businessService.id },
                         }"
                       >
                         <delete-icon />
@@ -72,7 +72,7 @@
                         tag="a"
                         :to="{
                           name: 'BusinessServiceView',
-                          params: { id: businessService.id }
+                          params: { id: businessService.id },
                         }"
                       >
                         <view-icon />
@@ -97,11 +97,11 @@ export default {
   name: "BusinessServiceList",
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("businessService", ["businessServices"])
+    ...mapGetters("businessService", ["businessServices"]),
   },
   created() {
     this.$store.dispatch("businessService/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
-  }
+  },
 };
 </script>

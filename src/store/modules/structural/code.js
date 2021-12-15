@@ -3,7 +3,7 @@ import { codeService } from "@/services";
 
 const state = {
   codes: [],
-  code: null
+  code: null,
 };
 
 const mutations = {
@@ -12,29 +12,29 @@ const mutations = {
   },
   SET_CODE(state, code) {
     state.code = code;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     codeService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_CODES", data);
         commit("SET_CODE", null); //clear business function
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     codeService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_CODE", data);
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -42,10 +42,10 @@ const actions = {
 
   findByLocalId({ commit }, localId) {
     codeService.findByLocalId(localId).then(
-      data => {
+      (data) => {
         commit("SET_CODE", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -53,66 +53,66 @@ const actions = {
 
   findByName({ commit }, name) {
     codeService.findByName(name).then(
-      data => {
+      (data) => {
         commit("SET_CODES", data);
         //commit("SET_BUSINESS_FUNCTION", null); //clear business function
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     codeService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Code saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/code");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     codeService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Code deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/code");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     codeService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Code updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/code");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  codes: state => {
+  codes: (state) => {
     return state.codes;
   },
-  code: state => {
+  code: (state) => {
     return state.code;
-  }
+  },
 };
 
 export const code = {
@@ -120,5 +120,5 @@ export const code = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

@@ -109,7 +109,7 @@ export default {
       editedBasic: false,
       editedAgents: false,
       editedReferences: false,
-      editedStandards: false
+      editedStandards: false,
     };
   },
   components: {
@@ -117,10 +117,10 @@ export default {
     "app-agents-edit": AgentsEdit,
     "app-references-edit": LegislativeReferencesEdit,
     "app-standards-edit": StatisticalStandardsEdit,
-    "app-documentations-edit": ProcessDocumentationsEdit
+    "app-documentations-edit": ProcessDocumentationsEdit,
   },
   computed: {
-    ...mapGetters("statisticalProgram", ["statisticalProgram"])
+    ...mapGetters("statisticalProgram", ["statisticalProgram"]),
   },
   methods: {
     handleUpdateBasic(basic, fieldsChanged) {
@@ -130,7 +130,7 @@ export default {
           localId: basic.localId,
           name: basic.name,
           acronym: basic.acronym,
-          description: basic.description
+          description: basic.description,
         };
         this.$store.dispatch("statisticalProgram/update", formData).then(() => {
           this.editedBasic = true;
@@ -144,28 +144,28 @@ export default {
     handleUpdateOwner(owner) {
       const formData = {
         id: this.statisticalProgram.id,
-        owner: owner.id
+        owner: owner.id,
       };
       this.$store.dispatch("statisticalProgram/updateOwner", formData);
     },
     handleUpdateMaintainer(maintainer) {
       const formData = {
         id: this.statisticalProgram.id,
-        maintainer: maintainer.id
+        maintainer: maintainer.id,
       };
       this.$store.dispatch("statisticalProgram/updateMaintainer", formData);
     },
     handleUpdateContact(contact) {
       const formData = {
         id: this.statisticalProgram.id,
-        contact: contact.id
+        contact: contact.id,
       };
       this.$store.dispatch("statisticalProgram/updateContact", formData);
     },
     handleAddLegislativeReference(regulation) {
       const formData = {
         id: this.statisticalProgram.id,
-        legislative: regulation.id
+        legislative: regulation.id,
       };
       this.$store.dispatch(
         "statisticalProgram/addLegislativeReference",
@@ -175,7 +175,7 @@ export default {
     handleRemoveLegislativeReference(regulation) {
       const formData = {
         id: this.statisticalProgram.id,
-        legislative: regulation.id
+        legislative: regulation.id,
       };
       this.$store.dispatch(
         "statisticalProgram/removeLegislativeReference",
@@ -185,7 +185,7 @@ export default {
     handleAddStatisticalStandard(standard) {
       const formData = {
         id: this.statisticalProgram.id,
-        standard: standard.id
+        standard: standard.id,
       };
       this.$store.dispatch(
         "statisticalProgram/addStatisticalStandard",
@@ -195,7 +195,7 @@ export default {
     handleRemoveStatisticalStandard(standard) {
       const formData = {
         id: this.statisticalProgram.id,
-        standard: standard.id
+        standard: standard.id,
       };
       this.$store.dispatch(
         "statisticalProgram/removeStatisticalStandard",
@@ -225,12 +225,12 @@ export default {
     },
     updateStep(active) {
       this.activeTab = active;
-    }
+    },
   },
   created() {
     this.$store.dispatch("statisticalProgram/findById", this.$route.params.id);
     this.activeTab = this.$route.query.step ? this.$route.query.step - 1 : 0;
-  }
+  },
 };
 </script>
 

@@ -17,7 +17,7 @@
                 tag="a"
                 :to="{
                   name: 'StatisticalStandardView',
-                  params: { id: statisticalStandard.id }
+                  params: { id: statisticalStandard.id },
                 }"
               >
                 <view-icon />
@@ -39,9 +39,9 @@ export default {
     statisticalStandards: {
       type: Array,
       required: true,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 };
 </script>
 <style scoped>

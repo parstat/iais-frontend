@@ -30,7 +30,7 @@
               No results found for <em>{{ search }}</em
               >.
             </template>
-            <em style="opacity: 0.5;" v-else
+            <em style="opacity: 0.5" v-else
               >Start typing to search for a standard.</em
             >
           </template>
@@ -39,7 +39,7 @@
               <span
                 ><strong>{{ option.name }} {{ option.version }}</strong></span
               >
-              <p>{{ option.description | subStr }}</p>
+              <p>{{ $filters.truncateString(option.description) }}</p>
             </div>
           </template>
         </v-select>
@@ -59,7 +59,7 @@
                   tag="a"
                   :to="{
                     name: 'StatisticalStandardView',
-                    params: { id: statisticalStandard.id }
+                    params: { id: statisticalStandard.id },
                   }"
                 >
                   <view-icon />
@@ -83,7 +83,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('back')"
       >
         Back
@@ -92,7 +92,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('next')"
       >
         Next
@@ -109,20 +109,12 @@ export default {
 
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
-  },
-  filters: {
-    subStr: function(string) {
-      if (string.length > 55) {
-        return string.substring(0, 55) + "...";
-      }
-      return string;
-    }
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"]),
-    ...mapGetters("statisticalStandard", ["statisticalStandards"])
+    ...mapGetters("statisticalStandard", ["statisticalStandards"]),
   },
   methods: {
     searchStatisticalStandard(name, loading) {
@@ -144,7 +136,7 @@ export default {
     addStatisticalStandard(selectedStatisticalStandard) {
       const formData = {
         id: this.processDocumentation.id,
-        standard: selectedStatisticalStandard.id
+        standard: selectedStatisticalStandard.id,
       };
       this.$store.dispatch(
         "processDocumentation/addStatisticalStandard",
@@ -154,17 +146,17 @@ export default {
     removeStatisticalStandard(selectedStatisticalStandard) {
       const formData = {
         id: this.processDocumentation.id,
-        standard: selectedStatisticalStandard.id
+        standard: selectedStatisticalStandard.id,
       };
       this.$store.dispatch(
         "processDocumentation/removeStatisticalStandard",
         formData
       );
-    }
+    },
   },
   created() {
     //this.$store.dispatch("statisticalStandard/findAll");
-  }
+  },
 };
 </script>
 

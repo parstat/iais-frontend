@@ -47,7 +47,7 @@
                         tag="a"
                         :to="{
                           name: 'ProcessMethodEdit',
-                          params: { id: processMethod.id }
+                          params: { id: processMethod.id },
                         }"
                       >
                         <edit-icon />
@@ -58,7 +58,7 @@
                         tag="a"
                         :to="{
                           name: 'ProcessMethodDelete',
-                          params: { id: processMethod.id }
+                          params: { id: processMethod.id },
                         }"
                       >
                         <delete-icon />
@@ -71,7 +71,7 @@
                         tag="a"
                         :to="{
                           name: 'ProcessMethodView',
-                          params: { id: processMethod.id }
+                          params: { id: processMethod.id },
                         }"
                       >
                         <view-icon />
@@ -96,11 +96,11 @@ export default {
   name: "ProcessMethodList",
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("processMethod", ["processMethods"])
+    ...mapGetters("processMethod", ["processMethods"]),
   },
   created() {
     this.$store.dispatch("processMethod/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
-  }
+  },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-sm-6 col-md-4">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           Variable View
           <CBadge color="success" style="float: right"> Structural</CBadge>
@@ -29,7 +29,7 @@
           <CLink
             href="/metadata/structural/VariableView"
             target="_self"
-            style="float:right;"
+            style="float: right"
           >
             Go to structural metadata section
           </CLink>
@@ -42,7 +42,7 @@
           Variable List View
           <CBadge color="success" style="float: right"> Structural</CBadge>
         </header>
-        <div class="card-body" style="min-height: 335px !important;">
+        <div class="card-body" style="min-height: 335px !important">
           <CImg
             src="/img/Variables.jpg"
             block
@@ -72,7 +72,7 @@
           <CLink
             href="/metadata/structural/VariableList"
             target="_self"
-            style="float:right;"
+            style="float: right"
           >
             Go to structural metadata section
           </CLink>
@@ -85,7 +85,7 @@
           Variable List View
           <CBadge color="warning" style="float: right"> NEW Structural</CBadge>
         </header>
-        <div class="card-body" style="min-height: 335px !important;">
+        <div class="card-body" style="min-height: 335px !important">
           <CImg
             src="/img/Variables.jpg"
             block
@@ -115,7 +115,7 @@
           <CLink
             href="/metadata/structural/variable/VariableList"
             target="_self"
-            style="float:right;"
+            style="float: right"
           >
             Go to structural metadata section
           </CLink>
@@ -126,7 +126,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "DatasetStructure",
+};
 </script>
 
 <style></style>

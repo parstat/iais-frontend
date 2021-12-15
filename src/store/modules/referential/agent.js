@@ -8,7 +8,7 @@ const state = {
   owners: [],
   maintainers: [],
   contacts: [],
-  parents: []
+  parents: [],
 };
 
 const mutations = {
@@ -39,42 +39,42 @@ const mutations = {
   },
   RESET_PARENTS(state) {
     state.parents = []; //reset parents
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     agentService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_AGENTS", data);
         commit("SET_AGENT", null); //clear agent
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     agentService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_AGENT", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findByType({ commit }, type) {
     agentService.findByType(type).then(
-      data => {
+      (data) => {
         const agents = {
-          [type]: data
+          [type]: data,
         };
         commit("SET_AGENTS_BY_TYPE", agents);
         //important to not clear the agent (used for getting parents)
         //commit("SET_AGENT", null); //clear agent
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -84,67 +84,67 @@ const actions = {
   },
   save({ dispatch }, formData) {
     agentService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Agent saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/agent");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     agentService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Agent deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/agent");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     agentService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Agent updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/agent");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  agents: state => {
+  agents: (state) => {
     return state.agents;
   },
-  agent: state => {
+  agent: (state) => {
     return state.agent;
   },
-  owners: state => {
+  owners: (state) => {
     return state.owners;
   },
-  maintainers: state => {
+  maintainers: (state) => {
     return state.maintainers;
   },
-  contacts: state => {
+  contacts: (state) => {
     return state.contacts;
   },
-  parents: state => {
+  parents: (state) => {
     return state.parents;
-  }
+  },
 };
 
 export const agent = {
@@ -152,5 +152,5 @@ export const agent = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

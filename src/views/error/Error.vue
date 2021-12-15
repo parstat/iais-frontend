@@ -28,8 +28,9 @@
 import { mapGetters } from "vuex";
 
 export default {
+  name: "GeneralError",
   computed: {
-    ...mapGetters("error", ["msg"])
-  }
+    ...mapGetters("error", ["msg"]),
+  },
 };
 </script>

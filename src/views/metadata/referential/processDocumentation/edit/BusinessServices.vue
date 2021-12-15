@@ -30,7 +30,7 @@
               No results found for <em>{{ search }}</em
               >.
             </template>
-            <em style="opacity: 0.5;" v-else
+            <em style="opacity: 0.5" v-else
               >Start typing to search for a service.</em
             >
           </template>
@@ -39,7 +39,7 @@
               <span
                 ><strong>{{ option.name }} {{ option.version }}</strong></span
               >
-              <p>{{ option.description | subStr }}</p>
+              <p>{{ $filters.truncateString(option.description) }}</p>
             </div>
           </template>
         </v-select>
@@ -59,7 +59,7 @@
                   tag="a"
                   :to="{
                     name: 'BusinessServiceView',
-                    params: { id: businessService.id }
+                    params: { id: businessService.id },
                   }"
                 >
                   <view-icon />
@@ -81,7 +81,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('back')"
       >
         Back
@@ -90,7 +90,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('next')"
       >
         Next
@@ -107,20 +107,12 @@ export default {
 
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
-  },
-  filters: {
-    subStr: function(string) {
-      if (string.length > 55) {
-        return string.substring(0, 55) + "...";
-      }
-      return string;
-    }
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"]),
-    ...mapGetters("businessService", ["businessServices"])
+    ...mapGetters("businessService", ["businessServices"]),
   },
   methods: {
     searchBusinessService(name, loading) {
@@ -142,22 +134,22 @@ export default {
     addBusinessService(selectedBusinessService) {
       const formData = {
         id: this.processDocumentation.id,
-        service: selectedBusinessService.id
+        service: selectedBusinessService.id,
       };
       this.$store.dispatch("processDocumentation/addBusinessService", formData);
     },
     removeBusinessService(selectedBusinessService) {
       const formData = {
         id: this.processDocumentation.id,
-        service: selectedBusinessService.id
+        service: selectedBusinessService.id,
       };
       this.$store.dispatch(
         "processDocumentation/removeBusinessService",
         formData
       );
-    }
+    },
   },
-  created() {}
+  created() {},
 };
 </script>
 

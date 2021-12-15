@@ -31,7 +31,7 @@
         class="btn btn-primary btn-sm btn-square"
         :to="{
           name: 'StatisticalProgramView',
-          params: { id: statisticalProgramId }
+          params: { id: statisticalProgramId },
         }"
       >
         Back
@@ -46,13 +46,13 @@ export default {
     documents: {
       type: Array,
       required: true,
-      default: () => []
+      default: () => [],
     },
     statisticalProgramId: {
       type: Number,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 <style scoped>

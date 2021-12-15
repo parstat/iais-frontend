@@ -55,14 +55,15 @@ import BreadCrumb from "./BreadCrumb";
 import HeaderNav from "./HeaderNav";
 
 export default {
+  name: "HeaderPart",
   computed: {
-    ...mapGetters("auth", ["isAuthenticated"])
+    ...mapGetters("auth", ["isAuthenticated"]),
   },
   components: {
     "app-header-dropdown-account": HeaderDropdownAccnt,
     "app-header-breadcrumb": BreadCrumb,
-    "app-header-nav": HeaderNav
-  }
+    "app-header-nav": HeaderNav,
+  },
 };
 </script>
 

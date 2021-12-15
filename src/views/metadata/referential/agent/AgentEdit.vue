@@ -71,7 +71,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Update</CButton
@@ -99,13 +99,13 @@ export default {
   name: "AgentEdit",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   watch: {
-    "agent.type": () => {
+    "agent.type": function getParents() {
       this.getParents(this.agent.type);
-    }
+    },
   },
   computed: {
     ...mapGetters("agent", ["agent", "parents"]),
@@ -115,17 +115,17 @@ export default {
         types.push(Agent[key]);
       }
       return types;
-    }
+    },
   },
   validations: {
     agent: {
       name: {
-        required
+        required,
       },
       type: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     handleSubmit() {
@@ -138,7 +138,7 @@ export default {
           description: this.agent.description,
           type: this.agent.type,
           parent: this.agent.parent.id,
-          localId: this.agent.localId
+          localId: this.agent.localId,
         };
         this.$store.dispatch("agent/update", formData);
         console.log(formData);
@@ -162,10 +162,10 @@ export default {
       }
       this.$store.dispatch("agent/clearParents");
       return;
-    }
+    },
   },
   created() {
     this.$store.dispatch("agent/findById", this.$route.params.id);
-  }
+  },
 };
 </script>

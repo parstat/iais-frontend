@@ -38,7 +38,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click="addProcessQuality"
           >
             Add
@@ -72,7 +72,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('back')"
       >
         Back
@@ -81,7 +81,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('next')"
       >
         Next
@@ -100,19 +100,19 @@ export default {
     return {
       name: "",
       description: "",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("processDocumentation", ["processDocumentation"])
+    ...mapGetters("processDocumentation", ["processDocumentation"]),
   },
   validations: {
     name: {
-      required
+      required,
     },
     description: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     addProcessQuality() {
@@ -122,7 +122,7 @@ export default {
         const formData = {
           documentation: this.processDocumentation.id,
           name: this.name,
-          description: this.description
+          description: this.description,
         };
         this.$store
           .dispatch("processDocumentation/addProcessQuality", formData)
@@ -136,15 +136,15 @@ export default {
     removeProcessQuality(selectedProcessQuality) {
       const formData = {
         documentation: this.processDocumentation.id,
-        quality: selectedProcessQuality.id
+        quality: selectedProcessQuality.id,
       };
       this.$store.dispatch(
         "processDocumentation/removeProcessQuality",
         formData
       );
-    }
+    },
   },
-  created() {}
+  created() {},
 };
 </script>
 

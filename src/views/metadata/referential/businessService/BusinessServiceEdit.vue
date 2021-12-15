@@ -50,7 +50,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Update</CButton
@@ -77,18 +77,18 @@ export default {
   name: "BusinessServiceEdit",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("businessService", ["businessService"])
+    ...mapGetters("businessService", ["businessService"]),
   },
   validations: {
     businessService: {
       name: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     handleSubmit() {
@@ -100,7 +100,7 @@ export default {
           name: this.businessService.name,
           description: this.businessService.description,
           version: this.businessService.version,
-          localId: this.businessService.localId
+          localId: this.businessService.localId,
         };
         this.$store.dispatch("businessService/update", formData);
         console.log(formData);
@@ -112,10 +112,10 @@ export default {
       this.businessService.version = "";
       this.businessService.localId = "";
       this.$v.$reset();
-    }
+    },
   },
   created() {
     this.$store.dispatch("businessService/findById", this.$route.params.id);
-  }
+  },
 };
 </script>

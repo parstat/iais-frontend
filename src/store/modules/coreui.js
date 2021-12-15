@@ -12,9 +12,9 @@ const state = {
   breadcrumbs: [
     {
       path: "metadata",
-      to: "/metadata"
-    }
-  ]
+      to: "/metadata",
+    },
+  ],
 };
 
 const mutations = {
@@ -60,7 +60,7 @@ const mutations = {
   },
   set(state, [variable, value]) {
     state[variable] = value;
-  }
+  },
 };
 
 const actions = {
@@ -99,42 +99,42 @@ const actions = {
       //console.log(to);
       breadcrumbArray.push({
         path: path,
-        to: to
+        to: to,
       });
       return breadcrumbArray;
     }, []);
     commit("CREATE_BREADCRUMBS", breadcrumbs);
-  }
+  },
 };
 
 const getters = {
-  sidebarShow: state => {
+  sidebarShow: (state) => {
     return state.sidebarShow;
   },
-  sidebarMinimize: state => {
+  sidebarMinimize: (state) => {
     return state.sidebarMinimize;
   },
-  context: state => {
+  context: (state) => {
     return state.context;
   },
-  isLoading: state => {
+  isLoading: (state) => {
     return state.isLoading;
   },
-  isHome: state => {
+  isHome: (state) => {
     return state.isHome;
   },
-  isReferential: state => {
+  isReferential: (state) => {
     return state.isReferential;
   },
-  isStructural: state => {
+  isStructural: (state) => {
     return state.isStructural;
   },
-  isProcess: state => {
+  isProcess: (state) => {
     return state.isProcess;
   },
-  breadcrumbs: state => {
+  breadcrumbs: (state) => {
     return state.breadcrumbs;
-  }
+  },
 };
 
 export const coreui = {
@@ -142,5 +142,5 @@ export const coreui = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

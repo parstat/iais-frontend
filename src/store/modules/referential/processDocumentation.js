@@ -3,7 +3,7 @@ import { processDocumentationService } from "@/services";
 
 const state = {
   processDocumentations: [],
-  processDocumentation: null
+  processDocumentation: null,
 };
 
 const mutations = {
@@ -16,16 +16,16 @@ const mutations = {
     state.processDocumentation = processDocumentation
       ? processDocumentation
       : null;
-  }
+  },
 };
 
 const actions = {
   findById({ commit }, id) {
     processDocumentationService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -33,10 +33,10 @@ const actions = {
 
   findLatest({ commit }, query) {
     processDocumentationService.findLatest(query.program, query.function).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -44,52 +44,52 @@ const actions = {
 
   findByName({ commit }, name) {
     processDocumentationService.findByName(name).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATIONS", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     processDocumentationService.save(formData).then(
-      data => {
+      (data) => {
         dispatch("message/success", "Process Documentation saved!", {
-          root: true
+          root: true,
         });
         router.push(
           "/metadata/referential/documentation/edit/" + data.id + "?step=2"
         );
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     processDocumentationService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Process documentation deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/documentation");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     processDocumentationService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Process documentation updated!", {
-          root: true
+          root: true,
         });
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -97,10 +97,10 @@ const actions = {
   // eslint-disable-next-line no-unused-vars
   addMaintainer({ commit }, formData) {
     processDocumentationService.addMaintainer(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -108,10 +108,10 @@ const actions = {
 
   removeMaintainer({ commit }, formData) {
     processDocumentationService.removeMaintainer(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -119,10 +119,10 @@ const actions = {
 
   addStatisticalStandard({ commit }, formData) {
     processDocumentationService.addStatisticalStandard(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -130,10 +130,10 @@ const actions = {
 
   removeStatisticalStandard({ commit }, formData) {
     processDocumentationService.removeStatisticalStandard(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -141,10 +141,10 @@ const actions = {
 
   addProcessMethod({ commit }, formData) {
     processDocumentationService.addProcessMethod(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -152,20 +152,20 @@ const actions = {
 
   removeProcessMethod({ commit }, formData) {
     processDocumentationService.removeProcessMethod(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   addBusinessService({ commit }, formData) {
     processDocumentationService.addBusinessService(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -173,10 +173,10 @@ const actions = {
 
   removeBusinessService({ commit }, formData) {
     processDocumentationService.removeBusinessService(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -184,10 +184,10 @@ const actions = {
 
   addProcessInput({ commit }, formData) {
     processDocumentationService.addProcessInput(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -195,10 +195,10 @@ const actions = {
 
   removeProcessInput({ commit }, formData) {
     processDocumentationService.removeProcessInput(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -206,10 +206,10 @@ const actions = {
 
   addProcessOutput({ commit }, formData) {
     processDocumentationService.addProcessOutput(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -217,20 +217,20 @@ const actions = {
 
   removeProcessOutput({ commit }, formData) {
     processDocumentationService.removeProcessOutput(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   addProcessQuality({ commit }, formData) {
     processDocumentationService.addProcessQuality(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -238,20 +238,20 @@ const actions = {
 
   removeProcessQuality({ commit }, formData) {
     processDocumentationService.removeProcessQuality(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   addProcessDocument({ commit }, formData) {
     processDocumentationService.addProcessDocument(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -259,23 +259,23 @@ const actions = {
 
   removeProcessDocument({ commit }, formData) {
     processDocumentationService.removeProcessDocument(formData).then(
-      data => {
+      (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  processDocumentations: state => {
+  processDocumentations: (state) => {
     return state.processDocumentations;
   },
-  processDocumentation: state => {
+  processDocumentation: (state) => {
     return state.processDocumentation;
-  }
+  },
 };
 
 export const processDocumentation = {
@@ -283,5 +283,5 @@ export const processDocumentation = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

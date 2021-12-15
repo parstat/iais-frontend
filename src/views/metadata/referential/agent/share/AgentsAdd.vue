@@ -60,7 +60,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="back"
         :disabled="disabled"
         >Back</CButton
@@ -69,7 +69,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click.prevent="next"
         :disabled="disabled"
         >Next</CButton
@@ -90,22 +90,22 @@ export default {
       maintainer: {},
       contact: {},
       disabled: false,
-      activeTab: 0
+      activeTab: 0,
     };
   },
   computed: {
-    ...mapGetters("agent", ["owners", "maintainers", "contacts"])
+    ...mapGetters("agent", ["owners", "maintainers", "contacts"]),
   },
   validations: {
     owner: {
-      required
+      required,
     },
     maintainer: {
-      required
+      required,
     },
     contact: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     next() {
@@ -115,7 +115,7 @@ export default {
         const agents = {
           owner: this.owner,
           maintainer: this.maintainer,
-          contact: this.contact
+          contact: this.contact,
         };
         this.$emit("next", agents);
         console.log(agents);
@@ -123,13 +123,13 @@ export default {
     },
     back() {
       this.$emit("back");
-    }
+    },
   },
   created() {
     this.$store.dispatch("agent/findByType", Agent.Organization);
     this.$store.dispatch("agent/findByType", Agent.Division);
     this.$store.dispatch("agent/findByType", Agent.Individual);
-  }
+  },
 };
 </script>
 <style scoped>

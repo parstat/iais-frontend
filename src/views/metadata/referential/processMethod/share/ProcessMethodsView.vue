@@ -17,7 +17,7 @@
                 tag="a"
                 :to="{
                   name: 'ProcessMethodView',
-                  params: { id: processMethod.id }
+                  params: { id: processMethod.id },
                 }"
               >
                 <view-icon />
@@ -39,9 +39,9 @@ export default {
     processMethods: {
       type: Array,
       required: true,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 };
 </script>
 <style scoped>

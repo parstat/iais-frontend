@@ -3,7 +3,7 @@ import { correspondenceService } from "@/services";
 
 const state = {
   correspondences: [],
-  correspondence: null
+  correspondence: null,
 };
 
 const mutations = {
@@ -12,28 +12,28 @@ const mutations = {
   },
   SET_CORRESPONDENCE(state, correspondence) {
     state.correspondence = correspondence;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     correspondenceService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_CORRESPONDENCES", data);
         commit("SET_CORRESPONDENCE", null);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     correspondenceService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_CORRESPONDENCE", data);
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -41,10 +41,10 @@ const actions = {
 
   findByLocalId({ commit }, localId) {
     correspondenceService.findByLocalId(localId).then(
-      data => {
+      (data) => {
         commit("SET_CORRESPONDENCE", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -52,65 +52,65 @@ const actions = {
 
   findByName({ commit }, name) {
     correspondenceService.findByName(name).then(
-      data => {
+      (data) => {
         commit("SET_CORRESPONDENCES", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     correspondenceService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Correspondence saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/correspondence");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     correspondenceService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Correspondence deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/correspondence");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     correspondenceService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Correspondence updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/correspondence");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  correspondences: state => {
+  correspondences: (state) => {
     return state.correspondences;
   },
-  correspondence: state => {
+  correspondence: (state) => {
     return state.correspondence;
-  }
+  },
 };
 
 export const correspondence = {
@@ -118,5 +118,5 @@ export const correspondence = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

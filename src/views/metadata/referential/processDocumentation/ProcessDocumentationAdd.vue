@@ -44,7 +44,7 @@
                           No results found for <em>{{ search }}</em
                           >.
                         </template>
-                        <em style="opacity: 0.5;" v-else>
+                        <em style="opacity: 0.5" v-else>
                           Start typing to search for a statistical program.
                         </em>
                       </template>
@@ -82,7 +82,7 @@
                           No results found for <em>{{ search }}</em
                           >.
                         </template>
-                        <em style="opacity: 0.5;" v-else>
+                        <em style="opacity: 0.5" v-else>
                           Start typing to search for a GSBPM sub-phase.
                         </em>
                       </template>
@@ -155,7 +155,7 @@
                           No results found for <em>{{ search }}</em
                           >.
                         </template>
-                        <em style="opacity: 0.5;" v-else>
+                        <em style="opacity: 0.5" v-else>
                           Start typing to search for a GSBPM sub-phase.
                         </em>
                       </template>
@@ -169,7 +169,7 @@
                             >
                           </span>
                           <p v-if="option.description">
-                            {{ option.description | subStr }}
+                            {{ $filters.truncateString(option.description) }}
                           </p>
                         </div>
                       </template>
@@ -191,7 +191,7 @@
                     color="primary"
                     shape="square"
                     size="sm"
-                    style="margin-right:0.3rem"
+                    style="margin-right: 0.3rem"
                     @click.prevent="handleSubmit()"
                     :disabled="disabled"
                     >Next
@@ -230,26 +230,17 @@ export default {
       disabled: false,
       activeTab: 0,
       nextBusinessFunction: "",
-      lastProcess: false
+      lastProcess: false,
     };
-  },
-
-  filters: {
-    subStr: function(string) {
-      if (string.length > 55) {
-        return string.substring(0, 65) + "...";
-      }
-      return string;
-    }
   },
   computed: {
     ...mapGetters("statisticalProgram", [
       "statisticalProgram",
-      "statisticalPrograms"
+      "statisticalPrograms",
     ]),
     ...mapGetters("businessFunction", [
       "businessFunction",
-      "businessFunctions"
+      "businessFunctions",
     ]),
     frequencies() {
       var frequencies = [];
@@ -257,24 +248,24 @@ export default {
         frequencies.push(Frequency[key]);
       }
       return frequencies;
-    }
+    },
   },
   validations: {
     description: {
-      required
+      required,
     },
     statisticalProgram: {
-      required
+      required,
     },
     businessFunction: {
-      required
+      required,
     },
     frequency: {
-      required
+      required,
     },
     nextBusinessFunction: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     handleSubmit() {
@@ -294,7 +285,7 @@ export default {
             "-sub-phase-" +
             this.businessFunction.localId,
           frequency: this.frequency,
-          nextSubPhase: this.nextBusinessFunction.localId
+          nextSubPhase: this.nextBusinessFunction.localId,
         };
         this.$store.dispatch("processDocumentation/save", formData);
       }
@@ -357,7 +348,7 @@ export default {
       if (value) {
         this.$store.dispatch("businessFunction/findById", value.id);
       }
-    }
+    },
   },
   created() {
     //this.$store.dispatch("legislativeReference/findAll");
@@ -373,7 +364,7 @@ export default {
         this.$route.query.business_function
       );
     }
-  }
+  },
 };
 </script>
 

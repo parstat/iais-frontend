@@ -49,7 +49,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Update</CButton
@@ -75,25 +75,25 @@ import { required } from "vuelidate/lib/validators";
 export default {
   name: "VariableEdit",
   computed: {
-    ...mapGetters("variable", ["variable"])
+    ...mapGetters("variable", ["variable"]),
   },
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   validations: {
     variable: {
       name: {
-        required
+        required,
       },
       description: {
-        required
+        required,
       },
       localId: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     handleSubmit() {
@@ -105,7 +105,7 @@ export default {
           name: this.variable.name,
           description: this.variable.description,
           //definition: this.variable.definition,
-          localId: this.variable.localId
+          localId: this.variable.localId,
         };
         this.$store.dispatch("variable/update", formData);
         console.log(formData);
@@ -117,10 +117,10 @@ export default {
       //this.variable.definition = "";
       this.variable.localId = "";
       this.$v.$reset();
-    }
+    },
   },
   created() {
     this.$store.dispatch("variable/findById", this.$route.params.id);
-  }
+  },
 };
 </script>

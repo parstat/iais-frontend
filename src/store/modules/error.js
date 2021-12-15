@@ -3,7 +3,7 @@ import { AuthStatus } from "@/common";
 
 const state = {
   code: null,
-  msg: null
+  msg: null,
 };
 
 const mutations = {
@@ -12,14 +12,14 @@ const mutations = {
   },
   SET_MSG(state, msg) {
     state.msg = msg;
-  }
+  },
 };
 
 const actions = {
   multipleLogin({ commit }) {
     commit("auth/SET_STATUS", AuthStatus.MultipleLogin, { root: true });
     commit("auth/SET_ERROR_MSG", "You are logged in an other device!", {
-      root: true
+      root: true,
     });
     router.push("/login");
   },
@@ -37,16 +37,16 @@ const actions = {
     commit("SET_CODE", error.code);
     commit("SET_MSG", error.message);
     router.push("/error");
-  }
+  },
 };
 
 const getters = {
-  code: state => {
+  code: (state) => {
     return state.code;
   },
-  msg: state => {
+  msg: (state) => {
     return state.msg;
-  }
+  },
 };
 
 export const error = {
@@ -54,5 +54,5 @@ export const error = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

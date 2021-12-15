@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="unitType">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           <strong>{{ unitType.name }}</strong>
         </header>
@@ -53,21 +53,21 @@ export default {
   name: "UnitTypeView",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("unitType", ["unitType"])
+    ...mapGetters("unitType", ["unitType"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/structural/unitTypes");
-    }
+    },
   },
   created() {
     this.$store.dispatch("unitType/findById", this.$route.params.id);
-  }
+  },
 };
 </script>
 <style scoped>

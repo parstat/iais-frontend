@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="correspondence">
-      <div class=" p-3">
+      <div class="p-3">
         <h3>
           Source:
           <i>
@@ -23,8 +23,8 @@
       </div>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-12">
-      <div class="card ">
-        <div class="card-header ">
+      <div class="card">
+        <div class="card-header">
           <h5>Mappings</h5>
         </div>
         <div class="card-body">
@@ -43,7 +43,7 @@
             </CDataTable>
           </div>
         </div>
-        <div class="card-footer ">
+        <div class="card-footer">
           <CButton
             color="primary"
             shape="square"
@@ -70,30 +70,30 @@ export default {
       fields: [
         {
           key: "sourceCode",
-          label: "Source Code"
+          label: "Source Code",
         },
         {
           key: "targetCode",
-          label: "Target Code"
-        }
-      ]
+          label: "Target Code",
+        },
+      ],
     };
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("correspondence", ["correspondence"])
+    ...mapGetters("correspondence", ["correspondence"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/structural/correspondence");
-    }
+    },
   },
   created() {
     this.$store.dispatch("correspondence/findById", this.$route.params.id);
     //this.$store.dispatch("coreui/setContext", Context.Structural);
-  }
+  },
 };
 </script>
 <style scoped>

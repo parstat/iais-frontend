@@ -26,7 +26,7 @@
           type="text"
           class="form-control"
           :class="{
-            'is-invalid': $v.processDocumentation.description.$error
+            'is-invalid': $v.processDocumentation.description.$error,
           }"
           placeholder="Survey description"
           v-model.trim="processDocumentation.description"
@@ -44,7 +44,7 @@
           :options="frequencies"
           v-model="processDocumentation.frequency"
           :class="{
-            'is-invalid': $v.processDocumentation.frequency.$error
+            'is-invalid': $v.processDocumentation.frequency.$error,
           }"
           placeholder="Select a Frequence"
         ></v-select>
@@ -69,7 +69,7 @@
               No results found for <em>{{ search }}</em
               >.
             </template>
-            <em style="opacity: 0.5;" v-else>
+            <em style="opacity: 0.5" v-else>
               Start typing to search for a GSBPM sub-phase.
             </em>
           </template>
@@ -82,7 +82,7 @@
                   }}</strong
                 >
               </span>
-              <p>{{ option.description | subStr }}</p>
+              <p>{{ $filters.truncateString(option.description) }}</p>
             </div>
           </template>
         </v-select>
@@ -95,7 +95,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click.prevent="handleSubmit()"
         :disabled="disabled"
       >
@@ -115,17 +115,8 @@ export default {
   data() {
     return {
       disabled: false,
-      activeTab: 0
+      activeTab: 0,
     };
-  },
-
-  filters: {
-    subStr: function(string) {
-      if (string.length > 55) {
-        return string.substring(0, 65) + "...";
-      }
-      return string;
-    }
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"]),
@@ -137,17 +128,17 @@ export default {
         frequencies.push(Frequency[key]);
       }
       return frequencies;
-    }
+    },
   },
   validations: {
     processDocumentation: {
       description: {
-        required
+        required,
       },
       frequency: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     handleSubmit() {
@@ -159,7 +150,7 @@ export default {
           name: this.processDocumentation.name,
           description: this.processDocumentation.description,
           frequency: this.processDocumentation.frequency,
-          nextSubPhase: this.processDocumentation.nextSubPhase.localId
+          nextSubPhase: this.processDocumentation.nextSubPhase.localId,
         };
         this.$store
           .dispatch("processDocumentation/update", formData)
@@ -188,9 +179,9 @@ export default {
 
     setNextBusinessFunction(value) {
       this.nextBusinessFunction = value;
-    }
+    },
   },
-  created() {}
+  created() {},
 };
 </script>
 

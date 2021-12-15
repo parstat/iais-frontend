@@ -54,9 +54,9 @@
 import { Context } from "@/common";
 
 export default {
-  name: "Metadata",
+  name: "StatisticsMetadata",
   created() {
     this.$store.dispatch("coreui/setContext", Context.Home);
-  }
+  },
 };
 </script>

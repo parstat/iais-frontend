@@ -124,14 +124,14 @@ import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "Register",
+  name: "RegisterPage",
   data() {
     return {
       username: "",
       email: "",
       fullname: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
     };
   },
   computed: {
@@ -141,26 +141,26 @@ export default {
         return true;
       }
       return false;
-    }
+    },
   },
   validations: {
     username: {
-      required
+      required,
     },
     email: {
       required,
-      email
+      email,
     },
     fullname: {
-      required
+      required,
     },
     password: {
       required,
-      minLen: minLength(6)
+      minLen: minLength(6),
     },
     confirmPassword: {
-      sameAs: sameAs("password")
-    }
+      sameAs: sameAs("password"),
+    },
   },
   methods: {
     handleSubmit() {
@@ -170,13 +170,13 @@ export default {
           username: this.username,
           email: this.email,
           fullname: this.fullname,
-          password: this.password
+          password: this.password,
         };
         console.log(formData);
         this.$store.dispatch("auth/register", formData);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

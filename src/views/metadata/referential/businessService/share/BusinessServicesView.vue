@@ -17,7 +17,7 @@
                 tag="a"
                 :to="{
                   name: 'BusinessServiceView',
-                  params: { id: businessService.id }
+                  params: { id: businessService.id },
                 }"
               >
                 <view-icon />
@@ -39,9 +39,9 @@ export default {
     businessServices: {
       type: Array,
       required: true,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 };
 </script>
 <style scoped>

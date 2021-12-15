@@ -3,7 +3,7 @@ import { legislativeReferenceService } from "@/services";
 
 const state = {
   legislativeReferences: [],
-  legislativeReference: null
+  legislativeReference: null,
 };
 
 const mutations = {
@@ -14,93 +14,93 @@ const mutations = {
   },
   SET_LEGISLATIVE_REFERENCE(state, legislativeReference) {
     state.legislativeReference = legislativeReference;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     legislativeReferenceService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_LEGISLATIVE_REFERENCES", data);
         commit("SET_LEGISLATIVE_REFERENCE", null); //clear legislativeReference
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findByName({ commit }, search) {
     legislativeReferenceService.findByName(search).then(
-      data => {
+      (data) => {
         commit("SET_LEGISLATIVE_REFERENCES", data);
         commit("SET_LEGISLATIVE_REFERENCE", null); //clear legislativeReference
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     legislativeReferenceService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_LEGISLATIVE_REFERENCE", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     legislativeReferenceService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Statistical process saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/regulation");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     legislativeReferenceService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Regulation deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/regulation");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     legislativeReferenceService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Regulation updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/regulation");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  legislativeReferences: state => {
+  legislativeReferences: (state) => {
     return state.legislativeReferences;
   },
-  legislativeReference: state => {
+  legislativeReference: (state) => {
     return state.legislativeReference;
-  }
+  },
 };
 
 export const legislativeReference = {
@@ -108,5 +108,5 @@ export const legislativeReference = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

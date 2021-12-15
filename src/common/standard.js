@@ -8,5 +8,5 @@ export const Standard = {
   Procedures: "PROCEDURES",
   Recommendations: "RECOMMENDATIONS",
   Protocols: "PROTOCOLS",
-  Other: "OTHER"
+  Other: "OTHER",
 };

@@ -30,7 +30,7 @@
               No results found for <em>{{ search }}</em
               >.
             </template>
-            <em style="opacity: 0.5;" v-else
+            <em style="opacity: 0.5" v-else
               >Start typing to search for a method.</em
             >
           </template>
@@ -39,7 +39,7 @@
               <span
                 ><strong>{{ option.name }} {{ option.version }}</strong></span
               >
-              <p>{{ option.description | subStr }}</p>
+              <p>{{ $filters.truncateString(option.description) }}</p>
             </div>
           </template>
         </v-select>
@@ -59,7 +59,7 @@
                   tag="a"
                   :to="{
                     name: 'ProcessMethodView',
-                    params: { id: processMethod.id }
+                    params: { id: processMethod.id },
                   }"
                 >
                   <view-icon />
@@ -81,7 +81,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('back')"
       >
         Back
@@ -90,7 +90,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('next')"
       >
         Next
@@ -107,20 +107,12 @@ export default {
 
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
-  },
-  filters: {
-    subStr: function(string) {
-      if (string.length > 55) {
-        return string.substring(0, 55) + "...";
-      }
-      return string;
-    }
   },
   computed: {
     ...mapGetters("processDocumentation", ["processDocumentation"]),
-    ...mapGetters("processMethod", ["processMethods"])
+    ...mapGetters("processMethod", ["processMethods"]),
   },
   methods: {
     searchProcessMethod(name, loading) {
@@ -142,22 +134,22 @@ export default {
     addProcessMethod(selectedProcessMethod) {
       const formData = {
         id: this.processDocumentation.id,
-        method: selectedProcessMethod.id
+        method: selectedProcessMethod.id,
       };
       this.$store.dispatch("processDocumentation/addProcessMethod", formData);
     },
     removeProcessMethod(selectedProcessMethod) {
       const formData = {
         id: this.processDocumentation.id,
-        method: selectedProcessMethod.id
+        method: selectedProcessMethod.id,
       };
       this.$store.dispatch(
         "processDocumentation/removeProcessMethod",
         formData
       );
-    }
+    },
   },
-  created() {}
+  created() {},
 };
 </script>
 

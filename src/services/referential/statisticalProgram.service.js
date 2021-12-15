@@ -14,17 +14,17 @@ export const statisticalProgramService = {
   updateOwner,
   updateMaintainer,
   updateContact,
-  delete: _delete
+  delete: _delete,
 };
 
 function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/referential/statistical/programs?language=en").then(
-      response => {
+      (response) => {
         var data = response.data ? response.data : [];
         resolve(data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -36,11 +36,11 @@ function findById(id) {
     axiosIais
       .get("/referential/statistical/programs/" + id + "?language=en")
       .then(
-        response => {
+        (response) => {
           var data = response.data ? response.data : {};
           resolve(data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -52,11 +52,11 @@ function findByName(search) {
     axiosIais
       .get("/referential/statistical/programs/?name=" + search + "&language=en")
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -67,8 +67,8 @@ function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
@@ -81,7 +81,7 @@ function save(formData) {
       status: "CURRENT",
       budget: 0,
       dateInitiated: "2018-05-10T10:00:00",
-      dateEnded: "2018-08-10T10:00:00"
+      dateEnded: "2018-08-10T10:00:00",
     };
 
     axiosIais
@@ -93,10 +93,10 @@ function save(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -107,8 +107,8 @@ function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
@@ -118,7 +118,7 @@ function update(formData) {
       status: "CURRENT",
       budget: 0,
       dateInitiated: "2018-05-10T10:00:00",
-      dateEnded: "2018-08-10T10:00:00"
+      dateEnded: "2018-08-10T10:00:00",
     };
 
     axiosIais
@@ -130,10 +130,10 @@ function update(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -151,11 +151,11 @@ function addLegislativeReference(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -173,11 +173,11 @@ function removeLegislativeReference(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -196,11 +196,11 @@ function addStatisticalStandard(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -218,11 +218,11 @@ function removeStatisticalStandard(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -240,11 +240,11 @@ function updateOwner(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -262,11 +262,11 @@ function updateContact(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -284,11 +284,11 @@ function updateMaintainer(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -298,11 +298,11 @@ function updateMaintainer(formData) {
 function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("close/referential/statistical/programs/" + id).then(
-      response => {
+      (response) => {
         //console.log(response.data);
         resolve(response.data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );

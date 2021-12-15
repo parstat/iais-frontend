@@ -16,14 +16,14 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters("coreui", ["isReferential"])
+    ...mapGetters("coreui", ["isReferential"]),
   },
   watch: {
     $route(to) {
       if (to.path == "/metadata") {
         this.$store.dispatch("coreui/clearContext");
       }
-    }
-  }
+    },
+  },
 };
 </script>

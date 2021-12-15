@@ -3,7 +3,7 @@ import { statisticalClassificationService } from "@/services";
 
 const state = {
   statisticalClassifications: [],
-  statisticalClassification: null
+  statisticalClassification: null,
 };
 
 const mutations = {
@@ -14,29 +14,29 @@ const mutations = {
   },
   SET_STATISTICAL_CLASSIFICATION(state, statisticalClassification) {
     state.statisticalClassification = statisticalClassification;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     statisticalClassificationService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_CLASSIFICATIONS", data);
         commit("SET_STATISTICAL_CLASSIFICATION", null);
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     statisticalClassificationService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_CLASSIFICATION", data);
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -44,10 +44,10 @@ const actions = {
 
   findByLocalId({ commit }, localId) {
     statisticalClassificationService.findByLocalId(localId).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_CLASSIFICATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -55,66 +55,66 @@ const actions = {
 
   findByName({ commit }, name) {
     statisticalClassificationService.findByName(name).then(
-      data => {
+      (data) => {
         commit("SET_STATISTICAL_CLASSIFICATIONS", data);
         commit("SET_STATISTICAL_CLASSIFICATION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     statisticalClassificationService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Statistical Classification saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/statisticalClassification");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     statisticalClassificationService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Statistical Classification deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/statisticalClassification");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     statisticalClassificationService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Statistical Classification updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/statisticalClassification");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  statisticalClassifications: state => {
+  statisticalClassifications: (state) => {
     return state.statisticalClassifications;
   },
-  statisticalClassification: state => {
+  statisticalClassification: (state) => {
     return state.statisticalClassification;
-  }
+  },
 };
 
 export const statisticalClassification = {
@@ -122,5 +122,5 @@ export const statisticalClassification = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

@@ -49,12 +49,12 @@ export default {
       acronym: "",
       description: "",
       disabled: false,
-      activeTab: 0
+      activeTab: 0,
     };
   },
   components: {
     "app-statistical-program-basic": StatisticalProgramBasic,
-    "app-agents-add": AgentsAdd
+    "app-agents-add": AgentsAdd,
   },
   methods: {
     handleSubmit(agents) {
@@ -66,7 +66,7 @@ export default {
         description: this.description,
         owner: agents.owner.id,
         maintainer: agents.maintainer.id,
-        contact: agents.contact.id
+        contact: agents.contact.id,
       };
       this.$store.dispatch("statisticalProgram/save", formData);
       console.log(formData);
@@ -83,8 +83,8 @@ export default {
     },
     updateStep(active) {
       this.activeTab = active;
-    }
-  }
+    },
+  },
 };
 </script>
 

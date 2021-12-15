@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="businessFunction">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           <strong>Business function (GSBPM Sub-phase)</strong>
         </header>
@@ -56,23 +56,23 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "Delete",
+  name: "BusinessFunctionDelete",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("businessFunction", ["businessFunction"])
+    ...mapGetters("businessFunction", ["businessFunction"]),
   },
   methods: {
     handleDelete() {
       this.disabled = true; //disable button
       this.$store.dispatch("businessFunction/delete", this.$route.params.id);
-    }
+    },
   },
   created() {
     this.$store.dispatch("businessFunction/findById", this.$route.params.id);
-  }
+  },
 };
 </script>

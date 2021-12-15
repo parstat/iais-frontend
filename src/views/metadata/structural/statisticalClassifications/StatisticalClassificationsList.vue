@@ -29,15 +29,15 @@
               sorter
               pagination
             >
-              <template #actions="{item}">
-                <td style="text-align:right; width:10%; padding-right:20px;">
+              <template #actions="{ item }">
+                <td style="text-align: right; width: 10%; padding-right: 20px">
                   <span class="pl-2" v-c-tooltip="'View'">
                     <router-link
                       tag="a"
                       title="View"
                       :to="{
                         name: 'StatisticalClassificationView',
-                        params: { id: item.id }
+                        params: { id: item.id },
                       }"
                     >
                       <view-icon />
@@ -53,7 +53,7 @@
                       title="Edit"
                       :to="{
                         name: 'StatisticalClassificationEdit',
-                        params: { id: item.id }
+                        params: { id: item.id },
                       }"
                     >
                       <edit-icon />
@@ -70,7 +70,7 @@
                       title="Delete"
                       :to="{
                         name: 'StatisticalClassificationDelete',
-                        params: { id: item.id }
+                        params: { id: item.id },
                       }"
                     >
                       <delete-icon />
@@ -96,36 +96,36 @@ export default {
       fields: [
         {
           key: "localId",
-          label: "Id"
+          label: "Id",
         },
         {
           key: "name",
-          label: "Name"
+          label: "Name",
         },
         {
-          key: "version"
+          key: "version",
         },
         {
-          key: "versionDate"
+          key: "versionDate",
         },
         {
           key: "actions",
           label: "",
           _style: "",
           sorter: false,
-          filter: false
-        }
-      ]
+          filter: false,
+        },
+      ],
     };
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("statisticalClassification", ["statisticalClassifications"])
+    ...mapGetters("statisticalClassification", ["statisticalClassifications"]),
   },
   created() {
     this.$store.dispatch("statisticalClassification/findAll");
     this.$store.dispatch("coreui/setContext", Context.Structural);
-  }
+  },
 };
 </script>

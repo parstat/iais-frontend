@@ -3,7 +3,7 @@ import { businessFunctionService } from "@/services";
 
 const state = {
   businessFunctions: [],
-  businessFunction: null
+  businessFunction: null,
 };
 
 const mutations = {
@@ -12,27 +12,27 @@ const mutations = {
   },
   SET_BUSINESS_FUNCTION(state, businessFunction) {
     state.businessFunction = businessFunction;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     businessFunctionService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_BUSINESS_FUNCTIONS", data);
         commit("SET_BUSINESS_FUNCTION", null); //clear business function
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     businessFunctionService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_BUSINESS_FUNCTION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -40,10 +40,10 @@ const actions = {
 
   findByLocalId({ commit }, localId) {
     businessFunctionService.findByLocalId(localId).then(
-      data => {
+      (data) => {
         commit("SET_BUSINESS_FUNCTION", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -51,66 +51,66 @@ const actions = {
 
   findByName({ commit }, name) {
     businessFunctionService.findByName(name).then(
-      data => {
+      (data) => {
         commit("SET_BUSINESS_FUNCTIONS", data);
         //commit("SET_BUSINESS_FUNCTION", null); //clear business function
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     businessFunctionService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Business Function saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/function");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     businessFunctionService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Business Function deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/function");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     businessFunctionService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Business Function updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/referential/gsim/function");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  businessFunctions: state => {
+  businessFunctions: (state) => {
     return state.businessFunctions;
   },
-  businessFunction: state => {
+  businessFunction: (state) => {
     return state.businessFunction;
-  }
+  },
 };
 
 export const businessFunction = {
@@ -118,5 +118,5 @@ export const businessFunction = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="variable">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           <strong>Variable</strong>
         </header>
@@ -69,20 +69,20 @@ export default {
   name: "VariableDelete",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("variable", ["variable"])
+    ...mapGetters("variable", ["variable"]),
   },
   methods: {
     handleDelete() {
       this.disabled = true; //disable button
       this.$store.dispatch("variable/delete", this.$route.params.id);
-    }
+    },
   },
   created() {
     this.$store.dispatch("variable/findById", this.$route.params.id);
-  }
+  },
 };
 </script>

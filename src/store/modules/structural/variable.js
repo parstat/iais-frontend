@@ -3,7 +3,7 @@ import { variableService } from "@/services";
 
 const state = {
   variables: [],
-  variable: null
+  variable: null,
 };
 
 const mutations = {
@@ -12,29 +12,29 @@ const mutations = {
   },
   SET_VARIABLE(state, variable) {
     state.variable = variable;
-  }
+  },
 };
 
 const actions = {
   findAll({ commit }) {
     variableService.findAll().then(
-      data => {
+      (data) => {
         commit("SET_VARIABLES", data);
         commit("SET_VARIABLE", null); //clear business function
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   findById({ commit }, id) {
     variableService.findById(id).then(
-      data => {
+      (data) => {
         commit("SET_VARIABLE", data);
         console.log(data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -42,10 +42,10 @@ const actions = {
 
   findByLocalId({ commit }, localId) {
     variableService.findByLocalId(localId).then(
-      data => {
+      (data) => {
         commit("SET_VARIABLE", data);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -53,66 +53,66 @@ const actions = {
 
   findByName({ commit }, name) {
     variableService.findByName(name).then(
-      data => {
+      (data) => {
         commit("SET_VARIABLES", data);
         //commit("SET_BUSINESS_FUNCTION", null); //clear business function
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   save({ dispatch }, formData) {
     variableService.save(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Variable saved!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structural/variable");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   delete({ dispatch }, id) {
     variableService.delete(id).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Variable deleted!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/variable");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   },
   update({ dispatch }, formData) {
     variableService.update(formData).then(
-      data => {
+      (data) => {
         console.log(data);
         dispatch("message/success", "Variable updated!", {
-          root: true
+          root: true,
         });
         router.push("/metadata/structuralal/variable");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-  }
+  },
 };
 
 const getters = {
-  variables: state => {
+  variables: (state) => {
     return state.variables;
   },
-  variable: state => {
+  variable: (state) => {
     return state.variable;
-  }
+  },
 };
 
 export const variable = {
@@ -120,5 +120,5 @@ export const variable = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

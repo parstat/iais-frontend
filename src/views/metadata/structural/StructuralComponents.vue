@@ -24,7 +24,7 @@
           </span>
 
           <footer class="card-footer">
-            <p class="section-link" style="float:right;">
+            <p class="section-link" style="float: right">
               <router-link tag="a" :to="{ name: 'StructuralVariableList' }"
                 ><span class="icon-span">Go to variables section &nbsp;</span
                 ><chevron-right-icon
@@ -58,7 +58,7 @@
           </span>
 
           <footer class="card-footer">
-            <p class="section-link" style="float:right;">
+            <p class="section-link" style="float: right">
               <router-link
                 tag="a"
                 :to="{ name: 'StructuralStatisticalClassificationsList' }"
@@ -93,7 +93,7 @@
           </span>
 
           <footer class="card-footer">
-            <p class="section-link" style="float:right;">
+            <p class="section-link" style="float: right">
               <router-link tag="a" :to="{ name: 'StructuralCodeList' }"
                 ><span class="icon-span">Go to code list section &nbsp;</span
                 ><chevron-right-icon
@@ -122,7 +122,7 @@
             time. Correspondence relationships are shown in both directions.<br /><br />
           </span>
           <footer class="card-footer">
-            <p class="section-link" style="float:right;">
+            <p class="section-link" style="float: right">
               <router-link tag="a" :to="{ name: 'CorrespondenceTableList' }">
                 <span class="icon-span"
                   >Go to corespondence table section &nbsp;</span
@@ -205,6 +205,6 @@ export default {
   name: "StructuralComponents",
   created() {
     this.$store.dispatch("coreui/setContext", Context.Structural);
-  }
+  },
 };
 </script>

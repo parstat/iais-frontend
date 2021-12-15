@@ -1,5 +1,4 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import { createStore } from "vuex";
 
 import { auth } from "./modules/auth";
 import { error } from "./modules/error";
@@ -20,9 +19,7 @@ import { statisticalClassification } from "./modules/structural/statisticalClass
 import { variableRepresentation } from "./modules/structural/variableRepresentation"; //added by GV
 import { unitType } from "./modules/structural/unitType";
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default createStore({
   modules: {
     auth,
     error,
@@ -41,6 +38,6 @@ export default new Vuex.Store({
     correspondence, //added by GV
     statisticalClassification,
     variableRepresentation,
-    unitType
-  }
+    unitType,
+  },
 });

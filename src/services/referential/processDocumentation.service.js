@@ -23,7 +23,7 @@ export const processDocumentationService = {
   removeProcessQuality,
   addProcessDocument,
   removeProcessDocument,
-  delete: _delete
+  delete: _delete,
 };
 
 function findById(id) {
@@ -31,11 +31,11 @@ function findById(id) {
     axiosIais
       .get("/referential/process/documentations/" + id + "?language=en")
       .then(
-        response => {
+        (response) => {
           var data = response.data ? response.data : {};
           resolve(data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -53,11 +53,11 @@ function findLatest(statisticalProgram, businessFunction) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           var data = response.data ? response.data : {};
           resolve(data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -71,11 +71,11 @@ function findByName(search) {
         "/referential/process/documentations/?name=" + search + "&language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -86,8 +86,8 @@ function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
@@ -95,7 +95,7 @@ function save(formData) {
       description: formData.description,
       local_id: formData.local_id,
       frequency: formData.frequency,
-      nextSubPhase: formData.nextSubPhase
+      nextSubPhase: formData.nextSubPhase,
     };
 
     axiosIais
@@ -109,10 +109,10 @@ function save(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -123,8 +123,8 @@ function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
@@ -132,7 +132,7 @@ function update(formData) {
       description: formData.description,
       local_id: formData.local_id,
       frequency: formData.frequency,
-      nextSubPhase: formData.nextSubPhase
+      nextSubPhase: formData.nextSubPhase,
     };
 
     axiosIais
@@ -144,10 +144,10 @@ function update(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -166,11 +166,11 @@ function addStatisticalStandard(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -188,11 +188,11 @@ function removeStatisticalStandard(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -211,11 +211,11 @@ function addProcessMethod(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -233,11 +233,11 @@ function removeProcessMethod(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -256,11 +256,11 @@ function addBusinessService(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -278,11 +278,11 @@ function removeBusinessService(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -294,13 +294,13 @@ function addProcessInput(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
       name: formData.name,
-      description: formData.description
+      description: formData.description,
     };
 
     axiosIais
@@ -312,11 +312,11 @@ function addProcessInput(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -334,11 +334,11 @@ function removeProcessInput(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -350,13 +350,13 @@ function addProcessOutput(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
       name: formData.name,
-      description: formData.description
+      description: formData.description,
     };
 
     axiosIais
@@ -368,11 +368,11 @@ function addProcessOutput(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -390,11 +390,11 @@ function removeProcessOutput(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -406,13 +406,13 @@ function addProcessQuality(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
       name: formData.name,
-      description: formData.description
+      description: formData.description,
     };
 
     axiosIais
@@ -424,11 +424,11 @@ function addProcessQuality(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -446,11 +446,11 @@ function removeProcessQuality(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -462,15 +462,15 @@ function addProcessDocument(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
       name: formData.name,
       description: formData.description,
       link: formData.link,
-      type: formData.type
+      type: formData.type,
     };
 
     axiosIais
@@ -482,11 +482,11 @@ function addProcessDocument(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -504,11 +504,11 @@ function removeProcessDocument(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -526,11 +526,11 @@ function addMaintainer(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -548,11 +548,11 @@ function removeMaintainer(formData) {
           "?language=en"
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -562,11 +562,11 @@ function removeMaintainer(formData) {
 function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("close/referential/process/documentations/" + id).then(
-      response => {
+      (response) => {
         //console.log(response.data);
         resolve(response.data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );

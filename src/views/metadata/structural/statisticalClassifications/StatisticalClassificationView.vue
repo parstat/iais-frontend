@@ -4,14 +4,14 @@
       class="jumbotron jumbotron-fluid col-lg-12 p-2"
       v-if="statisticalClassification"
     >
-      <div class=" p-3">
+      <div class="p-3">
         <h2 class="display-5">
           {{ statisticalClassification.name }}
           <span class="lead"
             >(
             {{
               statisticalClassification.definition ||
-                statisticalClassification.localId
+              statisticalClassification.localId
             }}
             )</span
           >
@@ -31,7 +31,7 @@
     </div>
 
     <div class="card w-100">
-      <header class="card-header ">
+      <header class="card-header">
         <h5>Levels</h5>
       </header>
       <div class="card-body">
@@ -51,7 +51,7 @@
     </div>
     <!-- statisticalClassificationItems -->
     <div class="card w-100">
-      <header class="card-header ">
+      <header class="card-header">
         <h5>Statistical Classification Items</h5>
       </header>
       <div class="card-body">
@@ -84,23 +84,23 @@ import { mapGetters } from "vuex";
 export default {
   name: "StatisticalClassificationView",
   components: {
-    TreeNode
+    TreeNode,
   },
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("statisticalClassification", ["statisticalClassification"])
+    ...mapGetters("statisticalClassification", ["statisticalClassification"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/structural/statisticalClassifications");
-    }
+    },
   },
   created() {
     this.$store.dispatch(
@@ -108,6 +108,6 @@ export default {
       this.$route.params.id
     );
     //this.$store.dispatch("coreui/setContext", Context.Structural);
-  }
+  },
 };
 </script>

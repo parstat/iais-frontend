@@ -88,7 +88,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Save</CButton
@@ -120,7 +120,7 @@ export default {
       link: "",
       version: "",
       localId: "",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
@@ -130,18 +130,18 @@ export default {
         types.push(Standard[key]);
       }
       return types;
-    }
+    },
   },
   validations: {
     name: {
-      required
+      required,
     },
     type: {
-      required
+      required,
     },
     localId: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     handleSubmit() {
@@ -154,7 +154,7 @@ export default {
           type: this.type,
           link: this.link,
           version: this.version,
-          localId: this.localId
+          localId: this.localId,
         };
         this.$store.dispatch("statisticalStandard/save", formData);
         console.log(formData);
@@ -168,7 +168,7 @@ export default {
       this.version = "";
       this.localId = "";
       this.$v.$reset();
-    }
-  }
+    },
+  },
 };
 </script>

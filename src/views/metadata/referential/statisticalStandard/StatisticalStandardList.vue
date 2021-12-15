@@ -50,7 +50,7 @@
                         tag="a"
                         :to="{
                           name: 'StatisticalStandardEdit',
-                          params: { id: statisticalStandard.id }
+                          params: { id: statisticalStandard.id },
                         }"
                       >
                         <edit-icon />
@@ -61,7 +61,7 @@
                         tag="a"
                         :to="{
                           name: 'StatisticalStandardDelete',
-                          params: { id: statisticalStandard.id }
+                          params: { id: statisticalStandard.id },
                         }"
                       >
                         <delete-icon />
@@ -74,7 +74,7 @@
                         tag="a"
                         :to="{
                           name: 'StatisticalStandardView',
-                          params: { id: statisticalStandard.id }
+                          params: { id: statisticalStandard.id },
                         }"
                       >
                         <view-icon />
@@ -99,11 +99,11 @@ export default {
   name: "StatisticalStandardList",
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("statisticalStandard", ["statisticalStandards"])
+    ...mapGetters("statisticalStandard", ["statisticalStandards"]),
   },
   created() {
     this.$store.dispatch("statisticalStandard/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
-  }
+  },
 };
 </script>

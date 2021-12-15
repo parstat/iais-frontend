@@ -6,5 +6,5 @@ export const Frequency = {
   Quarterly: "QUARTERLY",
   Semiyearly: "SEMIYEARLY",
   Yearly: "YEARLY",
-  Decennial: "DECENNIAL"
+  Decennial: "DECENNIAL",
 };

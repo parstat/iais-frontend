@@ -3,14 +3,16 @@
     fixed
     :minimize="minimize"
     :show="show"
-    @update:show="value => $store.commit('set', ['sidebarShow', 'responsive'])"
+    @update:show="
+      (value) => $store.commit('set', ['sidebarShow', 'responsive'])
+    "
   >
     <CSidebarBrand class="d-md-down-none" to="/">
       <CIcon name="cil-terminal" size="lg"></CIcon
       ><span class="brand"> IAIS Meta </span>
     </CSidebarBrand>
 
-    <ul class="c-sidebar-nav h-100 ps" style="position: relative;">
+    <ul class="c-sidebar-nav h-100 ps" style="position: relative">
       <li class="c-sidebar-nav-item">
         <router-link
           tag="a"
@@ -62,6 +64,7 @@
 import { mapGetters } from "vuex";
 
 export default {
+  name: "SidebarPart",
   computed: {
     ...mapGetters("coreui", {
       show: "sidebarShow",
@@ -69,9 +72,9 @@ export default {
       isHome: "isHome",
       isReferential: "isReferential",
       isStructural: "isStructural",
-      isProcess: "isProcess"
-    })
-  }
+      isProcess: "isProcess",
+    }),
+  },
 };
 </script>
 <style scoped>

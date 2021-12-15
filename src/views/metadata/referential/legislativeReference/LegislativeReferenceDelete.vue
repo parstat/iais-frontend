@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="legislativeReference">
     <div class="col-sm-12 col-md-6">
-      <div class="card ">
+      <div class="card">
         <header class="card-header">
           <strong>Legislative reference</strong>
         </header>
@@ -69,11 +69,11 @@ export default {
   name: "legislativeReferenceDelete",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("legislativeReference", ["legislativeReference"])
+    ...mapGetters("legislativeReference", ["legislativeReference"]),
   },
   methods: {
     handleDelete() {
@@ -82,13 +82,13 @@ export default {
         "legislativeReference/delete",
         this.$route.params.id
       );
-    }
+    },
   },
   created() {
     this.$store.dispatch(
       "legislativeReference/findById",
       this.$route.params.id
     );
-  }
+  },
 };
 </script>

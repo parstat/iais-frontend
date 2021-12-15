@@ -50,7 +50,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Update</CButton
@@ -76,25 +76,25 @@ import { required } from "vuelidate/lib/validators";
 export default {
   name: "BusinessFunctionEdit",
   computed: {
-    ...mapGetters("businessFunction", ["businessFunction"])
+    ...mapGetters("businessFunction", ["businessFunction"]),
   },
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   validations: {
     businessFunction: {
       name: {
-        required
+        required,
       },
       description: {
-        required
+        required,
       },
       localId: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     handleSubmit() {
@@ -106,7 +106,7 @@ export default {
           name: this.businessFunction.name,
           description: this.businessFunction.description,
           version: this.businessFunction.version,
-          localId: this.businessFunction.localId
+          localId: this.businessFunction.localId,
         };
         this.$store.dispatch("businessFunction/update", formData);
         console.log(formData);
@@ -118,10 +118,10 @@ export default {
       this.businessFunction.version = "";
       this.businessFunction.localId = "";
       this.$v.$reset();
-    }
+    },
   },
   created() {
     this.$store.dispatch("businessFunction/findById", this.$route.params.id);
-  }
+  },
 };
 </script>

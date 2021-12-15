@@ -7,17 +7,17 @@ export const correspondenceService = {
   findById,
   save,
   update,
-  delete: _delete
+  delete: _delete,
 };
 
 function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenCorrespondence?language=en").then(
-      response => {
+      (response) => {
         console.log(response.data.correspondences);
         resolve(response.data.correspondences);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -27,14 +27,14 @@ function findAll() {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenCorrespondence/" + id).then(
-      response => {
+      (response) => {
         var data = response.data.correspondence
           ? response.data.correspondence
           : null;
         console.log(data);
         resolve(data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -45,15 +45,15 @@ function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
       name: formData.name,
       description: formData.description,
       //definition: formData.definition,
-      local_id: formData.localId
+      local_id: formData.localId,
     };
 
     axiosIais
@@ -63,11 +63,11 @@ function save(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -78,15 +78,15 @@ function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
 
     const requestBody = {
       name: formData.name,
       description: formData.description,
       //definition: formData.definition,
-      local_id: formData.localId
+      local_id: formData.localId,
     };
 
     axiosIais
@@ -96,11 +96,11 @@ function update(formData) {
         config
       )
       .then(
-        response => {
+        (response) => {
           //console.log(response.data);
           resolve(response.data);
         },
-        error => {
+        (error) => {
           reject(error);
         }
       );
@@ -110,11 +110,11 @@ function update(formData) {
 function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("/structural/ClosedCorrespondence/" + id).then(
-      response => {
+      (response) => {
         //console.log(response.data);
         resolve(response.data);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );

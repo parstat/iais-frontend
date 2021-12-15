@@ -77,7 +77,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Save</CButton
@@ -109,7 +109,7 @@ export default {
       type: "",
       parent: "",
       localId: "",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
@@ -120,18 +120,18 @@ export default {
         types.push(Agent[key]);
       }
       return types;
-    }
+    },
   },
   validations: {
     name: {
-      required
+      required,
     },
     type: {
-      required
+      required,
     },
     localId: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     handleSubmit() {
@@ -143,7 +143,7 @@ export default {
           description: this.description,
           type: this.type,
           parent: this.parent.id,
-          localId: this.localId
+          localId: this.localId,
         };
         this.$store.dispatch("agent/save", formData);
         console.log(formData);
@@ -167,7 +167,7 @@ export default {
       }
       this.$store.dispatch("agent/clearParents");
       return;
-    }
-  }
+    },
+  },
 };
 </script>

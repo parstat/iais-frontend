@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="variable">
-      <div class=" p-3">
+      <div class="p-3">
         <h2 class="display-5">
           {{ variable.name }}
           <span class="lead">( {{ variable.version }} )</span>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="card w-100">
-      <header class="card-header ">
+      <header class="card-header">
         <h5>Representations</h5>
       </header>
       <div class="card-body">
@@ -35,7 +35,7 @@
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsView',
-                      params: { id: item.id }
+                      params: { id: item.id },
                     }"
                   >
                     <view-icon />
@@ -46,7 +46,7 @@
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsEdit',
-                      params: { id: item.id }
+                      params: { id: item.id },
                     }"
                   >
                     <edit-icon />
@@ -57,7 +57,7 @@
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsDelete',
-                      params: { id: item.id }
+                      params: { id: item.id },
                     }"
                   >
                     <delete-icon />
@@ -70,7 +70,7 @@
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsView',
-                      params: { id: item.id }
+                      params: { id: item.id },
                     }"
                   >
                     <view-icon />
@@ -103,23 +103,23 @@ export default {
   name: "VariableView",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("variable", ["variable"])
+    ...mapGetters("variable", ["variable"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/structural/variable");
-    }
+    },
   },
   created() {
     this.$store.dispatch("variable/findById", this.$route.params.id);
     //this.$store.dispatch("coreui/setContext", Context.Structural);
-  }
+  },
 };
 </script>

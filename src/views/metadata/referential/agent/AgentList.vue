@@ -49,7 +49,7 @@
                         tag="a"
                         :to="{
                           name: 'AgentEdit',
-                          params: { id: agent.id }
+                          params: { id: agent.id },
                         }"
                       >
                         <edit-icon />
@@ -60,7 +60,7 @@
                         tag="a"
                         :to="{
                           name: 'AgentDelete',
-                          params: { id: agent.id }
+                          params: { id: agent.id },
                         }"
                       >
                         <delete-icon />
@@ -73,7 +73,7 @@
                         tag="a"
                         :to="{
                           name: 'AgentView',
-                          params: { id: agent.id }
+                          params: { id: agent.id },
                         }"
                       >
                         <view-icon />
@@ -99,11 +99,11 @@ export default {
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("agent", ["agents"])
+    ...mapGetters("agent", ["agents"]),
   },
   created() {
     this.$store.dispatch("agent/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
-  }
+  },
 };
 </script>

@@ -59,7 +59,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('back')"
       >
         Back
@@ -68,7 +68,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('next', fieldChanged)"
       >
         Next
@@ -86,38 +86,38 @@ export default {
   props: {
     owner: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     maintainer: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     contact: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
   data() {
     return {
       localOwner: { ...this.owner }, //clone the object
       localMaintainer: { ...this.maintainer }, //clone the object
       localContact: { ...this.contact }, //clone the object
-      fieldChanged: false
+      fieldChanged: false,
     };
   },
   validations: {
     localOwner: {
-      required
+      required,
     },
     localMaintainer: {
-      required
+      required,
     },
     localContact: {
-      required
-    }
+      required,
+    },
   },
   computed: {
-    ...mapGetters("agent", ["owners", "maintainers", "contacts"])
+    ...mapGetters("agent", ["owners", "maintainers", "contacts"]),
   },
   methods: {
     updateOwner() {
@@ -140,13 +140,13 @@ export default {
         this.$emit("updateContact", this.localContact);
         this.fieldChanged = true;
       }
-    }
+    },
   },
   created() {
     this.$store.dispatch("agent/findByType", Agent.Organization);
     this.$store.dispatch("agent/findByType", Agent.Division);
     this.$store.dispatch("agent/findByType", Agent.Individual);
-  }
+  },
 };
 </script>
 

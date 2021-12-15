@@ -1,7 +1,7 @@
 <template>
   <div class="row" v-if="variableRepresentation">
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2">
-      <div class=" p-3">
+      <div class="p-3">
         <h2 class="display-5">{{ variableRepresentation.name }}</h2>
         <p class="lead" v-if="variableRepresentation.description">
           <strong>Description:</strong> {{ variableRepresentation.description }}
@@ -14,20 +14,20 @@
     >
       <CCol>
         <!-- substantiveValueDomain -->
-        <div class="card ">
-          <header class="card-header ">
+        <div class="card">
+          <header class="card-header">
             <h5>Substantive Value Domain</h5>
           </header>
-          <div class="card-body ">
-            <div class="card card-border bg-light ">
-              <div class="card-body ">
+          <div class="card-body">
+            <div class="card card-border bg-light">
+              <div class="card-body">
                 <CRow
                   class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-1"
                 >
                   <CCol>
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>Name:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -36,9 +36,9 @@
                         >
                       </div>
                     </div>
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>Description:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -54,9 +54,9 @@
                   class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-1"
                 >
                   <CCol>
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>Type:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -67,9 +67,9 @@
                     </div>
                   </CCol>
                   <CCol>
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>DataType:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -85,9 +85,9 @@
                   class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-1"
                 >
                   <CCol>
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>Expression:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="
                             variableRepresentation.substantiveValueDomain
@@ -137,11 +137,11 @@
               </div>
               <!-- @end Condition to show filtrable table if results are more then 5 lines-->
               <table
-                class="table table-hover "
+                class="table table-hover"
                 v-if="
                   variableRepresentation.substantiveValueDomain &&
-                    variableRepresentation.substantiveValueDomain.valueSet
-                      .length < 20
+                  variableRepresentation.substantiveValueDomain.valueSet
+                    .length < 20
                 "
               >
                 <thead>
@@ -176,7 +176,7 @@
       <CCol>
         <!-- sentinel Value Domain-->
         <div class="card w-100 col-sm-12 col-md-12">
-          <header class="card-header ">
+          <header class="card-header">
             <h5>Sentinel Value Domain</h5>
           </header>
           <div
@@ -189,9 +189,9 @@
                   class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-1"
                 >
                   <CCol class="">
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>Name:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="variableRepresentation.sentinelValueDomain.name"
                           >{{
@@ -201,9 +201,9 @@
                         <span v-else class="default-value">no value</span>
                       </div>
                     </div>
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>Description:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="
                             variableRepresentation.sentinelValueDomain
@@ -223,9 +223,9 @@
                   class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-1"
                 >
                   <CCol>
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>Type:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="variableRepresentation.sentinelValueDomain.type"
                           >{{
@@ -237,9 +237,9 @@
                     </div>
                   </CCol>
                   <CCol class="col-sm-12 col-md-6">
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>Data Type:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="
                             variableRepresentation.sentinelValueDomain.dataType
@@ -257,9 +257,9 @@
                   class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-1"
                 >
                   <CCol>
-                    <div class="card-group ">
+                    <div class="card-group">
                       <span><strong>Expression:</strong></span>
-                      <div class="card-slot ">
+                      <div class="card-slot">
                         <span
                           v-if="
                             variableRepresentation.sentinelValueDomain
@@ -286,7 +286,7 @@
                 </strong>
               </div>
               <table
-                class="table table-hover "
+                class="table table-hover"
                 v-if="variableRepresentation.sentinelValueDomain"
               >
                 <thead>
@@ -342,19 +342,19 @@ export default {
       fields: [
         {
           key: "code",
-          label: "Code"
+          label: "Code",
         },
         {
           key: "value",
-          label: "Value"
-        }
-      ]
+          label: "Value",
+        },
+      ],
     };
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("variableRepresentation", ["variableRepresentation"])
+    ...mapGetters("variableRepresentation", ["variableRepresentation"]),
   },
   methods: {
     handleBack() {
@@ -362,14 +362,14 @@ export default {
       this.$router.push(
         "/metadata/structural/variable/view/" + this.$route.params.id
       );
-    }
+    },
   },
   created() {
     this.$store.dispatch(
       "variableRepresentation/findById",
       this.$route.params.id
     );
-  }
+  },
 };
 </script>
 

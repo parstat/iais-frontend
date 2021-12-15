@@ -52,7 +52,7 @@
             color="primary"
             shape="square"
             size="sm"
-            style="margin-right:0.3rem"
+            style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Update</CButton
@@ -78,19 +78,19 @@ import { required } from "vuelidate/lib/validators";
 export default {
   name: "ProcessMethodEdit",
   computed: {
-    ...mapGetters("processMethod", ["processMethod"])
+    ...mapGetters("processMethod", ["processMethod"]),
   },
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   validations: {
     processMethod: {
       name: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     handleSubmit() {
@@ -102,7 +102,7 @@ export default {
           name: this.processMethod.name,
           description: this.processMethod.description,
           version: this.processMethod.version,
-          localId: this.processMethod.localId
+          localId: this.processMethod.localId,
         };
         this.$store.dispatch("processMethod/update", formData);
         console.log(formData);
@@ -114,10 +114,10 @@ export default {
       this.processMethod.version = "";
       this.processMethod.localId = "";
       this.$v.$reset();
-    }
+    },
   },
   created() {
     this.$store.dispatch("processMethod/findById", this.$route.params.id);
-  }
+  },
 };
 </script>

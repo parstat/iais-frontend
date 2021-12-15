@@ -17,7 +17,7 @@
                 tag="a"
                 :to="{
                   name: 'LegislativeReferenceView',
-                  params: { id: legislativeReference.id }
+                  params: { id: legislativeReference.id },
                 }"
               >
                 <view-icon />
@@ -39,9 +39,9 @@ export default {
     legislativeReferences: {
       type: Array,
       required: true,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 };
 </script>
 <style scoped>

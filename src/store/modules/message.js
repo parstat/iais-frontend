@@ -1,6 +1,6 @@
 const state = {
   type: null,
-  message: null
+  message: null,
 };
 
 const mutations = {
@@ -15,7 +15,7 @@ const mutations = {
   CLEAR(state) {
     state.type = null;
     state.message = null;
-  }
+  },
 };
 
 const actions = {
@@ -27,16 +27,16 @@ const actions = {
   },
   clear({ commit }) {
     commit("CLEAR");
-  }
+  },
 };
 
 const getters = {
-  type: state => {
+  type: (state) => {
     return state.type;
   },
-  message: state => {
+  message: (state) => {
     return state.message;
-  }
+  },
 };
 
 export const message = {
@@ -44,5 +44,5 @@ export const message = {
   state,
   mutations,
   actions,
-  getters
+  getters,
 };

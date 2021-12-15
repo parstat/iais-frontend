@@ -27,13 +27,13 @@
             sorter
             pagination
           >
-            <template #actions="{item}">
+            <template #actions="{ item }">
               <td v-if="isAuthenticated" style="padding: 0.75rem 0.4rem">
                 <router-link
                   tag="a"
                   :to="{
                     name: 'StatisticalProgramEdit',
-                    params: { id: item.id }
+                    params: { id: item.id },
                   }"
                 >
                   <edit-icon />
@@ -44,7 +44,7 @@
                   tag="a"
                   :to="{
                     name: 'StatisticalProgramView',
-                    params: { id: item.id }
+                    params: { id: item.id },
                   }"
                 >
                   <view-icon />
@@ -58,7 +58,7 @@
                   tag="a"
                   :to="{
                     name: 'StatisticalProgramDelete',
-                    params: { id: item.id }
+                    params: { id: item.id },
                   }"
                 >
                   <delete-icon />
@@ -83,44 +83,44 @@ export default {
       fields: [
         {
           key: "localId",
-          label: "Id"
+          label: "Id",
         },
         {
           key: "name",
-          label: "Survey name"
+          label: "Survey name",
         },
         {
-          key: "acronym"
+          key: "acronym",
         },
         {
-          key: "description"
+          key: "description",
         },
         {
-          key: "owner"
+          key: "owner",
         },
         {
-          key: "maintainer"
+          key: "maintainer",
         },
         {
-          key: "contact"
+          key: "contact",
         },
         {
           key: "actions",
           label: "",
           _style: "width:1%",
           sorter: false,
-          filter: false
-        }
-      ]
+          filter: false,
+        },
+      ],
     };
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("statisticalProgram", ["viewStatisticalPrograms"])
+    ...mapGetters("statisticalProgram", ["viewStatisticalPrograms"]),
   },
   created() {
     this.$store.dispatch("statisticalProgram/findAll");
     this.$store.dispatch("coreui/setContext", Context.Referential);
-  }
+  },
 };
 </script>

@@ -37,33 +37,33 @@ export default {
   props: {
     node: {
       type: Object,
-      required: true
+      required: true,
     },
     spacing: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
-      showChildren: false
+      showChildren: false,
     };
   },
   computed: {
     nodeMargin() {
       return {
-        "margin-left": `${this.spacing}px`
+        "margin-left": `${this.spacing}px`,
       };
     },
     hasChildren() {
       const { children } = this.node;
       return children && children.length > 0;
-    }
+    },
   },
   methods: {
     toggleChildren() {
       this.showChildren = !this.showChildren;
-    }
-  }
+    },
+  },
 };
 </script>

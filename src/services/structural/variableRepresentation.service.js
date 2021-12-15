@@ -3,7 +3,7 @@ import { axiosIais } from "@/http";
 
 export const variableRepresentationService = {
   findAll,
-  findById
+  findById,
   //save,
   //update,
   //delete: _delete
@@ -12,11 +12,11 @@ export const variableRepresentationService = {
 function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenVariables?language=en").then(
-      response => {
+      (response) => {
         console.log(response.data.variables);
         resolve(response.data.variables);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );
@@ -26,7 +26,7 @@ function findAll() {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenRepresentations/" + id).then(
-      response => {
+      (response) => {
         var data = response.data.representedVariable
           ? response.data.representedVariable
           : null;
@@ -35,7 +35,7 @@ function findById(id) {
         //console.log(response.data.variable);
         //resolve(response.data.variable);
       },
-      error => {
+      (error) => {
         reject(error);
       }
     );

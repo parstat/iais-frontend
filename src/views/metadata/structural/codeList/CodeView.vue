@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="code">
-      <div class=" p-3">
+      <div class="p-3">
         <h2 class="display-5">
           {{ code.name }}
           <span class="lead">( {{ code.version || code.localId }} )</span>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="card w-100">
-      <header class="card-header ">
+      <header class="card-header">
         <h5>Code Items</h5>
       </header>
       <div class="card-body">
@@ -32,7 +32,7 @@
                     tag="a"
                     :to="{
                       name: 'CodeItemsEdit',
-                      params: { id: code.id }
+                      params: { id: code.id },
                     }"
                   >
                     <edit-icon />
@@ -43,7 +43,7 @@
                     tag="a"
                     :to="{
                       name: 'CodeItemsDelete',
-                      params: { id: code.id }
+                      params: { id: code.id },
                     }"
                   >
                     <delete-icon />
@@ -56,7 +56,7 @@
                     tag="a"
                     :to="{
                       name: 'CodeItemsView',
-                      params: { id: code.id }
+                      params: { id: code.id },
                     }"
                   >
                     <view-icon />
@@ -89,23 +89,23 @@ export default {
   name: "CodeView",
   data() {
     return {
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("code", ["code"])
+    ...mapGetters("code", ["code"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/structural/code");
-    }
+    },
   },
   created() {
     this.$store.dispatch("code/findById", this.$route.params.id);
     //this.$store.dispatch("coreui/setContext", Context.Structural);
-  }
+  },
 };
 </script>

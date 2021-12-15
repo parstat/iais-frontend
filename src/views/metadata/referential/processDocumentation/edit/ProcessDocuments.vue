@@ -49,7 +49,7 @@
           color="primary"
           shape="square"
           size="sm"
-          style="margin-right:0.3rem"
+          style="margin-right: 0.3rem"
           @click="addProcessDocument"
         >
           Add
@@ -89,7 +89,7 @@
         color="primary"
         shape="square"
         size="sm"
-        style="margin-right:0.3rem"
+        style="margin-right: 0.3rem"
         @click="$emit('finish')"
       >
         Finish
@@ -109,19 +109,19 @@ export default {
       name: "",
       description: "",
       link: "",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
-    ...mapGetters("processDocumentation", ["processDocumentation"])
+    ...mapGetters("processDocumentation", ["processDocumentation"]),
   },
   validations: {
     name: {
-      required
+      required,
     },
     description: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     addProcessDocument() {
@@ -133,7 +133,7 @@ export default {
           name: this.name,
           description: this.description,
           link: this.link,
-          type: this.link ? "EXTERNAL_LINK" : "TEXT_PLAIN"
+          type: this.link ? "EXTERNAL_LINK" : "TEXT_PLAIN",
         };
         this.$store
           .dispatch("processDocumentation/addProcessDocument", formData)
@@ -148,15 +148,15 @@ export default {
     removeProcessDocument(selectedProcessDocument) {
       const formData = {
         documentation: this.processDocumentation.id,
-        document: selectedProcessDocument.id
+        document: selectedProcessDocument.id,
       };
       this.$store.dispatch(
         "processDocumentation/removeProcessDocument",
         formData
       );
-    }
+    },
   },
-  created() {}
+  created() {},
 };
 </script>
 

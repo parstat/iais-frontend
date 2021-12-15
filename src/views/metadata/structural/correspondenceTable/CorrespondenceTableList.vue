@@ -29,35 +29,35 @@
               sorter
               pagination
             >
-              <template #sourcename="{item}">
+              <template #sourcename="{ item }">
                 <td>
                   {{ item.source.name }}
                 </td>
               </template>
-              <template #sourceversion="{item}">
+              <template #sourceversion="{ item }">
                 <td>
                   {{ item.source.version }}
                 </td>
               </template>
-              <template #targetname="{item}">
+              <template #targetname="{ item }">
                 <td>
                   {{ item.target.name }}
                 </td>
               </template>
-              <template #targetversion="{item}">
+              <template #targetversion="{ item }">
                 <td>
                   {{ item.target.version }}
                 </td>
               </template>
-              <template #actions="{item}">
-                <td style="text-align:right; width:10%; padding-right:20px;">
+              <template #actions="{ item }">
+                <td style="text-align: right; width: 10%; padding-right: 20px">
                   <span class="pl-2" v-c-tooltip="'View'">
                     <router-link
                       tag="a"
                       title="View"
                       :to="{
                         name: 'CorrespondenceTableView',
-                        params: { id: item.id }
+                        params: { id: item.id },
                       }"
                     >
                       <view-icon />
@@ -73,7 +73,7 @@
                       title="Edit"
                       :to="{
                         name: 'CorrespondenceEdit',
-                        params: { id: item.id }
+                        params: { id: item.id },
                       }"
                     >
                       <edit-icon />
@@ -89,7 +89,7 @@
                       title="Delete"
                       :to="{
                         name: 'CorrespondenceDelete',
-                        params: { id: item.id }
+                        params: { id: item.id },
                       }"
                     >
                       <delete-icon />
@@ -116,42 +116,42 @@ export default {
       fields: [
         {
           key: "sourcename",
-          label: "Source Name"
+          label: "Source Name",
         },
         {
           key: "sourceversion",
-          label: "Source Version"
+          label: "Source Version",
         },
         {
           key: "targetname",
-          label: "Target Name"
+          label: "Target Name",
         },
         {
           key: "targetversion",
-          label: "Target Version"
+          label: "Target Version",
         },
         {
           key: "relationship",
-          label: "Relationship"
+          label: "Relationship",
         },
         {
           key: "actions",
           label: "",
           _style: "",
           sorter: false,
-          filter: false
-        }
-      ]
+          filter: false,
+        },
+      ],
     };
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("correspondence", ["correspondences"])
+    ...mapGetters("correspondence", ["correspondences"]),
   },
   created() {
     this.$store.dispatch("correspondence/findAll");
     this.$store.dispatch("coreui/setContext", Context.Structural);
-  }
+  },
 };
 </script>
