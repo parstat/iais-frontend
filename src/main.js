@@ -1,15 +1,14 @@
 import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
+import App from "@/App.vue";
+import router from "@/router";
+import store from "@/store";
 import CoreuiVue from "@coreui/vue";
+import CIcon from '@coreui/icons-vue';
 import { iconsSet as icons } from "@/assets/icons/icons.js";
 import { materialIconsSet as materialIcons } from "@/assets/icons/materialIcons.js";
 import Vuelidate from "vuelidate";
 import vSelect from "vue3-select";
 import VueSpinners from "vue-spinners";
-
-import "@/assets/icons/materialIcons";
 
 const app = createApp(App);
 app.config.productionTip = false;
@@ -19,6 +18,7 @@ app.use(Vuelidate);
 app.use(VueSpinners);
 app.use(store);
 app.use(router);
+app.component('CIcon', CIcon);
 app.provide("icons", icons);
 app.provide("iconsMaterial", materialIcons);
 app.component("v-select", vSelect);

@@ -19,20 +19,20 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Sidebar from "@/components/Sidebar";
-import Toast from "@/components/Toast";
+import AppHeader from "@/components/Header";
+import AppFooter from "@/components/Footer";
+import AppSidebar from "@/components/Sidebar";
+import AppToast from "@/components/Toast";
 
 import { Context } from "@/common";
 
 export default {
-  name: "App",
+  name: "app",
   components: {
-    "app-header": Header,
-    "app-footer": Footer,
-    "app-sidebar": Sidebar,
-    "app-toast": Toast,
+    "app-header": AppHeader,
+    "app-footer": AppFooter,
+    "app-sidebar": AppSidebar,
+    "app-toast": AppToast,
   },
   created() {
     this.$store.dispatch("coreui/setContext", Context.Home);

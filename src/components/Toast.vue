@@ -14,7 +14,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "ToastPart",
+  name: "AppToast",
   computed: {
     ...mapGetters("message", ["message", "type"]),
     getMessage() {

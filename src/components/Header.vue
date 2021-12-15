@@ -55,7 +55,7 @@ import BreadCrumb from "./BreadCrumb";
 import HeaderNav from "./HeaderNav";
 
 export default {
-  name: "HeaderPart",
+  name: "AppHeader",
   computed: {
     ...mapGetters("auth", ["isAuthenticated"]),
   },

@@ -64,7 +64,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "SidebarPart",
+  name: "AppSidebar",
   computed: {
     ...mapGetters("coreui", {
       show: "sidebarShow",
