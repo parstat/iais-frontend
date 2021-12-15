@@ -1,24 +1,23 @@
 <template>
   <div class="c-app">
     <app-sidebar></app-sidebar>
-    <CWrapper>
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
       <app-toast></app-toast>
       <app-header />
       <div class="c-body">
         <main class="c-main">
           <CContainer fluid>
-            <transition name="fade" mode="out-in">
               <router-view></router-view>
-            </transition>
           </CContainer>
         </main>
         <app-footer />
       </div>
-    </CWrapper>
+    </div>
   </div>
 </template>
 
 <script>
+import { CContainer } from '@coreui/vue';
 import AppHeader from "@/components/Header";
 import AppFooter from "@/components/Footer";
 import AppSidebar from "@/components/Sidebar";
@@ -33,6 +32,7 @@ export default {
     "app-footer": AppFooter,
     "app-sidebar": AppSidebar,
     "app-toast": AppToast,
+    CContainer
   },
   created() {
     this.$store.dispatch("coreui/setContext", Context.Home);

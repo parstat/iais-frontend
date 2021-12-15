@@ -11,7 +11,6 @@
       <CIcon name="cil-terminal" size="lg"></CIcon
       ><span class="brand"> IAIS Meta </span>
     </CSidebarBrand>
-
     <ul class="c-sidebar-nav h-100 ps" style="position: relative">
       <li class="c-sidebar-nav-item">
         <router-link

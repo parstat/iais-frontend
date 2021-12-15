@@ -6,13 +6,12 @@
       placement="bottom-end"
       add-menu-classes="pt-0"
     >
-      <template #toggler>
-        <CHeaderNavLink>
+     <CDropdownToggle placement="bottom-end" class="py-0" :caret="false">
           <div class="c-avatar">
             <img src="/img/avatars/user.png" class="c-avatar-img" />
           </div>
-        </CHeaderNavLink>
-      </template>
+     </CDropdownToggle>
+      <CDropdownMenu class="pt-0">
       <CDropdownHeader tag="div" class="text-center" color="light">
         <strong>Settings</strong>
       </CDropdownHeader>
@@ -22,15 +21,16 @@
       <CDropdownItem @click="logout">
         <CIcon name="cil-lock-locked" />Logout
       </CDropdownItem>
+      </CDropdownMenu>
     </CDropdown>
   </div>
   <div v-else>
-    <CHeaderNavLink>
+    <CHeaderNav>
       <router-link tag="a" to="/login">
         <CIcon name="cilUser"></CIcon>
         <span>Login</span>
       </router-link>
-    </CHeaderNavLink>
+    </CHeaderNav>
   </div>
 </template>
 

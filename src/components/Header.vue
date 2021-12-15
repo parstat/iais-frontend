@@ -1,11 +1,12 @@
 <template>
   <CHeader fixed with-subheader light>
-    <CToggler
+    <CContainer fluid>
+    <CHeaderToggler
       in-header
       class="ml-3 d-lg-none"
       @click="$store.dispatch('coreui/toggleSidebarMobile')"
     />
-    <CToggler
+    <CHeaderToggler
       in-header
       class="ml-3 d-md-down-none"
       @click="$store.dispatch('coreui/toggleSidebarDesktop')"
@@ -39,17 +40,18 @@
     <CHeaderNav class="mr-4">
       <app-header-dropdown-account />
     </CHeaderNav>
-    <CSubheader class="justify-content-between px-3">
+    </CContainer>
+    <CHeaderDivider />
+    <CContainer fluid>
       <!--CBreadcrumbRouter class="border-0 mb-0" /-->
       <app-header-breadcrumb></app-header-breadcrumb>
       <app-header-nav></app-header-nav>
-    </CSubheader>
+    </CContainer>
   </CHeader>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-
 import HeaderDropdownAccnt from "./HeaderDropdownAccnt";
 import BreadCrumb from "./BreadCrumb";
 import HeaderNav from "./HeaderNav";
@@ -62,7 +64,7 @@ export default {
   components: {
     "app-header-dropdown-account": HeaderDropdownAccnt,
     "app-header-breadcrumb": BreadCrumb,
-    "app-header-nav": HeaderNav,
+    "app-header-nav": HeaderNav
   },
 };
 </script>
