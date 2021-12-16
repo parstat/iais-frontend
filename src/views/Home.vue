@@ -7,7 +7,7 @@
       <div class="c-body">
         <main class="c-main">
           <CContainer fluid>
-              <router-view></router-view>
+            <router-view></router-view>
           </CContainer>
         </main>
         <app-footer />
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { CContainer } from '@coreui/vue';
+import { CContainer } from "@coreui/vue";
 import AppHeader from "@/components/Header";
 import AppFooter from "@/components/Footer";
 import AppSidebar from "@/components/Sidebar";
@@ -32,7 +32,7 @@ export default {
     "app-footer": AppFooter,
     "app-sidebar": AppSidebar,
     "app-toast": AppToast,
-    CContainer
+    CContainer,
   },
   created() {
     this.$store.dispatch("coreui/setContext", Context.Home);

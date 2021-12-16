@@ -1,5 +1,5 @@
-import { defineComponent, h, onMounted, ref, resolveComponent } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { defineComponent, h, onMounted, ref, resolveComponent } from "vue";
+import { RouterLink, useRoute } from "vue-router";
 
 import {
   CBadge,
@@ -7,55 +7,55 @@ import {
   CNavItem,
   CNavGroup,
   CNavTitle,
-} from '@coreui/vue'
-import nav from '@/_nav.js'
+} from "@coreui/vue";
+import nav from "@/_nav.js";
 
 const normalizePath = (path) =>
   decodeURI(path)
-    .replace(/#.*$/, '')
-    .replace(/(index)?\.(html)$/, '')
+    .replace(/#.*$/, "")
+    .replace(/(index)?\.(html)$/, "");
 
 const isActiveLink = (route, link) => {
   if (link === undefined) {
-    return false
+    return false;
   }
 
   if (route.hash === link) {
-    return true
+    return true;
   }
 
-  const currentPath = normalizePath(route.path)
-  const targetPath = normalizePath(link)
+  const currentPath = normalizePath(route.path);
+  const targetPath = normalizePath(link);
 
-  return currentPath === targetPath
-}
+  return currentPath === targetPath;
+};
 
 const isActiveItem = (route, item) => {
   if (isActiveLink(route, item.to)) {
-    return true
+    return true;
   }
 
   if (item.items) {
-    return item.items.some((child) => isActiveItem(route, child))
+    return item.items.some((child) => isActiveItem(route, child));
   }
 
-  return false
-}
+  return false;
+};
 
 const AppSidebarNav = defineComponent({
-  name: 'AppSidebarNav',
+  name: "AppSidebarNav",
   components: {
     CNavItem,
     CNavGroup,
     CNavTitle,
   },
   setup() {
-    const route = useRoute()
-    const firstRender = ref(true)
+    const route = useRoute();
+    const firstRender = ref(true);
 
     onMounted(() => {
-      firstRender.value = false
-    })
+      firstRender.value = false;
+    });
 
     const renderItem = (item) => {
       if (item.items) {
@@ -68,15 +68,15 @@ const AppSidebarNav = defineComponent({
           },
           {
             togglerContent: () => [
-              h(resolveComponent('CIcon'), {
-                customClassName: 'nav-icon',
+              h(resolveComponent("CIcon"), {
+                customClassName: "nav-icon",
                 name: item.icon,
               }),
               item.name,
             ],
             default: () => item.items.map((child) => renderItem(child)),
-          },
-        )
+          }
+        );
       }
 
       return item.to
@@ -98,8 +98,8 @@ const AppSidebarNav = defineComponent({
                   {
                     default: () => [
                       item.icon &&
-                        h(resolveComponent('CIcon'), {
-                          customClassName: 'nav-icon',
+                        h(resolveComponent("CIcon"), {
+                          customClassName: "nav-icon",
                           name: item.icon,
                         }),
                       item.name,
@@ -107,26 +107,26 @@ const AppSidebarNav = defineComponent({
                         h(
                           CBadge,
                           {
-                            class: 'ms-auto',
+                            class: "ms-auto",
                             color: item.badge.color,
                           },
                           {
                             default: () => item.badge.text,
-                          },
+                          }
                         ),
                     ],
-                  },
+                  }
                 ),
-            },
+            }
           )
         : h(
             resolveComponent(item.component),
             {},
             {
               default: () => item.name,
-            },
-          )
-    }
+            }
+          );
+    };
 
     return () =>
       h(
@@ -134,8 +134,8 @@ const AppSidebarNav = defineComponent({
         {},
         {
           default: () => nav.map((item) => renderItem(item)),
-        },
-      )
+        }
+      );
   },
-})
-export { AppSidebarNav }
+});
+export { AppSidebarNav };

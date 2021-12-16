@@ -1,21 +1,17 @@
 <template>
   <CHeader fixed with-subheader light>
     <CContainer fluid>
-    <CHeaderToggler
-      in-header
-      class="ml-3 d-lg-none"
-      @click="$store.dispatch('coreui/toggleSidebarMobile')"
-    />
-    <CHeaderToggler
-      in-header
-      class="ml-3 d-md-down-none"
-      @click="$store.dispatch('coreui/toggleSidebarDesktop')"
-    />
-    <CHeaderBrand class="mx-auto d-lg-none" to="/">
-      <img src="/img/logo.png" height="40" />
-    </CHeaderBrand>
-    <CHeaderNav class="d-md-down-none mr-auto">
-      <!--CDropdown
+      <CHeaderToggler
+        class="ps-1"
+        @click="$store.dispatch('coreui/toggleSidebar')"
+      >
+        <CIcon icon="cil-menu" size="lg" />
+      </CHeaderToggler>
+      <CHeaderBrand class="mx-auto" to="/">
+        <img src="/img/logo.png" height="40" />
+      </CHeaderBrand>
+      <CHeaderNav class="d-md-down-none mr-auto">
+        <!--CDropdown
         inNav
         class="c-header-nav-items"
         placement="bottom"
@@ -36,10 +32,10 @@
           <CIcon name="cil-terminal" />Methodology
         </CDropdownItem>
       </CDropdown-->
-    </CHeaderNav>
-    <CHeaderNav class="mr-4">
-      <app-header-dropdown-account />
-    </CHeaderNav>
+      </CHeaderNav>
+      <CHeaderNav class="mr-4">
+        <app-header-dropdown-account />
+      </CHeaderNav>
     </CContainer>
     <CHeaderDivider />
     <CContainer fluid>
@@ -64,7 +60,7 @@ export default {
   components: {
     "app-header-dropdown-account": HeaderDropdownAccnt,
     "app-header-breadcrumb": BreadCrumb,
-    "app-header-nav": HeaderNav
+    "app-header-nav": HeaderNav,
   },
 };
 </script>

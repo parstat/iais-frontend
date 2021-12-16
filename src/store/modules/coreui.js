@@ -1,8 +1,8 @@
 import { Context } from "@/common";
 
 const state = {
-  sidebarShow: "responsive",
-  sidebarMinimize: false,
+  sidebarVisible: true,
+  sidebarUnfoldable: false,
   context: "",
   isLoading: false,
   isReferential: false,
@@ -18,14 +18,16 @@ const state = {
 };
 
 const mutations = {
-  TOGGLE_SIDEBAR_DESKTOP(state) {
-    const sidebarOpened = [true, "responsive"].includes(state.sidebarShow);
-    state.sidebarShow = sidebarOpened ? false : "responsive";
+  TOGGLE_SIDEBAR(state) {
+    state.sidebarVisible = !state.sidebarVisible;
   },
-  TOGGLE_SIDEBAR_MOBILE(state) {
-    const sidebarClosed = [false, "responsive"].includes(state.sidebarShow);
-    state.sidebarShow = sidebarClosed ? true : "responsive";
+  TOGGLE_UNFOLDABLE(state) {
+    state.sidebarUnfoldable = !state.sidebarUnfoldable;
   },
+  UPDATE_SIDEBAR_VISIBLE(state, payload) {
+    state.sidebarVisible = payload.value;
+  },
+
   SET_LOADING(state, isLoading) {
     state.isLoading = isLoading;
   },
@@ -64,14 +66,14 @@ const mutations = {
 };
 
 const actions = {
-  toggleSidebarDesktop({ commit }) {
-    commit("TOGGLE_SIDEBAR_DESKTOP");
+  toggleSidebar({ commit }) {
+    commit("TOGGLE_SIDEBAR");
   },
-  toggleSidebarMobile({ commit }) {
-    commit("TOGGLE_SIDEBAR_MOBILE");
+  toggleUnfoldable({ commit }) {
+    commit("TOGGLE_UNFOLDABLE");
   },
-  loading({ commit }, isLoading) {
-    commit("SET_CONTEXT", isLoading);
+  updateSidebarVisible({ commit }, payload) {
+    commit("UPDATE_SIDEBAR_VISIBLE", payload);
   },
   setContext({ commit }, context) {
     commit("CLEAR_CONTEXT");
@@ -108,8 +110,11 @@ const actions = {
 };
 
 const getters = {
-  sidebarShow: (state) => {
-    return state.sidebarShow;
+  sidebarVisible: (state) => {
+    return state.sidebarVisible;
+  },
+  sidebarUnfoldable: (state) => {
+    return state.sidebarUnfoldable;
   },
   sidebarMinimize: (state) => {
     return state.sidebarMinimize;
