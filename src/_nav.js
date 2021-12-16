@@ -1,35 +1,35 @@
 export default [
   {
-    component: 'CNavItem',
-    name: 'Home',
-    to: '/',
-    icon: 'cil-speedometer',
+    component: "CNavItem",
+    name: "Home",
+    to: "/",
+    icon: "cil-speedometer",
     badge: {
-      color: 'primary',
-      text: 'NEW',
+      color: "primary",
+      text: "NEW",
     },
   },
   {
-    component: 'CNavGroup',
-    name: 'Metadata',
-    to: '/metadata',
-    icon: 'cil-puzzle',
+    component: "CNavGroup",
+    name: "Metadata",
+    to: "/metadata",
+    icon: "cil-puzzle",
     items: [
       {
-        component: 'CNavItem',
-        name: 'Referential',
-        to: '/metadata/referential',
+        component: "CNavItem",
+        name: "Referential",
+        to: "/metadata/referential",
       },
       {
-        component: 'CNavItem',
-        name: 'Structural',
-        to: '/metadata/structural',
+        component: "CNavItem",
+        name: "Structural",
+        to: "/metadata/structural",
       },
       {
-        component: 'CNavItem',
-        name: 'Process',
-        to: '/metadata/process',
-      }
+        component: "CNavItem",
+        name: "Process",
+        to: "/metadata/process",
+      },
     ],
   },
 
@@ -49,4 +49,4 @@ export default [
   //   _class: 'bg-danger text-white',
   //   target: '_blank'
   // }
-]
+];

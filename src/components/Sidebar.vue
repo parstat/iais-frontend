@@ -16,8 +16,8 @@
       ><span class="brand"> IAIS Meta </span>
     </CSidebarBrand>
 
-     <AppSidebarNav />
-      <CSidebarToggler
+    <AppSidebarNav />
+    <CSidebarToggler
       class="d-none d-lg-flex"
       @click="$store.dispatch('coreui/toggleUnfoldable')"
     />
@@ -26,7 +26,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { AppSidebarNav } from './SidebarNav'
+import { AppSidebarNav } from "./SidebarNav";
 
 export default {
   name: "AppSidebar",
