@@ -24,8 +24,8 @@ const mutations = {
   TOGGLE_UNFOLDABLE(state) {
     state.sidebarUnfoldable = !state.sidebarUnfoldable;
   },
-  UPDATE_SIDEBAR_VISIBLE(state, payload) {
-    state.sidebarVisible = payload.value;
+  UPDATE_SIDEBAR_VISIBLE(state, isVisible) {
+    state.sidebarVisible = isVisible;
   },
 
   SET_LOADING(state, isLoading) {
@@ -73,7 +73,10 @@ const actions = {
     commit("TOGGLE_UNFOLDABLE");
   },
   updateSidebarVisible({ commit }, payload) {
-    commit("UPDATE_SIDEBAR_VISIBLE", payload);
+    commit("UPDATE_SIDEBAR_VISIBLE", payload.value);
+  },
+  loading({ commit }, payload) {
+    commit("SET_LOADING", payload.value);
   },
   setContext({ commit }, context) {
     commit("CLEAR_CONTEXT");

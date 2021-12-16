@@ -27,7 +27,10 @@ axiosAuth.interceptors.request.use(
 //request interceptor
 axiosIais.interceptors.request.use(
   (config) => {
-    store.dispatch("coreui/loading", true);
+    store.dispatch({
+      type: "coreui/loading",
+      value: true,
+    });
     const token = store.getters["auth/token"];
     if (token && !("jwt-auth" in config.headers)) {
       config.headers["jwt-auth"] = token;
@@ -42,11 +45,17 @@ axiosIais.interceptors.request.use(
 //response interceptor
 axiosIais.interceptors.response.use(
   (response) => {
-    store.dispatch("coreui/loading", false);
+    store.dispatch({
+      type: "coreui/loading",
+      value: false,
+    });
     return response;
   },
   (error) => {
-    store.dispatch("coreui/loading", false);
+    store.dispatch({
+      type: "coreui/loading",
+      value: false,
+    });
     console.log("Error status", error.response.status);
     var err = {
       code: error.response.status,

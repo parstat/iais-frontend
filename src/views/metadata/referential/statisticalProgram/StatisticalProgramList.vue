@@ -11,12 +11,12 @@
               to="/metadata/referential/add"
               class="card-header-action"
             >
-              <add-icon /> Add
+              <CIcon name="cil-add" /> Add
             </router-link>
           </div>
         </header>
         <div class="card-body">
-          <CDataTable
+          <CSmartTable
             :items="viewStatisticalPrograms"
             :fields="fields"
             column-filter
@@ -36,7 +36,7 @@
                     params: { id: item.id },
                   }"
                 >
-                  <edit-icon />
+                  <CIcon name="cil-edit" />
                 </router-link>
               </td>
               <td style="padding: 0.75rem 0.4rem">
@@ -47,7 +47,7 @@
                     params: { id: item.id },
                   }"
                 >
-                  <view-icon />
+                  <CIcon name="cil-view" />
                 </router-link>
               </td>
               <td
@@ -61,11 +61,11 @@
                     params: { id: item.id },
                   }"
                 >
-                  <delete-icon />
+                  <CIcon name="cil-delete" />
                 </router-link>
               </td>
             </template>
-          </CDataTable>
+          </CSmartTable>
         </div>
       </div>
     </div>
