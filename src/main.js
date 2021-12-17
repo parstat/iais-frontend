@@ -13,6 +13,7 @@ import BootstrapVue3 from "bootstrap-vue-3";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
+import "vue-good-table-next/dist/vue-good-table-next.css";
 
 const app = createApp(App);
 app.config.productionTip = false;

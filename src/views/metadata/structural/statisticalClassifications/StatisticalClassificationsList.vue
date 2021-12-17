@@ -11,24 +11,72 @@
               to="/metadata/structural/statisticalClassifications/add"
               class="card-header-action"
             >
-              <add-icon />
+              <CIcon name="cil-plus" />
               <span class="icon-span">New Statistical Classifications</span>
             </router-link>
           </div>
         </header>
         <div class="card-body">
           <div class="table-responsive">
-            <CDataTable
-              :items="statisticalClassifications"
-              :fields="fields"
-              column-filter
-              table-filter
-              items-per-page-select
-              :items-per-page="5"
-              hover
-              sorter
-              pagination
+            <VueGoodTable
+              :rows="statisticalClassifications"
+              :columns="fields"
+              :search-options="{
+                enabled: true,
+              }"
+              :pagination-options="{
+                enabled: true,
+              }"
             >
+              <template #table-row="props">
+                <span v-if="props.column.field == 'actions'">
+                  <span class="pl-2" v-c-tooltip="'View'">
+                    <router-link
+                      tag="a"
+                      title="View"
+                      :to="{
+                        name: 'StatisticalClassificationView',
+                        params: { id: props.row.id },
+                      }"
+                    >
+                      <CIcon name="cil-magnifying-glass" />
+                    </router-link>
+                  </span>
+                  <span
+                    v-if="isAuthenticated"
+                    class="pl-2"
+                    v-c-tooltip="'Edit'"
+                  >
+                    <router-link
+                      tag="a"
+                      title="Edit"
+                      :to="{
+                        name: 'StatisticalClassificationEdit',
+                        params: { id: props.row.id },
+                      }"
+                    >
+                      <CIcon name="cil-pencil" />
+                    </router-link>
+                  </span>
+
+                  <span
+                    v-if="isAuthenticated && isAdmin"
+                    class="pl-2"
+                    v-c-tooltip="'Delete'"
+                  >
+                    <router-link
+                      tag="a"
+                      title="Delete"
+                      :to="{
+                        name: 'StatisticalClassificationDelete',
+                        params: { id: props.row.id },
+                      }"
+                    >
+                      <CIcon name="cil-trash" />
+                    </router-link>
+                  </span>
+                </span>
+              </template>
               <template #actions="{ item }">
                 <td style="text-align: right; width: 10%; padding-right: 20px">
                   <span class="pl-2" v-c-tooltip="'View'">
@@ -40,7 +88,7 @@
                         params: { id: item.id },
                       }"
                     >
-                      <view-icon />
+                      <CIcon name="cil-magnifying-glass" />
                     </router-link>
                   </span>
                   <span
@@ -56,7 +104,7 @@
                         params: { id: item.id },
                       }"
                     >
-                      <edit-icon />
+                      <CIcon name="cil-pencil" />
                     </router-link>
                   </span>
 
@@ -73,12 +121,12 @@
                         params: { id: item.id },
                       }"
                     >
-                      <delete-icon />
+                      <CIcon name="cil-trash" />
                     </router-link>
                   </span>
                 </td>
               </template>
-            </CDataTable>
+            </VueGoodTable>
           </div>
         </div>
       </div>
@@ -88,6 +136,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { Context } from "@/common";
+import { VueGoodTable } from "vue-good-table-next";
 
 export default {
   name: "StatisticalClassificationsList",
@@ -95,28 +144,30 @@ export default {
     return {
       fields: [
         {
-          key: "localId",
+          field: "localId",
           label: "Id",
         },
         {
-          key: "name",
+          field: "name",
           label: "Name",
         },
         {
-          key: "version",
+          field: "version",
+          label: "Version",
         },
         {
-          key: "versionDate",
+          field: "versionDate",
+          label: "Version Date",
         },
         {
-          key: "actions",
-          label: "",
-          _style: "",
-          sorter: false,
-          filter: false,
+          field: "actions",
+          label: "Actions",
         },
       ],
     };
+  },
+  components: {
+    VueGoodTable,
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
