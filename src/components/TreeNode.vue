@@ -16,8 +16,8 @@
         @click="toggleChildren"
         @keypress="toggleChildren"
       >
-        <minus-icon v-if="showChildren" />
-        <add-icon v-else />
+        <CIcon name="cil-minus" v-if="showChildren" />
+        <CIcon name="cil-plus" v-else />
       </span>
     </b-alert>
     <div v-if="hasChildren" v-show="showChildren">

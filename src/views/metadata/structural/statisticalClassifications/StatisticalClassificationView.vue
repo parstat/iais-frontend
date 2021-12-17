@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div class="card w-100">
+    <div class="card w-100" v-if="statisticalClassification">
       <header class="card-header">
         <h5>Levels</h5>
       </header>
@@ -50,7 +50,7 @@
       </div>
     </div>
     <!-- statisticalClassificationItems -->
-    <div class="card w-100">
+    <div class="card w-100" v-if="statisticalClassification">
       <header class="card-header">
         <h5>Statistical Classification Items</h5>
       </header>

@@ -9,6 +9,10 @@ import { materialIconsSet as materialIcons } from "@/assets/icons/materialIcons.
 import Vuelidate from "vuelidate";
 import vSelect from "vue3-select";
 import VueSpinners from "vue-spinners";
+import BootstrapVue3 from "bootstrap-vue-3";
+
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 
 const app = createApp(App);
 app.config.productionTip = false;
@@ -18,6 +22,7 @@ app.use(Vuelidate);
 app.use(VueSpinners);
 app.use(store);
 app.use(router);
+app.use(BootstrapVue3);
 app.component("CIcon", CIcon);
 app.provide("icons", icons);
 app.provide("iconsMaterial", materialIcons);
