@@ -1,17 +1,15 @@
 <template>
-  <div class="c-app">
-    <app-sidebar></app-sidebar>
+  <div>
+    <app-sidebar />
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-      <app-toast></app-toast>
+      <app-toast />
       <app-header />
-      <div class="c-body">
-        <main class="c-main">
-          <CContainer fluid>
-            <router-view></router-view>
-          </CContainer>
-        </main>
-        <app-footer />
+      <div class="body flex-grow-1 px-3">
+        <CContainer lg>
+          <router-view></router-view>
+        </CContainer>
       </div>
+      <app-footer />
     </div>
   </div>
 </template>
@@ -39,18 +37,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-// Import Main styles for this application
-@import "../assets/scss/style";
-
-//Transition
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

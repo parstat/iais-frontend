@@ -45,9 +45,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.brand {
-  font-size: 1.2em;
-  padding-left: 1rem;
-}
-</style>

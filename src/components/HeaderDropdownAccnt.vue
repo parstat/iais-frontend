@@ -49,11 +49,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.c-icon {
-  margin-right: 0.3rem;
-}
-a {
-  color: #4f5d73;
-}
-</style>

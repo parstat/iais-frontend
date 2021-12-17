@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="message">
     <CToaster :autohide="3000" position="top-center">
       <template v-if="message">
         <CToast :key="message" :show="true" :class="type">

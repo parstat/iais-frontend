@@ -5,7 +5,7 @@
       to="/metadata/referential/gsim"
       class="c-subheader-nav-link"
     >
-      <gsim-icon />
+      <CIcon name="cil-puzzle" />
       <span class="header-link icon-span">Gsim concepts</span>
     </router-link>
   </div>

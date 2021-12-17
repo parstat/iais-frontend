@@ -1,5 +1,5 @@
 <template>
-  <CHeader fixed with-subheader light>
+  <CHeader position="sticky" class="mb-4">
     <CContainer fluid>
       <CHeaderToggler
         class="ps-1"
@@ -7,10 +7,10 @@
       >
         <CIcon icon="cil-menu" size="lg" />
       </CHeaderToggler>
-      <CHeaderBrand class="mx-auto" to="/">
+      <CHeaderBrand class="mx-auto d-lg-none" to="/">
         <img src="/img/logo.png" height="40" />
       </CHeaderBrand>
-      <CHeaderNav class="d-md-down-none mr-auto">
+      <CHeaderNav class="d-none d-md-flex me-auto">
         <!--CDropdown
         inNav
         class="c-header-nav-items"
@@ -64,12 +64,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.c-header-nav {
-  padding-left: 0.5rem;
-}
-.c-icon {
-  margin-right: 0.4rem;
-}
-</style>
