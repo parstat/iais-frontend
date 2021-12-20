@@ -2,9 +2,8 @@
   <div class="row">
     <div class="col-12">
       <CCard>
-        <CCardHeader component="h5">
+        <CCardHeader>
           <CNav variant="pills" class="card-header-pills">
-            <CNavItem> Statistical processes </CNavItem>
             <CNavItem>
               <span style="padding: 0.75rem 0.4rem">
                 <router-link
@@ -19,7 +18,8 @@
             </CNavItem>
           </CNav>
         </CCardHeader>
-        <div class="card-body">
+        <CCardTitle> Statistical processes </CCardTitle>
+        <CCardBody>
           <CSmartTable
             :items="viewStatisticalPrograms"
             :columns="columns"
@@ -32,8 +32,8 @@
             pagination
           >
             <template #actions="{ item }">
-              <td style="padding: 0.75rem 0.4rem" v-if="isAuthenticated">
-                <span>
+              <td>
+                <span v-if="isAuthenticated">
                   <router-link
                     tag="a"
                     :to="{
@@ -44,7 +44,7 @@
                     <CIcon name="cil-pencil" />
                   </router-link>
                 </span>
-                <span style="padding: 0.75rem 0.4rem">
+                <span>
                   <router-link
                     tag="a"
                     :to="{
@@ -55,10 +55,7 @@
                     <CIcon name="cil-magnifying-glass" />
                   </router-link>
                 </span>
-                <span
-                  v-if="isAuthenticated && isAdmin"
-                  style="padding: 0.75rem 0.4rem"
-                >
+                <span v-if="isAuthenticated && isAdmin">
                   <router-link
                     tag="a"
                     :to="{
@@ -72,7 +69,7 @@
               </td>
             </template>
           </CSmartTable>
-        </div>
+        </CCardBody>
       </CCard>
     </div>
   </div>

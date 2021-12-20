@@ -1,12 +1,10 @@
 <template>
-  <div class="card w-100" v-if="processMethods">
-    <div class="card-header">
-      <h5>Process Methods</h5>
-    </div>
-    <div class="card-body">
-      <div class="card-columns">
-        <div
-          class="card card-border bg-lighter mb-3"
+  <CCard v-if="processMethods.length">
+    <CCardHeader component="h5"> Process Methods </CCardHeader>
+    <CCardBody>
+      <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
+        <CCol
+          xs
           v-for="processMethod of processMethods"
           :key="processMethod.id"
         >
@@ -27,10 +25,10 @@
           <div class="card-body">
             <p class="card-text">{{ processMethod.description }}</p>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCol>
+      </CRow>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 export default {

@@ -19,23 +19,33 @@
         <p class="lead">{{ statisticalProgram.description }}</p>
       </div>
     </div>
-    <app-agents
-      :owner="statisticalProgram.owner"
-      :maintainer="statisticalProgram.maintainer"
-      :contact="statisticalProgram.contact"
-    ></app-agents>
-    <app-references
-      v-if="statisticalProgram.legislativeReferences"
-      :legislativeReferences="statisticalProgram.legislativeReferences"
-    ></app-references>
-    <app-standards
-      v-if="statisticalProgram.statisticalStandards"
-      :statisticalStandards="statisticalProgram.statisticalStandards"
-    ></app-standards>
-    <app-documentations
-      :processDocumentations="statisticalProgram.processDocumentations"
-      @back="handleBack"
-    ></app-documentations>
+    <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 1 }">
+      <CCol xs>
+        <app-agents
+          :owner="statisticalProgram.owner"
+          :maintainer="statisticalProgram.maintainer"
+          :contact="statisticalProgram.contact"
+        ></app-agents>
+      </CCol>
+      <CCol xs>
+        <app-references
+          v-if="statisticalProgram.legislativeReferences"
+          :legislativeReferences="statisticalProgram.legislativeReferences"
+        ></app-references>
+      </CCol>
+      <CCol xs>
+        <app-standards
+          v-if="statisticalProgram.statisticalStandards"
+          :statisticalStandards="statisticalProgram.statisticalStandards"
+        ></app-standards>
+      </CCol>
+      <CCol xs>
+        <app-documentations
+          :processDocumentations="statisticalProgram.processDocumentations"
+          @back="handleBack"
+        ></app-documentations>
+      </CCol>
+    </CRow>
   </div>
 </template>
 <script>

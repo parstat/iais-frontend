@@ -1,14 +1,14 @@
 <template>
-  <div class="row" v-if="statisticalStandard">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>{{ statisticalStandard.name }}</strong>
-        </header>
-        <div class="card-body">
-          <div class="card-text">
+  <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
+    <CCol xs>
+      <CCard>
+        <CCardHeader component="h5">
+          {{ statisticalStandard.name }}
+        </CCardHeader>
+        <CCardBody>
+          <CCardText>
             <span><strong>Descripton: </strong></span>
-          </div>
+          </CCardText>
           <div class="card-slot">
             <span>{{ statisticalStandard.description }}</span>
           </div>
@@ -32,8 +32,8 @@
           <div class="card-slot">
             <span>{{ statisticalStandard.localId }}</span>
           </div>
-        </div>
-        <div class="card-footer">
+        </CCardBody>
+        <CCardFooter>
           <CButton
             color="primary"
             shape="square"
@@ -42,10 +42,10 @@
             :disabled="disabled"
             >Back</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardFooter>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
