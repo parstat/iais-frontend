@@ -13,7 +13,7 @@
               params: { id: statisticalProgram.id },
             }"
           >
-            <edit-icon />
+            <CIcon name="cil-pencil" />
           </router-link>
         </h2>
         <p class="lead">{{ statisticalProgram.description }}</p>
@@ -24,10 +24,10 @@
       :maintainer="statisticalProgram.maintainer"
       :contact="statisticalProgram.contact"
     ></app-agents>
-    <app-references
+    <app-references v-if="statisticalProgram.legislativeReferences"
       :legislativeReferences="statisticalProgram.legislativeReferences"
     ></app-references>
-    <app-standards
+    <app-standards v-if="statisticalProgram.statisticalStandards"
       :statisticalStandards="statisticalProgram.statisticalStandards"
     ></app-standards>
     <app-documentations

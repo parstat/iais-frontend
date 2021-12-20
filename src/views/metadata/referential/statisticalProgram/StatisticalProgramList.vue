@@ -1,24 +1,28 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <div class="card">
-        <header class="card-header">
-          <strong>Statistical processes</strong>
-          <div class="card-header-actions">
-            <router-link
-              v-if="isAuthenticated"
-              tag="a"
-              to="/metadata/referential/add"
-              class="card-header-action"
-            >
-              <CIcon name="cil-add" /> Add
-            </router-link>
-          </div>
-        </header>
+      <CCard>
+        <CCardHeader component="h5">
+          <CNav variant="pills" class="card-header-pills">
+            <CNavItem> Statistical processes </CNavItem>
+            <CNavItem>
+              <span style="padding: 0.75rem 0.4rem">
+                <router-link
+                  v-if="isAuthenticated"
+                  tag="a"
+                  to="/metadata/referential/add"
+                >
+                  <CIcon name="cil-plus" />
+                  Add
+                </router-link>
+              </span>
+            </CNavItem>
+          </CNav>
+        </CCardHeader>
         <div class="card-body">
           <CSmartTable
             :items="viewStatisticalPrograms"
-            :fields="fields"
+            :columns="columns"
             column-filter
             table-filter
             items-per-page-select
@@ -28,46 +32,48 @@
             pagination
           >
             <template #actions="{ item }">
-              <td v-if="isAuthenticated" style="padding: 0.75rem 0.4rem">
-                <router-link
-                  tag="a"
-                  :to="{
-                    name: 'StatisticalProgramEdit',
-                    params: { id: item.id },
-                  }"
+              <td style="padding: 0.75rem 0.4rem" v-if="isAuthenticated">
+                <span>
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'StatisticalProgramEdit',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-pencil" />
+                  </router-link>
+                </span>
+                <span style="padding: 0.75rem 0.4rem">
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'StatisticalProgramView',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-magnifying-glass" />
+                  </router-link>
+                </span>
+                <span
+                  v-if="isAuthenticated && isAdmin"
+                  style="padding: 0.75rem 0.4rem"
                 >
-                  <CIcon name="cil-edit" />
-                </router-link>
-              </td>
-              <td style="padding: 0.75rem 0.4rem">
-                <router-link
-                  tag="a"
-                  :to="{
-                    name: 'StatisticalProgramView',
-                    params: { id: item.id },
-                  }"
-                >
-                  <CIcon name="cil-view" />
-                </router-link>
-              </td>
-              <td
-                v-if="isAuthenticated && isAdmin"
-                style="padding: 0.75rem 0.4rem"
-              >
-                <router-link
-                  tag="a"
-                  :to="{
-                    name: 'StatisticalProgramDelete',
-                    params: { id: item.id },
-                  }"
-                >
-                  <CIcon name="cil-delete" />
-                </router-link>
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'StatisticalProgramDelete',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-trash" />
+                  </router-link>
+                </span>
               </td>
             </template>
           </CSmartTable>
         </div>
-      </div>
+      </CCard>
     </div>
   </div>
 </template>
@@ -80,7 +86,7 @@ export default {
   name: "StatisticalProgramList",
   data() {
     return {
-      fields: [
+      columns: [
         {
           key: "localId",
           label: "Id",
@@ -106,8 +112,8 @@ export default {
         },
         {
           key: "actions",
-          label: "",
-          _style: "width:1%",
+          label: "Actions",
+          _style: { width: "1%" },
           sorter: false,
           filter: false,
         },

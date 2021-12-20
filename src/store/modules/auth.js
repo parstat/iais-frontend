@@ -71,9 +71,7 @@ const actions = {
           if (data.status === 201) {
             token = data.token; //replace expired token
           }
-          var decoded = jwt_decode(token, { complete: true });
-          const user = decoded.payload;
-          console.log(user);
+          const user = jwt_decode(token, { complete: true });
 
           commit("AUTH_USER", {
             token,
@@ -92,9 +90,7 @@ const actions = {
     authService.register(authData).then(
       (data) => {
         //decode JWT token
-        var decoded = jwt_decode(data.token, { complete: true });
-        console.log(decoded.payload);
-        const user = decoded.payload;
+        const user = jwt_decode(data.token, { complete: true });
 
         commit("AUTH_USER", {
           token: data.token,

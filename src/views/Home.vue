@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { CContainer } from "@coreui/vue";
+import { CContainer } from "@coreui/vue-pro";
 import AppHeader from "@/components/Header";
 import AppFooter from "@/components/Footer";
 import AppSidebar from "@/components/Sidebar";

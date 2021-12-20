@@ -1,18 +1,18 @@
 <template>
-  <div class="card w-100">
-    <div class="card-header">
+  <CCard v-if="statisticalStandards.length">
+    <CCardHeader component="h5">
       <h5>Statistical Standards</h5>
-    </div>
-    <div class="card-body">
-      <div class="card-columns">
-        <div
-          class="card card-border bg-lighter mb-3"
+    </CCardHeader>
+    <CCardBody>
+      <CCardGroup>
+        <CCard
           v-for="statisticalStandard of statisticalStandards"
           :key="statisticalStandard.id"
         >
-          <div class="card-header">
-            <strong>{{ statisticalStandard.name }}</strong>
-            <div class="card-header-actions">
+          <CCardHeader component="h6">
+            {{ statisticalStandard.name }}
+            <CNav variant="pills" class="card-header-pills">
+              <CNavItem>
               <router-link
                 tag="a"
                 :to="{
@@ -20,17 +20,18 @@
                   params: { id: statisticalStandard.id },
                 }"
               >
-                <view-icon />
+                 <CIcon name="cil-magnifying-glass" />
               </router-link>
-            </div>
-          </div>
+              </CNavItem>
+            </CNav>
+          </CCardHeader>
           <div class="card-body">
             <p class="card-text">{{ statisticalStandard.description }}</p>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCard>
+      </CCardGroup>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 export default {

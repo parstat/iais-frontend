@@ -1,18 +1,18 @@
 <template>
-  <div class="card w-100" v-if="businessServices">
-    <div class="card-header">
-      <h5>Business Services/Software</h5>
-    </div>
-    <div class="card-body">
-      <div class="card-columns">
-        <div
-          class="card card-border bg-lighter mb-3"
+  <CCard v-if="businessServices">
+    <CCardHeader component="h5">
+      Business Services/Software
+    </CCardHeader>
+    <CCardBody>
+      <CCardGroup>
+        <CCard
           v-for="businessService of businessServices"
           :key="businessService.id"
         >
-          <div class="card-header">
-            <strong>{{ businessService.name }}</strong>
-            <div class="card-header-actions">
+          <CCardHeader component="h6">
+            {{ businessService.name }}
+           <CNav variant="pills" class="card-header-pills">
+              <CNavItem>
               <router-link
                 tag="a"
                 :to="{
@@ -20,17 +20,18 @@
                   params: { id: businessService.id },
                 }"
               >
-                <view-icon />
+                <CIcon name="cil-magnifying-glass" />
               </router-link>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-text">{{ businessService.description }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+              </CNavItem>
+           </CNav>
+          </CCardHeader>
+          <CCrdBody>
+            <CCardText>{{ businessService.description }}</CCardText>
+          </CCrdBody>
+        </CCard>
+      </CCardGroup>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 export default {

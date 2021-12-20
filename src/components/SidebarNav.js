@@ -7,7 +7,7 @@ import {
   CNavItem,
   CNavGroup,
   CNavTitle,
-} from "@coreui/vue";
+} from "@coreui/vue-pro";
 import nav from "@/_nav.js";
 
 const normalizePath = (path) =>

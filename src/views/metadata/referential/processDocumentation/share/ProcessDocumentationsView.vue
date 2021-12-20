@@ -1,12 +1,12 @@
 <template>
-  <div class="card w-100">
-    <div class="card-header">
-      <h5>Process Documentations</h5>
-    </div>
-    <div class="card-body">
-      <CDataTable
+  <CCard>
+    <CCardHeader component="h5">
+      Process Documentations
+    </CCardHeader>
+    <CCardBody>
+      <CSmartTable
         :items="viewProcessDocumentation"
-        :fields="fields"
+        :columns="columns"
         column-filter
         table-filter
         items-per-page-select
@@ -25,13 +25,13 @@
                 params: { id: item.id },
               }"
             >
-              <view-icon />
+              <CIcon name="cil-magnifying-glass" />
             </router-link>
           </td>
         </template>
-      </CDataTable>
-    </div>
-    <div class="card-footer">
+      </CSmartTable>
+    </CCardBody>
+    <CCardFooter>
       <CButton
         color="primary"
         shape="square"
@@ -39,8 +39,8 @@
         @click.prevent="$emit('back')"
         >Back</CButton
       >
-    </div>
-  </div>
+    </CCardFooter>
+  </CCard>
 </template>
 <script>
 export default {
@@ -48,7 +48,7 @@ export default {
   props: ["processDocumentations"],
   data() {
     return {
-      fields: [
+      columns: [
         {
           key: "localId",
           label: "Id",
@@ -59,17 +59,19 @@ export default {
         },
         {
           key: "name",
+          label: "Name",
         },
         {
           key: "frequency",
+          label: "Frequency",
         },
         {
           key: "nextSubPhase",
-          label: "next",
+          label: "Next",
         },
         {
           key: "actions",
-          label: "",
+          label: "Actions",
           _style: "width:1%",
           sorter: false,
           filter: false,

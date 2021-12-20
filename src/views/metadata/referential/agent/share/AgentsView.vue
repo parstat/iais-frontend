@@ -1,31 +1,33 @@
 <template>
-  <div class="card w-100" v-if="maintainers">
-    <div class="card-header">
-      <h5>Divisions</h5>
-    </div>
-    <div class="card-body">
-      <div class="card-columns">
-        <div
-          class="card card-border bg-lighter mb-3"
+  <CCard v-if="maintainers.length">
+    <CCardHeader component="h5"> Maintainers </CCardHeader>
+    <CCardBody class="card-body">
+      <CCardGroup>
+        <CCard
           v-for="maintainer of maintainers"
           :key="maintainer.id"
         >
-          <div class="card-header">
-            <strong>{{ maintainer.name }}</strong>
-          </div>
-          <div class="card-body">
-            <p class="card-text">{{ maintainer.description }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card-columns w-100" v-else>
-    <div class="card">
-      <div class="card-header">
-        <h5>Owner</h5>
-      </div>
-      <div class="card-body">
+          <CCardHeader component="h6">
+            {{ maintainer.name }}
+          </CCardHeader>
+          <CCardBody>
+            <CCardText>{{ maintainer.description }}</CCardText>
+          </CCardBody>
+        </CCard>
+      </CCardGroup>
+    </CCardBody>
+  </CCard>
+  <CCard v-else>
+    <CCardHeader component="h5">
+      Maintainers
+    </CCardHeader>
+    <CCardBody>
+    <CCardGroup>
+    <CCard>
+      <CCardHeader component="h5">
+        Owner
+      </CCardHeader>
+      <CCardBody>
         <div class="mb-2">
           <span><strong>Name</strong></span>
         </div>
@@ -38,13 +40,13 @@
         <div class="card-slot" v-if="owner.description">
           <span> {{ owner.description }}</span>
         </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <h5>Division</h5>
-      </div>
-      <div class="card-body">
+      </CCardBody>
+    </CCard>
+    <CCard>
+      <CCardHeader component="h5">
+        Division
+      </CCardHeader>
+      <CCardBody>
         <div class="mb-2">
           <span><strong>Name</strong></span>
         </div>
@@ -57,13 +59,13 @@
         <div class="card-slot" v-if="maintainer.description">
           <span> {{ maintainer.description }}</span>
         </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <h5>Contact</h5>
-      </div>
-      <div class="card-body">
+      </CCardBody>
+    </CCard>
+    <CCard>
+      <CCardHeader component="h5">
+        Contact
+      </CCardHeader>
+      <CCardBody>
         <div class="mb-2">
           <span><strong>Name</strong></span>
         </div>
@@ -82,9 +84,15 @@
         <div class="card-slot" v-if="contact.localId">
           <span> {{ contact.localId }}</span>
         </div>
-      </div>
-    </div>
-  </div>
+      </CCardBody>
+    </CCard>
+    
+    </CCardGroup>
+    </CCardBody>
+
+
+
+  </CCard>
 </template>
 <script>
 export default {

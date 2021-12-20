@@ -16,7 +16,7 @@
             <span><strong>Type: </strong></span>
           </div>
           <div class="card-slot">
-            <span>{{ agent.type | capitalize }}</span>
+            <span>{{ agent.type }}</span>
           </div>
           <div class="card-group">
             <span><strong>Parent:</strong></span>
