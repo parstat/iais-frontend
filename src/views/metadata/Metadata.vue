@@ -11,7 +11,8 @@
           <span>
             <router-link tag="a" :to="{ name: 'StatisticalProgramList' }"
               ><span class="icon-span">Go to referential metadata section </span
-              ><CIcon name="cil-arrow-right" /></router-link>
+              ><CIcon name="cil-arrow-right"
+            /></router-link>
           </span>
         </CCardLink>
       </CCardBody>
@@ -26,7 +27,8 @@
         <CCardLink>
           <router-link tag="a" :to="{ name: 'StructuralComponents' }"
             ><span class="icon-span">Go to structural metadata section </span
-            ><CIcon name="cil-arrow-right" /></router-link>
+            ><CIcon name="cil-arrow-right"
+          /></router-link>
         </CCardLink>
       </CCardBody>
     </CCard>

@@ -13,15 +13,15 @@
             {{ statisticalStandard.name }}
             <CNav variant="pills" class="card-header-pills">
               <CNavItem>
-              <router-link
-                tag="a"
-                :to="{
-                  name: 'StatisticalStandardView',
-                  params: { id: statisticalStandard.id },
-                }"
-              >
-                 <CIcon name="cil-magnifying-glass" />
-              </router-link>
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'StatisticalStandardView',
+                    params: { id: statisticalStandard.id },
+                  }"
+                >
+                  <CIcon name="cil-magnifying-glass" />
+                </router-link>
               </CNavItem>
             </CNav>
           </CCardHeader>

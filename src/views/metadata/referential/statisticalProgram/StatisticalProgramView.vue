@@ -24,10 +24,12 @@
       :maintainer="statisticalProgram.maintainer"
       :contact="statisticalProgram.contact"
     ></app-agents>
-    <app-references v-if="statisticalProgram.legislativeReferences"
+    <app-references
+      v-if="statisticalProgram.legislativeReferences"
       :legislativeReferences="statisticalProgram.legislativeReferences"
     ></app-references>
-    <app-standards v-if="statisticalProgram.statisticalStandards"
+    <app-standards
+      v-if="statisticalProgram.statisticalStandards"
       :statisticalStandards="statisticalProgram.statisticalStandards"
     ></app-standards>
     <app-documentations

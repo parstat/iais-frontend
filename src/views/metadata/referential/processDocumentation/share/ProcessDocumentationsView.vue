@@ -1,8 +1,6 @@
 <template>
   <CCard>
-    <CCardHeader component="h5">
-      Process Documentations
-    </CCardHeader>
+    <CCardHeader component="h5"> Process Documentations </CCardHeader>
     <CCardBody>
       <CSmartTable
         :items="viewProcessDocumentation"
