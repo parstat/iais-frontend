@@ -8,7 +8,12 @@
     >
       <CDropdownToggle placement="bottom-end" class="py-0" :caret="false">
         <div class="c-avatar">
-          <img src="/img/avatars/user.png" class="c-avatar-img" />
+          <img
+            src="/img/avatars/user.png"
+            height="30"
+            width="30"
+            class="c-avatar-img"
+          />
         </div>
       </CDropdownToggle>
       <CDropdownMenu class="pt-0">

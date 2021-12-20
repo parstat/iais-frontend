@@ -1,4 +1,4 @@
-import { base64url as jwt } from "jose";
+import jwt_decode from "jwt-decode";
 import router from "@/router";
 import { authService } from "@/services";
 import { Role } from "@/common";
@@ -45,14 +45,10 @@ const actions = {
   login({ commit }, authData) {
     authService.login(authData).then(
       (data) => {
-        //decode JWT token
-        var decoded = jwt.decode(data.token, { complete: true });
-        const user = decoded.payload;
-        console.log(user);
-
+        console.log(data.user);
         commit("AUTH_USER", {
           token: data.token,
-          user: user,
+          user: data.user,
         });
 
         commit("SET_STATUS", AuthStatus.Logged);
@@ -75,7 +71,7 @@ const actions = {
           if (data.status === 201) {
             token = data.token; //replace expired token
           }
-          var decoded = jwt.decode(token, { complete: true });
+          var decoded = jwt_decode(token, { complete: true });
           const user = decoded.payload;
           console.log(user);
 
@@ -96,7 +92,7 @@ const actions = {
     authService.register(authData).then(
       (data) => {
         //decode JWT token
-        var decoded = jwt.decode(data.token, { complete: true });
+        var decoded = jwt_decode(data.token, { complete: true });
         console.log(decoded.payload);
         const user = decoded.payload;
 
