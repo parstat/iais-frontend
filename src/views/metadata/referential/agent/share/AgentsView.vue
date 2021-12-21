@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-if="maintainers.length">
+  <div class="card w-100" v-if="maintainers.length">
     <div class="card-header">
       <h5>Divisions</h5>
     </div>
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <div class="card" v-else>
+  <div class="card w-100" v-else>
     <div class="card-header">
       <h5>Maintainers</h5>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-if="processOutputSpecifications.length">
+  <div class="card w-100" v-if="processOutputSpecifications.length">
     <div class="card-header">
       <h5>Process Outputs</h5>
     </div>
