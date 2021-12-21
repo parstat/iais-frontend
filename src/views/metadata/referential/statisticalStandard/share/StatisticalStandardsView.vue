@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-100">
+  <div class="card w-100" v-if="statisticalStandards.length">
     <div class="card-header">
       <h5>Statistical Standards</h5>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-100" v-if="processMethods">
+  <div class="card w-100" v-if="processMethods.length">
     <div class="card-header">
       <h5>Process Methods</h5>
     </div>

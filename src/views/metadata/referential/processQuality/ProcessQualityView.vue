@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-100" v-if="processQualities">
+  <div class="card" v-if="processQualities.length">
     <div class="card-header">
       <h5>Process Quality</h5>
     </div>

@@ -23,6 +23,9 @@
         <p v-if="processDocumentation.frequency" class="lead">
           <strong>Frequency: </strong> {{ processDocumentation.frequency }}
         </p>
+        <p v-if="processDocumentation.validTo" class="lead">
+          <strong>Valid to: </strong> {{ processDocumentation.validTo }}
+        </p>
         <p v-if="processDocumentation.nextSubPhase" class="lead">
           <strong>Next Process: </strong>
           <router-link
@@ -59,18 +62,17 @@
     <app-services
       :businessServices="processDocumentation.businessServices"
     ></app-services>
-    <div class="card-columns w-100">
-      <app-inputs
-        :processInputSpecifications="
-          processDocumentation.processInputSpecifications
-        "
-      ></app-inputs>
-      <app-outputs
-        :processOutputSpecifications="
-          processDocumentation.processOutputSpecifications
-        "
-      ></app-outputs>
-    </div>
+
+    <app-inputs
+      :processInputSpecifications="
+        processDocumentation.processInputSpecifications
+      "
+    ></app-inputs>
+    <app-outputs
+      :processOutputSpecifications="
+        processDocumentation.processOutputSpecifications
+      "
+    ></app-outputs>
     <app-qualities
       :processQualities="processDocumentation.processQualities"
     ></app-qualities>
