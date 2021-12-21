@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <CCard>
-        <CCardHeader>
+        <CCardHeader v-if="isAuthenticated">
           <CNav variant="pills" class="card-header-pills">
             <CNavItem>
               <span style="padding: 0.75rem 0.4rem">
@@ -18,8 +18,8 @@
             </CNavItem>
           </CNav>
         </CCardHeader>
-        <CCardTitle> Statistical processes </CCardTitle>
         <CCardBody>
+          <CCardTitle> Statistical processes </CCardTitle>
           <CSmartTable
             :items="viewStatisticalPrograms"
             :columns="columns"

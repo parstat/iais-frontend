@@ -32,7 +32,6 @@
     <CCardFooter>
       <CButton
         color="primary"
-        shape="square"
         size="sm"
         @click.prevent="$emit('back')"
         >Back</CButton

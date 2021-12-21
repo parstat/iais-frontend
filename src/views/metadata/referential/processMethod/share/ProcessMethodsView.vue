@@ -8,9 +8,14 @@
           v-for="processMethod of processMethods"
           :key="processMethod.id"
         >
-          <div class="card-header">
-            <strong>{{ processMethod.name }}</strong>
-            <div class="card-header-actions">
+        <CCard>
+          <CCardHeader component="h6">
+            <CNav variant="pills" class="card-header-pills">
+              <CNavItem>
+            {{ processMethod.name }}
+              </CNavItem>
+            <CNavItem>
+              <span>
               <router-link
                 tag="a"
                 :to="{
@@ -18,13 +23,16 @@
                   params: { id: processMethod.id },
                 }"
               >
-                <view-icon />
+                <CIcon name="cil-magnifying-glass" />
               </router-link>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-text">{{ processMethod.description }}</p>
-          </div>
+              </span>
+            </CNavItem>
+            </CNav>
+          </CCardHeader>
+          <CCardBody>
+            <CCardText>{{ processMethod.description }}</CCardText>
+          </CCardBody>
+        </CCard>
         </CCol>
       </CRow>
     </CCardBody>
@@ -42,18 +50,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-h5 {
-  margin-bottom: 0.1rem;
-}
-.card-border {
-  border: 1px solid #d8dbe0 !important;
-  box-shadow: none !important;
-}
-.bg-lighter {
-  background-color: #f8f8f8 !important;
-}
-.material-design-icon {
-  margin-bottom: 0.2rem;
-}
-</style>

@@ -1,9 +1,10 @@
 <template>
   <CCard v-if="maintainers.length">
     <CCardHeader component="h5"> Maintainers </CCardHeader>
-    <CCardBody class="card-body">
-      <CCardGroup>
-        <CCard v-for="maintainer of maintainers" :key="maintainer.id">
+    <CCardBody>
+      <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
+        <CCol xs v-for="maintainer of maintainers" :key="maintainer.id">
+        <CCard>
           <CCardHeader component="h6">
             {{ maintainer.name }}
           </CCardHeader>
@@ -11,14 +12,15 @@
             <CCardText>{{ maintainer.description }}</CCardText>
           </CCardBody>
         </CCard>
-      </CCardGroup>
+        </CCol>
+      </CRow>
     </CCardBody>
   </CCard>
   <CCard v-else>
     <CCardHeader component="h5"> Maintainers </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
-        <CCol xs>
+        <CCol xs v-if="owner">
           <CCard>
             <CCardHeader component="h5"> Owner </CCardHeader>
             <CCardBody>
@@ -37,7 +39,7 @@
             </CCardBody>
           </CCard>
         </CCol>
-        <CCol xs>
+        <CCol xs v-if="maintainer">
           <CCard>
             <CCardHeader component="h5"> Division </CCardHeader>
             <CCardBody>
@@ -56,7 +58,7 @@
             </CCardBody>
           </CCard>
         </CCol>
-        <CCol xs>
+        <CCol xs v-if="contact">
           <CCard>
             <CCardHeader component="h5"> Contact </CCardHeader>
             <CCardBody>
@@ -108,18 +110,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-h5 {
-  margin-bottom: 0.1rem;
-}
-.card-border {
-  border: 1px solid #d8dbe0 !important;
-  box-shadow: none !important;
-}
-.bg-lighter {
-  background-color: #f8f8f8 !important;
-}
-.material-design-icon {
-  margin-bottom: 0.2rem;
-}
-</style>
+

@@ -12,7 +12,7 @@
               params: { id: processDocumentation.id },
             }"
           >
-            <edit-icon />
+            <CIcon name="cil-pencil" />
           </router-link>
         </h2>
         <p class="lead">
@@ -41,44 +41,62 @@
         </p>
       </div>
     </div>
-    <div class="card w-100" v-if="processDocumentation.description">
-      <div class="card-header">
-        <h5>Description</h5>
-      </div>
-      <div class="card-body">
-        <p>{{ processDocumentation.description }}</p>
-      </div>
-    </div>
+    <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 1 }">
+      <CCol xs  v-if="processDocumentation.description">
+    <CCard>
+      <CCardHeader component="h5">
+        Description
+      </CCardHeader>
+      <CCardBody>
+        <CCardText>{{ processDocumentation.description }}</CCardText>
+      </CCardBody>
+    </CCard>
+      </CCol>
+      <CCol xs>
     <app-agents :maintainers="processDocumentation.maintainers"></app-agents>
+      </CCol>
+      <CCol xs>
     <app-standards
       :statisticalStandards="processDocumentation.statisticalStandards"
     ></app-standards>
+      </CCol>
+      <CCol xs>
     <app-methods
       :processMethods="processDocumentation.processMethods"
     ></app-methods>
+      </CCol>
+      <CCol xs>
     <app-services
       :businessServices="processDocumentation.businessServices"
     ></app-services>
-    <div class="card-columns w-100">
+      </CCol>
+      <CCol xs>
       <app-inputs
         :processInputSpecifications="
           processDocumentation.processInputSpecifications
         "
       ></app-inputs>
+      </CCol>
+      <CCol xs>
       <app-outputs
         :processOutputSpecifications="
           processDocumentation.processOutputSpecifications
         "
       ></app-outputs>
-    </div>
+      </CCol>
+      <CCol xs>
     <app-qualities
       :processQualities="processDocumentation.processQualities"
     ></app-qualities>
+      </CCol>
+      <CCol xs>
     <app-documents
       :documents="processDocumentation.documents"
       :statisticalProgramId="processDocumentation.statisticalProgram.id"
       @handleBack="handleBack"
     ></app-documents>
+      </CCol>
+    </CRow>
   </div>
 </template>
 <script>

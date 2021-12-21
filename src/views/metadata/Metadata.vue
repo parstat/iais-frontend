@@ -2,7 +2,7 @@
   <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
     <CCol xs>
       <CCard>
-        <CCardHeader component="h5"> Referential metadata </CCardHeader>
+        <CCardHeader component="h6"> Referential metadata </CCardHeader>
         <CCardBody>
           <CCardText>
             This section contains the list of processes documented according to
@@ -22,7 +22,7 @@
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardHeader component="h5">Structural metadata</CCardHeader>
+        <CCardHeader component="h6">Structural metadata</CCardHeader>
         <CCardBody>
           <CCardText>
             This section contains the structural metadata of each survey
@@ -39,7 +39,7 @@
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardHeader component="h5">Process metadata</CCardHeader>
+        <CCardHeader component="h6">Process metadata</CCardHeader>
         <CCardBody>
           <CCardText>
             This section contains the process metadata of each survey documented
