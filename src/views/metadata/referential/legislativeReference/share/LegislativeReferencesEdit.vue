@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header pt-0">
-      <regulation-icon />
+      <CIcon name="cil-description" />
       <strong class="icon-header">Legislative references</strong>
       <div class="card-header-actions">
         <router-link
@@ -9,7 +9,7 @@
           to="/metadata/referential/gsim/regulation/add"
           class="card-header-action"
         >
-          <add-icon /> Add
+          <CIcon name="cil-plus" /> Add
         </router-link>
       </div>
     </div>
@@ -61,13 +61,13 @@
                   params: { id: legislativeReference.id },
                 }"
               >
-                <view-icon />
+                <CIcon name="cil-magnifying-glass" />
               </router-link>
               <span
                 class="text-dark"
                 v-on:click="removeLegislativeReference(legislativeReference)"
               >
-                <delete-icon />
+                 <CIcon name="cil-trash" />
               </span>
             </div>
           </div>

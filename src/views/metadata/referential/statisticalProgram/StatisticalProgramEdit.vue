@@ -86,7 +86,7 @@
                   <template #title>
                     <span>Basic</span>
                     <span class="float-right" v-if="editedBasic"
-                      ><check-icon
+                      ><CIcon name="cil-check-alt"
                     /></span>
                   </template>
                   <app-statistical-program-basic
@@ -105,7 +105,7 @@
                   <template #title>
                     <span>Agents</span>
                     <span class="float-right" v-if="editedAgents"
-                      ><check-icon
+                      ><CIcon nam="cil-check-alt"
                     /></span>
                   </template>
                   <app-agents-edit
@@ -127,7 +127,7 @@
                   <template #title>
                     <span>Legislative References</span>
                     <span class="float-right" v-if="editedReferences"
-                      ><check-icon
+                      ><CIcon name="cil-check-alt"
                     /></span>
                   </template>
                   <app-references-edit
@@ -148,7 +148,7 @@
                   <template #title>
                     <span>Statistical Standards</span>
                     <span class="float-right" v-if="editedStandards"
-                      ><check-icon
+                      ><CIcon name="cil-check-alt"
                     /></span>
                   </template>
                   <app-standards-edit

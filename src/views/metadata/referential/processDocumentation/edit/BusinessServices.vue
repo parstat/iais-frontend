@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <regulation-icon />
+      <CIcon name="cil-description" />
       <strong class="icon-header">Business Services</strong>
       <div class="card-header-actions">
         <router-link
@@ -9,7 +9,7 @@
           to="/metadata/referential/gsim/service/add"
           class="card-header-action"
         >
-          <add-icon />
+          <CIcon name="cil-plus" />
           <span class="icon-span">Add</span>
         </router-link>
       </div>
@@ -62,10 +62,10 @@
                     params: { id: businessService.id },
                   }"
                 >
-                  <view-icon />
+                  <CIcon name="cil-magnifying-glass" />
                 </router-link>
                 <span v-on:click="removeBusinessService(businessService)">
-                  <delete-icon />
+                   <CIcon name="cil-trash" />
                 </span>
               </div>
             </div>

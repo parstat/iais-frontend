@@ -9,7 +9,7 @@
           to="/metadata/referential/gsim/agent/add"
           class="card-header-action"
         >
-          <add-icon />
+          <CIcon name="cil-plus" />
           <span class="icon-span">Add</span>
         </router-link>
       </div>
@@ -40,10 +40,10 @@
                       params: { id: maintainer.id },
                     }"
                   >
-                    <view-icon />
+                    <CIcon name="cil-magnifying-glass" />
                   </router-link>
                   <span v-on:click="removeMaintainer(maintainer)">
-                    <delete-icon />
+                     <CIcon name="cil-trash" />
                   </span>
                 </div>
               </div>

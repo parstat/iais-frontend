@@ -11,7 +11,7 @@
               to="/metadata/structural/variable/add"
               class="card-header-action"
             >
-              <add-icon />
+              <CIcon name="cil-plus" />
               <span class="icon-span">New Variable</span>
             </router-link>
           </div>
@@ -40,7 +40,7 @@
                         params: { id: item.id },
                       }"
                     >
-                      <view-icon />
+                      <CIcon name="cil-magnifying-glass" />
                     </router-link>
                   </span>
                   <span
@@ -73,7 +73,7 @@
                         params: { id: item.id },
                       }"
                     >
-                      <delete-icon />
+                       <CIcon name="cil-trash" />
                     </router-link>
                   </span>
                 </td>

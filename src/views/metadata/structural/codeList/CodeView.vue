@@ -46,7 +46,7 @@
                       params: { id: code.id },
                     }"
                   >
-                    <delete-icon />
+                     <CIcon name="cil-trash" />
                   </router-link>
                 </td>
               </template>
@@ -59,7 +59,7 @@
                       params: { id: code.id },
                     }"
                   >
-                    <view-icon />
+                    <CIcon name="cil-magnifying-glass" />
                   </router-link>
                 </td>
               </template>

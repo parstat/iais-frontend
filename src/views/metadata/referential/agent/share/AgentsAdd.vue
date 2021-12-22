@@ -11,7 +11,7 @@
               to="/metadata/referential/gsim/agent/add"
               class="card-header-action"
             >
-              <add-icon />
+              <CIcon name="cil-plus" />
               <span class="icon-span">Add</span>
             </router-link>
           </span>

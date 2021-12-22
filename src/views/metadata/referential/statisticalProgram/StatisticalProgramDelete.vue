@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
-          <delete-icon />
+           <CIcon name="cil-trash" />
           <strong class="icon-header">Statistical process</strong>
         </header>
         <div class="card-body">

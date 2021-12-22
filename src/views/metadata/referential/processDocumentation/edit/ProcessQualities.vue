@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <header class="card-header">
-      <regulation-icon />
+      <CIcon name="cil-description" />
       <strong class="icon-header">Process Quality</strong>
     </header>
     <div class="card-body">
@@ -55,7 +55,7 @@
               <strong>{{ processQuality.name }}</strong>
               <div class="card-header-actions">
                 <span v-on:click="removeProcessQuality(processQuality)">
-                  <delete-icon />
+                   <CIcon name="cil-trash" />
                 </span>
               </div>
             </div>

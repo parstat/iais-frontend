@@ -11,7 +11,7 @@
               to="/metadata/referential/gsim/method/add"
               class="card-header-action"
             >
-              <add-icon />
+              <CIcon name="cil-plus" />
               <span class="icon-span">New Method</span>
             </router-link>
           </div>
@@ -61,7 +61,7 @@
                           params: { id: processMethod.id },
                         }"
                       >
-                        <delete-icon />
+                         <CIcon name="cil-trash" />
                       </router-link>
                     </td>
                   </template>
@@ -74,7 +74,7 @@
                           params: { id: processMethod.id },
                         }"
                       >
-                        <view-icon />
+                        <CIcon name="cil-magnifying-glass" />
                       </router-link>
                     </td>
                   </template>

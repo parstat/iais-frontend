@@ -9,7 +9,7 @@
           to="/metadata/referential/gsim/regulation/add"
           class="card-header-action"
         >
-          <add-icon />
+          <CIcon name="cil-plus" />
           <span class="icon-span">New regulation</span>
         </router-link>
       </div>
@@ -62,7 +62,7 @@
                       params: { id: legislativeReference.id },
                     }"
                   >
-                    <delete-icon />
+                     <CIcon name="cil-trash" />
                   </router-link>
                 </td>
               </template>
@@ -75,7 +75,7 @@
                       params: { id: legislativeReference.id },
                     }"
                   >
-                    <view-icon />
+                    <CIcon name="cil-magnifying-glass" />
                   </router-link>
                 </td>
               </template>

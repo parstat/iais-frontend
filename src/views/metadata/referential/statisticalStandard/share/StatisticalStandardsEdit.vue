@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header pt-0">
-      <standard-icon />
+       <CIcon name="cil-description" />
       <strong class="icon-header">Statistical Standard</strong>
       <div class="card-header-actions">
         <router-link
@@ -9,7 +9,7 @@
           to="/metadata/referential/gsim/standard/add"
           class="card-header-action"
         >
-          <add-icon /> Add
+          <CIcon name="cil-plus" /> Add
         </router-link>
       </div>
     </div>
@@ -61,13 +61,13 @@
                   params: { id: statisticalStandard.id },
                 }"
               >
-                <view-icon />
+                <CIcon name="cil-magnifying-glass" />
               </router-link>
               <span
                 class="text-dark"
                 @click="removeStatisticalStandard(statisticalStandard)"
               >
-                <delete-icon />
+                 <CIcon name="cil-trash" />
               </span>
             </div>
           </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <regulation-icon />
+      <CIcon name="cil-description" />
       <strong class="icon-header">Process Outputs</strong>
     </div>
     <div class="card-body">
@@ -55,7 +55,7 @@
               <strong>{{ processOutput.name }}</strong>
               <div class="card-header-actions">
                 <span v-on:click="removeProcessOutput(processOutput)">
-                  <delete-icon />
+                   <CIcon name="cil-trash" />
                 </span>
               </div>
             </div>

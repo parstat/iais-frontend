@@ -38,7 +38,7 @@
                       params: { id: item.id },
                     }"
                   >
-                    <view-icon />
+                    <CIcon name="cil-magnifying-glass" />
                   </router-link>
                 </td>
                 <td v-c-tooltip="'Edit'">
@@ -60,7 +60,7 @@
                       params: { id: item.id },
                     }"
                   >
-                    <delete-icon />
+                     <CIcon name="cil-trash" />
                   </router-link>
                 </td>
               </template>
@@ -73,7 +73,7 @@
                       params: { id: item.id },
                     }"
                   >
-                    <view-icon />
+                    <CIcon name="cil-magnifying-glass" />
                   </router-link>
                 </td>
               </template>

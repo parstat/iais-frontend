@@ -11,7 +11,7 @@
               to="/metadata/referential/gsim/service/add"
               class="card-header-action"
             >
-              <add-icon />
+              <CIcon name="cil-plus" />
               <span class="icon-span">New business service (Software)</span>
             </router-link>
           </div>
@@ -62,7 +62,7 @@
                           params: { id: businessService.id },
                         }"
                       >
-                        <delete-icon />
+                         <CIcon name="cil-trash" />
                       </router-link>
                     </td>
                   </template>
@@ -75,7 +75,7 @@
                           params: { id: businessService.id },
                         }"
                       >
-                        <view-icon />
+                        <CIcon name="cil-magnifying-glass" />
                       </router-link>
                     </td>
                   </template>
