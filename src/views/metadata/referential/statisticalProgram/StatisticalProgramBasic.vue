@@ -7,12 +7,12 @@
           id="localId"
           type="text"
           class="form-control"
-          :class="{ 'is-invalid': $v.localLocalId.$error }"
+          :class="{ 'is-invalid': v$.localLocalId.$error }"
           placeholder="Survey id"
           v-model.trim="localLocalId"
           @change="fieldChanged = true"
         />
-        <span class="help-block" :class="{ show: $v.localLocalId.$error }"
+        <span class="help-block" :class="{ show: v$.localLocalId.$error }"
           >Please enter survey id.</span
         >
       </div>
@@ -22,12 +22,12 @@
           id="name"
           type="text"
           class="form-control"
-          :class="{ 'is-invalid': $v.localName.$error }"
+          :class="{ 'is-invalid': v$.localName.$error }"
           placeholder="Survey name"
           v-model.trim="localName"
           @change="fieldChanged = true"
         />
-        <span class="help-block" :class="{ show: $v.localName.$error }"
+        <span class="help-block" :class="{ show: v$.localName.$error }"
           >Please enter survey name.</span
         >
       </div>
@@ -37,12 +37,12 @@
           id="acronym"
           type="text"
           class="form-control"
-          :class="{ 'is-invalid': $v.localAcronym.$error }"
+          :class="{ 'is-invalid': v$.localAcronym.$error }"
           placeholder="Survey acronym"
           v-model.trim="localAcronym"
           @change="fieldChanged = true"
         />
-        <span class="help-block" :class="{ show: $v.localAcronym.$error }"
+        <span class="help-block" :class="{ show: v$.localAcronym.$error }"
           >Please enter an acronym.</span
         >
       </div>
@@ -53,12 +53,12 @@
           id="description"
           type="text"
           class="form-control"
-          :class="{ 'is-invalid': $v.localDescription.$error }"
+          :class="{ 'is-invalid': v$.localDescription.$error }"
           placeholder="Survey description"
           v-model.trim="localDescription"
           @change="fieldChanged = true"
         />
-        <span class="help-block" :class="{ show: $v.localDescription.$error }"
+        <span class="help-block" :class="{ show: v$.localDescription.$error }"
           >Please enter survey description.</span
         >
       </div>
@@ -77,13 +77,15 @@
   </div>
 </template>
 <script>
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "StatisticalProgramBasic",
   props: ["localId", "name", "acronym", "description"],
   data() {
     return {
+      v$: useValidate(),
       localLocalId: this.localId,
       localName: this.name,
       localAcronym: this.acronym,
@@ -108,8 +110,8 @@ export default {
   },
   methods: {
     next() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           localId: this.localLocalId,

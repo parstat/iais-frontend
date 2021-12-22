@@ -26,14 +26,14 @@
           type="text"
           class="form-control"
           :class="{
-            'is-invalid': $v.processDocumentation.description.$error,
+            'is-invalid': v$.processDocumentation.description.$error,
           }"
           placeholder="Survey description"
           v-model.trim="processDocumentation.description"
         />
         <span
           class="help-block"
-          :class="{ show: $v.processDocumentation.description.$error }"
+          :class="{ show: v$.processDocumentation.description.$error }"
           >Please enter survey description.</span
         >
       </div>
@@ -44,13 +44,13 @@
           :options="frequencies"
           v-model="processDocumentation.frequency"
           :class="{
-            'is-invalid': $v.processDocumentation.frequency.$error,
+            'is-invalid': v$.processDocumentation.frequency.$error,
           }"
           placeholder="Select a Frequence"
         ></v-select>
         <span
           class="help-block"
-          :class="{ show: $v.processDocumentation.frequency.$error }"
+          :class="{ show: v$.processDocumentation.frequency.$error }"
           >Please frequency a type.</span
         >
       </div>
@@ -106,7 +106,8 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import { Frequency } from "@/common";
 import _ from "lodash";
 
@@ -114,6 +115,7 @@ export default {
   name: "ProcessDocumentationEdit",
   data() {
     return {
+      v$: useValidate(),
       disabled: false,
       activeTab: 0,
     };
@@ -142,8 +144,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           id: this.processDocumentation.id,

@@ -33,7 +33,7 @@
                       label="name"
                       :options="statisticalPrograms"
                       :value="statisticalProgram"
-                      :class="{ 'is-invalid': $v.statisticalProgram.$error }"
+                      :class="{ 'is-invalid': v$.statisticalProgram.$error }"
                       placeholder="Select a Statistical Proccess"
                       :filtrable="false"
                       @search="searchStatisticalProrams"
@@ -61,7 +61,7 @@
                     </v-select>
                     <span
                       class="help-block"
-                      :class="{ show: $v.statisticalProgram.$error }"
+                      :class="{ show: v$.statisticalProgram.$error }"
                       >Please select a Statisitcal Process.</span
                     >
                   </div>
@@ -71,7 +71,7 @@
                       label="name"
                       :options="businessFunctions"
                       :value="businessFunction"
-                      :class="{ 'is-invalid': $v.businessFunction.$error }"
+                      :class="{ 'is-invalid': v$.businessFunction.$error }"
                       placeholder="Select a GSBPM sub-phase"
                       :filtrable="false"
                       @search="searchBusinessFunctions"
@@ -101,7 +101,7 @@
                     </v-select>
                     <span
                       class="help-block"
-                      :class="{ show: $v.businessFunction.$error }"
+                      :class="{ show: v$.businessFunction.$error }"
                       >Please select a GSBPM sub-phase.</span
                     >
                   </div>
@@ -112,13 +112,13 @@
                       id="description"
                       type="text"
                       class="form-control"
-                      :class="{ 'is-invalid': $v.description.$error }"
+                      :class="{ 'is-invalid': v$.description.$error }"
                       placeholder="Survey description"
                       v-model.trim="description"
                     />
                     <span
                       class="help-block"
-                      :class="{ show: $v.description.$error }"
+                      :class="{ show: v$.description.$error }"
                       >Please enter survey description.</span
                     >
                   </div>
@@ -128,12 +128,12 @@
                       label="frequency"
                       :options="frequencies"
                       v-model="frequency"
-                      :class="{ 'is-invalid': $v.frequency.$error }"
+                      :class="{ 'is-invalid': v$.frequency.$error }"
                       placeholder="Select a Frequence"
                     ></v-select>
                     <span
                       class="help-block"
-                      :class="{ show: $v.frequency.$error }"
+                      :class="{ show: v$.frequency.$error }"
                       >Please frequency a type.</span
                     >
                   </div>
@@ -145,7 +145,7 @@
                       label="name"
                       :options="businessFunctions"
                       v-model="nextBusinessFunction"
-                      :class="{ 'is-invalid': $v.nextBusinessFunction.$error }"
+                      :class="{ 'is-invalid': v$.nextBusinessFunction.$error }"
                       placeholder="Select a GSBPM sub-phase"
                       :filtrable="false"
                       @search="searchBusinessFunctions"
@@ -176,7 +176,7 @@
                     </v-select>
                     <span
                       class="help-block"
-                      :class="{ show: $v.nextBusinessFunction.$error }"
+                      :class="{ show: v$.nextBusinessFunction.$error }"
                       >Please select the next GSBPM sub-phase.</span
                     >
                   </div>
@@ -216,7 +216,8 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import { Frequency } from "@/common";
 import _ from "lodash";
 
@@ -224,6 +225,7 @@ export default {
   name: "ProcessDocumentationAdd",
   data() {
     return {
+      v$: useValidate(),
       name: "",
       description: "",
       frequency: "",
@@ -269,11 +271,11 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (this.$v.nextBusinessFunction.$invalid && this.lastProcess) {
-        this.$v.nextBusinessFunction.$reset();
+      this.v$.$touch(); //validate form data
+      if (this.v$.nextBusinessFunction.$invalid && this.lastProcess) {
+        this.v$.nextBusinessFunction.$reset();
       }
-      if (!this.$v.$invalid) {
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           name: this.name,
@@ -295,7 +297,7 @@ export default {
       this.description = "";
       this.statisticalProgram = "";
       this.businessFunction = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
 
     searchStatisticalProrams(name, loading) {

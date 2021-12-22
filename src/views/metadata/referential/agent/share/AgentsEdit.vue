@@ -1,7 +1,7 @@
 <template>
-  <div class="card">
-    <header class="card-header pt-0">
-      <users-icon />
+  <CCard>
+    <CCardHeader>
+      <CIcon name="cil-user" />
       <strong class="icon-header">Agents</strong>
       <div class="card-header-actions">
         <router-link
@@ -9,21 +9,21 @@
           to="/metadata/referential/gsim/agent/add"
           class="card-header-action"
         >
-          <add-icon /> Add
+          <CIcon name="cil-plus" /> Add
         </router-link>
       </div>
-    </header>
+    </CCardHeader>
     <div class="card-body">
       <div class="form-group" v-if="owners">
         <label for="description">Organization*</label>
         <v-select
           label="name"
           :options="owners"
-          :class="{ 'is-invalid': $v.localOwner.$error }"
+          :class="{ 'is-invalid': v$.localOwner.$error }"
           v-model="localOwner"
           @input="updateOwner"
         ></v-select>
-        <span class="help-block" :class="{ show: $v.localOwner.$error }"
+        <span class="help-block" :class="{ show: v$.localOwner.$error }"
           >Please select an Organization.</span
         >
       </div>
@@ -32,11 +32,11 @@
         <v-select
           label="name"
           :options="maintainers"
-          :class="{ 'is-invalid': $v.localMaintainer.$error }"
+          :class="{ 'is-invalid': v$.localMaintainer.$error }"
           v-model="localMaintainer"
           @input="updateMaintainer"
         ></v-select>
-        <span class="help-block" :class="{ show: $v.localMaintainer.$error }"
+        <span class="help-block" :class="{ show: v$.localMaintainer.$error }"
           >Please select a division.</span
         >
       </div>
@@ -45,11 +45,11 @@
         <v-select
           label="name"
           :options="contacts"
-          :class="{ 'is-invalid': $v.localContact.$error }"
+          :class="{ 'is-invalid': v$.localContact.$error }"
           v-model="localContact"
           @input="updateContact"
         ></v-select>
-        <span class="help-block" :class="{ show: $v.localContact.$error }"
+        <span class="help-block" :class="{ show: v$.localContact.$error }"
           >Please select a contact person.</span
         >
       </div>
@@ -74,11 +74,12 @@
         Next
       </CButton>
     </div>
-  </div>
+  </CCard>
 </template>
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import { Agent } from "@/common";
 
 export default {
@@ -99,6 +100,7 @@ export default {
   },
   data() {
     return {
+      v$: useValidate(),
       localOwner: { ...this.owner }, //clone the object
       localMaintainer: { ...this.maintainer }, //clone the object
       localContact: { ...this.contact }, //clone the object
@@ -121,22 +123,22 @@ export default {
   },
   methods: {
     updateOwner() {
-      this.$v.localOwner.$touch(); //validate field
-      if (!this.$v.localOwner.$invalid) {
+      this.v$.localOwner.$touch(); //validate field
+      if (!this.v$.localOwner.$invalid) {
         this.$emit("updateOwner", this.localOwner);
         this.fieldChanged = true;
       }
     },
     updateMaintainer() {
-      this.$v.localMaintainer.$touch(); //validate field
-      if (!this.$v.localMaintainer.$invalid) {
+      this.v$.localMaintainer.$touch(); //validate field
+      if (!this.v$.localMaintainer.$invalid) {
         this.$emit("updateMaintainer", this.localMaintainer);
         this.fieldChanged = true;
       }
     },
     updateContact() {
-      this.$v.localContact.$touch(); //validate field
-      if (!this.$v.localContact.$invalid) {
+      this.v$.localContact.$touch(); //validate field
+      if (!this.v$.localContact.$invalid) {
         this.$emit("updateContact", this.localContact);
         this.fieldChanged = true;
       }

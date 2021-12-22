@@ -30,10 +30,7 @@
       </CSmartTable>
     </CCardBody>
     <CCardFooter>
-      <CButton
-        color="primary"
-        size="sm"
-        @click.prevent="$emit('back')"
+      <CButton color="primary" size="sm" @click.prevent="$emit('back')"
         >Back</CButton
       >
     </CCardFooter>

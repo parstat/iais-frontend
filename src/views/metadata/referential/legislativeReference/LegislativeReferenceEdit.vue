@@ -12,13 +12,13 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.legislativeReference.name.$error }"
+              :class="{ 'is-invalid': v$.legislativeReference.name.$error }"
               placeholder="legislativeReference name"
               v-model.trim="legislativeReference.name"
             />
             <span
               class="help-block"
-              :class="{ show: $v.legislativeReference.name.$error }"
+              :class="{ show: v$.legislativeReference.name.$error }"
               >Please enter legislativeReference name.</span
             >
           </div>
@@ -42,12 +42,12 @@
               label="type"
               :options="types"
               v-model="legislativeReference.type"
-              :class="{ 'is-invalid': $v.legislativeReference.type.$error }"
+              :class="{ 'is-invalid': v$.legislativeReference.type.$error }"
               placeholder="Select a type"
             ></v-select>
             <span
               class="help-block"
-              :class="{ show: $v.legislativeReference.type.$error }"
+              :class="{ show: v$.legislativeReference.type.$error }"
               >Please select a type.</span
             >
           </div>
@@ -88,13 +88,15 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import { Regulation } from "@/common";
 
 export default {
   name: "LegislativeReferenceEdit",
   data() {
     return {
+      v$: useValidate(),
       disabled: false,
     };
   },
@@ -123,8 +125,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           id: this.legislativeReference.id,
@@ -146,7 +148,7 @@ export default {
       this.legislativeReference.link = "";
       this.legislativeReference.version = "";
       this.legislativeReference.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
   created() {

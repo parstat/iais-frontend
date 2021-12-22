@@ -12,13 +12,13 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.businessFunction.name.$error }"
+              :class="{ 'is-invalid': v$.businessFunction.name.$error }"
               placeholder="businessFunction name"
               v-model.trim="businessFunction.name"
             />
             <span
               class="help-block"
-              :class="{ show: $v.businessFunction.name.$error }"
+              :class="{ show: v$.businessFunction.name.$error }"
               >Please enter businessFunction name.</span
             >
           </div>
@@ -71,7 +71,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "BusinessFunctionEdit",
@@ -80,6 +81,7 @@ export default {
   },
   data() {
     return {
+      v$: useValidate(),
       disabled: false,
     };
   },
@@ -98,8 +100,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           id: this.businessFunction.id,
@@ -117,7 +119,7 @@ export default {
       this.businessFunction.description = "";
       this.businessFunction.version = "";
       this.businessFunction.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
   created() {

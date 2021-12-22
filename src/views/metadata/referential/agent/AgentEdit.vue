@@ -1,22 +1,22 @@
 <template>
-  <div class="row" v-if="agent">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Agent</strong>
-        </header>
-        <div class="card-body">
+  <CRow>
+    <CCol class="col-sm-12 col-md-6">
+      <CCard v-if="agent">
+      <CCardHeader component="h5">
+          Agent
+        </CCardHeader>
+        <CCardBody>
           <div class="form-group">
             <label for="name">Name</label>
             <input
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.agent.name.$error }"
+              :class="{ 'is-invalid': v$.agent.name.$error }"
               placeholder="Agent name"
               v-model.trim="agent.name"
             />
-            <span class="help-block" :class="{ show: $v.agent.name.$error }"
+            <span class="help-block" :class="{ show: v$.agent.name.$error }"
               >Please enter agent name.</span
             >
           </div>
@@ -38,10 +38,10 @@
               label="type"
               :options="types"
               v-model="agent.type"
-              :class="{ 'is-invalid': $v.agent.type.$error }"
+              :class="{ 'is-invalid': v$.agent.type.$error }"
               placeholder="Select a type"
             ></v-select>
-            <span class="help-block" :class="{ show: $v.agent.type.$error }"
+            <span class="help-block" :class="{ show: v$.agent.type.$error }"
               >Please select a type.</span
             >
           </div>
@@ -65,7 +65,7 @@
               v-model.trim="agent.localId"
             />
           </div>
-        </div>
+        </CCardBody>
         <div class="card-footer">
           <CButton
             color="primary"
@@ -85,20 +85,23 @@
             >Reset</CButton
           >
         </div>
-      </div>
-    </div>
-  </div>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import { Agent } from "@/common";
+
 
 export default {
   name: "AgentEdit",
   data() {
     return {
+      v$: useValidate(),
       disabled: false,
     };
   },
@@ -129,8 +132,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           id: this.agent.id,
@@ -149,7 +152,7 @@ export default {
       this.agent.description = "";
       this.agent.type = "";
       this.agent.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
     getParents(type) {
       if (type === "DIVISION") {

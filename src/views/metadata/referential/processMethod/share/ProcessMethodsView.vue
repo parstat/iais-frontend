@@ -8,31 +8,31 @@
           v-for="processMethod of processMethods"
           :key="processMethod.id"
         >
-        <CCard>
-          <CCardHeader component="h6">
-            <CNav variant="pills" class="card-header-pills">
-              <CNavItem>
-            {{ processMethod.name }}
-              </CNavItem>
-            <CNavItem>
-              <span>
-              <router-link
-                tag="a"
-                :to="{
-                  name: 'ProcessMethodView',
-                  params: { id: processMethod.id },
-                }"
-              >
-                <CIcon name="cil-magnifying-glass" />
-              </router-link>
-              </span>
-            </CNavItem>
-            </CNav>
-          </CCardHeader>
-          <CCardBody>
-            <CCardText>{{ processMethod.description }}</CCardText>
-          </CCardBody>
-        </CCard>
+          <CCard>
+            <CCardHeader component="h6">
+              <CNav variant="pills" class="card-header-pills">
+                <CNavItem>
+                  {{ processMethod.name }}
+                </CNavItem>
+                <CNavItem>
+                  <span>
+                    <router-link
+                      tag="a"
+                      :to="{
+                        name: 'ProcessMethodView',
+                        params: { id: processMethod.id },
+                      }"
+                    >
+                      <CIcon name="cil-magnifying-glass" />
+                    </router-link>
+                  </span>
+                </CNavItem>
+              </CNav>
+            </CCardHeader>
+            <CCardBody>
+              <CCardText>{{ processMethod.description }}</CCardText>
+            </CCardBody>
+          </CCard>
         </CCol>
       </CRow>
     </CCardBody>

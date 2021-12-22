@@ -12,13 +12,13 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.businessService.name.$error }"
+              :class="{ 'is-invalid': v$.businessService.name.$error }"
               placeholder="businessService name"
               v-model.trim="businessService.name"
             />
             <span
               class="help-block"
-              :class="{ show: $v.businessService.name.$error }"
+              :class="{ show: v$.businessService.name.$error }"
               >Please enter businessService name.</span
             >
           </div>
@@ -71,12 +71,14 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "BusinessServiceEdit",
   data() {
     return {
+      v$: useValidate(),
       disabled: false,
     };
   },
@@ -92,8 +94,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           id: this.businessService.id,
@@ -111,7 +113,7 @@ export default {
       this.businessService.description = "";
       this.businessService.version = "";
       this.businessService.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
   created() {

@@ -6,7 +6,7 @@ import CoreuiVue from "@coreui/vue-pro";
 import CIcon from "@coreui/icons-vue";
 import { iconsSet as icons } from "@/assets/icons/icons.js";
 import { materialIconsSet as materialIcons } from "@/assets/icons/materialIcons.js";
-import Vuelidate from "vuelidate";
+
 import vSelect from "vue3-select";
 import VueSpinners from "vue-spinners";
 import BootstrapVue3 from "bootstrap-vue-3";
@@ -19,7 +19,6 @@ const app = createApp(App);
 app.config.productionTip = false;
 
 app.use(CoreuiVue);
-app.use(Vuelidate);
 app.use(VueSpinners);
 app.use(store);
 app.use(router);

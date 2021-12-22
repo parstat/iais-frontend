@@ -12,11 +12,11 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.variable.name.$error }"
+              :class="{ 'is-invalid': v$.variable.name.$error }"
               placeholder="Variable name"
               v-model.trim="variable.name"
             />
-            <span class="help-block" :class="{ show: $v.variable.name.$error }"
+            <span class="help-block" :class="{ show: v$.variable.name.$error }"
               >Please enter variable name.</span
             >
           </div>
@@ -70,7 +70,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "VariableEdit",
@@ -79,6 +80,7 @@ export default {
   },
   data() {
     return {
+      v$: useValidate(),
       disabled: false,
     };
   },
@@ -97,8 +99,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           id: this.variable.id,
@@ -116,7 +118,7 @@ export default {
       this.variable.description = "";
       //this.variable.definition = "";
       this.variable.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
   created() {

@@ -1,21 +1,22 @@
 <template>
   <CCard v-if="processQualities.length">
-    <CCardHeader component="h5">
-      Process Quality
-    </CCardHeader>
+    <CCardHeader component="h5"> Process Quality </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
-      <CCol xs   v-for="processQuality of processQualities"
-          :key="processQuality.id">
+        <CCol
+          xs
+          v-for="processQuality of processQualities"
+          :key="processQuality.id"
+        >
           <CCard>
-          <CCardHeader component="h6">
-            {{ processQuality.name }}
-          </CCardHeader>
-          <CCardBody>
-            <CCardText>{{ processQuality.description }}</CCardText>
-          </CCardBody>
+            <CCardHeader component="h6">
+              {{ processQuality.name }}
+            </CCardHeader>
+            <CCardBody>
+              <CCardText>{{ processQuality.description }}</CCardText>
+            </CCardBody>
           </CCard>
-      </CCol>
+        </CCol>
       </CRow>
     </CCardBody>
   </CCard>

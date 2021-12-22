@@ -42,59 +42,59 @@
       </div>
     </div>
     <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 1 }">
-      <CCol xs  v-if="processDocumentation.description">
-    <CCard>
-      <CCardHeader component="h5">
-        Description
-      </CCardHeader>
-      <CCardBody>
-        <CCardText>{{ processDocumentation.description }}</CCardText>
-      </CCardBody>
-    </CCard>
+      <CCol xs v-if="processDocumentation.description">
+        <CCard>
+          <CCardHeader component="h5"> Description </CCardHeader>
+          <CCardBody>
+            <CCardText>{{ processDocumentation.description }}</CCardText>
+          </CCardBody>
+        </CCard>
       </CCol>
       <CCol xs>
-    <app-agents :maintainers="processDocumentation.maintainers"></app-agents>
+        <app-agents
+          :maintainers="processDocumentation.maintainers"
+        ></app-agents>
       </CCol>
       <CCol xs>
-    <app-standards
-      :statisticalStandards="processDocumentation.statisticalStandards"
-    ></app-standards>
+        <app-standards
+          :statisticalStandards="processDocumentation.statisticalStandards"
+        ></app-standards>
       </CCol>
       <CCol xs>
-    <app-methods
-      :processMethods="processDocumentation.processMethods"
-    ></app-methods>
+        <app-methods
+          :processMethods="processDocumentation.processMethods"
+        ></app-methods>
       </CCol>
       <CCol xs>
-    <app-services
-      :businessServices="processDocumentation.businessServices"
-    ></app-services>
+        <app-services
+          :businessServices="processDocumentation.businessServices"
+        ></app-services>
       </CCol>
       <CCol xs>
-      <app-inputs
-        :processInputSpecifications="
-          processDocumentation.processInputSpecifications
-        "
-      ></app-inputs>
+        <app-inputs
+          :processInputSpecifications="
+            processDocumentation.processInputSpecifications
+          "
+        ></app-inputs>
       </CCol>
       <CCol xs>
-      <app-outputs
-        :processOutputSpecifications="
-          processDocumentation.processOutputSpecifications
-        "
-      ></app-outputs>
+        <app-outputs
+          :processOutputSpecifications="
+            processDocumentation.processOutputSpecifications
+          "
+        ></app-outputs>
       </CCol>
       <CCol xs>
-    <app-qualities
-      :processQualities="processDocumentation.processQualities"
-    ></app-qualities>
+        <app-qualities
+          :processQualities="processDocumentation.processQualities"
+        ></app-qualities>
       </CCol>
       <CCol xs>
-    <app-documents
-      :documents="processDocumentation.documents"
-      :statisticalProgramId="processDocumentation.statisticalProgram.id"
-      @handleBack="handleBack"
-    ></app-documents>
+        <app-documents
+          :documents="processDocumentation.documents"
+          :statisticalProgramId="processDocumentation.statisticalProgram.id"
+          @handleBack="handleBack"
+        ></app-documents>
       </CCol>
     </CRow>
   </div>

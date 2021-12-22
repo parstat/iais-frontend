@@ -4,14 +4,14 @@
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
         <CCol xs v-for="maintainer of maintainers" :key="maintainer.id">
-        <CCard>
-          <CCardHeader component="h6">
-            {{ maintainer.name }}
-          </CCardHeader>
-          <CCardBody>
-            <CCardText>{{ maintainer.description }}</CCardText>
-          </CCardBody>
-        </CCard>
+          <CCard>
+            <CCardHeader component="h6">
+              {{ maintainer.name }}
+            </CCardHeader>
+            <CCardBody>
+              <CCardText>{{ maintainer.description }}</CCardText>
+            </CCardBody>
+          </CCard>
         </CCol>
       </CRow>
     </CCardBody>
@@ -110,4 +110,3 @@ export default {
   },
 };
 </script>
-

@@ -12,11 +12,11 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.name.$error }"
+              :class="{ 'is-invalid': v$.name.$error }"
               placeholder="Legislative reference name"
               v-model.trim="name"
             />
-            <span class="help-block" :class="{ show: $v.name.$error }"
+            <span class="help-block" :class="{ show: v$.name.$error }"
               >Please enter a name.</span
             >
           </div>
@@ -60,10 +60,10 @@
               label="type"
               :options="types"
               v-model="type"
-              :class="{ 'is-invalid': $v.type.$error }"
+              :class="{ 'is-invalid': v$.type.$error }"
               placeholder="Select a type"
             ></v-select>
-            <span class="help-block" :class="{ show: $v.type.$error }"
+            <span class="help-block" :class="{ show: v$.type.$error }"
               >Please select a type.</span
             >
           </div>
@@ -73,11 +73,11 @@
               id="localId"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.localId.$error }"
+              :class="{ 'is-invalid': v$.localId.$error }"
               placeholder="Local id"
               v-model.trim="localId"
             />
-            <span class="help-block" :class="{ show: $v.localId.$error }"
+            <span class="help-block" :class="{ show: v$.localId.$error }"
               >Please specify a local id.</span
             >
           </div>
@@ -107,13 +107,15 @@
   </div>
 </template>
 <script>
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import { Regulation } from "@/common";
 
 export default {
   name: "LegislativeReferenceAdd",
   data() {
     return {
+      v$: useValidate(),
       name: "",
       description: "",
       type: "",
@@ -145,8 +147,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           name: this.name,
@@ -167,7 +169,7 @@ export default {
       this.link = "";
       this.version = "";
       this.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
 };

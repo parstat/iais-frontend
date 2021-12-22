@@ -11,11 +11,11 @@
           id="document_name"
           type="text"
           class="form-control"
-          :class="{ 'is-invalid': $v.name.$error }"
+          :class="{ 'is-invalid': v$.name.$error }"
           placeholder="Process comment/note title"
           v-model.trim="name"
         />
-        <span class="help-block" :class="{ show: $v.name.$error }"
+        <span class="help-block" :class="{ show: v$.name.$error }"
           >Please enter a title for comment/note.</span
         >
       </div>
@@ -26,11 +26,11 @@
           id="document_description"
           type="text"
           class="form-control"
-          :class="{ 'is-invalid': $v.description.$error }"
+          :class="{ 'is-invalid': v$.description.$error }"
           placeholder="Process comment/note"
           v-model.trim="description"
         />
-        <span class="help-block" :class="{ show: $v.description.$error }"
+        <span class="help-block" :class="{ show: v$.description.$error }"
           >Please enter note or comment.</span
         >
       </div>
@@ -99,13 +99,15 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "ProcessDocumentationOutputsEdit",
 
   data() {
     return {
+      v$: useValidate(),
       name: "",
       description: "",
       link: "",
@@ -125,8 +127,8 @@ export default {
   },
   methods: {
     addProcessDocument() {
-      this.$v.$touch();
-      if (!this.$v.$invalid) {
+      this.v$.$touch();
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           documentation: this.processDocumentation.id,
@@ -141,7 +143,7 @@ export default {
             this.name = "";
             this.description = "";
             this.link = "";
-            this.$v.$reset();
+            this.v$.$reset();
           });
       }
     },

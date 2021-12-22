@@ -12,11 +12,11 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.name.$error }"
+              :class="{ 'is-invalid': v$.name.$error }"
               placeholder="Business service name"
               v-model.trim="name"
             />
-            <span class="help-block" :class="{ show: $v.name.$error }"
+            <span class="help-block" :class="{ show: v$.name.$error }"
               >Please enter business service name.</span
             >
           </div>
@@ -80,12 +80,14 @@
   </div>
 </template>
 <script>
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "BusinessServiceAdd",
   data() {
     return {
+      v$: useValidate(),
       name: "",
       description: "",
       version: "",
@@ -100,8 +102,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           name: this.name,
@@ -118,7 +120,7 @@ export default {
       this.description = "";
       this.version = "";
       this.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
 };

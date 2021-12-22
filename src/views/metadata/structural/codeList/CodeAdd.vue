@@ -12,11 +12,11 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.name.$error }"
+              :class="{ 'is-invalid': v$.name.$error }"
               placeholder="Code name"
               v-model.trim="form.name"
             />
-            <span class="help-block" :class="{ show: $v.name.$error }"
+            <span class="help-block" :class="{ show: v$.name.$error }"
               >Please enter variable name.</span
             >
           </div>
@@ -49,11 +49,11 @@
               id="localId"
               type="text"
               class="form-control capitalize"
-              :class="{ 'is-invalid': $v.localId.$error }"
+              :class="{ 'is-invalid': v$.localId.$error }"
               placeholder="Local id"
               v-model.trim="form.localId"
             />
-            <span class="help-block" :class="{ show: $v.localId.$error }"
+            <span class="help-block" :class="{ show: v$.localId.$error }"
               >Please specify a local id.</span
             >
           </div>
@@ -84,7 +84,8 @@
 </template>
 <script>
 //import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 //import { Variable } from "@/common";
 import axios from "axios";
 
@@ -100,6 +101,7 @@ export default {
   name: "CodeAdd",
   data() {
     return {
+      v$: useValidate(),
       form: {
         name: "",
         description: "",
@@ -148,8 +150,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           name: this.name,
@@ -179,7 +181,7 @@ export default {
       this.form.description = "";
       this.form.language = "";
       this.form.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
 };

@@ -28,11 +28,11 @@
                   <input
                     type="text"
                     class="form-control"
-                    :class="{ invalid: $v.username.$error }"
+                    :class="{ invalid: v$.username.$error }"
                     placeholder="User name"
                     v-model.trim="username"
                   />
-                  <span class="help-block" :class="{ show: $v.username.$error }"
+                  <span class="help-block" :class="{ show: v$.username.$error }"
                     >Please enter your username.</span
                   >
                 </div>
@@ -45,11 +45,11 @@
                   <input
                     type="text"
                     class="form-control"
-                    :class="{ invalid: $v.email.$error }"
+                    :class="{ invalid: v$.email.$error }"
                     placeholder="Email"
                     v-model.trim="email"
                   />
-                  <span class="help-block" :class="{ show: $v.email.$error }"
+                  <span class="help-block" :class="{ show: v$.email.$error }"
                     >Please enter a valid email address.</span
                   >
                 </div>
@@ -62,11 +62,11 @@
                   <input
                     type="text"
                     class="form-control"
-                    :class="{ invalid: $v.fullname.$error }"
+                    :class="{ invalid: v$.fullname.$error }"
                     placeholder="Full name"
                     v-model.trim="fullname"
                   />
-                  <span class="help-block" :class="{ show: $v.fullname.$error }"
+                  <span class="help-block" :class="{ show: v$.fullname.$error }"
                     >Please enter your fullname.</span
                   >
                 </div>
@@ -79,11 +79,11 @@
                   <input
                     type="password"
                     class="form-control"
-                    :class="{ invalid: $v.password.$error }"
+                    :class="{ invalid: v$.password.$error }"
                     placeholder="Password"
                     v-model="password"
                   />
-                  <span class="help-block" :class="{ show: $v.password.$error }"
+                  <span class="help-block" :class="{ show: v$.password.$error }"
                     >Password should contain at least 6 characters.</span
                   >
                 </div>
@@ -96,14 +96,14 @@
                   <input
                     type="password"
                     class="form-control"
-                    :class="{ invalid: $v.confirmPassword.$error }"
+                    :class="{ invalid: v$.confirmPassword.$error }"
                     placeholder="Repeat password"
-                    @input="$v.confirmPassword.$touch()"
+                    @input="v$.confirmPassword.$touch()"
                     v-model="confirmPassword"
                   />
                   <span
                     class="help-block"
-                    :class="{ show: $v.confirmPassword.$error }"
+                    :class="{ show: v$.confirmPassword.$error }"
                     >Passwords are different</span
                   >
                 </div>
@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import { required, email, minLength, sameAs } from "@vuelidate/validators";
 import { mapGetters } from "vuex";
 
 export default {
@@ -164,8 +164,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         const formData = {
           username: this.username,
           email: this.email,

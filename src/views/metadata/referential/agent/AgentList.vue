@@ -1,93 +1,81 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <header class="card-header">
+  <CRow>
+    <CCol>
+      <CCard>
+        <CCardHeader>
           Agents
-          <div class="card-header-actions">
+          <CNav>
+            <CNavItem>
+              <span>
             <router-link
               v-if="isAuthenticated"
               tag="a"
               to="/metadata/referential/gsim/agent/add"
               class="card-header-action"
             >
-              <add-icon />
+              <CIcon name="cil-plus" />
               <span class="icon-span">New agent</span>
             </router-link>
-          </div>
-        </header>
-        <div class="card-body">
-          <div v-if="isLoading">
-            <tile></tile>
-          </div>
-          <div class="table-responsive" v-else>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Parent</th>
-                  <th scope="col" colspan="2" width="2%"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="agent in agents" :key="agent.id">
-                  <td>{{ agent.id }}</td>
-                  <td>{{ agent.name }}</td>
-                  <td v-if="agent.description">
-                    {{ agent.description }}
-                  </td>
-                  <td v-else class="pl-4">&ndash;</td>
-                  <td>{{ agent.type | capitalize }}</td>
-                  <td v-if="agent.parent">{{ agent.parent.name }}</td>
-                  <td v-else class="pl-4">&ndash;</td>
-                  <template v-if="isAuthenticated">
+              </span>
+            </CNavItem>
+          </CNav>
+        </CCardHeader>
+        <CCardBody>
+          <CSmartTable
+           :items="agents"
+            :columns="columns"
+            column-filter
+            table-filter
+            items-per-page-select
+            :items-per-page="5"
+            hover
+            sorter
+            pagination>
+              
+                  
+                  <template #actions="{ item }">
                     <td>
+                      <span>
+                        <router-link
+                        tag="a"
+                        :to="{
+                          name: 'AgentView',
+                          params: { id: item.id },
+                        }"
+                      >
+                       <CIcon name="cil-magnifying-glass" />
+                      </router-link>
+                      </span>
+                       <span v-if="isAuthenticated">
                       <router-link
                         tag="a"
                         :to="{
                           name: 'AgentEdit',
-                          params: { id: agent.id },
+                          params: { id: item.id },
                         }"
                       >
-                        <edit-icon />
+                        <CIcon name="cil-pencil" />
                       </router-link>
-                    </td>
-                    <td v-if="isAdmin">
+                       </span>
+                    <span v-if="isAdmin">
                       <router-link
                         tag="a"
                         :to="{
                           name: 'AgentDelete',
-                          params: { id: agent.id },
+                          params: { id: item.id },
                         }"
                       >
-                        <delete-icon />
+                         <CIcon name="cil-trash" />
                       </router-link>
+                      </span>
                     </td>
                   </template>
-                  <template v-else>
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'AgentView',
-                          params: { id: agent.id },
-                        }"
-                      >
-                        <view-icon />
-                      </router-link>
-                    </td>
-                  </template>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+          </CSmartTable>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
@@ -96,6 +84,36 @@ import { Context } from "@/common";
 
 export default {
   name: "AgentList",
+   data() {
+    return {
+      columns: [
+        {
+          key: "id",
+          label: "Id",
+        },
+        {
+          key: "name",
+          label: "Agent name",
+        },
+       
+        {
+          key: "description",
+          label: "Description",
+        },
+        {
+          key: "type",
+          label: "Type",
+        },
+        {
+          key: "actions",
+          label: "Actions",
+          _style: { width: "1%" },
+          sorter: false,
+          filter: false,
+        },
+      ],
+    };
+  },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),

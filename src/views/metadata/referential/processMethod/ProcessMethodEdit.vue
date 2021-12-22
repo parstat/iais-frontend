@@ -12,13 +12,13 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.processMethod.name.$error }"
+              :class="{ 'is-invalid': v$.processMethod.name.$error }"
               placeholder="processMethod name"
               v-model.trim="processMethod.name"
             />
             <span
               class="help-block"
-              :class="{ show: $v.processMethod.name.$error }"
+              :class="{ show: v$.processMethod.name.$error }"
               >Please enter processMethod name.</span
             >
           </div>
@@ -73,7 +73,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "ProcessMethodEdit",
@@ -82,6 +83,7 @@ export default {
   },
   data() {
     return {
+      v$: useValidate(),
       disabled: false,
     };
   },
@@ -94,8 +96,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           id: this.processMethod.id,
@@ -113,7 +115,7 @@ export default {
       this.processMethod.description = "";
       this.processMethod.version = "";
       this.processMethod.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
   created() {

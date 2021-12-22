@@ -12,11 +12,11 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.name.$error }"
+              :class="{ 'is-invalid': v$.name.$error }"
               placeholder="Business function name"
               v-model.trim="name"
             />
-            <span class="help-block" :class="{ show: $v.name.$error }"
+            <span class="help-block" :class="{ show: v$.name.$error }"
               >Please enter business function name.</span
             >
           </div>
@@ -30,7 +30,7 @@
               placeholder="Business function description"
               v-model.trim="description"
             />
-            <span class="help-block" :class="{ show: $v.name.$error }"
+            <span class="help-block" :class="{ show: v$.name.$error }"
               >Please enter a description</span
             >
           </div>
@@ -51,11 +51,11 @@
               id="localId"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.localId.$error }"
+              :class="{ 'is-invalid': v$.localId.$error }"
               placeholder="Local id"
               v-model.trim="localId"
             />
-            <span class="help-block" :class="{ show: $v.localId.$error }"
+            <span class="help-block" :class="{ show: v$.localId.$error }"
               >Please specify the sub-phase number.</span
             >
           </div>
@@ -85,12 +85,14 @@
   </div>
 </template>
 <script>
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "BusinessFunctionAdd",
   data() {
     return {
+      v$: useValidate(),
       name: "",
       description: "",
       version: "",
@@ -111,8 +113,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           name: this.name,
@@ -129,7 +131,7 @@ export default {
       this.description = "";
       this.version = "";
       this.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
 };

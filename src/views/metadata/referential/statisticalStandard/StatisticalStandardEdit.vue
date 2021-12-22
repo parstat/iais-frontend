@@ -12,13 +12,13 @@
               id="name"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': $v.statisticalStandard.name.$error }"
+              :class="{ 'is-invalid': v$.statisticalStandard.name.$error }"
               placeholder="statisticalStandard name"
               v-model.trim="statisticalStandard.name"
             />
             <span
               class="help-block"
-              :class="{ show: $v.statisticalStandard.name.$error }"
+              :class="{ show: v$.statisticalStandard.name.$error }"
               >Please enter statistical standard name.</span
             >
           </div>
@@ -42,12 +42,12 @@
               label="type"
               :options="types"
               v-model="statisticalStandard.type"
-              :class="{ 'is-invalid': $v.statisticalStandard.type.$error }"
+              :class="{ 'is-invalid': v$.statisticalStandard.type.$error }"
               placeholder="Select a type"
             ></v-select>
             <span
               class="help-block"
-              :class="{ show: $v.statisticalStandard.type.$error }"
+              :class="{ show: v$.statisticalStandard.type.$error }"
               >Please select a type.</span
             >
           </div>
@@ -88,13 +88,15 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import { Standard } from "@/common";
 
 export default {
   name: "StatisticalStandardEdit",
   data() {
     return {
+      v$: useValidate(),
       disabled: false,
     };
   },
@@ -123,8 +125,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           id: this.statisticalStandard.id,
@@ -146,7 +148,7 @@ export default {
       this.statisticalStandard.link = "";
       this.statisticalStandard.version = "";
       this.statisticalStandard.localId = "";
-      this.$v.$reset();
+      this.v$.$reset();
     },
   },
   created() {

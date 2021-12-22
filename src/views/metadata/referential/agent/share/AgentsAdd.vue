@@ -1,30 +1,34 @@
 <template>
-  <div class="card">
-    <header class="card-header pt-0">
-      <user-icon />
-      <strong class="icon-header">Agents</strong>
-      <div class="card-header-actions">
-        <router-link
-          tag="a"
-          to="/metadata/referential/gsim/agent/add"
-          class="card-header-action"
-        >
-          <add-icon />
-          <span class="icon-span">Add</span>
-        </router-link>
-      </div>
-    </header>
-    <div class="card-body">
+  <CCard>
+    <CCardHeader component="h5">
+      <CIcon name="cil-user" />
+      Agents
+      <CNav>
+        <CNavItem>
+          <span>
+            <router-link
+              tag="a"
+              to="/metadata/referential/gsim/agent/add"
+              class="card-header-action"
+            >
+              <add-icon />
+              <span class="icon-span">Add</span>
+            </router-link>
+          </span>
+        </CNavItem>
+      </CNav>
+    </CCardHeader>
+    <CCardBody>
       <div class="form-group" v-if="owners">
         <label for="organization">Organization*</label>
         <v-select
           label="name"
           :options="owners"
           v-model="owner"
-          :class="{ 'is-invalid': $v.owner.$error }"
+          :class="{ 'is-invalid': v$.owner.$error }"
           placeholder="Select an organization"
         ></v-select>
-        <span class="help-block" :class="{ show: $v.owner.$error }"
+        <span class="help-block" :class="{ show: v$.owner.$error }"
           >Please select an Organization.</span
         >
       </div>
@@ -34,10 +38,10 @@
           label="name"
           :options="maintainers"
           v-model="maintainer"
-          :class="{ 'is-invalid': $v.maintainer.$error }"
+          :class="{ 'is-invalid': v$.maintainer.$error }"
           placeholder="Select a division"
         ></v-select>
-        <span class="help-block" :class="{ show: $v.maintainer.$error }"
+        <span class="help-block" :class="{ show: v$.maintainer.$error }"
           >Please select a division.</span
         >
       </div>
@@ -47,15 +51,15 @@
           label="name"
           :options="contacts"
           v-model="contact"
-          :class="{ 'is-invalid': $v.contact.$error }"
+          :class="{ 'is-invalid': v$.contact.$error }"
           placeholder="Select a contact person"
         ></v-select>
-        <span class="help-block" :class="{ show: $v.contact.$error }"
+        <span class="help-block" :class="{ show: v$.contact.$error }"
           >Please select a contact person.</span
         >
       </div>
-    </div>
-    <div class="card-footer">
+    </CCardBody>
+    <CCardFooter>
       <CButton
         color="primary"
         shape="square"
@@ -74,18 +78,20 @@
         :disabled="disabled"
         >Next</CButton
       >
-    </div>
-  </div>
+    </CCardFooter>
+  </CCard>
 </template>
 <script>
 import { mapGetters } from "vuex";
 import { Agent } from "@/common";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "AgentsAdd",
   data() {
     return {
+      v$: useValidate(),
       owner: {},
       maintainer: {},
       contact: {},
@@ -109,8 +115,8 @@ export default {
   },
   methods: {
     next() {
-      this.$v.$touch(); //validate form data
-      if (!this.$v.$invalid) {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const agents = {
           owner: this.owner,

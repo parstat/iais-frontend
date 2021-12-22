@@ -11,11 +11,11 @@
           id="input_name"
           type="text"
           class="form-control"
-          :class="{ 'is-invalid': $v.name.$error }"
+          :class="{ 'is-invalid': v$.name.$error }"
           placeholder="Process input name"
           v-model.trim="name"
         />
-        <span class="help-block" :class="{ show: $v.name.$error }"
+        <span class="help-block" :class="{ show: v$.name.$error }"
           >Please enter a process input name.</span
         >
       </div>
@@ -26,11 +26,11 @@
           id="input_description"
           type="text"
           class="form-control"
-          :class="{ 'is-invalid': $v.description.$error }"
+          :class="{ 'is-invalid': v$.description.$error }"
           placeholder="Process input description"
           v-model.trim="description"
         />
-        <span class="help-block" :class="{ show: $v.description.$error }"
+        <span class="help-block" :class="{ show: v$.description.$error }"
           >Please enter the process input description.</span
         >
         <div>
@@ -91,13 +91,15 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import { required } from "vuelidate/lib/validators";
+import useValidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "ProcessDocumentationInputsEdit",
 
   data() {
     return {
+      v$: useValidate(),
       name: "",
       description: "",
       disabled: false,
@@ -116,8 +118,8 @@ export default {
   },
   methods: {
     addProcessInput() {
-      this.$v.$touch();
-      if (!this.$v.$invalid) {
+      this.v$.$touch();
+      if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           documentation: this.processDocumentation.id,
@@ -129,7 +131,7 @@ export default {
           .then(() => {
             this.name = "";
             this.description = "";
-            this.$v.$reset();
+            this.v$.$reset();
           });
       }
     },
