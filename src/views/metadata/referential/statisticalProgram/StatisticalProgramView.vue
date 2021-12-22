@@ -41,6 +41,7 @@
       </CCol>
       <CCol xs>
         <app-documentations
+          v-if="statisticalProgram.processDocumentations"
           :processDocumentations="statisticalProgram.processDocumentations"
           @back="handleBack"
         ></app-documentations>

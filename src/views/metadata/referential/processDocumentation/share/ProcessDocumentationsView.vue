@@ -1,5 +1,5 @@
 <template>
-  <CCard>
+  <CCard v-if="viewProcessDocumentation.length">
     <CCardHeader component="h5"> Process Documentations </CCardHeader>
     <CCardBody>
       <CSmartTable

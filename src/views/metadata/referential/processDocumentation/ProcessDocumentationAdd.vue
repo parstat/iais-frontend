@@ -1,8 +1,8 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
+  <CRow>
+    <CCol class="col-12">
+      <CCard>
+        <CCardHeader>
           <CIcon name="cil-description" />
           <strong class="icon-header">Process Documentation</strong>
           <p class="card-subtitle">
@@ -10,212 +10,265 @@
             sub-phase: {{ businessFunction ? businessFunction.localId : "" }}
             {{ businessFunction ? businessFunction.name : "" }})
           </p>
-        </div>
-        <div class="card-body">
-          <CTabs
-            variant="pills"
-            :vertical="{ navs: 'col-md-3', content: 'col-md-9' }"
-            :active-tab="activeTab"
-            @update:activeTab="updateStep"
-          >
-            <CTab title="Basic">
-              <div class="card">
-                <header class="card-header">
-                  <CIcon name="cil-description" />
-                  <strong class="icon-header"
-                    >Process Documentation Basics</strong
-                  >
-                </header>
-                <div class="card-body">
-                  <div class="form-group" v-if="statisticalPrograms">
-                    <label for="statisticalProgram">Statistical Process*</label>
-                    <v-select
-                      label="name"
-                      :options="statisticalPrograms"
-                      :value="statisticalProgram"
-                      :class="{ 'is-invalid': v$.statisticalProgram.$error }"
-                      placeholder="Select a Statistical Proccess"
-                      :filtrable="false"
-                      @search="searchStatisticalProrams"
-                      @input="selectStatistialProgram"
-                    >
-                      <template v-slot:no-options="{ search, searching }">
-                        <template v-if="searching">
-                          No results found for <em>{{ search }}</em
-                          >.
-                        </template>
-                        <em style="opacity: 0.5" v-else>
-                          Start typing to search for a statistical program.
-                        </em>
-                      </template>
-                      <template v-slot:content="option">
-                        <div class="d-center">
-                          <span>
-                            <strong
-                              >{{ option.name }} {{ option.version }}</strong
-                            >
-                          </span>
-                          <p>
-                            {{ $filters.truncateString(option.description) }}
-                          </p>
-                        </div>
-                      </template>
-                    </v-select>
-                    <span
-                      class="help-block"
-                      :class="{ show: v$.statisticalProgram.$error }"
-                      >Please select a Statisitcal Process.</span
-                    >
-                  </div>
-                  <div class="form-group" v-if="businessFunctions">
-                    <label for="statisticalProgram">GSBPM Sub-phase*</label>
-                    <v-select
-                      label="name"
-                      :options="businessFunctions"
-                      :value="businessFunction"
-                      :class="{ 'is-invalid': v$.businessFunction.$error }"
-                      placeholder="Select a GSBPM sub-phase"
-                      :filtrable="false"
-                      @search="searchBusinessFunctions"
-                      @input="selectBusinessFunction"
-                    >
-                      <template v-slot:no-options="{ search, searching }">
-                        <template v-if="searching">
-                          No results found for <em>{{ search }}</em
-                          >.
-                        </template>
-                        <em style="opacity: 0.5" v-else>
-                          Start typing to search for a GSBPM sub-phase.
-                        </em>
-                      </template>
-                      <template v-slot:content="option">
-                        <div class="d-center">
-                          <span>
-                            <strong
-                              >{{ option.localId }} {{ option.name }} v{{
-                                option.version
-                              }}</strong
-                            >
-                          </span>
-                          <p>
-                            {{ $filters.truncateString(option.description) }}
-                          </p>
-                        </div>
-                      </template>
-                    </v-select>
-                    <span
-                      class="help-block"
-                      :class="{ show: v$.businessFunction.$error }"
-                      >Please select a GSBPM sub-phase.</span
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label for="description">Documentation description*</label>
-                    <textarea
-                      rows="5"
-                      id="description"
-                      type="text"
-                      class="form-control"
-                      :class="{ 'is-invalid': v$.description.$error }"
-                      placeholder="Survey description"
-                      v-model.trim="description"
-                    />
-                    <span
-                      class="help-block"
-                      :class="{ show: v$.description.$error }"
-                      >Please enter survey description.</span
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label for="frequency">Frequency*</label>
-                    <v-select
-                      label="frequency"
-                      :options="frequencies"
-                      v-model="frequency"
-                      :class="{ 'is-invalid': v$.frequency.$error }"
-                      placeholder="Select a Frequence"
-                    ></v-select>
-                    <span
-                      class="help-block"
-                      :class="{ show: v$.frequency.$error }"
-                      >Please frequency a type.</span
-                    >
-                  </div>
-                  <div class="form-group" v-if="businessFunctions">
-                    <label for="nextBusinessFunction"
-                      >Next GSBPM Sub-phase*</label
-                    >
-                    <v-select
-                      label="name"
-                      :options="businessFunctions"
-                      v-model="nextBusinessFunction"
-                      :class="{ 'is-invalid': v$.nextBusinessFunction.$error }"
-                      placeholder="Select a GSBPM sub-phase"
-                      :filtrable="false"
-                      @search="searchBusinessFunctions"
-                    >
-                      <template v-slot:no-options="{ search, searching }">
-                        <template v-if="searching">
-                          No results found for <em>{{ search }}</em
-                          >.
-                        </template>
-                        <em style="opacity: 0.5" v-else>
-                          Start typing to search for a GSBPM sub-phase.
-                        </em>
-                      </template>
-                      <template v-slot:content="option">
-                        <div class="d-center">
-                          <span>
-                            <strong
-                              >{{ option.localId }} {{ option.name }} v{{
-                                option.version
-                              }}</strong
-                            >
-                          </span>
-                          <p v-if="option.description">
-                            {{ $filters.truncateString(option.description) }}
-                          </p>
-                        </div>
-                      </template>
-                    </v-select>
-                    <span
-                      class="help-block"
-                      :class="{ show: v$.nextBusinessFunction.$error }"
-                      >Please select the next GSBPM sub-phase.</span
-                    >
-                  </div>
-                  <div>
-                    <input type="checkbox" value="Last" v-model="lastProcess" />
-                    Last process
-                  </div>
-                  <div class="form-mandatory">*Mandatory fields</div>
-                </div>
-                <div class="card-footer">
-                  <CButton
-                    color="primary"
-                    size="sm"
-                    style="margin-right: 0.3rem"
-                    @click.prevent="handleSubmit()"
-                    :disabled="disabled"
-                    >Next
-                  </CButton>
-                </div>
-              </div>
-            </CTab>
+        </CCardHeader>
+        <CCardBody>
+          <CRow>
+            <CCol class="col-3 mr-2">
+              <CNav class="flex-column" variant="pills" role="tab">
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" active> Basic </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    Divisions
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    StatisticalStandards
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    Process Methods
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    Business Service/Software
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    Process Input
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    Process Output
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    Process Quality
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    Comments/Notes
+                  </CNavLink>
+                </CNavItem>
+              </CNav>
+            </CCol>
+            <CCol class="col-9">
+              <CTabContent>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="true"
+                >
+                  <CCard>
+                    <CCardBody>
+                      <div class="form-group">
+                        <label for="statisticalProgram"
+                          >Statistical Process*</label
+                        >
+                        <v-select
+                          label="name"
+                          :options="statisticalPrograms"
+                          v-model="statisticalProgram"
+                          :class="{
+                            'is-invalid': v$.statisticalProgram.$error,
+                          }"
+                          placeholder="Select a Statistical Proccess"
+                          :filtrable="false"
+                          @search="searchStatisticalPrograms"
+                        >
+                          <template v-slot:no-options="{ search, searching }">
+                            <template v-if="searching">
+                              No results found for <em>{{ search }}</em
+                              >.
+                            </template>
+                            <em style="opacity: 0.5" v-else>
+                              Start typing to search for a statistical program.
+                            </em>
+                          </template>
+                          <template v-slot:content="option">
+                            <div class="d-center">
+                              <span>
+                                <strong
+                                  >{{ option.name }}
+                                  {{ option.version }}</strong
+                                >
+                              </span>
+                              <p>
+                                {{
+                                  $filters.truncateString(option.description)
+                                }}
+                              </p>
+                            </div>
+                          </template>
+                        </v-select>
+                        <span
+                          class="help-block"
+                          :class="{ show: v$.statisticalProgram.$error }"
+                          >Please select a Statisitcal Process.</span
+                        >
+                      </div>
+                      <div class="form-group" v-if="businessFunctions">
+                        <label for="statisticalProgram">GSBPM Sub-phase*</label>
+                        <v-select
+                          label="name"
+                          :options="businessFunctions"
+                          v-model="businessFunction"
+                          :class="{ 'is-invalid': v$.businessFunction.$error }"
+                          placeholder="Select a GSBPM sub-phase"
+                          :filtrable="false"
+                          @search="searchBusinessFunctions"
+                        >
+                          <template v-slot:no-options="{ search, searching }">
+                            <template v-if="searching">
+                              No results found for <em>{{ search }}</em
+                              >.
+                            </template>
+                            <em style="opacity: 0.5" v-else>
+                              Start typing to search for a GSBPM sub-phase.
+                            </em>
+                          </template>
+                          <template v-slot:content="option">
+                            <div class="d-center">
+                              <span>
+                                <strong
+                                  >{{ option.localId }} {{ option.name }} v{{
+                                    option.version
+                                  }}</strong
+                                >
+                              </span>
+                              <p>
+                                {{
+                                  $filters.truncateString(option.description)
+                                }}
+                              </p>
+                            </div>
+                          </template>
+                        </v-select>
+                        <span
+                          class="help-block"
+                          :class="{ show: v$.businessFunction.$error }"
+                          >Please select a GSBPM sub-phase.</span
+                        >
+                      </div>
+                      <div class="form-group">
+                        <label for="description"
+                          >Documentation description*</label
+                        >
+                        <textarea
+                          rows="5"
+                          id="description"
+                          type="text"
+                          class="form-control"
+                          :class="{ 'is-invalid': v$.description.$error }"
+                          placeholder="Survey description"
+                          v-model.trim="description"
+                        />
+                        <span
+                          class="help-block"
+                          :class="{ show: v$.description.$error }"
+                          >Please enter survey description.</span
+                        >
+                      </div>
+                      <div class="form-group">
+                        <label for="frequency">Frequency*</label>
+                        <v-select
+                          label="frequency"
+                          :options="frequencies"
+                          v-model="frequency"
+                          :class="{ 'is-invalid': v$.frequency.$error }"
+                          placeholder="Select a Frequence"
+                        ></v-select>
+                        <span
+                          class="help-block"
+                          :class="{ show: v$.frequency.$error }"
+                          >Please frequency a type.</span
+                        >
+                      </div>
+                      <div class="form-group" v-if="businessFunctions">
+                        <label for="nextBusinessFunction"
+                          >Next GSBPM Sub-phase*</label
+                        >
+                        <v-select
+                          label="name"
+                          :options="businessFunctions"
+                          v-model="nextBusinessFunction"
+                          :class="{
+                            'is-invalid': v$.nextBusinessFunction.$error,
+                          }"
+                          placeholder="Select a GSBPM sub-phase"
+                          :filtrable="false"
+                          @search="searchBusinessFunctions"
+                        >
+                          <template v-slot:no-options="{ search, searching }">
+                            <template v-if="searching">
+                              No results found for <em>{{ search }}</em
+                              >.
+                            </template>
+                            <em style="opacity: 0.5" v-else>
+                              Start typing to search for a GSBPM sub-phase.
+                            </em>
+                          </template>
+                          <template v-slot:content="option">
+                            <div class="d-center">
+                              <span>
+                                <strong
+                                  >{{ option.localId }} {{ option.name }} v{{
+                                    option.version
+                                  }}</strong
+                                >
+                              </span>
+                              <p v-if="option.description">
+                                {{
+                                  $filters.truncateString(option.description)
+                                }}
+                              </p>
+                            </div>
+                          </template>
+                        </v-select>
+                        <span
+                          class="help-block"
+                          :class="{ show: v$.nextBusinessFunction.$error }"
+                          >Please select the next GSBPM sub-phase.</span
+                        >
+                      </div>
+                      <div>
+                        <input
+                          type="checkbox"
+                          value="Last"
+                          v-model="lastProcess"
+                        />
+                        Last process
+                      </div>
+                      <div class="form-mandatory">*Mandatory fields</div>
+                    </CCardBody>
 
-            <CTab title="Divisions" disabled></CTab>
-            <CTab title="Statistical Standards" disabled> </CTab>
-            <CTab title="Process Methods" disabled></CTab>
-            <CTab title="Business Services/Software" disabled> </CTab>
-            <CTab title="Process Inputs" disabled> </CTab>
-            <CTab title="Process Outputs" disabled> </CTab>
-            <CTab title="Process Quality" disabled> </CTab>
-            <CTab title="Process Comments/Notes" disabled> </CTab>
-          </CTabs>
-        </div>
-      </div>
-    </div>
-  </div>
+                    <CCardFooter>
+                      <CButton
+                        color="primary"
+                        size="sm"
+                        style="margin-right: 0.3rem"
+                        @click.prevent="handleSubmit()"
+                        :disabled="disabled"
+                        >Next
+                      </CButton>
+                    </CCardFooter>
+                  </CCard>
+                </CTabPane>
+              </CTabContent>
+            </CCol>
+          </CRow>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import { mapGetters } from "vuex";
@@ -247,6 +300,7 @@ export default {
       "businessFunction",
       "businessFunctions",
     ]),
+
     frequencies() {
       var frequencies = [];
       for (const key of Object.keys(Frequency)) {
@@ -303,7 +357,7 @@ export default {
       this.v$.$reset();
     },
 
-    searchStatisticalProrams(name, loading) {
+    searchStatisticalPrograms(name, loading) {
       loading(true);
       this.searchSP(name, loading, this);
     },
@@ -345,14 +399,6 @@ export default {
     },
     updateStep(active) {
       this.activeTab = active;
-    },
-    selectStatistialProgram(value) {
-      this.$store.dispatch("statisticalProgram/findById", value.id);
-    },
-    selectBusinessFunction(value) {
-      if (value) {
-        this.$store.dispatch("businessFunction/findById", value.id);
-      }
     },
   },
   created() {

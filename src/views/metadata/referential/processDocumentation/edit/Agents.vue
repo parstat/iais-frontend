@@ -95,19 +95,23 @@ export default {
   },
   methods: {
     addMaintainer(selectedMaintainer) {
-      const formData = {
-        id: this.processDocumentation.id,
-        maintainer: selectedMaintainer.id,
-      };
-      this.$store.dispatch("processDocumentation/addMaintainer", formData);
+      if (typeof selectedMaintainer.id != "undefined") {
+        const formData = {
+          id: this.processDocumentation.id,
+          maintainer: selectedMaintainer.id,
+        };
+        this.$store.dispatch("processDocumentation/addMaintainer", formData);
+      }
     },
 
     removeMaintainer(selectedMaintainer) {
-      const formData = {
-        id: this.processDocumentation.id,
-        maintainer: selectedMaintainer.id,
-      };
-      this.$store.dispatch("processDocumentation/removeMaintainer", formData);
+      if (typeof selectedMaintainer.id != "undefined") {
+        const formData = {
+          id: this.processDocumentation.id,
+          maintainer: selectedMaintainer.id,
+        };
+        this.$store.dispatch("processDocumentation/removeMaintainer", formData);
+      }
     },
   },
 };

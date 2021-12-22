@@ -31,6 +31,7 @@ const actions = {
     statisticalProgramService.findById(id).then(
       (data) => {
         commit("SET_STATISTICAL_PROGRAM", data);
+        commit("SET_STATISTICAL_PROGRAMS", new Array(data));
       },
       (error) => {
         console.log(error);
