@@ -90,9 +90,15 @@ export default {
   data() {
     return {
       v$: useValidate(),
-      owner: {},
-      maintainer: {},
-      contact: {},
+      owner: {
+        name: "",
+      },
+      maintainer: {
+        name: "",
+      },
+      contact: {
+        name: "",
+      },
       disabled: false,
       activeTab: 0,
     };

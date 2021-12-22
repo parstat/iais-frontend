@@ -109,12 +109,7 @@
                     /></span>
                   </template>
                   <app-agents-edit
-                    :owner="statisticalProgram.owner"
-                    :maintainer="statisticalProgram.maintainer"
-                    :contact="statisticalProgram.contact"
-                    @updateOwner="handleUpdateOwner"
-                    @updateMaintainer="handleUpdateMaintainer"
-                    @updateContact="handleUpdateContact"
+                    :sp="statisticalProgram"
                     @back="back"
                     @next="nextAgents"
                   />
@@ -228,27 +223,6 @@ export default {
         //do nothing
         this.next();
       }
-    },
-    handleUpdateOwner(owner) {
-      const formData = {
-        id: this.statisticalProgram.id,
-        owner: owner.id,
-      };
-      this.$store.dispatch("statisticalProgram/updateOwner", formData);
-    },
-    handleUpdateMaintainer(maintainer) {
-      const formData = {
-        id: this.statisticalProgram.id,
-        maintainer: maintainer.id,
-      };
-      this.$store.dispatch("statisticalProgram/updateMaintainer", formData);
-    },
-    handleUpdateContact(contact) {
-      const formData = {
-        id: this.statisticalProgram.id,
-        contact: contact.id,
-      };
-      this.$store.dispatch("statisticalProgram/updateContact", formData);
     },
     handleAddLegislativeReference(regulation) {
       const formData = {

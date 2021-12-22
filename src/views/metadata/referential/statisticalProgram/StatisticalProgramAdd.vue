@@ -1,40 +1,93 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <h5>
-            <CIcon name="cil-description" />
-            <strong class="icon-header">Statistical process</strong>
-          </h5>
-        </div>
-        <div class="card-body">
-          <CTabs
-            variant="pills"
-            :vertical="{ navs: 'col-md-3', content: 'col-md-9' }"
-            :active-tab="activeTab"
-            @update:activeTab="updateStep"
-          >
-            <CTab title="Basic">
-              <app-statistical-program-basic
-                :localId="localId"
-                :name="name"
-                :acronym="acronym"
-                :descriptiom="description"
-                @next="handleBasic"
-              />
-            </CTab>
-            <CTab title="Agent">
-              <app-agents-add @back="handleBack" @next="handleSubmit" />
-            </CTab>
-            <CTab title="Legislative References" disabled> </CTab>
-            <CTab title="Statistical Standards" disabled> </CTab>
-            <CTab title="Process Documentations" disabled> </CTab>
-          </CTabs>
-        </div>
-      </div>
-    </div>
-  </div>
+  <CRow>
+    <CCol class="col-12">
+      <CCard>
+        <CCardHeader component="h5">
+          <CIcon name="cil-description" />
+          <strong class="icon-header">Statistical process</strong>
+        </CCardHeader>
+        <CCardBody>
+          <CRow>
+            <CCol class="col-3 mr-2">
+              <CNav class="flex-column" variant="pills" role="tab">
+                <CNavItem>
+                  <CNavLink
+                    href="javascript:void(0);"
+                    :active="activeTab === 0"
+                    @click="
+                      () => {
+                        activeTab = 0;
+                      }
+                    "
+                  >
+                    Basic
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink
+                    href="javascript:void(0);"
+                    :active="activeTab === 1"
+                    @click="
+                      () => {
+                        activeTab = 1;
+                      }
+                    "
+                  >
+                    Agents
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    LegislativeReference
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    Statistical Standards
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    Process Documentation
+                  </CNavLink>
+                </CNavItem>
+              </CNav>
+            </CCol>
+            <CCol class="col-9 ml-2">
+              <CTabContent>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="activeTab === 0"
+                >
+                  <template #title>
+                    <span>Basic</span>
+                    <span class="float-right" v-if="editedBasic"
+                      ><CIcon name="cil-check-alt"
+                    /></span>
+                  </template>
+                  <app-statistical-program-basic @next="handleBasic" />
+                </CTabPane>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="activeTab === 1"
+                >
+                  <template #title>
+                    <span>Agents</span>
+                    <span class="float-right" v-if="editedAgents"
+                      ><CIcon nam="cil-check-alt"
+                    /></span>
+                  </template>
+                  <app-agents-add @back="handleBack" @next="handleSubmit" />
+                </CTabPane>
+              </CTabContent>
+            </CCol>
+          </CRow>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import StatisticalProgramBasic from "./StatisticalProgramBasic";
