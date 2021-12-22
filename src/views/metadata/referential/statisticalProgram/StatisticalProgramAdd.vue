@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-header">
           <h5>
-            <text-icon />
+            <CIcon name="cil-description" />
             <strong class="icon-header">Statistical process</strong>
           </h5>
         </div>

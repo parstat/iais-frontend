@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <user-icon />
+      <CIcon name="cil-user" />
       <strong class="icon-header">Agents</strong>
       <div class="card-header-actions">
         <router-link

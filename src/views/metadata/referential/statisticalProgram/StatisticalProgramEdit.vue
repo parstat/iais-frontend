@@ -148,7 +148,7 @@
                   <template #title>
                     <span>Statistical Standards</span>
                     <span class="float-right" v-if="editedStandards"
-                      ><CIcon name="cil-check-alt"
+                      ><CIcon name="cil-check-alt" 
                     /></span>
                   </template>
                   <app-standards-edit

@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <text-icon />
+      <CIcon name="cil-description" />
       <strong class="icon-header">Process Documentation Basic Variables</strong>
     </div>
     <div class="card-body">

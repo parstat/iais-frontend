@@ -3,7 +3,7 @@
     <CCol class="col-12">
       <CCard v-if="processDocumentation">
         <CCardHeader component="h5">
-          <text-icon />
+          <CIcon name="cil-description" />
           Process Documentation
           <h6 class="card-subtitle mb-2 text-muted">
             (survey:

@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <text-icon />
+          <CIcon name="cil-description" />
           <strong class="icon-header">Process Documentation</strong>
           <p class="card-subtitle">
             (survey: {{ statisticalProgram ? statisticalProgram.name : "" }},
@@ -21,7 +21,7 @@
             <CTab title="Basic">
               <div class="card">
                 <header class="card-header">
-                  <text-icon />
+                  <CIcon name="cil-description" />
                   <strong class="icon-header"
                     >Process Documentation Basics</strong
                   >
