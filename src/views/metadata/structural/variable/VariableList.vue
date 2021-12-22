@@ -73,7 +73,7 @@
                         params: { id: item.id },
                       }"
                     >
-                       <CIcon name="cil-trash" />
+                      <CIcon name="cil-trash" />
                     </router-link>
                   </span>
                 </td>

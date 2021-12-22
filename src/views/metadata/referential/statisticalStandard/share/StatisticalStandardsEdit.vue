@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header pt-0">
-       <CIcon name="cil-description" />
+      <CIcon name="cil-description" />
       <strong class="icon-header">Statistical Standard</strong>
       <div class="card-header-actions">
         <router-link
@@ -33,12 +33,14 @@
               >Start typing to search for a standard.</em
             >
           </template>
-          <template slot="option" slot-scope="option">
+          <template v-slot:content="option">
             <div class="d-center">
               <span
                 ><strong>{{ option.name }} {{ option.version }}</strong></span
               >
-              <p v-if="option.description">{{ option.description | subStr }}</p>
+              <p v-if="option.description">
+                {{ $filters.truncateString(option.description) }}
+              </p>
             </div>
           </template>
         </v-select>
@@ -67,7 +69,7 @@
                 class="text-dark"
                 @click="removeStatisticalStandard(statisticalStandard)"
               >
-                 <CIcon name="cil-trash" />
+                <CIcon name="cil-trash" />
               </span>
             </div>
           </div>
@@ -129,12 +131,16 @@ export default {
       }
     }, 500),
     addStatisticalStandard(selectedStatisticalStandard) {
-      this.$emit("addStatisticalStandard", selectedStatisticalStandard);
-      this.fieldChanged = true;
+      if (typeof selectedStatisticalStandard.id != "undefined") {
+        this.$emit("addStatisticalStandard", selectedStatisticalStandard);
+        this.fieldChanged = true;
+      }
     },
     removeStatisticalStandard(selectedStatisticalStandard) {
-      this.$emit("removeStatisticalStandard", selectedStatisticalStandard);
-      this.fieldChanged = true;
+      if (typeof selectedStatisticalStandard.id != "undefined") {
+        this.$emit("removeStatisticalStandard", selectedStatisticalStandard);
+        this.fieldChanged = true;
+      }
     },
   },
 };

@@ -55,7 +55,7 @@
               <strong>{{ processInput.name }}</strong>
               <div class="card-header-actions">
                 <span v-on:click="removeProcessInput(processInput)">
-                   <CIcon name="cil-trash" />
+                  <CIcon name="cil-trash" />
                 </span>
               </div>
             </div>

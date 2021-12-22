@@ -34,7 +34,7 @@
               >Start typing to search for a method.</em
             >
           </template>
-          <template slot="option" slot-scope="option">
+          <template v-slot:content="option">
             <div class="d-center">
               <span
                 ><strong>{{ option.name }} {{ option.version }}</strong></span
@@ -65,7 +65,7 @@
                   <CIcon name="cil-magnifying-glass" />
                 </router-link>
                 <span v-on:click="removeProcessMethod(processMethod)">
-                   <CIcon name="cil-trash" />
+                  <CIcon name="cil-trash" />
                 </span>
               </div>
             </div>
@@ -130,21 +130,25 @@ export default {
     }, 500),
 
     addProcessMethod(selectedProcessMethod) {
-      const formData = {
-        id: this.processDocumentation.id,
-        method: selectedProcessMethod.id,
-      };
-      this.$store.dispatch("processDocumentation/addProcessMethod", formData);
+      if (typeof selectedProcessMethod.id != "undefined") {
+        const formData = {
+          id: this.processDocumentation.id,
+          method: selectedProcessMethod.id,
+        };
+        this.$store.dispatch("processDocumentation/addProcessMethod", formData);
+      }
     },
     removeProcessMethod(selectedProcessMethod) {
-      const formData = {
-        id: this.processDocumentation.id,
-        method: selectedProcessMethod.id,
-      };
-      this.$store.dispatch(
-        "processDocumentation/removeProcessMethod",
-        formData
-      );
+      if (typeof selectedProcessMethod.id != "undefined") {
+        const formData = {
+          id: this.processDocumentation.id,
+          method: selectedProcessMethod.id,
+        };
+        this.$store.dispatch(
+          "processDocumentation/removeProcessMethod",
+          formData
+        );
+      }
     },
   },
   created() {},

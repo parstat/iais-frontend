@@ -64,7 +64,7 @@
                           params: { id: statisticalStandard.id },
                         }"
                       >
-                         <CIcon name="cil-trash" />
+                        <CIcon name="cil-trash" />
                       </router-link>
                     </td>
                   </template>

@@ -34,7 +34,7 @@
               >Start typing to search for a standard.</em
             >
           </template>
-          <template slot="option" slot-scope="option">
+          <template v-slot:content="option">
             <div class="d-center">
               <span
                 ><strong>{{ option.name }} {{ option.version }}</strong></span
@@ -67,7 +67,7 @@
                 <span
                   v-on:click="removeStatisticalStandard(statisticalStandard)"
                 >
-                   <CIcon name="cil-trash" />
+                  <CIcon name="cil-trash" />
                 </span>
               </div>
             </div>
@@ -132,24 +132,28 @@ export default {
     }, 500),
 
     addStatisticalStandard(selectedStatisticalStandard) {
-      const formData = {
-        id: this.processDocumentation.id,
-        standard: selectedStatisticalStandard.id,
-      };
-      this.$store.dispatch(
-        "processDocumentation/addStatisticalStandard",
-        formData
-      );
+      if (typeof selectedStatisticalStandard.id != "undefined") {
+        const formData = {
+          id: this.processDocumentation.id,
+          standard: selectedStatisticalStandard.id,
+        };
+        this.$store.dispatch(
+          "processDocumentation/addStatisticalStandard",
+          formData
+        );
+      }
     },
     removeStatisticalStandard(selectedStatisticalStandard) {
-      const formData = {
-        id: this.processDocumentation.id,
-        standard: selectedStatisticalStandard.id,
-      };
-      this.$store.dispatch(
-        "processDocumentation/removeStatisticalStandard",
-        formData
-      );
+      if (typeof selectedStatisticalStandard.id != "undefined") {
+        const formData = {
+          id: this.processDocumentation.id,
+          standard: selectedStatisticalStandard.id,
+        };
+        this.$store.dispatch(
+          "processDocumentation/removeStatisticalStandard",
+          formData
+        );
+      }
     },
   },
   created() {

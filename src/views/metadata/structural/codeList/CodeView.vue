@@ -46,7 +46,7 @@
                       params: { id: code.id },
                     }"
                   >
-                     <CIcon name="cil-trash" />
+                    <CIcon name="cil-trash" />
                   </router-link>
                 </td>
               </template>

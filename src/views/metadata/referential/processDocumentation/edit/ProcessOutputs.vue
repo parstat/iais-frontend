@@ -55,7 +55,7 @@
               <strong>{{ processOutput.name }}</strong>
               <div class="card-header-actions">
                 <span v-on:click="removeProcessOutput(processOutput)">
-                   <CIcon name="cil-trash" />
+                  <CIcon name="cil-trash" />
                 </span>
               </div>
             </div>

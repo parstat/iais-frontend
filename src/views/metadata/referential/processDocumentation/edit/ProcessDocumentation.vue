@@ -73,7 +73,7 @@
               Start typing to search for a GSBPM sub-phase.
             </em>
           </template>
-          <template slot="option" slot-scope="option">
+          <template v-slot:content="option">
             <div class="d-center">
               <span>
                 <strong

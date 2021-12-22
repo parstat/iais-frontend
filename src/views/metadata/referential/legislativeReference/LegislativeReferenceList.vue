@@ -62,7 +62,7 @@
                       params: { id: legislativeReference.id },
                     }"
                   >
-                     <CIcon name="cil-trash" />
+                    <CIcon name="cil-trash" />
                   </router-link>
                 </td>
               </template>

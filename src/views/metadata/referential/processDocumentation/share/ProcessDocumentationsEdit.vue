@@ -3,7 +3,7 @@
     <CCol class="col-12">
       <CCard>
         <CCardHeader>
-           <CIcon name="cil-description" />
+          <CIcon name="cil-description" />
           <strong class="icon-header">Process documentation </strong>
           <CNav variant="pills" class="card-header-pills">
             <CNavItem>

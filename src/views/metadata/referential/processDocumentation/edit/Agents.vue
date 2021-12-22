@@ -43,7 +43,7 @@
                     <CIcon name="cil-magnifying-glass" />
                   </router-link>
                   <span v-on:click="removeMaintainer(maintainer)">
-                     <CIcon name="cil-trash" />
+                    <CIcon name="cil-trash" />
                   </span>
                 </div>
               </div>

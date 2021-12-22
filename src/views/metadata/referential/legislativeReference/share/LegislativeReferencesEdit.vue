@@ -33,12 +33,12 @@
               >Start typing to search for a legislative reference.</em
             >
           </template>
-          <template slot="option" slot-scope="option">
+          <template v-slot:content="option">
             <div class="d-center">
               <span
                 ><strong>{{ option.name }} {{ option.version }}</strong></span
               >
-              <p>{{ option.description | subStr }}</p>
+              <p>{{ $filters.truncateString(option.description) }}</p>
             </div>
           </template>
         </v-select>
@@ -67,7 +67,7 @@
                 class="text-dark"
                 v-on:click="removeLegislativeReference(legislativeReference)"
               >
-                 <CIcon name="cil-trash" />
+                <CIcon name="cil-trash" />
               </span>
             </div>
           </div>
@@ -129,12 +129,16 @@ export default {
       }
     }, 500),
     addLegislativeReference(selectedLegislativeReference) {
-      this.$emit("addLegislativeReference", selectedLegislativeReference);
-      this.fieldChanged = true;
+      if (typeof selectedLegislativeReference.id != "undefined") {
+        this.$emit("addLegislativeReference", selectedLegislativeReference);
+        this.fieldChanged = true;
+      }
     },
     removeLegislativeReference(selectedLegislativeReference) {
-      this.$emit("removeLegislativeReference", selectedLegislativeReference);
-      this.fieldChanged = true;
+      if (typeof selectedLegislativeReference.id != "undefined") {
+        this.$emit("removeLegislativeReference", selectedLegislativeReference);
+        this.fieldChanged = true;
+      }
     },
   },
 };

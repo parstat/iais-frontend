@@ -66,7 +66,7 @@
               <strong>{{ processDocument.name }}</strong>
               <div class="card-header-actions">
                 <span v-on:click="removeProcessDocument(processDocument)">
-                   <CIcon name="cil-trash" />
+                  <CIcon name="cil-trash" />
                 </span>
               </div>
             </div>

@@ -48,14 +48,16 @@
                           Start typing to search for a statistical program.
                         </em>
                       </template>
-                      <template slot="option" slot-scope="option">
+                      <template v-slot:content="option">
                         <div class="d-center">
                           <span>
                             <strong
                               >{{ option.name }} {{ option.version }}</strong
                             >
                           </span>
-                          <p>{{ option.description | subStr }}</p>
+                          <p>
+                            {{ $filters.truncateString(option.description) }}
+                          </p>
                         </div>
                       </template>
                     </v-select>
@@ -86,7 +88,7 @@
                           Start typing to search for a GSBPM sub-phase.
                         </em>
                       </template>
-                      <template slot="option" slot-scope="option">
+                      <template v-slot:content="option">
                         <div class="d-center">
                           <span>
                             <strong
@@ -95,7 +97,9 @@
                               }}</strong
                             >
                           </span>
-                          <p>{{ option.description | subStr }}</p>
+                          <p>
+                            {{ $filters.truncateString(option.description) }}
+                          </p>
                         </div>
                       </template>
                     </v-select>
@@ -159,7 +163,7 @@
                           Start typing to search for a GSBPM sub-phase.
                         </em>
                       </template>
-                      <template slot="option" slot-scope="option">
+                      <template v-slot:content="option">
                         <div class="d-center">
                           <span>
                             <strong

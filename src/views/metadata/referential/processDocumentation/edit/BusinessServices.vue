@@ -34,7 +34,7 @@
               >Start typing to search for a service.</em
             >
           </template>
-          <template slot="option" slot-scope="option">
+          <template v-slot:content="option">
             <div class="d-center">
               <span
                 ><strong>{{ option.name }} {{ option.version }}</strong></span
@@ -65,7 +65,7 @@
                   <CIcon name="cil-magnifying-glass" />
                 </router-link>
                 <span v-on:click="removeBusinessService(businessService)">
-                   <CIcon name="cil-trash" />
+                  <CIcon name="cil-trash" />
                 </span>
               </div>
             </div>
@@ -130,21 +130,28 @@ export default {
     }, 500),
 
     addBusinessService(selectedBusinessService) {
-      const formData = {
-        id: this.processDocumentation.id,
-        service: selectedBusinessService.id,
-      };
-      this.$store.dispatch("processDocumentation/addBusinessService", formData);
+      if (typeof selectedBusinessService.id != "undefined") {
+        const formData = {
+          id: this.processDocumentation.id,
+          service: selectedBusinessService.id,
+        };
+        this.$store.dispatch(
+          "processDocumentation/addBusinessService",
+          formData
+        );
+      }
     },
     removeBusinessService(selectedBusinessService) {
-      const formData = {
-        id: this.processDocumentation.id,
-        service: selectedBusinessService.id,
-      };
-      this.$store.dispatch(
-        "processDocumentation/removeBusinessService",
-        formData
-      );
+      if (typeof selectedBusinessService.id != "undefined") {
+        const formData = {
+          id: this.processDocumentation.id,
+          service: selectedBusinessService.id,
+        };
+        this.$store.dispatch(
+          "processDocumentation/removeBusinessService",
+          formData
+        );
+      }
     },
   },
   created() {},
