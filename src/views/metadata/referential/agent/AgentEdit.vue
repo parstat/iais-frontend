@@ -2,9 +2,7 @@
   <CRow>
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="agent">
-      <CCardHeader component="h5">
-          Agent
-        </CCardHeader>
+        <CCardHeader component="h5"> Agent </CCardHeader>
         <CCardBody>
           <div class="form-group">
             <label for="name">Name</label>
@@ -95,7 +93,6 @@ import { mapGetters } from "vuex";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import { Agent } from "@/common";
-
 
 export default {
   name: "AgentEdit",
