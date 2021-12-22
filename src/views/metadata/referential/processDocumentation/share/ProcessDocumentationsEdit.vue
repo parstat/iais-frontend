@@ -1,99 +1,88 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="card card-plain">
-        <header class="card-header pt-0">
+  <CRow>
+    <CCol class="col-12">
+      <CCard>
+        <CCardHeader>
           <doc-icon />
           <strong class="icon-header">Process documentation </strong>
-          <div class="card-header-actions">
-            <router-link
-              v-if="isAuthenticated"
-              tag="a"
-              :to="{
-                path: '/metadata/referential/documentation/add',
-                query: {
-                  program: statisticalProgramId,
-                  business_function: nextSubPhase,
-                },
-              }"
-              class="card-header-action"
-            >
-              <add-icon /> Add
-            </router-link>
-          </div>
-        </header>
-        <div class="card-body">
+          <CNav variant="pills" class="card-header-pills">
+            <CNavItem>
+              <span style="padding: 0.75rem 0.4rem">
+                <router-link
+                  v-if="isAuthenticated"
+                  tag="a"
+                  :to="{
+                    path: '/metadata/referential/documentation/add',
+                    query: {
+                      program: statisticalProgramId,
+                      business_function: nextSubPhase,
+                    },
+                  }"
+                  class="card-header-action"
+                >
+                  <CIcon name="cil-plus" /> Add
+                </router-link>
+              </span>
+            </CNavItem>
+          </CNav>
+        </CCardHeader>
+        <CCardBody>
           <div v-if="isLoading">
             <tile></tile>
           </div>
-          <div class="table-responsive" v-else>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">GSBPM</th>
-                  <th scope="col">Frequency</th>
-                  <th scope="col">Next</th>
-                  <th scope="col" colspan="2" width="2%"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="processDocumentation in sortAscDocumentations(
-                    documentations
-                  )"
-                  :key="processDocumentation.id"
-                >
-                  <td>{{ processDocumentation.businessFunction.localId }}</td>
-                  <td>{{ processDocumentation.businessFunction.name }}</td>
-                  <td>{{ processDocumentation.frequency }}</td>
-                  <td>{{ processDocumentation.nextSubPhase }}</td>
-                  <template v-if="isAuthenticated">
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'ProcessDocumentationEdit',
-                          params: { id: processDocumentation.id },
-                        }"
-                      >
-                        <edit-icon />
-                      </router-link>
-                    </td>
-                    <td v-if="isAdmin">
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'ProcessDocumentationEdit',
-                          params: { id: processDocumentation.id },
-                        }"
-                      >
-                        <delete-icon />
-                      </router-link>
-                    </td>
-                  </template>
-                  <template v-else>
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'ProcessDocumentationEdit',
-                          params: { id: processDocumentation.id },
-                        }"
-                      >
-                        <view-icon />
-                      </router-link>
-                    </td>
-                  </template>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card-footer">
+          <CSmartTable
+            :items="sortAscDocumentations(documentations)"
+            :columns="columns"
+            column-filter
+            table-filter
+            items-per-page-select
+            :items-per-page="5"
+            hover
+            sorter
+            pagination
+          >
+            <template #actions="{ item }">
+              <td>
+                <span v-if="isAuthenticated">
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'ProcessDocumentationEdit',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-pencil" />
+                  </router-link>
+                </span>
+                <span v-if="isAdmin">
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'ProcessDocumentationEdit',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-trash" />
+                  </router-link>
+                </span>
+                <span>
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'ProcessDocumentationEdit',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-magnifying-glass" />
+                  </router-link>
+                </span>
+              </td>
+            </template>
+          </CSmartTable>
+        </CCardBody>
+        <CCardFooter>
           <CButton
             color="primary"
-            shape="square"
             size="sm"
             style="margin-right: 0.3rem"
             @click="$emit('back')"
@@ -102,17 +91,16 @@
           </CButton>
           <CButton
             color="primary"
-            shape="square"
             size="sm"
             style="margin-right: 0.3rem"
             @click="$emit('next')"
           >
             Finish
           </CButton>
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardFooter>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import { mapGetters } from "vuex";
@@ -121,6 +109,35 @@ import _ from "lodash";
 export default {
   name: "ProcessDocumentationsEdit",
   props: ["statisticalProgramName", "statisticalProgramId", "documentations"],
+  data() {
+    return {
+      columns: [
+        {
+          key: "id",
+          label: "Id",
+        },
+        {
+          key: "name",
+          label: "Process name",
+        },
+        {
+          key: "frequency",
+          label: "Frequency",
+        },
+        {
+          key: "Next",
+          label: "nextSubPhase",
+        },
+        {
+          key: "actions",
+          label: "Actions",
+          _style: { width: "1%" },
+          sorter: false,
+          filter: false,
+        },
+      ],
+    };
+  },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),

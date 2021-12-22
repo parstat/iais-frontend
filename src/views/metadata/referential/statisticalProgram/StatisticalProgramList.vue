@@ -1,6 +1,6 @@
 <template>
-  <div class="row">
-    <div class="col-12">
+  <CRow>
+    <CCol class="col-12">
       <CCard>
         <CCardHeader v-if="isAuthenticated">
           <CNav variant="pills" class="card-header-pills">
@@ -71,8 +71,8 @@
           </CSmartTable>
         </CCardBody>
       </CCard>
-    </div>
-  </div>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
@@ -94,18 +94,23 @@ export default {
         },
         {
           key: "acronym",
+          label: "Acronym",
         },
         {
           key: "description",
+          label: "Description",
         },
         {
           key: "owner",
+          label: "Owner",
         },
         {
           key: "maintainer",
+          label: "Maintainer",
         },
         {
           key: "contact",
+          label: "Contact",
         },
         {
           key: "actions",

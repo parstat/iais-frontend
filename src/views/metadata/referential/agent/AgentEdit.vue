@@ -67,7 +67,6 @@
         <div class="card-footer">
           <CButton
             color="primary"
-            shape="square"
             size="sm"
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
@@ -76,7 +75,6 @@
           >
           <CButton
             color="danger"
-            shape="square"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"

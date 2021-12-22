@@ -35,7 +35,6 @@
         <div class="card-footer">
           <CButton
             color="primary"
-            shape="square"
             size="sm"
             @click.prevent="handleBack()"
             :disabled="disabled"

@@ -59,7 +59,6 @@
     <div class="card-footer">
       <CButton
         color="primary"
-        shape="square"
         size="sm"
         style="margin-right: 0.3rem"
         @click="$emit('back')"
@@ -68,7 +67,6 @@
       </CButton>
       <CButton
         color="primary"
-        shape="square"
         size="sm"
         style="margin-right: 0.3rem"
         @click="$emit('next')"
