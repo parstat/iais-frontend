@@ -1,5 +1,5 @@
 import { axiosIais } from "@/http";
-import qs from "querystring";
+
 
 export const statisticalStandardService = {
   findAll,
@@ -79,7 +79,7 @@ function save(formData) {
     axiosIais
       .post(
         "close/referential/statistical/standards?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -116,7 +116,7 @@ function update(formData) {
         "close/referential/statistical/standards/" +
           formData.id +
           "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(

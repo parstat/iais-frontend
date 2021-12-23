@@ -1,5 +1,5 @@
 import { axiosIais } from "@/http";
-import qs from "querystring";
+
 //import axios from "axios";
 
 export const statisticalClassificationService = {
@@ -63,7 +63,7 @@ function save(formData) {
         "/structural/ClosedStatisticalClassifications/" +
           formData.localId +
           "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -98,7 +98,7 @@ function update(formData) {
         "/structural/ClosedStatisticalClassifications/" +
           formData.id +
           "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(

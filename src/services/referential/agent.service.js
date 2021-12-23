@@ -1,10 +1,11 @@
 import { axiosIais } from "@/http";
-import qs from "querystring";
 
 export const agentService = {
   findAll,
   findById,
   findByType,
+  findByName,
+  findByNameAndType,
   save,
   update,
   delete: _delete,
@@ -53,7 +54,36 @@ function findByType(type) {
     );
   });
 }
-
+function findByName(name) {
+  return new Promise((resolve, reject) => {
+    axiosIais.get("/referential/agents/?language=en&name=" + name).then(
+      (response) => {
+        var data = response.data ? response.data : [];
+        console.log(data);
+        resolve(data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+function findByNameAndType(name, type) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .get("/referential/agents/?language=en&name=" + name + "&type=" + type)
+      .then(
+        (response) => {
+          var data = response.data ? response.data : [];
+          console.log(data);
+          resolve(data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
 function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
@@ -77,7 +107,7 @@ function save(formData) {
     axiosIais
       .post(
         "close/referential/agents?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -111,7 +141,7 @@ function update(formData) {
     axiosIais
       .patch(
         "close/referential/agents/" + formData.id + "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(

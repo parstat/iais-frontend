@@ -79,6 +79,31 @@ const actions = {
       }
     );
   },
+  findByNameAndType({ commit }, query) {
+    agentService.findByNameAndType(query.name, query.type).then(
+      (data) => {
+        const agents = {
+          [query.type]: data,
+        };
+        commit("SET_AGENTS_BY_TYPE", agents);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  findByName({ commit }, name) {
+    agentService.findByName(name).then(
+      (data) => {
+        commit("SET_AGENTS", data);
+        commit("SET_AGENT", null); //clear agent
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+
   clearParents({ commit }) {
     commit("RESET_PARENTS");
   },

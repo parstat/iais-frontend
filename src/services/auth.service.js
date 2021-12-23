@@ -1,5 +1,5 @@
 import { axiosAuth } from "@/http";
-import qs from "querystring";
+
 
 export const authService = {
   authenticate,
@@ -51,7 +51,7 @@ function login({ username, password }) {
       language: "ENG",
     };
 
-    axiosAuth.post("/signin", qs.stringify(requestBody), config).then(
+    axiosAuth.post("/signin", new URLSearchParams(requestBody).toString(), config).then(
       (response) => {
         console.log(response);
         const token = response.headers["jwt-auth"];
@@ -118,7 +118,7 @@ function register({ username, email, fullname, password }) {
     };
 
     axiosAuth
-      .post("/signup?language=ENG", qs.stringify(requestBody), config)
+      .post("/signup?language=ENG", new URLSearchParams(requestBody).toString(), config)
       .then(
         (response) => {
           console.log(response);

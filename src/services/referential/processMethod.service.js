@@ -1,5 +1,5 @@
 import { axiosIais } from "@/http";
-import qs from "querystring";
+
 
 export const processMethodService = {
   findAll,
@@ -73,7 +73,7 @@ function save(formData) {
     axiosIais
       .post(
         "close/referential/process/methods?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -106,7 +106,7 @@ function update(formData) {
     axiosIais
       .patch(
         "close/referential/process/methods/" + formData.id + "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
