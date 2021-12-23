@@ -16,7 +16,6 @@
     "core-js": "^3.19.3",
     "jsonwebtoken": "^8.5.1",
     "lodash.debounce": "^4.0.8",
-    "query-string": "^6.14.1",
     "vue": "^2.6.14",
     "vue-material-design-icons": "^4.13.0",
     "vue-router": "^3.5.3",

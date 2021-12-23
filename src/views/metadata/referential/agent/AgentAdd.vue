@@ -142,7 +142,7 @@ export default {
           name: this.name,
           description: this.description,
           type: this.type,
-          parent: this.parent.id,
+          parent: this.parent != "" ? this.parent.id : "",
           localId: this.localId
         };
         this.$store.dispatch("agent/save", formData);

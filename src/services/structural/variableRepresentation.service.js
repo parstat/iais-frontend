@@ -1,5 +1,5 @@
 import { axiosIais } from "@/http";
-//import qs from "querystring";
+//
 
 export const variableRepresentationService = {
   findAll,
