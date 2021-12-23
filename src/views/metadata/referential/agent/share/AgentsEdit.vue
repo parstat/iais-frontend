@@ -45,7 +45,7 @@
         <span class="help-block">Please select a contact person.</span>
       </div>
     </div>
-    <div class="card-footer">
+    <CCardHeader>
       <CButton
         color="primary"
         size="sm"
@@ -62,7 +62,7 @@
       >
         Next
       </CButton>
-    </div>
+    </CCardHeader>
   </CCard>
 </template>
 <script>
