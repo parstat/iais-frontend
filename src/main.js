@@ -6,7 +6,7 @@ import CoreuiVue from "@coreui/vue-pro";
 import CIcon from "@coreui/icons-vue";
 import { iconsSet as icons } from "@/assets/icons/icons.js";
 import { materialIconsSet as materialIcons } from "@/assets/icons/materialIcons.js";
-
+import Multiselect from '@vueform/multiselect';
 import vSelect from "vue3-select";
 import VueSpinners from "vue-spinners";
 import BootstrapVue3 from "bootstrap-vue-3";
@@ -14,6 +14,7 @@ import BootstrapVue3 from "bootstrap-vue-3";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 import "vue-good-table-next/dist/vue-good-table-next.css";
+import "@vueform/multiselect/themes/default.css";
 
 const app = createApp(App);
 app.config.productionTip = false;
@@ -27,6 +28,7 @@ app.component("CIcon", CIcon);
 app.provide("icons", icons);
 app.provide("iconsMaterial", materialIcons);
 app.component("v-select", vSelect);
+app.component("m-select", Multiselect);
 
 app.config.globalProperties.$filters = {
   truncateString(value) {

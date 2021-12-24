@@ -16,12 +16,15 @@
     <div class="card-body">
       <div class="form-group" v-if="localSP">
         <label for="description">Organization*</label>
-        <CMultiSelect
-          :options="options"
-          :multiple="true"
+        <m-select
+          label="name"
+          valueProp="id"
+          :options="owners"
+          :searchable=true
+          :object=true
           v-model="localSP.owner"
           @change="updateOwner"
-        ></CMultiSelect>
+        ></m-select>
         <span class="help-block">Please select an Organization.</span>
       </div>
       <div class="form-group" v-if="localSP">
