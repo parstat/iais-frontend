@@ -1,9 +1,8 @@
 <template>
   <div class="c-subheader-nav mfe-2" v-if="isReferential">
-    <router-link
+    <router-link class="text-decoration-none text-primary"
       tag="a"
       to="/metadata/referential/gsim"
-      class="c-subheader-nav-link"
     >
       <CIcon name="cil-puzzle" />
       <span class="header-link icon-span">Gsim concepts</span>

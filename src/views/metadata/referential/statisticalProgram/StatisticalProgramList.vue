@@ -2,11 +2,17 @@
   <CRow>
     <CCol class="col-12">
       <CCard>
-        <CCardHeader v-if="isAuthenticated">
-          <CNav variant="pills" class="card-header-pills">
+        
+        <CCardBody>
+          <CRow>
+            <CCol class="col-9">
+          <CCardTitle> Statistical processes </CCardTitle>
+            </CCol>
+            <CCol class="col-3">
+           <CNav class="justify-content-end" v-if="isAuthenticated">
             <CNavItem>
               <span style="padding: 0.75rem 0.4rem">
-                <router-link
+                <router-link class="text-decoration-none text-primary"
                   v-if="isAuthenticated"
                   tag="a"
                   to="/metadata/referential/add"
@@ -17,9 +23,8 @@
               </span>
             </CNavItem>
           </CNav>
-        </CCardHeader>
-        <CCardBody>
-          <CCardTitle> Statistical processes </CCardTitle>
+            </CCol>
+          </CRow>
           <CSmartTable
             :items="viewStatisticalPrograms"
             :columns="columns"

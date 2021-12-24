@@ -2,53 +2,53 @@
   <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
     <CCol xs>
       <CCard>
-        <CCardHeader component="h6"> Referential metadata </CCardHeader>
         <CCardBody>
+          <CCardTitle> Referential metadata </CCardTitle>
           <CCardText>
             This section contains the list of processes documented according to
             GSBPM standard
           </CCardText>
-          <CCardLink>
+          <CButton>
             <span>
-              <router-link tag="a" :to="{ name: 'StatisticalProgramList' }"
+              <router-link class="text-decoration-none text-primary" tag="a" :to="{ name: 'StatisticalProgramList' }"
                 ><span class="icon-span"
                   >Go to referential metadata section </span
                 ><CIcon name="cil-arrow-right"
               /></router-link>
             </span>
-          </CCardLink>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardHeader component="h6">Structural metadata</CCardHeader>
         <CCardBody>
+          <CCardTitle> Structural metadata </CCardTitle>
           <CCardText>
             This section contains the structural metadata of each survey
             documented in the system.
           </CCardText>
-          <CCardLink>
-            <router-link tag="a" :to="{ name: 'StructuralComponents' }"
+          <CButton>
+            <router-link tag="a" class="text-decoration-none text-primary" :to="{ name: 'StructuralComponents' }"
               ><span class="icon-span">Go to structural metadata section </span
               ><CIcon name="cil-arrow-right"
             /></router-link>
-          </CCardLink>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardHeader component="h6">Process metadata</CCardHeader>
         <CCardBody>
+          <CCardTitle> Process metadata </CCardTitle>
           <CCardText>
             This section contains the process metadata of each survey documented
             in the system.
           </CCardText>
-          <CCardLink disabled>
+          <CButton disabled>
             <span class="icon-span">Go to process metadata section</span>
             <CIcon name="cil-arrow-right" />
-          </CCardLink>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>
