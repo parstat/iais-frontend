@@ -1,6 +1,5 @@
 import { axiosIais } from "@/http";
 
-
 export const businessServiceService = {
   findAll,
   findById,

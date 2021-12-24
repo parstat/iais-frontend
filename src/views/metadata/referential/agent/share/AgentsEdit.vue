@@ -16,12 +16,12 @@
     <div class="card-body">
       <div class="form-group" v-if="localSP">
         <label for="description">Organization*</label>
-        <v-select
-          label="name"
-          :options="owners"
+        <CMultiSelect
+          :options="options"
+          :multiple="true"
           v-model="localSP.owner"
-          @input="updateOwner"
-        ></v-select>
+          @change="updateOwner"
+        ></CMultiSelect>
         <span class="help-block">Please select an Organization.</span>
       </div>
       <div class="form-group" v-if="localSP">
@@ -79,6 +79,41 @@ export default {
     return {
       v$: useValidate(),
       localSP: { ...this.sp },
+      options: [
+        {
+          value: 0,
+          text: "Angular",
+        },
+        {
+          value: 1,
+          text: "Bootstrap",
+        },
+        {
+          value: 2,
+          text: "React.js",
+        },
+        {
+          value: 3,
+          text: "Vue.js",
+        },
+        {
+          label: "backend",
+          options: [
+            {
+              value: 4,
+              text: "Django",
+            },
+            {
+              value: 5,
+              text: "Laravel",
+            },
+            {
+              value: 6,
+              text: "Node.js",
+            },
+          ],
+        },
+      ],
     };
   },
   validations: {},
