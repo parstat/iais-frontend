@@ -1,62 +1,84 @@
 <template>
-  <div class="card">
-    <div class="card-header">
-      <CIcon name="cil-user" />
-      <strong class="icon-header">Agents</strong>
-      <div class="card-header-actions">
-        <router-link
-          tag="a"
-          to="/metadata/referential/gsim/agent/add"
-          class="card-header-action"
-        >
-          <CIcon name="cil-plus" />
-          <span class="icon-span">Add</span>
-        </router-link>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="form-group" v-if="maintainers">
-        <label for="description">Division*</label>
-        <v-select
-          label="name"
-          :options="maintainers"
-          @input="addMaintainer"
-        ></v-select>
-        <span class="help-block">Please select a division.</span>
-        <div class="card-columns">
-          <div
-            class="card card-border bg-lighter mb-3"
-            v-for="maintainer of processDocumentation.maintainers"
-            :key="maintainer.id"
-          >
-            <div class="card-header">
-              <div class="card-title">
-                <strong>{{ maintainer.name }}</strong>
-                <div class="card-header-actions">
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'AgentView',
-                      params: { id: maintainer.id },
-                    }"
-                  >
-                    <CIcon name="cil-magnifying-glass" />
-                  </router-link>
-                  <span v-on:click="removeMaintainer(maintainer)">
-                    <CIcon name="cil-trash" />
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="card-text">{{ maintainer.description }}</p>
-            </div>
+  <CCard>
+    <CCardBody>
+      <CRow>
+        <CCol class="col-9">
+          <CCardTitle>
+            <CIcon name="cil-user" />
+            <strong> Agents </strong>
+          </CCardTitle>
+        </CCol>
+        <CCol class="col-3">
+          <CNav class="justify-content-end">
+            <CNavItem>
+              <span>
+                <router-link
+                  tag="a"
+                  to="/metadata/referential/gsim/agent/add"
+                  class="card-header-action"
+                >
+                  <CIcon name="cil-plus" />
+                  <span class="icon-span">Add</span>
+                </router-link>
+              </span>
+            </CNavItem>
+          </CNav>
+        </CCol>
+      </CRow>
+      <CCardText>
+        <CForm v-if="maintainers">
+          <div class="mb-3">
+            <CFormLabel for="division">Division*</CFormLabel>
+            <v-select
+              label="name"
+              :options="maintainers"
+              @input="addMaintainer"
+            ></v-select>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card-footer">
+          <CRow>
+            <CCol
+              class="col-lg-4 col-md-6 col-sm-12"
+              v-for="maintainer of processDocumentation.maintainers"
+              :key="maintainer.id"
+            >
+              <CCard class="card card-border bg-lighter mb-3 mr-3">
+                <CCardHeader>
+                  <CRow>
+                    <CCol class="col-9">
+                      <CCardTitle>
+                        {{ maintainer.name }}
+                      </CCardTitle>
+                    </CCol>
+                    <CCol class="col3">
+                      <CNav class="justify-content-end">
+                        <CNavItem>
+                          <router-link
+                            tag="a"
+                            :to="{
+                              name: 'AgentView',
+                              params: { id: maintainer.id },
+                            }"
+                          >
+                            <CIcon name="cil-magnifying-glass" />
+                          </router-link>
+                        </CNavItem>
+                        <CNavItem v-on:click="removeMaintainer(maintainer)">
+                          <CIcon name="cil-trash" />
+                        </CNavItem>
+                      </CNav>
+                    </CCol>
+                  </CRow>
+                </CCardHeader>
+                <CCardBody>
+                  <CCardText>
+                    {{ maintainer.description }}
+                  </CCardText>
+                </CCardBody>
+              </CCard>
+            </CCol>
+          </CRow>
+        </CForm>
+      </CCardText>
       <CButton
         color="primary"
         size="sm"
@@ -73,8 +95,8 @@
       >
         Next
       </CButton>
-    </div>
-  </div>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 import { mapGetters } from "vuex";
