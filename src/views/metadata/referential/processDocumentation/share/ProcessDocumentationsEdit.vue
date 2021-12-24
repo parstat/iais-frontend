@@ -27,9 +27,6 @@
           </CNav>
         </CCardHeader>
         <CCardBody>
-          <div v-if="isLoading">
-            <tile></tile>
-          </div>
           <CSmartTable
             :items="sortAscDocumentations(documentations)"
             :columns="columns"

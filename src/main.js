@@ -6,7 +6,7 @@ import CoreuiVue from "@coreui/vue-pro";
 import CIcon from "@coreui/icons-vue";
 import { iconsSet as icons } from "@/assets/icons/icons.js";
 import { materialIconsSet as materialIcons } from "@/assets/icons/materialIcons.js";
-import Multiselect from '@vueform/multiselect';
+import Multiselect from "@vueform/multiselect";
 import vSelect from "vue3-select";
 import VueSpinners from "vue-spinners";
 import BootstrapVue3 from "bootstrap-vue-3";
