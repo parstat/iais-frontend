@@ -1,96 +1,100 @@
 <template>
-  <div class="card">
-    <div class="card-header">
-      <CIcon name="cil-description" />
-      <strong class="icon-header">Process Documentation Basic Variables</strong>
-    </div>
-    <div class="card-body">
-      <div class="form-group">
-        <label for="statisticalProgram">Statistical Process</label>
-        <span class="card-slot">{{
-          processDocumentation.statisticalProgram.name
-        }}</span>
-      </div>
-      <div class="form-group">
-        <label for="businessFunction">GSBPM Sub-phase*</label>
-        <span class="card-slot">
-          {{ processDocumentation.businessFunction.localId }} -
-          {{ processDocumentation.businessFunction.name }}
-        </span>
-      </div>
-      <div class="form-group">
-        <label for="description">Documentation description*</label>
-        <textarea
-          rows="5"
-          id="description"
-          type="text"
-          class="form-control"
-          :class="{
-            'is-invalid': v$.processDocumentation.description.$error,
-          }"
-          placeholder="Survey description"
-          v-model.trim="processDocumentation.description"
-        />
-        <span
-          class="help-block"
-          :class="{ show: v$.processDocumentation.description.$error }"
-          >Please enter survey description.</span
+  <CCard>
+    <CCardBody>
+      <CCardTile>
+        <CIcon name="cil-description" />
+        <strong class="icon-header"
+          >Process Documentation Basic Variables</strong
         >
-      </div>
-      <div class="form-group">
-        <label for="frequency">Frequency*</label>
-        <v-select
-          label="frequency"
-          :options="frequencies"
-          v-model="processDocumentation.frequency"
-          :class="{
-            'is-invalid': v$.processDocumentation.frequency.$error,
-          }"
-          placeholder="Select a Frequence"
-        ></v-select>
-        <span
-          class="help-block"
-          :class="{ show: v$.processDocumentation.frequency.$error }"
-          >Please frequency a type.</span
-        >
-      </div>
-      <div class="form-group" v-if="businessFunctions">
-        <label for="nextBusinessFunction">Next GSBPM Sub-phase</label>
-        <v-select
-          label="name"
-          :options="businessFunctions"
-          v-model="processDocumentation.nextSubPhase"
-          placeholder="Select a GSBPM sub-phase"
-          :filtrable="false"
-          @search="searchBusinessFunctions"
-        >
-          <template v-slot:no-options="{ search, searching }">
-            <template v-if="searching">
-              No results found for <em>{{ search }}</em
-              >.
+      </CCardTile>
+      <CCForm>
+        <fieldset disabled>
+          <div class="mb-3">
+            <CFormLabel for="statisticalProgram"
+              >Statistical Process</CFormLabel
+            >
+            <CFormInput
+              id="statisticalProgram"
+              :placeholder="processDocumentation.statisticalProgram.name"
+            />
+          </div>
+          <div class="mb-3">
+            <CFormLabel for="businessFunction">GSBPM Sub-phase*</CFormLabel>
+            <CFormInput
+              id="businessFunction"
+              :placeholder="
+                processDocumentation.businessFunction.localId +
+                ' - ' +
+                processDocumentation.businessFunction.name
+              "
+            />
+          </div>
+        </fieldset>
+        <div class="mb-3">
+          <CFormLabel for="description">Documentation description*</CFormLabel>
+          <CFormTextarea
+            rows="5"
+            id="description"
+            type="text"
+            class="form-control"
+            :class="{
+              'is-invalid': v$.processDocumentation.description.$error,
+            }"
+            placeholder="Survey description"
+            v-model.trim="processDocumentation.description"
+          />
+        </div>
+        <div class="mb-3">
+          <CFormLabel for="frequency">Documentation description*</CFormLabel>
+          <v-select
+            label="frequency"
+            :options="frequencies"
+            v-model="processDocumentation.frequency"
+            :class="{
+              'is-invalid': v$.processDocumentation.frequency.$error,
+            }"
+            placeholder="Select a Frequency"
+          ></v-select>
+        </div>
+        <div class="mb-3" v-if="businessFunctions">
+          <CFormLabel for="nextBusinessFunction"
+            >Next GSBPM Sub-phase</CFormLabel
+          >
+          <v-select
+            label="name"
+            :options="businessFunctions"
+            v-model="processDocumentation.nextSubPhase"
+            placeholder="Select a GSBPM sub-phase"
+            :filtrable="false"
+            @search="searchBusinessFunctions"
+          >
+            <template v-slot:no-options="{ search, searching }">
+              <template v-if="searching">
+                No results found for <em>{{ search }}</em
+                >.
+              </template>
+              <em style="opacity: 0.5" v-else>
+                Start typing to search for a GSBPM sub-phase.
+              </em>
             </template>
-            <em style="opacity: 0.5" v-else>
-              Start typing to search for a GSBPM sub-phase.
-            </em>
-          </template>
-          <template v-slot:content="option">
-            <div class="d-center">
-              <span>
-                <strong
-                  >{{ option.localId }} {{ option.name }} v.{{
-                    option.version
-                  }}</strong
-                >
-              </span>
-              <p>{{ $filters.truncateString(option.description) }}</p>
-            </div>
-          </template>
-        </v-select>
-        <span class="help-block">Please select the next GSBPM sub-phase.</span>
-      </div>
-      <div class="form-mandatory">*Mandatory fields</div>
-    </div>
-    <div class="card-footer">
+            <template v-slot:content="option">
+              <div class="d-center">
+                <span>
+                  <strong
+                    >{{ option.localId }} {{ option.name }} v.{{
+                      option.version
+                    }}</strong
+                  >
+                </span>
+                <p>{{ $filters.truncateString(option.description) }}</p>
+              </div>
+            </template>
+          </v-select>
+        </div>
+        <div class="form-mandatory">*Mandatory fields</div>
+      </CCForm>
+    </CCardBody>
+    <CCardFooter>
       <CButton
         color="primary"
         size="sm"
@@ -100,8 +104,8 @@
       >
         Next
       </CButton>
-    </div>
-  </div>
+    </CCardFooter>
+  </CCard>
 </template>
 <script>
 import { mapGetters } from "vuex";
