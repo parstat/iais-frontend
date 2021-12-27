@@ -1,6 +1,7 @@
 <template>
   <div class="c-subheader-nav mfe-2" v-if="isReferential">
-    <router-link class="text-decoration-none text-primary"
+    <router-link
+      class="text-decoration-none text-primary"
       tag="a"
       to="/metadata/referential/gsim"
     >

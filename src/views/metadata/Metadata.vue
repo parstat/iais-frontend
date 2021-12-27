@@ -10,7 +10,10 @@
           </CCardText>
           <CButton>
             <span>
-              <router-link class="text-decoration-none text-primary" tag="a" :to="{ name: 'StatisticalProgramList' }"
+              <router-link
+                class="text-decoration-none text-primary"
+                tag="a"
+                :to="{ name: 'StatisticalProgramList' }"
                 ><span class="icon-span"
                   >Go to referential metadata section </span
                 ><CIcon name="cil-arrow-right"
@@ -29,7 +32,10 @@
             documented in the system.
           </CCardText>
           <CButton>
-            <router-link tag="a" class="text-decoration-none text-primary" :to="{ name: 'StructuralComponents' }"
+            <router-link
+              tag="a"
+              class="text-decoration-none text-primary"
+              :to="{ name: 'StructuralComponents' }"
               ><span class="icon-span">Go to structural metadata section </span
               ><CIcon name="cil-arrow-right"
             /></router-link>

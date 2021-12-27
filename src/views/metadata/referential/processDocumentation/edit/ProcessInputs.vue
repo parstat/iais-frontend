@@ -1,90 +1,98 @@
 <template>
-  <div class="card">
-    <header class="card-header">
-      <CIcon name="cil-description" />
-      <strong class="icon-header">Process Inputs</strong>
-    </header>
-    <div class="card-body">
-      <div class="form-group">
-        <label for="name">Process input name*</label>
-        <input
-          id="input_name"
-          type="text"
-          class="form-control"
-          :class="{ 'is-invalid': v$.name.$error }"
-          placeholder="Process input name"
-          v-model.trim="name"
-        />
-        <span class="help-block" :class="{ show: v$.name.$error }"
-          >Please enter a process input name.</span
-        >
-      </div>
-      <div class="form-group">
-        <label for="description">Process input description*</label>
-        <textarea
-          rows="5"
-          id="input_description"
-          type="text"
-          class="form-control"
-          :class="{ 'is-invalid': v$.description.$error }"
-          placeholder="Process input description"
-          v-model.trim="description"
-        />
-        <span class="help-block" :class="{ show: v$.description.$error }"
-          >Please enter the process input description.</span
-        >
-        <div>
-          <CButton
-            color="primary"
-            size="sm"
-            style="margin-right: 0.3rem"
-            @click="addProcessInput"
+  <CCard>
+    <CCardBody>
+      <CCardTitle>
+        <CIcon name="cil-description" />
+        Process Inputs
+      </CCardTitle>
+      <CCardText>
+        <CForm>
+          <label for="name">Process input name*</label>
+          <input
+            id="input_name"
+            type="text"
+            class="form-control"
+            :class="{ 'is-invalid': v$.name.$error }"
+            placeholder="Process input name"
+            v-model.trim="name"
+          />
+          <span class="help-block" :class="{ show: v$.name.$error }"
+            >Please enter a process input name.</span
           >
-            Add
-          </CButton>
-        </div>
-      </div>
-      <div class="card-columns">
-        <div
-          class="card card-border bg-lighter mb-3"
-          v-for="processInput of processDocumentation.processInputSpecifications"
-          :key="processInput.id"
+          <label for="description">Process input description*</label>
+          <textarea
+            rows="5"
+            id="input_description"
+            type="text"
+            class="form-control"
+            :class="{ 'is-invalid': v$.description.$error }"
+            placeholder="Process input description"
+            v-model.trim="description"
+          />
+          <span class="help-block" :class="{ show: v$.description.$error }"
+            >Please enter the process input description.</span
+          >
+          <div>
+            <CButton
+              color="primary"
+              size="sm"
+              style="margin-right: 0.3rem"
+              @click="addProcessInput"
+            >
+              Add
+            </CButton>
+          </div>
+        </CForm>
+        <CRow>
+          <CCol
+            class="col-md-4 mb-3"
+            v-for="processInput of processDocumentation.processInputSpecifications"
+            :key="processInput.id"
+          >
+            <CCard class="card card-border bg-lighter mt-3 mb-3 mr-3">
+              <CCardHeader>
+                <CRow>
+                  <CCol class="col-9">
+                    {{ processInput.name }}
+                  </CCol>
+                  <CCol class="col-3">
+                    <CNav class="justify-content-end">
+                      <CNavItem>
+                        <span v-on:click="removeProcessInput(processInput)">
+                          <CIcon name="cil-trash" />
+                        </span>
+                      </CNavItem>
+                    </CNav>
+                  </CCol>
+                </CRow>
+              </CCardHeader>
+              <CCardBody>
+                <CCardText>{{ processInput.description }} </CCardText>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+      </CCardText>
+      <div class="card-footer">
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click="$emit('back')"
         >
-          <div class="card-header">
-            <div class="card-title">
-              <strong>{{ processInput.name }}</strong>
-              <div class="card-header-actions">
-                <span v-on:click="removeProcessInput(processInput)">
-                  <CIcon name="cil-trash" />
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-text">{{ processInput.description }}</p>
-          </div>
-        </div>
+          Back
+        </CButton>
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click="$emit('next')"
+        >
+          Next
+        </CButton>
       </div>
-    </div>
-    <div class="card-footer">
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click="$emit('back')"
-      >
-        Back
-      </CButton>
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click="$emit('next')"
-      >
-        Next
-      </CButton>
-    </div>
-  </div>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 import { mapGetters } from "vuex";
