@@ -48,6 +48,12 @@ const routes = [
       },
       {
         path: "metadata/referential",
+        name: "ReferentialComponents",
+        component: () => import("../views/metadata/referential/ReferentialComponents"),
+        meta: { authorize: [] }
+      },
+      {
+        path: "metadata/referential/statisticalProgram",
         name: "StatisticalProgramList",
         component: () =>
           import(
@@ -56,7 +62,7 @@ const routes = [
         meta: { authorize: [] }
       },
       {
-        path: "metadata/referential/add",
+        path: "metadata/referential/statisticalProgram/add",
         name: "StatisticalProgramAdd",
         component: () =>
           import(
@@ -65,7 +71,7 @@ const routes = [
         meta: { authorize: [Role.User, Role.Admin] }
       },
       {
-        path: "metadata/referential/edit/:id",
+        path: "metadata/referential/statisticalProgram/edit/:id",
         name: "StatisticalProgramEdit",
         component: () =>
           import(
@@ -74,7 +80,7 @@ const routes = [
         meta: { authorize: [Role.User, Role.Admin] }
       },
       {
-        path: "metadata/referential/view/:id",
+        path: "metadata/referential/statisticalProgram/view/:id",
         name: "StatisticalProgramView",
         component: () =>
           import(
@@ -83,7 +89,7 @@ const routes = [
         meta: { authorize: [] }
       },
       {
-        path: "metadata/referential/delete/:id",
+        path: "metadata/referential/statisticalProgram/delete/:id",
         name: "StatisticalProgramDelete",
         component: () =>
           import(
@@ -92,7 +98,7 @@ const routes = [
         meta: { authorize: [Role.Admin] }
       },
       {
-        path: "metadata/referential/documentation/add",
+        path: "metadata/referential/statisticalProgram/documentation/add",
         name: "ProcessDocumentationAdd",
         component: () =>
           import(
@@ -101,7 +107,7 @@ const routes = [
         meta: { authorize: [Role.User, Role.Admin] }
       },
       {
-        path: "metadata/referential/documentation/view/:id",
+        path: "metadata/referential/statisticalProgram/documentation/view/:id",
         name: "ProcessDocumentationView",
         component: () =>
           import(
@@ -110,7 +116,7 @@ const routes = [
         meta: { authorize: [] }
       },
       {
-        path: "metadata/referential/documentation/edit/:id",
+        path: "metadata/referential/statisticalProgram/documentation/edit/:id",
         name: "ProcessDocumentationEdit",
         component: () =>
           import(

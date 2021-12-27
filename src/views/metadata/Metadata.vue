@@ -2,15 +2,14 @@
   <div class="row">
     <div class="col-sm-6 col-md-4">
       <div class="card">
-        <header class="card-header">
-          <span>Referential metadata</span>
+        <header class="card-header"><span>Referential metadata</span>
           <span class="badge float-right badge-success">New</span>
         </header>
         <div class="card-body">
           This section contains the list of processes documented according to
           GSBPM standard
           <p class="section-link">
-            <router-link tag="a" :to="{ name: 'StatisticalProgramList' }"
+            <router-link tag="a" :to="{ name: 'ReferentialComponents' }"
               ><span class="icon-span">Go to referential metadata section </span
               ><chevron-right-icon
             /></router-link>

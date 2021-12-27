@@ -26,7 +26,7 @@
       <li class="c-sidebar-nav-item">
         <router-link
           tag="a"
-          :to="{ name: 'StatisticalProgramList' }"
+          :to="{ name: 'ReferentialComponents' }"
           class="c-sidebar-nav-link"
           :class="{ 'c-active': isReferential }"
         >
