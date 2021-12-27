@@ -1,5 +1,5 @@
 import { axiosIais } from "@/http";
-import qs from "querystring";
+
 //import axios from "axios";
 
 export const correspondenceService = {
@@ -59,7 +59,7 @@ function save(formData) {
     axiosIais
       .post(
         "/structural/ClosedCorrespondence/" + formData.localId + "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -92,7 +92,7 @@ function update(formData) {
     axiosIais
       .patch(
         "/structural/ClosedCorrespondence/" + formData.id + "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(

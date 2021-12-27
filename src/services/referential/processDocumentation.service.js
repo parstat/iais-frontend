@@ -1,5 +1,4 @@
 import { axiosIais } from "@/http";
-import qs from "querystring";
 
 export const processDocumentationService = {
   findById,
@@ -105,7 +104,7 @@ function save(formData) {
           "/function/" +
           formData.businessFunction +
           "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -140,7 +139,7 @@ function update(formData) {
         "close/referential/process/documentations/" +
           formData.id +
           "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -308,7 +307,7 @@ function addProcessInput(formData) {
         "close/referential/process/documentations/" +
           formData.documentation +
           "/inputs/?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -364,7 +363,7 @@ function addProcessOutput(formData) {
         "close/referential/process/documentations/" +
           formData.documentation +
           "/outputs/?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -420,7 +419,7 @@ function addProcessQuality(formData) {
         "close/referential/process/documentations/" +
           formData.documentation +
           "/qualities/?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -478,7 +477,7 @@ function addProcessDocument(formData) {
         "close/referential/process/documentations/" +
           formData.documentation +
           "/documents/?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(

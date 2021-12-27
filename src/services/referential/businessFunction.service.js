@@ -1,5 +1,4 @@
 import { axiosIais } from "@/http";
-import qs from "querystring";
 
 export const businessFunctionService = {
   findAll,
@@ -96,7 +95,7 @@ function save(formData) {
         "close/referential/business/functions/" +
           formData.localId +
           "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -129,7 +128,7 @@ function update(formData) {
     axiosIais
       .patch(
         "close/referential/business/functions/" + formData.id + "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(

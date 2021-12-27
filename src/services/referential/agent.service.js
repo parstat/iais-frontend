@@ -1,5 +1,4 @@
 import { axiosIais } from "@/http";
-import qs from "querystring";
 
 export const agentService = {
   findAll,
@@ -77,7 +76,7 @@ function save(formData) {
     axiosIais
       .post(
         "close/referential/agents?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
@@ -101,17 +100,18 @@ function update(formData) {
     };
 
     const requestBody = {
-      name: formData.name,
-      description: formData.description,
-      type: formData.type,
-      parent: formData.parent,
-      local_id: formData.localId
+      name: typeof formData.name != "undefined" ? formData.name : "",
+      description:
+        typeof formData.description != "undefined" ? formData.description : "",
+      type: typeof formData.type != "undefined" ? formData.type : "",
+      parent: typeof formData.parent != "undefined" ? formData.parent : "",
+      local_id: typeof formData.localId != "undefined" ? formData.localId : ""
     };
 
     axiosIais
       .patch(
         "close/referential/agents/" + formData.id + "?language=en",
-        qs.stringify(requestBody),
+        new URLSearchParams(requestBody).toString(),
         config
       )
       .then(
