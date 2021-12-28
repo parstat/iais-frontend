@@ -1,53 +1,57 @@
 <template>
-  <div class="row" v-if="processMethod">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Process Method</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': v$.processMethod.name.$error }"
-              placeholder="processMethod name"
-              v-model.trim="processMethod.name"
-            />
-            <span
-              class="help-block"
-              :class="{ show: v$.processMethod.name.$error }"
-              >Please enter processMethod name.</span
-            >
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              placeholder="processMethod description"
-              v-model.trim="processMethod.description"
-            />
-            <span class="help-block">
-              Please enter an process method description</span
-            >
-          </div>
-          <div class="form-group">
-            <label for="localId">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              placeholder="Local id"
-              v-model.trim="processMethod.localId"
-            />
-          </div>
-        </div>
-        <div class="card-footer">
+  <CRow>
+    <CCol class="col-sm-12 col-md-6">
+      <CCard v-if="processMethod">
+        <CCardBody>
+          <CCardTitle>
+            <strong>Process Method</strong>
+          </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.processMethod.name.$error }"
+                placeholder="processMethod name"
+                v-model.trim="processMethod.name"
+              />
+              <span class="text-danger" v-if="v$.processMethod.name.$error"
+                >Please enter processMethod name.</span
+              >
+            </CForm>
+            <CForm>
+              <label for="description">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                placeholder="processMethod description"
+                v-model.trim="processMethod.description"
+              />
+              <span
+                class="text-danger"
+                v-if="v$.processMethod.description.$error"
+              >
+                Please enter an process method description</span
+              >
+            </CForm>
+            <CForm>
+              <label for="localId">Local id</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control"
+                placeholder="Local id"
+                v-model.trim="processMethod.localId"
+              />
+              <span class="text-danger" v-if="v$.processMethod.localId.$error">
+                Please enter an process method local id</span
+              >
+            </CForm>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -63,10 +67,10 @@
             :disabled="disabled"
             >Reset</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
@@ -88,6 +92,12 @@ export default {
   validations: {
     processMethod: {
       name: {
+        required,
+      },
+      description: {
+        required,
+      },
+      localId: {
         required,
       },
     },

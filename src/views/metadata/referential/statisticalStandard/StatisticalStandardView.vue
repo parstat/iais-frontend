@@ -1,39 +1,40 @@
 <template>
   <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
     <CCol xs>
-      <CCard>
-        <CCardHeader component="h5">
-          {{ statisticalStandard.name }}
-        </CCardHeader>
+      <CCard v-if="statisticalStandard">
         <CCardBody>
+          <CCardTitle>
+            {{ statisticalStandard.name }}
+          </CCardTitle>
+
           <CCardText>
-            <span><strong>Descripton: </strong></span>
+            <label for="description"><strong>Descripton:</strong> </label>
+
+            <div class="text-muted" id="description">
+              <span>{{ statisticalStandard.description }}</span>
+            </div>
+            <div class="card-text">
+              <span class="card-text"><strong>Type: </strong></span>
+            </div>
+            <div class="text-muted">
+              <span>{{ statisticalStandard.type }}</span>
+            </div>
+            <div class="card-text" v-if="statisticalStandard.externalLink">
+              <span class="card-text"><strong>Link: </strong></span>
+            </div>
+            <div class="text-muted" v-if="statisticalStandard.externalLink">
+              <a :href="statisticalStandard.externalLink">{{
+                statisticalStandard.externalLink
+              }}</a>
+            </div>
+            <div class="card-text">
+              <span class="card-text"><strong>Id: </strong></span>
+            </div>
+            <div class="text-muted">
+              <span>{{ statisticalStandard.localId }}</span>
+            </div>
           </CCardText>
-          <div class="card-slot">
-            <span>{{ statisticalStandard.description }}</span>
-          </div>
-          <div class="card-text">
-            <span class="card-text"><strong>Type: </strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ statisticalStandard.type }}</span>
-          </div>
-          <div class="card-text" v-if="statisticalStandard.externalLink">
-            <span class="card-text"><strong>Link: </strong></span>
-          </div>
-          <div class="card-slot" v-if="statisticalStandard.externalLink">
-            <a :href="statisticalStandard.externalLink">{{
-              statisticalStandard.externalLink
-            }}</a>
-          </div>
-          <div class="card-text">
-            <span class="card-text"><strong>Id: </strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ statisticalStandard.localId }}</span>
-          </div>
-        </CCardBody>
-        <CCardFooter>
+
           <CButton
             color="primary"
             size="sm"
@@ -41,7 +42,7 @@
             :disabled="disabled"
             >Back</CButton
           >
-        </CCardFooter>
+        </CCardBody>
       </CCard>
     </CCol>
   </CRow>

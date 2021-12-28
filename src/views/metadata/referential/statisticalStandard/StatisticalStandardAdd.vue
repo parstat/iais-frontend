@@ -1,89 +1,88 @@
 <template>
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Statistical standard</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name*</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': v$.name.$error }"
-              placeholder="Statistical standard name"
-              v-model.trim="name"
-            />
-            <span class="help-block" :class="{ show: v$.name.$error }"
-              >Please enter staistical standard name.</span
-            >
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              placeholder="Statistical standard description"
-              v-model.trim="description"
-            />
-            <span class="help-block">Please enter a description</span>
-          </div>
-          <div class="form-group">
-            <label for="link">Link</label>
-            <input
-              id="link"
-              type="text"
-              class="form-control"
-              placeholder="Statistical standard link"
-              v-model.trim="link"
-            />
-            <span class="help-block">Please enter a link</span>
-          </div>
-          <div class="form-group">
-            <label for="version">Version</label>
-            <input
-              id="version"
-              type="text"
-              class="form-control"
-              placeholder="Statistical standard version"
-              v-model.trim="version"
-            />
-            <span class="help-block">Please enter a version</span>
-          </div>
-          <div class="form-group">
-            <label for="type">Type*</label>
-            <v-select
-              label="type"
-              :options="types"
-              v-model="type"
-              :class="{ 'is-invalid': v$.type.$error }"
-              placeholder="Select a type"
-            ></v-select>
-            <span class="help-block" :class="{ show: v$.type.$error }"
-              >Please select a type.</span
-            >
-          </div>
-          <div class="form-group">
-            <label for="localId">Local id*</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': v$.localId.$error }"
-              placeholder="Local id"
-              v-model.trim="localId"
-            />
-            <span class="help-block" :class="{ show: v$.localId.$error }"
-              >Please specify a local id.</span
-            >
-          </div>
-          <div class="form-mandatory">*Mandatory fields</div>
-        </div>
-        <div class="card-footer">
+  <CRow>
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle> Statistical standard </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name*</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.name.$error }"
+                placeholder="Statistical standard name"
+                v-model.trim="name"
+              />
+              <span class="text-danger" v-if="v$.name.$error"
+                >Please enter staistical standard name.</span
+              >
+            </CForm>
+            <CForm>
+              <label for="description">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control"
+                :class="{ 'is-invalid': v$.description.$error }"
+                placeholder="Statistical standard description"
+                v-model.trim="description"
+              />
+              <span class="text-danger" v-if="v$.description.$error"
+                >Please enter a description</span
+              >
+            </CForm>
+            <CForm>
+              <label for="link">Link</label>
+              <input
+                id="link"
+                type="text"
+                class="form-control"
+                placeholder="Statistical standard link"
+                v-model.trim="link"
+              />
+            </CForm>
+            <CForm>
+              <label for="version">Version</label>
+              <input
+                id="version"
+                type="text"
+                class="form-control"
+                placeholder="Statistical standard version"
+                v-model.trim="version"
+              />
+            </CForm>
+            <CForm>
+              <label for="type">Type*</label>
+              <v-select
+                label="type"
+                :options="types"
+                v-model="type"
+                :class="{ 'is-invalid': v$.type.$error }"
+                placeholder="Select a type"
+              ></v-select>
+              <span class="text-danger" v-if="v$.type.$error"
+                >Please select a type.</span
+              >
+            </CForm>
+            <div class="form-group">
+              <label for="localId">Local id*</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control"
+                :class="{ 'is-invalid': v$.localId.$error }"
+                placeholder="Local id"
+                v-model.trim="localId"
+              />
+              <span class="text-danger" v-if="v$.localId.$error"
+                >Please specify a local id.</span
+              >
+            </div>
+            <div class="form-mandatory">*Mandatory fields</div>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -99,10 +98,10 @@
             :disabled="disabled"
             >Reset</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import useValidate from "@vuelidate/core";
@@ -134,6 +133,9 @@ export default {
   },
   validations: {
     name: {
+      required,
+    },
+    description: {
       required,
     },
     type: {

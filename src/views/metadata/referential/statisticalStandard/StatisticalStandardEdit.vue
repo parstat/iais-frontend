@@ -1,42 +1,32 @@
 <template>
-  <div class="row" v-if="statisticalStandard">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Statistical Standard</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
+  <CRow>
+    <CCol class="col-sm-12 col-md-6">
+      <CCard v-if="statisticalStandard">
+        <CCardHeader component="h5"> Statistical Standard </CCardHeader>
+        <CCardBody>
+          <CForm>
             <label for="name">Name</label>
             <input
               id="name"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               :class="{ 'is-invalid': v$.statisticalStandard.name.$error }"
               placeholder="statisticalStandard name"
               v-model.trim="statisticalStandard.name"
             />
-            <span
-              class="help-block"
-              :class="{ show: v$.statisticalStandard.name.$error }"
-              >Please enter statistical standard name.</span
-            >
-          </div>
-          <div class="form-group">
+            <div class="text-danger" v-if="v$.statisticalStandard.name.$error">
+              Please enter statistical standard name.
+            </div>
             <label for="description">Description</label>
             <textarea
               rows="5"
               id="description"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               placeholder="statisticalStandard description"
               v-model.trim="statisticalStandard.description"
             />
-            <span class="help-block">
-              Please enter an statistical standard description</span
-            >
-          </div>
-          <div class="form-group">
+
             <label for="account">Type</label>
             <v-select
               label="type"
@@ -45,24 +35,25 @@
               :class="{ 'is-invalid': v$.statisticalStandard.type.$error }"
               placeholder="Select a type"
             ></v-select>
-            <span
-              class="help-block"
-              :class="{ show: v$.statisticalStandard.type.$error }"
-              >Please select a type.</span
-            >
-          </div>
-          <div class="form-group">
+            <div class="text-danger" v-if="v$.statisticalStandard.type.$error">
+              Please select a type.
+            </div>
             <label for="localId">Local id</label>
             <input
               id="localId"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               placeholder="Local id"
               v-model.trim="statisticalStandard.localId"
             />
-          </div>
-        </div>
-        <div class="card-footer">
+            <div
+              class="text-danger"
+              v-if="v$.statisticalStandard.localId.$error"
+            >
+              Please enter an statistical standard local id
+            </div>
+          </CForm>
+
           <CButton
             color="primary"
             size="sm"
@@ -78,10 +69,10 @@
             :disabled="disabled"
             >Reset</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>

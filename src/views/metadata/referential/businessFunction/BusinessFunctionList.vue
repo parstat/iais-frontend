@@ -1,25 +1,28 @@
 <template>
   <CCard>
-    <CCardHeader>
-      <CNav variant="pills" class="card-header-pills">
-        <CNavItem>
-          <span>
-            <router-link
-              v-if="isAuthenticated"
-              tag="a"
-              to="/metadata/referential/gsim/function/add"
-              class="card-header-action"
-            >
-              <CIcon name="cil-plus" />
-              <span class="icon-span">Add</span>
-            </router-link>
-          </span>
-        </CNavItem>
-      </CNav>
-    </CCardHeader>
-
     <CCardBody>
-      <CCardTitle> Business functions </CCardTitle>
+      <CRow>
+        <CCol class="col-9">
+          <CCardTitle> Business functions </CCardTitle>
+        </CCol>
+        <CCol class="col-3">
+          <CNav class="justify-content-end">
+            <CNavItem>
+              <span>
+                <router-link
+                  v-if="isAuthenticated"
+                  tag="a"
+                  to="/metadata/referential/gsim/function/add"
+                  class="card-header-action"
+                >
+                  <CIcon name="cil-plus" />
+                  <span class="icon-span">Add</span>
+                </router-link>
+              </span>
+            </CNavItem>
+          </CNav>
+        </CCol>
+      </CRow>
       <CSmartTable
         :items="businessFunctions"
         :columns="columns"

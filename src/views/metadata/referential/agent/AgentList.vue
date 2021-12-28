@@ -1,17 +1,19 @@
 <template>
-  <CRow>
-    <CCol>
-      <CCard>
-        <CCardHeader>
-          Agents
-          <CNav>
+  <CCard>
+    <CCardBody>
+      <CRow>
+        <CCol class="col-9">
+          <CCardTitle> Agents </CCardTitle>
+        </CCol>
+        <CCol class="col-3">
+          <CNav class="justify-content-end">
             <CNavItem>
               <span>
                 <router-link
                   v-if="isAuthenticated"
                   tag="a"
                   to="/metadata/referential/gsim/agent/add"
-                  class="card-header-action"
+                  class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
                   <span class="icon-span">New agent</span>
@@ -19,61 +21,61 @@
               </span>
             </CNavItem>
           </CNav>
-        </CCardHeader>
-        <CCardBody>
-          <CSmartTable
-            :items="agents"
-            :columns="columns"
-            column-filter
-            table-filter
-            items-per-page-select
-            :items-per-page="5"
-            hover
-            sorter
-            pagination
-          >
-            <template #actions="{ item }">
-              <td>
-                <span>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'AgentView',
-                      params: { id: item.id },
-                    }"
-                  >
-                    <CIcon name="cil-magnifying-glass" />
-                  </router-link>
-                </span>
-                <span v-if="isAuthenticated">
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'AgentEdit',
-                      params: { id: item.id },
-                    }"
-                  >
-                    <CIcon name="cil-pencil" />
-                  </router-link>
-                </span>
-                <span v-if="isAdmin">
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'AgentDelete',
-                      params: { id: item.id },
-                    }"
-                  >
-                    <CIcon name="cil-trash" />
-                  </router-link>
-                </span>
-              </td>
-            </template>
-          </CSmartTable>
-        </CCardBody>
-      </CCard>
-    </CCol>
-  </CRow>
+        </CCol>
+      </CRow>
+      <CCardText>
+        <CSmartTable
+          :items="agents"
+          :columns="columns"
+          column-filter
+          table-filter
+          items-per-page-select
+          :items-per-page="5"
+          hover
+          sorter
+          pagination
+        >
+          <template #actions="{ item }">
+            <td>
+              <span>
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'AgentView',
+                    params: { id: item.id },
+                  }"
+                >
+                  <CIcon name="cil-magnifying-glass" />
+                </router-link>
+              </span>
+              <span v-if="isAuthenticated">
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'AgentEdit',
+                    params: { id: item.id },
+                  }"
+                >
+                  <CIcon name="cil-pencil" />
+                </router-link>
+              </span>
+              <span v-if="isAdmin">
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'AgentDelete',
+                    params: { id: item.id },
+                  }"
+                >
+                  <CIcon name="cil-trash" />
+                </router-link>
+              </span>
+            </td>
+          </template>
+        </CSmartTable>
+      </CCardText>
+    </CCardBody>
+  </CCard>
 </template>
 
 <script>
