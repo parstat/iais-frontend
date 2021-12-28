@@ -3,37 +3,37 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
-        <CCardTitle>
-          {{ legislativeReference.name }}
-        </CCardTitle>
-        <CCardText>
-          <div class="card-text">
-            <span><strong>Description:</strong></span>
-          </div>
-          <div class="text-muted">
-            <span> {{ legislativeReference.description }} </span>
-          </div>
-          <div class="card-text">
-            <span><strong>Type: </strong></span>
-          </div>
-          <div class="text-muted">
-            <span> {{ legislativeReference.type }} </span>
-          </div>
-          <div class="card-text" v-if="legislativeReference.externalLink">
-            <span><strong>Link:</strong></span>
-          </div>
-          <div class="text-muted" v-if="legislativeReference.externalLink">
-            <a :href="legislativeReference.externalLink">
-              {{ legislativeReference.externalLink }}
-            </a>
-          </div>
-          <div class="card-text">
-            <span><strong>Id:</strong></span>
-          </div>
-          <div class="text-muted">
-            <span> {{ legislativeReference.localId }} </span>
-          </div>
-        </CCardText>
+          <CCardTitle>
+            {{ legislativeReference.name }}
+          </CCardTitle>
+          <CCardText>
+            <div class="card-text">
+              <span><strong>Description:</strong></span>
+            </div>
+            <div class="text-muted">
+              <span> {{ legislativeReference.description }} </span>
+            </div>
+            <div class="card-text">
+              <span><strong>Type: </strong></span>
+            </div>
+            <div class="text-muted">
+              <span> {{ legislativeReference.type }} </span>
+            </div>
+            <div class="card-text" v-if="legislativeReference.externalLink">
+              <span><strong>Link:</strong></span>
+            </div>
+            <div class="text-muted" v-if="legislativeReference.externalLink">
+              <a :href="legislativeReference.externalLink">
+                {{ legislativeReference.externalLink }}
+              </a>
+            </div>
+            <div class="card-text">
+              <span><strong>Id:</strong></span>
+            </div>
+            <div class="text-muted">
+              <span> {{ legislativeReference.localId }} </span>
+            </div>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"

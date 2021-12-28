@@ -3,61 +3,63 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
-          <CCardTitle>
-          Business service (Software)
-          </CCardTitle>
-        <CCardText>
-          <CForm>
-            <label for="name">Name*</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control mb-3"
-              :class="{ 'is-invalid': v$.name.$error }"
-              placeholder="Business service name"
-              v-model.trim="name"
-            />
-            <span class="text-danger" v-if="v$.name.$error"
-              >Please enter business service name.</span
-            >
-          </CForm>
-          <CForm>
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control mb-3"
-               :class="{ 'is-invalid': v$.description.$error }"
-              placeholder="Business service description"
-              v-model.trim="description"
-            />
-            <span class="text-danger" v-if="v$.description.$error">Please enter a description</span>
-          </CForm>
-          <CForm>
-            <label for="version">Version</label>
-            <input
-              id="version"
-              type="text"
-              class="form-control mb-3"
-              placeholder="Business service version"
-              v-model.trim="version"
-            />
-          </CForm>
-          <CForm>
-            <label for="localId">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control mb-3"
-               :class="{ 'is-invalid': v$.localId.$error }"
-              placeholder="Local id"
-              v-model.trim="localId"
-            />
-            <span class="text-danger" v-if="v$.localId.$error">Please specify the local id.</span>
-          </CForm>
-          <div class="form-mandatory">*Mandatory fields</div>
-        </CCardText>
+          <CCardTitle> Business service (Software) </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name*</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.name.$error }"
+                placeholder="Business service name"
+                v-model.trim="name"
+              />
+              <span class="text-danger" v-if="v$.name.$error"
+                >Please enter business service name.</span
+              >
+            </CForm>
+            <CForm>
+              <label for="description">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.description.$error }"
+                placeholder="Business service description"
+                v-model.trim="description"
+              />
+              <span class="text-danger" v-if="v$.description.$error"
+                >Please enter a description</span
+              >
+            </CForm>
+            <CForm>
+              <label for="version">Version</label>
+              <input
+                id="version"
+                type="text"
+                class="form-control mb-3"
+                placeholder="Business service version"
+                v-model.trim="version"
+              />
+            </CForm>
+            <CForm>
+              <label for="localId">Local id</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.localId.$error }"
+                placeholder="Local id"
+                v-model.trim="localId"
+              />
+              <span class="text-danger" v-if="v$.localId.$error"
+                >Please specify the local id.</span
+              >
+            </CForm>
+            <div class="form-mandatory">*Mandatory fields</div>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"

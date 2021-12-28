@@ -3,89 +3,89 @@
     <CCardBody>
       <CRow>
         <CCol class="col-9">
-    <CCardTitle>
-      <CIcon name="cil-description" />
-      <strong> Legislative references</strong>
-    </CCardTitle>
+          <CCardTitle>
+            <CIcon name="cil-description" />
+            <strong> Legislative references</strong>
+          </CCardTitle>
         </CCol>
         <CCol class="col-3">
-      <CNav class="justify-content-end">
-        <CNavItem>
-        <router-link
-          tag="a"
-          to="/metadata/referential/gsim/regulation/add"
-          class="text-decoration-none text-primary"
-        >
-          <CIcon name="cil-plus" /> Add
-        </router-link>
-        </CNavItem>
-      </CNav>
-        </CCol>
-      </CRow>
-    <CCardText>
-      <div class="form-group" v-if="legislativeReferences">
-        <label for="description">Legislative references</label>
-        <v-select
-          label="name"
-          :options="legislativeReferences"
-          placeholder="Select legislative references"
-          :filtrable="false"
-          @search="searchLegislativeReference"
-          @input="addLegislativeReference"
-        >
-          <template v-slot:no-options="{ search, searching }">
-            <template v-if="searching">
-              No results found for <em>{{ search }}</em
-              >.
-            </template>
-            <em style="opacity: 0.5" v-else
-              >Start typing to search for a legislative reference.</em
-            >
-          </template>
-          <template v-slot:content="option">
-            <div class="d-center">
-              <span
-                ><strong>{{ option.name }} {{ option.version }}</strong></span
-              >
-              <p>{{ $filters.truncateString(option.description) }}</p>
-            </div>
-          </template>
-        </v-select>
-        <span class="help-block">Please select legislative references.</span>
-      </div>
-      <div class="card-columns">
-        <div
-          class="card card-border bg-lighter mb-3"
-          v-for="legislativeReference of references"
-          :key="legislativeReference.id"
-        >
-          <div class="card-header">
-            <strong>{{ legislativeReference.name }}</strong>
-            <div class="card-header-actions">
+          <CNav class="justify-content-end">
+            <CNavItem>
               <router-link
                 tag="a"
-                class="text-dark pr-1"
-                :to="{
-                  name: 'LegislativeReferenceView',
-                  params: { id: legislativeReference.id },
-                }"
+                to="/metadata/referential/gsim/regulation/add"
+                class="text-decoration-none text-primary"
               >
-                <CIcon name="cil-magnifying-glass" />
+                <CIcon name="cil-plus" /> Add
               </router-link>
-              <span
-                class="text-dark"
-                v-on:click="removeLegislativeReference(legislativeReference)"
+            </CNavItem>
+          </CNav>
+        </CCol>
+      </CRow>
+      <CCardText>
+        <div class="form-group" v-if="legislativeReferences">
+          <label for="description">Legislative references</label>
+          <v-select
+            label="name"
+            :options="legislativeReferences"
+            placeholder="Select legislative references"
+            :filtrable="false"
+            @search="searchLegislativeReference"
+            @input="addLegislativeReference"
+          >
+            <template v-slot:no-options="{ search, searching }">
+              <template v-if="searching">
+                No results found for <em>{{ search }}</em
+                >.
+              </template>
+              <em style="opacity: 0.5" v-else
+                >Start typing to search for a legislative reference.</em
               >
-                <CIcon name="cil-trash" />
-              </span>
+            </template>
+            <template v-slot:content="option">
+              <div class="d-center">
+                <span
+                  ><strong>{{ option.name }} {{ option.version }}</strong></span
+                >
+                <p>{{ $filters.truncateString(option.description) }}</p>
+              </div>
+            </template>
+          </v-select>
+          <span class="help-block">Please select legislative references.</span>
+        </div>
+        <div class="card-columns">
+          <div
+            class="card card-border bg-lighter mb-3"
+            v-for="legislativeReference of references"
+            :key="legislativeReference.id"
+          >
+            <div class="card-header">
+              <strong>{{ legislativeReference.name }}</strong>
+              <div class="card-header-actions">
+                <router-link
+                  tag="a"
+                  class="text-dark pr-1"
+                  :to="{
+                    name: 'LegislativeReferenceView',
+                    params: { id: legislativeReference.id },
+                  }"
+                >
+                  <CIcon name="cil-magnifying-glass" />
+                </router-link>
+                <span
+                  class="text-dark"
+                  v-on:click="removeLegislativeReference(legislativeReference)"
+                >
+                  <CIcon name="cil-trash" />
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ legislativeReference.description }}</p>
             </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">{{ legislativeReference.description }}</p>
-          </div>
         </div>
-      </div>
-    </CCardText>
+      </CCardText>
       <CButton
         color="primary"
         size="sm"

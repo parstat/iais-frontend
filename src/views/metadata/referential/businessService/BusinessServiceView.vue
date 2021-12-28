@@ -3,23 +3,23 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="businessService">
         <CCardBody>
-        <CCardTitle>
-          {{ businessService.name }}
-        </CCardTitle>
-        <CCardText>
-          <div class="card-group">
-            <span><strong>Description:</strong></span>
-          </div>
-          <div class="text-muted mb-3">
-            <span>{{ businessService.description }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Locla id: </strong></span>
-          </div>
-          <div class="text-muted mb-3">
-            <span>{{ businessService.localId }}</span>
-          </div>
-        </CCardText>
+          <CCardTitle>
+            {{ businessService.name }}
+          </CCardTitle>
+          <CCardText>
+            <div class="card-group">
+              <span><strong>Description:</strong></span>
+            </div>
+            <div class="text-muted mb-3">
+              <span>{{ businessService.description }}</span>
+            </div>
+            <div class="card-group">
+              <span><strong>Locla id: </strong></span>
+            </div>
+            <div class="text-muted mb-3">
+              <span>{{ businessService.localId }}</span>
+            </div>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"

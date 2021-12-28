@@ -3,52 +3,58 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="businessService">
         <CCardBody>
-        <CCardTitle>
-          Business Service
-        </CCardTitle>
-        <CCardText>
-          <CForm>
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control mb-3"
-              :class="{ 'is-invalid': v$.businessService.name.$error }"
-              placeholder="businessService name"
-              v-model.trim="businessService.name"
-            />
-            <span
-              class="text-danger"
-              v-if="v$.businessService.name.$error"
-              >Please enter businessService name.</span
-            >
-          </CForm>
-          <CForm>
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control mb-3"
-              :class="{ 'is-invalid': v$.businessService.description.$error }"
-              placeholder="businessService description"
-              v-model.trim="businessService.description"
-            />
-            <span class="text-danger" v-if="v$.businessService.description.$error"> Please enter a business service description</span>
-          </CForm>
-          <CForm>
-            <label for="localId">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control mb-3"
-              :class="{ 'is-invalid': v$.businessService.localId.$error }"
-              placeholder="Local id"
-              v-model.trim="businessService.localId"
-            />
-            <span class="text-danger" v-if="v$.businessService.localId.$error"> Please enter a business service local id</span>
-          </CForm>
-        </CCardText>
+          <CCardTitle> Business Service </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.businessService.name.$error }"
+                placeholder="businessService name"
+                v-model.trim="businessService.name"
+              />
+              <span class="text-danger" v-if="v$.businessService.name.$error"
+                >Please enter businessService name.</span
+              >
+            </CForm>
+            <CForm>
+              <label for="description">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.businessService.description.$error }"
+                placeholder="businessService description"
+                v-model.trim="businessService.description"
+              />
+              <span
+                class="text-danger"
+                v-if="v$.businessService.description.$error"
+              >
+                Please enter a business service description</span
+              >
+            </CForm>
+            <CForm>
+              <label for="localId">Local id</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.businessService.localId.$error }"
+                placeholder="Local id"
+                v-model.trim="businessService.localId"
+              />
+              <span
+                class="text-danger"
+                v-if="v$.businessService.localId.$error"
+              >
+                Please enter a business service local id</span
+              >
+            </CForm>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"

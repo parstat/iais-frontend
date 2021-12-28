@@ -3,42 +3,40 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="businessService">
         <CCardBody>
-        <CCardTitle>
-          Business service (Software)
-        </CCardTitle>
-        <CCardText>
-          <CForm>
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control mb-3"
-              v-model.trim="businessService.name"
-              disabled
-            />
-          </CForm>
-          <CForm>
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control mb-3"
-              v-model.trim="businessService.description"
-              disabled
-            />
-          </CForm>
-          <CForm>
-            <label for="localid">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control mb-3"
-              v-model.trim="businessService.localId"
-              disabled
-            />
-          </CForm>
-        </CCardText>
+          <CCardTitle> Business service (Software) </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="businessService.name"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <label for="description">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="businessService.description"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <label for="localid">Local id</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="businessService.localId"
+                disabled
+              />
+            </CForm>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"

@@ -29,7 +29,9 @@
                 placeholder="Legislative reference description"
                 v-model.trim="description"
               />
-              <span class="text-danger" v-if="v$.description.$error">Please enter a description</span>
+              <span class="text-danger" v-if="v$.description.$error"
+                >Please enter a description</span
+              >
             </CForm>
             <CForm>
               <label for="link">Link</label>

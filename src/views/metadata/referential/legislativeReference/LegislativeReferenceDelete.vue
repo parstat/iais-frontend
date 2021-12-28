@@ -3,52 +3,50 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
-        <CCardTitle>
-          Legislative reference
-        </CCardTitle>
-        <CCardText>
-          <CForm>
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control mb-3"
-              v-model.trim="legislativeReference.name"
-              disabled
-            />
-          </CForm>
-          <CForm>
-            <label for="responsible">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control mb-3"
-              v-model.trim="legislativeReference.description"
-              disabled
-            />
-          </CForm>
-          <CForm>
-            <label for="responsible">Type</label>
-            <input
-              id="type"
-              type="text"
-              class="form-control mb-3"
-              v-model.trim="legislativeReference.type"
-              disabled
-            />
-          </CForm>
-          <CForm>
-            <label for="responsible">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control mb-3"
-              v-model.trim="legislativeReference.localId"
-              disabled
-            />
-          </CForm>
-        </CCardText>
+          <CCardTitle> Legislative reference </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="legislativeReference.name"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <label for="responsible">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="legislativeReference.description"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <label for="responsible">Type</label>
+              <input
+                id="type"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="legislativeReference.type"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <label for="responsible">Local id</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="legislativeReference.localId"
+                disabled
+              />
+            </CForm>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
