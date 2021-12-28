@@ -1,103 +1,105 @@
 <template>
-  <div class="row" v-if="processDocumentation">
-    <div class="jumbotron jumbotron-fluid col-lg-12">
-      <div class="container">
-        <h2 class="display-5">
-          {{ processDocumentation.statisticalProgram.name }}
-          <router-link
-            v-if="isAuthenticated"
-            tag="a"
-            :to="{
-              name: 'ProcessDocumentationEdit',
-              params: { id: processDocumentation.id },
-            }"
-          >
-            <CIcon name="cil-pencil" />
-          </router-link>
-        </h2>
-        <p class="lead">
-          {{ processDocumentation.businessFunction.localId }}
-          {{ processDocumentation.businessFunction.name }}
-        </p>
-        <hr class="my-4" />
-        <p v-if="processDocumentation.frequency" class="lead">
-          <strong>Frequency: </strong> {{ processDocumentation.frequency }}
-        </p>
-        <p v-if="processDocumentation.nextSubPhase" class="lead">
-          <strong>Next Process: </strong>
-          <router-link
-            v-if="nextDocumentation"
-            tag="a"
-            :to="{
-              name: 'ProcessDocumentationView',
-              params: {
-                id: nextDocumentation.id,
-              },
-            }"
-          >
-            {{ processDocumentation.nextSubPhase.localId }}
-            {{ processDocumentation.nextSubPhase.name }}
-          </router-link>
-        </p>
+  <CRow v-if="processDocumentation">
+    <CCol class="col-12">
+      <div class="jumbotron jumbotron-fluid col-lg-12">
+        <div class="container">
+          <h2 class="display-5">
+            {{ processDocumentation.statisticalProgram.name }}
+            <router-link
+              v-if="isAuthenticated"
+              tag="a"
+              :to="{
+                name: 'ProcessDocumentationEdit',
+                params: { id: processDocumentation.id },
+              }"
+            >
+              <CIcon name="cil-pencil" />
+            </router-link>
+          </h2>
+          <p class="lead">
+            {{ processDocumentation.businessFunction.localId }}
+            {{ processDocumentation.businessFunction.name }}
+          </p>
+          <hr class="my-4" />
+          <p v-if="processDocumentation.frequency" class="lead">
+            <strong>Frequency: </strong> {{ processDocumentation.frequency }}
+          </p>
+          <p v-if="processDocumentation.nextSubPhase" class="lead">
+            <strong>Next Process: </strong>
+            <router-link
+              v-if="nextDocumentation"
+              tag="a"
+              :to="{
+                name: 'ProcessDocumentationView',
+                params: {
+                  id: nextDocumentation.id,
+                },
+              }"
+            >
+              {{ processDocumentation.nextSubPhase.localId }}
+              {{ processDocumentation.nextSubPhase.name }}
+            </router-link>
+          </p>
+        </div>
       </div>
-    </div>
-    <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 1 }">
-      <CCol xs v-if="processDocumentation.description">
-        <CCard>
-          <CCardHeader component="h5"> Description </CCardHeader>
-          <CCardBody>
-            <CCardText>{{ processDocumentation.description }}</CCardText>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs>
-        <app-agents
-          :maintainers="processDocumentation.maintainers"
-        ></app-agents>
-      </CCol>
-      <CCol xs>
-        <app-standards
-          :statisticalStandards="processDocumentation.statisticalStandards"
-        ></app-standards>
-      </CCol>
-      <CCol xs>
-        <app-methods
-          :processMethods="processDocumentation.processMethods"
-        ></app-methods>
-      </CCol>
-      <CCol xs>
-        <app-services
-          :businessServices="processDocumentation.businessServices"
-        ></app-services>
-      </CCol>
-      <CCol xs>
-        <app-inputs
-          :processInputSpecifications="
-            processDocumentation.processInputSpecifications
-          "
-        ></app-inputs>
-      </CCol>
-      <CCol xs>
-        <app-outputs
-          :processOutputSpecifications="
-            processDocumentation.processOutputSpecifications
-          "
-        ></app-outputs>
-      </CCol>
-      <CCol xs>
-        <app-qualities
-          :processQualities="processDocumentation.processQualities"
-        ></app-qualities>
-      </CCol>
-      <CCol xs>
-        <app-documents
-          :documents="processDocumentation.documents"
-          :statisticalProgramId="processDocumentation.statisticalProgram.id"
-          @handleBack="handleBack"
-        ></app-documents>
-      </CCol>
-    </CRow>
-  </div>
+      <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 1 }">
+        <CCol xs v-if="processDocumentation.description">
+          <CCard>
+            <CCardHeader component="h5"> Description </CCardHeader>
+            <CCardBody>
+              <CCardText>{{ processDocumentation.description }}</CCardText>
+            </CCardBody>
+          </CCard>
+        </CCol>
+        <CCol xs>
+          <app-agents
+            :maintainers="processDocumentation.maintainers"
+          ></app-agents>
+        </CCol>
+        <CCol xs>
+          <app-standards
+            :statisticalStandards="processDocumentation.statisticalStandards"
+          ></app-standards>
+        </CCol>
+        <CCol xs>
+          <app-methods
+            :processMethods="processDocumentation.processMethods"
+          ></app-methods>
+        </CCol>
+        <CCol xs>
+          <app-services
+            :businessServices="processDocumentation.businessServices"
+          ></app-services>
+        </CCol>
+        <CCol xs>
+          <app-inputs
+            :processInputSpecifications="
+              processDocumentation.processInputSpecifications
+            "
+          ></app-inputs>
+        </CCol>
+        <CCol xs>
+          <app-outputs
+            :processOutputSpecifications="
+              processDocumentation.processOutputSpecifications
+            "
+          ></app-outputs>
+        </CCol>
+        <CCol xs>
+          <app-qualities
+            :processQualities="processDocumentation.processQualities"
+          ></app-qualities>
+        </CCol>
+        <CCol xs>
+          <app-documents
+            :documents="processDocumentation.documents"
+            :statisticalProgramId="processDocumentation.statisticalProgram.id"
+            @handleBack="handleBack"
+          ></app-documents>
+        </CCol>
+      </CRow>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import AgentsView from "../agent/share/AgentsView";
