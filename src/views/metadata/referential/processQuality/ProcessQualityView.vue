@@ -1,7 +1,8 @@
 <template>
   <CCard v-if="processQualities.length">
-    <CCardHeader component="h5"> Process Quality </CCardHeader>
     <CCardBody>
+      <CCardTitle>Process Quality</CCardTitle>
+
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
         <CCol
           xs
