@@ -1,99 +1,98 @@
 <template>
-  <div class="card">
-    <header class="card-header">
-      <CIcon name="cil-description" />
-      <strong class="icon-header">Comments/Notes</strong>
-    </header>
-    <div class="card-body">
-      <div class="form-group">
-        <label for="name">Title*</label>
-        <input
-          id="document_name"
-          type="text"
-          class="form-control"
-          :class="{ 'is-invalid': v$.name.$error }"
-          placeholder="Process comment/note title"
-          v-model.trim="name"
-        />
-        <span class="help-block" :class="{ show: v$.name.$error }"
-          >Please enter a title for comment/note.</span
-        >
-      </div>
-      <div class="form-group">
-        <label for="description">Comment/Note*</label>
-        <textarea
-          rows="5"
-          id="document_description"
-          type="text"
-          class="form-control"
-          :class="{ 'is-invalid': v$.description.$error }"
-          placeholder="Process comment/note"
-          v-model.trim="description"
-        />
-        <span class="help-block" :class="{ show: v$.description.$error }"
-          >Please enter note or comment.</span
-        >
-      </div>
-      <div class="form-group">
-        <label for="link">Add an external link</label>
-        <input
-          id="document_link"
-          type="text"
-          class="form-control"
-          placeholder="Process document link"
-          v-model.trim="link"
-        />
-      </div>
-      <div>
+  <CCard>
+    <CCardBody>
+      <CCardTitle>
+        <CIcon name="cil-description" />
+        <strong> Comments/Notes</strong>
+      </CCardTitle>
+      <CCardText>
+        <CForm>
+          <label for="name">Title*</label>
+          <input
+            id="document_name"
+            type="text"
+            class="form-control mb-3"
+            :class="{ 'is-invalid': v$.name.$error }"
+            placeholder="Process comment/note title"
+            v-model.trim="name"
+          />
+          <label for="description">Comment/Note*</label>
+          <textarea
+            rows="5"
+            id="document_description"
+            type="text"
+            class="form-control mb-3"
+            :class="{ 'is-invalid': v$.description.$error }"
+            placeholder="Process comment/note"
+            v-model.trim="description"
+          />
+
+          <label for="link">Add an external link</label>
+          <input
+            id="document_link"
+            type="text"
+            class="form-control mb-3"
+            placeholder="Process document link"
+            v-model.trim="link"
+          />
+        </CForm>
+        <div>
+          <CButton
+            color="primary"
+            size="sm"
+            style="margin-right: 0.3rem"
+            @click="addProcessDocument"
+          >
+            Add
+          </CButton>
+        </div>
+        <CRow>
+          <CCol
+            class="col-md-4 mt-3"
+            v-for="processDocument of processDocumentation.documents"
+            :key="processDocument.id"
+          >
+            <CCard class="card-border bg-lighter mb-3">
+              <CCardHeader>
+                <CRow>
+                  <CCol class="col-9">
+                    {{ processDocument.name }}
+                  </CCol>
+                  <CCol class="col-3">
+                    <CNav class="justify-content-end">
+                      <CNavItem>
+                        <span
+                          v-on:click="removeProcessDocument(processDocument)"
+                        >
+                          <CIcon name="cil-trash" />
+                        </span>
+                      </CNavItem>
+                    </CNav>
+                  </CCol>
+                </CRow>
+              </CCardHeader>
+              <CCardBody>
+                <CCardText>{{ processDocument.description }}</CCardText>
+                <CCardLink
+                  v-if="processDocument.externalLink"
+                  :href="processDocument.externalLink"
+                  >Link...</CCardLink
+                >
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
         <CButton
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
-          @click="addProcessDocument"
+          @click="$emit('finish')"
         >
-          Add
+          Finish
         </CButton>
-      </div>
-
-      <div class="card-columns">
-        <div
-          class="card card-border bg-lighter mb-3"
-          v-for="processDocument of processDocumentation.documents"
-          :key="processDocument.id"
-        >
-          <div class="card-header">
-            <div class="card-title">
-              <strong>{{ processDocument.name }}</strong>
-              <div class="card-header-actions">
-                <span v-on:click="removeProcessDocument(processDocument)">
-                  <CIcon name="cil-trash" />
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-text">{{ processDocument.description }}</p>
-            <a
-              class="card-link"
-              v-if="processDocument.externalLink"
-              :href="processDocument.externalLink"
-              >Link...</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-footer">
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click="$emit('finish')"
-      >
-        Finish
-      </CButton>
-    </div>
-  </div>
+      </CCardText>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 import { mapGetters } from "vuex";

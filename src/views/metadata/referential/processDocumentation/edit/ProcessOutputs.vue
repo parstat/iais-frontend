@@ -11,7 +11,7 @@
           <input
             id="output_name"
             type="text"
-            class="form-control"
+            class="form-control mb-3"
             :class="{ 'is-invalid': v$.name.$error }"
             placeholder="Process output name"
             v-model.trim="name"
@@ -25,7 +25,7 @@
             rows="5"
             id="output_description"
             type="text"
-            class="form-control"
+            class="form-control mb-3"
             :class="{ 'is-invalid': v$.description.$error }"
             placeholder="Process output description"
             v-model.trim="description"
