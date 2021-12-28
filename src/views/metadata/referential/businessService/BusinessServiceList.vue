@@ -1,92 +1,88 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <header class="card-header">
+  <CRow>
+    <CCol class="col-12">
+      <CCard>
+        <CCardBody>
+          <CRow>
+            <CCol class="col-9">
+        <CCardTitle>
           Business service
-          <div class="card-header-actions">
+        </CCardTitle>
+          </CCol>
+          <CCol class="col-3">
+          <CNav class="justify-content-end">
+            <CNavItem>
             <router-link
               v-if="isAuthenticated"
               tag="a"
               to="/metadata/referential/gsim/service/add"
-              class="card-header-action"
+              class="text-decoration-none text-primary"
             >
               <CIcon name="cil-plus" />
               <span class="icon-span">New business service (Software)</span>
             </router-link>
-          </div>
-        </header>
-        <div class="card-body">
+            </CNavItem>
+          </CNav>
+          </CCol>
+          </CRow>
+        <CCardText>
           <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Local id</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Description</th>
-                  <th scope="col" colspan="2" width="2%"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="businessService in businessServices"
-                  :key="businessService.id"
+            <CSmartTable
+          :items="businessServices"
+          :columns="columns"
+          column-filter
+          table-filter
+          items-per-page-select
+          :items-per-page="5"
+          hover
+          sorter
+          pagination
+        >
+          <template #actions="{ item }">
+            <td>
+              <span>
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'BusinessServiceView',
+                    params: { id: item.id },
+                  }"
                 >
-                  <td>{{ businessService.id }}</td>
-                  <td>
-                    {{ businessService.localId }}
-                  </td>
-                  <td>{{ businessService.name }}</td>
-                  <td v-if="businessService.description">
-                    {{ businessService.description }}
-                  </td>
-
-                  <template v-if="isAuthenticated">
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'BusinessServiceEdit',
-                          params: { id: businessService.id },
-                        }"
-                      >
-                        <edit-icon />
-                      </router-link>
-                    </td>
-                    <td v-if="isAdmin">
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'BusinessServiceDelete',
-                          params: { id: businessService.id },
-                        }"
-                      >
-                        <CIcon name="cil-trash" />
-                      </router-link>
-                    </td>
-                  </template>
-                  <template v-else>
-                    <td>
-                      <router-link
-                        tag="a"
-                        :to="{
-                          name: 'BusinessServiceView',
-                          params: { id: businessService.id },
-                        }"
-                      >
-                        <CIcon name="cil-magnifying-glass" />
-                      </router-link>
-                    </td>
-                  </template>
-                </tr>
-              </tbody>
-            </table>
+                  <CIcon name="cil-magnifying-glass" />
+                </router-link>
+              </span>
+              <span v-if="isAuthenticated">
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'BusinessServiceEdit',
+                    params: { id: item.id },
+                  }"
+                >
+                  <CIcon name="cil-pencil" />
+                </router-link>
+              </span>
+              <span v-if="isAdmin">
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'BusinessServiceDelete',
+                    params: { id: item.id },
+                  }"
+                >
+                  <CIcon name="cil-trash" />
+                </router-link>
+              </span>
+            </td>
+          </template>
+</CSmartTable>
+ 
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardText>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
@@ -95,6 +91,28 @@ import { Context } from "@/common";
 
 export default {
   name: "BusinessServiceList",
+  data() {
+    return {
+      columns: [
+        {
+          key: "localId",
+          label: "Id",
+        },
+        {
+          key: "name",
+          label: "Name",
+        },
+         {
+          key: "actions",
+          label: "Actions",
+          _style: { width: "1%" },
+          sorter: false,
+          filter: false,
+        },
+
+      ]
+    };
+  },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("businessService", ["businessServices"]),

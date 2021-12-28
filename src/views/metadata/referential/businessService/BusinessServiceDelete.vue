@@ -1,44 +1,44 @@
 <template>
-  <div class="row" v-if="businessService">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Business service (Software)</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
+  <CRow>
+    <CCol class="col-sm-12 col-md-6">
+      <CCard v-if="businessService">
+        <CCardBody>
+        <CCardTitle>
+          Business service (Software)
+        </CCardTitle>
+        <CCardText>
+          <CForm>
             <label for="name">Name</label>
             <input
               id="name"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               v-model.trim="businessService.name"
               disabled
             />
-          </div>
-          <div class="form-group">
+          </CForm>
+          <CForm>
             <label for="description">Description</label>
             <textarea
               rows="5"
               id="description"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               v-model.trim="businessService.description"
               disabled
             />
-          </div>
-          <div class="form-group">
+          </CForm>
+          <CForm>
             <label for="localid">Local id</label>
             <input
               id="localId"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               v-model.trim="businessService.localId"
               disabled
             />
-          </div>
-        </div>
-        <div class="card-footer">
+          </CForm>
+        </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -46,10 +46,10 @@
             :disabled="disabled"
             >Delete</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import { mapGetters } from "vuex";

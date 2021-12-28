@@ -1,62 +1,63 @@
 <template>
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Business service (Software)</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
+  <CRow>
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle>
+          Business service (Software)
+          </CCardTitle>
+        <CCardText>
+          <CForm>
             <label for="name">Name*</label>
             <input
               id="name"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               :class="{ 'is-invalid': v$.name.$error }"
               placeholder="Business service name"
               v-model.trim="name"
             />
-            <span class="help-block" :class="{ show: v$.name.$error }"
+            <span class="text-danger" v-if="v$.name.$error"
               >Please enter business service name.</span
             >
-          </div>
-          <div class="form-group">
+          </CForm>
+          <CForm>
             <label for="description">Description</label>
             <textarea
               rows="5"
               id="description"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
+               :class="{ 'is-invalid': v$.description.$error }"
               placeholder="Business service description"
               v-model.trim="description"
             />
-            <span class="help-block">Please enter a description</span>
-          </div>
-          <div class="form-group">
+            <span class="text-danger" v-if="v$.description.$error">Please enter a description</span>
+          </CForm>
+          <CForm>
             <label for="version">Version</label>
             <input
               id="version"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               placeholder="Business service version"
               v-model.trim="version"
             />
-            <span class="help-block">Please enter a version</span>
-          </div>
-          <div class="form-group">
+          </CForm>
+          <CForm>
             <label for="localId">Local id</label>
             <input
               id="localId"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
+               :class="{ 'is-invalid': v$.localId.$error }"
               placeholder="Local id"
               v-model.trim="localId"
             />
-            <span class="help-block">Please specify the local id.</span>
-          </div>
+            <span class="text-danger" v-if="v$.localId.$error">Please specify the local id.</span>
+          </CForm>
           <div class="form-mandatory">*Mandatory fields</div>
-        </div>
-        <div class="card-footer">
+        </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -72,10 +73,10 @@
             :disabled="disabled"
             >Reset</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import useValidate from "@vuelidate/core";
@@ -95,6 +96,12 @@ export default {
   },
   validations: {
     name: {
+      required,
+    },
+    description: {
+      required,
+    },
+    localId: {
       required,
     },
   },
