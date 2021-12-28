@@ -1,25 +1,25 @@
 <template>
-  <div class="row" v-if="processMethod">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>{{ processMethod.name }}</strong>
-        </header>
-        <div class="card-body">
-          <div class="card-group">
-            <span><strong>Description: </strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ processMethod.description }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Local Id:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span> {{ processMethod.localId }}</span>
-          </div>
-        </div>
-        <div class="card-footer">
+  <CRow>
+    <CCol class="col-sm-12 col-md-6">
+      <CCard v-if="processMethod">
+        <CCardBody>
+          <CCardTitle>
+            {{ processMethod.name }}
+          </CCardTitle>
+          <CCardText>
+            <div class="card-group">
+              <span><strong>Description: </strong></span>
+            </div>
+            <div class="text-muted">
+              <span>{{ processMethod.description }}</span>
+            </div>
+            <div class="card-group">
+              <span><strong>Local Id:</strong></span>
+            </div>
+            <div class="text-muted">
+              <span> {{ processMethod.localId }}</span>
+            </div>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -27,10 +27,10 @@
             :disabled="disabled"
             >Back</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
