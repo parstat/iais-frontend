@@ -1,9 +1,7 @@
 <template>
   <CCard v-if="statisticalStandards.length">
-    <CCardHeader component="h5">
-      <h5>Statistical Standards</h5>
-    </CCardHeader>
     <CCardBody>
+      <CCardTitle> Statistical Standards </CCardTitle>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
         <CCol
           xs
@@ -11,29 +9,35 @@
           :key="statisticalStandard.id"
         >
           <CCard>
-            <CCardHeader component="h6">
-              <CNav variant="pills" class="card-header-pills">
-                <CNavItem>
-                  {{ statisticalStandard.name }}
-                </CNavItem>
-                <CNavItem>
-                  <span style="padding: 0.75rem 0.4rem">
-                    <router-link
-                      tag="a"
-                      :to="{
-                        name: 'StatisticalStandardView',
-                        params: { id: statisticalStandard.id },
-                      }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
-                    </router-link>
-                  </span>
-                </CNavItem>
-              </CNav>
-            </CCardHeader>
-            <div class="card-body">
-              <p class="card-text">{{ statisticalStandard.description }}</p>
-            </div>
+            <CCardBody>
+              <CRow>
+                <CCol class="col-9">
+                  <CCardTitle>
+                    {{ statisticalStandard.name }}
+                  </CCardTitle>
+                </CCol>
+                <CCol class="col-3">
+                  <CNav class="justify-content-end">
+                    <CNavItem>
+                      <span style="padding: 0.75rem 0.4rem">
+                        <router-link
+                          tag="a"
+                          class="text-decoration-none text-primary"
+                          :to="{
+                            name: 'StatisticalStandardView',
+                            params: { id: statisticalStandard.id },
+                          }"
+                        >
+                          <CIcon name="cil-magnifying-glass" />
+                        </router-link>
+                      </span>
+                    </CNavItem>
+                  </CNav>
+                </CCol>
+              </CRow>
+
+              <CCardText>{{ statisticalStandard.description }}</CCardText>
+            </CCardBody>
           </CCard>
         </CCol>
       </CRow>

@@ -1,85 +1,93 @@
 <template>
-  <div class="card">
-    <div class="card-header pt-0">
-      <CIcon name="cil-description" />
-      <strong class="icon-header">Statistical Standard</strong>
-      <div class="card-header-actions">
-        <router-link
-          tag="a"
-          to="/metadata/referential/gsim/standard/add"
-          class="card-header-action"
-        >
-          <CIcon name="cil-plus" /> Add
-        </router-link>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="form-group" v-if="statisticalStandards">
-        <label for="statisticalStandard">Statistical Standard</label>
-        <v-select
-          label="name"
-          :options="statisticalStandards"
-          placeholder="Search statistical standards"
-          :filtrable="false"
-          @search="searchStatisticalStandard"
-          @input="addStatisticalStandard"
-        >
-          <template v-slot:no-options="{ search, searching }">
-            <template v-if="searching">
-              No results found for <em>{{ search }}</em
-              >.
-            </template>
-            <em style="opacity: 0.5" v-else
-              >Start typing to search for a standard.</em
-            >
-          </template>
-          <template v-slot:content="option">
-            <div class="d-center">
-              <span
-                ><strong>{{ option.name }} {{ option.version }}</strong></span
-              >
-              <p v-if="option.description">
-                {{ $filters.truncateString(option.description) }}
-              </p>
-            </div>
-          </template>
-        </v-select>
-        <span class="help-block">Please select statistical standards.</span>
-      </div>
-      <div class="card-columns">
-        <div
-          class="card card-border bg-lighter mb-3"
-          v-for="statisticalStandard of standards"
-          :key="statisticalStandard.id"
-        >
-          <div class="card-header">
-            <strong>{{ statisticalStandard.name }}</strong>
-            <div class="card-header-actions">
+  <CCard>
+    <CCardBody>
+      <Crow>
+        <CCol class="col-9">
+          <CCardTitle>
+            <CIcon name="cil-description" />
+            <strong class="icon-header">Statistical Standard</strong>
+          </CCardTitle>
+        </CCol>
+        <CCol class="col-3">
+          <CNav class="justify-content-end">
+            <CNavItem>
               <router-link
                 tag="a"
-                class="text-dark pr-1"
-                :to="{
-                  name: 'StatisticalStandardView',
-                  params: { id: statisticalStandard.id },
-                }"
+                to="/metadata/referential/gsim/standard/add"
+                class="text-decoration-none text-primary"
               >
-                <CIcon name="cil-magnifying-glass" />
+                <CIcon name="cil-plus" /> Add
               </router-link>
-              <span
-                class="text-dark"
-                @click="removeStatisticalStandard(statisticalStandard)"
+            </CNavItem>
+          </CNav>
+        </CCol>
+      </Crow>
+      <CCardText>
+        <div class="form-group" v-if="statisticalStandards">
+          <label for="statisticalStandard">Statistical Standard</label>
+          <v-select
+            label="name"
+            :options="statisticalStandards"
+            placeholder="Search statistical standards"
+            :filtrable="false"
+            @search="searchStatisticalStandard"
+            @input="addStatisticalStandard"
+          >
+            <template v-slot:no-options="{ search, searching }">
+              <template v-if="searching">
+                No results found for <em>{{ search }}</em
+                >.
+              </template>
+              <em style="opacity: 0.5" v-else
+                >Start typing to search for a standard.</em
               >
-                <CIcon name="cil-trash" />
-              </span>
+            </template>
+            <template v-slot:content="option">
+              <div class="d-center">
+                <span
+                  ><strong>{{ option.name }} {{ option.version }}</strong></span
+                >
+                <p v-if="option.description">
+                  {{ $filters.truncateString(option.description) }}
+                </p>
+              </div>
+            </template>
+          </v-select>
+          <span class="help-block">Please select statistical standards.</span>
+        </div>
+        <div class="card-columns">
+          <div
+            class="card card-border bg-lighter mb-3"
+            v-for="statisticalStandard of standards"
+            :key="statisticalStandard.id"
+          >
+            <div class="card-header">
+              <strong>{{ statisticalStandard.name }}</strong>
+              <div class="card-header-actions">
+                <router-link
+                  tag="a"
+                  class="text-dark pr-1"
+                  :to="{
+                    name: 'StatisticalStandardView',
+                    params: { id: statisticalStandard.id },
+                  }"
+                >
+                  <CIcon name="cil-magnifying-glass" />
+                </router-link>
+                <span
+                  class="text-dark"
+                  @click="removeStatisticalStandard(statisticalStandard)"
+                >
+                  <CIcon name="cil-trash" />
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ statisticalStandard.description }}</p>
             </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">{{ statisticalStandard.description }}</p>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="card-footer">
+      </CCardText>
       <CButton
         color="primary"
         size="sm"
@@ -96,8 +104,8 @@
       >
         Next
       </CButton>
-    </div>
-  </div>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 import { mapGetters } from "vuex";
