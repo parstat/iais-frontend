@@ -30,9 +30,6 @@
             placeholder="Process output description"
             v-model.trim="description"
           />
-          <span class="help-block" :class="{ show: v$.description.$error }"
-            >Please enter the process output description.</span
-          >
           <div>
             <CButton
               color="primary"
@@ -77,24 +74,22 @@
           </CCol>
         </CRow>
       </CCardText>
-      <div class="card-footer">
-        <CButton
-          color="primary"
-          size="sm"
-          style="margin-right: 0.3rem"
-          @click="$emit('back')"
-        >
-          Back
-        </CButton>
-        <CButton
-          color="primary"
-          size="sm"
-          style="margin-right: 0.3rem"
-          @click="$emit('next')"
-        >
-          Next
-        </CButton>
-      </div>
+      <CButton
+        color="primary"
+        size="sm"
+        style="margin-right: 0.3rem"
+        @click="$emit('back')"
+      >
+        Back
+      </CButton>
+      <CButton
+        color="primary"
+        size="sm"
+        style="margin-right: 0.3rem"
+        @click="$emit('next')"
+      >
+        Next
+      </CButton>
     </CCardBody>
   </CCard>
 </template>

@@ -1,102 +1,115 @@
 <template>
-  <div class="card">
-    <div class="card-header">
-      <CIcon name="cil-description" />
-      <strong class="icon-header">Statistical Standard</strong>
-      <div class="card-header-actions">
-        <router-link
-          tag="a"
-          to="/metadata/referential/gsim/standard/add"
-          class="card-header-action"
-        >
-          <CIcon name="cil-plus" />
-          <span class="icon-span">Add</span>
-        </router-link>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="form-group" v-if="statisticalStandards">
-        <label for="statisticalStandard">Statistical Standard</label>
-        <v-select
-          label="name"
-          :options="statisticalStandards"
-          placeholder="Select statistical standards"
-          :filtrable="false"
-          @search="searchStatisticalStandard"
-          @input="addStatisticalStandard"
-        >
-          <template v-slot:no-options="{ search, searching }">
-            <template v-if="searching">
-              No results found for <em>{{ search }}</em
-              >.
-            </template>
-            <em style="opacity: 0.5" v-else
-              >Start typing to search for a standard.</em
-            >
-          </template>
-          <template v-slot:content="option">
-            <div class="d-center">
-              <span
-                ><strong>{{ option.name }} {{ option.version }}</strong></span
-              >
-              <p>{{ $filters.truncateString(option.description) }}</p>
-            </div>
-          </template>
-        </v-select>
-        <span class="help-block">Please select statistical standards.</span>
-      </div>
-      <div class="card-columns">
-        <div
-          class="card card-border bg-lighter mb-3"
-          v-for="statisticalStandard of processDocumentation.standards"
-          :key="statisticalStandard.id"
-        >
-          <div class="card-header">
-            <div class="card-title">
-              <strong>{{ statisticalStandard.name }}</strong>
-              <div class="card-header-actions">
+  <CCard>
+    <CCardBody>
+      <CRow>
+        <CCol class="col-9">
+          <CCardTitle>
+            <CIcon name="cil-description" />
+            <strong> Statistical Standard</strong>
+          </CCardTitle>
+        </CCol>
+        <CCol class="col-3">
+          <CNav class="justify-content-end">
+            <CNavItem>
+              <span>
                 <router-link
                   tag="a"
-                  :to="{
-                    name: 'StatisticalStandardView',
-                    params: { id: statisticalStandard.id },
-                  }"
+                  to="/metadata/referential/gsim/standard/add"
+                  class="card-header-action"
                 >
-                  <CIcon name="cil-magnifying-glass" />
+                  <CIcon name="cil-plus" />
+                  <span class="icon-span">Add</span>
                 </router-link>
+              </span>
+            </CNavItem>
+          </CNav>
+        </CCol>
+      </CRow>
+      <CCardText>
+        <CForm v-if="statisticalStandards">
+          <label for="statisticalStandard">Statistical Standard</label>
+          <v-select
+            label="name"
+            :options="statisticalStandards"
+            placeholder="Select statistical standards"
+            :filtrable="false"
+            @search="searchStatisticalStandard"
+            @input="addStatisticalStandard"
+          >
+            <template v-slot:no-options="{ search, searching }">
+              <template v-if="searching">
+                No results found for <em>{{ search }}</em
+                >.
+              </template>
+              <em style="opacity: 0.5" v-else
+                >Start typing to search for a standard.</em
+              >
+            </template>
+            <template v-slot:content="option">
+              <div class="d-center">
                 <span
-                  v-on:click="removeStatisticalStandard(statisticalStandard)"
+                  ><strong>{{ option.name }} {{ option.version }}</strong></span
                 >
-                  <CIcon name="cil-trash" />
-                </span>
+                <p>{{ $filters.truncateString(option.description) }}</p>
               </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-text">{{ statisticalStandard.description }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-footer">
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click="$emit('back')"
-      >
-        Back
-      </CButton>
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click="$emit('next')"
-      >
-        Next
-      </CButton>
-    </div>
-  </div>
+            </template>
+          </v-select>
+        </CForm>
+        <CRow>
+          <CCol
+            class="col-md-4 mb-3"
+            v-for="statisticalStandard of processDocumentation.standards"
+            :key="statisticalStandard.id"
+          >
+            <CCard class="card card-border bg-lighter mt-3 mb-3 mr-3">
+              <CCardHeader>
+                <CRow>
+                  <CCol class="col-9">
+                    {{ statisticalStandard.name }}
+                  </CCol>
+                  <CCol class="col-3">
+                    <CNav class="justify-content-end">
+                      <CNavItem>
+                        <span
+                          v-on:click="
+                            removeStatisticalStandard(statisticalStandard)
+                          "
+                        >
+                          <CIcon name="cil-trash" />
+                        </span>
+                      </CNavItem>
+                    </CNav>
+                  </CCol>
+                </CRow>
+              </CCardHeader>
+
+              <CCardBody>
+                <CCardText>
+                  {{ statisticalStandard.description }}
+                </CCardText>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click="$emit('back')"
+        >
+          Back
+        </CButton>
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click="$emit('next')"
+        >
+          Next
+        </CButton>
+      </CCardText>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 import { mapGetters } from "vuex";

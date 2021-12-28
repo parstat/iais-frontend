@@ -64,7 +64,7 @@
                       }
                     "
                   >
-                    StatisticalStandards
+                    Statistical Standards
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
