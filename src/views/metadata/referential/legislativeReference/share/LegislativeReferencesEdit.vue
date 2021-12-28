@@ -1,19 +1,28 @@
 <template>
-  <div class="card">
-    <div class="card-header pt-0">
+  <CCard>
+    <CCardBody>
+      <CRow>
+        <CCol class="col-9">
+    <CCardTitle>
       <CIcon name="cil-description" />
-      <strong class="icon-header">Legislative references</strong>
-      <div class="card-header-actions">
+      <strong> Legislative references</strong>
+    </CCardTitle>
+        </CCol>
+        <CCol class="col-3">
+      <CNav class="justify-content-end">
+        <CNavItem>
         <router-link
           tag="a"
           to="/metadata/referential/gsim/regulation/add"
-          class="card-header-action"
+          class="text-decoration-none text-primary"
         >
           <CIcon name="cil-plus" /> Add
         </router-link>
-      </div>
-    </div>
-    <div class="card-body">
+        </CNavItem>
+      </CNav>
+        </CCol>
+      </CRow>
+    <CCardText>
       <div class="form-group" v-if="legislativeReferences">
         <label for="description">Legislative references</label>
         <v-select
@@ -76,8 +85,7 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="card-footer">
+    </CCardText>
       <CButton
         color="primary"
         size="sm"
@@ -94,8 +102,8 @@
       >
         Next
       </CButton>
-    </div>
-  </div>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 import { mapGetters } from "vuex";

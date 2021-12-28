@@ -1,27 +1,28 @@
 <template>
-  <div class="row" v-if="legislativeReference">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>{{ legislativeReference.name }}</strong>
-        </header>
-        <div class="card-body">
+  <CRow v-if="legislativeReference">
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+        <CCardTitle>
+          {{ legislativeReference.name }}
+        </CCardTitle>
+        <CCardText>
           <div class="card-text">
             <span><strong>Description:</strong></span>
           </div>
-          <div class="card-slot">
+          <div class="text-muted">
             <span> {{ legislativeReference.description }} </span>
           </div>
           <div class="card-text">
             <span><strong>Type: </strong></span>
           </div>
-          <div class="card-slot">
+          <div class="text-muted">
             <span> {{ legislativeReference.type }} </span>
           </div>
           <div class="card-text" v-if="legislativeReference.externalLink">
             <span><strong>Link:</strong></span>
           </div>
-          <div class="card-slot" v-if="legislativeReference.externalLink">
+          <div class="text-muted" v-if="legislativeReference.externalLink">
             <a :href="legislativeReference.externalLink">
               {{ legislativeReference.externalLink }}
             </a>
@@ -29,11 +30,10 @@
           <div class="card-text">
             <span><strong>Id:</strong></span>
           </div>
-          <div class="card-slot">
+          <div class="text-muted">
             <span> {{ legislativeReference.localId }} </span>
           </div>
-        </div>
-        <div class="card-footer">
+        </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -41,10 +41,10 @@
             :disabled="disabled"
             >Back</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>

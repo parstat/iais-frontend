@@ -1,89 +1,80 @@
 <template>
   <CCard>
-    <CCardHeader>
+    <CCardBody>
+      <CRow>
+        <CCol class="col-9">
+    <CCardTitle>
       Legislative references
-      <div class="card-header-actions">
+    </CCardTitle>
+        </CCol>
+        <CCol class="col-3">
+      <CNav class="justify-content-end">
+        <CNavItem>
         <router-link
           v-if="isAuthenticated"
           tag="a"
           to="/metadata/referential/gsim/regulation/add"
-          class="card-header-action"
+          class="text-decoration-none text-primary"
         >
           <CIcon name="cil-plus" />
           <span class="icon-span">New regulation</span>
         </router-link>
-      </div>
-    </CCardHeader>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">Type</th>
-              <th scope="col">Local id</th>
-              <th scope="col" colspan="2" width="2%"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="legislativeReference in legislativeReferences"
-              :key="legislativeReference.id"
-            >
-              <td>{{ legislativeReference.id }}</td>
-              <td>{{ legislativeReference.name }}</td>
-              <td v-if="legislativeReference.description">
-                {{ legislativeReference.description }}
-              </td>
-              <td v-else class="pl-4">&ndash;</td>
-              <td>{{ legislativeReference.type }}</td>
-              <td>
-                {{ legislativeReference.localId }}
-              </td>
-              <template v-if="isAuthenticated">
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'LegislativeReferenceEdit',
-                      params: { id: legislativeReference.id },
-                    }"
-                  >
-                    <edit-icon />
-                  </router-link>
-                </td>
-                <td v-if="isAdmin">
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'LegislativeReferenceDelete',
-                      params: { id: legislativeReference.id },
-                    }"
-                  >
-                    <CIcon name="cil-trash" />
-                  </router-link>
-                </td>
-              </template>
-              <template v-else>
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'LegislativeReferenceView',
-                      params: { id: legislativeReference.id },
-                    }"
-                  >
-                    <CIcon name="cil-magnifying-glass" />
-                  </router-link>
-                </td>
-              </template>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+        </CNavItem>
+        </CNav>
+        </CCol>
+      </CRow>
+    <CCardText>
+<CSmartTable
+          :items="legislativeReferences"
+          :columns="columns"
+          column-filter
+          table-filter
+          items-per-page-select
+          :items-per-page="5"
+          hover
+          sorter
+          pagination
+        >
+          <template #actions="{ item }">
+            <td>
+              <span>
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'LegislativeReferenceView',
+                    params: { id: item.id },
+                  }"
+                >
+                  <CIcon name="cil-magnifying-glass" />
+                </router-link>
+              </span>
+              <span v-if="isAuthenticated">
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'LegislativeReferenceEdit',
+                    params: { id: item.id },
+                  }"
+                >
+                  <CIcon name="cil-pencil" />
+                </router-link>
+              </span>
+              <span v-if="isAdmin">
+                <router-link
+                  tag="a"
+                  :to="{
+                    name: 'LegislativeReferenceDelete',
+                    params: { id: item.id },
+                  }"
+                >
+                  <CIcon name="cil-trash" />
+                </router-link>
+              </span>
+            </td>
+          </template>
+</CSmartTable>
+    </CCardText>
+    </CCardBody>
   </CCard>
 </template>
 
@@ -93,6 +84,31 @@ import { Context } from "@/common";
 
 export default {
   name: "LegislativeReferenceList",
+  data() {
+    return {
+      columns: [
+        {
+          key: "localId",
+          label: "Id",
+        },
+        {
+          key: "name",
+          label: "Name",
+        },
+        {
+          key: "type",
+          label: "Type",
+        },
+         {
+          key: "actions",
+          label: "Actions",
+          _style: { width: "1%" },
+          sorter: false,
+          filter: false,
+        },
+      ]
+    };
+  },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("legislativeReference", ["legislativeReferences"]),

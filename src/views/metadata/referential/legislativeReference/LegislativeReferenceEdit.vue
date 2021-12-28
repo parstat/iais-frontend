@@ -1,24 +1,25 @@
 <template>
-  <div class="row" v-if="legislativeReference">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>legislativeReference</strong>
-        </header>
-        <div class="card-body">
+  <CRow v-if="legislativeReference">
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+        <CCardTitle>
+          Legislative Reference
+        </CCardTitle>
+        <CCardText>
           <div class="form-group">
             <label for="name">Name</label>
             <input
               id="name"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               :class="{ 'is-invalid': v$.legislativeReference.name.$error }"
               placeholder="legislativeReference name"
               v-model.trim="legislativeReference.name"
             />
             <span
-              class="help-block"
-              :class="{ show: v$.legislativeReference.name.$error }"
+              class="text-danger"
+             v-if="v$.legislativeReference.name.$error"
               >Please enter legislativeReference name.</span
             >
           </div>
@@ -28,15 +29,16 @@
               rows="5"
               id="description"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
+              :class="{ 'is-invalid': v$.legislativeReference.description.$error }"
               placeholder="legislativeReference description"
               v-model.trim="legislativeReference.description"
             />
-            <span class="help-block">
+            <span class="text-danger" v-if="v$.legislativeReference.description.$error">
               Please enter an legislativeReference</span
             >
           </div>
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="account">Type</label>
             <v-select
               label="type"
@@ -46,8 +48,8 @@
               placeholder="Select a type"
             ></v-select>
             <span
-              class="help-block"
-              :class="{ show: v$.legislativeReference.type.$error }"
+              class="text-danger"
+              v-if="v$.legislativeReference.type.$error"
               >Please select a type.</span
             >
           </div>
@@ -61,8 +63,7 @@
               v-model.trim="legislativeReference.localId"
             />
           </div>
-        </div>
-        <div class="card-footer">
+        </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -78,10 +79,10 @@
             :disabled="disabled"
             >Reset</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
@@ -111,6 +112,9 @@ export default {
   validations: {
     legislativeReference: {
       name: {
+        required,
+      },
+      description: {
         required,
       },
       type: {

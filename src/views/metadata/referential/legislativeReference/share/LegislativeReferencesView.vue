@@ -40,7 +40,7 @@
 </template>
 <script>
 export default {
-  name: "LegislativeReferencessView",
+  name: "LegislativeReferencesView",
   props: {
     legislativeReferences: {
       type: Array,
