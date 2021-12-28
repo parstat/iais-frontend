@@ -2,7 +2,6 @@
   <CCard v-if="processQualities.length">
     <CCardBody>
       <CCardTitle>Process Quality</CCardTitle>
-
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
         <CCol
           xs

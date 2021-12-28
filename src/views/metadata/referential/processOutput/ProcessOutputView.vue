@@ -1,8 +1,7 @@
 <template>
   <CCard v-if="processOutputSpecifications.length">
     <CCardBody>
-    <CCardTitle>Process Outputs</CCardTitle>
-    <CCardBody>
+      <CCardTitle>Process Outputs</CCardTitle>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
         <CCol
           xs
