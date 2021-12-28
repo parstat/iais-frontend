@@ -11,27 +11,21 @@
           <input
             id="input_name"
             type="text"
-            class="form-control"
+            class="form-control mb-3"
             :class="{ 'is-invalid': v$.name.$error }"
             placeholder="Process input name"
             v-model.trim="name"
           />
-          <span class="help-block" :class="{ show: v$.name.$error }"
-            >Please enter a process input name.</span
-          >
           <label for="description">Process input description*</label>
           <textarea
             rows="5"
             id="input_description"
             type="text"
-            class="form-control"
+            class="form-control mb-3"
             :class="{ 'is-invalid': v$.description.$error }"
             placeholder="Process input description"
             v-model.trim="description"
           />
-          <span class="help-block" :class="{ show: v$.description.$error }"
-            >Please enter the process input description.</span
-          >
           <div>
             <CButton
               color="primary"
