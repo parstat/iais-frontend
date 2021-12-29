@@ -22,7 +22,7 @@
         </CCol>
       </CRow>
       <CCardText>
-        |<CSmartTable
+        <CSmartTable
           :items="legislativeReferences"
           :columns="columns"
           column-filter

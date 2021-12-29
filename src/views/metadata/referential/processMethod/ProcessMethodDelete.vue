@@ -3,24 +3,14 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="processMethod">
         <CCardBody>
-          <CCardTitle> Process method </CCardTitle>
+          <CCardTitle> {{processMethod.name}} </CCardTitle>
           <CCardText>
-            <CForm>
-              <label for="name">Name</label>
-              <input
-                id="name"
-                type="text"
-                class="form-control"
-                v-model.trim="processMethod.name"
-                disabled
-              />
-            </CForm>
             <CForm>
               <label for="responsible">Description</label>
               <input
                 id="description"
                 type="text"
-                class="form-control"
+                class="form-control mb-3"
                 v-model.trim="processMethod.description"
                 disabled
               />
@@ -30,7 +20,7 @@
               <input
                 id="localId"
                 type="text"
-                class="form-control"
+                class="form-control mb-3"
                 v-model.trim="processMethod.localId"
                 disabled
               />

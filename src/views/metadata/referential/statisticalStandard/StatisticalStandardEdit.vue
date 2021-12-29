@@ -2,8 +2,8 @@
   <CRow>
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="statisticalStandard">
-        <CCardHeader component="h5"> Statistical Standard </CCardHeader>
         <CCardBody>
+          <CCardTitle> Statistical Standard </CCardTitle>
           <CForm>
             <label for="name">Name</label>
             <input

@@ -3,25 +3,15 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="statisticalStandard">
         <CCardBody>
-          <CCardTitle> Statistical standard </CCardTitle>
+          <CCardTitle> {{statisticalStandard.name}} </CCardTitle>
           <CCardText>
-            <CForm>
-              <label for="name">Name</label>
-              <input
-                id="name"
-                type="text"
-                class="form-control"
-                v-model.trim="statisticalStandard.name"
-                disabled
-              />
-            </CForm>
             <CForm>
               <label for="responsible">Description</label>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
-                class="form-control"
+                class="form-control mb-3"
                 v-model.trim="statisticalStandard.description"
                 disabled
               />
@@ -31,7 +21,7 @@
               <input
                 id="type"
                 type="text"
-                class="form-control"
+                class="form-control mb-3"
                 v-model.trim="statisticalStandard.type"
                 disabled
               />
@@ -41,7 +31,7 @@
               <input
                 id="localId"
                 type="text"
-                class="form-control"
+                class="form-control mb-3"
                 v-model.trim="statisticalStandard.localId"
                 disabled
               />

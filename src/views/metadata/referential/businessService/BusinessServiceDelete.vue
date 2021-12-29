@@ -3,18 +3,8 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="businessService">
         <CCardBody>
-          <CCardTitle> Business service (Software) </CCardTitle>
+          <CCardTitle>{{ businessService.name }} </CCardTitle>
           <CCardText>
-            <CForm>
-              <label for="name">Name</label>
-              <input
-                id="name"
-                type="text"
-                class="form-control mb-3"
-                v-model.trim="businessService.name"
-                disabled
-              />
-            </CForm>
             <CForm>
               <label for="description">Description</label>
               <textarea

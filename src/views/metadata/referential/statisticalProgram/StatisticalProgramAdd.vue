@@ -2,11 +2,12 @@
   <CRow>
     <CCol class="col-12">
       <CCard>
-        <CCardHeader component="h5">
-          <CIcon name="cil-description" />
-          <strong class="icon-header">Statistical process</strong>
-        </CCardHeader>
+        
         <CCardBody>
+          <CCardTitle>
+          <CIcon name="cil-description" />
+          Statistical process
+          </CCardTitle>
           <CRow>
             <CCol class="col-3 mr-2">
               <CNav class="flex-column" variant="pills" role="tab">

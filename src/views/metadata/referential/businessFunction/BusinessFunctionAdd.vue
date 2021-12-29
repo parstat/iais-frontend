@@ -1,67 +1,64 @@
 <template>
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Business function (GSBPM sub-phase)</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name*</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': v$.name.$error }"
-              placeholder="Business function name"
-              v-model.trim="name"
-            />
-            <span class="help-block" :class="{ show: v$.name.$error }"
-              >Please enter business function name.</span
-            >
-          </div>
-          <div class="form-group">
-            <label for="description">Description*</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              placeholder="Business function description"
-              v-model.trim="description"
-            />
-            <span class="help-block" :class="{ show: v$.name.$error }"
-              >Please enter a description</span
-            >
-          </div>
-          <div class="form-group">
-            <label for="version">Version</label>
-            <input
-              id="version"
-              type="text"
-              class="form-control"
-              placeholder="Business function version"
-              v-model.trim="version"
-            />
-            <span class="help-block">Please enter a version</span>
-          </div>
-          <div class="form-group">
-            <label for="localId">Sub-phase number*</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': v$.localId.$error }"
-              placeholder="Local id"
-              v-model.trim="localId"
-            />
-            <span class="help-block" :class="{ show: v$.localId.$error }"
-              >Please specify the sub-phase number.</span
-            >
-          </div>
-          <div class="form-mandatory">*Mandatory fields</div>
-        </div>
-        <div class="card-footer">
+  <CRow>
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle> Business function (GSBPM sub-phase) </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name*</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control"
+                :class="{ 'is-invalid': v$.name.$error }"
+                placeholder="Business function name"
+                v-model.trim="name"
+              />
+              <span class="text-danger" v-if="v$.name.$error"
+                >Please enter business function name.</span
+              >
+            </CForm>
+            <CForm>
+              <label for="description">Description*</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                placeholder="Business function description"
+                v-model.trim="description"
+              />
+              <span class="text-danger" v-if="v$.description.$error"
+                >Please enter a description</span
+              >
+            </CForm>
+            <CForm>
+              <label for="version">Version</label>
+              <input
+                id="version"
+                type="text"
+                class="form-control mb-3"
+                placeholder="Business function version"
+                v-model.trim="version"
+              />
+            </CForm>
+            <CForm>
+              <label for="localId">Sub-phase number*</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.localId.$error }"
+                placeholder="Local id"
+                v-model.trim="localId"
+              />
+              <span class="text-danger" v-if="v$.localId.$error"
+                >Please specify the sub-phase number.</span
+              >
+            </CForm>
+            <div class="form-mandatory">*Mandatory fields</div>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -77,10 +74,10 @@
             :disabled="disabled"
             >Reset</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import useValidate from "@vuelidate/core";

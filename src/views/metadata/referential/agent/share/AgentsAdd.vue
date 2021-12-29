@@ -1,15 +1,18 @@
 <template>
   <CCard>
-    <CCardHeader component="h5">
-      <CIcon name="cil-user" />
-      Agents
-      <CNav>
+    <CCardBody>
+      <CRow>
+        <CCol class="col-9">
+          <CCardTitle> Agents </CCardTitle>
+        </CCol>
+        <CCol class="col-3">
+          <CNav class="justify-content-end">
         <CNavItem>
           <span>
             <router-link
               tag="a"
               to="/metadata/referential/gsim/agent/add"
-              class="card-header-action"
+               class="text-decoration-none text-primary"
             >
               <CIcon name="cil-plus" />
               <span class="icon-span">Add</span>
@@ -17,8 +20,9 @@
           </span>
         </CNavItem>
       </CNav>
-    </CCardHeader>
-    <CCardBody>
+        </CCol>
+      </CRow>
+      <CCardText>
       <div class="form-group" v-if="owners">
         <label for="organization">Organization*</label>
         <v-select
@@ -58,8 +62,7 @@
           >Please select a contact person.</span
         >
       </div>
-    </CCardBody>
-    <CCardFooter>
+      </CCardText>
       <CButton
         color="primary"
         size="sm"
@@ -76,7 +79,7 @@
         :disabled="disabled"
         >Next</CButton
       >
-    </CCardFooter>
+    </CCardBody>
   </CCard>
 </template>
 <script>

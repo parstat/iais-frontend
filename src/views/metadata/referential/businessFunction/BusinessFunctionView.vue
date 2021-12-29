@@ -1,42 +1,42 @@
 <template>
-  <div class="row" v-if="businessFunction">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>{{ businessFunction.name }}</strong>
-        </header>
-        <div class="card-body">
-          <div class="card-group">
-            <span><strong>Description:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ businessFunction.description }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Phase:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ businessFunction.phase }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Sub-phase number:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ businessFunction.localId }}</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <CButton
-            color="primary"
-            size="sm"
-            @click.prevent="handleBack()"
-            :disabled="disabled"
-            >Back</CButton
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+  <CRow v-if="businessFunction">
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle>
+            <strong>{{ businessFunction.name }}</strong>
+          </CCardTitle>
+          <CCardText>
+            <div class="card-group">
+              <span><strong>Description:</strong></span>
+            </div>
+            <div class="text-muted">
+              <span>{{ businessFunction.description }}</span>
+            </div>
+            <div class="card-group">
+              <span><strong>Phase:</strong></span>
+            </div>
+            <div class="text-muted">
+              <span>{{ businessFunction.phase }}</span>
+            </div>
+            <div class="card-group">
+              <span><strong>Sub-phase number:</strong></span>
+            </div>
+            <div class="text-muted">
+              <span>{{ businessFunction.localId }}</span>
+            </div>
+          </CCardText>
+            <CButton
+              color="primary"
+              size="sm"
+              @click.prevent="handleBack()"
+              :disabled="disabled"
+              >Back</CButton
+            >
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>

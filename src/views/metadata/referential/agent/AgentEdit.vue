@@ -2,58 +2,60 @@
   <CRow>
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="agent">
-        <CCardHeader component="h5"> Agent </CCardHeader>
+        
         <CCardBody>
-          <div class="form-group">
+          <CCardTitle> Agent </CCardTitle>
+          <CCardText>
+          <CForm>
             <label for="name">Name</label>
             <input
               id="name"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               :class="{ 'is-invalid': v$.agent.name.$error }"
               placeholder="Agent name"
               v-model.trim="agent.name"
             />
-            <span class="help-block" :class="{ show: v$.agent.name.$error }"
+            <span class="text-danger" v-if="v$.agent.name.$error"
               >Please enter agent name.</span
             >
-          </div>
-          <div class="form-group">
+          </CForm>
+          <CForm>
             <label for="description">Description</label>
             <textarea
               rows="5"
               id="description"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               placeholder="Agent description"
               v-model.trim="agent.description"
             />
-            <span class="help-block"> Please enter an agent</span>
-          </div>
-          <div class="form-group">
+          </CForm>
+          <CForm>
             <label for="account">Type</label>
             <v-select
               label="type"
               :options="types"
               v-model="agent.type"
+              class="mb-3"
               :class="{ 'is-invalid': v$.agent.type.$error }"
               placeholder="Select a type"
             ></v-select>
-            <span class="help-block" :class="{ show: v$.agent.type.$error }"
+            <span class="text-danger" v-if="v$.agent.type.$error"
               >Please select a type.</span
             >
-          </div>
-          <div class="form-group">
+          </CForm>
+          <CForm>
             <label for="parent">Parent</label>
             <v-select
               label="name"
               :options="parents"
+              class="mb-3"
               v-model="agent.parent"
               placeholder="Select a parent"
             ></v-select>
-            <span class="help-block">Please select a parent.</span>
-          </div>
-          <div class="form-group">
+          </CForm>
+          <CForm>
             <label for="localId">Local id</label>
             <input
               id="localId"
@@ -62,9 +64,9 @@
               placeholder="Local id"
               v-model.trim="agent.localId"
             />
-          </div>
-        </CCardBody>
-        <div class="card-footer">
+          </CForm>
+          </CCardText>
+       
           <CButton
             color="primary"
             size="sm"
@@ -80,7 +82,7 @@
             :disabled="disabled"
             >Reset</CButton
           >
-        </div>
+           </CCardBody>
       </CCard>
     </CCol>
   </CRow>

@@ -1,44 +1,42 @@
 <template>
-  <div class="row" v-if="businessFunction">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Business function (GSBPM Sub-phase)</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              v-model.trim="businessFunction.name"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              v-model.trim="businessFunction.description"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <label for="localid">Sub-phase number</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              v-model.trim="businessFunction.localId"
-              disabled
-            />
-          </div>
-        </div>
-        <div class="card-footer">
+  <CRow v-if="businessFunction">
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle> Business function (GSBPM Sub-phase) </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="businessFunction.name"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <label for="description">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="businessFunction.description"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <label for="localid">Sub-phase number</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="businessFunction.localId"
+                disabled
+              />
+            </CForm>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -46,10 +44,10 @@
             :disabled="disabled"
             >Delete</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import { mapGetters } from "vuex";

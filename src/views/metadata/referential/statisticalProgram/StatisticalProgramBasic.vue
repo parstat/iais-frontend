@@ -1,70 +1,70 @@
 <template>
-  <div class="card">
-    <div class="card-body pt-0">
-      <div class="form-group">
+  <CCard>
+    <CCardBody>
+      <CCardText>
+      <CForm>
         <label for="localId">Survey id*</label>
         <input
           id="localId"
           type="text"
-          class="form-control"
+          class="form-control mb-3"
           :class="{ 'is-invalid': v$.localLocalId.$error }"
           placeholder="Survey id"
           v-model.trim="localLocalId"
           @change="fieldChanged = true"
         />
-        <span class="help-block" :class="{ show: v$.localLocalId.$error }"
+        <span class="text-danger" v-if="v$.localLocalId.$error"
           >Please enter survey id.</span
         >
-      </div>
-      <div class="form-group">
+      </CForm>
+      <CForm>
         <label for="name">Survey name*</label>
         <input
           id="name"
           type="text"
-          class="form-control"
+          class="form-control mb-3"
           :class="{ 'is-invalid': v$.localName.$error }"
           placeholder="Survey name"
           v-model.trim="localName"
           @change="fieldChanged = true"
         />
-        <span class="help-block" :class="{ show: v$.localName.$error }"
+        <span class="text-danger" v-if="v$.localName.$error"
           >Please enter survey name.</span
         >
-      </div>
-      <div class="form-group">
+      </CForm>
+      <CForm>
         <label for="acronym">Survey acronym*</label>
         <input
           id="acronym"
           type="text"
-          class="form-control"
+          class="form-control mb-3"
           :class="{ 'is-invalid': v$.localAcronym.$error }"
           placeholder="Survey acronym"
           v-model.trim="localAcronym"
           @change="fieldChanged = true"
         />
-        <span class="help-block" :class="{ show: v$.localAcronym.$error }"
+        <span class="text-danger" v-if="v$.localAcronym.$error"
           >Please enter an acronym.</span
         >
-      </div>
-      <div class="form-group">
+      </CForm>
+      <CForm>
         <label for="description">Survey description*</label>
         <textarea
           rows="3"
           id="description"
           type="text"
-          class="form-control"
+          class="form-control mb-3"
           :class="{ 'is-invalid': v$.localDescription.$error }"
           placeholder="Survey description"
           v-model.trim="localDescription"
           @change="fieldChanged = true"
         />
-        <span class="help-block" :class="{ show: v$.localDescription.$error }"
+        <span class="text-danger" v-if="v$.localDescription.$error"
           >Please enter survey description.</span
         >
-      </div>
+      </CForm>
       <div class="form-mandatory">*Mandatory fields</div>
-    </div>
-    <div class="card-footer">
+    </CCardText>
       <CButton
         color="primary"
         size="sm"
@@ -72,8 +72,8 @@
         @click="next"
         >Next
       </CButton>
-    </div>
-  </div>
+    </CCardBody>
+  </CCard>
 </template>
 <script>
 import useValidate from "@vuelidate/core";

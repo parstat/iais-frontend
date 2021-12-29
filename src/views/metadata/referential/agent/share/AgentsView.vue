@@ -1,7 +1,8 @@
 <template>
   <CCard v-if="maintainers.length">
-    <CCardHeader component="h5"> Maintainers </CCardHeader>
     <CCardBody>
+       <CCardTitle> Maintainers </CCardTitle>
+       <CCardText>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
         <CCol xs v-for="maintainer of maintainers" :key="maintainer.id">
           <CCard>
@@ -14,11 +15,14 @@
           </CCard>
         </CCol>
       </CRow>
+       </CCardText>
     </CCardBody>
   </CCard>
   <CCard v-else>
-    <CCardHeader component="h5"> Maintainers </CCardHeader>
+    
     <CCardBody>
+      <CCardTitle> Maintainers </CCardTitle>
+      <CCrdText>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
         <CCol xs v-if="owner">
           <CCard>
@@ -84,6 +88,7 @@
           </CCard>
         </CCol>
       </CRow>
+      </CCrdText>
     </CCardBody>
   </CCard>
 </template>
