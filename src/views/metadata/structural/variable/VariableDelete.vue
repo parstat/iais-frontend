@@ -1,54 +1,44 @@
 <template>
-  <div class="row" v-if="variable">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Variable</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              v-model.trim="variable.name"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              v-model.trim="variable.description"
-              disabled
-            />
-          </div>
-          <div class="form-group" v-if="variable.account">
-            <label for="responsible">Account</label>
-            <input
-              id="account"
-              type="text"
-              class="form-control"
-              v-model.trim="variable.account.name"
-              disabled
-            />
-          </div>
-          <div class="form-group">
-            <label for="type">Type</label>
-            <input
-              id="type"
-              type="text"
-              class="form-control"
-              v-model.trim="variable.type"
-              disabled
-            />
-          </div>
-        </div>
-        <div class="card-footer">
+  <CRow v-if="variable">
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle>
+            {{ variable.name }}
+          </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="description">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="variable.description"
+                disabled
+              />
+            </CForm>
+            <CForm v-if="variable.account">
+              <label for="responsible">Account</label>
+              <input
+                id="account"
+                type="text"
+                class="form-control"
+                v-model.trim="variable.account.name"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <label for="type">Type</label>
+              <input
+                id="type"
+                type="text"
+                class="form-control"
+                v-model.trim="variable.type"
+                disabled
+              />
+            </CForm>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -56,10 +46,10 @@
             :disabled="disabled"
             >Delete</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import { mapGetters } from "vuex";

@@ -1,50 +1,57 @@
 <template>
-  <div class="row" v-if="variable">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Variable</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': v$.variable.name.$error }"
-              placeholder="Variable name"
-              v-model.trim="variable.name"
-            />
-            <span class="help-block" :class="{ show: v$.variable.name.$error }"
-              >Please enter variable name.</span
-            >
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              placeholder="Variable description"
-              v-model.trim="variable.description"
-            />
-            <span class="help-block"> Please enter a variable description</span>
-          </div>
+  <CRow v-if="variable">
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle>
+            <strong>Variable</strong>
+          </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.variable.name.$error }"
+                placeholder="Variable name"
+                v-model.trim="variable.name"
+              />
+              <span class="text-danger" v-if="v$.variable.name.$error"
+                >Please enter variable name.</span
+              >
+            </CForm>
+            <CForm>
+              <label for="description">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.variable.description.$error }"
+                placeholder="Variable description"
+                v-model.trim="variable.description"
+              />
+              <span class="text-danger" v-if="v$.variable.description.$error">
+                Please enter a variable description</span
+              >
+            </CForm>
 
-          <div class="form-group">
-            <label for="localId">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control"
-              placeholder="Local id"
-              v-model.trim="variable.localId"
-            />
-          </div>
-        </div>
-        <div class="card-footer">
+            <CForm>
+              <label for="localId">Local id</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.variable.localId.$error }"
+                placeholder="Local id"
+                v-model.trim="variable.localId"
+              />
+              <span class="text-danger" v-if="v$.variable.localId.$error">
+                Please enter a variable local id</span
+              >
+            </CForm>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -60,10 +67,10 @@
             :disabled="disabled"
             >Reset</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>

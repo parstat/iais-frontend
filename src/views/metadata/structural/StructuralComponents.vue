@@ -153,7 +153,7 @@
               is used to describe a class or group of Units based on a single
               characteristic, but with no specification of time and geography.
               For example, the Unit Type of “Person” groups together a set of
-              Units based on the characteristic that they are <b>Persons</b>.
+              Units based on the characteristic that they are <i>Persons</i>.
             </span>
           </CCardText>
           <CButton>

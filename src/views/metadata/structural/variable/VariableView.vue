@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <CRow>
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="variable">
       <div class="p-3">
         <h2 class="display-5">
@@ -12,48 +12,47 @@
       </div>
     </div>
 
-    <div class="card w-100">
-      <header class="card-header">
-        <h5>Representations</h5>
-      </header>
-      <div class="card-body">
-        <table class="table table-hover" v-if="variable">
-          <thead>
-            <tr>
-              <th scope="col">LocalId</th>
-              <th scope="col">Name</th>
-              <th scope="col" colspan="2" width="2%">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in variable.representations" :key="item.index">
-              <td>{{ item.localId }}</td>
-              <td>{{ item.name }}</td>
-              <template v-if="isAuthenticated">
-                <td v-c-tooltip="'View'">
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'VariableRepresentationsView',
-                      params: { id: item.id },
-                    }"
-                  >
-                    <CIcon name="cil-magnifying-glass" />
-                  </router-link>
-                </td>
-                <td v-c-tooltip="'Edit'">
-                  <router-link
+    <CCard class="col-12">
+      <CCardBody>
+        <CCardTitle> Representations </CCardTitle>
+        <CCardText>
+          <table class="table table-hover" v-if="variable">
+            <thead>
+              <tr>
+                <th scope="col">LocalId</th>
+                <th scope="col">Name</th>
+                <th scope="col" colspan="2" width="2%">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in variable.representations" :key="item.index">
+                <td>{{ item.localId }}</td>
+                <td>{{ item.name }}</td>
+                <template v-if="isAuthenticated">
+                  <td>
+                    <router-link
+                      tag="a"
+                      :to="{
+                        name: 'VariableRepresentationsView',
+                        params: { id: item.id },
+                      }"
+                    >
+                      <CIcon name="cil-magnifying-glass" />
+                    </router-link>
+                  </td>
+                  <td>
+                    <!--   <router-link
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsEdit',
                       params: { id: item.id },
                     }"
                   >
-                    <edit-icon />
-                  </router-link>
-                </td>
-                <td v-if="isAdmin" v-c-tooltip="'Delete'">
-                  <router-link
+                    <CIcon name="cil-pencil" />
+                  </router-link> -->
+                  </td>
+                  <td v-if="isAdmin">
+                    <!--  <router-link
                     tag="a"
                     :to="{
                       name: 'VariableRepresentationsDelete',
@@ -61,27 +60,26 @@
                     }"
                   >
                     <CIcon name="cil-trash" />
-                  </router-link>
-                </td>
-              </template>
-              <template v-else>
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'VariableRepresentationsView',
-                      params: { id: item.id },
-                    }"
-                  >
-                    <CIcon name="cil-magnifying-glass" />
-                  </router-link>
-                </td>
-              </template>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card-footer">
+                  </router-link> -->
+                  </td>
+                </template>
+                <template v-else>
+                  <td>
+                    <router-link
+                      tag="a"
+                      :to="{
+                        name: 'VariableRepresentationsView',
+                        params: { id: item.id },
+                      }"
+                    >
+                      <CIcon name="cil-magnifying-glass" />
+                    </router-link>
+                  </td>
+                </template>
+              </tr>
+            </tbody>
+          </table>
+        </CCardText>
         <CButton
           color="primary"
           size="sm"
@@ -89,9 +87,9 @@
           :disabled="disabled"
           >Back</CButton
         >
-      </div>
-    </div>
-  </div>
+      </CCardBody>
+    </CCard>
+  </CRow>
 </template>
 
 <script>

@@ -1,89 +1,86 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <header class="card-header">
-          Variables
-          <div class="card-header-actions">
-            <router-link
-              v-if="isAuthenticated"
-              tag="a"
-              to="/metadata/structural/variable/add"
-              class="card-header-action"
-            >
-              <CIcon name="cil-plus" />
-              <span class="icon-span">New Variable</span>
-            </router-link>
-          </div>
-        </header>
-        <div class="card-body">
-          <div class="table-responsive">
-            <CDataTable
-              :items="variables"
-              :fields="fields"
-              column-filter
-              table-filter
-              items-per-page-select
-              :items-per-page="5"
-              hover
-              sorter
-              pagination
-            >
-              <template #actions="{ item }">
-                <td style="text-align: right; width: 10%; padding-right: 20px">
-                  <span class="pl-2" v-c-tooltip="'View'">
-                    <router-link
-                      tag="a"
-                      title="View"
-                      :to="{
-                        name: 'VariableView',
-                        params: { id: item.id },
-                      }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
-                    </router-link>
-                  </span>
-                  <span
+  <CRow>
+    <CCol class="col-12">
+      <CCard v-if="variables">
+        <CCardBody>
+          <CRow>
+            <CCol class="col-9">
+              <CCardTitle> Variables </CCardTitle>
+            </CCol>
+            <CCol class="col-3">
+              <CNav class="justify-content-end">
+                <CNavItem>
+                  <router-link
                     v-if="isAuthenticated"
-                    class="pl-2"
-                    v-c-tooltip="'Edit'"
+                    tag="a"
+                    to="/metadata/structural/variable/add"
+                    class="text-decoration-none text-primary"
                   >
-                    <router-link
-                      tag="a"
-                      title="Edit"
-                      :to="{
-                        name: 'VariableEdit',
-                        params: { id: item.id },
-                      }"
-                    >
-                      <edit-icon />
-                    </router-link>
-                  </span>
+                    <CIcon name="cil-plus" />
+                    <span class="icon-span">New Variable</span>
+                  </router-link>
+                </CNavItem>
+              </CNav>
+            </CCol>
+          </CRow>
 
-                  <span
-                    v-if="isAuthenticated && isAdmin"
-                    class="pl-2"
-                    v-c-tooltip="'Delete'"
-                  >
-                    <router-link
-                      tag="a"
-                      title="Delete"
-                      :to="{
-                        name: 'VariableDelete',
-                        params: { id: item.id },
-                      }"
-                    >
-                      <CIcon name="cil-trash" />
-                    </router-link>
-                  </span>
-                </td>
-              </template>
-            </CDataTable>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <CCardText>
+            <div class="table-responsive">
+              <CSmartTable
+                :items="variables"
+                :columns="columns"
+                column-filter
+                table-filter
+                items-per-page-select
+                :items-per-page="5"
+                hover
+                sorter
+                pagination
+              >
+                <template #actions="{ item }">
+                  <td>
+                    <span>
+                      <router-link
+                        tag="a"
+                        :to="{
+                          name: 'VariableView',
+                          params: { id: item.id },
+                        }"
+                      >
+                        <CIcon name="cil-magnifying-glass" />
+                      </router-link>
+                    </span>
+                    <span v-if="isAuthenticated">
+                      <router-link
+                        tag="a"
+                        :to="{
+                          name: 'VariableEdit',
+                          params: { id: item.id },
+                        }"
+                      >
+                        <CIcon name="cil-pencil" />
+                      </router-link>
+                    </span>
+                    <span v-if="isAdmin">
+                      <router-link
+                        tag="a"
+                        :to="{
+                          name: 'VariableDelete',
+                          params: { id: item.id },
+                        }"
+                      >
+                        <CIcon name="cil-trash" />
+                      </router-link>
+                    </span>
+                  </td>
+                </template>
+              </CSmartTable>
+            </div>
+          </CCardText>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
@@ -94,7 +91,7 @@ export default {
   name: "VariableList",
   data() {
     return {
-      fields: [
+      columns: [
         {
           key: "localId",
           label: "Id",
@@ -114,8 +111,8 @@ export default {
         },
         {
           key: "actions",
-          label: "",
-          _style: "",
+          label: "Actions",
+          _style: { width: "1%" },
           sorter: false,
           filter: false,
         },
