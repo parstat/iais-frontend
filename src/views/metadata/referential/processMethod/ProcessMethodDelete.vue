@@ -3,7 +3,7 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="processMethod">
         <CCardBody>
-          <CCardTitle> {{processMethod.name}} </CCardTitle>
+          <CCardTitle> {{ processMethod.name }} </CCardTitle>
           <CCardText>
             <CForm>
               <label for="responsible">Description</label>

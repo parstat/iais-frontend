@@ -3,71 +3,73 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
-        <CCardTitle>
-          Business Function
-        </CCardTitle>
-        <CCardText>
-          <CForm>
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control mb-3"
-              :class="{ 'is-invalid': v$.businessFunction.name.$error }"
-              placeholder="businessFunction name"
-              v-model.trim="businessFunction.name"
-            />
-            <span class="text-danger" v-if="v$.businessFunction.name.$error"
-              >Please enter businessFunction name.</span
-            >
-          </CForm>
-          <CForm>
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control mb-3"
-              :class="{ 'is-invalid': v$.businessFunction.description.$error }"
-              placeholder="businessFunction description"
-              v-model.trim="businessFunction.description"
-            />
-            <span
-              class="text-danger"
-              v-if="v$.businessFunction.description.$error"
-              >Please enter businessFunction description.</span
-            >
-          </CForm>
-          <CForm>
-            <label for="localId">Local Id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control mb-3"
-              :class="{ 'is-invalid': v$.businessFunction.localId.$error }"
-              placeholder="Local id"
-              v-model.trim="businessFunction.localId"
-            />
-            <span class="text-danger" v-if="v$.businessFunction.localId.$error"
-              >Please enter businessFunction local id.</span
-            >
-          </CForm>
-        </CCardText>
-        <CButton
-          color="primary"
-          size="sm"
-          style="margin-right: 0.3rem"
-          @click.prevent="handleSubmit()"
-          :disabled="disabled"
-          >Update</CButton
-        >
-        <CButton
-          color="danger"
-          size="sm"
-          @click.prevent="handleReset()"
-          :disabled="disabled"
-          >Reset</CButton
-        >
+          <CCardTitle> Business Function </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.businessFunction.name.$error }"
+                placeholder="businessFunction name"
+                v-model.trim="businessFunction.name"
+              />
+              <span class="text-danger" v-if="v$.businessFunction.name.$error"
+                >Please enter businessFunction name.</span
+              >
+            </CForm>
+            <CForm>
+              <label for="description">Description</label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                :class="{
+                  'is-invalid': v$.businessFunction.description.$error,
+                }"
+                placeholder="businessFunction description"
+                v-model.trim="businessFunction.description"
+              />
+              <span
+                class="text-danger"
+                v-if="v$.businessFunction.description.$error"
+                >Please enter businessFunction description.</span
+              >
+            </CForm>
+            <CForm>
+              <label for="localId">Local Id</label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.businessFunction.localId.$error }"
+                placeholder="Local id"
+                v-model.trim="businessFunction.localId"
+              />
+              <span
+                class="text-danger"
+                v-if="v$.businessFunction.localId.$error"
+                >Please enter businessFunction local id.</span
+              >
+            </CForm>
+          </CCardText>
+          <CButton
+            color="primary"
+            size="sm"
+            style="margin-right: 0.3rem"
+            @click.prevent="handleSubmit()"
+            :disabled="disabled"
+            >Update</CButton
+          >
+          <CButton
+            color="danger"
+            size="sm"
+            @click.prevent="handleReset()"
+            :disabled="disabled"
+            >Reset</CButton
+          >
         </CCardBody>
       </CCard>
     </CCol>

@@ -26,13 +26,13 @@
               <span>{{ businessFunction.localId }}</span>
             </div>
           </CCardText>
-            <CButton
-              color="primary"
-              size="sm"
-              @click.prevent="handleBack()"
-              :disabled="disabled"
-              >Back</CButton
-            >
+          <CButton
+            color="primary"
+            size="sm"
+            @click.prevent="handleBack()"
+            :disabled="disabled"
+            >Back</CButton
+          >
         </CCardBody>
       </CCard>
     </CCol>

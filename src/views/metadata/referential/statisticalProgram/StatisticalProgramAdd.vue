@@ -2,11 +2,10 @@
   <CRow>
     <CCol class="col-12">
       <CCard>
-        
         <CCardBody>
           <CCardTitle>
-          <CIcon name="cil-description" />
-          Statistical process
+            <CIcon name="cil-description" />
+            Statistical process
           </CCardTitle>
           <CRow>
             <CCol class="col-3 mr-2">

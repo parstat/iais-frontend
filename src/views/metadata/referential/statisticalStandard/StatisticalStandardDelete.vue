@@ -3,7 +3,7 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="statisticalStandard">
         <CCardBody>
-          <CCardTitle> {{statisticalStandard.name}} </CCardTitle>
+          <CCardTitle> {{ statisticalStandard.name }} </CCardTitle>
           <CCardText>
             <CForm>
               <label for="responsible">Description</label>

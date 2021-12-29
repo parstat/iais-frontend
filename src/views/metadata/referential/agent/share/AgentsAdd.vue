@@ -7,61 +7,61 @@
         </CCol>
         <CCol class="col-3">
           <CNav class="justify-content-end">
-        <CNavItem>
-          <span>
-            <router-link
-              tag="a"
-              to="/metadata/referential/gsim/agent/add"
-               class="text-decoration-none text-primary"
-            >
-              <CIcon name="cil-plus" />
-              <span class="icon-span">Add</span>
-            </router-link>
-          </span>
-        </CNavItem>
-      </CNav>
+            <CNavItem>
+              <span>
+                <router-link
+                  tag="a"
+                  to="/metadata/referential/gsim/agent/add"
+                  class="text-decoration-none text-primary"
+                >
+                  <CIcon name="cil-plus" />
+                  <span class="icon-span">Add</span>
+                </router-link>
+              </span>
+            </CNavItem>
+          </CNav>
         </CCol>
       </CRow>
       <CCardText>
-      <div class="form-group" v-if="owners">
-        <label for="organization">Organization*</label>
-        <v-select
-          label="name"
-          :options="owners"
-          v-model="owner"
-          :class="{ 'is-invalid': v$.owner.$error }"
-          placeholder="Select an organization"
-        ></v-select>
-        <span class="help-block" :class="{ show: v$.owner.$error }"
-          >Please select an Organization.</span
-        >
-      </div>
-      <div class="form-group" v-if="maintainers">
-        <label for="division">Division*</label>
-        <v-select
-          label="name"
-          :options="maintainers"
-          v-model="maintainer"
-          :class="{ 'is-invalid': v$.maintainer.$error }"
-          placeholder="Select a division"
-        ></v-select>
-        <span class="help-block" :class="{ show: v$.maintainer.$error }"
-          >Please select a division.</span
-        >
-      </div>
-      <div class="form-group" v-if="contacts">
-        <label for="contact">Contact person*</label>
-        <v-select
-          label="name"
-          :options="contacts"
-          v-model="contact"
-          :class="{ 'is-invalid': v$.contact.$error }"
-          placeholder="Select a contact person"
-        ></v-select>
-        <span class="help-block" :class="{ show: v$.contact.$error }"
-          >Please select a contact person.</span
-        >
-      </div>
+        <div class="form-group" v-if="owners">
+          <label for="organization">Organization*</label>
+          <v-select
+            label="name"
+            :options="owners"
+            v-model="owner"
+            :class="{ 'is-invalid': v$.owner.$error }"
+            placeholder="Select an organization"
+          ></v-select>
+          <span class="help-block" :class="{ show: v$.owner.$error }"
+            >Please select an Organization.</span
+          >
+        </div>
+        <div class="form-group" v-if="maintainers">
+          <label for="division">Division*</label>
+          <v-select
+            label="name"
+            :options="maintainers"
+            v-model="maintainer"
+            :class="{ 'is-invalid': v$.maintainer.$error }"
+            placeholder="Select a division"
+          ></v-select>
+          <span class="help-block" :class="{ show: v$.maintainer.$error }"
+            >Please select a division.</span
+          >
+        </div>
+        <div class="form-group" v-if="contacts">
+          <label for="contact">Contact person*</label>
+          <v-select
+            label="name"
+            :options="contacts"
+            v-model="contact"
+            :class="{ 'is-invalid': v$.contact.$error }"
+            placeholder="Select a contact person"
+          ></v-select>
+          <span class="help-block" :class="{ show: v$.contact.$error }"
+            >Please select a contact person.</span
+          >
+        </div>
       </CCardText>
       <CButton
         color="primary"

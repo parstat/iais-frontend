@@ -8,49 +8,49 @@
         <CCol class="col-3">
           <CNav class="justify-content-end">
             <CNavItem>
-               <router-link
-          tag="a"
-          to="/metadata/referential/gsim/agent/add"
-         class="text-decoration-none text-primary"
-        >
-          <CIcon name="cil-plus" /> Add
-        </router-link>
+              <router-link
+                tag="a"
+                to="/metadata/referential/gsim/agent/add"
+                class="text-decoration-none text-primary"
+              >
+                <CIcon name="cil-plus" /> Add
+              </router-link>
             </CNavItem>
           </CNav>
         </CCol>
       </CRow>
       <CCardText>
-      <div class="form-group" v-if="localSP">
-        <label for="description">Organization*</label>
-        <v-select
-          label="name"
-          :options="owners"
-          v-model="localSP.owner"
-          @input="updateOwner"
-        ></v-select>
-        <span class="help-block">Please select an Organization.</span>
-      </div>
-      <div class="form-group" v-if="localSP">
-        <label for="description">Division*</label>
-        <v-select
-          label="name"
-          :options="maintainers"
-          v-model="localSP.maintainer"
-          @input="updateMaintainer"
-        ></v-select>
-        <span class="help-block">Please select a division.</span>
-      </div>
-      <div class="form-group" v-if="localSP">
-        <label for="description">Contact person*</label>
-        <v-select
-          label="name"
-          :options="contacts"
-          v-model="localSP.contact"
-          @input="updateContact"
-        ></v-select>
-        <span class="help-block">Please select a contact person.</span>
-      </div>
-    </CCardText>
+        <div class="form-group" v-if="localSP">
+          <label for="description">Organization*</label>
+          <v-select
+            label="name"
+            :options="owners"
+            v-model="localSP.owner"
+            @input="updateOwner"
+          ></v-select>
+          <span class="help-block">Please select an Organization.</span>
+        </div>
+        <div class="form-group" v-if="localSP">
+          <label for="description">Division*</label>
+          <v-select
+            label="name"
+            :options="maintainers"
+            v-model="localSP.maintainer"
+            @input="updateMaintainer"
+          ></v-select>
+          <span class="help-block">Please select a division.</span>
+        </div>
+        <div class="form-group" v-if="localSP">
+          <label for="description">Contact person*</label>
+          <v-select
+            label="name"
+            :options="contacts"
+            v-model="localSP.contact"
+            @input="updateContact"
+          ></v-select>
+          <span class="help-block">Please select a contact person.</span>
+        </div>
+      </CCardText>
       <CButton
         color="primary"
         size="sm"
@@ -67,7 +67,7 @@
       >
         Next
       </CButton>
-      </CCardBody>
+    </CCardBody>
   </CCard>
 </template>
 <script>
