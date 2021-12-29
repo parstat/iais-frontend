@@ -1,6 +1,6 @@
 <template>
-  <div class="row">
-    <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="code">
+  <CRow>
+    <div class="jumbotron jumbotron-fluid col-lg-12 p-2 mb-3" v-if="code">
       <div class="p-3">
         <h2 class="display-5">
           {{ code.name }}
@@ -9,37 +9,36 @@
         <p class="lead"><strong>Description:</strong> {{ code.description }}</p>
       </div>
     </div>
-    <div class="card w-100">
-      <header class="card-header">
-        <h5>Code Items</h5>
-      </header>
-      <div class="card-body">
-        <table class="table table-hover" v-if="code">
-          <thead>
-            <tr>
-              <th scope="col">Code</th>
-              <th scope="col">Value</th>
-              <th scope="col" colspan="2" width="2%">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in code.codeItems" :key="item.index">
-              <td>{{ item.code }}</td>
-              <td>{{ item.value }}</td>
-              <template v-if="isAuthenticated">
-                <td>
-                  <router-link
+    <CCard>
+      <CCardBody>
+        <CCardTitle> Code Items </CCardTitle>
+        <CCardText>
+          <table class="table table-hover" v-if="code">
+            <thead>
+              <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Value</th>
+                <th scope="col" colspan="2" width="2%">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in code.codeItems" :key="item.index">
+                <td>{{ item.code }}</td>
+                <td>{{ item.value }}</td>
+                <template v-if="isAuthenticated">
+                  <td>
+                    <!--  <router-link
                     tag="a"
                     :to="{
                       name: 'CodeItemsEdit',
                       params: { id: code.id },
                     }"
                   >
-                    <edit-icon />
-                  </router-link>
-                </td>
-                <td v-if="isAdmin">
-                  <router-link
+                    <CIcon name="cil-pencil" />
+                  </router-link> -->
+                  </td>
+                  <td v-if="isAdmin">
+                    <!--  <router-link
                     tag="a"
                     :to="{
                       name: 'CodeItemsDelete',
@@ -47,27 +46,26 @@
                     }"
                   >
                     <CIcon name="cil-trash" />
-                  </router-link>
-                </td>
-              </template>
-              <template v-else>
-                <td>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'CodeItemsView',
-                      params: { id: code.id },
-                    }"
-                  >
-                    <CIcon name="cil-magnifying-glass" />
-                  </router-link>
-                </td>
-              </template>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card-footer">
+                  </router-link> -->
+                  </td>
+                </template>
+                <template v-else>
+                  <td>
+                    <router-link
+                      tag="a"
+                      :to="{
+                        name: 'CodeItemsView',
+                        params: { id: code.id },
+                      }"
+                    >
+                      <CIcon name="cil-magnifying-glass" />
+                    </router-link>
+                  </td>
+                </template>
+              </tr>
+            </tbody>
+          </table>
+        </CCardText>
         <CButton
           color="primary"
           size="sm"
@@ -75,9 +73,9 @@
           :disabled="disabled"
           >Back</CButton
         >
-      </div>
-    </div>
-  </div>
+      </CCardBody>
+    </CCard>
+  </CRow>
 </template>
 
 <script>
@@ -108,3 +106,15 @@ export default {
   },
 };
 </script>
+<style scoped>
+.jumbotron {
+  border: 1px solid #ced2d8;
+  box-shadow: 0 1px 1px 0 rgba(60, 75, 100, 0.14),
+    0 2px 1px -1px rgba(60, 75, 100, 0.12), 0 1px 3px 0 rgba(60, 75, 100, 0.2);
+}
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 1.5rem 2rem;
+  }
+}
+</style>
