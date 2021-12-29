@@ -1,6 +1,9 @@
 <template>
-  <div class="row">
-    <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="correspondence">
+  <CRow>
+    <div
+      class="jumbotron jumbotron-fluid col-lg-12 p-2 mb-3"
+      v-if="correspondence"
+    >
       <div class="p-3">
         <h3>
           Source:
@@ -22,16 +25,14 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-12">
-      <div class="card">
-        <div class="card-header">
-          <h5>Mappings</h5>
-        </div>
-        <div class="card-body">
+    <CCard v-if="correspondence">
+      <CCardBody>
+        <CCardTitle> Mappings </CCardTitle>
+        <CCardText>
           <div class="table-responsive">
-            <CDataTable
+            <CSmartTable
               :items="correspondence.mappings"
-              :fields="fields"
+              :columns="columns"
               column-filter
               table-filter
               items-per-page-select
@@ -40,21 +41,19 @@
               sorter
               pagination
             >
-            </CDataTable>
+            </CSmartTable>
           </div>
-        </div>
-        <div class="card-footer">
-          <CButton
-            color="primary"
-            size="sm"
-            @click.prevent="handleBack()"
-            :disabled="disabled"
-            >Back</CButton
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardText>
+        <CButton
+          color="primary"
+          size="sm"
+          @click.prevent="handleBack()"
+          :disabled="disabled"
+          >Back</CButton
+        >
+      </CCardBody>
+    </CCard>
+  </CRow>
 </template>
 
 <script>
@@ -66,7 +65,7 @@ export default {
   data() {
     return {
       disabled: false,
-      fields: [
+      columns: [
         {
           key: "sourceCode",
           label: "Source Code",
@@ -98,5 +97,16 @@ export default {
 <style scoped>
 .default-value {
   color: lightgray;
+}
+
+.jumbotron {
+  border: 1px solid #ced2d8;
+  box-shadow: 0 1px 1px 0 rgba(60, 75, 100, 0.14),
+    0 2px 1px -1px rgba(60, 75, 100, 0.12), 0 1px 3px 0 rgba(60, 75, 100, 0.2);
+}
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 1.5rem 2rem;
+  }
 }
 </style>
