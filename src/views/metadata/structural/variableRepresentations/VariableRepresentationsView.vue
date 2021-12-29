@@ -1,33 +1,29 @@
 <template>
-  <div class="row" v-if="variableRepresentation">
+  <CRow v-if="variableRepresentation">
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2">
-      <div class="p-3">
+      <div class="container">
         <h2 class="display-5">{{ variableRepresentation.name }}</h2>
         <p class="lead" v-if="variableRepresentation.description">
           <strong>Description:</strong> {{ variableRepresentation.description }}
         </p>
       </div>
     </div>
-
-    <CRow
-      class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-1 w-100"
-    >
-      <CCol>
-        <!-- substantiveValueDomain -->
-        <div class="card">
-          <header class="card-header">
-            <h5>Substantive Value Domain</h5>
-          </header>
-          <div class="card-body">
-            <div class="card card-border bg-light">
-              <div class="card-body">
-                <CRow
-                  class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-1"
-                >
-                  <CCol>
-                    <div class="card-group">
+    <CCard class="mt-3">
+      <CCardBody>
+        <CCardTitle>Value Domains </CCardTitle>
+        <CCardText>
+          <CRow>
+            <CCol class="col-sm-12 col-md-6">
+              <!-- substantiveValueDomain -->
+              <CCard>
+                <CCardBody>
+                  <CCardSubtitle class="mb-2 text-muted">
+                    <h5>Substantive</h5>
+                  </CCardSubtitle>
+                  <CCardText>
+                    <CForm>
                       <span><strong>Name:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -35,10 +31,10 @@
                           }}</span
                         >
                       </div>
-                    </div>
-                    <div class="card-group">
+                    </CForm>
+                    <CForm>
                       <span><strong>Description:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -47,16 +43,10 @@
                           }}</span
                         >
                       </div>
-                    </div>
-                  </CCol>
-                </CRow>
-                <CRow
-                  class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-1"
-                >
-                  <CCol>
-                    <div class="card-group">
+                    </CForm>
+                    <CForm>
                       <span><strong>Type:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -64,12 +54,10 @@
                           }}</span
                         >
                       </div>
-                    </div>
-                  </CCol>
-                  <CCol>
-                    <div class="card-group">
+                    </CForm>
+                    <CForm>
                       <span><strong>DataType:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -78,16 +66,10 @@
                           }}</span
                         >
                       </div>
-                    </div>
-                  </CCol>
-                </CRow>
-                <CRow
-                  class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-1"
-                >
-                  <CCol>
-                    <div class="card-group">
+                    </CForm>
+                    <CForm>
                       <span><strong>Expression:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="
                             variableRepresentation.substantiveValueDomain
@@ -100,98 +82,92 @@
                         >
                         <span v-else class="default-value">no value</span>
                       </div>
-                    </div>
-                  </CCol>
-                </CRow>
-              </div>
-            </div>
-            <!-- Variable representation CodeList-->
-            <div class="card w-100">
-              <div class="card-header bg-secondary p-2">
-                <strong>
-                  <i>{{ variableRepresentation.variable.name }}</i> CodeList
-                </strong>
-              </div>
-              <!-- @start Condition to show filtrable table if results are more then 5 lines-->
-              <div
-                class="table-responsive"
-                v-if="
-                  variableRepresentation.substantiveValueDomain.valueSet
-                    .length > 20
-                "
-              >
-                <CDataTable
-                  :items="
-                    variableRepresentation.substantiveValueDomain.valueSet
-                  "
-                  :fields="fields"
-                  column-filter
-                  table-filter
-                  items-per-page-select
-                  :items-per-page="5"
-                  hover
-                  sorter
-                  pagination
-                >
-                </CDataTable>
-              </div>
-              <!-- @end Condition to show filtrable table if results are more then 5 lines-->
-              <table
-                class="table table-hover"
-                v-if="
-                  variableRepresentation.substantiveValueDomain &&
-                  variableRepresentation.substantiveValueDomain.valueSet
-                    .length < 20
-                "
-              >
-                <thead>
-                  <tr>
-                    <th scope="col">Code</th>
-                    <th scope="col">Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="item in variableRepresentation.substantiveValueDomain
-                      .valueSet"
-                    :key="item.index"
-                  >
-                    <td>{{ item.code }}</td>
-                    <td>{{ item.value }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5
-                v-if="
-                  !variableRepresentation.substantiveValueDomain.valueSet.length
-                "
-                class="default-value card-body"
-              >
-                No data available
-              </h5>
-            </div>
-          </div>
-        </div>
-      </CCol>
-      <CCol>
-        <!-- sentinel Value Domain-->
-        <div class="card w-100 col-sm-12 col-md-12">
-          <header class="card-header">
-            <h5>Sentinel Value Domain</h5>
-          </header>
-          <div
-            class="card-body"
-            v-if="variableRepresentation.sentinelValueDomain"
-          >
-            <div class="card card-border bg-light w-100">
-              <div class="card-body w-100">
-                <CRow
-                  class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-1"
-                >
-                  <CCol class="">
-                    <div class="card-group">
+                    </CForm>
+                    <!-- Variable representation CodeList-->
+                    <CCard>
+                      <CCardBody>
+                        <CCardTitle>
+                          <i>{{ variableRepresentation.variable.name }}</i>
+                          CodeList
+                        </CCardTitle>
+                        <!-- @start Condition to show filtrable table if results are more then 5 lines-->
+                        <CCardText>
+                          <div
+                            class="table-responsive"
+                            v-if="
+                              variableRepresentation.substantiveValueDomain
+                                .valueSet.length > 20
+                            "
+                          >
+                            <CSmartTable
+                              :items="
+                                variableRepresentation.substantiveValueDomain
+                                  .valueSet
+                              "
+                              :columns="columns"
+                              column-filter
+                              table-filter
+                              items-per-page-select
+                              :items-per-page="5"
+                              hover
+                              sorter
+                              pagination
+                            >
+                            </CSmartTable>
+                          </div>
+                          <!-- @end Condition to show filtrable table if results are more then 5 lines-->
+                          <table
+                            class="table table-hover"
+                            v-if="
+                              variableRepresentation.substantiveValueDomain &&
+                              variableRepresentation.substantiveValueDomain
+                                .valueSet.length < 20
+                            "
+                          >
+                            <thead>
+                              <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Value</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                v-for="item in variableRepresentation
+                                  .substantiveValueDomain.valueSet"
+                                :key="item.index"
+                              >
+                                <td>{{ item.code }}</td>
+                                <td>{{ item.value }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <h5
+                            v-if="
+                              !variableRepresentation.substantiveValueDomain
+                                .valueSet.length
+                            "
+                            class="default-value card-body"
+                          >
+                            No data available
+                          </h5>
+                        </CCardText>
+                      </CCardBody>
+                    </CCard>
+                  </CCardText>
+                </CCardBody>
+              </CCard>
+            </CCol>
+            <CCol class="col-sm-12 col-md-6">
+              <!-- sentinel Value Domain-->
+              <CCard>
+                <CCardBody>
+                  <CCardSubtitle class="mb-2 text-muted">
+                    <h5>Sentinel</h5>
+                  </CCardSubtitle>
+                  <CCardText v-if="variableRepresentation.sentinelValueDomain">
+                    <CForm>
                       <span><strong>Name:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="variableRepresentation.sentinelValueDomain.name"
                           >{{
@@ -200,10 +176,10 @@
                         >
                         <span v-else class="default-value">no value</span>
                       </div>
-                    </div>
-                    <div class="card-group">
+                    </CForm>
+                    <CForm>
                       <span><strong>Description:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="
                             variableRepresentation.sentinelValueDomain
@@ -216,16 +192,11 @@
                         >
                         <span v-else class="default-value">no value</span>
                       </div>
-                    </div>
-                  </CCol>
-                </CRow>
-                <CRow
-                  class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-1"
-                >
-                  <CCol>
-                    <div class="card-group">
+                    </CForm>
+
+                    <CForm>
                       <span><strong>Type:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="variableRepresentation.sentinelValueDomain.type"
                           >{{
@@ -234,12 +205,10 @@
                         >
                         <span v-else class="default-value">no value</span>
                       </div>
-                    </div>
-                  </CCol>
-                  <CCol class="col-sm-12 col-md-6">
-                    <div class="card-group">
+                    </CForm>
+                    <CForm>
                       <span><strong>Data Type:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="
                             variableRepresentation.sentinelValueDomain.dataType
@@ -250,16 +219,10 @@
                         >
                         <span v-else class="default-value">no value</span>
                       </div>
-                    </div>
-                  </CCol>
-                </CRow>
-                <CRow
-                  class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-1"
-                >
-                  <CCol>
-                    <div class="card-group">
+                    </CForm>
+                    <CForm>
                       <span><strong>Expression:</strong></span>
-                      <div class="card-slot">
+                      <div class="text-muted">
                         <span
                           v-if="
                             variableRepresentation.sentinelValueDomain
@@ -272,61 +235,67 @@
                         >
                         <span v-else class="default-value">no value</span>
                       </div>
-                    </div>
-                  </CCol>
-                </CRow>
-              </div>
-            </div>
+                    </CForm>
 
-            <div class="card w-100">
-              <div class="card-header bg-secondary p-2">
-                <strong>
-                  Sentinel
-                  <i>{{ variableRepresentation.variable.name }}</i> CodeList
-                </strong>
-              </div>
-              <table
-                class="table table-hover"
-                v-if="variableRepresentation.sentinelValueDomain"
-              >
-                <thead>
-                  <tr>
-                    <th scope="col">Code</th>
-                    <th scope="col">Value</th>
+                    <CCard>
+                      <CCardBody>
+                        <CCardTitle>
+                          Sentinel
+                          <i>{{ variableRepresentation.variable.name }}</i>
+                          CodeList
+                        </CCardTitle>
+                        <table
+                          class="table table-hover"
+                          v-if="variableRepresentation.sentinelValueDomain"
+                        >
+                          <thead>
+                            <tr>
+                              <th scope="col">Code</th>
+                              <th scope="col">Value</th>
 
-                    <!--<th scope="col" colspan="2" width="2%">Actions</th>-->
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="item in variableRepresentation.sentinelValueDomain
-                      .valueSet"
-                    :key="item.index"
+                              <!--<th scope="col" colspan="2" width="2%">Actions</th>-->
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr
+                              v-for="item in variableRepresentation
+                                .sentinelValueDomain.valueSet"
+                              :key="item.index"
+                            >
+                              <td>
+                                <span v-if="item.code">{{ item.code }}</span>
+                                <span v-else class="default-value"
+                                  >no value</span
+                                >
+                              </td>
+                              <td>{{ item.value }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <h5 v-else class="default-value card-body">
+                          No data available
+                        </h5>
+                      </CCardBody>
+                    </CCard>
+                  </CCardText>
+                  <CCardText v-else class="default-value card-body"
+                    >No data available</CCardText
                   >
-                    <td>
-                      <span v-if="item.code">{{ item.code }}</span>
-                      <span v-else class="default-value">no value</span>
-                    </td>
-                    <td>{{ item.value }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 v-else class="default-value card-body">No data available</h5>
-            </div>
-          </div>
-          <div v-else class="default-value card-body">No data available</div>
-        </div>
-      </CCol>
-    </CRow>
-
-    <CButton
-      color="primary"
-      size="sm"
-      @click.prevent="handleBack()"
-      :disabled="disabled"
-      >Back</CButton
-    >
-  </div>
+                </CCardBody>
+              </CCard>
+            </CCol>
+          </CRow>
+        </CCardText>
+        <CButton
+          color="primary"
+          size="sm"
+          @click.prevent="handleBack()"
+          :disabled="disabled"
+          >Back</CButton
+        >
+      </CCardBody>
+    </CCard>
+  </CRow>
 </template>
 
 <script>
@@ -338,7 +307,7 @@ export default {
     return {
       disabled: false,
       //nce: variableRepresentation.substantiveValueDomain,
-      fields: [
+      columns: [
         {
           key: "code",
           label: "Code",
@@ -385,5 +354,16 @@ export default {
 .default-value {
   color: lightgray;
   font-style: italic;
+}
+
+.jumbotron {
+  border: 1px solid #ced2d8;
+  box-shadow: 0 1px 1px 0 rgba(60, 75, 100, 0.14),
+    0 2px 1px -1px rgba(60, 75, 100, 0.12), 0 1px 3px 0 rgba(60, 75, 100, 0.2);
+}
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 1.5rem 2rem;
+  }
 }
 </style>
