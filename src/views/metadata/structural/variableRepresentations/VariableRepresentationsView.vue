@@ -328,7 +328,8 @@ export default {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push(
-        "/metadata/structural/variable/view/" + this.$route.params.id
+        "/metadata/structural/variable/view/" +
+          this.variableRepresentation.variable.id
       );
     },
   },
