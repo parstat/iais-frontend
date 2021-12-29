@@ -27,6 +27,7 @@
           </CNav>
         </CCardHeader>
         <CCardBody>
+          <div class="table-responsive">
           <CSmartTable
             :items="sortAscDocumentations(documentations)"
             :columns="columns"
@@ -76,6 +77,7 @@
               </td>
             </template>
           </CSmartTable>
+          </div>
         </CCardBody>
         <CCardFooter>
           <CButton

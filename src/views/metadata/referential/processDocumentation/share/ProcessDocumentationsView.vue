@@ -2,6 +2,7 @@
   <CCard v-if="viewProcessDocumentation.length">
     <CCardHeader component="h5"> Process Documentations </CCardHeader>
     <CCardBody>
+      <div class="table-responsive">
       <CSmartTable
         :items="viewProcessDocumentation"
         :columns="columns"
@@ -28,6 +29,7 @@
           </td>
         </template>
       </CSmartTable>
+      </div>
     </CCardBody>
     <CCardFooter>
       <CButton color="primary" size="sm" @click.prevent="$emit('back')"

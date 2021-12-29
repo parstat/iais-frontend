@@ -24,6 +24,7 @@
         </CCol>
       </CRow>
       <CCardText>
+        <div class="table-responsive">
         <CSmartTable
           :items="agents"
           :columns="columns"
@@ -73,6 +74,7 @@
             </td>
           </template>
         </CSmartTable>
+        </div>
       </CCardText>
     </CCardBody>
   </CCard>

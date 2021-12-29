@@ -22,6 +22,7 @@
           </CNav>
         </CCol>
       </CRow>
+      <div class="table-responsive">
       <CSmartTable
         :items="statisticalStandards"
         :columns="columns"
@@ -70,6 +71,7 @@
           </td>
         </template>
       </CSmartTable>
+      </div>
     </CCardBody>
   </CCard>
 </template>

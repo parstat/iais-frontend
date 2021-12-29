@@ -22,6 +22,7 @@
         </CCol>
       </CRow>
       <CCardText>
+        <div class="table-responsive">
         <CSmartTable
           :items="processMethods"
           :columns="columns"
@@ -71,6 +72,7 @@
             </td>
           </template>
         </CSmartTable>
+        </div>
       </CCardText>
     </CCardBody>
   </CCard>
