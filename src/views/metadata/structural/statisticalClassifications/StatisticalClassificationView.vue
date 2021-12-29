@@ -1,7 +1,7 @@
 <template>
-  <div class="row">
+  <CRow>
     <div
-      class="jumbotron jumbotron-fluid col-lg-12 p-2"
+      class="jumbotron jumbotron-fluid col-lg-12 p-2 mb-3"
       v-if="statisticalClassification"
     >
       <div class="p-3">
@@ -30,39 +30,41 @@
       </div>
     </div>
 
-    <div class="card w-100" v-if="statisticalClassification">
-      <header class="card-header">
-        <h5>Levels</h5>
-      </header>
-      <div class="card-body">
-        <div class="row">
-          <CCard
-            class="col-sm-6 col-md-3"
-            v-for="level in statisticalClassification.levels"
-            :key="level.id"
-          >
-            <CCardBody>
-              <CCardTitle>{{ level.levelNumber }}. {{ level.name }}</CCardTitle>
-              <CCardText>{{ level.description }}</CCardText>
-            </CCardBody>
-          </CCard>
-        </div>
-      </div>
-    </div>
+    <CCard v-if="statisticalClassification">
+      <CCardBody>
+        <CCardTitle> Levels </CCardTitle>
+        <CCardText>
+          <CRow>
+            <CCol
+              class="col-sm-6 col-md-3 mt-3"
+              v-for="level in statisticalClassification.levels"
+              :key="level.id"
+            >
+              <CCard>
+                <CCardBody>
+                  <CCardTitle
+                    >{{ level.levelNumber }}. {{ level.name }}</CCardTitle
+                  >
+                  <CCardText>{{ level.description }}</CCardText>
+                </CCardBody>
+              </CCard>
+            </CCol>
+          </CRow>
+        </CCardText>
+      </CCardBody>
+    </CCard>
     <!-- statisticalClassificationItems -->
-    <div class="card w-100" v-if="statisticalClassification">
-      <header class="card-header">
-        <h5>Statistical Classification Items</h5>
-      </header>
-      <div class="card-body">
-        <TreeNode
-          v-for="node in statisticalClassification.rootItems"
-          :key="node.id"
-          :node="node"
-        >
-        </TreeNode>
-      </div>
-      <div class="card-footer">
+    <CCard v-if="statisticalClassification">
+      <CCardBody>
+        <CCardTitle> Statistical Classification Items </CCardTitle>
+        <CCardText>
+          <TreeNode
+            v-for="node in statisticalClassification.rootItems"
+            :key="node.id"
+            :node="node"
+          >
+          </TreeNode>
+        </CCardText>
         <CButton
           color="primary"
           size="sm"
@@ -70,9 +72,9 @@
           :disabled="disabled"
           >Back</CButton
         >
-      </div>
-    </div>
-  </div>
+      </CCardBody>
+    </CCard>
+  </CRow>
 </template>
 
 <script>
@@ -110,3 +112,15 @@ export default {
   },
 };
 </script>
+<style scoped>
+.jumbotron {
+  border: 1px solid #ced2d8;
+  box-shadow: 0 1px 1px 0 rgba(60, 75, 100, 0.14),
+    0 2px 1px -1px rgba(60, 75, 100, 0.12), 0 1px 3px 0 rgba(60, 75, 100, 0.2);
+}
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 1.5rem 2rem;
+  }
+}
+</style>

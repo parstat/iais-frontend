@@ -1,125 +1,138 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <header class="card-header">
-          Statistical Classifications
-          <div class="card-header-actions">
-            <router-link
-              v-if="isAuthenticated"
-              tag="a"
-              to="/metadata/structural/statisticalClassifications/add"
-              class="card-header-action"
-            >
-              <CIcon name="cil-plus" />
-              <span class="icon-span">New Statistical Classifications</span>
-            </router-link>
-          </div>
-        </header>
-        <div class="card-body">
-          <div class="table-responsive">
-            <VueGoodTable
-              :rows="statisticalClassifications"
-              :columns="fields"
-              :search-options="{
-                enabled: true,
-              }"
-              :pagination-options="{
-                enabled: true,
-              }"
-            >
-              <template #table-row="props">
-                <span v-if="props.column.field == 'actions'">
-                  <span class="pl-2" v-c-tooltip="'View'">
-                    <router-link
-                      tag="a"
-                      title="View"
-                      :to="{
-                        name: 'StatisticalClassificationView',
-                        params: { id: props.row.id },
-                      }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
-                    </router-link>
-                  </span>
-                  <span
+  <CRow>
+    <CCol class="col-12">
+      <CCard>
+        <CCardBody>
+          <CRow>
+            <CCol class="col-9">
+              <CCardTitle> Statistical Classifications </CCardTitle>
+            </CCol>
+            <CCol class="col-3">
+              <CNav>
+                <CNavItem>
+                  <router-link
                     v-if="isAuthenticated"
-                    class="pl-2"
-                    v-c-tooltip="'Edit'"
+                    tag="a"
+                    to="/metadata/structural/statisticalClassifications/add"
+                    class="card-header-action"
                   >
-                    <router-link
-                      tag="a"
-                      title="Edit"
-                      :to="{
-                        name: 'StatisticalClassificationEdit',
-                        params: { id: props.row.id },
-                      }"
+                    <CIcon name="cil-plus" />
+                    <span class="icon-span"
+                      >New Statistical Classifications</span
                     >
-                      <CIcon name="cil-pencil" />
-                    </router-link>
-                  </span>
+                  </router-link>
+                </CNavItem>
+              </CNav>
+            </CCol>
+          </CRow>
+          <CCardText>
+            <div class="table-responsive">
+              <CSmartTable
+                :items="statisticalClassifications"
+                :columns="columns"
+                column-filter
+                table-filter
+                items-per-page-select
+                :items-per-page="5"
+                hover
+                sorter
+                pagination
+              >
+                <template #actions="{ item }">
+                  <td
+                    style="text-align: right; width: 10%; padding-right: 20px"
+                  >
+                    <span class="pl-2">
+                      <router-link
+                        tag="a"
+                        title="View"
+                        :to="{
+                          name: 'StatisticalClassificationView',
+                          params: { id: item.id },
+                        }"
+                      >
+                        <CIcon name="cil-magnifying-glass" />
+                      </router-link>
+                    </span>
+                    <span
+                      v-if="isAuthenticated"
+                      class="pl-2"
+                      v-c-tooltip="'Edit'"
+                    >
+                      <!--  <router-link
+                        tag="a"
+                        title="Edit"
+                        :to="{
+                          name: 'StatisticalClassificationEdit',
+                          params: { id: item.id },
+                        }"
+                      >
+                        <CIcon name="cil-pencil" />
+                      </router-link> -->
+                    </span>
 
-                  <span
-                    v-if="isAuthenticated && isAdmin"
-                    class="pl-2"
-                    v-c-tooltip="'Delete'"
-                  >
-                    <router-link
-                      tag="a"
-                      title="Delete"
-                      :to="{
-                        name: 'StatisticalClassificationDelete',
-                        params: { id: props.row.id },
-                      }"
+                    <span
+                      v-if="isAuthenticated && isAdmin"
+                      class="pl-2"
+                      v-c-tooltip="'Delete'"
                     >
-                      <CIcon name="cil-trash" />
-                    </router-link>
-                  </span>
-                </span>
-              </template>
-            </VueGoodTable>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                      <!-- <router-link
+                        tag="a"
+                        title="Delete"
+                        :to="{
+                          name: 'StatisticalClassificationDelete',
+                          params: { id: item.id },
+                        }"
+                      >
+                        <CIcon name="cil-trash" />
+                      </router-link> -->
+                    </span>
+                  </td>
+                </template>
+              </CSmartTable>
+            </div>
+          </CCardText>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
 </template>
 <script>
 import { mapGetters } from "vuex";
 import { Context } from "@/common";
-import { VueGoodTable } from "vue-good-table-next";
 
 export default {
   name: "StatisticalClassificationsList",
   data() {
     return {
-      fields: [
+      columns: [
         {
-          field: "localId",
+          key: "localId",
           label: "Id",
         },
         {
-          field: "name",
+          key: "name",
           label: "Name",
         },
         {
-          field: "version",
+          key: "version",
           label: "Version",
         },
         {
-          field: "versionDate",
+          key: "versionDate",
           label: "Version Date",
         },
         {
-          field: "actions",
-          label: "Actions",
+          key: "actions",
+          label: "",
+          _style: "",
+          sorter: false,
+          filter: false,
         },
       ],
     };
   },
-  components: {
-    VueGoodTable,
-  },
+  components: {},
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),

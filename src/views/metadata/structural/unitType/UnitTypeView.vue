@@ -1,37 +1,39 @@
 <template>
-  <div class="row" v-if="unitType">
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>{{ unitType.name }}</strong>
-        </header>
-        <div class="card-body">
-          <div class="card-group">
-            <span><strong>Description:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ unitType.description }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Definition:</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ unitType.definition }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Version: </strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ unitType.version }}</span>
-          </div>
-          <div class="card-group">
-            <span><strong>Local id</strong></span>
-          </div>
-          <div class="card-slot">
-            <span>{{ unitType.localId }}</span>
-          </div>
-        </div>
-        <div class="card-footer">
+  <CCRow v-if="unitType">
+    <CCol class="col-sm-12 col-md-6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle>
+            {{ unitType.name }}
+          </CCardTitle>
+          <CCardText>
+            <CForm>
+              <div class="card-group">
+                <span><strong>Description:</strong></span>
+              </div>
+              <div class="text-muted">
+                <span>{{ unitType.description }}</span>
+              </div>
+              <div class="card-group">
+                <span><strong>Definition:</strong></span>
+              </div>
+              <div class="text-muted">
+                <span>{{ unitType.definition }}</span>
+              </div>
+              <div class="card-group">
+                <span><strong>Version: </strong></span>
+              </div>
+              <div class="text-muted">
+                <span>{{ unitType.version }}</span>
+              </div>
+              <div class="card-group">
+                <span><strong>Local id</strong></span>
+              </div>
+              <div class="text-muted">
+                <span>{{ unitType.localId }}</span>
+              </div>
+            </CForm>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
@@ -39,10 +41,10 @@
             :disabled="disabled"
             >Back</CButton
           >
-        </div>
-      </div>
-    </div>
-  </div>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CCRow>
 </template>
 
 <script>
