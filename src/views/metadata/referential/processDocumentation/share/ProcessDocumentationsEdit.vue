@@ -2,29 +2,37 @@
   <CRow>
     <CCol class="col-12">
       <CCard>
-        <CCardHeader>
-          <CIcon name="cil-description" />
-          <strong class="icon-header">Process documentation </strong>
-          <CNav variant="pills" class="card-header-pills">
-            <CNavItem>
-              <span style="padding: 0.75rem 0.4rem">
-                <router-link
-                  v-if="isAuthenticated"
-                  tag="a"
-                  :to="{
-                    path: '/metadata/referential/documentation/add',
-                    query: {
-                      program: statisticalProgramId,
-                      business_function: nextSubPhase,
-                    },
-                  }"
-                  class="card-header-action"
-                >
-                  <CIcon name="cil-plus" /> Add
-                </router-link>
-              </span>
-            </CNavItem>
-          </CNav>
+        <CCardHeader class="bg-white">
+          <CRow>
+            <CCol class="col-9">
+              <CCardTitle component="h5">
+                <CIcon name="cil-description" />
+                Process documentation
+              </CCardTitle>
+            </CCol>
+            <CCol class="col-3">
+              <CNav class="justify-content-end">
+                <CNavItem>
+                  <span style="padding: 0.75rem 0.4rem">
+                    <router-link
+                      v-if="isAuthenticated"
+                      tag="a"
+                      class="text-decoration-none text-primary"
+                      :to="{
+                        path: '/metadata/referential/documentation/add',
+                        query: {
+                          program: statisticalProgramId,
+                          business_function: nextSubPhase,
+                        },
+                      }"
+                    >
+                      <CIcon name="cil-plus" /> Add
+                    </router-link>
+                  </span>
+                </CNavItem>
+              </CNav>
+            </CCol>
+          </CRow>
         </CCardHeader>
         <CCardBody>
           <div class="table-responsive">
@@ -79,7 +87,7 @@
             </CSmartTable>
           </div>
         </CCardBody>
-        <CCardFooter>
+        <CCardFooter class="bg-white">
           <CButton
             color="primary"
             size="sm"

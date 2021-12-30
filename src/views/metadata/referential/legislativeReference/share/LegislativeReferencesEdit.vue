@@ -1,11 +1,11 @@
 <template>
   <CCard>
-    <CCardBody>
+    <CCardHeader class="bg-white">
       <CRow>
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-description" />
-            <strong> Legislative references</strong>
+            Legislative references
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -22,8 +22,10 @@
           </CNav>
         </CCol>
       </CRow>
+    </CCardHeader>
+    <CCardBody>
       <CCardText>
-        <div class="form-group" v-if="legislativeReferences">
+        <div class="form-group mb-3" v-if="legislativeReferences">
           <label for="description">Legislative references</label>
           <v-select
             label="name"
@@ -51,41 +53,58 @@
               </div>
             </template>
           </v-select>
-          <span class="help-block">Please select legislative references.</span>
         </div>
-        <div class="card-columns">
-          <div
-            class="card card-border bg-lighter mb-3"
+        <CRow>
+          <CCol
+            class="col-lg-4 col-md-6 col-sm-12"
             v-for="legislativeReference of references"
             :key="legislativeReference.id"
           >
-            <div class="card-header">
-              <strong>{{ legislativeReference.name }}</strong>
-              <div class="card-header-actions">
-                <router-link
-                  tag="a"
-                  class="text-dark pr-1"
-                  :to="{
-                    name: 'LegislativeReferenceView',
-                    params: { id: legislativeReference.id },
-                  }"
-                >
-                  <CIcon name="cil-magnifying-glass" />
-                </router-link>
-                <span
-                  class="text-dark"
-                  v-on:click="removeLegislativeReference(legislativeReference)"
-                >
-                  <CIcon name="cil-trash" />
-                </span>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="card-text">{{ legislativeReference.description }}</p>
-            </div>
-          </div>
-        </div>
+            <CCard class="card-border bg-lighter mb-3">
+              <CCardHeader>
+                <CRow>
+                  <CCol class="col-9">
+                    <CCardTitle component="h6">
+                      {{ legislativeReference.name }}
+                    </CCardTitle>
+                  </CCol>
+                  <CCol class="col-3">
+                    <CNav class="justify-content-end">
+                      <CNavItem>
+                        <router-link
+                          tag="a"
+                          class="text-dark pr-1"
+                          :to="{
+                            name: 'LegislativeReferenceView',
+                            params: { id: legislativeReference.id },
+                          }"
+                        >
+                          <CIcon name="cil-magnifying-glass" />
+                        </router-link>
+                      </CNavItem>
+                      <CNavItem>
+                        <span
+                          class="text-dark"
+                          v-on:click="
+                            removeLegislativeReference(legislativeReference)
+                          "
+                        >
+                          <CIcon name="cil-trash" />
+                        </span>
+                      </CNavItem>
+                    </CNav>
+                  </CCol>
+                </CRow>
+              </CCardHeader>
+              <CCardBody>
+                <CCardText>{{ legislativeReference.description }}</CCardText>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
       </CCardText>
+    </CCardBody>
+    <CCardFooter class="bg-white">
       <CButton
         color="primary"
         size="sm"
@@ -102,7 +121,7 @@
       >
         Next
       </CButton>
-    </CCardBody>
+    </CCardFooter>
   </CCard>
 </template>
 <script>

@@ -2,13 +2,16 @@
   <CRow>
     <CCol class="col-sm-6 col-md-4">
       <CCard class="mb-3">
+        <CCardHeader class="bg-white" component="h5">
+          Business Functions
+        </CCardHeader>
         <CCardBody>
-          <CCardTitle> Business Functions </CCardTitle>
-
           <CCardText>
             Something an enterprise does, or needs to do, in order to achieve
             its objectives.
           </CCardText>
+        </CCardBody>
+        <CCardFooter class="bg-white">
           <CButton>
             <router-link
               tag="a"
@@ -19,19 +22,21 @@
               <chevron-right-icon />
             </router-link>
           </CButton>
-        </CCardBody>
+        </CCardFooter>
       </CCard>
     </CCol>
     <CCol class="col-sm-6 col-md-4">
       <CCard class="mb-3">
+        <CCardHeader class="bg-white" component="h5"> Agents </CCardHeader>
         <CCardBody>
-          <CCardTitle> Agents </CCardTitle>
           <CCardText>
             An Agent is someone or something that bears some form of
             responsibility for a
             <i>Business Process</i> taking place, for the existence of an
             entity, or for another agent <i>Business Process</i>.
           </CCardText>
+        </CCardBody>
+        <CCardFooter class="bg-white">
           <CButton>
             <router-link
               tag="a"
@@ -41,18 +46,22 @@
               ><chevron-right-icon
             /></router-link>
           </CButton>
-        </CCardBody>
+        </CCardFooter>
       </CCard>
     </CCol>
 
     <CCol class="col-sm-6 col-md-4">
       <CCard class="mb-3">
+        <CCardHeader class="bg-white" component="h5">
+          Process methods
+        </CCardHeader>
         <CCardBody>
-          <CCardTitle> Process methods </CCardTitle>
           <CCardText>
             A specification of the technique which will be used to perform the
             work. This section contains the list of process method.
           </CCardText>
+        </CCardBody>
+        <CCardFooter class="bg-white">
           <CButton>
             <router-link
               tag="a"
@@ -62,17 +71,21 @@
               ><chevron-right-icon
             /></router-link>
           </CButton>
-        </CCardBody>
+        </CCardFooter>
       </CCard>
     </CCol>
 
     <CCol class="col-sm-6 col-md-4">
       <CCard class="mb-3">
+        <CCardHeader class="bg-white" component="h5">
+          Legislative references
+        </CCardHeader>
         <CCardBody>
-          <CCardTitle> Legislative references </CCardTitle>
           <CCardText>
             This section contains the list of regulations.
           </CCardText>
+        </CCardBody>
+        <CCardFooter class="bg-white">
           <CButton>
             <router-link
               tag="a"
@@ -83,17 +96,21 @@
               ><chevron-right-icon
             /></router-link>
           </CButton>
-        </CCardBody>
+        </CCardFooter>
       </CCard>
     </CCol>
 
     <CCol class="col-sm-6 col-md-4">
       <CCard class="mb-3">
+        <CCardHeader class="bg-white" component="h5">
+          Statistical standard
+        </CCardHeader>
         <CCardBody>
-          <CCardTitle> Statistical standard </CCardTitle>
           <CCardText>
             This section contains the list of statistical standards.
           </CCardText>
+        </CCardBody>
+        <CCardFooter class="bg-white">
           <CButton>
             <router-link
               tag="a"
@@ -104,17 +121,21 @@
               ><chevron-right-icon
             /></router-link>
           </CButton>
-        </CCardBody>
+        </CCardFooter>
       </CCard>
     </CCol>
 
     <CCol class="col-sm-6 col-md-4">
       <CCard class="mb-3">
+        <CCardHeader class="bg-white" component="h5">
+          Business service
+        </CCardHeader>
         <CCardBody>
-          <CCardTitle> Business service </CCardTitle>
           <CCardText>
             This section contains the list of business services (Software).
           </CCardText>
+        </CCardBody>
+        <CCardFooter class="bg-white">
           <CButton>
             <router-link
               tag="a"
@@ -125,7 +146,7 @@
               ><chevron-right-icon
             /></router-link>
           </CButton>
-        </CCardBody>
+        </CCardFooter>
       </CCard>
     </CCol>
   </CRow>

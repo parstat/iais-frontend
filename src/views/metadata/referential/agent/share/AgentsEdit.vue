@@ -1,9 +1,12 @@
 <template>
   <CCard>
-    <CCardBody>
+    <CCardHeader class="bg-white">
       <CRow>
         <CCol class="col-9">
-          <CCardTitle> Agents </CCardTitle>
+          <CCardTitle>
+            <CIcon name="cil-user" />
+            Agents
+          </CCardTitle>
         </CCol>
         <CCol class="col-3">
           <CNav class="justify-content-end">
@@ -19,8 +22,10 @@
           </CNav>
         </CCol>
       </CRow>
+    </CCardHeader>
+    <CCardBody>
       <CCardText>
-        <div class="form-group" v-if="localSP">
+        <div class="form-group mb-3" v-if="localSP">
           <label for="description">Organization*</label>
           <v-select
             label="name"
@@ -28,9 +33,8 @@
             v-model="localSP.owner"
             @input="updateOwner"
           ></v-select>
-          <span class="help-block">Please select an Organization.</span>
         </div>
-        <div class="form-group" v-if="localSP">
+        <div class="form-group mb-3" v-if="localSP">
           <label for="description">Division*</label>
           <v-select
             label="name"
@@ -38,7 +42,6 @@
             v-model="localSP.maintainer"
             @input="updateMaintainer"
           ></v-select>
-          <span class="help-block">Please select a division.</span>
         </div>
         <div class="form-group" v-if="localSP">
           <label for="description">Contact person*</label>
@@ -48,9 +51,10 @@
             v-model="localSP.contact"
             @input="updateContact"
           ></v-select>
-          <span class="help-block">Please select a contact person.</span>
         </div>
       </CCardText>
+    </CCardBody>
+    <CCardFooter class="bg-white">
       <CButton
         color="primary"
         size="sm"
@@ -67,7 +71,7 @@
       >
         Next
       </CButton>
-    </CCardBody>
+    </CCardFooter>
   </CCard>
 </template>
 <script>

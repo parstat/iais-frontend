@@ -2,7 +2,7 @@
   <CRow>
     <CCol class="col-12">
       <CCard v-if="statisticalProgram">
-        <CCardHeader component="h5">
+        <CCardHeader class="bg-white" component="h5">
           Statistical process: {{ statisticalProgram.name }}
         </CCardHeader>
         <CCardBody>

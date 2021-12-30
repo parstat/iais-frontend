@@ -1,11 +1,11 @@
 <template>
   <CCard>
-    <CCardBody>
-      <Crow>
+    <CCardHeader class="bg-white">
+      <CRow>
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-description" />
-            <strong class="icon-header">Statistical Standard</strong>
+            Statistical Standard
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -21,9 +21,11 @@
             </CNavItem>
           </CNav>
         </CCol>
-      </Crow>
+      </CRow>
+    </CCardHeader>
+    <CCardBody>
       <CCardText>
-        <div class="form-group" v-if="statisticalStandards">
+        <div class="form-group mb-3" v-if="statisticalStandards">
           <label for="statisticalStandard">Statistical Standard</label>
           <v-select
             label="name"
@@ -53,41 +55,58 @@
               </div>
             </template>
           </v-select>
-          <span class="help-block">Please select statistical standards.</span>
         </div>
-        <div class="card-columns">
-          <div
-            class="card card-border bg-lighter mb-3"
+        <CRow>
+          <CCol
+            class="col-lg-4 col-md-6 col-sm-12"
             v-for="statisticalStandard of standards"
             :key="statisticalStandard.id"
           >
-            <div class="card-header">
-              <strong>{{ statisticalStandard.name }}</strong>
-              <div class="card-header-actions">
-                <router-link
-                  tag="a"
-                  class="text-dark pr-1"
-                  :to="{
-                    name: 'StatisticalStandardView',
-                    params: { id: statisticalStandard.id },
-                  }"
-                >
-                  <CIcon name="cil-magnifying-glass" />
-                </router-link>
-                <span
-                  class="text-dark"
-                  @click="removeStatisticalStandard(statisticalStandard)"
-                >
-                  <CIcon name="cil-trash" />
-                </span>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="card-text">{{ statisticalStandard.description }}</p>
-            </div>
-          </div>
-        </div>
+            <CCard class="card-border bg-lighter mb-3">
+              <CCardHeader>
+                <CRow>
+                  <CCol class="col-9">
+                    <CCardTitle component="h6">
+                      {{ statisticalStandard.name }}
+                    </CCardTitle>
+                  </CCol>
+                  <CCol class="col-3">
+                    <CNav class="justify-content-end">
+                      <CNavItem>
+                        <router-link
+                          tag="a"
+                          class="text-dark pr-1"
+                          :to="{
+                            name: 'StatisticalStandardView',
+                            params: { id: statisticalStandard.id },
+                          }"
+                        >
+                          <CIcon name="cil-magnifying-glass" />
+                        </router-link>
+                      </CNavItem>
+                      <CNavItem>
+                        <span
+                          class="text-dark"
+                          @click="
+                            removeStatisticalStandard(statisticalStandard)
+                          "
+                        >
+                          <CIcon name="cil-trash" />
+                        </span>
+                      </CNavItem>
+                    </CNav>
+                  </CCol>
+                </CRow>
+              </CCardHeader>
+              <CCardBody>
+                <p class="card-text">{{ statisticalStandard.description }}</p>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
       </CCardText>
+    </CCardBody>
+    <CCardFooter class="bg-white">
       <CButton
         color="primary"
         size="sm"
@@ -104,7 +123,7 @@
       >
         Next
       </CButton>
-    </CCardBody>
+    </CCardFooter>
   </CCard>
 </template>
 <script>

@@ -2,12 +2,16 @@
   <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
     <CCol xs>
       <CCard>
+        <CCardHeader class="bg-white" component="h5">
+          Referential metadata
+        </CCardHeader>
         <CCardBody>
-          <CCardTitle> Referential metadata </CCardTitle>
           <CCardText>
             This section contains the list of processes documented according to
             GSBPM standard
           </CCardText>
+        </CCardBody>
+        <CCardFooter class="bg-white">
           <CButton>
             <span>
               <router-link
@@ -20,17 +24,21 @@
               /></router-link>
             </span>
           </CButton>
-        </CCardBody>
+        </CCardFooter>
       </CCard>
     </CCol>
     <CCol xs>
       <CCard>
+        <CCardHeader class="bg-white" component="h5">
+          Structural metadata
+        </CCardHeader>
         <CCardBody>
-          <CCardTitle> Structural metadata </CCardTitle>
           <CCardText>
             This section contains the structural metadata of each survey
             documented in the system.
           </CCardText>
+        </CCardBody>
+        <CCardFooter class="bg-white">
           <CButton>
             <router-link
               tag="a"
@@ -40,22 +48,26 @@
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
-        </CCardBody>
+        </CCardFooter>
       </CCard>
     </CCol>
     <CCol xs>
       <CCard>
+        <CCardHeader class="bg-white" component="h5">
+          Process metadata
+        </CCardHeader>
         <CCardBody>
-          <CCardTitle> Process metadata </CCardTitle>
           <CCardText>
             This section contains the process metadata of each survey documented
             in the system.
           </CCardText>
+        </CCardBody>
+        <CCardFooter class="bg-white">
           <CButton disabled>
             <span class="icon-span">Go to process metadata section</span>
             <CIcon name="cil-arrow-right" />
           </CButton>
-        </CCardBody>
+        </CCardFooter>
       </CCard>
     </CCol>
   </CRow>
