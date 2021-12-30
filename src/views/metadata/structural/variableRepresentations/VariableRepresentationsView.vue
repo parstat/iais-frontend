@@ -17,14 +17,14 @@
             <CCol class="col-sm-12 col-md-6">
               <!-- substantiveValueDomain -->
               <CCard>
+                <CCardHeader component="h6">
+                   Substantive
+                </CCardHeader>
                 <CCardBody>
-                  <CCardSubtitle class="mb-2 text-muted">
-                    <h5>Substantive</h5>
-                  </CCardSubtitle>
                   <CCardText>
                     <CForm>
                       <span><strong>Name:</strong></span>
-                      <div class="text-muted">
+                      <div class="text-secondary">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -35,7 +35,7 @@
                     </CForm>
                     <CForm>
                       <span><strong>Description:</strong></span>
-                      <div class="text-muted">
+                      <div class="text-secondary">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -47,7 +47,7 @@
                     </CForm>
                     <CForm>
                       <span><strong>Type:</strong></span>
-                      <div class="text-muted">
+                      <div class="text-secondary">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -58,7 +58,7 @@
                     </CForm>
                     <CForm>
                       <span><strong>DataType:</strong></span>
-                      <div class="text-muted">
+                      <div class="text-secondary">
                         <span
                           v-if="variableRepresentation.substantiveValueDomain"
                           >{{
@@ -70,7 +70,7 @@
                     </CForm>
                     <CForm>
                       <span><strong>Expression:</strong></span>
-                      <div class="text-muted">
+                      <div class="text-secondary">
                         <span
                           v-if="
                             variableRepresentation.substantiveValueDomain
@@ -85,12 +85,12 @@
                       </div>
                     </CForm>
                     <!-- Variable representation CodeList-->
-                    <CCard>
+                    <CCard class="mt-3">
                       <CCardBody>
-                        <CCardTitle>
+                        <CCardSubtitle class="mb-2 text-muted">
                           <i>{{ variableRepresentation.variable.name }}</i>
                           CodeList
-                        </CCardTitle>
+                        </CCardSubtitle>
                         <!-- @start Condition to show filtrable table if results are more then 5 lines-->
                         <CCardText>
                           <div
@@ -161,10 +161,10 @@
             <CCol class="col-sm-12 col-md-6">
               <!-- sentinel Value Domain-->
               <CCard>
+                <CCardHeader component="h6">
+                   Sentinel
+                </CCardHeader>
                 <CCardBody>
-                  <CCardSubtitle class="mb-2 text-muted">
-                    <h5>Sentinel</h5>
-                  </CCardSubtitle>
                   <CCardText v-if="variableRepresentation.sentinelValueDomain">
                     <CForm>
                       <span><strong>Name:</strong></span>
@@ -238,13 +238,13 @@
                       </div>
                     </CForm>
 
-                    <CCard>
+                    <CCard class="mt-3">
                       <CCardBody>
-                        <CCardTitle>
+                        <CCardSubtitle class="mb-2 text-muted">
                           Sentinel
                           <i>{{ variableRepresentation.variable.name }}</i>
                           CodeList
-                        </CCardTitle>
+                        </CCardSubtitle>
                         <table
                           class="table table-hover"
                           v-if="variableRepresentation.sentinelValueDomain"
