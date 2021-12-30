@@ -17,9 +17,7 @@
             <CCol class="col-sm-12 col-md-6">
               <!-- substantiveValueDomain -->
               <CCard>
-                <CCardHeader component="h6">
-                   Substantive
-                </CCardHeader>
+                <CCardHeader component="h6"> Substantive </CCardHeader>
                 <CCardBody>
                   <CCardText>
                     <CForm>
@@ -161,9 +159,7 @@
             <CCol class="col-sm-12 col-md-6">
               <!-- sentinel Value Domain-->
               <CCard>
-                <CCardHeader component="h6">
-                   Sentinel
-                </CCardHeader>
+                <CCardHeader component="h6"> Sentinel </CCardHeader>
                 <CCardBody>
                   <CCardText v-if="variableRepresentation.sentinelValueDomain">
                     <CForm>

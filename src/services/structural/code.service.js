@@ -14,7 +14,7 @@ function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenCodeLists?language=en").then(
       (response) => {
-        console.log(response.data.codeLists);
+        //console.log(response.data.codeLists);
         resolve(response.data.codeLists);
       },
       (error) => {
@@ -29,7 +29,7 @@ function findById(id) {
     axiosIais.get("/structural/OpenCodeLists/" + id).then(
       (response) => {
         var data = response.data.codeList ? response.data.codeList : null;
-        console.log(data);
+        //console.log(data);
         resolve(data);
       },
       (error) => {

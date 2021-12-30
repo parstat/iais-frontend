@@ -439,16 +439,6 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
-      //* Variable Representations List*/
-      {
-        path: "metadata/structural/variable/view/:id",
-        name: "VariableRepresentationsList",
-        component: () =>
-          import(
-            "@/views/metadata/structural/variableRepresentations/VariableRepresentationsList"
-          ),
-        meta: { authorize: [] },
-      },
       //* Statistical Classifications */
       {
         path: "metadata/structural/statisticalClassifications/",
@@ -548,6 +538,7 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = store.getters["auth/isAuthenticated"];
   const userRole = store.getters["auth/role"];
 
+  console.log("AUTH: " + authorize);
   if (authorize.length) {
     if (!isAuthenticated || !authorize.includes(userRole)) {
       const err = {
