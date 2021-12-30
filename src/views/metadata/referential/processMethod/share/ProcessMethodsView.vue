@@ -1,6 +1,6 @@
 <template>
   <CCard v-if="processMethods.length">
-    <CCardHeader component="h5"> Process Methods </CCardHeader>
+    <CCardHeader class="bg-white" component="h5"> Process Methods </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
         <CCol
@@ -10,24 +10,30 @@
         >
           <CCard>
             <CCardHeader component="h6">
-              <CNav variant="pills" class="card-header-pills">
-                <CNavItem>
-                  {{ processMethod.name }}
-                </CNavItem>
-                <CNavItem>
-                  <span>
-                    <router-link
-                      tag="a"
-                      :to="{
-                        name: 'ProcessMethodView',
-                        params: { id: processMethod.id },
-                      }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
-                    </router-link>
-                  </span>
-                </CNavItem>
-              </CNav>
+              <CRow>
+                <CCol class="col-9">
+                  <CCardTitle component="h6">
+                    {{ processMethod.name }}
+                  </CCardTitle>
+                </CCol>
+                <CCol class="col-3">
+                  <CNav class="justify-content-end">
+                    <CNavItem>
+                      <span>
+                        <router-link
+                          tag="a"
+                          :to="{
+                            name: 'ProcessMethodView',
+                            params: { id: processMethod.id },
+                          }"
+                        >
+                          <CIcon name="cil-magnifying-glass" />
+                        </router-link>
+                      </span>
+                    </CNavItem>
+                  </CNav>
+                </CCol>
+              </CRow>
             </CCardHeader>
             <CCardBody>
               <CCardText>{{ processMethod.description }}</CCardText>

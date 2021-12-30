@@ -44,8 +44,10 @@
       </div>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 1 }">
         <CCol xs v-if="processDocumentation.description">
-          <CCard>
-            <CCardHeader component="h5"> Description </CCardHeader>
+          <CCard class="mt-3">
+            <CCardHeader class="bg-white" component="h5">
+              Description
+            </CCardHeader>
             <CCardBody>
               <CCardText>{{ processDocumentation.description }}</CCardText>
             </CCardBody>

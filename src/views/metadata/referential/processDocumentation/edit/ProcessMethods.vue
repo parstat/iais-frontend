@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-description" />
-            <strong> Process Methods</strong>
+            Process Methods
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -15,7 +15,7 @@
                 <router-link
                   tag="a"
                   to="/metadata/referential/gsim/method/add"
-                  class="card-header-action"
+                  class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
                   <span class="icon-span">Add</span>
@@ -85,7 +85,8 @@
             </CCard>
           </CCol>
         </CRow>
-
+      </CCardText>
+      <CCardFooter class="bg-white">
         <CButton
           color="primary"
           size="sm"
@@ -102,7 +103,7 @@
         >
           Next
         </CButton>
-      </CCardText>
+      </CCardFooter>
     </CCardBody>
   </CCard>
 </template>

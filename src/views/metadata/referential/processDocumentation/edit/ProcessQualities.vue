@@ -47,7 +47,9 @@
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
-                    {{ processQuality.name }}
+                    <CCardTitle component="h6">
+                      {{ processQuality.name }}
+                    </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
                     <CNav class="justify-content-end">
@@ -67,7 +69,8 @@
             </CCard>
           </CCol>
         </CRow>
-
+      </CCardText>
+      <CCardFooter class="bg-white">
         <CButton
           color="primary"
           size="sm"
@@ -84,7 +87,7 @@
         >
           Next
         </CButton>
-      </CCardText>
+      </CCardFooter>
     </CCardBody>
   </CCard>
 </template>

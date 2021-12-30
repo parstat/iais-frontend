@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-description" />
-            <strong> Business Services</strong>
+            Business Services
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -15,7 +15,7 @@
                 <router-link
                   tag="a"
                   to="/metadata/referential/gsim/service/add"
-                  class="card-header-action"
+                  class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
                   <span class="icon-span">Add</span>
@@ -61,11 +61,13 @@
             v-for="businessService of processDocumentation.businessServices"
             :key="businessService.id"
           >
-            <CCard class="card card-border bg-lighter mt-3 mb-3 mr-3">
+            <CCard class="card-border bg-lighter mt-3 mb-3 mr-3">
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
-                    {{ businessService.name }}
+                    <CCardTitle component="h6">
+                      {{ businessService.name }}
+                    </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
                     <CNav class="justify-content-end">
@@ -86,6 +88,8 @@
             </CCard>
           </CCol>
         </CRow>
+      </CCardText>
+      <CCardFooter class="bg-white">
         <CButton
           color="primary"
           size="sm"
@@ -102,7 +106,7 @@
         >
           Next
         </CButton>
-      </CCardText>
+      </CCardFooter>
     </CCardBody>
   </CCard>
 </template>

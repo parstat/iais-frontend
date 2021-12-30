@@ -1,7 +1,7 @@
 <template>
   <CCard v-if="processInputSpecifications.length">
+    <CCardHeader class="bg-white" component="h5"> Process Inputs </CCardHeader>
     <CCardBody>
-      <CCardTitle> Process Inputs </CCardTitle>
       <CCardText>
         <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
           <CCol

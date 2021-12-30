@@ -74,22 +74,24 @@
           </CCol>
         </CRow>
       </CCardText>
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click="$emit('back')"
-      >
-        Back
-      </CButton>
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click="$emit('next')"
-      >
-        Next
-      </CButton>
+      <CCardFooter class="bg-white">
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click="$emit('back')"
+        >
+          Back
+        </CButton>
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click="$emit('next')"
+        >
+          Next
+        </CButton>
+      </CCardFooter>
     </CCardBody>
   </CCard>
 </template>

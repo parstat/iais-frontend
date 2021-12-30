@@ -3,7 +3,7 @@
     <CCardBody>
       <CCardTitle>
         <CIcon name="cil-description" />
-        <strong> Comments/Notes</strong>
+        Comments/Notes
       </CCardTitle>
       <CCardText>
         <CForm>
@@ -56,7 +56,9 @@
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
-                    {{ processDocument.name }}
+                    <CCardTitle component="h6">
+                      {{ processDocument.name }}
+                    </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
                     <CNav class="justify-content-end">
@@ -82,6 +84,8 @@
             </CCard>
           </CCol>
         </CRow>
+      </CCardText>
+      <CCardFooter class="bg-white">
         <CButton
           color="primary"
           size="sm"
@@ -90,7 +94,7 @@
         >
           Finish
         </CButton>
-      </CCardText>
+      </CCardFooter>
     </CCardBody>
   </CCard>
 </template>

@@ -1,6 +1,8 @@
 <template>
   <CCard v-if="businessServices.length">
-    <CCardHeader component="h5"> Business Services/Software </CCardHeader>
+    <CCardHeader class="bg-white" component="h5">
+      Business Services/Software
+    </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
         <CCol
@@ -10,20 +12,28 @@
         >
           <CCard>
             <CCardHeader component="h6">
-              {{ businessService.name }}
-              <CNav variant="pills" class="card-header-pills">
-                <CNavItem>
-                  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'BusinessServiceView',
-                      params: { id: businessService.id },
-                    }"
-                  >
-                    <CIcon name="cil-magnifying-glass" />
-                  </router-link>
-                </CNavItem>
-              </CNav>
+              <CRow>
+                <CCol class="col-9">
+                  <CCardTitle component="h6">
+                    {{ businessService.name }}
+                  </CCardTitle>
+                </CCol>
+                <CCol class="col-3">
+                  <CNav class="justify-content-end">
+                    <CNavItem>
+                      <router-link
+                        tag="a"
+                        :to="{
+                          name: 'BusinessServiceView',
+                          params: { id: businessService.id },
+                        }"
+                      >
+                        <CIcon name="cil-magnifying-glass" />
+                      </router-link>
+                    </CNavItem>
+                  </CNav>
+                </CCol>
+              </CRow>
             </CCardHeader>
             <CCardBody>
               <CCardText>{{ businessService.description }}</CCardText>

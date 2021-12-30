@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-user" />
-            <strong> Agents </strong>
+            Agents
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -15,7 +15,7 @@
                 <router-link
                   tag="a"
                   to="/metadata/referential/gsim/agent/add"
-                  class="card-header-action"
+                  class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
                   <span class="icon-span">Add</span>
@@ -41,11 +41,11 @@
               v-for="maintainer of processDocumentation.maintainers"
               :key="maintainer.id"
             >
-              <CCard class="card card-border bg-lighter mb-3 mr-3">
+              <CCard class="card-border bg-lighter mb-3 mr-3">
                 <CCardHeader>
                   <CRow>
                     <CCol class="col-9">
-                      <CCardTitle>
+                      <CCardTitle component="h6">
                         {{ maintainer.name }}
                       </CCardTitle>
                     </CCol>
@@ -54,6 +54,7 @@
                         <CNavItem>
                           <router-link
                             tag="a"
+                            class="text-decoration-none text-primary"
                             :to="{
                               name: 'AgentView',
                               params: { id: maintainer.id },
@@ -79,22 +80,24 @@
           </CRow>
         </CForm>
       </CCardText>
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click="$emit('back')"
-      >
-        Back
-      </CButton>
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click="$emit('next')"
-      >
-        Next
-      </CButton>
+      <CCardFooter class="bg-white">
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click="$emit('back')"
+        >
+          Back
+        </CButton>
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click="$emit('next')"
+        >
+          Next
+        </CButton>
+      </CCardFooter>
     </CCardBody>
   </CCard>
 </template>

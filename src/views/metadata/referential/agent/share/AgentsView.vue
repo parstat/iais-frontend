@@ -1,7 +1,7 @@
 <template>
   <CCard v-if="maintainers.length">
+    <CCardHeader class="bg-white" component="h5"> Maintainers </CCardHeader>
     <CCardBody>
-      <CCardTitle> Maintainers </CCardTitle>
       <CCardText>
         <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
           <CCol xs v-for="maintainer of maintainers" :key="maintainer.id">

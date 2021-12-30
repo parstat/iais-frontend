@@ -67,7 +67,7 @@
           </CCol>
         </CRow>
       </CCardText>
-      <div class="card-footer">
+      <CCardFooter class="bg-white">
         <CButton
           color="primary"
           size="sm"
@@ -84,7 +84,7 @@
         >
           Next
         </CButton>
-      </div>
+      </CCardFooter>
     </CCardBody>
   </CCard>
 </template>

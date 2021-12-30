@@ -3,7 +3,7 @@
     <CCardBody>
       <CCardTitle>
         <CIcon name="cil-description" />
-        <strong> Process Documentation Basic Variables </strong>
+        Process Documentation Basic Variables
       </CCardTitle>
       <CCardText>
         <CForm>
@@ -95,15 +95,17 @@
           <div class="form-mandatory">*Mandatory fields</div>
         </CForm>
       </CCardText>
-      <CButton
-        color="primary"
-        size="sm"
-        style="margin-right: 0.3rem"
-        @click.prevent="handleSubmit()"
-        :disabled="disabled"
-      >
-        Next
-      </CButton>
+      <CCardFooter class="bg-white">
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click.prevent="handleSubmit()"
+          :disabled="disabled"
+        >
+          Next
+        </CButton>
+      </CCardFooter>
     </CCardBody>
   </CCard>
 </template>

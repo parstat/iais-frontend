@@ -2,10 +2,10 @@
   <CRow>
     <CCol class="col-12">
       <CCard v-if="processDocumentation">
-        <CCardHeader component="h5">
+        <CCardHeader class="bg-white" component="h5">
           <CIcon name="cil-description" />
           Process Documentation
-          <h6 class="card-subtitle mb-2 text-muted">
+          <CCardSubtitle class="mt-1 text-secondary">
             (survey:
             {{
               processDocumentation.statisticalProgram
@@ -22,7 +22,7 @@
                 ? processDocumentation.businessFunction.name
                 : ""
             }})
-          </h6>
+          </CCardSubtitle>
         </CCardHeader>
         <CCardBody>
           <CRow>

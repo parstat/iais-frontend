@@ -2,14 +2,17 @@
   <CRow>
     <CCol class="col-12">
       <CCard>
-        <CCardHeader>
-          <CIcon name="cil-description" />
-          <strong class="icon-header">Process Documentation</strong>
-          <p class="card-subtitle">
+        <CCardHeader class="bg-white">
+          <CCardTitle>
+            <CIcon name="cil-description" />
+
+            Process Documentation
+          </CCardTitle>
+          <CCardSubtitle>
             (survey: {{ statisticalProgram ? statisticalProgram.name : "" }},
             sub-phase: {{ businessFunction ? businessFunction.localId : "" }}
             {{ businessFunction ? businessFunction.name : "" }})
-          </p>
+          </CCardSubtitle>
         </CCardHeader>
         <CCardBody>
           <CCardText>
