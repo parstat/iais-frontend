@@ -3,32 +3,32 @@
     <CCardHeader component="h5"> Process Documentations </CCardHeader>
     <CCardBody>
       <div class="table-responsive">
-      <CSmartTable
-        :items="viewProcessDocumentation"
-        :columns="columns"
-        column-filter
-        table-filter
-        items-per-page-select
-        :items-per-page="5"
-        hover
-        sorter
-        pagination
-        :sorterValue="{ column: 'localId', asc: 'true' }"
-      >
-        <template #actions="{ item }">
-          <td style="padding: 0.75rem 0.4rem">
-            <router-link
-              tag="a"
-              :to="{
-                name: 'ProcessDocumentationView',
-                params: { id: item.id },
-              }"
-            >
-              <CIcon name="cil-magnifying-glass" />
-            </router-link>
-          </td>
-        </template>
-      </CSmartTable>
+        <CSmartTable
+          :items="viewProcessDocumentation"
+          :columns="columns"
+          column-filter
+          table-filter
+          items-per-page-select
+          :items-per-page="5"
+          hover
+          sorter
+          pagination
+          :sorterValue="{ column: 'localId', asc: 'true' }"
+        >
+          <template #actions="{ item }">
+            <td style="padding: 0.75rem 0.4rem">
+              <router-link
+                tag="a"
+                :to="{
+                  name: 'ProcessDocumentationView',
+                  params: { id: item.id },
+                }"
+              >
+                <CIcon name="cil-magnifying-glass" />
+              </router-link>
+            </td>
+          </template>
+        </CSmartTable>
       </div>
     </CCardBody>
     <CCardFooter>

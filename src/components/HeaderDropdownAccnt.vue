@@ -31,7 +31,11 @@
   </div>
   <div v-else>
     <CHeaderNav>
-      <router-link tag="a" to="/login">
+      <router-link
+        tag="a"
+        class="text-decoration-none text-primary"
+        to="/login"
+      >
         <CIcon name="cilUser"></CIcon>
         <span>Login</span>
       </router-link>

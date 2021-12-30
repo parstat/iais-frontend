@@ -23,55 +23,55 @@
       </CRow>
       <CCardText>
         <div class="table-responsive">
-        <CSmartTable
-          :items="legislativeReferences"
-          :columns="columns"
-          column-filter
-          table-filter
-          items-per-page-select
-          :items-per-page="5"
-          hover
-          sorter
-          pagination
-        >
-          <template #actions="{ item }">
-            <td>
-              <span>
-                <router-link
-                  tag="a"
-                  :to="{
-                    name: 'LegislativeReferenceView',
-                    params: { id: item.id },
-                  }"
-                >
-                  <CIcon name="cil-magnifying-glass" />
-                </router-link>
-              </span>
-              <span v-if="isAuthenticated">
-                <router-link
-                  tag="a"
-                  :to="{
-                    name: 'LegislativeReferenceEdit',
-                    params: { id: item.id },
-                  }"
-                >
-                  <CIcon name="cil-pencil" />
-                </router-link>
-              </span>
-              <span v-if="isAdmin">
-                <router-link
-                  tag="a"
-                  :to="{
-                    name: 'LegislativeReferenceDelete',
-                    params: { id: item.id },
-                  }"
-                >
-                  <CIcon name="cil-trash" />
-                </router-link>
-              </span>
-            </td>
-          </template>
-        </CSmartTable>
+          <CSmartTable
+            :items="legislativeReferences"
+            :columns="columns"
+            column-filter
+            table-filter
+            items-per-page-select
+            :items-per-page="5"
+            hover
+            sorter
+            pagination
+          >
+            <template #actions="{ item }">
+              <td>
+                <span>
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'LegislativeReferenceView',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-magnifying-glass" />
+                  </router-link>
+                </span>
+                <span v-if="isAuthenticated">
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'LegislativeReferenceEdit',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-pencil" />
+                  </router-link>
+                </span>
+                <span v-if="isAdmin">
+                  <router-link
+                    tag="a"
+                    :to="{
+                      name: 'LegislativeReferenceDelete',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-trash" />
+                  </router-link>
+                </span>
+              </td>
+            </template>
+          </CSmartTable>
         </div>
       </CCardText>
     </CCardBody>

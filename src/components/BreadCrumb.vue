@@ -9,6 +9,7 @@
       <router-link
         v-if="index < breadcrumbs.length - 1"
         tag="a"
+        class="text-decoration-none text-primary"
         :to="breadcrumb.to"
         >{{ upperCaseFirst(breadcrumb.path) }}</router-link
       >
