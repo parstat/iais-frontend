@@ -3,7 +3,7 @@
     <CCardBody>
       <CCardTitle>
         <CIcon name="cil-description" />
-        <strong> Process Quality</strong>
+        Process Quality
       </CCardTitle>
       <CCardText>
         <CForm>

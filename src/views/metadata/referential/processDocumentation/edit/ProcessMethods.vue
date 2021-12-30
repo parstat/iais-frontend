@@ -61,11 +61,13 @@
             v-for="processMethod of processDocumentation.processMethods"
             :key="processMethod.id"
           >
-            <CCard class="card card-border bg-lighter mt-3 mb-3 mr-3">
+            <CCard class="card-border bg-lighter mt-3 mb-3 mr-3">
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
-                    {{ processMethod.name }}
+                    <CCardTitle component="h6">
+                      {{ processMethod.name }}
+                    </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
                     <CNav class="justify-content-end">

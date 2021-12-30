@@ -1,6 +1,8 @@
 <template>
   <CCard v-if="legislativeReferences.length">
-    <CCardHeader component="h5"> Legislative References </CCardHeader>
+    <CCardHeader class="bg-white" component="h5">
+      Legislative References
+    </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
         <CCol
@@ -9,25 +11,31 @@
           :key="legislativeReference.id"
         >
           <CCard>
-            <CCardHeader component="h6">
-              <CNav variant="pills" class="card-header-pills">
-                <CNavItem>
-                  {{ legislativeReference.name }}
-                </CNavItem>
-                <CNavItem>
-                  <span style="padding: 0.75rem 0.4rem">
-                    <router-link
-                      tag="a"
-                      :to="{
-                        name: 'LegislativeReferenceView',
-                        params: { id: legislativeReference.id },
-                      }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
-                    </router-link>
-                  </span>
-                </CNavItem>
-              </CNav>
+            <CCardHeader>
+              <CRow>
+                <CCol class="col-9">
+                  <CCardTitle component="h6">
+                    {{ legislativeReference.name }}
+                  </CCardTitle>
+                </CCol>
+                <CCol class="col-3">
+                  <CNav class="justify-content-end">
+                    <CNavItem>
+                      <span>
+                        <router-link
+                          tag="a"
+                          :to="{
+                            name: 'LegislativeReferenceView',
+                            params: { id: legislativeReference.id },
+                          }"
+                        >
+                          <CIcon name="cil-magnifying-glass" />
+                        </router-link>
+                      </span>
+                    </CNavItem>
+                  </CNav>
+                </CCol>
+              </CRow>
             </CCardHeader>
             <CCardBody>
               <CCardText>{{ legislativeReference.description }}</CCardText>

@@ -47,7 +47,9 @@
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
-                    {{ processInput.name }}
+                    <CCardTitle component="h6">
+                      {{ processInput.name }}
+                    </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
                     <CNav class="justify-content-end">

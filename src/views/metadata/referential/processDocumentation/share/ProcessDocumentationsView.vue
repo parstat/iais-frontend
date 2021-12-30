@@ -1,6 +1,8 @@
 <template>
   <CCard v-if="viewProcessDocumentation.length">
-    <CCardHeader component="h5"> Process Documentations </CCardHeader>
+    <CCardHeader class="bg-white" component="h5">
+      Process Documentations
+    </CCardHeader>
     <CCardBody>
       <div class="table-responsive">
         <CSmartTable
@@ -31,7 +33,7 @@
         </CSmartTable>
       </div>
     </CCardBody>
-    <CCardFooter>
+    <CCardFooter class="bg-white">
       <CButton color="primary" size="sm" @click.prevent="$emit('back')"
         >Back</CButton
       >

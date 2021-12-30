@@ -1,7 +1,9 @@
 <template>
   <CCard v-if="statisticalStandards.length">
+    <CCardHeader class="bg-white" component="h5">
+      Statistical Standards
+    </CCardHeader>
     <CCardBody>
-      <CCardTitle> Statistical Standards </CCardTitle>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
         <CCol
           xs
@@ -9,10 +11,10 @@
           :key="statisticalStandard.id"
         >
           <CCard>
-            <CCardBody>
+            <CCardHeader>
               <CRow>
                 <CCol class="col-9">
-                  <CCardTitle>
+                  <CCardTitle component="h6">
                     {{ statisticalStandard.name }}
                   </CCardTitle>
                 </CCol>
@@ -35,7 +37,8 @@
                   </CNav>
                 </CCol>
               </CRow>
-
+            </CCardHeader>
+            <CCardBody>
               <CCardText>{{ statisticalStandard.description }}</CCardText>
             </CCardBody>
           </CCard>
