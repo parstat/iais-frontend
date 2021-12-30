@@ -1,4 +1,5 @@
 <template>
+<!-- Test -->
   <CRow v-if="variableRepresentation">
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2">
       <div class="container">
