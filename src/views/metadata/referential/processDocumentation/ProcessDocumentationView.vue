@@ -144,7 +144,10 @@ export default {
   },
   watch: {
     $route: function (_new, _old) {
-      if (_new.params.id !== _old.params.id) {
+      if (
+        _new.params.id !== _old.params.id &&
+        typeof _new.params.id != "undefined"
+      ) {
         this.init();
       }
     },

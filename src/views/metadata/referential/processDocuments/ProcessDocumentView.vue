@@ -1,7 +1,7 @@
 <template>
   <CCard v-if="documents.length">
+    <CCardHeader class="bg-white" component="h6"> Comments/Notes </CCardHeader>
     <CCardBody>
-      <CCardTitle> Comments/Notes </CCardTitle>
       <CCardText>
         <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
           <CCol
@@ -25,10 +25,12 @@
           </CCol>
         </CRow>
       </CCardText>
-      <CButton>
+    </CCardBody>
+    <CCardFooter class="bg-white">
+      <CButton class="btn-primary btn-sm btn-square">
         <router-link
           tag="a"
-          class="btn btn-primary btn-sm btn-square"
+          class="text-white text-decoration-none"
           :to="{
             name: 'StatisticalProgramView',
             params: { id: statisticalProgramId },
@@ -37,7 +39,7 @@
           Back
         </router-link>
       </CButton>
-    </CCardBody>
+    </CCardFooter>
   </CCard>
 </template>
 <script>

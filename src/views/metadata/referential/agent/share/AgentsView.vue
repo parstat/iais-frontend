@@ -21,7 +21,7 @@
   <CCard v-else>
     <CCardHeader class="bg-white" component="h5"> Maintainers </CCardHeader>
     <CCardBody>
-      <CCrdText>
+      <CCardText>
         <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
           <CCol xs v-if="owner">
             <CCard>
@@ -87,7 +87,7 @@
             </CCard>
           </CCol>
         </CRow>
-      </CCrdText>
+      </CCardText>
     </CCardBody>
   </CCard>
 </template>

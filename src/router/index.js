@@ -538,7 +538,6 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = store.getters["auth/isAuthenticated"];
   const userRole = store.getters["auth/role"];
 
-  console.log("AUTH: " + authorize);
   if (authorize.length) {
     if (!isAuthenticated || !authorize.includes(userRole)) {
       const err = {
