@@ -1,7 +1,7 @@
 <template>
-  <CRow>
-    <CCol class="col-sm-6 col-md-4">
-      <CCard class="mb-3">
+  <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }" :lg="{ cols: 3 }">
+    <CCol>
+      <CCard xs>
         <CCardHeader class="bg-white" component="h5">
           Business Functions
         </CCardHeader>
@@ -25,8 +25,8 @@
         </CCardFooter>
       </CCard>
     </CCol>
-    <CCol class="col-sm-6 col-md-4">
-      <CCard class="mb-3">
+    <CCol xs>
+      <CCard>
         <CCardHeader class="bg-white" component="h5"> Agents </CCardHeader>
         <CCardBody>
           <CCardText>
@@ -50,8 +50,8 @@
       </CCard>
     </CCol>
 
-    <CCol class="col-sm-6 col-md-4">
-      <CCard class="mb-3">
+    <CCol xs>
+      <CCard>
         <CCardHeader class="bg-white" component="h5">
           Process methods
         </CCardHeader>
@@ -75,8 +75,8 @@
       </CCard>
     </CCol>
 
-    <CCol class="col-sm-6 col-md-4">
-      <CCard class="mb-3">
+    <CCol xs>
+      <CCard>
         <CCardHeader class="bg-white" component="h5">
           Legislative references
         </CCardHeader>
@@ -100,8 +100,8 @@
       </CCard>
     </CCol>
 
-    <CCol class="col-sm-6 col-md-4">
-      <CCard class="mb-3">
+    <CCol xs>
+      <CCard>
         <CCardHeader class="bg-white" component="h5">
           Statistical standard
         </CCardHeader>
@@ -125,8 +125,8 @@
       </CCard>
     </CCol>
 
-    <CCol class="col-sm-6 col-md-4">
-      <CCard class="mb-3">
+    <CCol xs>
+      <CCard>
         <CCardHeader class="bg-white" component="h5">
           Business service
         </CCardHeader>

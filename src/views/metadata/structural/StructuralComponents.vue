@@ -1,5 +1,5 @@
 <template>
-  <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
+  <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }" :lg="{ cols: 3 }">
     <CCol xs>
       <CCard>
         <CCardBody>
