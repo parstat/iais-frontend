@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <CCard v-if="statisticalClassification">
+    <CCard v-if="statisticalClassification" class="mb-3">
       <CCardBody>
         <CCardTitle> Levels </CCardTitle>
         <CCardText>
