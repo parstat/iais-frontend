@@ -1,5 +1,5 @@
 <template>
-  <CCard>
+  <CCard v-if="processMethods.length">
     <CCardBody>
       <CRow>
         <CCol class="col-9">
@@ -30,8 +30,7 @@
             table-filter
             items-per-page-select
             :items-per-page="5"
-            hover
-            sorter
+            columnSorter
             pagination
           >
             <template #actions="{ item }">

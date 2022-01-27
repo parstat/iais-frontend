@@ -1,5 +1,5 @@
 <template>
-  <CCard>
+  <CCard v-if="agents.length">
     <CCardBody>
       <CRow>
         <CCol class="col-9">
@@ -27,13 +27,15 @@
         <div class="table-responsive">
           <CSmartTable
             :items="agents"
+            :activePage="1"
             :columns="columns"
-            column-filter
-            table-filter
-            items-per-page-select
-            :items-per-page="5"
-            hover
-            sorter
+            columnFilter
+            tableFilter
+            cleaner
+            itemsPerPageSelect
+            :itemsPerPage="5"
+            columnSorter
+            :sorterValue="{ column: 'id', state: 'asc' }"
             pagination
           >
             <template #actions="{ item }">

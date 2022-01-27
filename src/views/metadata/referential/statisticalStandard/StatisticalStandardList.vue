@@ -1,5 +1,5 @@
 <template>
-  <CCard>
+  <CCard v-if="statisticalStandards.length">
     <CCardBody>
       <CRow>
         <CCol class="col-9">

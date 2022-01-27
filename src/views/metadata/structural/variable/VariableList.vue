@@ -1,7 +1,7 @@
 <template>
   <CRow>
     <CCol class="col-12">
-      <CCard v-if="variables">
+      <CCard v-if="variables.length">
         <CCardBody>
           <CRow>
             <CCol class="col-9">
@@ -29,14 +29,13 @@
               <CSmartTable
                 :items="variables"
                 :columns="columns"
-                column-filter
-                table-filter
-                items-per-page-select
-                :items-per-page="5"
-                hover
-                sorter
+                tableFilter
+                columnFilter
+                itemsPerPageSelect
+                :itemsPerPage="5"
                 pagination
               >
+                >
                 <template #actions="{ item }">
                   <td>
                     <span>
@@ -102,12 +101,18 @@ export default {
         },
         {
           key: "description",
+          filter: false,
+          sorter: false,
         },
         {
           key: "version",
+          filter: false,
+          sorter: false,
         },
         {
           key: "measures",
+          filter: false,
+          sorter: false,
         },
         {
           key: "actions",

@@ -1,5 +1,5 @@
 <template>
-  <CRow>
+  <CRow v-if="viewStatisticalPrograms.length">
     <CCol class="col-12">
       <CCard>
         <CCardBody>
@@ -33,8 +33,7 @@
               table-filter
               items-per-page-select
               :items-per-page="5"
-              hover
-              sorter
+              columnSorter
               pagination
             >
               <template #actions="{ item }">

@@ -1,5 +1,5 @@
 <template>
-  <CCard>
+  <CCard v-if="businessFunctions.length">
     <CCardBody>
       <CRow>
         <CCol class="col-9">
@@ -25,14 +25,16 @@
       </CRow>
       <div class="table-responsive">
         <CSmartTable
+          :activePage="1"
           :items="businessFunctions"
           :columns="columns"
-          column-filter
-          table-filter
-          items-per-page-select
-          :items-per-page="5"
-          hover
-          sorter
+          tableFilter
+          columnFilter
+          cleaner
+          itemsPerPageSelect
+          :itemsPerPage="5"
+          columnSorter
+          :sorterValue="{ column: 'localId', state: 'asc' }"
           pagination
         >
           <template #actions="{ item }">
@@ -102,6 +104,8 @@ export default {
         {
           key: "description",
           label: "Description",
+          filter: false,
+          sorter: false,
         },
         {
           key: "actions",

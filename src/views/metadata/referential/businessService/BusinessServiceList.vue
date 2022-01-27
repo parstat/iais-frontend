@@ -1,7 +1,7 @@
 <template>
   <CRow>
     <CCol class="col-12">
-      <CCard>
+      <CCard v-if="businessServices.length">
         <CCardBody>
           <CRow>
             <CCol class="col-9">
@@ -34,8 +34,7 @@
                 table-filter
                 items-per-page-select
                 :items-per-page="5"
-                hover
-                sorter
+                columnSorter
                 pagination
               >
                 <template #actions="{ item }">

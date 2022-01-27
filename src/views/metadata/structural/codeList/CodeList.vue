@@ -1,7 +1,7 @@
 <template>
   <CRow>
     <CCol class="col-12">
-      <CCard>
+      <CCard v-if="codes.length">
         <CCardBody>
           <CRow>
             <CCol class="col-9">
@@ -26,14 +26,16 @@
           <CCardText>
             <div class="table-responsive">
               <CSmartTable
+                :activePage="1"
                 :items="codes"
                 :columns="columns"
-                column-filter
-                table-filter
-                items-per-page-select
-                :items-per-page="5"
-                hover
-                sorter
+                columnFilter
+                tableFilter
+                cleaner
+                itemsPerPageSelect
+                :itemsPerPage="5"
+                columnSorter
+                :sorterValue="{ column: 'localId', state: 'asc' }"
                 pagination
               >
                 <template #actions="{ item }">

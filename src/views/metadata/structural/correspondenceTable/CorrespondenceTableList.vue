@@ -1,7 +1,7 @@
 <template>
   <CRow>
     <CCol class="col-12">
-      <CCard>
+      <CCard v-if="correspondences.length">
         <CCardBody>
           <CRow>
             <CCol class="col-9">
@@ -27,13 +27,10 @@
             <div class="table-responsive">
               <CSmartTable
                 :items="correspondences"
+                :activePage="1"
                 :columns="columns"
-                column-filter
-                table-filter
-                items-per-page-select
-                :items-per-page="5"
-                hover
-                sorter
+                itemsPerPageSelect
+                :itemsPerPage="5"
                 pagination
               >
                 <template #sourcename="{ item }">
