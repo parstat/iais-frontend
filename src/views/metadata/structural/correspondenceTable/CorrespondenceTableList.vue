@@ -1,7 +1,7 @@
 <template>
   <CRow>
     <CCol class="col-12">
-      <CCard v-if="correspondences.length">
+      <CCard>
         <CCardBody>
           <CRow>
             <CCol class="col-9">
@@ -24,8 +24,9 @@
             </CCol>
           </CRow>
           <CCardText>
-            <div class="table-responsive">
+            <div class="table-responsive" v-if="!isLoading">
               <CSmartTable
+                v-if="correspondences.length"
                 :items="correspondences"
                 :activePage="1"
                 :columns="columns"
@@ -105,6 +106,7 @@
                 </template>
               </CSmartTable>
             </div>
+            <CSpinner v-else color="primary" size="sm" />
           </CCardText>
         </CCardBody>
       </CCard>

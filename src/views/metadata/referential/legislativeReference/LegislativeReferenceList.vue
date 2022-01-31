@@ -1,5 +1,5 @@
 <template>
-  <CCard v-if="legislativeReferences.length">
+  <CCard>
     <CCardBody>
       <CRow>
         <CCol class="col-9">
@@ -22,8 +22,9 @@
         </CCol>
       </CRow>
       <CCardText>
-        <div class="table-responsive">
+        <div class="table-responsive" v-if="!isLoading">
           <CSmartTable
+            v-if="legislativeReferences.length"
             :items="legislativeReferences"
             :columns="columns"
             column-filter
@@ -72,6 +73,7 @@
             </template>
           </CSmartTable>
         </div>
+        <CSpinner v-else color="primary" size="sm" />
       </CCardText>
     </CCardBody>
   </CCard>
@@ -111,6 +113,7 @@ export default {
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("legislativeReference", ["legislativeReferences"]),
+    ...mapGetters("coreui", ["isLoading"]),
   },
   created() {
     this.$store.dispatch("legislativeReference/findAll");

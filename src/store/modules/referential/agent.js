@@ -1,7 +1,6 @@
 import router from "@/router";
 import { agentService } from "@/services";
 import { Agent } from "@/common";
-
 const state = {
   agents: [],
   agent: null,

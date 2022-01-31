@@ -1,7 +1,7 @@
 <template>
   <CRow>
     <CCol class="col-12">
-      <CCard v-if="statisticalClassifications.length">
+      <CCard>
         <CCardBody>
           <CRow>
             <CCol class="col-9">
@@ -26,8 +26,9 @@
             </CCol>
           </CRow>
           <CCardText>
-            <div class="table-responsive">
+            <div class="table-responsive" v-if="!isLoading">
               <CSmartTable
+                v-if="statisticalClassifications.length"
                 :items="statisticalClassifications"
                 :activePage="1"
                 :columns="columns"
@@ -93,6 +94,7 @@
                 </template>
               </CSmartTable>
             </div>
+            <CSpinner v-else color="primary" size="sm" />
           </CCardText>
         </CCardBody>
       </CCard>

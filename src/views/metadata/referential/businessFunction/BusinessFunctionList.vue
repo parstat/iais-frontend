@@ -1,5 +1,5 @@
 <template>
-  <CCard v-if="businessFunctions.length">
+  <CCard>
     <CCardBody>
       <CRow>
         <CCol class="col-9">
@@ -23,8 +23,9 @@
           </CNav>
         </CCol>
       </CRow>
-      <div class="table-responsive">
+      <div class="table-responsive" v-if="!isLoading">
         <CSmartTable
+          v-if="businessFunctions.length"
           :activePage="1"
           :items="businessFunctions"
           :columns="columns"
@@ -76,6 +77,7 @@
           </template>
         </CSmartTable>
       </div>
+      <CSpinner v-else color="primary" size="sm" />
     </CCardBody>
   </CCard>
 </template>
@@ -120,6 +122,7 @@ export default {
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("businessFunction", ["businessFunctions"]),
+    ...mapGetters("coreui", ["isLoading"]),
   },
   created() {
     this.$store.dispatch("businessFunction/findAll");
