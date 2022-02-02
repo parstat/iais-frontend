@@ -3,7 +3,7 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          Referential metadata
+          {{ $t("common.referential_metadata") }}
         </CCardHeader>
         <CCardBody>
           <CCardText>

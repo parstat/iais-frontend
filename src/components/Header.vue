@@ -33,6 +33,9 @@
         </CDropdownItem>
       </CDropdown-->
       </CHeaderNav>
+      <CHeaderNav>
+        <app-language-selection />
+      </CHeaderNav>
       <CHeaderNav class="mr-4">
         <app-header-dropdown-account />
       </CHeaderNav>
@@ -51,6 +54,7 @@ import { mapGetters } from "vuex";
 import HeaderDropdownAccnt from "./HeaderDropdownAccnt";
 import BreadCrumb from "./BreadCrumb";
 import HeaderNav from "./HeaderNav";
+import LanguageSelection from "./LanguageSelection";
 
 export default {
   name: "AppHeader",
@@ -61,6 +65,7 @@ export default {
     "app-header-dropdown-account": HeaderDropdownAccnt,
     "app-header-breadcrumb": BreadCrumb,
     "app-header-nav": HeaderNav,
+    "app-language-selection": LanguageSelection,
   },
 };
 </script>

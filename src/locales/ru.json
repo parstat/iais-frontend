@@ -1,0 +1,9 @@
+{
+    "common": {
+        "metadata": "Метаданные",
+        "referential": "Ссылочной",
+        "structural": "Структурный",
+        "process": "Процесс",
+        "referential_metadata": "Ссылочной Метаданные"
+    }
+}

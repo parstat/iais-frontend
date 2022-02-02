@@ -10,6 +10,7 @@ import Multiselect from "@vueform/multiselect";
 import vSelect from "vue3-select";
 import VueSpinners from "vue-spinners";
 import BootstrapVue3 from "bootstrap-vue-3";
+import i18n from "./i18n";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
@@ -23,6 +24,7 @@ app.use(CoreuiVue);
 app.use(VueSpinners);
 app.use(store);
 app.use(router);
+app.use(i18n);
 app.use(BootstrapVue3);
 app.component("CIcon", CIcon);
 app.provide("icons", icons);

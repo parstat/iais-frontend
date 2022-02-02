@@ -1,0 +1,9 @@
+{
+    "common": {
+        "metadata": "Metadata",
+        "referential": "Referential",
+        "structural": "Structural",
+        "process": "Process",
+        "referential_metadata": "Referential Metadata"
+    }
+}
