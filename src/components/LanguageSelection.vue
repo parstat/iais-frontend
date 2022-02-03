@@ -29,6 +29,7 @@ export default {
   methods: {
     setLoale() {
       this.$store.dispatch("localization/setLocale", this.$i18n.locale);
+      window.location.reload(); //reload page to get also translated data
     },
   },
 };
