@@ -4,6 +4,36 @@
         "referential": "Referenţială",
         "structural": "Structurale",
         "process": "Proces",
-        "referential_metadata": "Metadate Referenţială"
+        "referential_metadata": "Metadate Referenţială",
+        "parstat_project": "Parstat project",
+        "go_to": "Please go to",
+        "error_occurred": "An error occurred, please contact IAIS administrator",
+        "error_message": "Error message: ",
+        "goto_homepage": "Go to homepage"
+    },
+    "user": {
+        "profile": "Profile",
+        "settings": "Settings",
+        "logout": "Logout",
+        "signin": "Sign in",
+        "signin_to_iais": "Sign in to IAIS",
+        "username": "Username",
+        "password": "Password",
+        "register": "Create an account",
+        "register_to_iais": "Register to IAIS",
+        "new": "New to IAIS?",
+        "login_page": " login page",
+        "please_enter_username": "Please enter your username.",
+        "create_account": "Create Account",
+        "validations": {
+            "username_taken":  "Username already taken!",
+            "email_invalid": "Please enter a valid email address.",
+            "name_invalid": "Please enter a valid name",
+            "password_invalid": "Password should contain at least 6 characters.",
+            "password_no_match": "Passwords are different."
+        }
+    },
+    "header": {
+        "gsim_objects": "GSIM info objects"
     }
 }

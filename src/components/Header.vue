@@ -33,7 +33,7 @@
         </CDropdownItem>
       </CDropdown-->
       </CHeaderNav>
-      <CHeaderNav>
+      <CHeaderNav class="mr-4">
         <app-language-selection />
       </CHeaderNav>
       <CHeaderNav class="mr-4">

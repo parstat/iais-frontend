@@ -5,11 +5,11 @@
         <div class="clearfix">
           <h1 class="float-left display-3 mr-4">401</h1>
           <h4 class="pt-3">Ops, something went wrong!</h4>
-          <p class="text-muted">You are not authorized to access this page.</p>
+          <p class="text-muted">{{ $t("user.unauthorized") }}</p>
         </div>
         <div class="clearfix mt-3">
           <router-link tag="a" to="/">
-            <CIcon name="cilHome"></CIcon> <span>Go to home page</span>
+            <CIcon name="cilHome"></CIcon> <span>{{ $t("common.goto_home") }}</span>
           </router-link>
         </div>
       </CCol>

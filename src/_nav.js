@@ -1,3 +1,5 @@
+import i18n from "./i18n";
+
 export default [
   {
     component: "CNavItem",
@@ -11,7 +13,7 @@ export default [
   },
   {
     component: "CNavGroup",
-    name: "Metadata",
+    name: i18n.global.t("common.metadata"), //it is working but does not reaload
     to: "/metadata",
     icon: "cil-puzzle",
     items: [

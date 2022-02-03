@@ -5,7 +5,7 @@
         href="https://www.parstat.md"
         class="text-decoration-none text-primary"
         target="_blank"
-        >Parstat project</a
+        >{{ $t("common.parstat_project") }}</a
       >
     </div>
     <div class="ms-auto">

@@ -6,7 +6,7 @@
       to="/metadata/referential/gsim"
     >
       <CIcon name="cil-puzzle" />
-      <span class="header-link icon-span">Gsim concepts</span>
+      <span class="header-link icon-span">{{ $t("header.gsim_objects") }}</span>
     </router-link>
   </div>
 </template>

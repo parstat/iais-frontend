@@ -6,97 +6,97 @@
           <CCard class="mx-4 mb-0">
             <CCardHeader align="center">
               <img src="img/logo.png" class="logo" />
-              <h3>Register to IAIS</h3>
+              <h3>{{ $t("user.register_to_iais") }}</h3>
             </CCardHeader>
             <CCardBody class="p-4">
               <CForm>
                 <CAlert color="danger" v-if="showGlobalError">
-                  <span>Account exists!</span>
+                  <span>{{ $t("user.validations.username_taken") }}</span>
                   <span>
-                    Please go to
+                    {{ $t("common.go_to") }}
                     <router-link tag="a" to="/login">
-                      <span>login page</span>
+                      <span>{{ $t("user.login_page") }}</span>
                     </router-link>
                   </span>
                 </CAlert>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cilUser"></CIcon>
+                      <CIcon name="cilUser" size="xl"></CIcon>
                     </div>
                   </div>
                   <input
                     type="text"
                     class="form-control"
-                    :class="{ invalid: v$.username.$error }"
-                    placeholder="User name"
+                    :class="{ 'is-invalid': v$.username.$error }"
+                    :placeholder="$t('user.username')"
                     v-model.trim="username"
                   />
                   <span class="help-block" :class="{ show: v$.username.$error }"
-                    >Please enter your username.</span
+                    >{{ $t("please_enter_username") }}</span
                   >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cilAt"></CIcon>
+                      <CIcon name="cilAt" size="xl"></CIcon>
                     </div>
                   </div>
                   <input
                     type="text"
                     class="form-control"
-                    :class="{ invalid: v$.email.$error }"
+                    :class="{ 'is-invalid': v$.email.$error }"
                     placeholder="Email"
                     v-model.trim="email"
                   />
                   <span class="help-block" :class="{ show: v$.email.$error }"
-                    >Please enter a valid email address.</span
+                    >{{ $t("user.validations.email_invalid") }}</span
                   >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cilUser"></CIcon>
+                      <CIcon name="cilUser" size="xl"></CIcon>
                     </div>
                   </div>
                   <input
                     type="text"
                     class="form-control"
-                    :class="{ invalid: v$.fullname.$error }"
+                    :class="{ 'is-invalid': v$.fullname.$error }"
                     placeholder="Full name"
                     v-model.trim="fullname"
                   />
                   <span class="help-block" :class="{ show: v$.fullname.$error }"
-                    >Please enter your fullname.</span
+                    >{{ $t("user.validations.name_invalid") }}</span
                   >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cil-lock-locked"></CIcon>
+                      <CIcon name="cil-lock-locked" size="xl"></CIcon>
                     </div>
                   </div>
                   <input
                     type="password"
                     class="form-control"
-                    :class="{ invalid: v$.password.$error }"
+                    :class="{ 'is-invalid': v$.password.$error }"
                     placeholder="Password"
                     v-model="password"
                   />
                   <span class="help-block" :class="{ show: v$.password.$error }"
-                    >Password should contain at least 6 characters.</span
+                    >{{ $t("user.validations.password_invalid") }}</span
                   >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cil-lock-locked"></CIcon>
+                      <CIcon name="cil-lock-locked" size='xl'></CIcon>
                     </div>
                   </div>
                   <input
                     type="password"
                     class="form-control"
-                    :class="{ invalid: v$.confirmPassword.$error }"
+                    :class="{ 'is-invalid': v$.confirmPassword.$error }"
                     placeholder="Repeat password"
                     @input="v$.confirmPassword.$touch()"
                     v-model="confirmPassword"
@@ -104,11 +104,11 @@
                   <span
                     class="help-block"
                     :class="{ show: v$.confirmPassword.$error }"
-                    >Passwords are different</span
+                    >{{ $t("user.validations.passwords_no_match") }}</span
                   >
                 </div>
                 <CButton color="success" block @click.prevent="handleSubmit()"
-                  >Create Account</CButton
+                  >{{ $t("user.create_account") }}</CButton
                 >
               </CForm>
             </CCardBody>
@@ -120,6 +120,7 @@
 </template>
 
 <script>
+import useValidate from "@vuelidate/core";
 import { required, email, minLength, sameAs } from "@vuelidate/validators";
 import { mapGetters } from "vuex";
 
@@ -127,6 +128,7 @@ export default {
   name: "RegisterPage",
   data() {
     return {
+      v$: useValidate(),
       username: "",
       email: "",
       fullname: "",

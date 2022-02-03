@@ -6,7 +6,7 @@
           <CCard class="mx-4 mb-0">
             <CCardHeader align="center">
               <img src="img/logo.png" class="logo" />
-              <h3>Sign in to IAIS</h3>
+              <h3>{{ $t("user.signin_to_iais") }}</h3>
             </CCardHeader>
             <CCardBody>
               <CForm>
@@ -17,13 +17,13 @@
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <div class="input-group-text">
-                        <CIcon name="cilUser"></CIcon>
+                        <CIcon name="cilUser" size="xl"></CIcon>
                       </div>
                     </div>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Username"
+                      :placeholder="$t('user.username')"
                       v-model.trim="username"
                     />
                   </div>
@@ -32,13 +32,13 @@
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <div class="input-group-text">
-                        <CIcon name="cil-lock-locked"></CIcon>
+                        <CIcon name="cil-lock-locked" size="xl"></CIcon>
                       </div>
                     </div>
                     <input
                       type="password"
                       class="form-control"
-                      placeholder="Password"
+                      :placeholder="$t('user.password')"
                       v-model="password"
                     />
                   </div>
@@ -49,7 +49,7 @@
                       color="primary"
                       class="btn-block"
                       @click.prevent="handleSubmit"
-                      >Sign in</CButton
+                      >{{ $t("user.signin") }}</CButton
                     >
                   </CCol>
                 </CRow>
@@ -57,7 +57,7 @@
                   <CCol col="12" class="register">
                     <span>New to IAIS?</span>
                     <router-link tag="a" to="/register"
-                      >Create an account</router-link
+                      >{{ $t("user.register") }}</router-link
                     >
                   </CCol>
                 </CRow>

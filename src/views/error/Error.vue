@@ -6,17 +6,17 @@
           <h1 class="float-left display-3 mr-4">500</h1>
           <h4 class="pt-3">Houston, we have a problem!</h4>
           <p class="text-muted">
-            An error occurred, please contact IAIS administrator
+            {{ $t("common.error_occurred") }}
           </p>
         </div>
         <div class="clearfix mb-3">
-          <h4 class="pt-3">Error message:</h4>
+          <h4 class="pt-3">{{$t("common.error_message") }}</h4>
           <p class="text-muted">{{ msg }}</p>
         </div>
         <div class="clearfix mb-3">
           <router-link tag="a" to="/">
             <CIcon name="cilHome"></CIcon>
-            <span>&nbsp;Go to home page</span>
+            <span>&nbsp;{{ $t("common.goto_homepage") }}</span>
           </router-link>
         </div>
       </CCol>

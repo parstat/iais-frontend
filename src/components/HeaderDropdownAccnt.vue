@@ -18,13 +18,13 @@
       </CDropdownToggle>
       <CDropdownMenu class="pt-0">
         <CDropdownHeader tag="div" class="text-center" color="light">
-          <strong>Settings</strong>
+          <strong>{{ $t("user.settings") }}</strong>
         </CDropdownHeader>
-        <CDropdownItem> <CIcon name="cil-user" />Profile </CDropdownItem>
-        <CDropdownItem> <CIcon name="cil-settings" />Settings </CDropdownItem>
+        <CDropdownItem> <CIcon name="cil-user" />{{ $t("user.profile") }} </CDropdownItem>
+        <CDropdownItem> <CIcon name="cil-settings" />{{ $t("user.settings") }} </CDropdownItem>
         <CDropdownDivider />
         <CDropdownItem @click="logout">
-          <CIcon name="cil-lock-locked" />Logout
+          <CIcon name="cil-lock-locked" />{{ $t("user.logout") }}
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
