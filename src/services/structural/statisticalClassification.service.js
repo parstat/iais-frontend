@@ -12,17 +12,15 @@ export const statisticalClassificationService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/structural/OpenStatisticalClassifications")
-      .then(
-        (response) => {
-          console.log(response.data.statisticalClassifications);
-          resolve(response.data.statisticalClassifications);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/structural/OpenStatisticalClassifications").then(
+      (response) => {
+        console.log(response.data.statisticalClassifications);
+        resolve(response.data.statisticalClassifications);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 
@@ -60,8 +58,7 @@ function save(formData) {
 
     axiosIais
       .post(
-        "/structural/ClosedStatisticalClassifications/" +
-          formData.localId,
+        "/structural/ClosedStatisticalClassifications/" + formData.localId,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -94,8 +91,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "/structural/ClosedStatisticalClassifications/" +
-          formData.id,
+        "/structural/ClosedStatisticalClassifications/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

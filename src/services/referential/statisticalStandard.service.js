@@ -25,36 +25,30 @@ function findAll() {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/referential/statistical/standards/" + id)
-      .then(
-        (response) => {
-          var data = response.data ? response.data : null;
-          console.log(data);
-          resolve(data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/statistical/standards/" + id).then(
+      (response) => {
+        var data = response.data ? response.data : null;
+        console.log(data);
+        resolve(data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 
 function findByName(search) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get(
-        "/referential/statistical/standards/?name=" + search
-      )
-      .then(
-        (response) => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/statistical/standards/?name=" + search).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 
@@ -112,8 +106,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "close/referential/statistical/standards/" +
-          formData.id,
+        "close/referential/statistical/standards/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

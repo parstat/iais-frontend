@@ -40,17 +40,15 @@ function findById(id) {
 
 function findByName(search) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/referential/business/services/?name=" + search)
-      .then(
-        (response) => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/business/services/?name=" + search).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 
@@ -70,8 +68,7 @@ function save(formData) {
 
     axiosIais
       .put(
-        "close/referential/business/services/" +
-          formData.localId,
+        "close/referential/business/services/" + formData.localId,
         new URLSearchParams(requestBody).toString(),
         config
       )

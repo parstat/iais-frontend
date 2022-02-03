@@ -18,9 +18,9 @@ axiosAuth.interceptors.request.use(
     if (token && !("jwt-auth" in config.headers)) {
       config.headers["jwt-auth"] = token;
     }
-    if(language) {
+    if (language) {
       config.params = config.params || {};
-      config.params['language'] = language;
+      config.params["language"] = language;
     }
     return config;
   },
@@ -42,9 +42,9 @@ axiosIais.interceptors.request.use(
     if (token && !("jwt-auth" in config.headers)) {
       config.headers["jwt-auth"] = token;
     }
-    if(language) {
+    if (language) {
       config.params = config.params || {};
-      config.params['language'] = language;
+      config.params["language"] = language;
     }
     return config;
   },

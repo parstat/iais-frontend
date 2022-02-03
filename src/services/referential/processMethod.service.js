@@ -25,17 +25,15 @@ function findAll() {
 
 function findByName(search) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/referential/process/methods/?name=" + search)
-      .then(
-        (response) => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/process/methods/?name=" + search).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 

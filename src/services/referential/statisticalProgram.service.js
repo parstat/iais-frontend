@@ -32,33 +32,29 @@ function findAll() {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/referential/statistical/programs/" + id)
-      .then(
-        (response) => {
-          var data = response.data ? response.data : {};
-          resolve(data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/statistical/programs/" + id).then(
+      (response) => {
+        var data = response.data ? response.data : {};
+        resolve(data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 
 function findByName(search) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/referential/statistical/programs/?name=" + search)
-      .then(
-        (response) => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/statistical/programs/?name=" + search).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 
@@ -85,8 +81,7 @@ function save(formData) {
 
     axiosIais
       .put(
-        "close/referential/statistical/programs/" +
-          formData.localId,
+        "close/referential/statistical/programs/" + formData.localId,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -121,8 +116,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "close/referential/statistical/programs/" +
-          formData.id,
+        "close/referential/statistical/programs/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

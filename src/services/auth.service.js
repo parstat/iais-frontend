@@ -119,11 +119,7 @@ function register({ username, email, fullname, password }) {
     };
 
     axiosAuth
-      .post(
-        "/signup",
-        new URLSearchParams(requestBody).toString(),
-        config
-      )
+      .post("/signup", new URLSearchParams(requestBody).toString(), config)
       .then(
         (response) => {
           console.log(response);

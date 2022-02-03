@@ -27,17 +27,15 @@ export const processDocumentationService = {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/referential/process/documentations/" + id)
-      .then(
-        (response) => {
-          var data = response.data ? response.data : {};
-          resolve(data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/process/documentations/" + id).then(
+      (response) => {
+        var data = response.data ? response.data : {};
+        resolve(data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 
@@ -64,19 +62,15 @@ function findLatest(statisticalProgram, businessFunction) {
 
 function findByName(search) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get(
-        "/referential/process/documentations/?name=" + search
-      )
-      .then(
-        (response) => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/process/documentations/?name=" + search).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 
@@ -134,8 +128,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "close/referential/process/documentations/" +
-          formData.id,
+        "close/referential/process/documentations/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

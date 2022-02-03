@@ -70,18 +70,16 @@ function findByName(name) {
 }
 function findByNameAndType(name, type) {
   return new Promise((resolve, reject) => {
-    axiosIais
-      .get("/referential/agents/?name=" + name + "&type=" + type)
-      .then(
-        (response) => {
-          var data = response.data ? response.data : [];
-          console.log(data);
-          resolve(data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.get("/referential/agents/?name=" + name + "&type=" + type).then(
+      (response) => {
+        var data = response.data ? response.data : [];
+        console.log(data);
+        resolve(data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 function save(formData) {
