@@ -20,8 +20,12 @@
         <CDropdownHeader tag="div" class="text-center" color="light">
           <strong>{{ $t("user.settings") }}</strong>
         </CDropdownHeader>
-        <CDropdownItem> <CIcon name="cil-user" />{{ $t("user.profile") }} </CDropdownItem>
-        <CDropdownItem> <CIcon name="cil-settings" />{{ $t("user.settings") }} </CDropdownItem>
+        <CDropdownItem>
+          <CIcon name="cil-user" />{{ $t("user.profile") }}
+        </CDropdownItem>
+        <CDropdownItem>
+          <CIcon name="cil-settings" />{{ $t("user.settings") }}
+        </CDropdownItem>
         <CDropdownDivider />
         <CDropdownItem @click="logout">
           <CIcon name="cil-lock-locked" />{{ $t("user.logout") }}

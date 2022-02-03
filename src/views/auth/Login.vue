@@ -56,9 +56,9 @@
                 <CRow>
                   <CCol col="12" class="register">
                     <span>New to IAIS?</span>
-                    <router-link tag="a" to="/register"
-                      >{{ $t("user.register") }}</router-link
-                    >
+                    <router-link tag="a" to="/register">{{
+                      $t("user.register")
+                    }}</router-link>
                   </CCol>
                 </CRow>
               </CForm>

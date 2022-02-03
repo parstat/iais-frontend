@@ -32,7 +32,9 @@
                     :placeholder="$t('user.username')"
                     v-model.trim="username"
                   />
-                  <span class="help-block" :class="{ show: v$.username.$error }"
+                  <span
+                    class="help-block"
+                    :class="{ show: v$.username.$error }"
                     >{{ $t("please_enter_username") }}</span
                   >
                 </div>
@@ -49,9 +51,9 @@
                     placeholder="Email"
                     v-model.trim="email"
                   />
-                  <span class="help-block" :class="{ show: v$.email.$error }"
-                    >{{ $t("user.validations.email_invalid") }}</span
-                  >
+                  <span class="help-block" :class="{ show: v$.email.$error }">{{
+                    $t("user.validations.email_invalid")
+                  }}</span>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -66,7 +68,9 @@
                     placeholder="Full name"
                     v-model.trim="fullname"
                   />
-                  <span class="help-block" :class="{ show: v$.fullname.$error }"
+                  <span
+                    class="help-block"
+                    :class="{ show: v$.fullname.$error }"
                     >{{ $t("user.validations.name_invalid") }}</span
                   >
                 </div>
@@ -83,14 +87,16 @@
                     placeholder="Password"
                     v-model="password"
                   />
-                  <span class="help-block" :class="{ show: v$.password.$error }"
+                  <span
+                    class="help-block"
+                    :class="{ show: v$.password.$error }"
                     >{{ $t("user.validations.password_invalid") }}</span
                   >
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cil-lock-locked" size='xl'></CIcon>
+                      <CIcon name="cil-lock-locked" size="xl"></CIcon>
                     </div>
                   </div>
                   <input
@@ -107,7 +113,10 @@
                     >{{ $t("user.validations.passwords_no_match") }}</span
                   >
                 </div>
-                <CButton color="success" block @click.prevent="handleSubmit()"
+                <CButton
+                  color="success"
+                  block
+                  @click.prevent="handleSubmit()"
                   >{{ $t("user.create_account") }}</CButton
                 >
               </CForm>
