@@ -18,6 +18,7 @@ import { correspondence } from "./modules/structural/correspondence"; //added by
 import { statisticalClassification } from "./modules/structural/statisticalClassification"; //added by GV
 import { variableRepresentation } from "./modules/structural/variableRepresentation"; //added by GV
 import { unitType } from "./modules/structural/unitType";
+import { localization } from "./modules/localization";
 
 export default createStore({
   modules: {
@@ -39,5 +40,6 @@ export default createStore({
     statisticalClassification,
     variableRepresentation,
     unitType,
+    localization,
   },
 });

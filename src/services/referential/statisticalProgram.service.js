@@ -18,7 +18,7 @@ export const statisticalProgramService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/statistical/programs?language=en").then(
+    axiosIais.get("/referential/statistical/programs").then(
       (response) => {
         var data = response.data ? response.data : [];
         resolve(data);
@@ -33,7 +33,7 @@ function findAll() {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/statistical/programs/" + id + "?language=en")
+      .get("/referential/statistical/programs/" + id)
       .then(
         (response) => {
           var data = response.data ? response.data : {};
@@ -49,7 +49,7 @@ function findById(id) {
 function findByName(search) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/statistical/programs/?name=" + search + "&language=en")
+      .get("/referential/statistical/programs/?name=" + search)
       .then(
         (response) => {
           //console.log(response.data);
@@ -86,8 +86,7 @@ function save(formData) {
     axiosIais
       .put(
         "close/referential/statistical/programs/" +
-          formData.localId +
-          "?language=en",
+          formData.localId,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -123,8 +122,7 @@ function update(formData) {
     axiosIais
       .patch(
         "close/referential/statistical/programs/" +
-          formData.id +
-          "?language=en",
+          formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -146,8 +144,7 @@ function addLegislativeReference(formData) {
         "close/referential/statistical/programs/" +
           formData.id +
           "/legislative/" +
-          formData.legislative +
-          "?language=en"
+          formData.legislative
       )
       .then(
         (response) => {
@@ -168,8 +165,7 @@ function removeLegislativeReference(formData) {
         "close/referential/statistical/programs/" +
           formData.id +
           "/legislative/" +
-          formData.legislative +
-          "?language=en"
+          formData.legislative
       )
       .then(
         (response) => {
@@ -191,8 +187,7 @@ function addStatisticalStandard(formData) {
         "close/referential/statistical/programs/" +
           formData.id +
           "/standards/" +
-          formData.standard +
-          "?language=en"
+          formData.standard
       )
       .then(
         (response) => {
@@ -213,8 +208,7 @@ function removeStatisticalStandard(formData) {
         "close/referential/statistical/programs/" +
           formData.id +
           "/standards/" +
-          formData.standard +
-          "?language=en"
+          formData.standard
       )
       .then(
         (response) => {
@@ -235,8 +229,7 @@ function updateOwner(formData) {
         "close/referential/statistical/programs/" +
           formData.id +
           "/owner/" +
-          formData.owner +
-          "?language=en"
+          formData.owner
       )
       .then(
         (response) => {
@@ -257,8 +250,7 @@ function updateContact(formData) {
         "close/referential/statistical/programs/" +
           formData.id +
           "/contact/" +
-          formData.contact +
-          "?language=en"
+          formData.contact
       )
       .then(
         (response) => {
@@ -279,8 +271,7 @@ function updateMaintainer(formData) {
         "close/referential/statistical/programs/" +
           formData.id +
           "/maintainer/" +
-          formData.maintainer +
-          "?language=en"
+          formData.maintainer
       )
       .then(
         (response) => {

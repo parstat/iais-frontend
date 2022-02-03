@@ -12,7 +12,7 @@ export const codeService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenCodeLists?language=en").then(
+    axiosIais.get("/structural/OpenCodeLists").then(
       (response) => {
         //console.log(response.data.codeLists);
         resolve(response.data.codeLists);
@@ -56,7 +56,7 @@ function save(formData) {
 
     axiosIais
       .post(
-        "/structural/ClosedCodeLists/" + formData.localId + "?language=en",
+        "/structural/ClosedCodeLists/" + formData.localId,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -89,7 +89,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "/structural/ClosedCodeLists/" + formData.id + "?language=en",
+        "/structural/ClosedCodeLists/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

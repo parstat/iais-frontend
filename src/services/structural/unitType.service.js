@@ -11,7 +11,7 @@ export const unitTypeService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenUnitTypes?language=en").then(
+    axiosIais.get("/structural/OpenUnitTypes").then(
       (response) => {
         console.log(response.data.unitTypes);
         resolve(response.data.unitTypes);

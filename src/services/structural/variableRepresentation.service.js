@@ -11,7 +11,7 @@ export const variableRepresentationService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenVariables?language=en").then(
+    axiosIais.get("/structural/OpenVariables").then(
       (response) => {
         console.log(response.data.variables);
         resolve(response.data.variables);

@@ -13,7 +13,7 @@ export const agentService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/agents?language=en").then(
+    axiosIais.get("/referential/agents").then(
       (response) => {
         console.log(response.data);
         resolve(response.data);
@@ -27,7 +27,7 @@ function findAll() {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/agents/" + id + "?language=en").then(
+    axiosIais.get("/referential/agents/" + id).then(
       (response) => {
         var data = response.data ? response.data : null;
         console.log(data);
@@ -42,7 +42,7 @@ function findById(id) {
 
 function findByType(type) {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/agents/?language=en&type=" + type).then(
+    axiosIais.get("/referential/agents/?type=" + type).then(
       (response) => {
         var data = response.data ? response.data : [];
         console.log(data);
@@ -56,7 +56,7 @@ function findByType(type) {
 }
 function findByName(name) {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/agents/?language=en&name=" + name).then(
+    axiosIais.get("/referential/agents/?name=" + name).then(
       (response) => {
         var data = response.data ? response.data : [];
         console.log(data);
@@ -71,7 +71,7 @@ function findByName(name) {
 function findByNameAndType(name, type) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/agents/?language=en&name=" + name + "&type=" + type)
+      .get("/referential/agents/?name=" + name + "&type=" + type)
       .then(
         (response) => {
           var data = response.data ? response.data : [];
@@ -106,7 +106,7 @@ function save(formData) {
 
     axiosIais
       .post(
-        "close/referential/agents?language=en",
+        "close/referential/agents",
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -140,7 +140,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "close/referential/agents/" + formData.id + "?language=en",
+        "close/referential/agents/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

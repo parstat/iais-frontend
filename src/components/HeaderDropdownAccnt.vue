@@ -41,7 +41,7 @@
         to="/login"
       >
         <CIcon name="cilUser"></CIcon>
-        <span>Login</span>
+        <span>{{ $t("user.login") }}</span>
       </router-link>
     </CHeaderNav>
   </div>

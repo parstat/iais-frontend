@@ -14,8 +14,13 @@ axiosAuth.interceptors.request.use(
   (config) => {
     store.dispatch("coreui/loading", true);
     const token = store.getters["auth/token"];
+    const language = store.getters["localization/locale"];
     if (token && !("jwt-auth" in config.headers)) {
       config.headers["jwt-auth"] = token;
+    }
+    if(language) {
+      config.params = config.params || {};
+      config.params['language'] = language;
     }
     return config;
   },
@@ -32,8 +37,14 @@ axiosIais.interceptors.request.use(
       value: true,
     });
     const token = store.getters["auth/token"];
+    const language = store.getters["localization/locale"];
+    console.log(language);
     if (token && !("jwt-auth" in config.headers)) {
       config.headers["jwt-auth"] = token;
+    }
+    if(language) {
+      config.params = config.params || {};
+      config.params['language'] = language;
     }
     return config;
   },

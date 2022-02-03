@@ -11,7 +11,7 @@ export const statisticalStandardService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/statistical/standards?language=en").then(
+    axiosIais.get("/referential/statistical/standards").then(
       (response) => {
         console.log(response.data);
         resolve(response.data);
@@ -26,7 +26,7 @@ function findAll() {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/statistical/standards/" + id + "?language=en")
+      .get("/referential/statistical/standards/" + id)
       .then(
         (response) => {
           var data = response.data ? response.data : null;
@@ -44,7 +44,7 @@ function findByName(search) {
   return new Promise((resolve, reject) => {
     axiosIais
       .get(
-        "/referential/statistical/standards/?name=" + search + "&language=en"
+        "/referential/statistical/standards/?name=" + search
       )
       .then(
         (response) => {
@@ -77,7 +77,7 @@ function save(formData) {
 
     axiosIais
       .post(
-        "close/referential/statistical/standards?language=en",
+        "close/referential/statistical/standards",
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -113,8 +113,7 @@ function update(formData) {
     axiosIais
       .patch(
         "close/referential/statistical/standards/" +
-          formData.id +
-          "?language=en",
+          formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

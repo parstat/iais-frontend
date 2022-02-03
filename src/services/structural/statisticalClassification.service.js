@@ -13,7 +13,7 @@ export const statisticalClassificationService = {
 function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/structural/OpenStatisticalClassifications?language=en")
+      .get("/structural/OpenStatisticalClassifications")
       .then(
         (response) => {
           console.log(response.data.statisticalClassifications);
@@ -61,8 +61,7 @@ function save(formData) {
     axiosIais
       .post(
         "/structural/ClosedStatisticalClassifications/" +
-          formData.localId +
-          "?language=en",
+          formData.localId,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -96,8 +95,7 @@ function update(formData) {
     axiosIais
       .patch(
         "/structural/ClosedStatisticalClassifications/" +
-          formData.id +
-          "?language=en",
+          formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

@@ -12,7 +12,7 @@ export const correspondenceService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenCorrespondence?language=en").then(
+    axiosIais.get("/structural/OpenCorrespondence").then(
       (response) => {
         console.log(response.data.correspondences);
         resolve(response.data.correspondences);
@@ -58,7 +58,7 @@ function save(formData) {
 
     axiosIais
       .post(
-        "/structural/ClosedCorrespondence/" + formData.localId + "?language=en",
+        "/structural/ClosedCorrespondence/" + formData.localId,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -91,7 +91,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "/structural/ClosedCorrespondence/" + formData.id + "?language=en",
+        "/structural/ClosedCorrespondence/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

@@ -12,7 +12,7 @@ export const businessFunctionService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/business/functions?language=en").then(
+    axiosIais.get("/referential/business/functions").then(
       (response) => {
         console.log(response.data);
         resolve(response.data);
@@ -27,7 +27,7 @@ function findAll() {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/business/functions/" + id + "?language=en")
+      .get("/referential/business/functions/" + id)
       .then(
         (response) => {
           var data = response.data ? response.data : null;
@@ -45,7 +45,7 @@ function findByLocalId(localId) {
   return new Promise((resolve, reject) => {
     axiosIais
       .get(
-        "/referential/business/functions/sub-phase/" + localId + "?language=en"
+        "/referential/business/functions/sub-phase/" + localId
       )
       .then(
         (response) => {
@@ -63,7 +63,7 @@ function findByLocalId(localId) {
 function findByName(search) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/business/functions/?name=" + search + "&language=en")
+      .get("/referential/business/functions/?name=" + search)
       .then(
         (response) => {
           //console.log(response.data);
@@ -93,8 +93,7 @@ function save(formData) {
     axiosIais
       .put(
         "close/referential/business/functions/" +
-          formData.localId +
-          "?language=en",
+          formData.localId,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -127,7 +126,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "close/referential/business/functions/" + formData.id + "?language=en",
+        "close/referential/business/functions/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

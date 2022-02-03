@@ -120,7 +120,7 @@ function register({ username, email, fullname, password }) {
 
     axiosAuth
       .post(
-        "/signup?language=ENG",
+        "/signup",
         new URLSearchParams(requestBody).toString(),
         config
       )

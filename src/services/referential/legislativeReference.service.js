@@ -11,7 +11,7 @@ export const legislativeReferenceService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/legislative/references?language=en").then(
+    axiosIais.get("/referential/legislative/references").then(
       (response) => {
         //console.log(response.data);
         resolve(response.data);
@@ -27,7 +27,7 @@ function findByName(search) {
   return new Promise((resolve, reject) => {
     axiosIais
       .get(
-        "/referential/legislative/references/?name=" + search + "&language=en"
+        "/referential/legislative/references/?name=" + search
       )
       .then(
         (response) => {
@@ -44,7 +44,7 @@ function findByName(search) {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/legislative/references/" + id + "?language=en")
+      .get("/referential/legislative/references/" + id)
       .then(
         (response) => {
           var data = response.data ? response.data : null;
@@ -77,7 +77,7 @@ function save(formData) {
 
     axiosIais
       .post(
-        "close/referential/legislative/references?language=en",
+        "close/referential/legislative/references",
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -113,8 +113,7 @@ function update(formData) {
     axiosIais
       .patch(
         "close/referential/legislative/references/" +
-          formData.id +
-          "?language=en",
+          formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

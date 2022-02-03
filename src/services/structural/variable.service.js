@@ -12,7 +12,7 @@ export const variableService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenVariables?language=en").then(
+    axiosIais.get("/structural/OpenVariables").then(
       (response) => {
         console.log(response.data.variables);
         resolve(response.data.variables);
@@ -58,7 +58,7 @@ function save(formData) {
 
     axiosIais
       .post(
-        "/structural/ClosedVariables" + formData.localId + "?language=en",
+        "/structural/ClosedVariables" + formData.localId,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -91,7 +91,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "/structural/ClosedVariables/" + formData.id + "?language=en",
+        "/structural/ClosedVariables/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

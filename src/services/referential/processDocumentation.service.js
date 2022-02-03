@@ -28,7 +28,7 @@ export const processDocumentationService = {
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/process/documentations/" + id + "?language=en")
+      .get("/referential/process/documentations/" + id)
       .then(
         (response) => {
           var data = response.data ? response.data : {};
@@ -48,8 +48,7 @@ function findLatest(statisticalProgram, businessFunction) {
         "/referential/process/documentations/program/" +
           statisticalProgram +
           "/function/" +
-          businessFunction +
-          "?language=en"
+          businessFunction
       )
       .then(
         (response) => {
@@ -67,7 +66,7 @@ function findByName(search) {
   return new Promise((resolve, reject) => {
     axiosIais
       .get(
-        "/referential/process/documentations/?name=" + search + "&language=en"
+        "/referential/process/documentations/?name=" + search
       )
       .then(
         (response) => {
@@ -102,8 +101,7 @@ function save(formData) {
         "close/referential/process/documentations/program/" +
           formData.statisticalProgram +
           "/function/" +
-          formData.businessFunction +
-          "?language=en",
+          formData.businessFunction,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -137,8 +135,7 @@ function update(formData) {
     axiosIais
       .patch(
         "close/referential/process/documentations/" +
-          formData.id +
-          "?language=en",
+          formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -161,8 +158,7 @@ function addStatisticalStandard(formData) {
         "close/referential/process/documentations/" +
           formData.id +
           "/standards/" +
-          formData.standard +
-          "?language=en"
+          formData.standard
       )
       .then(
         (response) => {
@@ -183,8 +179,7 @@ function removeStatisticalStandard(formData) {
         "close/referential/process/documentations/" +
           formData.id +
           "/standards/" +
-          formData.standard +
-          "?language=en"
+          formData.standard
       )
       .then(
         (response) => {
@@ -206,8 +201,7 @@ function addProcessMethod(formData) {
         "close/referential/process/documentations/" +
           formData.id +
           "/method/" +
-          formData.method +
-          "?language=en"
+          formData.method
       )
       .then(
         (response) => {
@@ -228,8 +222,7 @@ function removeProcessMethod(formData) {
         "close/referential/process/documentations/" +
           formData.id +
           "/method/" +
-          formData.method +
-          "?language=en"
+          formData.method
       )
       .then(
         (response) => {
@@ -251,8 +244,7 @@ function addBusinessService(formData) {
         "close/referential/process/documentations/" +
           formData.id +
           "/service/" +
-          formData.service +
-          "?language=en"
+          formData.service
       )
       .then(
         (response) => {
@@ -273,8 +265,7 @@ function removeBusinessService(formData) {
         "close/referential/process/documentations/" +
           formData.id +
           "/service/" +
-          formData.service +
-          "?language=en"
+          formData.service
       )
       .then(
         (response) => {
@@ -306,7 +297,7 @@ function addProcessInput(formData) {
       .post(
         "close/referential/process/documentations/" +
           formData.documentation +
-          "/inputs/?language=en",
+          "/inputs/",
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -329,8 +320,7 @@ function removeProcessInput(formData) {
         "close/referential/process/documentations/" +
           formData.documentation +
           "/inputs/" +
-          formData.input +
-          "?language=en"
+          formData.input
       )
       .then(
         (response) => {
@@ -362,7 +352,7 @@ function addProcessOutput(formData) {
       .post(
         "close/referential/process/documentations/" +
           formData.documentation +
-          "/outputs/?language=en",
+          "/outputs/",
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -385,8 +375,7 @@ function removeProcessOutput(formData) {
         "close/referential/process/documentations/" +
           formData.documentation +
           "/outputs/" +
-          formData.output +
-          "?language=en"
+          formData.output
       )
       .then(
         (response) => {
@@ -418,7 +407,7 @@ function addProcessQuality(formData) {
       .post(
         "close/referential/process/documentations/" +
           formData.documentation +
-          "/qualities/?language=en",
+          "/qualities/",
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -441,8 +430,7 @@ function removeProcessQuality(formData) {
         "close/referential/process/documentations/" +
           formData.documentation +
           "/qualities/" +
-          formData.quality +
-          "?language=en"
+          formData.quality
       )
       .then(
         (response) => {
@@ -476,7 +464,7 @@ function addProcessDocument(formData) {
       .post(
         "close/referential/process/documentations/" +
           formData.documentation +
-          "/documents/?language=en",
+          "/documents/",
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -499,8 +487,7 @@ function removeProcessDocument(formData) {
         "close/referential/process/documentations/" +
           formData.documentation +
           "/documents/" +
-          formData.document +
-          "?language=en"
+          formData.document
       )
       .then(
         (response) => {
@@ -521,8 +508,7 @@ function addMaintainer(formData) {
         "close/referential/process/documentations/" +
           formData.id +
           "/maintainer/" +
-          formData.maintainer +
-          "?language=en"
+          formData.maintainer
       )
       .then(
         (response) => {
@@ -543,8 +529,7 @@ function removeMaintainer(formData) {
         "close/referential/process/documentations/" +
           formData.id +
           "/maintainer/" +
-          formData.maintainer +
-          "?language=en"
+          formData.maintainer
       )
       .then(
         (response) => {

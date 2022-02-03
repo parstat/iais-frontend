@@ -11,7 +11,7 @@ export const processMethodService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/process/methods?language=en").then(
+    axiosIais.get("/referential/process/methods").then(
       (response) => {
         console.log(response.data);
         resolve(response.data);
@@ -26,7 +26,7 @@ function findAll() {
 function findByName(search) {
   return new Promise((resolve, reject) => {
     axiosIais
-      .get("/referential/process/methods/?name=" + search + "&language=en")
+      .get("/referential/process/methods/?name=" + search)
       .then(
         (response) => {
           //console.log(response.data);
@@ -41,7 +41,7 @@ function findByName(search) {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/referential/process/methods/" + id + "?language=en").then(
+    axiosIais.get("/referential/process/methods/" + id).then(
       (response) => {
         var data = response.data ? response.data : null;
         console.log(data);
@@ -71,7 +71,7 @@ function save(formData) {
 
     axiosIais
       .post(
-        "close/referential/process/methods?language=en",
+        "close/referential/process/methods",
         new URLSearchParams(requestBody).toString(),
         config
       )
@@ -104,7 +104,7 @@ function update(formData) {
 
     axiosIais
       .patch(
-        "close/referential/process/methods/" + formData.id + "?language=en",
+        "close/referential/process/methods/" + formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

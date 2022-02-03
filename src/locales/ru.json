@@ -25,6 +25,7 @@
         "please_enter_username": "Please enter your username.",
         "create_account": "Create Account",
         "login_page": " login page",
+        "login": "Логин",
         "validations": {
             "username_taken":  "Username already taken!",
             "email_invalid": "Please enter a valid email address.",

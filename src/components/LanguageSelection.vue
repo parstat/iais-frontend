@@ -20,5 +20,16 @@ export default {
       ],
     };
   },
+  watch: {
+    "$i18n.locale": function setLocle() {
+      this.setLoale();
+    },
+  },
+
+  methods: {
+    setLoale() {
+      this.$store.dispatch("localization/setLocale", this.$i18n.locale);
+    },
+  },
 };
 </script>

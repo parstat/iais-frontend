@@ -26,6 +26,7 @@
         "please_enter_username": "Please enter your username.",
         "create_account": "Create Account",
         "unauthorized": "You are not authorized to access this page.",
+        "login": "Login",
         "validations": {
             "username_taken":  "Username already taken!",
             "email_invalid": "Please enter a valid email address.",
