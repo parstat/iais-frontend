@@ -134,10 +134,10 @@ function update(formData) {
       type: formData.type,
       local_id: formData.localId,
     };
-    
-    if(formData.parent) {
+
+    if (formData.parent) {
       requestBody.parent = formData.parent;
-    };
+    }
 
     axiosIais
       .patch(
