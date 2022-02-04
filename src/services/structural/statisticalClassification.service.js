@@ -14,7 +14,7 @@ function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenStatisticalClassifications").then(
       (response) => {
-        console.log(response.data.statisticalClassifications);
+        //console.log(response.data.statisticalClassifications);
         resolve(response.data.statisticalClassifications);
       },
       (error) => {
@@ -31,7 +31,7 @@ function findById(id) {
         var data = response.data.statisticalClassification
           ? response.data.statisticalClassification
           : null;
-        console.log(data);
+        //console.log(data);
         resolve(data);
       },
       (error) => {

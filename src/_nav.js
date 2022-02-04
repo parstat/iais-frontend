@@ -19,13 +19,13 @@ export default [
     items: [
       {
         component: "CNavItem",
-        name: "Referential",
+        name: i18n.global.t("common.referential"),
         to: "/metadata/referential",
         icon: "cil-layers",
       },
       {
         component: "CNavItem",
-        name: "Structural",
+        name: i18n.global.t("common.structural"),
         to: "/metadata/structural",
         icon: "cil-layers",
       },

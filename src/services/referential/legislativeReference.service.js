@@ -42,7 +42,7 @@ function findById(id) {
     axiosIais.get("/referential/legislative/references/" + id).then(
       (response) => {
         var data = response.data ? response.data : null;
-        console.log(data);
+        //console.log(data);
         resolve(data);
       },
       (error) => {

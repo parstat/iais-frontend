@@ -38,7 +38,6 @@ axiosIais.interceptors.request.use(
     });
     const token = store.getters["auth/token"];
     const language = store.getters["localization/locale"];
-    console.log(language);
     if (token && !("jwt-auth" in config.headers)) {
       config.headers["jwt-auth"] = token;
     }

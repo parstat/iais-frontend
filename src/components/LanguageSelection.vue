@@ -21,13 +21,13 @@ export default {
     };
   },
   watch: {
-    "$i18n.locale": function setLocle() {
-      this.setLoale();
+    "$i18n.locale": function setLocale() {
+      this.setLocale();
     },
   },
 
   methods: {
-    setLoale() {
+    setLocale() {
       this.$store.dispatch("localization/setLocale", this.$i18n.locale);
       window.location.reload(); //reload page to get also translated data
     },

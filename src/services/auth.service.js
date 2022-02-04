@@ -54,7 +54,7 @@ function login({ username, password }) {
       .post("/signin", new URLSearchParams(requestBody).toString(), config)
       .then(
         (response) => {
-          console.log(response);
+          //console.log(response);
           const token = response.headers["jwt-auth"];
           const data = {
             token: token,
@@ -122,7 +122,7 @@ function register({ username, email, fullname, password }) {
       .post("/signup", new URLSearchParams(requestBody).toString(), config)
       .then(
         (response) => {
-          console.log(response);
+          //console.log(response);
           const token = response.headers["jwt-auth"];
           const data = {
             token: token,

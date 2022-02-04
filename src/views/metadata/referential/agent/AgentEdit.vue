@@ -136,7 +136,7 @@ export default {
           name: this.agent.name,
           description: this.agent.description,
           type: this.agent.type,
-          parent: this.agent.parent.id,
+          parent: this.agent.parent ? this.agent.parent.id : false,
           localId: this.agent.localId,
         };
         this.$store.dispatch("agent/update", formData);

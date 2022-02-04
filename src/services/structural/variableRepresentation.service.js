@@ -13,7 +13,7 @@ function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenVariables").then(
       (response) => {
-        console.log(response.data.variables);
+        //console.log(response.data.variables);
         resolve(response.data.variables);
       },
       (error) => {
@@ -30,7 +30,7 @@ function findById(id) {
         var data = response.data.representedVariable
           ? response.data.representedVariable
           : null;
-        console.log(data);
+        //console.log(data);
         resolve(data);
         //console.log(response.data.variable);
         //resolve(response.data.variable);

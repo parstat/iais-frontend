@@ -15,7 +15,7 @@ function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/referential/agents").then(
       (response) => {
-        console.log(response.data);
+        //console.log(response.data);
         resolve(response.data);
       },
       (error) => {
@@ -30,7 +30,7 @@ function findById(id) {
     axiosIais.get("/referential/agents/" + id).then(
       (response) => {
         var data = response.data ? response.data : null;
-        console.log(data);
+        //console.log(data);
         resolve(data);
       },
       (error) => {
@@ -45,7 +45,7 @@ function findByType(type) {
     axiosIais.get("/referential/agents/?type=" + type).then(
       (response) => {
         var data = response.data ? response.data : [];
-        console.log(data);
+        //console.log(data);
         resolve(data);
       },
       (error) => {
@@ -59,7 +59,7 @@ function findByName(name) {
     axiosIais.get("/referential/agents/?name=" + name).then(
       (response) => {
         var data = response.data ? response.data : [];
-        console.log(data);
+        //console.log(data);
         resolve(data);
       },
       (error) => {
@@ -73,7 +73,7 @@ function findByNameAndType(name, type) {
     axiosIais.get("/referential/agents/?name=" + name + "&type=" + type).then(
       (response) => {
         var data = response.data ? response.data : [];
-        console.log(data);
+        //console.log(data);
         resolve(data);
       },
       (error) => {
@@ -132,8 +132,11 @@ function update(formData) {
       name: formData.name,
       description: formData.description,
       type: formData.type,
-      parent: formData.parent,
       local_id: formData.localId,
+    };
+    
+    if(formData.parent) {
+      requestBody.parent = formData.parent;
     };
 
     axiosIais

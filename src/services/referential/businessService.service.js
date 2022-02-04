@@ -13,7 +13,7 @@ function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/referential/business/services").then(
       (response) => {
-        console.log(response.data);
+        //console.log(response.data);
         resolve(response.data);
       },
       (error) => {
@@ -28,7 +28,7 @@ function findById(id) {
     axiosIais.get("/referential/business/services/" + id).then(
       (response) => {
         var data = response.data ? response.data : null;
-        console.log(data);
+        //console.log(data);
         resolve(data);
       },
       (error) => {

@@ -13,7 +13,7 @@ function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenUnitTypes").then(
       (response) => {
-        console.log(response.data.unitTypes);
+        //console.log(response.data.unitTypes);
         resolve(response.data.unitTypes);
       },
       (error) => {
@@ -27,7 +27,7 @@ function findById(id) {
     axiosIais.get("/structural/OpenUnitTypes/" + id).then(
       (response) => {
         var data = response.data.unitType ? response.data.unitType : null;
-        console.log(data);
+        //console.log(data);
         resolve(data);
       },
       (error) => {
