@@ -1,40 +1,52 @@
 {
     "common": {
+        "home": "Acasă",
         "metadata": "Metadate",
         "referential": "Referenţială",
-        "structural": "Structurale",
+        "structural": "Structural",
         "process": "Proces",
-        "referential_metadata": "Metadate Referenţială",
-        "parstat_project": "Parstat project",
-        "go_to": "Please go to",
-        "error_occurred": "An error occurred, please contact IAIS administrator",
-        "error_message": "Error message: ",
-        "goto_homepage": "Go to homepage"
+        "referential_metadata_header": "Metadate de referință",
+        "referential_metadata_text": "Această secțiune conține lista proceselor documentate conform standardului GSBPM.",
+        "referential_metadata_link": "Accesați secțiunea de metadate referențiale",
+        "structural_metadata_header": "Metadate structurale",
+        "structural_metadata_text": "Această secțiune conține metadatele structurale ale fiecărui sondaj documentat în sistem.",
+        "structural_metadata_link": "Accesați secțiunea de metadate structurale",
+        "process_metadata_header": "Procesează metadatele",
+        "process_metadata_text": "Această secțiune conține metadatele de proces ale fiecărui sondaj documentat în sistem.",
+        "process_metadata_link": "Accesați secțiunea de procesare a metadatelor",
+        "parstat_project": "Proiectul Parstat",
+        "go_to": "Te rog du-te la",
+        "error_occurred": "A apărut o eroare, vă rugăm să contactați administratorul IAIS",
+        "error_message": "Mesaj de eroare: ",
+        "goto_homepage": "Mergi la pagina principală"
     },
     "user": {
-        "profile": "Profile",
-        "settings": "Settings",
-        "logout": "Logout",
-        "signin": "Sign in",
-        "signin_to_iais": "Sign in to IAIS",
-        "username": "Username",
-        "password": "Password",
-        "register": "Create an account",
-        "register_to_iais": "Register to IAIS",
-        "new": "New to IAIS?",
-        "login_page": " login page",
-        "please_enter_username": "Please enter your username.",
-        "create_account": "Create Account",
+        "profile": "Profil",
+        "settings": "Setări",
+        "logout": "Deconectare",
+        "signin": "Conectare",
+        "signin_to_iais": "Conectați-vă la IAIS",
+        "username": "Nume de utilizator",
+        "fullname": "Numele complet",
+        "password": "Parola",
+        "confirmpassword": "Repetă parola",
+        "register": "Creați un cont",
+        "register_to_iais": "Înregistrați-vă la IAIS",
+        "new": "Nou la IAIS?",
+        "login_page": " pagină de conectare",
+        "please_enter_username": "Vă rugăm să introduceți numele dvs. de utilizator.",
+        "create_account": "Creează cont",
+        "unauthorized": "Nu ești autorizat să accesezi această pagină.",
         "login": "Autentificare",
         "validations": {
-            "username_taken":  "Username already taken!",
-            "email_invalid": "Please enter a valid email address.",
-            "name_invalid": "Please enter a valid name",
-            "password_invalid": "Password should contain at least 6 characters.",
-            "password_no_match": "Passwords are different."
+            "username_taken":  "Nume de utilizator deja luat!",
+            "email_invalid": "Te rog introdu o adresă de email validă.",
+            "name_invalid": "Vă rugăm să introduceți un nume valid.",
+            "password_invalid": "Parola trebuie să conțină cel puțin 6 caractere.",
+            "password_no_match": "Parolele sunt diferite."
         }
     },
     "header": {
-        "gsim_objects": "GSIM info objects"
+        "gsim_objects": "Obiecte de informații GSIM"
     }
 }

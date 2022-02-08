@@ -3,7 +3,7 @@ import i18n from "./i18n";
 export default [
   {
     component: "CNavItem",
-    name: "Home",
+    name: i18n.global.t("common.home"),
     to: "/",
     icon: "cil-speedometer",
     badge: {
@@ -31,7 +31,7 @@ export default [
       },
       {
         component: "CNavItem",
-        name: "Process",
+        name: i18n.global.t("common.process"),
         to: "/metadata/process",
         icon: "cil-layers",
       },

@@ -45,7 +45,7 @@
                     </div>
                   </div>
                   <input
-                    type="text"
+                    type="email"
                     class="form-control"
                     :class="{ 'is-invalid': v$.email.$error }"
                     placeholder="Email"
@@ -65,7 +65,7 @@
                     type="text"
                     class="form-control"
                     :class="{ 'is-invalid': v$.fullname.$error }"
-                    placeholder="Full name"
+                    :placeholder="$t('user.fullname')"
                     v-model.trim="fullname"
                   />
                   <span
@@ -84,8 +84,8 @@
                     type="password"
                     class="form-control"
                     :class="{ 'is-invalid': v$.password.$error }"
-                    placeholder="Password"
-                    v-model="password"
+                    :placeholder="$t('user.password')"
+                    v-model.trim="password"
                   />
                   <span
                     class="help-block"
@@ -102,14 +102,14 @@
                   <input
                     type="password"
                     class="form-control"
-                    :class="{ 'is-invalid': v$.confirmPassword.$error }"
-                    placeholder="Repeat password"
-                    @input="v$.confirmPassword.$touch()"
-                    v-model="confirmPassword"
+                    :class="{ 'is-invalid': v$.confirmpassword.$error }"
+                    :placeholder="$t('user.confirmpassword')"
+                    @input="v$.confirmpassword.$touch()"
+                    v-model.trim="confirmpassword"
                   />
                   <span
                     class="help-block"
-                    :class="{ show: v$.confirmPassword.$error }"
+                    :class="{ show: v$.confirmpassword.$error }"
                     >{{ $t("user.validations.passwords_no_match") }}</span
                   >
                 </div>
@@ -142,7 +142,7 @@ export default {
       email: "",
       fullname: "",
       password: "",
-      confirmPassword: "",
+      confirmpassword: "",
     };
   },
   computed: {
@@ -169,7 +169,7 @@ export default {
       required,
       minLen: minLength(6),
     },
-    confirmPassword: {
+    confirmpassword: {
       sameAs: sameAs("password"),
     },
   },

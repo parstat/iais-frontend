@@ -15,7 +15,7 @@ export default {
     return {
       langs: [
         { value: "en", label: "English" },
-        { value: "ro", label: "Romana" },
+        { value: "ro", label: "Română" },
         { value: "ru", label: "Русский" },
       ],
     };

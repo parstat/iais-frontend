@@ -1,10 +1,19 @@
 {
     "common": {
+        "home": "Home",
         "metadata": "Metadata",
         "referential": "Referential",
         "structural": "Structural",
         "process": "Process",
-        "referential_metadata": "Referential Metadata",
+        "referential_metadata_header": "Referential metadata",
+        "referential_metadata_text": "This section contains the list of processes documented according to GSBPM standard.",
+        "referential_metadata_link": "Go to referential metadata section",
+        "structural_metadata_header": "Structural metadata",
+        "structural_metadata_text": "This section contains the structural metadata of each survey documented in the system.",
+        "structural_metadata_link": "Go to structural metadata section",
+        "process_metadata_header": "Process metadata",
+        "process_metadata_text": "This section contains the process metadata of each survey documented in the system.",
+        "process_metadata_link": "Go to process metadata section",
         "parstat_project": "Parstat project",
         "go_to": "Please go to",
         "error_occurred": "An error occurred, please contact IAIS administrator",
@@ -18,23 +27,24 @@
         "signin": "Sign in",
         "signin_to_iais": "Sign in to IAIS",
         "username": "Username",
+        "fullname": "Full name",
         "password": "Password",
+        "confirmpassword": "Repeat password",
         "register": "Create an account",
         "register_to_iais": "Register to IAIS",
         "new": "New to IAIS?",
         "login_page": " login page",
         "please_enter_username": "Please enter your username.",
-        "create_account": "Create Account",
+        "create_account": "Create account",
         "unauthorized": "You are not authorized to access this page.",
         "login": "Login",
         "validations": {
             "username_taken":  "Username already taken!",
             "email_invalid": "Please enter a valid email address.",
-            "name_invalid": "Please enter a valid name",
+            "name_invalid": "Please enter a valid name.",
             "password_invalid": "Password should contain at least 6 characters.",
             "password_no_match": "Passwords are different."
         }
-        
     },
     "header": {
         "gsim_objects": "GSIM info objects"

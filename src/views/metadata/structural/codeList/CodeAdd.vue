@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <CRow>
     <div class="col-sm-12 col-md-6">
       <div class="card">
         <header class="card-header">
@@ -78,7 +78,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </CRow>
 </template>
 <script>
 //import { mapGetters } from "vuex";
