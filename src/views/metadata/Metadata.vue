@@ -3,12 +3,11 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          {{ $t("common.referential_metadata") }}
+          {{ $t("common.referential_metadata_header") }}
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            This section contains the list of processes documented according to
-            GSBPM standard
+            {{ $t("common.referential_metadata_text") }}
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
@@ -19,7 +18,7 @@
                 tag="a"
                 :to="{ name: 'StatisticalProgramList' }"
                 ><span class="icon-span"
-                  >Go to referential metadata section </span
+                  >{{ $t("common.referential_metadata_link") }}&nbsp;</span
                 ><CIcon name="cil-arrow-right"
               /></router-link>
             </span>
@@ -30,12 +29,11 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          Structural metadata
+          {{ $t("common.structural_metadata_header") }}
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            This section contains the structural metadata of each survey
-            documented in the system.
+            {{ $t("common.structural_metadata_text") }}
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
@@ -44,7 +42,8 @@
               tag="a"
               class="text-decoration-none text-primary"
               :to="{ name: 'StructuralComponents' }"
-              ><span class="icon-span">Go to structural metadata section </span
+              ><span class="icon-span">
+                {{ $t("common.structural_metadata_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
@@ -54,17 +53,17 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          Process metadata
+          {{ $t("common.process_metadata_header") }}
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            This section contains the process metadata of each survey documented
-            in the system.
+            {{ $t("common.process_metadata_text") }}
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
           <CButton disabled>
-            <span class="icon-span">Go to process metadata section</span>
+            <span class="icon-span">
+              {{ $t("common.process_metadata_link") }}&nbsp;</span>
             <CIcon name="cil-arrow-right" />
           </CButton>
         </CCardFooter>
