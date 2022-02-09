@@ -63,7 +63,8 @@
         <CCardFooter class="bg-white">
           <CButton disabled>
             <span class="icon-span">
-              {{ $t("common.process_metadata_link") }}&nbsp;</span>
+              {{ $t("common.process_metadata_link") }}&nbsp;</span
+            >
             <CIcon name="cil-arrow-right" />
           </CButton>
         </CCardFooter>

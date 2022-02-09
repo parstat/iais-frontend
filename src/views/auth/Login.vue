@@ -55,7 +55,8 @@
                 </CRow>
                 <CRow>
                   <CCol col="12" class="register">
-                    <span>{{ $t("user.new")}}</span>&nbsp;
+                    <span>{{ $t("user.new") }}</span
+                    >&nbsp;
                     <router-link tag="a" to="/register">{{
                       $t("user.register")
                     }}</router-link>
