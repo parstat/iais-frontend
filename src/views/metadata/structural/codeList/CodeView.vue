@@ -54,7 +54,7 @@
                     <router-link
                       tag="a"
                       :to="{
-                        name: 'CodeItemsView',
+                        name: 'CodeView',
                         params: { id: code.id },
                       }"
                     >
@@ -97,7 +97,7 @@ export default {
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/code");
+      this.$router.push("/metadata/structural/codelist");
     },
   },
   created() {

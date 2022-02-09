@@ -395,43 +395,43 @@ const routes = [
       },
       /* Variable */
       {
-        path: "metadata/structural/variable/",
+        path: "metadata/structural/variables/",
         name: "StructuralVariableList",
         component: () =>
-          import("@/views/metadata/structural/variable/VariableList"),
+          import("@/views/metadata/structural/variables/VariableList"),
         meta: { authorize: [] },
       },
       {
-        path: "metadata/structural/variable/add",
+        path: "metadata/structural/variables/add",
         name: "VariableAdd",
         component: () =>
-          import("@/views/metadata/structural/variable/VariableAdd"),
+          import("@/views/metadata/structural/variables/VariableAdd"),
         meta: { authorize: [Role.User, Role.Admin] },
       },
       {
-        path: "metadata/structural/variable/view/:id",
+        path: "metadata/structural/variables/view/:id",
         name: "VariableView",
         component: () =>
-          import("@/views/metadata/structural/variable/VariableView"),
+          import("@/views/metadata/structural/variables/VariableView"),
         meta: { authorize: [] },
       },
       {
-        path: "metadata/structural/variable/edit/:id",
+        path: "metadata/structural/variables/edit/:id",
         name: "VariableEdit",
         component: () =>
-          import("@/views/metadata/structural/variable/VariableEdit"),
+          import("@/views/metadata/structural/variables/VariableEdit"),
         meta: { authorize: [Role.User, Role.Admin] },
       },
       {
-        path: "metadata/structural/variable/delete/:id",
+        path: "metadata/structural/variables/delete/:id",
         name: "VariableDelete",
         component: () =>
-          import("@/views/metadata/structural/variable/VariableDelete"),
+          import("@/views/metadata/structural/variables/VariableDelete"),
         meta: { authorize: [Role.User, Role.Admin] },
       },
       //* Variable Representations View*/
       {
-        path: "metadata/structural/variable/representation/view/:id",
+        path: "metadata/structural/variables/representations/view/:id",
         name: "VariableRepresentationsView",
         component: () =>
           import(
@@ -441,7 +441,7 @@ const routes = [
       },
       //* Statistical Classifications */
       {
-        path: "metadata/structural/statisticalClassifications/",
+        path: "metadata/structural/classifications/",
         name: "StructuralStatisticalClassificationsList",
         component: () =>
           import(
@@ -451,7 +451,7 @@ const routes = [
       },
       //Statistical Classifications View
       {
-        path: "metadata/structural/statisticalClassifications/view/:id",
+        path: "metadata/structural/classifications/view/:id",
         name: "StatisticalClassificationView",
         component: () =>
           import(
@@ -461,7 +461,7 @@ const routes = [
       },
       //* Code List */
       {
-        path: "metadata/structural/code/",
+        path: "metadata/structural/codelist/",
         name: "StructuralCodeList",
         component: () =>
           import("@/views/metadata/structural/codeList/CodeList"),
@@ -469,14 +469,14 @@ const routes = [
       },
       //Code Add
       {
-        path: "metadata/structural/code/add",
+        path: "metadata/structural/codelist/add",
         name: "CodeAdd",
         component: () => import("@/views/metadata/structural/codeList/CodeAdd"),
         meta: { authorize: [Role.User, Role.Admin] },
       },
       //Code View
       {
-        path: "metadata/structural/code/view/:id",
+        path: "metadata/structural/codelist/view/:id",
         name: "CodeView",
         component: () =>
           import("@/views/metadata/structural/codeList/CodeView"),
@@ -485,7 +485,7 @@ const routes = [
       // *Correspondence Tables
       // Correspondence Table List
       {
-        path: "metadata/structural/correspondence/",
+        path: "metadata/structural/correspondences/",
         name: "CorrespondenceTableList",
         component: () =>
           import(
@@ -495,7 +495,7 @@ const routes = [
       },
       // Correspondence Table View
       {
-        path: "metadata/structural/correspondence/view/:id",
+        path: "metadata/structural/correspondences/view/:id",
         name: "CorrespondenceTableView",
         component: () =>
           import(

@@ -69,7 +69,7 @@ const actions = {
         dispatch("message/success", "Variable saved!", {
           root: true,
         });
-        router.push("/metadata/structural/variable");
+        router.push("/metadata/structural/variables");
       },
       (error) => {
         console.log(error);
@@ -83,7 +83,7 @@ const actions = {
         dispatch("message/success", "Variable deleted!", {
           root: true,
         });
-        router.push("/metadata/structuralal/variable");
+        router.push("/metadata/structuralal/variables");
       },
       (error) => {
         console.log(error);
@@ -97,7 +97,7 @@ const actions = {
         dispatch("message/success", "Variable updated!", {
           root: true,
         });
-        router.push("/metadata/structuralal/variable");
+        router.push("/metadata/structuralal/variables");
       },
       (error) => {
         console.log(error);

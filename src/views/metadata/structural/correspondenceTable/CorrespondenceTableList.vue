@@ -13,7 +13,7 @@
                   <router-link
                     v-if="isAuthenticated"
                     tag="a"
-                    to="/metadata/structural/correspondence/add"
+                    to="/metadata/structural/correspondences/add"
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />

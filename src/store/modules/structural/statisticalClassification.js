@@ -71,7 +71,7 @@ const actions = {
         dispatch("message/success", "Statistical Classification saved!", {
           root: true,
         });
-        router.push("/metadata/structuralal/statisticalClassification");
+        router.push("/metadata/structuralal/classifications");
       },
       (error) => {
         console.log(error);
@@ -85,7 +85,7 @@ const actions = {
         dispatch("message/success", "Statistical Classification deleted!", {
           root: true,
         });
-        router.push("/metadata/structuralal/statisticalClassification");
+        router.push("/metadata/structuralal/classifications");
       },
       (error) => {
         console.log(error);
@@ -99,7 +99,7 @@ const actions = {
         dispatch("message/success", "Statistical Classification updated!", {
           root: true,
         });
-        router.push("/metadata/structuralal/statisticalClassification");
+        router.push("/metadata/structuralal/classifications");
       },
       (error) => {
         console.log(error);

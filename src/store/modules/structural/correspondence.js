@@ -67,7 +67,7 @@ const actions = {
         dispatch("message/success", "Correspondence saved!", {
           root: true,
         });
-        router.push("/metadata/structuralal/correspondence");
+        router.push("/metadata/structuralal/correspondences");
       },
       (error) => {
         console.log(error);
@@ -81,7 +81,7 @@ const actions = {
         dispatch("message/success", "Correspondence deleted!", {
           root: true,
         });
-        router.push("/metadata/structuralal/correspondence");
+        router.push("/metadata/structuralal/correspondences");
       },
       (error) => {
         console.log(error);
@@ -95,7 +95,7 @@ const actions = {
         dispatch("message/success", "Correspondence updated!", {
           root: true,
         });
-        router.push("/metadata/structuralal/correspondence");
+        router.push("/metadata/structuralal/correspondences");
       },
       (error) => {
         console.log(error);

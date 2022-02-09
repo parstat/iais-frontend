@@ -69,7 +69,7 @@ const actions = {
         dispatch("message/success", "Code saved!", {
           root: true,
         });
-        router.push("/metadata/structuralal/code");
+        router.push("/metadata/structuralal/codelist");
       },
       (error) => {
         console.log(error);
@@ -83,7 +83,7 @@ const actions = {
         dispatch("message/success", "Code deleted!", {
           root: true,
         });
-        router.push("/metadata/structuralal/code");
+        router.push("/metadata/structuralal/codelist");
       },
       (error) => {
         console.log(error);
@@ -97,7 +97,7 @@ const actions = {
         dispatch("message/success", "Code updated!", {
           root: true,
         });
-        router.push("/metadata/structuralal/code");
+        router.push("/metadata/structuralal/codelist");
       },
       (error) => {
         console.log(error);
