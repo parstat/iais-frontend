@@ -30,6 +30,18 @@
             </div>
           </fieldset>
           <div class="mb-3">
+            <CFormLabel for="name">Documentation name*</CFormLabel>
+            <CFormInput
+              id="name"
+              placeholder="Documentation name"
+              class="form-control"
+              :class="{
+                'is-invalid': v$.processDocumentation.name.$error,
+              }"
+              v-model="processDocumentation.name"
+            />
+          </div>
+          <div class="mb-3">
             <CFormLabel for="description"
               >Documentation description*</CFormLabel
             >
@@ -41,12 +53,12 @@
               :class="{
                 'is-invalid': v$.processDocumentation.description.$error,
               }"
-              placeholder="Survey description"
+              placeholder="Documentation description"
               v-model.trim="processDocumentation.description"
             />
           </div>
           <div class="mb-3">
-            <CFormLabel for="frequency">Documentation description*</CFormLabel>
+            <CFormLabel for="frequency">Frequency*</CFormLabel>
             <v-select
               label="frequency"
               :options="frequencies"
@@ -139,6 +151,9 @@ export default {
   },
   validations: {
     processDocumentation: {
+      name: {
+        required,
+      },
       description: {
         required,
       },

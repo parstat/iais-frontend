@@ -180,6 +180,19 @@
                             >
                           </div>
                           <div class="form-group">
+            <CFormLabel for="name">Documentation name*</CFormLabel>
+            <CFormInput
+              id="name"
+              placeholder="Documentation name"
+              class="form-control"
+              :class="{
+                'is-invalid': v$.name.$error,
+              }"
+              v-model="name"
+            />
+                          </div>
+
+                          <div class="form-group">
                             <label for="description"
                               >Documentation description*</label
                             >
@@ -189,7 +202,7 @@
                               type="text"
                               class="form-control"
                               :class="{ 'is-invalid': v$.description.$error }"
-                              placeholder="Survey description"
+                              placeholder="Doumentation description"
                               v-model.trim="description"
                             />
                             <span
@@ -334,6 +347,9 @@ export default {
     },
   },
   validations: {
+    name: {
+      required,
+    },
     description: {
       required,
     },
