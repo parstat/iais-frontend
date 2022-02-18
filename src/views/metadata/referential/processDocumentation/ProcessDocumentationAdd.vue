@@ -180,16 +180,18 @@
                             >
                           </div>
                           <div class="form-group">
-            <CFormLabel for="name">Documentation name*</CFormLabel>
-            <CFormInput
-              id="name"
-              placeholder="Documentation name"
-              class="form-control"
-              :class="{
-                'is-invalid': v$.name.$error,
-              }"
-              v-model="name"
-            />
+                            <CFormLabel for="name"
+                              >Documentation name*</CFormLabel
+                            >
+                            <CFormInput
+                              id="name"
+                              placeholder="Documentation name"
+                              class="form-control"
+                              :class="{
+                                'is-invalid': v$.name.$error,
+                              }"
+                              v-model="name"
+                            />
                           </div>
 
                           <div class="form-group">
