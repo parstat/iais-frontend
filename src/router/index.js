@@ -117,6 +117,15 @@ const routes = [
         meta: { authorize: [Role.User, Role.Admin] },
       },
       {
+        path: "metadata/referential/documentation/delete/:id",
+        name: "ProcessDocumentationDelete",
+        component: () =>
+          import(
+            "@/views/metadata/referential/processDocumentation/ProcessDocumentationDelete"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
+      {
         path: "metadata/referential/gsim",
         name: "ReferentialGsimConcepts",
         component: () => import("@/views/metadata/referential/GsimConcepts"),
