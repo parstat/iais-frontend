@@ -15,6 +15,8 @@
         "process_metadata_text": "Această secțiune conține metadatele de proces ale fiecărui sondaj documentat în sistem.",
         "process_metadata_link": "Accesați secțiunea de procesare a metadatelor",
         "parstat_project": "Proiectul Parstat",
+        "powered_by": "Produs de",
+        "coreui_for_vue": "CoreUI pentru Vue",
         "go_to": "Te rog du-te la",
         "error_occurred": "A apărut o eroare, vă rugăm să contactați administratorul IAIS",
         "error_message": "Mesaj de eroare: ",
@@ -27,6 +29,7 @@
         "signin": "Conectare",
         "signin_to_iais": "Conectați-vă la IAIS",
         "username": "Nume de utilizator",
+        "email": "Adresa de e-mail",
         "fullname": "Numele complet",
         "password": "Parola",
         "confirmpassword": "Repetă parola",
@@ -48,5 +51,25 @@
     },
     "header": {
         "gsim_objects": "Obiecte de informații GSIM"
+    },
+    "process": {
+        "business_processes_header": "Procesele de afaceri"
+    },
+    "referential": {
+        "statistical_processes": "Procese statistice",
+        "add": "Adăuga",
+        "localId": "Id",
+        "name": "Numele sondajului",
+        "acronym": "Acronim",
+        "description": "Descriere",
+        "owner": "Proprietar",
+        "maintainer": "Întreținător",
+        "contact": "Contact",
+        "actions": "Acțiuni",
+        "basic": "De bază",
+        "agents": "Agenți",
+        "legislative_reference": "Referință legislativă",
+        "statistical_standards": "Standarde statistice",
+        "process_documentation": "Documentația procesului"
     }
 }

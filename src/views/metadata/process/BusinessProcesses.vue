@@ -1,10 +1,12 @@
 <template>
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="card">
-        <header class="card-header">Business processes</header>
-        <div class="card-body">Buh!</div>
-      </div>
-    </div>
-  </div>
+  <CRoW class="col-sm-6 col-md-4">
+    <CCard>
+      <CCardHeader>
+        {{ $t("process.business_processes_header") }}
+      </CCardHeader>
+      <CCardBody>
+        <CCardText>Buh!</CCardText>
+      </CCardBody>
+    </CCard>
+  </CRow>
 </template>

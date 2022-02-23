@@ -30,7 +30,6 @@
                 v-if="variables.length"
                 :items="variables"
                 :columns="columns"
-                tableFilter
                 columnFilter
                 itemsPerPageSelect
                 :itemsPerPage="5"

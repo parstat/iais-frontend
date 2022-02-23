@@ -5,7 +5,9 @@
         <CCardBody>
           <CRow>
             <CCol class="col-9">
-              <CCardTitle> Statistical processes </CCardTitle>
+              <CCardTitle>
+                {{ $t("referential.statistical_processes") }}
+              </CCardTitle>
             </CCol>
             <CCol class="col-3">
               <CNav class="justify-content-end" v-if="isAuthenticated">
@@ -17,8 +19,7 @@
                       tag="a"
                       to="/metadata/referential/add"
                     >
-                      <CIcon name="cil-plus" />
-                      Add
+                      <CIcon name="cil-plus" />{{ $t("referential.add") }}
                     </router-link>
                   </span>
                 </CNavItem>
@@ -31,7 +32,6 @@
               :items="viewStatisticalPrograms"
               :columns="columns"
               column-filter
-              table-filter
               items-per-page-select
               :items-per-page="5"
               columnSorter
@@ -94,35 +94,35 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("referential.localId"),
         },
         {
           key: "name",
-          label: "Survey name",
+          label: this.$i18n.t("referential.name"),
         },
         {
           key: "acronym",
-          label: "Acronym",
+          label: this.$i18n.t("referential.acronym"),
         },
         {
           key: "description",
-          label: "Description",
+          label: this.$i18n.t("referential.description"),
         },
         {
           key: "owner",
-          label: "Owner",
+          label: this.$i18n.t("referential.owner"),
         },
         {
           key: "maintainer",
-          label: "Maintainer",
+          label: this.$i18n.t("referential.maintainer"),
         },
         {
           key: "contact",
-          label: "Contact",
+          label: this.$i18n.t("referential.contact"),
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("referential.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,

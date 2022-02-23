@@ -15,6 +15,8 @@
         "process_metadata_text": "Этот раздел содержит метаданные процесса каждого опроса, задокументированного в системе.",
         "process_metadata_link": "Перейти к разделу обработки метаданных",
         "parstat_project": "Parstat проект",
+        "powered_by": "Работает на",
+        "coreui_for_vue": "CoreUI для Vue",
         "go_to": "Пожалуйста, перейдите к",
         "error_occurred": "Произошла ошибка, обратитесь к администратору IAIS",
         "error_message": "Сообщение об ошибке: ",
@@ -27,6 +29,7 @@
         "signin": "Войти",
         "signin_to_iais": "Войти в IAIS",
         "username": "Имя пользователя",
+        "email": "Адрес электронной почты",
         "fullname": "Полное имя",
         "password": "Пароль",
         "confirmpassword": "Повторите пароль",
@@ -48,5 +51,25 @@
     },
     "header": {
         "gsim_objects": "Информационные объекты GSIM"
+    },
+    "process": {
+        "business_processes_header": "Деловые процессы"
+    },
+    "referential": {
+        "statistical_processes": "Статистические процессы",
+        "add": "Добавлять",
+        "localId": "Ид",
+        "name": "Название опроса",
+        "acronym": "Акроним",
+        "description": "Описание",
+        "owner": "Владелец",
+        "maintainer": "Сопровождающий",
+        "contact": "Контакт",
+        "actions": "Действия",
+        "basic": "Базовый",
+        "agents": "Агенты",
+        "legislative_reference": "Законодательная ссылка",
+        "statistical_standards": "Статистические стандарты",
+        "process_documentation": "Технологическая документация"
     }
 }

@@ -34,7 +34,6 @@
               :items="correspondence.mappings"
               :columns="columns"
               column-filter
-              table-filter
               items-per-page-select
               :items-per-page="5"
               hover

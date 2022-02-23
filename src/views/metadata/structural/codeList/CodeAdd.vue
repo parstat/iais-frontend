@@ -1,83 +1,79 @@
 <template>
-  <CRow>
-    <div class="col-sm-12 col-md-6">
-      <div class="card">
-        <header class="card-header">
-          <strong>Code</strong>
-        </header>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="name">Name*</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control"
-              :class="{ 'is-invalid': v$.name.$error }"
-              placeholder="Code name"
-              v-model.trim="form.name"
-            />
-            <span class="help-block" :class="{ show: v$.name.$error }"
-              >Please enter variable name.</span
-            >
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control"
-              placeholder="Code description"
-              v-model.trim="form.description"
-            />
-            <span class="help-block">Please enter a description</span>
-          </div>
-          <div class="form-group">
-            <label for="definition">Language</label>
-            <input
-              id="language"
-              type="text"
-              class="form-control"
-              placeholder="Code language"
-              v-model.trim="form.language"
-            />
-            <span class="help-block">Please enter a language</span>
-          </div>
-          <div class="form-group">
-            <label for="localId">Local id*</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control capitalize"
-              :class="{ 'is-invalid': v$.localId.$error }"
-              placeholder="Local id"
-              v-model.trim="form.localId"
-            />
-            <span class="help-block" :class="{ show: v$.localId.$error }"
-              >Please specify a local id.</span
-            >
-          </div>
-          <div class="form-mandatory">*Mandatory fields</div>
-        </div>
-        <div class="card-footer">
-          <CButton
-            color="primary"
-            size="sm"
-            style="margin-right: 0.3rem"
-            @click.prevent="Submit()"
-            :disabled="disabled"
-            >Save</CButton
+  <CRow class="col-sm-12 col-md-6">
+    <CCard>
+      <CCardHeader>Code</CCardHeader>
+      <CCardBody>
+        <CCardGroup>
+          <label for="name">Name*</label>
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            :class="{ 'is-invalid': v$.name.$error }"
+            placeholder="Code name"
+            v-model.trim="form.name"
+          />
+          <span class="help-block" :class="{ show: v$.name.$error }"
+            >Please enter variable name.</span
           >
-          <CButton
-            color="danger"
-            size="sm"
-            @click.prevent="handleReset()"
-            :disabled="disabled"
-            >Reset</CButton
+        </CCardGroup>
+        <CCardGroup>
+          <label for="description">Description</label>
+          <textarea
+            rows="5"
+            id="description"
+            type="text"
+            class="form-control"
+            placeholder="Code description"
+            v-model.trim="form.description"
+          />
+          <span class="help-block">Please enter a description</span>
+        </CCardGroup>
+        <CCardGroup>
+          <label for="definition">Language</label>
+          <input
+            id="language"
+            type="text"
+            class="form-control"
+            placeholder="Code language"
+            v-model.trim="form.language"
+          />
+          <span class="help-block">Please enter a language</span>
+        </CCardGroup>
+        <CCardGroup>
+          <label for="localId">Local id*</label>
+          <input
+            id="localId"
+            type="text"
+            class="form-control capitalize"
+            :class="{ 'is-invalid': v$.localId.$error }"
+            placeholder="Local id"
+            v-model.trim="form.localId"
+          />
+          <span class="help-block" :class="{ show: v$.localId.$error }"
+            >Please specify a local id.</span
           >
-        </div>
-      </div>
-    </div>
+        </CCardGroup>
+        <div class="form-mandatory">*Mandatory fields</div>
+      </CCardBody>
+      <CCardFooter>
+        <CButton
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          @click.prevent="Submit()"
+          :disabled="disabled"
+          >Save</CButton
+        >
+        <CButton
+          color="danger"
+          size="sm"
+          @click.prevent="handleReset()"
+          :disabled="disabled"
+          >Reset</CButton
+        >
+      </CCardFooter>
+    </CCard>
   </CRow>
 </template>
 <script>

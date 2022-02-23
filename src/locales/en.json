@@ -15,6 +15,8 @@
         "process_metadata_text": "This section contains the process metadata of each survey documented in the system.",
         "process_metadata_link": "Go to process metadata section",
         "parstat_project": "Parstat project",
+        "powered_by": "Powered by",
+        "coreui_for_vue": "CoreUI for Vue",
         "go_to": "Please go to",
         "error_occurred": "An error occurred, please contact IAIS administrator",
         "error_message": "Error message: ",
@@ -27,6 +29,7 @@
         "signin": "Sign in",
         "signin_to_iais": "Sign in to IAIS",
         "username": "Username",
+        "email": "Email adress",
         "fullname": "Full name",
         "password": "Password",
         "confirmpassword": "Repeat password",
@@ -48,5 +51,25 @@
     },
     "header": {
         "gsim_objects": "GSIM info objects"
+    },
+    "process": {
+        "business_processes_header": "Business processes"
+    },
+    "referential": {
+        "statistical_processes": "Statistical processes",
+        "add": "Add",
+        "localId": "Id",
+        "name": "Survey name",
+        "acronym": "Acronym",
+        "description": "Description",
+        "owner": "Owner",
+        "maintainer": "Maintainer",
+        "contact": "Contact",
+        "actions": "Actions",
+        "basic": "Basic",
+        "agents": "Agents",
+        "legislative_reference": "Legislative reference",
+        "statistical_standards": "Statistical standards",
+        "process_documentation": "Process documentation"
     }
 }

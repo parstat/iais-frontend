@@ -40,7 +40,6 @@
               :items="sortAscDocumentations(documentations)"
               :columns="columns"
               column-filter
-              table-filter
               items-per-page-select
               :items-per-page="5"
               hover
@@ -120,7 +119,7 @@ export default {
     return {
       columns: [
         {
-          key: "id",
+          key: "localId",
           label: "Id",
         },
         {
@@ -132,8 +131,8 @@ export default {
           label: "Frequency",
         },
         {
-          key: "Next",
-          label: "nextSubPhase",
+          key: "nextSubPhase",
+          label: "Next",
         },
         {
           key: "actions",

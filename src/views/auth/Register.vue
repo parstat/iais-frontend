@@ -48,12 +48,14 @@
                     type="email"
                     class="form-control"
                     :class="{ 'is-invalid': v$.email.$error }"
-                    placeholder="Email"
+                    :placeholder="$t('user.email')"
                     v-model.trim="email"
                   />
-                  <span class="help-block" :class="{ show: v$.email.$error }">{{
-                    $t("user.validations.email_invalid")
-                  }}</span>
+                  <span
+                    class="help-block"
+                    :class="{ show: v$.email.$error }">
+                    {{ $t("user.validations.email_invalid") }}
+                  </span>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -70,9 +72,9 @@
                   />
                   <span
                     class="help-block"
-                    :class="{ show: v$.fullname.$error }"
-                    >{{ $t("user.validations.name_invalid") }}</span
-                  >
+                    :class="{ show: v$.fullname.$error }">
+                    {{ $t("user.validations.name_invalid") }}
+                  </span>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">

@@ -55,11 +55,8 @@
                 </CRow>
                 <CRow>
                   <CCol col="12" class="register">
-                    <span>{{ $t("user.new") }}</span
-                    >&nbsp;
-                    <router-link tag="a" to="/register">{{
-                      $t("user.register")
-                    }}</router-link>
+                    <span>{{ $t("user.new") }}&nbsp;</span>
+                    <router-link tag="a" to="/register">{{ $t("user.register") }}</router-link>
                   </CCol>
                 </CRow>
               </CForm>

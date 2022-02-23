@@ -5,7 +5,7 @@
         <CCardBody>
           <CCardTitle>
             <CIcon name="cil-description" />
-            Statistical process
+            {{ $t("referential.statistical_processes") }}
           </CCardTitle>
           <CRow>
             <CCol class="col-3 mr-2">
@@ -20,7 +20,7 @@
                       }
                     "
                   >
-                    Basic
+                    {{ $t("referential.basic") }}
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -33,22 +33,22 @@
                       }
                     "
                   >
-                    Agents
+                    {{ $t("referential.agents") }}
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" disabled>
-                    LegislativeReference
+                    {{ $t("referential.legislative_reference") }}
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" disabled>
-                    Statistical Standards
+                    {{ $t("referential.statistical_standards") }}
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" disabled>
-                    Process Documentation
+                    {{ $t("referential.process_documentation") }}
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -61,7 +61,7 @@
                   :visible="activeTab === 0"
                 >
                   <template #title>
-                    <span>Basic</span>
+                    <span>{{ $t("referential.basic") }}</span>
                     <span class="float-right" v-if="editedBasic"
                       ><CIcon name="cil-check-alt"
                     /></span>
@@ -74,7 +74,7 @@
                   :visible="activeTab === 1"
                 >
                   <template #title>
-                    <span>Agents</span>
+                    <span>{{ $t("referential.agents") }}</span>
                     <span class="float-right" v-if="editedAgents"
                       ><CIcon nam="cil-check-alt"
                     /></span>
