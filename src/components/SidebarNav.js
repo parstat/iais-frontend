@@ -27,7 +27,7 @@ const isActiveLink = (route, link) => {
   const currentPath = normalizePath(route.path);
   const targetPath = normalizePath(link);
 
-  return currentPath === targetPath;
+  return currentPath.includes(targetPath);
 };
 
 const isActiveItem = (route, item) => {
@@ -91,7 +91,7 @@ const AppSidebarNav = defineComponent({
                 h(
                   resolveComponent(item.component),
                   {
-                    active: props.isActive,
+                    active: isActiveItem(route, item),
                     href: props.href,
                     onClick: () => props.navigate(),
                   },

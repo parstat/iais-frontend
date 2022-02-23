@@ -51,9 +51,7 @@
                     :placeholder="$t('user.email')"
                     v-model.trim="email"
                   />
-                  <span
-                    class="help-block"
-                    :class="{ show: v$.email.$error }">
+                  <span class="help-block" :class="{ show: v$.email.$error }">
                     {{ $t("user.validations.email_invalid") }}
                   </span>
                 </div>
@@ -72,7 +70,8 @@
                   />
                   <span
                     class="help-block"
-                    :class="{ show: v$.fullname.$error }">
+                    :class="{ show: v$.fullname.$error }"
+                  >
                     {{ $t("user.validations.name_invalid") }}
                   </span>
                 </div>

@@ -8,5 +8,5 @@
         <CCardText>Buh!</CCardText>
       </CCardBody>
     </CCard>
-  </CRow>
+  </CRoW>
 </template>
