@@ -63,7 +63,7 @@
                     <router-link
                       tag="a"
                       :to="{
-                        name: 'ProcessDocumentationEdit',
+                        name: 'ProcessDocumentationDelete',
                         params: { id: item.id },
                       }"
                     >
@@ -74,7 +74,7 @@
                     <router-link
                       tag="a"
                       :to="{
-                        name: 'ProcessDocumentationEdit',
+                        name: 'ProcessDocumentationView',
                         params: { id: item.id },
                       }"
                     >
