@@ -11,7 +11,9 @@
     </div>
     <CCard class="mt-3">
       <CCardBody>
-        <CCardTitle>Value Domains </CCardTitle>
+        <CCardTitle>
+          <span>Value Domains</span>
+        </CCardTitle>
         <CCardText>
           <CRow>
             <CCol class="col-sm-12 col-md-6">

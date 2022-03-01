@@ -3,37 +3,36 @@
     <CCol>
       <CCard xs>
         <CCardHeader class="bg-white" component="h5">
-          Business Functions
+          <span>{{ $t("referential.business_function_header") }}</span>
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            Something an enterprise does, or needs to do, in order to achieve
-            its objectives.
+            <span>{{ $t("referential.business_function_text") }}</span>
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
           <CButton>
-            <router-link
-              tag="a"
-              :to="{ name: 'BusinessFunctionList' }"
-              class="text-decoration-none text-primary"
-            >
-              <span class="icon-span">Go to business functions section</span>
-              <chevron-right-icon />
-            </router-link>
+            <span>
+              <router-link
+                tag="a"
+                :to="{ name: 'BusinessFunctionList' }"
+                class="text-decoration-none text-primary"
+                ><span class="icon-span">{{ $t("referential.business_function_link") }}&nbsp;</span
+                ><CIcon name="cil-arrow-right"
+              /></router-link>
+            </span>
           </CButton>
         </CCardFooter>
       </CCard>
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardHeader class="bg-white" component="h5"> Agents </CCardHeader>
+        <CCardHeader class="bg-white" component="h5">
+          <span>{{ $t("referential.agents_header") }}</span>
+        </CCardHeader>
         <CCardBody>
           <CCardText>
-            An Agent is someone or something that bears some form of
-            responsibility for a
-            <i>Business Process</i> taking place, for the existence of an
-            entity, or for another agent <i>Business Process</i>.
+            <span>{{ $t("referential.agents_text") }}</span>
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
@@ -42,8 +41,8 @@
               tag="a"
               :to="{ name: 'AgentList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span">Go to agents section&nbsp;</span
-              ><chevron-right-icon
+              ><span class="icon-span">{{ $t("referential.agents_link") }}&nbsp;</span
+              ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
         </CCardFooter>
@@ -53,12 +52,11 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          Process methods
+          <span>{{ $t("referential.process_methods_header") }}</span>
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            A specification of the technique which will be used to perform the
-            work. This section contains the list of process method.
+            <span>{{ $t("referential.process_methods_text") }}</span>
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
@@ -67,8 +65,8 @@
               tag="a"
               :to="{ name: 'ProcessMethodList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span">Go to process method section&nbsp;</span
-              ><chevron-right-icon
+              ><span class="icon-span">{{ $t("referential.process_methods_link") }}&nbsp;</span
+              ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
         </CCardFooter>
@@ -78,11 +76,11 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          Legislative references
+          <span>{{ $t("referential.legislative_references_header") }}</span>
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            This section contains the list of regulations.
+            <span>{{ $t("referential.legislative_references_text") }}</span>
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
@@ -91,9 +89,8 @@
               tag="a"
               :to="{ name: 'LegislativeReferenceList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span"
-                >Go to legislative reference section&nbsp;</span
-              ><chevron-right-icon
+              ><span class="icon-span">{{ $t("referential.legislative_references_link") }}&nbsp;</span
+              ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
         </CCardFooter>
@@ -103,11 +100,11 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          Statistical standard
+          <span>{{ $t("referential.statistical_standard_header") }}</span>
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            This section contains the list of statistical standards.
+            <span>{{ $t("referential.statistical_standard_text") }}</span>
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
@@ -116,9 +113,8 @@
               tag="a"
               :to="{ name: 'StatisticalStandardList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span"
-                >Go to statistical standard section&nbsp;</span
-              ><chevron-right-icon
+              ><span class="icon-span">{{ $t("referential.statistical_standard_link") }}&nbsp;</span
+              ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
         </CCardFooter>
@@ -128,11 +124,11 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          Business service
+          <span>{{ $t("referential.business_service_header") }}</span>
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            This section contains the list of business services (Software).
+            <span>{{ $t("referential.business_service_text") }}</span>
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
@@ -141,9 +137,8 @@
               tag="a"
               :to="{ name: 'BusinessServiceList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span"
-                >Go to business service section&nbsp;</span
-              ><chevron-right-icon
+              ><span class="icon-span">{{ $t("referential.business_service_link") }}&nbsp;</span
+              ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
         </CCardFooter>

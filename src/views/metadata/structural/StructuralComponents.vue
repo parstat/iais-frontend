@@ -3,15 +3,11 @@
     <CCol xs>
       <CCard>
         <CCardBody>
-          <CCardTitle> Variables </CCardTitle>
+          <CCardTitle>
+            <span>{{ $t("structural.variables_title") }}</span>
+          </CCardTitle>
           <CCardText>
-            <span>
-              The use of a <i>Concept</i> as a characteristic of a
-              <i>Population</i> intended to be measured. The
-              <i>Variable</i> combines the meaning of a <i>Concept</i> with a
-              <i>Unit Type</i>, to define the characteristic that is to be
-              measured.<br /><br />
-            </span>
+            <span>{{ $t("structural.variables_text") }}</span>
           </CCardText>
           <CButton>
             <span>
@@ -19,7 +15,7 @@
                 tag="a"
                 class="text-decoration-none text-primary"
                 :to="{ name: 'StructuralVariableList' }"
-                ><span class="icon-span">Go to variables section &nbsp;</span
+                ><span class="icon-span">{{ $t("structural.variables_link") }}&nbsp;</span
                 ><CIcon name="cil-arrow-right"
               /></router-link>
             </span>
@@ -32,31 +28,21 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Statistical Clasifications</span>
+            <span>{{ $t("structural.statistical_clasification_title") }}</span>
           </CCardTitle>
           <CCardText>
             <!--
           <CProgress animated color="success" height="0.7rem" :value="20" />
           <br />
           -->
-            <span>
-              A <i>Statistical Classification</i> is a set of
-              <i>Categories</i> which may be assigned to one or more variables
-              registered in statistical surveys or administrative files, and
-              used in the production and dissemination of statistics. In a
-              standard <i>Statistical Classification</i>, the
-              <i>Categories</i> at each <i>Level</i> of the classification
-              structure must be mutually exclusive and jointly exhaustive of all
-              objects/units in the population of interest.<br /><br />
-            </span>
+            <span>{{ $t("structural.statistical_clasification_text") }}</span>
           </CCardText>
           <CButton>
             <router-link
               class="text-decoration-none text-primary"
               tag="a"
               :to="{ name: 'StructuralStatisticalClassificationsList' }"
-              ><span class="icon-span"
-                >Go to structural clasifications section &nbsp;</span
+              ><span class="icon-span">{{ $t("structural.statistical_clasification_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
@@ -68,20 +54,17 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Code List</span>
+            <span>{{ $t("structural.code_list_title") }}</span>
           </CCardTitle>
           <CCardText>
-            <span>
-              A list of <i>Categories</i> where each <i>Category</i> has a
-              predefined <i>Code</i> assigned to it.<br /><br />
-            </span>
+            <span>{{ $t("structural.code_list_text") }}</span>
           </CCardText>
           <CButton>
             <router-link
               tag="a"
               :to="{ name: 'StructuralCodeList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span">Go to code list section &nbsp;</span
+              ><span class="icon-span">{{ $t("structural.code_list_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
@@ -92,28 +75,17 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Correspondence Table</span>
+            <span>{{ $t("structural.correspondance_table_title") }}</span>
           </CCardTitle>
           <CCardText>
-            <span>
-              A <i>Correspondence Table</i> expresses the relationship between
-              two Statistical Classifications. These are typically: two versions
-              from the same Classification Series; Statistical Classifications
-              from different Classification Series; a variant and the version on
-              which it is based; or, different versions of a variant. In the
-              first and last examples, the Correspondence Table facilitates
-              comparability over time. Correspondence relationships are shown in
-              both directions.<br /><br />
-            </span>
+            <span>{{ $t("structural.correspondance_table_text") }}</span>
           </CCardText>
           <CButton>
             <router-link
               tag="a"
               :to="{ name: 'CorrespondenceTableList' }"
               class="text-decoration-none text-primary"
-            >
-              <span class="icon-span"
-                >Go to corespondence table section &nbsp;</span
+              ><span class="icon-span">{{ $t("structural.correspondance_table_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
@@ -124,17 +96,14 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Data Sets</span>
+            <span>{{ $t("structural.data_sets_title") }}</span>
           </CCardTitle>
           <CCardText>
-            <span>
-              A collection of data that conforms to a known structure and
-              describes aspects of one or more Units.
-            </span>
+            <span>{{ $t("structural.data_sets_text") }}</span>
           </CCardText>
           <CButton disabled>
             <!--<router-link tag="a" :to="{ name: 'BusinessFunctionList' }"> -->
-            <span class="icon-span">Go to data sets section &nbsp;</span>
+            <span class="icon-span">{{ $t("structural.data_sets_link") }}&nbsp;</span>
             <CIcon name="cil-arrow-right" />
             <!--</router-link>-->
           </CButton>
@@ -145,24 +114,17 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Unit Types</span>
+            <span>{{ $t("structural.unit_types_title") }}</span>
           </CCardTitle>
           <CCardText>
-            <span>
-              A <i>Unit Type</i> is a class of objects of interest. A Unit Type
-              is used to describe a class or group of Units based on a single
-              characteristic, but with no specification of time and geography.
-              For example, the Unit Type of “Person” groups together a set of
-              Units based on the characteristic that they are <i>Persons</i>.
-            </span>
+            <span>{{ $t("structural.unit_types_text") }}</span>
           </CCardText>
           <CButton>
             <router-link
               tag="a"
               :to="{ name: 'UnitTypeList' }"
               class="text-decoration-none text-primary"
-            >
-              <span class="icon-span">Go to unit types section &nbsp;</span>
+              ><span class="icon-span">{{ $t("structural.unit_types_link") }}&nbsp;</span>
               <CIcon name="cil-arrow-right" />
             </router-link>
           </CButton>

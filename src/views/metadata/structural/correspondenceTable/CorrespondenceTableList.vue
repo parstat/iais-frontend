@@ -5,7 +5,9 @@
         <CCardBody>
           <CRow>
             <CCol class="col-9">
-              <CCardTitle> Correspondence Tables </CCardTitle>
+              <CCardTitle>
+                <span>Correspondence Tables</span>
+              </CCardTitle>
             </CCol>
             <CCol class="col-3">
               <CNav class="justify-content-end">

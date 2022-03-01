@@ -6,7 +6,7 @@
           <CRow>
             <CCol class="col-9">
               <CCardTitle>
-                {{ $t("referential.statistical_processes") }}
+                <span>{{ $t("referential.statistical_processes") }}</span>
               </CCardTitle>
             </CCol>
             <CCol class="col-3">
@@ -19,7 +19,8 @@
                       tag="a"
                       to="/metadata/referential/add"
                     >
-                      <CIcon name="cil-plus" />{{ $t("referential.add") }}
+                      <CIcon name="cil-plus" />
+                      <span>{{ $t("referential.add") }}</span>
                     </router-link>
                   </span>
                 </CNavItem>

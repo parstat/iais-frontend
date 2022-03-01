@@ -1,7 +1,9 @@
 <template>
   <CRow class="col-sm-12 col-md-6">
     <CCard>
-      <CCardHeader>Code</CCardHeader>
+      <CCardHeader>
+        <span>Code</span>
+      </CCardHeader>
       <CCardBody>
         <CCardGroup>
           <label for="name">Name*</label>

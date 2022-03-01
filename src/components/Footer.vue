@@ -5,7 +5,7 @@
         href="https://www.parstat.md"
         class="text-decoration-none text-primary"
         target="_blank"
-        >{{ $t("common.parstat_project") }}
+        ><span>{{ $t("common.parstat_project") }}</span>
       </a>
     </div>
     <div class="ms-auto">
@@ -14,7 +14,7 @@
         href="https://coreui.io/vue"
         class="text-decoration-none text-primary"
         target="_blank"
-        >{{ $t("common.coreui_for_vue") }}
+        ><span>{{ $t("common.coreui_for_vue") }}</span>
       </a>
     </div>
   </CFooter>

@@ -5,7 +5,7 @@
         <CCardBody>
           <CCardTitle>
             <CIcon name="cil-description" />
-            {{ $t("referential.statistical_processes") }}
+            <span>{{ $t("referential.statistical_processes") }}</span>
           </CCardTitle>
           <CRow>
             <CCol class="col-3 mr-2">
@@ -20,7 +20,7 @@
                       }
                     "
                   >
-                    {{ $t("referential.basic") }}
+                    <span>{{ $t("referential.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -33,22 +33,22 @@
                       }
                     "
                   >
-                    {{ $t("referential.agents") }}
+                    <span>{{ $t("referential.agents") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" disabled>
-                    {{ $t("referential.legislative_reference") }}
+                    <span>{{ $t("referential.legislative_reference") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" disabled>
-                    {{ $t("referential.statistical_standards") }}
+                    <span>{{ $t("referential.statistical_standards") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" disabled>
-                    {{ $t("referential.process_documentation") }}
+                    <span>{{ $t("referential.process_documentation") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>

@@ -6,7 +6,7 @@
           <CCard class="mx-4 mb-0">
             <CCardHeader align="center">
               <img src="img/logo.png" class="logo" />
-              <h3>{{ $t("user.signin_to_iais") }}</h3>
+              <h3><span>{{ $t("user.signin_to_iais") }}</span></h3>
             </CCardHeader>
             <CCardBody>
               <CForm>
@@ -49,16 +49,16 @@
                       color="primary"
                       class="btn-block"
                       @click.prevent="handleSubmit"
-                      >{{ $t("user.signin") }}</CButton
-                    >
+                      >{{ $t("user.signin") }}
+                    </CButton>
                   </CCol>
                 </CRow>
                 <CRow>
                   <CCol col="12" class="register">
                     <span>{{ $t("user.new") }}&nbsp;</span>
-                    <router-link tag="a" to="/register">{{
-                      $t("user.register")
-                    }}</router-link>
+                    <router-link tag="a" to="/register">
+                      <span>{{ $t("user.register") }}</span>
+                    </router-link>
                   </CCol>
                 </CRow>
               </CForm>

@@ -5,7 +5,9 @@
         <CCardBody>
           <CRow>
             <CCol class="col-9">
-              <CCardTitle> Unit Types </CCardTitle>
+              <CCardTitle>
+                <span>Unit Types</span>
+              </CCardTitle>
             </CCol>
             <CCol class="col-3">
               <CNav class="justify-content-end">

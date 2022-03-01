@@ -11,7 +11,9 @@
     </div>
     <CCard>
       <CCardBody>
-        <CCardTitle> Code Items </CCardTitle>
+        <CCardTitle>
+          <span>Code Items</span>
+        </CCardTitle>
         <CCardText>
           <table class="table table-hover" v-if="code">
             <thead>

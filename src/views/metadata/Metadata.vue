@@ -3,11 +3,11 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          {{ $t("common.referential_metadata_header") }}
+          <span>{{ $t("common.referential_metadata_header") }}</span>
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            {{ $t("common.referential_metadata_text") }}
+            <span>{{ $t("common.referential_metadata_text") }}</span>
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
@@ -17,8 +17,7 @@
                 class="text-decoration-none text-primary"
                 tag="a"
                 :to="{ name: 'StatisticalProgramList' }"
-                ><span class="icon-span"
-                  >{{ $t("common.referential_metadata_link") }}&nbsp;</span
+                ><span class="icon-span">{{ $t("common.referential_metadata_link") }}&nbsp;</span
                 ><CIcon name="cil-arrow-right"
               /></router-link>
             </span>
@@ -29,11 +28,11 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          {{ $t("common.structural_metadata_header") }}
+          <span>{{ $t("common.structural_metadata_header") }}</span>
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            {{ $t("common.structural_metadata_text") }}
+            <span>{{ $t("common.structural_metadata_text") }}</span>
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
@@ -42,8 +41,7 @@
               tag="a"
               class="text-decoration-none text-primary"
               :to="{ name: 'StructuralComponents' }"
-              ><span class="icon-span">
-                {{ $t("common.structural_metadata_link") }}&nbsp;</span
+              ><span class="icon-span">{{ $t("common.structural_metadata_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
@@ -53,19 +51,17 @@
     <CCol xs>
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          {{ $t("common.process_metadata_header") }}
+          <span>{{ $t("common.process_metadata_header") }}</span>
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            {{ $t("common.process_metadata_text") }}
+            <span>{{ $t("common.process_metadata_text") }}</span>
           </CCardText>
         </CCardBody>
         <CCardFooter class="bg-white">
           <CButton disabled>
-            <span class="icon-span">
-              {{ $t("common.process_metadata_link") }}&nbsp;</span
-            >
-            <CIcon name="cil-arrow-right" />
+            <span class="icon-span">{{ $t("common.process_metadata_link") }}&nbsp;</span
+            ><CIcon name="cil-arrow-right" />
           </CButton>
         </CCardFooter>
       </CCard>

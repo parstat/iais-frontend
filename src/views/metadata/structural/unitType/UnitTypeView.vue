@@ -4,7 +4,7 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            {{ unitType.name }}
+            <span>{{ unitType.name }}</span>
           </CCardTitle>
           <CCardText>
             <CForm>

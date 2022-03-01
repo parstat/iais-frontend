@@ -2,7 +2,7 @@
   <CRoW class="col-sm-6 col-md-4">
     <CCard>
       <CCardHeader>
-        {{ $t("process.business_processes_header") }}
+        <span>{{ $t("process.business_processes_header") }}</span>
       </CCardHeader>
       <CCardBody>
         <CCardText>Buh!</CCardText>
