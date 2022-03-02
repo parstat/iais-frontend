@@ -67,6 +67,21 @@ const actions = {
       }
     );
   },
+  clone({ dispatch }, formData) {
+    processDocumentationService.clone(formData).then(
+      (data) => {
+        dispatch("message/success", "Process Documentation saved!", {
+          root: true,
+        });
+        router.push(
+          "/metadata/referential/documentation/edit/" + data.id + "?step=2"
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
   delete({ dispatch }, id) {
     processDocumentationService.delete(id).then(
       (data) => {

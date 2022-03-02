@@ -99,6 +99,15 @@ const routes = [
         meta: { authorize: [Role.User, Role.Admin] },
       },
       {
+        path: "metadata/referential/documentation/clone/:id",
+        name: "ProcessDocumentationClone",
+        component: () =>
+          import(
+            "@/views/metadata/referential/processDocumentation/ProcessDocumentationClone"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
+      {
         path: "metadata/referential/documentation/view/:id",
         name: "ProcessDocumentationView",
         component: () =>

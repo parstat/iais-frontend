@@ -5,6 +5,7 @@ export const processDocumentationService = {
   findLatest,
   findByName,
   save,
+  clone,
   update,
   addStatisticalStandard,
   removeStatisticalStandard,
@@ -96,6 +97,45 @@ function save(formData) {
           formData.statisticalProgram +
           "/function/" +
           formData.businessFunction,
+        new URLSearchParams(requestBody).toString(),
+        config
+      )
+      .then(
+        (response) => {
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function clone(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
+
+    const requestBody = {
+      name: formData.name,
+      description: formData.description,
+      local_id: formData.local_id,
+      frequency: formData.frequency,
+      nextSubPhase: formData.nextSubPhase,
+      versionRationale: formData.versionRationale,
+    };
+
+    axiosIais
+      .put(
+        "close/referential/process/documentations/program/" +
+          formData.statisticalProgram +
+          "/function/" +
+          formData.businessFunction +
+          "/version/" +
+          formData.version,
         new URLSearchParams(requestBody).toString(),
         config
       )

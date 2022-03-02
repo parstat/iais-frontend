@@ -70,6 +70,17 @@
                       <CIcon name="cil-trash" />
                     </router-link>
                   </span>
+                  <span v-if="isAuthenticated">
+                    <router-link
+                      tag="a"
+                      :to="{
+                        name: 'ProcessDocumentationClone',
+                        params: { id: item.id },
+                      }"
+                    >
+                      <CIcon name="cil-copy" />
+                    </router-link>
+                  </span>
                   <span>
                     <router-link
                       tag="a"
@@ -121,23 +132,27 @@ export default {
         {
           key: "localId",
           label: "Id",
+          _style: { width: "10%" },
         },
         {
           key: "name",
           label: "Process name",
+          _style: { width: "40%" },
         },
         {
           key: "frequency",
           label: "Frequency",
+          _style: { width: "20%" },
         },
         {
           key: "nextSubPhase",
           label: "Next",
+          _style: { width: "20%" },
         },
         {
           key: "actions",
           label: "Actions",
-          _style: { width: "1%" },
+          _style: { width: "10%" },
           sorter: false,
           filter: false,
         },
