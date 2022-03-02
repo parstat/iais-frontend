@@ -155,24 +155,26 @@ export default {
       return false;
     },
   },
-  validations: {
-    username: {
-      required,
-    },
-    email: {
-      required,
-      email,
-    },
-    fullname: {
-      required,
-    },
-    password: {
-      required,
-      minLen: minLength(6),
-    },
-    confirmpassword: {
-      sameAs: sameAs("password"),
-    },
+  validations() {
+    return {
+      username: {
+        required,
+      },
+      email: {
+        required,
+        email,
+      },
+      fullname: {
+        required,
+      },
+      password: {
+        required,
+        minLen: minLength(6),
+      },
+      confirmpassword: {
+        sameAsPassword: sameAs(this.password),
+      },
+    };
   },
   methods: {
     handleSubmit() {

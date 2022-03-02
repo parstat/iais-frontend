@@ -90,6 +90,7 @@
                               placeholder="Select a Statistical Proccess"
                               :filtrable="false"
                               @search="searchStatisticalPrograms"
+                              class="mb-3"
                             >
                               <template
                                 v-slot:no-options="{ search, searching }"
@@ -141,6 +142,7 @@
                               placeholder="Select a GSBPM sub-phase"
                               :filtrable="false"
                               @search="searchBusinessFunctions"
+                              class="mb-3"
                             >
                               <template
                                 v-slot:no-options="{ search, searching }"
@@ -179,7 +181,7 @@
                               >Please select a GSBPM sub-phase.</span
                             >
                           </div>
-                          <div class="form-group">
+                          <div class="form-group mb-3">
                             <CFormLabel for="name"
                               >Documentation name*</CFormLabel
                             >
@@ -194,7 +196,7 @@
                             />
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group mb-3">
                             <label for="description"
                               >Documentation description*</label
                             >
@@ -213,7 +215,7 @@
                               >Please enter survey description.</span
                             >
                           </div>
-                          <div class="form-group">
+                          <div class="form-group mb-3">
                             <label for="frequency">Frequency*</label>
                             <v-select
                               label="frequency"
@@ -226,7 +228,7 @@
                               >Please frequency a type.</span
                             >
                           </div>
-                          <div class="form-group" v-if="businessFunctions">
+                          <div class="form-group mb-3" v-if="businessFunctions">
                             <label for="nextBusinessFunction"
                               >Next GSBPM Sub-phase*</label
                             >
@@ -240,6 +242,7 @@
                               placeholder="Select a GSBPM sub-phase"
                               :filtrable="false"
                               @search="searchBusinessFunctions"
+                              class="mb-3"
                             >
                               <template
                                 v-slot:no-options="{ search, searching }"
@@ -279,12 +282,13 @@
                             >
                           </div>
                           <div>
-                            <input
-                              type="checkbox"
-                              value="Last"
+                            <CFormSwitch
+                              label="Last process"
+                              id="lastProcess"
+                              size="lg"
+                              class="mb-3"
                               v-model="lastProcess"
                             />
-                            Last process
                           </div>
                           <div class="form-mandatory">*Mandatory fields</div>
                         </CCardText>

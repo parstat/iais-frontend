@@ -89,6 +89,7 @@
               :class="{
                 'is-invalid': v$.processDocumentation.nextSubPhase.$error,
               }"
+              class="mb-3"
             >
               <template v-slot:no-options="{ search, searching }">
                 <template v-if="searching">
@@ -113,13 +114,18 @@
               </template>
             </v-select>
             <span
-              class="text-danger"
+              class="text-danger mb-3"
               v-if="v$.processDocumentation.nextSubPhase.$error"
               >Please select the next sub phase.</span
             >
             <div>
-              <input type="checkbox" value="Last" v-model="lastProcess" />
-              Last process
+              <CFormSwitch
+                label="Last process"
+                id="lastProcess"
+                size="lg"
+                class="mb-3"
+                v-model="lastProcess"
+              />
             </div>
           </div>
           <div class="form-mandatory">*Mandatory fields</div>
