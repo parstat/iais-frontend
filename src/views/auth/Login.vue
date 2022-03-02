@@ -6,7 +6,9 @@
           <CCard class="mx-4 mb-0">
             <CCardHeader align="center">
               <img src="img/logo.png" class="logo" />
-              <h3><span>{{ $t("user.signin_to_iais") }}</span></h3>
+              <h3>
+                <span>{{ $t("user.signin_to_iais") }}</span>
+              </h3>
             </CCardHeader>
             <CCardBody>
               <CForm>

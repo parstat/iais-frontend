@@ -313,6 +313,7 @@
 import { mapGetters } from "vuex";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import { requiredIf } from "@vuelidate/validators";
 import { Frequency } from "@/common";
 import _ from "lodash";
 
@@ -365,15 +366,14 @@ export default {
       required,
     },
     nextBusinessFunction: {
-      required,
+      requiredIf: requiredIf(function () {
+        return !this.lastProcess;
+      }),
     },
   },
   methods: {
     handleSubmit() {
-      this.v$.$touch(); //validate form data
-      if (this.v$.nextBusinessFunction.$invalid && this.lastProcess) {
-        this.v$.nextBusinessFunction.$reset();
-      }
+      this.v$.$validate(); //validate form data
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
@@ -381,12 +381,11 @@ export default {
           description: this.description,
           statisticalProgram: this.statisticalProgram.id,
           businessFunction: this.businessFunction.id,
-          local_id:
-            this.statisticalProgram.localId +
-            "-sub-phase-" +
-            this.businessFunction.localId,
+          local_id: this.genLocalId(), //local id will be used also as order variable
           frequency: this.frequency,
-          nextSubPhase: this.nextBusinessFunction.localId,
+          nextSubPhase: this.nextBusinessFunction
+            ? this.nextBusinessFunction.localId
+            : "",
         };
         this.$store.dispatch("processDocumentation/save", formData);
       }
@@ -441,6 +440,26 @@ export default {
     },
     updateStep(active) {
       this.activeTab = active;
+    },
+    genLocalId() {
+      var today = new Date();
+      var utcYear = String(today.getUTCFullYear());
+      var utcMonth = String(today.getUTCMonth() + 1).padStart(2, "0");
+      var utcDay = String(today.getUTCDate()).padStart(2, "0");
+      var utcHour = String(today.getUTCHours()).padStart(2, "0");
+      var utcMinutes = String(today.getUTCMinutes()).padStart(2, "0");
+      var utcSeconds = String(today.getUTCSeconds()).padStart(2, "0");
+      return (
+        utcYear +
+        utcMonth +
+        utcDay +
+        "T" +
+        utcHour +
+        ":" +
+        utcMinutes +
+        ":" +
+        utcSeconds
+      );
     },
   },
   created() {

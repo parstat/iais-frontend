@@ -66,8 +66,14 @@
               :class="{
                 'is-invalid': v$.processDocumentation.frequency.$error,
               }"
+              required
               placeholder="Select a Frequency"
             ></v-select>
+            <span
+              class="text-danger"
+              v-if="v$.processDocumentation.frequency.$error"
+              >Please select a frequence.</span
+            >
           </div>
           <div class="mb-3" v-if="businessFunctions">
             <CFormLabel for="nextBusinessFunction"
@@ -80,6 +86,9 @@
               placeholder="Select a GSBPM sub-phase"
               :filtrable="false"
               @search="searchBusinessFunctions"
+              :class="{
+                'is-invalid': v$.processDocumentation.nextSubPhase.$error,
+              }"
             >
               <template v-slot:no-options="{ search, searching }">
                 <template v-if="searching">
@@ -103,6 +112,15 @@
                 </div>
               </template>
             </v-select>
+            <span
+              class="text-danger"
+              v-if="v$.processDocumentation.nextSubPhase.$error"
+              >Please select the next sub phase.</span
+            >
+            <div>
+              <input type="checkbox" value="Last" v-model="lastProcess" />
+              Last process
+            </div>
           </div>
           <div class="form-mandatory">*Mandatory fields</div>
         </CForm>
@@ -125,6 +143,7 @@
 import { mapGetters } from "vuex";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import { requiredIf } from "@vuelidate/validators";
 import { Frequency } from "@/common";
 import _ from "lodash";
 
@@ -135,6 +154,7 @@ export default {
       v$: useValidate(),
       disabled: false,
       activeTab: 0,
+      lastProcess: false,
     };
   },
   computed: {
@@ -160,6 +180,11 @@ export default {
       frequency: {
         required,
       },
+      nextSubPhase: {
+        requiredIf: requiredIf(function () {
+          return !this.lastProcess;
+        }),
+      },
     },
   },
   methods: {
@@ -172,7 +197,9 @@ export default {
           name: this.processDocumentation.name,
           description: this.processDocumentation.description,
           frequency: this.processDocumentation.frequency,
-          nextSubPhase: this.processDocumentation.nextSubPhase.localId,
+          nextSubPhase: this.processDocumentation.nextSubPhase
+            ? this.processDocumentation.nextSubPhase.localId
+            : "",
         };
         this.$store
           .dispatch("processDocumentation/update", formData)

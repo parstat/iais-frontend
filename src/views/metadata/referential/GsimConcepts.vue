@@ -17,7 +17,8 @@
                 tag="a"
                 :to="{ name: 'BusinessFunctionList' }"
                 class="text-decoration-none text-primary"
-                ><span class="icon-span">{{ $t("referential.business_function_link") }}&nbsp;</span
+                ><span class="icon-span"
+                  >{{ $t("referential.business_function_link") }}&nbsp;</span
                 ><CIcon name="cil-arrow-right"
               /></router-link>
             </span>
@@ -41,7 +42,8 @@
               tag="a"
               :to="{ name: 'AgentList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span">{{ $t("referential.agents_link") }}&nbsp;</span
+              ><span class="icon-span"
+                >{{ $t("referential.agents_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
@@ -65,7 +67,8 @@
               tag="a"
               :to="{ name: 'ProcessMethodList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span">{{ $t("referential.process_methods_link") }}&nbsp;</span
+              ><span class="icon-span"
+                >{{ $t("referential.process_methods_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
@@ -89,7 +92,8 @@
               tag="a"
               :to="{ name: 'LegislativeReferenceList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span">{{ $t("referential.legislative_references_link") }}&nbsp;</span
+              ><span class="icon-span"
+                >{{ $t("referential.legislative_references_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
@@ -113,7 +117,8 @@
               tag="a"
               :to="{ name: 'StatisticalStandardList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span">{{ $t("referential.statistical_standard_link") }}&nbsp;</span
+              ><span class="icon-span"
+                >{{ $t("referential.statistical_standard_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
@@ -137,7 +142,8 @@
               tag="a"
               :to="{ name: 'BusinessServiceList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span">{{ $t("referential.business_service_link") }}&nbsp;</span
+              ><span class="icon-span"
+                >{{ $t("referential.business_service_link") }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>

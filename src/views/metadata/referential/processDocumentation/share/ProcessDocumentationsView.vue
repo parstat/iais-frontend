@@ -6,7 +6,7 @@
     <CCardBody>
       <div class="table-responsive">
         <CSmartTable
-          :items="viewProcessDocumentation"
+          :items="sortAscDocumentations(viewProcessDocumentation)"
           :columns="columns"
           column-filter
           items-per-page-select
@@ -40,6 +40,8 @@
   </CCard>
 </template>
 <script>
+import _ from "lodash";
+
 export default {
   name: "ProcessDocumentationsView",
   props: ["processDocumentations"],
@@ -82,14 +84,20 @@ export default {
       for (var pd of this.processDocumentations) {
         localProcessDocs.push({
           id: pd.id,
+          order: pd.localId,
           localId: pd.businessFunction.localId,
           gsbpm: pd.businessFunction.name,
           name: pd.name,
           frequency: pd.frequency,
-          nextSubPhase: pd.nextSubPhase,
+          nextSubPhase: pd.nextSubPhase ? pd.nextSubPhase : "Last Process",
         });
       }
       return localProcessDocs;
+    },
+  },
+  methods: {
+    sortAscDocumentations(arrays) {
+      return _.orderBy(arrays, "order", "asc");
     },
   },
 };

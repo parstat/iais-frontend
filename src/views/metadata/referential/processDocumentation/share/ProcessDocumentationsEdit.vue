@@ -37,7 +37,7 @@
         <CCardBody>
           <div class="table-responsive">
             <CSmartTable
-              :items="sortAscDocumentations(documentations)"
+              :items="sortAscDocumentations(localProcessDocumentation)"
               :columns="columns"
               column-filter
               items-per-page-select
@@ -148,17 +148,35 @@ export default {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
     nextSubPhase() {
-      var nextSubPhase = "";
+      var nextSubPhase = "1.1"; //default the first one
       if (this.documentations) {
-        nextSubPhase = this.sortDescByIdDocumentations(this.documentations)[0]
-          .nextSubPhase;
+        if (this.documentations.length > 0) {
+          nextSubPhase = this.sortDescByIdDocumentations(this.documentations)[0]
+            .nextSubPhase;
+        }
       }
       return nextSubPhase;
+    },
+    localProcessDocumentation() {
+      var localProcessDocs = [];
+      if (this.documentations) {
+        for (var pd of this.documentations) {
+          localProcessDocs.push({
+            id: pd.id,
+            localId: pd.businessFunction.localId,
+            gsbpm: pd.businessFunction.name,
+            name: pd.name,
+            frequency: pd.frequency,
+            nextSubPhase: pd.nextSubPhase ? pd.nextSubPhase : "Last Process",
+          });
+        }
+      }
+      return localProcessDocs;
     },
   },
   methods: {
     sortAscDocumentations(arrays) {
-      return _.orderBy(arrays, "businessFunction.localId", "asc");
+      return _.orderBy(arrays, "localId", "asc");
     },
     sortDescByIdDocumentations(arrays) {
       return _.orderBy(arrays, "id", "desc");
