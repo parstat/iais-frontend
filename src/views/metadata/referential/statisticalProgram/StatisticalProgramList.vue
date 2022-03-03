@@ -95,11 +95,11 @@ export default {
       columns: [
         {
           key: "localId",
-          label: this.$i18n.t("referential.localId"),
+          label: this.$i18n.t("referential.ID"),
         },
         {
           key: "name",
-          label: this.$i18n.t("referential.name"),
+          label: this.$i18n.t("referential.survey_name"),
         },
         {
           key: "acronym",

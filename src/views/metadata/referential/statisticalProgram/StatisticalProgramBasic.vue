@@ -3,74 +3,74 @@
     <CCardBody>
       <CCardText>
         <CForm>
-          <label for="localId">Survey id*</label>
+          <label for="localId"><span>{{ $t("referential.survey_id") }}*</span></label>
           <input
             id="localId"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.localLocalId.$error }"
-            placeholder="Survey id"
+            :placeholder="$t('referential.survey_id')"
             v-model.trim="localLocalId"
             @change="fieldChanged = true"
           />
           <span class="text-danger" v-if="v$.localLocalId.$error"
-            >Please enter survey id.</span
+            >{{ $t("referential.validations.survey_id") }}</span
           >
         </CForm>
         <CForm>
-          <label for="name">Survey name*</label>
+          <label for="name"><span>{{ $t("referential.survey_name") }}*</span></label>
           <input
             id="name"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.localName.$error }"
-            placeholder="Survey name"
+            :placeholder="$t('referential.survey_name')"
             v-model.trim="localName"
             @change="fieldChanged = true"
           />
           <span class="text-danger" v-if="v$.localName.$error"
-            >Please enter survey name.</span
+            >{{ $t("referential.validations.survey_name") }}</span
           >
         </CForm>
         <CForm>
-          <label for="acronym">Survey acronym*</label>
+          <label for="acronym"><span>{{ $t("referential.survey_acronym") }}*</span></label>
           <input
             id="acronym"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.localAcronym.$error }"
-            placeholder="Survey acronym"
+            :placeholder="$t('referential.survey_acronym')"
             v-model.trim="localAcronym"
             @change="fieldChanged = true"
           />
           <span class="text-danger" v-if="v$.localAcronym.$error"
-            >Please enter an acronym.</span
+            >{{ $t("referential.validations.survey_acronym") }}</span
           >
         </CForm>
         <CForm>
-          <label for="description">Survey description*</label>
+          <label for="description"><span>{{ $t("referential.survey_description") }}*</span></label>
           <textarea
             rows="3"
             id="description"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.localDescription.$error }"
-            placeholder="Survey description"
+            :placeholder="$t('referential.survey_description')"
             v-model.trim="localDescription"
             @change="fieldChanged = true"
           />
           <span class="text-danger" v-if="v$.localDescription.$error"
-            >Please enter survey description.</span
+            >{{ $t("referential.validations.survey_description") }}</span
           >
         </CForm>
-        <div class="form-mandatory">*Mandatory fields</div>
+        <div class="form-mandatory"><span>*{{ $t("referential.mandatory_fields") }}</span></div>
       </CCardText>
       <CButton
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
         @click="next"
-        >Next
+        ><span>{{ $t("referential.next") }}</span>
       </CButton>
     </CCardBody>
   </CCard>

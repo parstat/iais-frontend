@@ -4,74 +4,74 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <strong>Agent</strong>
+            <span><strong>{{ $t("referential.agent") }}</strong></span>
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">Name*</label>
+              <label for="name"><span>{{ $t("referential.name") }}*</span></label>
               <input
                 id="name"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.name.$error }"
-                placeholder="Agent name"
+                :placeholder="$t('referential.agent_name')"
                 v-model.trim="name"
               />
-              <span class="text-dange" v-if="v$.name.$error"
-                >Please enter agent name.</span
+              <span class="text-danger" v-if="v$.name.$error"
+                >{{ $t("referential.validations.agent_name") }}</span
               >
             </CForm>
             <CForm>
-              <label for="description">Description</label>
+              <label for="description"><span>{{ $t("referential.description") }}</span></label>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Agent description"
+                :placeholder="$t('referential.agent_description')"
                 v-model.trim="description"
               />
             </CForm>
             <CForm>
-              <label for="type">Type*</label>
+              <label for="type"><span>{{ $t("referential.type") }}*</span></label>
               <v-select
                 label="type"
                 :options="types"
                 v-model="type"
                 class="mb-3"
                 :class="{ 'is-invalid': v$.type.$error }"
-                placeholder="Select a type"
+                :placeholder="$t('referential.selection.type')"
                 @input="getParents"
               ></v-select>
               <span class="text-danger" v-if="v$.type.$error"
-                >Please select a type.</span
+                >{{ $t("referential.validations.type") }}</span
               >
             </CForm>
             <CForm>
-              <label for="parent">Parent</label>
+              <label for="parent"><span>{{ $t("referential.parent") }}</span></label>
               <v-select
                 label="name"
                 :options="parents"
                 class="mb-3"
                 v-model="parent"
-                placeholder="Select a parent"
+                :placeholder="$t('referential.selection.parent')"
               ></v-select>
             </CForm>
             <div class="form-group">
-              <label for="localId">Local id*</label>
+              <label for="localId"><span>{{ $t("referential.local_ID") }}*</span></label>
               <input
                 id="localId"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.localId.$error }"
-                placeholder="Local id"
+                :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
               <span class="text-danger" v-if="v$.localId.$error"
-                >Please specify a local id.</span
+                >{{ $t("referential.validations.local_ID") }}</span
               >
             </div>
-            <div class="form-mandatory">*Mandatory fields</div>
+            <div class="form-mandatory"><span>*{{ $t("referential.mandatory_fields") }}</span></div>
           </CCardText>
           <CButton
             color="primary"
@@ -79,14 +79,14 @@
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Save</CButton
+            ><span>{{ $t("referential.save") }}</span></CButton
           >
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            >Reset</CButton
+            ><span>{{ $t("referential.reset") }}</span></CButton
           >
         </CCardBody>
       </CCard>

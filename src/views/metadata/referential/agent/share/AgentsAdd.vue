@@ -3,7 +3,9 @@
     <CCardBody>
       <CRow>
         <CCol class="col-9">
-          <CCardTitle> Agents </CCardTitle>
+          <CCardTitle>
+            <span>{{ $t("referential.agents") }}</span>
+          </CCardTitle>
         </CCol>
         <CCol class="col-3">
           <CNav class="justify-content-end">
@@ -15,7 +17,7 @@
                   class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
-                  <span class="icon-span">Add</span>
+                  <span class="icon-span">{{ $t("referential.add") }}</span>
                 </router-link>
               </span>
             </CNavItem>
@@ -23,45 +25,48 @@
         </CCol>
       </CRow>
       <CCardText>
-        <div class="form-group" v-if="owners">
-          <label for="organization">Organization*</label>
+        <CForm v-if="owners">
+          <label for="organization"><span>{{ $t("referential.organization") }}*</span></label>
           <v-select
             label="name"
             :options="owners"
             v-model="owner"
+            class="mb-3"
             :class="{ 'is-invalid': v$.owner.$error }"
-            placeholder="Select an organization"
+            :placeholder="$t('referential.selection.organization')"
           ></v-select>
-          <span class="help-block" :class="{ show: v$.owner.$error }"
-            >Please select an Organization.</span
+          <span class="text-danger" v-if="v$.owner.$error"
+            >{{ $t("referential.validations.organization") }}</span
           >
-        </div>
-        <div class="form-group" v-if="maintainers">
-          <label for="division">Division*</label>
+        </CForm>
+        <CForm v-if="maintainers">
+          <label for="division"><span>{{ $t("referential.division") }}*</span></label>
           <v-select
             label="name"
             :options="maintainers"
             v-model="maintainer"
+            class="mb-3"
             :class="{ 'is-invalid': v$.maintainer.$error }"
-            placeholder="Select a division"
+            :placeholder="$t('referential.selection.division')"
           ></v-select>
-          <span class="help-block" :class="{ show: v$.maintainer.$error }"
-            >Please select a division.</span
+          <span class="text-danger" v-if="v$.maintainer.$error"
+            >{{ $t("referential.validations.division") }}</span
           >
-        </div>
-        <div class="form-group" v-if="contacts">
-          <label for="contact">Contact person*</label>
+        </CForm>
+        <CForm v-if="contacts">
+          <label for="contact"><span>{{ $t("referential.contact_person") }}*</span></label>
           <v-select
             label="name"
             :options="contacts"
             v-model="contact"
+            class="mb-3"
             :class="{ 'is-invalid': v$.contact.$error }"
-            placeholder="Select a contact person"
+            :placeholder="$t('referential.selection.contact_person')"
           ></v-select>
-          <span class="help-block" :class="{ show: v$.contact.$error }"
-            >Please select a contact person.</span
+          <span class="text-danger" v-if="v$.contact.$error"
+            >{{ $t("referential.validations.contact_person") }}</span
           >
-        </div>
+        </CForm>
       </CCardText>
       <CButton
         color="primary"
@@ -69,7 +74,7 @@
         style="margin-right: 0.3rem"
         @click="back"
         :disabled="disabled"
-        >Back</CButton
+        ><span>{{ $t("referential.back") }}</span></CButton
       >
       <CButton
         color="primary"
@@ -77,7 +82,7 @@
         style="margin-right: 0.3rem"
         @click.prevent="next"
         :disabled="disabled"
-        >Next</CButton
+        ><span>{{ $t("referential.next") }}</span></CButton
       >
     </CCardBody>
   </CCard>
