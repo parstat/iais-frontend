@@ -6,7 +6,7 @@
       </CCardHeader>
       <CCardBody>
         <CCardGroup>
-          <label for="name">Name*</label>
+          <label for="name"><span>Name*</span></label>
           <input
             id="name"
             type="text"
@@ -20,7 +20,7 @@
           >
         </CCardGroup>
         <CCardGroup>
-          <label for="description">Description</label>
+          <label for="description"><span>Description</span></label>
           <textarea
             rows="5"
             id="description"
@@ -32,7 +32,7 @@
           <span class="help-block">Please enter a description</span>
         </CCardGroup>
         <CCardGroup>
-          <label for="definition">Language</label>
+          <label for="definition"><span>Language</span></label>
           <input
             id="language"
             type="text"
@@ -43,7 +43,7 @@
           <span class="help-block">Please enter a language</span>
         </CCardGroup>
         <CCardGroup>
-          <label for="localId">Local id*</label>
+          <label for="localId"><span>Local id*</span></label>
           <input
             id="localId"
             type="text"
@@ -56,7 +56,7 @@
             >Please specify a local id.</span
           >
         </CCardGroup>
-        <div class="form-mandatory">*Mandatory fields</div>
+        <div class="form-mandatory"><span>*Mandatory fields</span></div>
       </CCardBody>
       <CCardFooter>
         <CButton

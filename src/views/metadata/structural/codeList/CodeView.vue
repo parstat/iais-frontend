@@ -6,7 +6,7 @@
           {{ code.name }}
           <span class="lead">( {{ code.version || code.localId }} )</span>
         </h2>
-        <p class="lead"><strong>Description:</strong> {{ code.description }}</p>
+        <p class="lead"><span><strong>Description:</strong></span> {{ code.description }}</p>
       </div>
     </div>
     <CCard>
@@ -18,9 +18,9 @@
           <table class="table table-hover" v-if="code">
             <thead>
               <tr>
-                <th scope="col">Code</th>
-                <th scope="col">Value</th>
-                <th scope="col" colspan="2" width="2%">Actions</th>
+                <th scope="col"><span>Code</span></th>
+                <th scope="col"><span>Value</span></th>
+                <th scope="col" colspan="2" width="2%"><span>Actions</span></th>
               </tr>
             </thead>
             <tbody>
