@@ -94,7 +94,7 @@ function save(formData) {
       name: formData.name,
       description: formData.description,
       type: formData.type,
-      parent: formData.parent,
+      parent: formData.parent ? formData.parent : "",
       local_id: formData.localId,
     };
 

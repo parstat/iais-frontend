@@ -150,9 +150,14 @@ export default {
           _style: { width: "20%" },
         },
         {
+          key: "version",
+          label: "Version",
+          _style: { width: "5%" },
+        },
+        {
           key: "actions",
           label: "Actions",
-          _style: { width: "10%" },
+          _style: { width: "5%" },
           sorter: false,
           filter: false,
         },
@@ -178,11 +183,13 @@ export default {
         for (var pd of this.documentations) {
           localProcessDocs.push({
             id: pd.id,
+            order: pd.localId,
             localId: pd.businessFunction.localId,
             gsbpm: pd.businessFunction.name,
             name: pd.name,
             frequency: pd.frequency,
             nextSubPhase: pd.nextSubPhase ? pd.nextSubPhase : "Last Process",
+            version: pd.version,
           });
         }
       }
@@ -191,7 +198,7 @@ export default {
   },
   methods: {
     sortAscDocumentations(arrays) {
-      return _.orderBy(arrays, "localId", "asc");
+      return _.orderBy(arrays, ["order", "version"], ["asc", "asc"]);
     },
     sortDescByIdDocumentations(arrays) {
       return _.orderBy(arrays, "id", "desc");

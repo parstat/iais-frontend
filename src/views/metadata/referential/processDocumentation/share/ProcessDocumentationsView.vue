@@ -69,6 +69,10 @@ export default {
           label: "Next",
         },
         {
+          key: "version",
+          label: "Version",
+        },
+        {
           key: "actions",
           label: "Actions",
           _style: "width:1%",
@@ -90,6 +94,7 @@ export default {
           name: pd.name,
           frequency: pd.frequency,
           nextSubPhase: pd.nextSubPhase ? pd.nextSubPhase : "Last Process",
+          version: pd.version,
         });
       }
       return localProcessDocs;
@@ -97,7 +102,7 @@ export default {
   },
   methods: {
     sortAscDocumentations(arrays) {
-      return _.orderBy(arrays, "order", "asc");
+      return _.orderBy(arrays, ["order", "version"], ["asc", "asc"]);
     },
   },
 };
