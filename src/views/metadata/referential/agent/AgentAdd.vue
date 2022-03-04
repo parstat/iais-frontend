@@ -4,11 +4,15 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span><strong>{{ $t("referential.agent") }}</strong></span>
+            <span
+              ><strong>{{ $t("referential.agent") }}</strong></span
+            >
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name"><span>{{ $t("referential.name") }}*</span></label>
+              <label for="name"
+                ><span>{{ $t("referential.name") }}*</span></label
+              >
               <input
                 id="name"
                 type="text"
@@ -17,12 +21,14 @@
                 :placeholder="$t('referential.agent_name')"
                 v-model.trim="name"
               />
-              <span class="text-danger" v-if="v$.name.$error"
-                >{{ $t("referential.validations.agent_name") }}</span
-              >
+              <span class="text-danger" v-if="v$.name.$error">{{
+                $t("referential.validations.agent_name")
+              }}</span>
             </CForm>
             <CForm>
-              <label for="description"><span>{{ $t("referential.description") }}</span></label>
+              <label for="description"
+                ><span>{{ $t("referential.description") }}</span></label
+              >
               <textarea
                 rows="5"
                 id="description"
@@ -33,7 +39,9 @@
               />
             </CForm>
             <CForm>
-              <label for="type"><span>{{ $t("referential.type") }}*</span></label>
+              <label for="type"
+                ><span>{{ $t("referential.type") }}*</span></label
+              >
               <v-select
                 label="type"
                 :options="types"
@@ -43,12 +51,14 @@
                 :placeholder="$t('referential.selection.type')"
                 @input="getParents"
               ></v-select>
-              <span class="text-danger" v-if="v$.type.$error"
-                >{{ $t("referential.validations.type") }}</span
-              >
+              <span class="text-danger" v-if="v$.type.$error">{{
+                $t("referential.validations.type")
+              }}</span>
             </CForm>
             <CForm>
-              <label for="parent"><span>{{ $t("referential.parent") }}</span></label>
+              <label for="parent"
+                ><span>{{ $t("referential.parent") }}</span></label
+              >
               <v-select
                 label="name"
                 :options="parents"
@@ -58,7 +68,9 @@
               ></v-select>
             </CForm>
             <div class="form-group">
-              <label for="localId"><span>{{ $t("referential.local_ID") }}*</span></label>
+              <label for="localId"
+                ><span>{{ $t("referential.local_ID") }}*</span></label
+              >
               <input
                 id="localId"
                 type="text"
@@ -67,11 +79,13 @@
                 :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error"
-                >{{ $t("referential.validations.local_ID") }}</span
-              >
+              <span class="text-danger" v-if="v$.localId.$error">{{
+                $t("referential.validations.local_ID")
+              }}</span>
             </div>
-            <div class="form-mandatory"><span>*{{ $t("referential.mandatory_fields") }}</span></div>
+            <div class="form-mandatory">
+              <span>*{{ $t("referential.mandatory_fields") }}</span>
+            </div>
           </CCardText>
           <CButton
             color="primary"

@@ -6,7 +6,9 @@
           {{ code.name }}
           <span class="lead">( {{ code.version || code.localId }} )</span>
         </h2>
-        <p class="lead"><span><strong>Description:</strong></span> {{ code.description }}</p>
+        <p class="lead">
+          <span><strong>Description:</strong></span> {{ code.description }}
+        </p>
       </div>
     </div>
     <CCard>

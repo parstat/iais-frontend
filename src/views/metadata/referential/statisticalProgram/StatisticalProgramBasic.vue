@@ -3,7 +3,9 @@
     <CCardBody>
       <CCardText>
         <CForm>
-          <label for="localId"><span>{{ $t("referential.survey_id") }}*</span></label>
+          <label for="localId"
+            ><span>{{ $t("referential.survey_id") }}*</span></label
+          >
           <input
             id="localId"
             type="text"
@@ -13,12 +15,14 @@
             v-model.trim="localLocalId"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localLocalId.$error"
-            >{{ $t("referential.validations.survey_id") }}</span
-          >
+          <span class="text-danger" v-if="v$.localLocalId.$error">{{
+            $t("referential.validations.survey_id")
+          }}</span>
         </CForm>
         <CForm>
-          <label for="name"><span>{{ $t("referential.survey_name") }}*</span></label>
+          <label for="name"
+            ><span>{{ $t("referential.survey_name") }}*</span></label
+          >
           <input
             id="name"
             type="text"
@@ -28,12 +32,14 @@
             v-model.trim="localName"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localName.$error"
-            >{{ $t("referential.validations.survey_name") }}</span
-          >
+          <span class="text-danger" v-if="v$.localName.$error">{{
+            $t("referential.validations.survey_name")
+          }}</span>
         </CForm>
         <CForm>
-          <label for="acronym"><span>{{ $t("referential.survey_acronym") }}*</span></label>
+          <label for="acronym"
+            ><span>{{ $t("referential.survey_acronym") }}*</span></label
+          >
           <input
             id="acronym"
             type="text"
@@ -43,12 +49,14 @@
             v-model.trim="localAcronym"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localAcronym.$error"
-            >{{ $t("referential.validations.survey_acronym") }}</span
-          >
+          <span class="text-danger" v-if="v$.localAcronym.$error">{{
+            $t("referential.validations.survey_acronym")
+          }}</span>
         </CForm>
         <CForm>
-          <label for="description"><span>{{ $t("referential.survey_description") }}*</span></label>
+          <label for="description"
+            ><span>{{ $t("referential.survey_description") }}*</span></label
+          >
           <textarea
             rows="3"
             id="description"
@@ -59,11 +67,13 @@
             v-model.trim="localDescription"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localDescription.$error"
-            >{{ $t("referential.validations.survey_description") }}</span
-          >
+          <span class="text-danger" v-if="v$.localDescription.$error">{{
+            $t("referential.validations.survey_description")
+          }}</span>
         </CForm>
-        <div class="form-mandatory"><span>*{{ $t("referential.mandatory_fields") }}</span></div>
+        <div class="form-mandatory">
+          <span>*{{ $t("referential.mandatory_fields") }}</span>
+        </div>
       </CCardText>
       <CButton
         color="primary"

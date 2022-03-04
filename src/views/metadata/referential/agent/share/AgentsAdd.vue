@@ -26,7 +26,9 @@
       </CRow>
       <CCardText>
         <CForm v-if="owners">
-          <label for="organization"><span>{{ $t("referential.organization") }}*</span></label>
+          <label for="organization"
+            ><span>{{ $t("referential.organization") }}*</span></label
+          >
           <v-select
             label="name"
             :options="owners"
@@ -35,12 +37,14 @@
             :class="{ 'is-invalid': v$.owner.$error }"
             :placeholder="$t('referential.selection.organization')"
           ></v-select>
-          <span class="text-danger" v-if="v$.owner.$error"
-            >{{ $t("referential.validations.organization") }}</span
-          >
+          <span class="text-danger" v-if="v$.owner.$error">{{
+            $t("referential.validations.organization")
+          }}</span>
         </CForm>
         <CForm v-if="maintainers">
-          <label for="division"><span>{{ $t("referential.division") }}*</span></label>
+          <label for="division"
+            ><span>{{ $t("referential.division") }}*</span></label
+          >
           <v-select
             label="name"
             :options="maintainers"
@@ -49,12 +53,14 @@
             :class="{ 'is-invalid': v$.maintainer.$error }"
             :placeholder="$t('referential.selection.division')"
           ></v-select>
-          <span class="text-danger" v-if="v$.maintainer.$error"
-            >{{ $t("referential.validations.division") }}</span
-          >
+          <span class="text-danger" v-if="v$.maintainer.$error">{{
+            $t("referential.validations.division")
+          }}</span>
         </CForm>
         <CForm v-if="contacts">
-          <label for="contact"><span>{{ $t("referential.contact_person") }}*</span></label>
+          <label for="contact"
+            ><span>{{ $t("referential.contact_person") }}*</span></label
+          >
           <v-select
             label="name"
             :options="contacts"
@@ -63,9 +69,9 @@
             :class="{ 'is-invalid': v$.contact.$error }"
             :placeholder="$t('referential.selection.contact_person')"
           ></v-select>
-          <span class="text-danger" v-if="v$.contact.$error"
-            >{{ $t("referential.validations.contact_person") }}</span
-          >
+          <span class="text-danger" v-if="v$.contact.$error">{{
+            $t("referential.validations.contact_person")
+          }}</span>
         </CForm>
       </CCardText>
       <CButton
