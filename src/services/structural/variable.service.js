@@ -41,27 +41,16 @@ function findById(id) {
   });
 }
 
-function save(formData) {
+function save(variable) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
     };
 
-    const requestBody = {
-      name: formData.name,
-      description: formData.description,
-      //definition: formData.definition,
-      local_id: formData.localId,
-    };
-
     axiosIais
-      .post(
-        "/structural/ClosedVariables" + formData.localId,
-        new URLSearchParams(requestBody).toString(),
-        config
-      )
+      .post("/structural/ClosedVariables", JSON.stringify(variable), config)
       .then(
         (response) => {
           //console.log(response.data);

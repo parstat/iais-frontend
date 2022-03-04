@@ -46,6 +46,19 @@
                 v-model.trim="definition"
               />
             </CForm>
+            <CForm v-if="unitTypes">
+              <label for="measures">Measures*</label>
+              <v-select
+                label="name"
+                :options="unitTypes"
+                v-model="measures"
+                :class="{ 'is-invalid': v$.measures.$error }"
+                placeholder="Select a unit type"
+              ></v-select>
+              <span class="help-block" :class="{ show: v$.measures.$error }"
+                >Please select a unit type.</span
+              >
+            </CForm>
             <CForm class="mb-3">
               <label for="localId">Local id*</label>
               <input
@@ -66,7 +79,7 @@
             color="primary"
             size="sm"
             style="margin-right: 0.3rem"
-            @click.prevent="Submit()"
+            @click.prevent="handleSubmit()"
             :disabled="disabled"
             >Save</CButton
           >
@@ -83,9 +96,10 @@
   </CRow>
 </template>
 <script>
-//import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import { Context } from "@/common";
 //import { Variable } from "@/common";
 
 export default {
@@ -98,21 +112,15 @@ export default {
       definition: "",
       localId: "",
       disabled: false,
+      measures: "",
       //variable: []
     };
   },
-  /*
+
   computed: {
-    ...mapGetters("variable", ["parents"]),
-    types() {
-      var types = [];
-      for (const key of Object.keys(Variable)) {
-        types.push(Variable[key]);
-      }
-      return types;
-    }
+    ...mapGetters("unitType", ["unitTypes"]),
   },
-  */
+
   validations: {
     name: {
       required,
@@ -123,20 +131,24 @@ export default {
     localId: {
       required,
     },
+    measures: {
+      required,
+    },
   },
   methods: {
     handleSubmit() {
       this.v$.$touch(); //validate form data
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
-        const formData = {
+        const jsonVariable = {
           name: this.name,
           description: this.description,
           definition: this.definition,
-          localId: this.localId,
+          localId: this.localId.toUpperCase(),
+          measuresId: this.measures ? this.measures.id : "",
         };
-        this.$store.dispatch("variable/save", formData);
-        console.log(formData);
+        this.$store.dispatch("variable/save", jsonVariable);
+        console.log(jsonVariable);
       }
     },
     handleReset() {
@@ -144,8 +156,13 @@ export default {
       this.description = "";
       this.definition = "";
       this.localId = "";
+      this.meausures = "";
       this.v$.$reset();
     },
+  },
+  created() {
+    this.$store.dispatch("unitType/findAll");
+    this.$store.dispatch("coreui/setContext", Context.Structural);
   },
 };
 </script>
