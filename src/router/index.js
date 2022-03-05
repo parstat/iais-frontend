@@ -531,10 +531,18 @@ const routes = [
       },
       // Unit Type view
       {
-        path: "metadata/structural/unitType/view/:id",
+        path: "metadata/structural/unitTypes/view/:id",
         name: "UnitTypeView",
         component: () =>
           import("@/views/metadata/structural/unitType/UnitTypeView"),
+        meta: { authorize: [] },
+      },
+      // Unit Type add
+      {
+        path: "metadata/structural/unitTypes/add/",
+        name: "UnitTypeAdd",
+        component: () =>
+          import("@/views/metadata/structural/unitType/UnitTypeAdd"),
         meta: { authorize: [] },
       },
     ],

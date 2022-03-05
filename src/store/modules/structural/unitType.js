@@ -1,5 +1,6 @@
 //import router from "@/router";
 import { unitTypeService } from "@/services";
+import router from "@/router";
 
 const state = {
   unitTypes: [],
@@ -33,6 +34,20 @@ const actions = {
       (data) => {
         commit("SET_UNITTYPE", data);
         console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  save({ dispatch }, formData) {
+    unitTypeService.save(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Unit type saved!", {
+          root: true,
+        });
+        router.push("/metadata/structural/unitTypes");
       },
       (error) => {
         console.log(error);
