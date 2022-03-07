@@ -35,16 +35,6 @@
               >
             </CForm>
             <CForm>
-              <label for="version">Version</label>
-              <input
-                id="version"
-                type="text"
-                class="form-control mb-3"
-                placeholder="Business service version"
-                v-model.trim="version"
-              />
-            </CForm>
-            <CForm>
               <label for="localId">Local id</label>
               <input
                 id="localId"
@@ -91,7 +81,6 @@ export default {
       v$: useValidate(),
       name: "",
       description: "",
-      version: "",
       localId: "",
       disabled: false,
     };
@@ -115,7 +104,6 @@ export default {
         const formData = {
           name: this.name,
           description: this.description,
-          version: this.version,
           localId: this.localId,
         };
         this.$store.dispatch("businessService/save", formData);

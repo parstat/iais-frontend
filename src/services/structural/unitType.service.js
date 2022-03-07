@@ -48,7 +48,6 @@ function save(formData) {
       name: formData.name,
       description: formData.description,
       definition: formData.definition,
-      version: formData.version ? formData.version : "",
       localId: formData.localId,
     };
 
