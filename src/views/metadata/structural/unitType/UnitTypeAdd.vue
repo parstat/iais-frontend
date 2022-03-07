@@ -76,16 +76,6 @@
                 Please specify the local id.
               </div>
             </CForm>
-            <CForm>
-              <label for="version">Version</label>
-              <input
-                id="version"
-                type="text"
-                class="form-control mb-3"
-                placeholder="Unit type version"
-                v-model.trim="version"
-              />
-            </CForm>
             <div class="form-mandatory">*Mandatory fields</div>
           </CCardText>
           <CButton
@@ -120,7 +110,6 @@ export default {
       name: "",
       description: "",
       definition: "",
-      version: "",
       localId: "",
     };
   },
@@ -143,7 +132,6 @@ export default {
       this.name = "";
       this.description = "";
       this.definition = "";
-      this.version = "";
       this.localId = "";
       this.v$.$reset();
     },
@@ -156,7 +144,6 @@ export default {
           name: this.name,
           description: this.description,
           definition: this.definition,
-          version: this.version,
           localId: this.localId,
         };
         this.$store.dispatch("unitType/save", formData);
