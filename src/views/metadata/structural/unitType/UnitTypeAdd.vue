@@ -43,21 +43,14 @@
               </div>
             </CForm>
             <CForm>
-              <label for="definition">Definition*</label>
+              <label for="definition">Definition</label>
               <input
                 id="definition"
                 type="text"
-                class="form-control"
-                :class="{
-                  'is-invalid': v$.definition.$error,
-                  'mb-3': !v$.definition.$error,
-                }"
+                class="form-control mb-3"
                 placeholder="Unit type definition"
                 v-model.trim="definition"
               />
-              <div class="text-danger mb-3" v-if="v$.definition.$error">
-                Please enter a definition.
-              </div>
             </CForm>
             <CForm>
               <label for="localId">Local id*</label>
@@ -118,9 +111,6 @@ export default {
       required,
     },
     description: {
-      required,
-    },
-    definition: {
       required,
     },
     localId: {
