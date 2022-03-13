@@ -69,9 +69,9 @@
                           name: 'UnitTypeEdit',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-pencil" />
-                      </router-link> -->
+                      > -->
+                      <CIcon name="cil-pencil" />
+                      <!-- </router-link> -->
                     </span>
 
                     <span
@@ -86,9 +86,9 @@
                           name: 'UnitTypeDelete',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-trash" />
-                      </router-link> -->
+                      > -->
+                      <CIcon name="cil-trash" />
+                      <!-- </router-link> -->
                     </span>
                   </td>
                 </template>
