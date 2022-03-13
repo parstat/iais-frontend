@@ -76,6 +76,7 @@ function update(formData) {
       description: formData.description,
       definition: formData.definition,
       localId: formData.localId,
+      version: formData.version ? formData.version : "",
     };
 
     axiosIais
