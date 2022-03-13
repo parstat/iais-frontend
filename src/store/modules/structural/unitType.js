@@ -54,6 +54,20 @@ const actions = {
       }
     );
   },
+  update({ dispatch }, formData) {
+    unitTypeService.update(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Unit type updated!", {
+          root: true,
+        });
+        router.push("/metadata/structural/unitTypes");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
 };
 
 const getters = {

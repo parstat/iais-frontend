@@ -62,16 +62,16 @@
                       class="pl-2"
                       v-c-tooltip="'Edit'"
                     >
-                      <!--  <router-link
+                      <router-link
                         tag="a"
                         title="Edit"
                         :to="{
                           name: 'UnitTypeEdit',
                           params: { id: item.id },
                         }"
-                      > -->
-                      <CIcon name="cil-pencil" />
-                      <!-- </router-link> -->
+                      >
+                        <CIcon name="cil-pencil" />
+                      </router-link>
                     </span>
 
                     <span

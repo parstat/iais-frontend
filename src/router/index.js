@@ -545,6 +545,13 @@ const routes = [
           import("@/views/metadata/structural/unitType/UnitTypeAdd"),
         meta: { authorize: [] },
       },
+      {
+        path: "metadata/structural/unitTypes/edit/:id",
+        name: "UnitTypeEdit",
+        component: () =>
+          import("@/views/metadata/structural/unitType/UnitTypeEdit"),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];
