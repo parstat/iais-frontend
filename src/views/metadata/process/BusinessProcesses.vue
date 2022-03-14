@@ -5,7 +5,9 @@
         <span>{{ $t("process.business_processes_header") }}</span>
       </CCardHeader>
       <CCardBody>
-        <CCardText>Buh!</CCardText>
+        <CCardText>
+          <span>Buh!</span>
+        </CCardText>
       </CCardBody>
     </CCard>
   </CRoW>

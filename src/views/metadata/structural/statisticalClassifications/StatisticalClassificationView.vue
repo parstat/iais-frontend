@@ -45,7 +45,9 @@
                   <CCardTitle
                     >{{ level.levelNumber }}. {{ level.name }}</CCardTitle
                   >
-                  <CCardText>{{ level.description }}</CCardText>
+                  <CCardText>
+                    <span>{{ level.description }}</span>
+                  </CCardText>
                 </CCardBody>
               </CCard>
             </CCol>

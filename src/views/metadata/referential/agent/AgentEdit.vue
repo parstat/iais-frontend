@@ -3,64 +3,76 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="agent">
         <CCardBody>
-          <CCardTitle> Agent </CCardTitle>
+          <CCardTitle>
+            <span>{{ $t("referential.agent") }}</span>
+          </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">Name</label>
+              <label for="name">
+                <span>{{ $t("referential.name") }}</span>
+              </label>
               <input
                 id="name"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.agent.name.$error }"
-                placeholder="Agent name"
+                :placeholder="$t('referential.agent_name')"
                 v-model.trim="agent.name"
               />
-              <span class="text-danger" v-if="v$.agent.name.$error"
-                >Please enter agent name.</span
-              >
+              <span class="text-danger" v-if="v$.agent.name.$error">{{
+                $t("referential.validations.agent_name")
+              }}</span>
             </CForm>
             <CForm>
-              <label for="description">Description</label>
+              <label for="description">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Agent description"
+                :placeholder="$t('referential.agent_description')"
                 v-model.trim="agent.description"
               />
             </CForm>
             <CForm>
-              <label for="account">Type</label>
+              <label for="account">
+                <span>{{ $t("referential.type") }}</span>
+              </label>
               <v-select
                 label="type"
                 :options="types"
                 v-model="agent.type"
                 class="mb-3"
                 :class="{ 'is-invalid': v$.agent.type.$error }"
-                placeholder="Select a type"
+                :placeholder="$t('referential.selection.type')"
               ></v-select>
-              <span class="text-danger" v-if="v$.agent.type.$error"
-                >Please select a type.</span
-              >
+              <span class="text-danger" v-if="v$.agent.type.$error">{{
+                $t("referential.validations.type")
+              }}</span>
             </CForm>
             <CForm>
-              <label for="parent">Parent</label>
+              <label for="parent">
+                <span>{{ $t("referential.parent") }}</span>
+              </label>
               <v-select
                 label="name"
                 :options="parents"
                 class="mb-3"
                 v-model="agent.parent"
-                placeholder="Select a parent"
+                :placeholder="$t('referential.selection.parent')"
               ></v-select>
             </CForm>
             <CForm>
-              <label for="localId">Local id</label>
+              <label for="localId">
+                <span>{{ $t("referential.local_ID") }}</span>
+              </label>
               <input
                 id="localId"
                 type="text"
                 class="form-control"
-                placeholder="Local id"
+                :placeholder="$t('referential.local_ID')"
                 v-model.trim="agent.localId"
               />
             </CForm>
@@ -72,14 +84,14 @@
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Update</CButton
+            ><span>{{ $t("referential.update") }}</span></CButton
           >
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            >Reset</CButton
+            ><span>{{ $t("referential.reset") }}</span></CButton
           >
         </CCardBody>
       </CCard>

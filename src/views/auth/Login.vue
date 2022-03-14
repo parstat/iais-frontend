@@ -51,7 +51,7 @@
                       color="primary"
                       class="btn-block"
                       @click.prevent="handleSubmit"
-                      >{{ $t("user.signin") }}
+                      ><span>{{ $t("user.signin") }}</span>
                     </CButton>
                   </CCol>
                 </CRow>

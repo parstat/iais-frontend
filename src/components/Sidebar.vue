@@ -13,7 +13,7 @@
   >
     <CSidebarBrand class="d-md-down-none" to="/">
       <CIcon name="cil-terminal" size="lg"></CIcon
-      ><span class="brand"> IAIS Meta </span>
+      ><span class="brand">IAIS Meta</span>
     </CSidebarBrand>
 
     <AppSidebarNav />

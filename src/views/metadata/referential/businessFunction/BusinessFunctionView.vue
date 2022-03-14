@@ -8,19 +8,25 @@
           </CCardTitle>
           <CCardText>
             <div class="card-group">
-              <span><strong>Description:</strong></span>
+              <span>
+                <strong>{{ $t("referential.description") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
               <span>{{ businessFunction.description }}</span>
             </div>
             <div class="card-group">
-              <span><strong>Phase:</strong></span>
+              <span>
+                <strong>{{ $t("referential.phase") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
               <span>{{ businessFunction.phase }}</span>
             </div>
             <div class="card-group">
-              <span><strong>Sub-phase number:</strong></span>
+              <span>
+                <strong>{{ $t("referential.sub-phase_number") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
               <span>{{ businessFunction.localId }}</span>
@@ -31,7 +37,7 @@
             size="sm"
             @click.prevent="handleBack()"
             :disabled="disabled"
-            >Back</CButton
+            ><span>{{ $t("referential.back") }}</span></CButton
           >
         </CCardBody>
       </CCard>
