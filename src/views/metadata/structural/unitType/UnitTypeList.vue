@@ -45,7 +45,7 @@
                   <td
                     style="text-align: right; width: 10%; padding-right: 20px"
                   >
-                    <span class="pl-2">
+                    <span class="pl-2" v-c-tooltip="'View'">
                       <router-link
                         tag="a"
                         title="View"
