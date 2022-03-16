@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-description" />
-            Legislative references
+            <span>{{ $t("referential.legislative_references_header") }}</span>
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -16,7 +16,8 @@
                 to="/metadata/referential/gsim/regulation/add"
                 class="text-decoration-none text-primary"
               >
-                <CIcon name="cil-plus" /> Add
+                <CIcon name="cil-plus" />
+                <span class="icon-span">{{ $t("referential.add") }}</span>
               </router-link>
             </CNavItem>
           </CNav>
@@ -26,7 +27,9 @@
     <CCardBody>
       <CCardText>
         <div class="form-group mb-3" v-if="legislativeReferences">
-          <label for="description">Legislative references</label>
+          <label for="description">
+            <span>{{ $t("referential.legislative_references_header") }}</span>
+          </label>
           <v-select
             label="name"
             :options="legislativeReferences"
@@ -37,12 +40,15 @@
           >
             <template v-slot:no-options="{ search, searching }">
               <template v-if="searching">
-                No results found for <em>{{ search }}</em
+                <span>{{ $t("referential.no_found") }}</span>
+                <em>{{ search }}</em
                 >.
               </template>
               <em style="opacity: 0.5" v-else
-                >Start typing to search for a legislative reference.</em
-              >
+                ><span>{{
+                  $t("referential.search_for_legislative reference")
+                }}</span>
+              </em>
             </template>
             <template v-slot:content="option">
               <div class="d-center">
@@ -65,7 +71,7 @@
                 <CRow>
                   <CCol class="col-9">
                     <CCardTitle component="h6">
-                      {{ legislativeReference.name }}
+                      <span>{{ legislativeReference.name }}</span>
                     </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
@@ -97,7 +103,9 @@
                 </CRow>
               </CCardHeader>
               <CCardBody>
-                <CCardText>{{ legislativeReference.description }}</CCardText>
+                <CCardText>
+                  <span>{{ legislativeReference.description }}</span>
+                </CCardText>
               </CCardBody>
             </CCard>
           </CCol>
@@ -110,16 +118,14 @@
         size="sm"
         style="margin-right: 0.3rem"
         @click="$emit('back')"
-      >
-        Back
+        ><span>{{ $t("referential.back") }}</span>
       </CButton>
       <CButton
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
         @click="$emit('next', fieldChanged)"
-      >
-        Next
+        ><span>{{ $t("referential.next") }}</span>
       </CButton>
     </CCardFooter>
   </CCard>

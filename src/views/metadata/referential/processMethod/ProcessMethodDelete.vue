@@ -3,10 +3,14 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="processMethod">
         <CCardBody>
-          <CCardTitle> {{ processMethod.name }} </CCardTitle>
+          <CCardTitle>
+            <span>{{ processMethod.name }}</span>
+          </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="responsible">Description</label>
+              <label for="responsible">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
               <input
                 id="description"
                 type="text"
@@ -16,7 +20,9 @@
               />
             </CForm>
             <CForm>
-              <label for="responsible">Local id</label>
+              <label for="responsible">
+                <span>{{ $t("referential.local_ID") }}</span>
+              </label>
               <input
                 id="localId"
                 type="text"
@@ -31,7 +37,7 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            >Delete</CButton
+            ><span>{{ $t("referential.delete") }}</span></CButton
           >
         </CCardBody>
       </CCard>

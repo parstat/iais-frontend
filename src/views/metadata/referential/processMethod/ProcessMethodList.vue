@@ -3,7 +3,9 @@
     <CCardBody>
       <CRow>
         <CCol class="col-9">
-          <CCardTitle> Process Method </CCardTitle>
+          <CCardTitle>
+            <span>{{ $t("referential.process_method") }}</span>
+          </CCardTitle>
         </CCol>
         <CCol class="col-3">
           <CNav class="justify-content-end">
@@ -15,7 +17,9 @@
                 class="text-decoration-none text-primary"
               >
                 <CIcon name="cil-plus" />
-                <span class="icon-span">New Method</span>
+                <span class="icon-span">{{
+                  $t("referential.new_method")
+                }}</span>
               </router-link>
             </CNavItem>
           </CNav>
@@ -27,7 +31,6 @@
             :items="processMethods"
             :columns="columns"
             column-filter
-            table-filter
             items-per-page-select
             :items-per-page="5"
             columnSorter
@@ -88,15 +91,15 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("referential.ID"),
         },
         {
           key: "name",
-          label: "Name",
+          label: this.$i18n.t("referential.agent_name"),
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("referential.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,

@@ -3,63 +3,77 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
-          <CCardTitle> Process Method </CCardTitle>
+          <CCardTitle>
+            <span>{{ $t("referential.process_method") }}</span>
+          </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">Name*</label>
+              <label for="name">
+                <span>{{ $t("referential.name") }}*</span>
+              </label>
               <input
                 id="name"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.name.$error }"
-                placeholder="Process Method name"
+                :placeholder="$t('referential.process_method_name')"
                 v-model.trim="name"
               />
-              <span class="text-danger" v-if="v$.name.$error"
-                >Please enter process method name.</span
-              >
+              <span class="text-danger" v-if="v$.name.$error">{{
+                $t("referential.validations.process_method_name")
+              }}</span>
             </CForm>
             <CForm>
-              <label for="description">Description</label>
+              <label for="description">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.description.$error }"
-                placeholder="Process method description"
+                :placeholder="$t('referential.process_method_description')"
                 v-model.trim="description"
               />
-              <span class="text-danger" v-if="v$.description.$error"
-                >Please enter a description</span
-              >
+              <span class="text-danger" v-if="v$.description.$error">{{
+                $t("referential.validations.process_method_description")
+              }}</span>
             </CForm>
             <div class="form-group">
-              <label for="version">Version</label>
+              <label for="version">
+                <span>{{ $t("referential.version") }}</span>
+              </label>
               <input
                 id="version"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Process method version"
+                :placeholder="$t('referential.process_method_version')"
                 v-model.trim="version"
               />
-              <span class="help-block">Please enter a version</span>
+              <span class="text-danger" v-if="v$.description.$error">{{
+                $t("referential.validations.process_method_version")
+              }}</span>
             </div>
             <CForm>
-              <label for="localId">Local id</label>
+              <label for="localId">
+                <span>{{ $t("referential.local_ID") }}</span>
+              </label>
               <input
                 id="localId"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.localId.$error }"
-                placeholder="Local id"
+                :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error"
-                >Please specify a local id.</span
-              >
+              <span class="text-danger" v-if="v$.localId.$error">{{
+                $t("referential.validations.process_method_local_ID")
+              }}</span>
             </CForm>
-            <div class="form-mandatory">*Mandatory fields</div>
+            <div class="form-mandatory">
+              <span>*{{ $t("referential.mandatory_fields") }}</span>
+            </div>
           </CCardText>
           <CButton
             color="primary"
@@ -67,14 +81,14 @@
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Save</CButton
+            ><span>{{ $t("referential.save") }}</span></CButton
           >
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            >Reset</CButton
+            ><span>{{ $t("referential.reset") }}</span></CButton
           >
         </CCardBody>
       </CCard>

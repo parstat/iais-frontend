@@ -1,7 +1,7 @@
 <template>
   <CCard v-if="legislativeReferences.length">
     <CCardHeader class="bg-white" component="h5">
-      Legislative References
+      <span>{{ $t("referential.legislative_references_header") }}</span>
     </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
@@ -15,7 +15,7 @@
               <CRow>
                 <CCol class="col-9">
                   <CCardTitle component="h6">
-                    {{ legislativeReference.name }}
+                    <span>{{ legislativeReference.name }}</span>
                   </CCardTitle>
                 </CCol>
                 <CCol class="col-3">
@@ -38,7 +38,9 @@
               </CRow>
             </CCardHeader>
             <CCardBody>
-              <CCardText>{{ legislativeReference.description }}</CCardText>
+              <CCardText>
+                <span>{{ legislativeReference.description }}</span>
+              </CCardText>
             </CCardBody>
           </CCard>
         </CCol>
