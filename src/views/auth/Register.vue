@@ -6,7 +6,9 @@
           <CCard class="mx-4 mb-0">
             <CCardHeader align="center">
               <img src="img/logo.png" class="logo" />
-              <h3>{{ $t("user.register_to_iais") }}</h3>
+              <h3>
+                <span>{{ $t("user.register_to_iais") }}</span>
+              </h3>
             </CCardHeader>
             <CCardBody class="p-4">
               <CForm>
@@ -114,11 +116,8 @@
                     >{{ $t("user.validations.passwords_no_match") }}</span
                   >
                 </div>
-                <CButton
-                  color="success"
-                  block
-                  @click.prevent="handleSubmit()"
-                  >{{ $t("user.create_account") }}</CButton
+                <CButton color="success" block @click.prevent="handleSubmit()"
+                  ><span>{{ $t("user.create_account") }}</span></CButton
                 >
               </CForm>
             </CCardBody>

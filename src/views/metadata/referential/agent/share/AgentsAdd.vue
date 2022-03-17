@@ -80,16 +80,16 @@
         style="margin-right: 0.3rem"
         @click="back"
         :disabled="disabled"
-        ><span>{{ $t("referential.back") }}</span></CButton
-      >
+        ><span>{{ $t("referential.back") }}</span>
+      </CButton>
       <CButton
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
         @click.prevent="next"
         :disabled="disabled"
-        ><span>{{ $t("referential.next") }}</span></CButton
-      >
+        ><span>{{ $t("referential.next") }}</span>
+      </CButton>
     </CCardBody>
   </CCard>
 </template>

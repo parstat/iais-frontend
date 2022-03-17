@@ -4,51 +4,63 @@
       <CCard v-if="processMethod">
         <CCardBody>
           <CCardTitle>
-            <strong>Process Method</strong>
+            <span>
+              <strong>{{ $t("referential.process_method") }}</strong>
+            </span>
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">Name</label>
+              <label for="name">
+                <span>{{ $t("referential.name") }}</span>
+              </label>
               <input
                 id="name"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.processMethod.name.$error }"
-                placeholder="processMethod name"
+                :placeholder="$t('referential.process_method_name')"
                 v-model.trim="processMethod.name"
               />
-              <span class="text-danger" v-if="v$.processMethod.name.$error"
-                >Please enter processMethod name.</span
-              >
+              <span class="text-danger" v-if="v$.processMethod.name.$error">{{
+                $t("referential.validations.process_method_name")
+              }}</span>
             </CForm>
             <CForm>
-              <label for="description">Description</label>
+              <label for="description">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control mb-3"
-                placeholder="processMethod description"
+                :placeholder="$t('referential.process_method_description')"
                 v-model.trim="processMethod.description"
               />
               <span
                 class="text-danger"
                 v-if="v$.processMethod.description.$error"
               >
-                Please enter an process method description</span
+                {{
+                  $t("referential.validations.process_method_description")
+                }}</span
               >
             </CForm>
             <CForm>
-              <label for="localId">Local id</label>
+              <label for="localId">
+                <span>{{ $t("referential.local_ID") }}</span>
+              </label>
               <input
                 id="localId"
                 type="text"
                 class="form-control"
-                placeholder="Local id"
+                :placeholder="$t('referential.local_ID')"
                 v-model.trim="processMethod.localId"
               />
               <span class="text-danger" v-if="v$.processMethod.localId.$error">
-                Please enter an process method local id</span
+                {{
+                  $t("referential.validations.process_method_local_ID")
+                }}</span
               >
             </CForm>
           </CCardText>
@@ -58,14 +70,14 @@
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Update</CButton
+            ><span>{{ $t("referential.update") }}</span></CButton
           >
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            >Reset</CButton
+            ><span>{{ $t("referential.reset") }}</span></CButton
           >
         </CCardBody>
       </CCard>

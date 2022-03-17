@@ -3,85 +3,103 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
-          <CCardTitle> Statistical standard </CCardTitle>
+          <CCardTitle>
+            <span>{{ $t("referential.statistical_standard_header") }}</span>
+          </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">Name*</label>
+              <label for="name">
+                <span>{{ $t("referential.name") }}*</span>
+              </label>
               <input
                 id="name"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.name.$error }"
-                placeholder="Statistical standard name"
+                :placeholder="$t('referential.statistical_standard_name')"
                 v-model.trim="name"
               />
-              <span class="text-danger" v-if="v$.name.$error"
-                >Please enter staistical standard name.</span
-              >
+              <span class="text-danger" v-if="v$.name.$error">{{
+                $t("referential.validations.statistical_standard_name")
+              }}</span>
             </CForm>
             <CForm>
-              <label for="description">Description</label>
+              <label for="description">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control"
                 :class="{ 'is-invalid': v$.description.$error }"
-                placeholder="Statistical standard description"
+                :placeholder="
+                  $t('referential.statistical_standard_description')
+                "
                 v-model.trim="description"
               />
-              <span class="text-danger" v-if="v$.description.$error"
-                >Please enter a description</span
-              >
+              <span class="text-danger" v-if="v$.description.$error">{{
+                $t("referential.validations.statistical_standard_description")
+              }}</span>
             </CForm>
             <CForm>
-              <label for="link">Link</label>
+              <label for="link">
+                <span>{{ $t("referential.link") }}</span>
+              </label>
               <input
                 id="link"
                 type="text"
                 class="form-control"
-                placeholder="Statistical standard link"
+                :placeholder="$t('referential.statistical_standard_link_text')"
                 v-model.trim="link"
               />
             </CForm>
             <CForm>
-              <label for="version">Version</label>
+              <label for="version">
+                <span>{{ $t("referential.version") }}</span>
+              </label>
               <input
                 id="version"
                 type="text"
                 class="form-control"
-                placeholder="Statistical standard version"
+                :placeholder="$t('referential.statistical_standard_version')"
                 v-model.trim="version"
               />
             </CForm>
             <CForm>
-              <label for="type">Type*</label>
+              <label for="type">
+                <span>{{ $t("referential.type") }}*</span>
+              </label>
               <v-select
                 label="type"
                 :options="types"
                 v-model="type"
                 :class="{ 'is-invalid': v$.type.$error }"
-                placeholder="Select a type"
+                :placeholder="$t('referential.selection.type')"
               ></v-select>
-              <span class="text-danger" v-if="v$.type.$error"
-                >Please select a type.</span
-              >
+              <span class="text-danger" v-if="v$.type.$error">{{
+                $t("referential.validations.type")
+              }}</span>
             </CForm>
             <div class="form-group">
-              <label for="localId">Local id*</label>
+              <label for="localId">
+                <span>{{ $t("referential.local_ID") }}*</span>
+              </label>
               <input
                 id="localId"
                 type="text"
                 class="form-control"
                 :class="{ 'is-invalid': v$.localId.$error }"
-                placeholder="Local id"
+                :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error"
-                >Please specify a local id.</span
-              >
+              <span class="text-danger" v-if="v$.localId.$error">{{
+                $t("referential.validations.local_ID")
+              }}</span>
             </div>
-            <div class="form-mandatory">*Mandatory fields</div>
+            <div class="form-mandatory">
+              <span>*{{ $t("referential.mandatory_fields") }}</span>
+            </div>
           </CCardText>
           <CButton
             color="primary"
@@ -89,14 +107,14 @@
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Save</CButton
+            ><span>{{ $t("referential.save") }}</span></CButton
           >
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            >Reset</CButton
+            ><span>{{ $t("referential.reset") }}</span></CButton
           >
         </CCardBody>
       </CCard>

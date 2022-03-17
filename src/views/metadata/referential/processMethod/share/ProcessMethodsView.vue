@@ -1,6 +1,8 @@
 <template>
   <CCard v-if="processMethods.length">
-    <CCardHeader class="bg-white" component="h5"> Process Methods </CCardHeader>
+    <CCardHeader class="bg-white" component="h5">
+      <span>{{ $t("referential.process_method_header") }}</span>
+    </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
         <CCol
@@ -13,7 +15,7 @@
               <CRow>
                 <CCol class="col-9">
                   <CCardTitle component="h6">
-                    {{ processMethod.name }}
+                    <span>{{ processMethod.name }}</span>
                   </CCardTitle>
                 </CCol>
                 <CCol class="col-3">
@@ -36,7 +38,9 @@
               </CRow>
             </CCardHeader>
             <CCardBody>
-              <CCardText>{{ processMethod.description }}</CCardText>
+              <CCardText>
+                <span>{{ processMethod.description }}</span>
+              </CCardText>
             </CCardBody>
           </CCard>
         </CCol>

@@ -4,11 +4,13 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            {{ agent.name }}
+            <span>{{ agent.name }}</span>
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="description">Description</label>
+              <label for="description">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
               <textarea
                 rows="5"
                 id="description"
@@ -19,7 +21,9 @@
               />
             </CForm>
             <CForm v-if="agent.account">
-              <label for="responsible">Account</label>
+              <label for="responsible">
+                <span>{{ $t("referential.account") }}</span>
+              </label>
               <input
                 id="account"
                 type="text"
@@ -29,7 +33,9 @@
               />
             </CForm>
             <CForm>
-              <label for="type">Type</label>
+              <label for="type">
+                <span>{{ $t("referential.type") }}</span>
+              </label>
               <input
                 id="type"
                 type="text"
@@ -44,7 +50,7 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            >Delete</CButton
+            ><span>{{ $t("referential.delete") }}</span></CButton
           >
         </CCardBody>
       </CCard>

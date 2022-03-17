@@ -3,10 +3,17 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
-          <CCardTitle> Business function (GSBPM Sub-phase) </CCardTitle>
+          <CCardTitle>
+            <span
+              >{{ $t("referential.business_function_header") }} (GSBPM
+              {{ $t("referential.sub-phase") }})</span
+            >
+          </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">Name</label>
+              <label for="name">
+                <span>{{ $t("referential.name") }}</span>
+              </label>
               <input
                 id="name"
                 type="text"
@@ -16,7 +23,9 @@
               />
             </CForm>
             <CForm>
-              <label for="description">Description</label>
+              <label for="description">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
               <textarea
                 rows="5"
                 id="description"
@@ -27,7 +36,9 @@
               />
             </CForm>
             <CForm>
-              <label for="localid">Sub-phase number</label>
+              <label for="localid">
+                <span>{{ $t("referential.sub-phase_number") }}</span>
+              </label>
               <input
                 id="localId"
                 type="text"
@@ -42,7 +53,7 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            >Delete</CButton
+            ><span>{{ $t("referential.delete") }}</span></CButton
           >
         </CCardBody>
       </CCard>

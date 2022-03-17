@@ -3,7 +3,9 @@
     <CCardBody>
       <CRow>
         <CCol class="col-9">
-          <CCardTitle> Agents </CCardTitle>
+          <CCardTitle>
+            <span>{{ $t("referential.agents") }}</span>
+          </CCardTitle>
         </CCol>
         <CCol class="col-3">
           <CNav class="justify-content-end">
@@ -16,7 +18,9 @@
                   class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
-                  <span class="icon-span">New agent</span>
+                  <span class="icon-span">
+                    {{ $t("referential.new_agent") }}
+                  </span>
                 </router-link>
               </span>
             </CNavItem>
@@ -31,7 +35,6 @@
             :activePage="1"
             :columns="columns"
             columnFilter
-            tableFilter
             cleaner
             itemsPerPageSelect
             :itemsPerPage="5"
@@ -95,24 +98,24 @@ export default {
       columns: [
         {
           key: "id",
-          label: "Id",
+          label: this.$i18n.t("referential.ID"),
         },
         {
           key: "name",
-          label: "Agent name",
+          label: this.$i18n.t("referential.agent_name"),
         },
 
         {
           key: "description",
-          label: "Description",
+          label: this.$i18n.t("referential.description"),
         },
         {
           key: "type",
-          label: "Type",
+          label: this.$i18n.t("referential.type"),
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("referential.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,

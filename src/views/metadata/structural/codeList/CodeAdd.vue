@@ -65,14 +65,14 @@
           style="margin-right: 0.3rem"
           @click.prevent="Submit()"
           :disabled="disabled"
-          >Save</CButton
+          ><span>Save</span></CButton
         >
         <CButton
           color="danger"
           size="sm"
           @click.prevent="handleReset()"
           :disabled="disabled"
-          >Reset</CButton
+          ><span>Reset</span></CButton
         >
       </CCardFooter>
     </CCard>

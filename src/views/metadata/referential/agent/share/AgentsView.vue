@@ -1,16 +1,20 @@
 <template>
   <CCard v-if="maintainers.length">
-    <CCardHeader class="bg-white" component="h5"> Maintainers </CCardHeader>
+    <CCardHeader class="bg-white" component="h5">
+      <span>{{ $t("referential.maintainers") }}</span>
+    </CCardHeader>
     <CCardBody>
       <CCardText>
         <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
           <CCol xs v-for="maintainer of maintainers" :key="maintainer.id">
             <CCard>
               <CCardHeader component="h6">
-                {{ maintainer.name }}
+                <span>{{ maintainer.name }}</span>
               </CCardHeader>
               <CCardBody>
-                <CCardText>{{ maintainer.description }}</CCardText>
+                <CCardText>
+                  <span>{{ maintainer.description }}</span>
+                </CCardText>
               </CCardBody>
             </CCard>
           </CCol>
@@ -19,69 +23,91 @@
     </CCardBody>
   </CCard>
   <CCard v-else>
-    <CCardHeader class="bg-white" component="h5"> Maintainers </CCardHeader>
+    <CCardHeader class="bg-white" component="h5">
+      <span>{{ $t("referential.maintainers") }}</span>
+    </CCardHeader>
     <CCardBody>
       <CCardText>
         <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
           <CCol xs v-if="owner">
             <CCard>
-              <CCardHeader component="h5"> Owner </CCardHeader>
+              <CCardHeader component="h5">
+                <span>{{ $t("referential.owner") }}</span>
+              </CCardHeader>
               <CCardBody>
                 <div class="mb-2">
-                  <span><strong>Name</strong></span>
+                  <span>
+                    <strong>{{ $t("referential.name") }}</strong>
+                  </span>
                 </div>
                 <div class="card-slot">
                   <span>{{ owner.name }}</span>
                 </div>
                 <div v-if="owner.description" class="mb-2">
-                  <span><strong>Description</strong></span>
+                  <span>
+                    <strong>{{ $t("referential.description") }}</strong>
+                  </span>
                 </div>
                 <div class="card-slot" v-if="owner.description">
-                  <span> {{ owner.description }}</span>
+                  <span>{{ owner.description }}</span>
                 </div>
               </CCardBody>
             </CCard>
           </CCol>
           <CCol xs v-if="maintainer">
             <CCard>
-              <CCardHeader component="h5"> Division </CCardHeader>
+              <CCardHeader component="h5">
+                <span>{{ $t("referential.division") }}</span>
+              </CCardHeader>
               <CCardBody>
                 <div class="mb-2">
-                  <span><strong>Name</strong></span>
+                  <span>
+                    <strong>{{ $t("referential.name") }}</strong>
+                  </span>
                 </div>
                 <div class="card-slot">
                   <span>{{ maintainer.name }}</span>
                 </div>
                 <div v-if="maintainer.description" class="mb-2">
-                  <span><strong>Description</strong></span>
+                  <span>
+                    <strong>{{ $t("referential.description") }}</strong>
+                  </span>
                 </div>
                 <div class="card-slot" v-if="maintainer.description">
-                  <span> {{ maintainer.description }}</span>
+                  <span>{{ maintainer.description }}</span>
                 </div>
               </CCardBody>
             </CCard>
           </CCol>
           <CCol xs v-if="contact">
             <CCard>
-              <CCardHeader component="h5"> Contact </CCardHeader>
+              <CCardHeader component="h5">
+                <span>{{ $t("referential.contact") }}</span>
+              </CCardHeader>
               <CCardBody>
                 <div class="mb-2">
-                  <span><strong>Name</strong></span>
+                  <span>
+                    <strong>{{ $t("referential.name") }}</strong>
+                  </span>
                 </div>
                 <div class="card-slot">
                   <span>{{ contact.name }}</span>
                 </div>
                 <div v-if="contact.description" class="mb-2">
-                  <span><strong>Description</strong></span>
+                  <span>
+                    <strong>{{ $t("referential.description") }}</strong>
+                  </span>
                 </div>
                 <div class="card-slot" v-if="contact.description">
                   <span> {{ contact.description }}</span>
                 </div>
                 <div v-if="contact.localId" class="mb-2">
-                  <span><strong>Email</strong></span>
+                  <span>
+                    <strong>{{ $t("referential.email") }}</strong>
+                  </span>
                 </div>
                 <div class="card-slot" v-if="contact.localId">
-                  <span> {{ contact.localId }}</span>
+                  <span>{{ contact.localId }}</span>
                 </div>
               </CCardBody>
             </CCard>

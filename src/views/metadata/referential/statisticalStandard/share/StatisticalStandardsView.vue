@@ -1,7 +1,7 @@
 <template>
   <CCard v-if="statisticalStandards.length">
     <CCardHeader class="bg-white" component="h5">
-      Statistical Standards
+      <span>{{ $t("referential.statistical_standards") }}</span>
     </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
@@ -15,7 +15,7 @@
               <CRow>
                 <CCol class="col-9">
                   <CCardTitle component="h6">
-                    {{ statisticalStandard.name }}
+                    <span>{{ statisticalStandard.name }}</span>
                   </CCardTitle>
                 </CCol>
                 <CCol class="col-3">
@@ -39,7 +39,9 @@
               </CRow>
             </CCardHeader>
             <CCardBody>
-              <CCardText>{{ statisticalStandard.description }}</CCardText>
+              <CCardText>
+                <span>{{ statisticalStandard.description }}</span>
+              </CCardText>
             </CCardBody>
           </CCard>
         </CCol>

@@ -67,7 +67,7 @@
                 :placeholder="$t('referential.selection.parent')"
               ></v-select>
             </CForm>
-            <div class="form-group">
+            <CForm>
               <label for="localId"
                 ><span>{{ $t("referential.local_ID") }}*</span></label
               >
@@ -82,7 +82,7 @@
               <span class="text-danger" v-if="v$.localId.$error">{{
                 $t("referential.validations.local_ID")
               }}</span>
-            </div>
+            </CForm>
             <div class="form-mandatory">
               <span>*{{ $t("referential.mandatory_fields") }}</span>
             </div>

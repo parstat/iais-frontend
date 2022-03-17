@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-description" />
-            Statistical Standard
+            <span>{{ $t("referential.statistical_standard_header") }}</span>
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -16,7 +16,8 @@
                 to="/metadata/referential/gsim/standard/add"
                 class="text-decoration-none text-primary"
               >
-                <CIcon name="cil-plus" /> Add
+                <CIcon name="cil-plus" />
+                <span class="icon-span">{{ $t("referential.add") }}</span>
               </router-link>
             </CNavItem>
           </CNav>
@@ -26,22 +27,27 @@
     <CCardBody>
       <CCardText>
         <div class="form-group mb-3" v-if="statisticalStandards">
-          <label for="statisticalStandard">Statistical Standard</label>
+          <label for="statisticalStandard">
+            <span>{{ $t("referential.statistical_standard_header") }}</span>
+          </label>
           <v-select
             label="name"
             :options="statisticalStandards"
-            placeholder="Search statistical standards"
+            :placeholder="$t('referential.search_statistical_standards')"
             :filtrable="false"
             @search="searchStatisticalStandard"
             @input="addStatisticalStandard"
           >
             <template v-slot:no-options="{ search, searching }">
               <template v-if="searching">
-                No results found for <em>{{ search }}</em
+                <span>{{ $t("referential.no_found") }}</span>
+                <em>{{ search }}</em
                 >.
               </template>
               <em style="opacity: 0.5" v-else
-                >Start typing to search for a standard.</em
+                ><span>{{
+                  $t("referential.search_for_statistical_standard")
+                }}</span></em
               >
             </template>
             <template v-slot:content="option">
@@ -67,7 +73,7 @@
                 <CRow>
                   <CCol class="col-9">
                     <CCardTitle component="h6">
-                      {{ statisticalStandard.name }}
+                      <span>{{ statisticalStandard.name }}</span>
                     </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
@@ -99,7 +105,9 @@
                 </CRow>
               </CCardHeader>
               <CCardBody>
-                <p class="card-text">{{ statisticalStandard.description }}</p>
+                <span>
+                  <p class="card-text">{{ statisticalStandard.description }}</p>
+                </span>
               </CCardBody>
             </CCard>
           </CCol>
@@ -112,16 +120,14 @@
         size="sm"
         style="margin-right: 0.3rem"
         @click="$emit('back')"
-      >
-        Back
+        ><span>{{ $t("referential.back") }}</span>
       </CButton>
       <CButton
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
         @click="$emit('next', fieldChanged)"
-      >
-        Next
+        ><span>{{ $t("referential.next") }}</span>
       </CButton>
     </CCardFooter>
   </CCard>

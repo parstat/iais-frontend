@@ -4,23 +4,29 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            {{ legislativeReference.name }}
+            <span>{{ legislativeReference.name }}</span>
           </CCardTitle>
           <CCardText>
             <div class="card-text">
-              <span><strong>Description:</strong></span>
+              <span>
+                <strong>{{ $t("referential.description") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
-              <span> {{ legislativeReference.description }} </span>
+              <span>{{ legislativeReference.description }}</span>
             </div>
             <div class="card-text">
-              <span><strong>Type: </strong></span>
+              <span>
+                <strong>{{ $t("referential.type") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
-              <span> {{ legislativeReference.type }} </span>
+              <span>{{ legislativeReference.type }}</span>
             </div>
             <div class="card-text" v-if="legislativeReference.externalLink">
-              <span><strong>Link:</strong></span>
+              <span>
+                <strong>{{ $t("referential.link") }}:</strong>
+              </span>
             </div>
             <div class="text-muted" v-if="legislativeReference.externalLink">
               <a :href="legislativeReference.externalLink">
@@ -28,10 +34,12 @@
               </a>
             </div>
             <div class="card-text">
-              <span><strong>Id:</strong></span>
+              <span>
+                <strong>{{ $t("referential.local_ID") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
-              <span> {{ legislativeReference.localId }} </span>
+              <span>{{ legislativeReference.localId }}</span>
             </div>
           </CCardText>
           <CButton
@@ -39,7 +47,7 @@
             size="sm"
             @click.prevent="handleBack()"
             :disabled="disabled"
-            >Back</CButton
+            ><span>{{ $t("referential.back") }}</span></CButton
           >
         </CCardBody>
       </CCard>

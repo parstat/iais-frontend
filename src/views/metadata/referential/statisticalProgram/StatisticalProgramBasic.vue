@@ -4,19 +4,19 @@
       <CCardText>
         <CForm>
           <label for="localId"
-            ><span>{{ $t("referential.survey_id") }}*</span></label
+            ><span>{{ $t("referential.survey_ID") }}*</span></label
           >
           <input
             id="localId"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.localLocalId.$error }"
-            :placeholder="$t('referential.survey_id')"
+            :placeholder="$t('referential.survey_ID')"
             v-model.trim="localLocalId"
             @change="fieldChanged = true"
           />
           <span class="text-danger" v-if="v$.localLocalId.$error">{{
-            $t("referential.validations.survey_id")
+            $t("referential.validations.survey_ID")
           }}</span>
         </CForm>
         <CForm>

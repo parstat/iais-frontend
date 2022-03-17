@@ -4,20 +4,24 @@
       <CCard v-if="processMethod">
         <CCardBody>
           <CCardTitle>
-            {{ processMethod.name }}
+            <span>{{ processMethod.name }}</span>
           </CCardTitle>
           <CCardText>
             <div class="card-group">
-              <span><strong>Description: </strong></span>
+              <span>
+                <strong>{{ $t("referential.description") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
               <span>{{ processMethod.description }}</span>
             </div>
             <div class="card-group">
-              <span><strong>Local Id:</strong></span>
+              <span>
+                <strong>{{ $t("referential.local_ID") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
-              <span> {{ processMethod.localId }}</span>
+              <span>{{ processMethod.localId }}</span>
             </div>
           </CCardText>
           <CButton
@@ -25,7 +29,7 @@
             size="sm"
             @click.prevent="handleBack()"
             :disabled="disabled"
-            >Back</CButton
+            ><span>{{ $t("referential.back") }}</span></CButton
           >
         </CCardBody>
       </CCard>

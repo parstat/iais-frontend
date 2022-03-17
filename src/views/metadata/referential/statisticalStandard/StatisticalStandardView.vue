@@ -4,23 +4,27 @@
       <CCard v-if="statisticalStandard">
         <CCardBody>
           <CCardTitle>
-            {{ statisticalStandard.name }}
+            <span>{{ statisticalStandard.name }}</span>
           </CCardTitle>
-
           <CCardText>
-            <label for="description"><strong>Descripton:</strong> </label>
-
+            <label for="description">
+              <strong>{{ $t("referential.description") }}:</strong>
+            </label>
             <div class="text-muted" id="description">
               <span>{{ statisticalStandard.description }}</span>
             </div>
             <div class="card-text">
-              <span class="card-text"><strong>Type: </strong></span>
+              <span class="card-text">
+                <strong>{{ $t("referential.type") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
               <span>{{ statisticalStandard.type }}</span>
             </div>
             <div class="card-text" v-if="statisticalStandard.externalLink">
-              <span class="card-text"><strong>Link: </strong></span>
+              <span class="card-text">
+                <strong>{{ $t("referential.link") }}:</strong>
+              </span>
             </div>
             <div class="text-muted" v-if="statisticalStandard.externalLink">
               <a :href="statisticalStandard.externalLink">{{
@@ -28,7 +32,9 @@
               }}</a>
             </div>
             <div class="card-text">
-              <span class="card-text"><strong>Id: </strong></span>
+              <span class="card-text">
+                <strong>{{ $t("referential.local_ID") }}:</strong>
+              </span>
             </div>
             <div class="text-muted">
               <span>{{ statisticalStandard.localId }}</span>
@@ -40,7 +46,7 @@
             size="sm"
             @click.prevent="handleBack()"
             :disabled="disabled"
-            >Back</CButton
+            ><span>{{ $t("referential.back") }}</span></CButton
           >
         </CCardBody>
       </CCard>

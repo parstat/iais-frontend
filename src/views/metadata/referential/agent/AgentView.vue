@@ -4,30 +4,38 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            {{ agent.name }}
+            <span>{{ agent.name }}</span>
           </CCardTitle>
           <CCardText>
             <div class="card-group">
-              <span><strong>Description:</strong></span>
+              <span>
+                <strong>{{ $t("referential.description") }}:</strong>
+              </span>
             </div>
             <div class="card-slot">
               <span>{{ agent.description }}</span>
             </div>
             <div class="card-group">
-              <span><strong>Type: </strong></span>
+              <span>
+                <strong>{{ $t("referential.type") }}:</strong>
+              </span>
             </div>
             <div class="card-slot">
               <span>{{ agent.type }}</span>
             </div>
             <div class="card-group">
-              <span><strong>Parent:</strong></span>
+              <span>
+                <strong>{{ $t("referential.parent") }}:</strong>
+              </span>
             </div>
             <div class="card-slot">
               <span v-if="agent.parent">{{ agent.parent.name }}</span>
               <span v-else class="pl-4">&ndash;</span>
             </div>
             <div class="card-group">
-              <span><strong>Local id</strong></span>
+              <span>
+                <strong>{{ $t("referential.local_ID") }}:</strong>
+              </span>
             </div>
             <div class="card-slot">
               <span>{{ agent.localId }}</span>
@@ -38,7 +46,7 @@
             size="sm"
             @click.prevent="handleBack()"
             :disabled="disabled"
-            >Back</CButton
+            ><span>{{ $t("referential.back") }}</span></CButton
           >
         </CCardBody>
       </CCard>
