@@ -42,4 +42,3 @@ app.config.globalProperties.$filters = {
 };
 
 app.mount("#app");
-//Test
