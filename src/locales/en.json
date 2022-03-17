@@ -98,8 +98,13 @@
         "process_method_name": "Process method name",
         "process_method_description": "Process method description",
         "process_method_version": "Process method version",
+        "statistical_standard_name": "Statistical standard name",
+        "statistical_standard_description": "Statistical standard description",
+        "statistical_standard_link_text": "Statistical standard link",
+        "statistical_standard_version": "Statistical standard version",
         "new_method": "New method",
         "new_regulation": "New regulation",
+        "new_standard": "New standard",
         "mandatory_fields": "Mandatory fields",
         "next": "Next",
         "back": "Back",
@@ -132,7 +137,9 @@
         "business_service_text": "This section contains the list of business services (Software).",
         "business_service_link": "Go to business service section",
         "no_found": "No results found for",
+        "search_statistical_standards": "Search statistical standards",
         "search_for_legislative reference": "Start typing to search for a legislative reference.",
+        "search_for_statistical_standard": "Start typing to search for a statistical standard.",
         "validations": {
             "survey_ID": "Please enter survey ID.",
             "survey_name" : "Please enter survey name.",
@@ -147,6 +154,9 @@
             "process_method_name": "Please enter a process method name.",
             "process_method_description": "Please enter a process method description.",
             "process_method_version": "Please enter a process method version.",
+            "statistical_standard_local_ID": "Please enter a statistical standard local ID.",
+            "statistical_standard_name": "Please enter a statistical standard name.",
+            "statistical_standard_description": "Please enter a statistical standard description.",
             "organization": "Please select an organization.",
             "division": "Please select a division.",
             "contact_person": "Please select a contact person.",
@@ -160,7 +170,8 @@
             "division": "Select a division",
             "contact_person": "Select a contact person",
             "type": "Select a type",
-            "parent": "Select a parent"
+            "parent": "Select a parent",
+            "legislative_references": "Select legislative references"
         }
     },
     "structural": {

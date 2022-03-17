@@ -33,7 +33,7 @@
           <v-select
             label="name"
             :options="legislativeReferences"
-            placeholder="Select legislative references"
+            :placeholder="$t('referential.selection.legislative_references')"
             :filtrable="false"
             @search="searchLegislativeReference"
             @input="addLegislativeReference"

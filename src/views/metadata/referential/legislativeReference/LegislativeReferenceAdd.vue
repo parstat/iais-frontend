@@ -92,9 +92,9 @@
                 :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error"
-                >{{ $t("referential.validations.local_ID") }}.</span
-              >
+              <span class="text-danger" v-if="v$.localId.$error">{{
+                $t("referential.validations.local_ID")
+              }}</span>
             </CForm>
             <div class="form-mandatory">
               <span>*{{ $t("referential.mandatory_fields") }}</span>

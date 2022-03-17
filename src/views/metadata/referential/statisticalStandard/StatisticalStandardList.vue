@@ -3,9 +3,10 @@
     <CCardBody>
       <CRow>
         <CCol class="col-9">
-          <CCardTitle> Statistical standard </CCardTitle>
+          <CCardTitle>
+            <span>{{ $t("referential.statistical_standard_header") }}</span>
+          </CCardTitle>
         </CCol>
-
         <CCol class="col-3">
           <CNav class="justify-content-end">
             <CNavItem>
@@ -16,7 +17,9 @@
                 class="text-decoration-none text-primary"
               >
                 <CIcon name="cil-plus" />
-                <span class="icon-span">New standard</span>
+                <span class="icon-span">
+                  {{ $t("referential.new_standard") }}
+                </span>
               </router-link>
             </CNavItem>
           </CNav>
@@ -27,7 +30,6 @@
           :items="statisticalStandards"
           :columns="columns"
           column-filter
-          table-filter
           items-per-page-select
           :items-per-page="5"
           hover
@@ -87,19 +89,19 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Local Id",
+          label: this.$i18n.t("referential.ID"),
         },
         {
           key: "name",
-          label: "Name",
+          label: this.$i18n.t("referential.agent_name"),
         },
         {
           key: "type",
-          label: "Type",
+          label: this.$i18n.t("referential.type"),
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("referential.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,

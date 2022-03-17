@@ -7,7 +7,7 @@
             <span>{{ $t("referential.legislative_reference") }}</span>
           </CCardTitle>
           <CCardText>
-            <div class="form-group">
+            <CForm>
               <label for="name">
                 <span>{{ $t("referential.name") }}</span>
               </label>
@@ -26,8 +26,8 @@
                   $t("referential.validations.legislative_reference_name")
                 }}</span
               >
-            </div>
-            <div class="form-group">
+            </CForm>
+            <CForm>
               <label for="description">
                 <span>{{ $t("referential.description") }}</span>
               </label>
@@ -53,8 +53,8 @@
                   )
                 }}</span
               >
-            </div>
-            <div class="form-group mb-3">
+            </CForm>
+            <CForm class="mb-3">
               <label for="account">
                 <span>{{ $t("referential.type") }}</span>
               </label>
@@ -70,8 +70,8 @@
                 v-if="v$.legislativeReference.type.$error"
                 >{{ $t("referential.validations.type") }}</span
               >
-            </div>
-            <div class="form-group">
+            </CForm>
+            <CForm>
               <label for="localId">
                 <span>{{ $t("referential.local_ID") }}</span>
               </label>
@@ -82,7 +82,7 @@
                 :placeholder="$t('referential.local_ID')"
                 v-model.trim="legislativeReference.localId"
               />
-            </div>
+            </CForm>
           </CCardText>
           <CButton
             color="primary"

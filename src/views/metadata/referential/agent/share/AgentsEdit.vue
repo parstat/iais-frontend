@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-user" />
-            Agents
+            <span>{{ $t("referential.agents") }}</span>
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -16,7 +16,8 @@
                 to="/metadata/referential/gsim/agent/add"
                 class="text-decoration-none text-primary"
               >
-                <CIcon name="cil-plus" /> Add
+                <CIcon name="cil-plus" />
+                <span class="icon-span">{{ $t("referential.add") }}</span>
               </router-link>
             </CNavItem>
           </CNav>
@@ -26,7 +27,9 @@
     <CCardBody>
       <CCardText>
         <div class="form-group mb-3" v-if="localSP">
-          <label for="description">Organization*</label>
+          <label for="description">
+            <span>{{ $t("referential.organization") }}*</span>
+          </label>
           <v-select
             label="name"
             :options="owners"
@@ -35,7 +38,9 @@
           ></v-select>
         </div>
         <div class="form-group mb-3" v-if="localSP">
-          <label for="description">Division*</label>
+          <label for="description">
+            <span>{{ $t("referential.division") }}*</span>
+          </label>
           <v-select
             label="name"
             :options="maintainers"
@@ -44,7 +49,9 @@
           ></v-select>
         </div>
         <div class="form-group" v-if="localSP">
-          <label for="description">Contact person*</label>
+          <label for="description">
+            <span>{{ $t("referential.contact_person") }}*</span>
+          </label>
           <v-select
             label="name"
             :options="contacts"
@@ -60,16 +67,14 @@
         size="sm"
         style="margin-right: 0.3rem"
         @click="$emit('back')"
-      >
-        Back
+        ><span>{{ $t("referential.back") }}</span>
       </CButton>
       <CButton
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
         @click="$emit('next', fieldChanged)"
-      >
-        Next
+        ><span>{{ $t("referential.next") }}</span>
       </CButton>
     </CCardFooter>
   </CCard>

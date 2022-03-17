@@ -77,7 +77,6 @@
               />
             </CForm>
           </CCardText>
-
           <CButton
             color="primary"
             size="sm"

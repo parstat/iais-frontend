@@ -3,71 +3,96 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="statisticalStandard">
         <CCardBody>
-          <CCardTitle> Statistical Standard </CCardTitle>
-          <CForm>
-            <label for="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              class="form-control mb-3"
-              :class="{ 'is-invalid': v$.statisticalStandard.name.$error }"
-              placeholder="statisticalStandard name"
-              v-model.trim="statisticalStandard.name"
-            />
-            <div class="text-danger" v-if="v$.statisticalStandard.name.$error">
-              Please enter statistical standard name.
-            </div>
-            <label for="description">Description</label>
-            <textarea
-              rows="5"
-              id="description"
-              type="text"
-              class="form-control mb-3"
-              placeholder="statisticalStandard description"
-              v-model.trim="statisticalStandard.description"
-            />
-
-            <label for="account">Type</label>
-            <v-select
-              label="type"
-              :options="types"
-              v-model="statisticalStandard.type"
-              :class="{ 'is-invalid': v$.statisticalStandard.type.$error }"
-              placeholder="Select a type"
-            ></v-select>
-            <div class="text-danger" v-if="v$.statisticalStandard.type.$error">
-              Please select a type.
-            </div>
-            <label for="localId">Local id</label>
-            <input
-              id="localId"
-              type="text"
-              class="form-control mb-3"
-              placeholder="Local id"
-              v-model.trim="statisticalStandard.localId"
-            />
-            <div
-              class="text-danger"
-              v-if="v$.statisticalStandard.localId.$error"
-            >
-              Please enter an statistical standard local id
-            </div>
-          </CForm>
-
+          <CCardTitle>
+            <span>{{ $t("referential.statistical_standard_header") }}</span>
+          </CCardTitle>
+          <CCardText>
+            <CForm>
+              <label for="name">
+                <span>{{ $t("referential.name") }}</span>
+              </label>
+              <input
+                id="name"
+                type="text"
+                class="form-control mb-3"
+                :class="{ 'is-invalid': v$.statisticalStandard.name.$error }"
+                :placeholder="$t('referential.statistical_standard_name')"
+                v-model.trim="statisticalStandard.name"
+              />
+              <span
+                class="text-danger"
+                v-if="v$.statisticalStandard.name.$error"
+                >{{
+                  $t("referential.validations.statistical_standard_name")
+                }}</span
+              >
+            </CForm>
+            <CForm>
+              <label for="description">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
+              <textarea
+                rows="5"
+                id="description"
+                type="text"
+                class="form-control mb-3"
+                :placeholder="
+                  $t('referential.statistical_standard_description')
+                "
+                v-model.trim="statisticalStandard.description"
+              />
+            </CForm>
+            <CForm>
+              <label for="account">
+                <span>{{ $t("referential.type") }}</span>
+              </label>
+              <v-select
+                label="type"
+                :options="types"
+                v-model="statisticalStandard.type"
+                :class="{ 'is-invalid': v$.statisticalStandard.type.$error }"
+                :placeholder="$t('referential.selection.type')"
+              ></v-select>
+              <span
+                class="text-danger"
+                v-if="v$.statisticalStandard.type.$error"
+                >{{ $t("referential.validations.type") }}</span
+              >
+            </CForm>
+            <CForm>
+              <label for="localId">
+                <span>{{ $t("referential.local_ID") }}</span>
+              </label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                :placeholder="$t('referential.local_ID')"
+                v-model.trim="statisticalStandard.localId"
+              />
+              <span
+                class="text-danger"
+                v-if="v$.statisticalStandard.localId.$error"
+                >{{
+                  $t("referential.validations.statistical_standard_local_ID")
+                }}</span
+              >
+            </CForm>
+          </CCardText>
           <CButton
             color="primary"
             size="sm"
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Update</CButton
+            ><span>{{ $t("referential.update") }}</span></CButton
           >
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            >Reset</CButton
+            ><span>{{ $t("referential.reset") }}</span></CButton
           >
         </CCardBody>
       </CCard>

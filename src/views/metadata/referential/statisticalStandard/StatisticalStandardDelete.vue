@@ -3,10 +3,14 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="statisticalStandard">
         <CCardBody>
-          <CCardTitle> {{ statisticalStandard.name }} </CCardTitle>
+          <CCardTitle>
+            <span>{{ statisticalStandard.name }}</span>
+          </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="responsible">Description</label>
+              <label for="responsible">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
               <textarea
                 rows="5"
                 id="description"
@@ -17,7 +21,9 @@
               />
             </CForm>
             <CForm>
-              <label for="responsible">Type</label>
+              <label for="responsible">
+                <span>{{ $t("referential.type") }}</span>
+              </label>
               <input
                 id="type"
                 type="text"
@@ -27,7 +33,9 @@
               />
             </CForm>
             <CForm>
-              <label for="responsible">Local id</label>
+              <label for="responsible">
+                <span>{{ $t("referential.local_ID") }}</span>
+              </label>
               <input
                 id="localId"
                 type="text"
@@ -42,7 +50,7 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            >Delete</CButton
+            ><span>{{ $t("referential.delete") }}</span></CButton
           >
         </CCardBody>
       </CCard>
