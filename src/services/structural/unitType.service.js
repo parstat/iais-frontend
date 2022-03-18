@@ -6,7 +6,7 @@ export const unitTypeService = {
   findById,
   save,
   update,
-  //delete: _delete
+  delete: _delete,
 };
 
 function findAll() {
@@ -90,5 +90,19 @@ function update(formData) {
           reject(error);
         }
       );
+  });
+}
+
+function _delete(id) {
+  return new Promise((resolve, reject) => {
+    axiosIais.delete("structural/ClosedUnitTypes/" + id).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }

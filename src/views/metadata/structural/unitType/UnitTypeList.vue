@@ -75,20 +75,20 @@
                     </span>
 
                     <span
-                      v-if="isAuthenticated && isAdmin"
+                      v-if="(isAuthenticated && isAdmin) || true"
                       class="pl-2"
                       v-c-tooltip="'Delete'"
                     >
-                      <!-- <router-link
+                      <router-link
                         tag="a"
                         title="Delete"
                         :to="{
                           name: 'UnitTypeDelete',
                           params: { id: item.id },
                         }"
-                      > -->
-                      <CIcon name="cil-trash" />
-                      <!-- </router-link> -->
+                      >
+                        <CIcon name="cil-trash" />
+                      </router-link>
                     </span>
                   </td>
                 </template>
