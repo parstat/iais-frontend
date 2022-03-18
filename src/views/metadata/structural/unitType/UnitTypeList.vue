@@ -75,7 +75,7 @@
                     </span>
 
                     <span
-                      v-if="(isAuthenticated && isAdmin) || true"
+                      v-if="isAuthenticated && isAdmin"
                       class="pl-2"
                       v-c-tooltip="'Delete'"
                     >
