@@ -5,7 +5,9 @@
         <CCardBody>
           <CRow>
             <CCol class="col-9">
-              <CCardTitle> Business service </CCardTitle>
+              <CCardTitle>
+                <span>{{ $t("referential.business_service_header") }}</span>
+              </CCardTitle>
             </CCol>
             <CCol class="col-3">
               <CNav class="justify-content-end">
@@ -17,9 +19,9 @@
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />
-                    <span class="icon-span"
-                      >New business service (Software)</span
-                    >
+                    <span class="icon-span">{{
+                      $t("referential.new_business_service")
+                    }}</span>
                   </router-link>
                 </CNavItem>
               </CNav>
@@ -32,7 +34,6 @@
                 :items="businessServices"
                 :columns="columns"
                 column-filter
-                table-filter
                 items-per-page-select
                 :items-per-page="5"
                 columnSorter
@@ -96,15 +97,15 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("referential.ID"),
         },
         {
           key: "name",
-          label: "Name",
+          label: this.$i18n.t("referential.agent_name"),
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("referential.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,

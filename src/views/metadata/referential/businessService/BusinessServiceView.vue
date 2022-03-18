@@ -4,17 +4,21 @@
       <CCard v-if="businessService">
         <CCardBody>
           <CCardTitle>
-            {{ businessService.name }}
+            <span>{{ businessService.name }}</span>
           </CCardTitle>
           <CCardText>
             <div class="card-group">
-              <span><strong>Description:</strong></span>
+              <span>
+                <strong>{{ $t("referential.description") }}:</strong>
+              </span>
             </div>
             <div class="text-muted mb-3">
               <span>{{ businessService.description }}</span>
             </div>
             <div class="card-group">
-              <span><strong>Locla id: </strong></span>
+              <span>
+                <strong>{{ $t("referential.local_ID") }}:</strong>
+              </span>
             </div>
             <div class="text-muted mb-3">
               <span>{{ businessService.localId }}</span>
@@ -25,7 +29,7 @@
             size="sm"
             @click.prevent="handleBack()"
             :disabled="disabled"
-            >Back</CButton
+            ><span>{{ $t("referential.back") }}</span></CButton
           >
         </CCardBody>
       </CCard>

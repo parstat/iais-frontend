@@ -1,7 +1,7 @@
 <template>
   <CCard v-if="businessServices.length">
     <CCardHeader class="bg-white" component="h5">
-      Business Services/Software
+      <span>{{ $t("referential.business_services_software") }}</span>
     </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
@@ -15,7 +15,7 @@
               <CRow>
                 <CCol class="col-9">
                   <CCardTitle component="h6">
-                    {{ businessService.name }}
+                    <span>{{ businessService.name }}</span>
                   </CCardTitle>
                 </CCol>
                 <CCol class="col-3">
@@ -36,7 +36,9 @@
               </CRow>
             </CCardHeader>
             <CCardBody>
-              <CCardText>{{ businessService.description }}</CCardText>
+              <CCardText>
+                <span>{{ businessService.description }}</span>
+              </CCardText>
             </CCardBody>
           </CCard>
         </CCol>

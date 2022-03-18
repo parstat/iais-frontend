@@ -4,7 +4,9 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <strong>{{ businessFunction.name }}</strong>
+            <span>
+              <strong>{{ businessFunction.name }}</strong>
+            </span>
           </CCardTitle>
           <CCardText>
             <div class="card-group">

@@ -3,55 +3,65 @@
     <CCol class="col-sm-12 col-md-6">
       <CCard v-if="businessService">
         <CCardBody>
-          <CCardTitle> Business Service </CCardTitle>
+          <CCardTitle>
+            <span>{{ $t("referential.business_service_header") }}</span>
+          </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">Name</label>
+              <label for="name">
+                <span>{{ $t("referential.name") }}</span>
+              </label>
               <input
                 id="name"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.businessService.name.$error }"
-                placeholder="businessService name"
+                :placeholder="$t('referential.business_service_name')"
                 v-model.trim="businessService.name"
               />
-              <span class="text-danger" v-if="v$.businessService.name.$error"
-                >Please enter businessService name.</span
-              >
+              <span class="text-danger" v-if="v$.businessService.name.$error">{{
+                $t("referential.validations.business_service_name")
+              }}</span>
             </CForm>
             <CForm>
-              <label for="description">Description</label>
+              <label for="description">
+                <span>{{ $t("referential.description") }}</span>
+              </label>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.businessService.description.$error }"
-                placeholder="businessService description"
+                :placeholder="$t('referential.business_service_description')"
                 v-model.trim="businessService.description"
               />
               <span
                 class="text-danger"
                 v-if="v$.businessService.description.$error"
-              >
-                Please enter a business service description</span
+                >{{
+                  $t("referential.validations.business_service_description")
+                }}</span
               >
             </CForm>
             <CForm>
-              <label for="localId">Local id</label>
+              <label for="localId">
+                <span>{{ $t("referential.local_ID") }}</span>
+              </label>
               <input
                 id="localId"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.businessService.localId.$error }"
-                placeholder="Local id"
+                :placeholder="$t('referential.local_ID')"
                 v-model.trim="businessService.localId"
               />
               <span
                 class="text-danger"
                 v-if="v$.businessService.localId.$error"
-              >
-                Please enter a business service local id</span
+                >{{
+                  $t("referential.validations.business_service_local_ID")
+                }}</span
               >
             </CForm>
           </CCardText>
@@ -61,14 +71,14 @@
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Update</CButton
+            ><span>{{ $t("referential.update") }}</span></CButton
           >
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            >Reset</CButton
+            ><span>{{ $t("referential.reset") }}</span></CButton
           >
         </CCardBody>
       </CCard>
