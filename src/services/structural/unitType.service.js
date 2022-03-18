@@ -5,8 +5,8 @@ export const unitTypeService = {
   findAll,
   findById,
   save,
-  //update,
-  //delete: _delete
+  update,
+  delete: _delete,
 };
 
 function findAll() {
@@ -52,6 +52,50 @@ function save(formData) {
     };
 
     axiosIais.post("structural/ClosedUnitTypes", requestBody, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function update(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const requestBody = {
+      name: formData.name,
+      description: formData.description,
+      definition: formData.definition,
+      localId: formData.localId,
+      version: formData.version ? formData.version : "",
+    };
+
+    axiosIais
+      .put("structural/ClosedUnitTypes/" + formData.id, requestBody, config)
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function _delete(id) {
+  return new Promise((resolve, reject) => {
+    axiosIais.delete("structural/ClosedUnitTypes/" + id).then(
       (response) => {
         //console.log(response.data);
         resolve(response.data);

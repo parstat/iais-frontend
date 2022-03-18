@@ -54,6 +54,34 @@ const actions = {
       }
     );
   },
+  delete({ dispatch }, id) {
+    unitTypeService.delete(id).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Unit type deleted!", {
+          root: true,
+        });
+        router.push("/metadata/structural/unitTypes");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  update({ dispatch }, formData) {
+    unitTypeService.update(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Unit type updated!", {
+          root: true,
+        });
+        router.push("/metadata/structural/unitTypes");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
 };
 
 const getters = {
