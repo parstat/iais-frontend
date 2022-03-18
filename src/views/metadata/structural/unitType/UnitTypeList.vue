@@ -45,7 +45,7 @@
                   <td
                     style="text-align: right; width: 10%; padding-right: 20px"
                   >
-                    <span class="pl-2" v-c-tooltip="'View'">
+                    <span class="pl-2">
                       <router-link
                         tag="a"
                         title="View"
@@ -57,11 +57,7 @@
                         <CIcon name="cil-magnifying-glass" />
                       </router-link>
                     </span>
-                    <span
-                      v-if="isAuthenticated"
-                      class="pl-2"
-                      v-c-tooltip="'Edit'"
-                    >
+                    <span v-if="isAuthenticated" class="pl-2">
                       <router-link
                         tag="a"
                         title="Edit"
@@ -74,11 +70,7 @@
                       </router-link>
                     </span>
 
-                    <span
-                      v-if="isAuthenticated && isAdmin"
-                      class="pl-2"
-                      v-c-tooltip="'Delete'"
-                    >
+                    <span v-if="isAuthenticated && isAdmin" class="pl-2">
                       <router-link
                         tag="a"
                         title="Delete"
