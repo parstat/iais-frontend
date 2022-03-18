@@ -3,7 +3,10 @@
     <CCol class="col-12">
       <CCard v-if="statisticalProgram">
         <CCardHeader class="bg-white" component="h5">
-          Statistical process: {{ statisticalProgram.name }}
+          <span
+            >{{ $t("referential.statistical_process") }}:
+            {{ statisticalProgram.name }}</span
+          >
         </CCardHeader>
         <CCardBody>
           <CRow>
@@ -19,7 +22,7 @@
                       }
                     "
                   >
-                    Basic
+                    <span>{{ $t("referential.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -32,7 +35,7 @@
                       }
                     "
                   >
-                    Agents
+                    <span>{{ $t("referential.agents") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -45,7 +48,7 @@
                       }
                     "
                   >
-                    LegislativeReference
+                    <span>{{ $t("referential.legislative_reference") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -58,7 +61,7 @@
                       }
                     "
                   >
-                    Statistical Standards
+                    <span>{{ $t("referential.statistical_standards") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -71,7 +74,7 @@
                       }
                     "
                   >
-                    Process Documentation
+                    <span>{{ $t("referential.process_documentation") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -84,7 +87,7 @@
                   :visible="activeTab === 0"
                 >
                   <template #title>
-                    <span>Basic</span>
+                    <span>{{ $t("referential.basic") }}</span>
                     <span class="float-right" v-if="editedBasic"
                       ><CIcon name="cil-check-alt"
                     /></span>
@@ -103,7 +106,7 @@
                   :visible="activeTab === 1"
                 >
                   <template #title>
-                    <span>Agents</span>
+                    <span>{{ $t("referential.agents") }}</span>
                     <span class="float-right" v-if="editedAgents"
                       ><CIcon nam="cil-check-alt"
                     /></span>
@@ -120,7 +123,7 @@
                   :visible="activeTab === 2"
                 >
                   <template #title>
-                    <span>Legislative References</span>
+                    <span>{{ $t("referential.legislative_references") }}</span>
                     <span class="float-right" v-if="editedReferences"
                       ><CIcon name="cil-check-alt"
                     /></span>
@@ -141,7 +144,7 @@
                   :visible="activeTab === 3"
                 >
                   <template #title>
-                    <span>Statistical Standards</span>
+                    <span>{{ $t("referential.statistical_standards") }}</span>
                     <span class="float-right" v-if="editedStandards"
                       ><CIcon name="cil-check-alt"
                     /></span>

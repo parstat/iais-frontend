@@ -56,6 +56,7 @@
         "business_processes_header": "Procesele de afaceri"
     },
     "referential": {
+        "statistical_process": "Proces statistic",
         "statistical_processes": "Procese statistice",
         "add": "Adaugă",
         "ID": "ID",
@@ -83,11 +84,12 @@
         "agent_name": "Numele agentului",
         "agent_description": "Descrierea agentului",
         "legislative_reference": "Referință legislativă",
+        "legislative_references": "Referințe legislative",
         "legislative_reference_name": "Denumirea de referință legislativă",
         "legislative_reference_description": "Descrierea referințelor legislative",
         "statistical_standards": "Standarde statistice",
         "process_documentation": "Documentația procesului",
-        "survey_id": "ID sondaj",
+        "survey_ID": "ID sondaj",
         "survey_name": "Numele sondajului",
         "survey_acronym": "Acronim sondaj",
         "survey_description": "Descrierea sondajului",
@@ -147,7 +149,7 @@
         "search_for_legislative reference": "Începeți să tastați pentru a căuta o referință legislativă.",
         "search_for_statistical_standard": "Începeți să tastați pentru a căuta un standard statistic.",
         "validations": {
-            "survey_id": "Vă rugăm să introduceți codul sondajului.",
+            "survey_ID": "Vă rugăm să introduceți codul sondajului.",
             "survey_name" : "Vă rugăm să introduceți numele sondajului.",
             "survey_acronym": "Vă rugăm să introduceți un acronim.",
             "survey_description": "Vă rugăm să introduceți descrierea sondajului.",

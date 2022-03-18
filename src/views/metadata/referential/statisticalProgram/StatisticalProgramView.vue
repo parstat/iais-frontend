@@ -3,7 +3,11 @@
     <div class="jumbotron jumbotron-fluid col-lg-12">
       <div class="container">
         <h2 class="display-5">
-          {{ statisticalProgram.name }} ({{ statisticalProgram.acronym }})
+          <span
+            >{{ statisticalProgram.name }} ({{
+              statisticalProgram.acronym
+            }})</span
+          >
           <router-link
             v-if="isAuthenticated"
             style="float: right; font-size: 1.2rem"
@@ -16,7 +20,9 @@
             <CIcon name="cil-pencil" />
           </router-link>
         </h2>
-        <p class="lead">{{ statisticalProgram.description }}</p>
+        <span>
+          <p class="lead">{{ statisticalProgram.description }}</p>
+        </span>
       </div>
     </div>
     <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 1 }">

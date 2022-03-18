@@ -4,11 +4,17 @@
       <div class="card">
         <header class="card-header">
           <CIcon name="cil-trash" />
-          <strong class="icon-header">Statistical process</strong>
+          <span>
+            <strong class="icon-header">{{
+              $t("referential.statistical_process")
+            }}</strong>
+          </span>
         </header>
         <div class="card-body">
           <div class="form-group">
-            <label for="name">Survey id</label>
+            <label for="name">
+              <span>{{ $t("referential.survey_ID") }}</span>
+            </label>
             <input
               id="localId"
               type="text"
@@ -18,7 +24,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="name">Survey name</label>
+            <label for="name">
+              <span>{{ $t("referential.survey_name") }}</span>
+            </label>
             <input
               id="name"
               type="text"
@@ -28,7 +36,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="acronym">Survey acronym</label>
+            <label for="acronym">
+              <span>{{ $t("referential.survey_acronym") }}</span>
+            </label>
             <input
               id="acronym"
               type="text"
@@ -38,7 +48,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="responsible">Survey description</label>
+            <label for="responsible">
+              <span>{{ $t("referential.survey_description") }}</span>
+            </label>
             <input
               id="description"
               type="text"
@@ -54,7 +66,7 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            >Delete</CButton
+            ><span>{{ $t("referential.delete") }}</span></CButton
           >
         </div>
       </div>

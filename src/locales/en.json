@@ -56,6 +56,7 @@
         "business_processes_header": "Business processes"
     },
     "referential": {
+        "statistical_process": "Statistical process",
         "statistical_processes": "Statistical processes",
         "add": "Add",
         "ID": "ID",
@@ -83,11 +84,12 @@
         "agent_name": "Agent name",
         "agent_description": "Agent description",
         "legislative_reference": "Legislative reference",
+        "legislative_references": "Legislative references",
         "legislative_reference_name": "Legislative reference name",
         "legislative_reference_description": "Legislative reference description",
         "statistical_standards": "Statistical standards",
         "process_documentation": "Process documentation",
-        "survey_id": "Survey ID",
+        "survey_ID": "Survey ID",
         "survey_name": "Survey name",
         "survey_acronym": "Survey acronym",
         "survey_description": "Survey description",
