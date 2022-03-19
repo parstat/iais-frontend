@@ -569,6 +569,13 @@ const routes = [
           import("@/views/metadata/structural/concept/ConceptList"),
         meta: { authorize: [] },
       },
+      {
+        path: "metadata/structural/concepts/view/",
+        name: "ConceptView",
+        component: () =>
+          import("@/views/metadata/structural/concept/ConceptView"),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];

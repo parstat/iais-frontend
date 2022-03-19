@@ -41,13 +41,14 @@
                 pagination
               >
                 >
-                <!-- <template #actions="{ item }">
+                <template #actions="{ item }">
                   <td>
                     <span>
                       <router-link
                         tag="a"
+                        title="View"
                         :to="{
-                          name: 'UnitTypeView',
+                          name: 'ConceptView',
                           params: { id: item.id },
                         }"
                       >
@@ -55,7 +56,7 @@
                       </router-link>
                     </span>
                     <span v-if="isAuthenticated">
-                      <router-link
+                      <!-- <router-link
                         tag="a"
                         :to="{
                           name: 'ConceptEdit',
@@ -63,10 +64,10 @@
                         }"
                       >
                         <CIcon name="cil-pencil" />
-                      </router-link>
+                      </router-link> -->
                     </span>
                     <span v-if="isAdmin">
-                      <router-link
+                      <!-- <router-link
                         tag="a"
                         :to="{
                           name: 'ConceptDelete',
@@ -74,10 +75,10 @@
                         }"
                       >
                         <CIcon name="cil-trash" />
-                      </router-link>
+                      </router-link> -->
                     </span>
                   </td>
-                </template> -->
+                </template>
               </CSmartTable>
             </div>
             <CSpinner v-else color="primary" size="sm" />
@@ -115,13 +116,13 @@ export default {
         //   filter: false,
         //   sorter: false,
         // },
-        // {
-        //   key: "actions",
-        //   label: "Actions",
-        //   _style: { width: "1%" },
-        //   sorter: false,
-        //   filter: false,
-        // },
+        {
+          key: "actions",
+          label: "Actions",
+          _style: { width: "1%" },
+          sorter: false,
+          filter: false,
+        },
       ],
     };
   },

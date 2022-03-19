@@ -28,6 +28,17 @@ const actions = {
       }
     );
   },
+  findById({ commit }, id) {
+    conceptService.findById(id).then(
+      (data) => {
+        commit("SET_CONCEPT", data);
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
 };
 
 const getters = {
