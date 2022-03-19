@@ -19,6 +19,7 @@ import { statisticalClassification } from "./modules/structural/statisticalClass
 import { variableRepresentation } from "./modules/structural/variableRepresentation"; //added by GV
 import { unitType } from "./modules/structural/unitType";
 import { localization } from "./modules/localization";
+import { concept } from "./modules/structural/concept";
 
 export default createStore({
   modules: {
@@ -41,5 +42,6 @@ export default createStore({
     variableRepresentation,
     unitType,
     localization,
+    concept,
   }, //test
 });
