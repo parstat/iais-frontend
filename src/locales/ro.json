@@ -203,6 +203,9 @@
         "data_sets_link": "Accesați secțiunea seturilor de date",
         "unit_types_title": "Tipuri de unități",
         "unit_types_text": "Un Tip de unitate este o clasă de obiecte de interes. Un Tip de unitate este folosit pentru a descrie o clasă sau un grup de unități bazate pe o singură caracteristică, dar fără specificații de timp și geografie. De exemplu, tipul de unitate „Persoană” grupează un set de unități în funcție de caracteristica că acestea sunt Persoane.",
-        "unit_types_link": "Accesați secțiunea tipurilor de unități"
+        "unit_types_link": "Accesați secțiunea tipurilor de unități",
+        "concepts_title": "Concepts",
+        "concepts_text": "Unit of thought differentiated by characteristics.",
+        "concepts_link": "Go to conceps section"
     }
 }

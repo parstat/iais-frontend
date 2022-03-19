@@ -203,6 +203,9 @@
         "data_sets_link": "Go to data sets section",
         "unit_types_title": "Unit types",
         "unit_types_text": "A Unit type is a class of objects of interest. A Unit type is used to describe a class or group of units based on a single characteristic, but with no specification of time and geography. For example, the unit type of “Person” groups together a set of units based on the characteristic that they are Persons.",
-        "unit_types_link": "Go to unit types section"
+        "unit_types_link": "Go to unit types section",
+        "concepts_title": "Concepts",
+        "concepts_text": "Unit of thought differentiated by characteristics.",
+        "concepts_link": "Go to conceps section"
     }
 }

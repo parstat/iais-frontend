@@ -141,6 +141,29 @@
         </CCardBody>
       </CCard>
     </CCol>
+    <CCol xs>
+      <CCard>
+        <CCardBody>
+          <CCardTitle>
+            <span>{{ $t("structural.concepts_title") }}</span>
+          </CCardTitle>
+          <CCardText>
+            <span>{{ $t("structural.concepts_text") }}</span>
+          </CCardText>
+          <CButton>
+            <router-link
+              tag="a"
+              :to="{ name: 'ConceptList' }"
+              class="text-decoration-none text-primary"
+              ><span class="icon-span"
+                >{{ $t("structural.concepts_link") }}&nbsp;</span
+              >
+              <CIcon name="cil-arrow-right" />
+            </router-link>
+          </CButton>
+        </CCardBody>
+      </CCard>
+    </CCol>
     <!--
     <div class="col-sm-6 col-md-4">
       <div class="card">
