@@ -32,6 +32,12 @@
               <div class="text-muted">
                 <span>{{ concept.localId }}</span>
               </div>
+              <div class="card-group">
+                <span><strong>Link</strong></span>
+              </div>
+              <div class="text-muted">
+                <span>{{ concept.link }}</span>
+              </div>
             </CForm>
           </CCardText>
           <CButton
