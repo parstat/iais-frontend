@@ -1,5 +1,5 @@
 import { conceptService } from "@/services";
-// import router from "@/router";
+import router from "@/router";
 
 const state = {
   concepts: [],
@@ -33,6 +33,20 @@ const actions = {
       (data) => {
         commit("SET_CONCEPT", data);
         console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  save({ dispatch }, formData) {
+    conceptService.save(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Concept saved!", {
+          root: true,
+        });
+        router.push("/metadata/structural/concepts");
       },
       (error) => {
         console.log(error);

@@ -576,6 +576,13 @@ const routes = [
           import("@/views/metadata/structural/concept/ConceptView"),
         meta: { authorize: [] },
       },
+      {
+        path: "metadata/structural/concepts/add/",
+        name: "ConceptAdd",
+        component: () =>
+          import("@/views/metadata/structural/concept/ConceptAdd"),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];

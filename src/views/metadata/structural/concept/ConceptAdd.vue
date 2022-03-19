@@ -4,7 +4,7 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Unit type</span>
+            <span>Concept</span>
           </CCardTitle>
           <CCardText>
             <CForm>
@@ -17,11 +17,11 @@
                   'is-invalid': v$.name.$error,
                   'mb-3': !v$.name.$error,
                 }"
-                placeholder="Unit type name"
+                placeholder="Concept name"
                 v-model.trim="name"
               />
               <div class="text-danger mb-3" v-if="v$.name.$error">
-                Please enter a name for the unit type.
+                Please enter a name for the concept.
               </div>
             </CForm>
             <CForm>
@@ -35,7 +35,7 @@
                   'is-invalid': v$.description.$error,
                   'mb-3': !v$.description.$error,
                 }"
-                placeholder="Unit type description"
+                placeholder="Concept description"
                 v-model.trim="description"
               />
               <div class="text-danger mb-3" v-if="v$.description.$error">
@@ -60,12 +60,29 @@
               </div>
             </CForm>
             <CForm>
+              <label for="localId">Link*</label>
+              <input
+                id="link"
+                type="text"
+                class="form-control"
+                :class="{
+                  'is-invalid': v$.link.$error,
+                  'mb-3': !v$.link.$error,
+                }"
+                placeholder="Link"
+                v-model.trim="link"
+              />
+              <div class="text-danger mb-3" v-if="v$.link.$error">
+                Please specify a link.
+              </div>
+            </CForm>
+            <CForm>
               <label for="definition">Definition</label>
               <input
                 id="definition"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Unit type definition"
+                placeholder="Concept definition"
                 v-model.trim="definition"
               />
             </CForm>
@@ -95,7 +112,7 @@
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 export default {
-  name: "UnitTypeAdd",
+  name: "ConceptAdd",
   data() {
     return {
       disabled: false,
@@ -104,6 +121,7 @@ export default {
       description: "",
       definition: "",
       localId: "",
+      link: "",
     };
   },
   validations: {
@@ -116,6 +134,9 @@ export default {
     localId: {
       required,
     },
+    link: {
+      required,
+    },
   },
   methods: {
     handleReset() {
@@ -123,6 +144,7 @@ export default {
       this.description = "";
       this.definition = "";
       this.localId = "";
+      this.link = "";
       this.v$.$reset();
     },
     handleSave() {
@@ -135,8 +157,9 @@ export default {
           description: this.description,
           definition: this.definition,
           localId: this.localId,
+          link: this.link,
         };
-        this.$store.dispatch("unitType/save", formData);
+        this.$store.dispatch("concept/save", formData);
         console.log(formData);
       }
     },
