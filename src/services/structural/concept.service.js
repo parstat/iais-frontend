@@ -8,7 +8,7 @@ function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenConcept").then(
       (response) => {
-        resolve(response.data.unitTypes);
+        resolve(response.data.concepts);
       },
       (error) => {
         reject(error);

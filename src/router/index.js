@@ -545,6 +545,7 @@ const routes = [
           import("@/views/metadata/structural/unitType/UnitTypeAdd"),
         meta: { authorize: [] },
       },
+      // Unit Type edit
       {
         path: "metadata/structural/unitTypes/edit/:id",
         name: "UnitTypeEdit",
@@ -552,11 +553,20 @@ const routes = [
           import("@/views/metadata/structural/unitType/UnitTypeEdit"),
         meta: { authorize: [] },
       },
+      // Unit Type delete
       {
         path: "metadata/structural/unitTypes/delete/:id",
         name: "UnitTypeDelete",
         component: () =>
           import("@/views/metadata/structural/unitType/UnitTypeDelete"),
+        meta: { authorize: [] },
+      },
+      //Unit Types List
+      {
+        path: "metadata/structural/concepts/",
+        name: "ConceptList",
+        component: () =>
+          import("@/views/metadata/structural/concept/ConceptList"),
         meta: { authorize: [] },
       },
     ],

@@ -8,10 +8,10 @@ const state = {
 
 const mutations = {
   SET_CONCEPTS(state, concepts) {
-    state.unitTypes = concepts ? concepts : [];
+    state.concepts = concepts ? concepts : [];
   },
   SET_CONCEPT(state, concept) {
-    state.unitType = concept;
+    state.concept = concept;
   },
 };
 
