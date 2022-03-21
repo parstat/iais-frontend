@@ -53,6 +53,20 @@ const actions = {
       }
     );
   },
+  update({ dispatch }, formData) {
+    conceptService.update(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Concept updated!", {
+          root: true,
+        });
+        router.push("/metadata/structural/concepts");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
 };
 
 const getters = {

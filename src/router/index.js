@@ -561,7 +561,7 @@ const routes = [
           import("@/views/metadata/structural/unitType/UnitTypeDelete"),
         meta: { authorize: [] },
       },
-      //Unit Types List
+      //Concept Types List
       {
         path: "metadata/structural/concepts/",
         name: "ConceptList",
@@ -581,6 +581,13 @@ const routes = [
         name: "ConceptAdd",
         component: () =>
           import("@/views/metadata/structural/concept/ConceptAdd"),
+        meta: { authorize: [] },
+      },
+      {
+        path: "metadata/structural/concepts/edit/:id",
+        name: "ConceptEdit",
+        component: () =>
+          import("@/views/metadata/structural/concept/ConceptEdit"),
         meta: { authorize: [] },
       },
     ],

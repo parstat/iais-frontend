@@ -56,7 +56,7 @@
                       </router-link>
                     </span>
                     <span v-if="isAuthenticated">
-                      <!-- <router-link
+                      <router-link
                         tag="a"
                         :to="{
                           name: 'ConceptEdit',
@@ -64,7 +64,7 @@
                         }"
                       >
                         <CIcon name="cil-pencil" />
-                      </router-link> -->
+                      </router-link>
                     </span>
                     <span v-if="isAdmin">
                       <!-- <router-link

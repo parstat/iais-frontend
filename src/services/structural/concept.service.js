@@ -4,6 +4,7 @@ export const conceptService = {
   findAll,
   findById,
   save,
+  update,
 };
 
 function findAll() {
@@ -47,9 +48,40 @@ function save(formData) {
       description: formData.description,
       definition: formData.definition,
       localId: formData.localId,
+      link: formData.link,
     };
 
     axiosIais.post("structural/ClosedConcept", requestBody, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function update(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const requestBody = {
+      id: formData.id,
+      name: formData.name,
+      description: formData.description,
+      definition: formData.definition,
+      localId: formData.localId,
+      link: formData.link,
+      version: formData.version ? formData.version : "",
+    };
+
+    axiosIais.put("structural/ClosedConcept/", requestBody, config).then(
       (response) => {
         //console.log(response.data);
         resolve(response.data);
