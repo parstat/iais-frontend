@@ -4,7 +4,7 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Hello</span>
+            <span>Unit type</span>
           </CCardTitle>
           <CCardText v-if="unitType">
             <CForm>
