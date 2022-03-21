@@ -58,6 +58,12 @@
     "referential": {
         "statistical_process": "Proces statistic",
         "statistical_processes": "Procese statistice",
+        "process_inputs": "Intrările de proces",
+        "process_outputs": "Ieșirile de proces",
+        "process_quality": "Calitatea procesului",
+        "comments/notes": "Comentarii/Note",
+        "frequency": "Frecvență",
+        "next_process": "Următorul proces",
         "add": "Adaugă",
         "ID": "ID",
         "local_ID": "ID local",
@@ -204,8 +210,8 @@
         "unit_types_title": "Tipuri de unități",
         "unit_types_text": "Un Tip de unitate este o clasă de obiecte de interes. Un Tip de unitate este folosit pentru a descrie o clasă sau un grup de unități bazate pe o singură caracteristică, dar fără specificații de timp și geografie. De exemplu, tipul de unitate „Persoană” grupează un set de unități în funcție de caracteristica că acestea sunt Persoane.",
         "unit_types_link": "Accesați secțiunea tipurilor de unități",
-        "concepts_title": "Concepts",
-        "concepts_text": "Unit of thought differentiated by characteristics.",
-        "concepts_link": "Go to conceps section"
+        "concepts_title": "Concepte",
+        "concepts_text": "Unitate de gândire diferențiată după caracteristici.",
+        "concepts_link": "Accesați secțiunea de concepte"
     }
 }

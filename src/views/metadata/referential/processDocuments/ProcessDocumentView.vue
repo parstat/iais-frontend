@@ -1,6 +1,8 @@
 <template>
   <CCard v-if="documents.length">
-    <CCardHeader class="bg-white" component="h6"> Comments/Notes </CCardHeader>
+    <CCardHeader class="bg-white" component="h6">
+      <span>{{ $t("referential.comments/notes") }}</span>
+    </CCardHeader>
     <CCardBody>
       <CCardText>
         <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">
@@ -11,14 +13,16 @@
           >
             <CCard>
               <CCardHeader component="h6">
-                {{ processDocument.name }}
+                <span>{{ processDocument.name }}</span>
               </CCardHeader>
               <CCardBody>
-                <CCardText>{{ processDocument.description }}</CCardText>
+                <CCardText>
+                  <span>{{ processDocument.description }}</span>
+                </CCardText>
                 <CCardLink
                   v-if="processDocument.externalLink"
                   :href="processDocument.externalLink"
-                  >Link...</CCardLink
+                  ><span>{{ $t("referential.link") }}</span> ...</CCardLink
                 >
               </CCardBody>
             </CCard>
@@ -35,8 +39,7 @@
             name: 'StatisticalProgramView',
             params: { id: statisticalProgramId },
           }"
-        >
-          Back
+          ><span>{{ $t("referential.back") }}</span>
         </router-link>
       </CButton>
     </CCardFooter>

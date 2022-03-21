@@ -1,7 +1,7 @@
 <template>
   <CCard v-if="processMethods.length">
     <CCardHeader class="bg-white" component="h5">
-      <span>{{ $t("referential.process_method_header") }}</span>
+      <span>{{ $t("referential.process_methods_header") }}</span>
     </CCardHeader>
     <CCardBody>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3 }">

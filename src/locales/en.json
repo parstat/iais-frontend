@@ -58,6 +58,12 @@
     "referential": {
         "statistical_process": "Statistical process",
         "statistical_processes": "Statistical processes",
+        "process_inputs": "Process inputs",
+        "process_outputs": "Process outputs",
+        "process_quality": "Process quality",
+        "comments/notes": "Comments/Notes",
+        "frequency": "Frequency",
+        "next_process": "Next process",
         "add": "Add",
         "ID": "ID",
         "local_ID": "Local ID",

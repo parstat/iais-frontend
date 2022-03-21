@@ -1,7 +1,9 @@
 <template>
   <CCard v-if="processQualities.length">
     <CCardBody>
-      <CCardTitle>Process Quality</CCardTitle>
+      <CCardTitle>
+        <span>{{ $t("referential.process_quality") }}</span>
+      </CCardTitle>
       <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
         <CCol
           xs
@@ -10,10 +12,12 @@
         >
           <CCard>
             <CCardHeader component="h6">
-              {{ processQuality.name }}
+              <span>{{ processQuality.name }}</span>
             </CCardHeader>
             <CCardBody>
-              <CCardText>{{ processQuality.description }}</CCardText>
+              <CCardText>
+                <span>{{ processQuality.description }}</span>
+              </CCardText>
             </CCardBody>
           </CCard>
         </CCol>

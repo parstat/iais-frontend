@@ -4,7 +4,7 @@
       <div class="jumbotron jumbotron-fluid col-lg-12">
         <div class="container">
           <h2 class="display-5">
-            {{ processDocumentation.statisticalProgram.name }}
+            <span>{{ processDocumentation.statisticalProgram.name }}</span>
             <router-link
               v-if="isAuthenticated"
               tag="a"
@@ -17,15 +17,22 @@
             </router-link>
           </h2>
           <p class="lead">
-            {{ processDocumentation.businessFunction.localId }}
-            {{ processDocumentation.businessFunction.name }}
+            <span>
+              {{ processDocumentation.businessFunction.localId }}
+              {{ processDocumentation.businessFunction.name }}
+            </span>
           </p>
           <hr class="my-4" />
           <p v-if="processDocumentation.frequency" class="lead">
-            <strong>Frequency: </strong> {{ processDocumentation.frequency }}
+            <span>
+              <strong>{{ $t("referential.frequency") }}: </strong>
+              {{ processDocumentation.frequency }}
+            </span>
           </p>
           <p v-if="processDocumentation.nextSubPhase" class="lead">
-            <strong>Next Process: </strong>
+            <span>
+              <strong>{{ $t("referential.next_process") }}: </strong>
+            </span>
             <router-link
               v-if="nextDocumentation"
               tag="a"
@@ -36,8 +43,10 @@
                 },
               }"
             >
-              {{ processDocumentation.nextSubPhase.localId }}
-              {{ processDocumentation.nextSubPhase.name }}
+              <span>
+                {{ processDocumentation.nextSubPhase.localId }}
+                {{ processDocumentation.nextSubPhase.name }}
+              </span>
             </router-link>
           </p>
         </div>
@@ -46,10 +55,12 @@
         <CCol xs v-if="processDocumentation.description">
           <CCard class="mt-3">
             <CCardHeader class="bg-white" component="h5">
-              Description
+              <span>{{ $t("referential.description") }}</span>
             </CCardHeader>
             <CCardBody>
-              <CCardText>{{ processDocumentation.description }}</CCardText>
+              <CCardText>
+                <span>{{ processDocumentation.description }}</span>
+              </CCardText>
             </CCardBody>
           </CCard>
         </CCol>

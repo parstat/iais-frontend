@@ -1,6 +1,8 @@
 <template>
   <CCard v-if="processInputSpecifications.length">
-    <CCardHeader class="bg-white" component="h5"> Process Inputs </CCardHeader>
+    <CCardHeader class="bg-white" component="h5">
+      <span>{{ $t("referential.process_inputs") }}</span>
+    </CCardHeader>
     <CCardBody>
       <CCardText>
         <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
@@ -11,12 +13,12 @@
           >
             <CCard>
               <CCardHeader component="h6">
-                {{ processInputSpecification.name }}
+                <span>{{ processInputSpecification.name }}</span>
               </CCardHeader>
               <CCardBody>
-                <CCardText>{{
-                  processInputSpecification.description
-                }}</CCardText>
+                <CCardText>
+                  <span>{{ processInputSpecification.description }}</span>
+                </CCardText>
               </CCardBody>
             </CCard>
           </CCol>

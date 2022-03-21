@@ -58,6 +58,12 @@
     "referential": {
         "statistical_process": "Статистический процесс",
         "statistical_processes": "Статистические процессы",
+        "process_inputs": "Входные процессы",
+        "process_outputs": "Выходные процессы",
+        "process_quality": "Качество процесса",
+        "comments/notes": "Комментарии/Заметки",
+        "frequency": "Частота",
+        "next_process": "Следующий процесс",
         "add": "Добавлять",
         "ID": "ИД",
         "local_ID": "Местный ИД",
@@ -204,8 +210,8 @@
         "unit_types_title": "Типы юнитов",
         "unit_types_text": "Тип юнит это класс объектов, представляющих интерес. Тип единицы используется для описания класса или группы единиц на основе одной характеристики, но без указания времени и географии. Например, тип единицы измерения «Люди» объединяет набор единиц на основании того признака, что они являются Лицами.",
         "unit_types_link": "Перейти в раздел типов юнитов",
-        "concepts_title": "Concepts",
-        "concepts_text": "Unit of thought differentiated by characteristics.",
-        "concepts_link": "Go to conceps section"
+        "concepts_title": "Концепции",
+        "concepts_text": "Единица мысли, дифференцированная по характеристикам.",
+        "concepts_link": "Перейти в раздел концепций"
     }
 }
