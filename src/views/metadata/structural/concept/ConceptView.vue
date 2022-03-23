@@ -32,11 +32,11 @@
               <div class="text-muted">
                 <span>{{ concept.localId }}</span>
               </div>
-              <div class="card-group">
-                <span><strong>Link</strong></span>
-              </div>
-              <div class="text-muted">
-                <span>{{ concept.link }}</span>
+              <div v-if="concept.link">
+                <div class="card-group">
+                  <span><strong>Link</strong></span>
+                </div>
+                <a v-bind:href="concept.link">{{ concept.name }} </a>
               </div>
             </CForm>
           </CCardText>

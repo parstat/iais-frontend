@@ -63,21 +63,14 @@
               </div>
             </CForm>
             <CForm>
-              <label for="localId">Link*</label>
+              <label for="localId">Link</label>
               <input
                 id="link"
                 type="text"
                 class="form-control"
-                :class="{
-                  'is-invalid': v$.concept.link.$error,
-                  'mb-3': !v$.concept.link.$error,
-                }"
                 placeholder="Link"
                 v-model.trim="concept.link"
               />
-              <div class="text-danger mb-3" v-if="v$.concept.link.$error">
-                Please specify a link.
-              </div>
             </CForm>
             <CForm>
               <label for="definition">Definition</label>
@@ -135,9 +128,6 @@ export default {
         required,
       },
       localId: {
-        required,
-      },
-      link: {
         required,
       },
     },
