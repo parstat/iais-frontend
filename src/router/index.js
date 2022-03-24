@@ -590,6 +590,13 @@ const routes = [
           import("@/views/metadata/structural/concept/ConceptEdit"),
         meta: { authorize: [] },
       },
+      {
+        path: "metadata/structural/concepts/delete/:id",
+        name: "ConceptDelete",
+        component: () =>
+          import("@/views/metadata/structural/concept/ConceptDelete"),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];

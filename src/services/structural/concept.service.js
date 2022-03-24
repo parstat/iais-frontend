@@ -5,6 +5,7 @@ export const conceptService = {
   findById,
   save,
   update,
+  delete: _delete,
 };
 
 function findAll() {
@@ -82,6 +83,20 @@ function update(formData) {
     };
 
     axiosIais.put("structural/ClosedConcept/", requestBody, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function _delete(id) {
+  return new Promise((resolve, reject) => {
+    axiosIais.delete("structural/ClosedConcept/" + id).then(
       (response) => {
         //console.log(response.data);
         resolve(response.data);

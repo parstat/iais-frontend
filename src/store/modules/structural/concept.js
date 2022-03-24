@@ -67,6 +67,20 @@ const actions = {
       }
     );
   },
+  delete({ dispatch }, id) {
+    conceptService.delete(id).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Concept deleted!", {
+          root: true,
+        });
+        router.push("/metadata/structural/concepts");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
 };
 
 const getters = {

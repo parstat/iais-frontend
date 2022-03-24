@@ -67,7 +67,7 @@
                       </router-link>
                     </span>
                     <span v-if="isAdmin">
-                      <!-- <router-link
+                      <router-link
                         tag="a"
                         :to="{
                           name: 'ConceptDelete',
@@ -75,7 +75,7 @@
                         }"
                       >
                         <CIcon name="cil-trash" />
-                      </router-link> -->
+                      </router-link>
                     </span>
                   </td>
                 </template>
