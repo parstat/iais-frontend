@@ -47,9 +47,9 @@ function save(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
-      definition: formData.definition,
+      definition: formData.definition ? formData.definition : "",
       localId: formData.localId,
-      link: formData.link,
+      link: formData.link ? formData.link : "",
     };
 
     axiosIais.post("structural/ClosedConcept", requestBody, config).then(
@@ -76,9 +76,9 @@ function update(formData) {
       id: formData.id,
       name: formData.name,
       description: formData.description,
-      definition: formData.definition,
+      definition: formData.definition ? formData.definition : "",
       localId: formData.localId,
-      link: formData.link,
+      link: formData.link ? formData.link : "",
       version: formData.version ? formData.version : "",
     };
 
