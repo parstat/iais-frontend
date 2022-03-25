@@ -24,7 +24,7 @@
                 class="text-danger mb-3"
                 v-if="v$.measurementType.name.$error"
               >
-                Please enter a name for the unit type.
+                Please enter a name for the measurement type.
               </div>
             </CForm>
             <CForm>
