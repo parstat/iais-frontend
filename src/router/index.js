@@ -597,6 +597,26 @@ const routes = [
           import("@/views/metadata/structural/concept/ConceptDelete"),
         meta: { authorize: [] },
       },
+      // Measurement type list
+      {
+        path: "metadata/structural/measurementTypes/",
+        name: "MeasurementTypeList",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeList"
+          ),
+        meta: { authorize: [] },
+      },
+      // Measurement type add
+      {
+        path: "metadata/structural/measurementTypes/add/",
+        name: "MeasurementTypeAdd",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeAdd"
+          ),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];

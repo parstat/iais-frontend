@@ -14,3 +14,4 @@ export * from "./structural/statisticalClassification.service"; //added by GV
 export * from "./structural/variableRepresentation.service"; //added by GV
 export * from "./structural/unitType.service";
 export * from "./structural/concept.service";
+export * from "./structural/measurementType.service";

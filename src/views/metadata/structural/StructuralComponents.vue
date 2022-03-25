@@ -164,7 +164,7 @@
         </CCardBody>
       </CCard>
     </CCol>
-    <CCol xs>
+    <!-- <CCol xs>
       <CCard>
         <CCardBody>
           <CCardTitle>
@@ -186,7 +186,7 @@
           </CButton>
         </CCardBody>
       </CCard>
-    </CCol>
+    </CCol> -->
     <CCol xs>
       <CCard>
         <CCardBody>
@@ -199,7 +199,7 @@
           <CButton>
             <router-link
               tag="a"
-              :to="{ name: 'MeasurementType' }"
+              :to="{ name: 'MeasurementTypeList' }"
               class="text-decoration-none text-primary"
               ><span class="icon-span"
                 >{{ $t("structural.measurementType_link") }}&nbsp;</span
