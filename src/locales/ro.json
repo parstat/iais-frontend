@@ -232,6 +232,9 @@
         "unit_types_link": "Accesați secțiunea tipurilor de unități",
         "concepts_title": "Concepte",
         "concepts_text": "Unitate de gândire diferențiată după caracteristici.",
-        "concepts_link": "Accesați secțiunea de concepte"
+        "concepts_link": "Accesați secțiunea de concepte",
+        "measurementUnit_title": "Measurement Unit",
+        "measurementUnit_text": "A Measurement Unit is the metric for a measurement in terms of an official unit of measurement.",
+        "measurementUnit_link": "Go to measurement Unit"
     }
 }

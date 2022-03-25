@@ -232,6 +232,9 @@
         "unit_types_link": "Go to unit types section",
         "concepts_title": "Concepts",
         "concepts_text": "Unit of thought differentiated by characteristics.",
-        "concepts_link": "Go to conceps section"
+        "concepts_link": "Go to conceps section",
+        "measurementUnit_title": "Measurement Unit",
+        "measurementUnit_text": "A Measurement Unit is the metric for a measurement in terms of an official unit of measurement.",
+        "measurementUnit_link": "Go to measurement Unit"
     }
 }
