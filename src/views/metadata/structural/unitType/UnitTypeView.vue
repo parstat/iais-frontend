@@ -1,5 +1,5 @@
 <template>
-  <CCRow v-if="unitType">
+  <CRow v-if="unitType">
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
@@ -44,7 +44,7 @@
         </CCardBody>
       </CCard>
     </CCol>
-  </CCRow>
+  </CRow>
 </template>
 
 <script>

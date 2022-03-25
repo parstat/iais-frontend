@@ -1,5 +1,5 @@
 <template>
-  <CCRow>
+  <CRow>
     <CCol class="col-12">
       <CCard>
         <CCardBody>
@@ -89,7 +89,7 @@
         </CCardBody>
       </CCard>
     </CCol>
-  </CCRow>
+  </CRow>
 </template>
 <script>
 import useValidate from "@vuelidate/core";

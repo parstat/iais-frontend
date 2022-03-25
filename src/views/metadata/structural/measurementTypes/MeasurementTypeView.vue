@@ -1,5 +1,5 @@
 <template>
-  <CCRow v-if="measurementType">
+  <CRow v-if="measurementType">
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
@@ -38,7 +38,7 @@
         </CCardBody>
       </CCard>
     </CCol>
-  </CCRow>
+  </CRow>
 </template>
 
 <script>
