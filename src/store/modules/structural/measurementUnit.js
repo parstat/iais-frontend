@@ -43,10 +43,10 @@ const actions = {
     measurementUnitService.save(formData).then(
       (data) => {
         console.log(data);
-        dispatch("message/success", "Concept saved!", {
+        dispatch("message/success", "Measurement unit saved!", {
           root: true,
         });
-        router.push("/metadata/structural/concepts");
+        router.push("/metadata/structural/measurementUnits");
       },
       (error) => {
         console.log(error);
@@ -57,10 +57,24 @@ const actions = {
     measurementUnitService.update(formData).then(
       (data) => {
         console.log(data);
-        dispatch("message/success", "Concept updated!", {
+        dispatch("message/success", "Measurement unit updated!", {
           root: true,
         });
-        router.push("/metadata/structural/concepts");
+        router.push("/metadata/structural/measurementUnits");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  delete({ dispatch }, id) {
+    measurementUnitService.delete(id).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Measurement unit deleted!", {
+          root: true,
+        });
+        router.push("/metadata/structural/measurementUnits");
       },
       (error) => {
         console.log(error);

@@ -634,6 +634,15 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
+      {
+        path: "metadata/structural/measurementUnits/delete/:id",
+        name: "MeasurementUnitDelete",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementUnits/MeasurementUnitDelete"
+          ),
+        meta: { authorize: [] },
+      },
       // Measurement type list
       {
         path: "metadata/structural/measurementTypes/",
@@ -646,7 +655,7 @@ const routes = [
       },
       // Measurement type view
       {
-        path: "metadata/structural/measurementTypes/view/",
+        path: "metadata/structural/measurementTypes/view/:id",
         name: "MeasurementTypeView",
         component: () =>
           import(
@@ -666,7 +675,7 @@ const routes = [
       },
       // Measurement type edit
       {
-        path: "metadata/structural/measurementTypes/edit/",
+        path: "metadata/structural/measurementTypes/edit/:id",
         name: "MeasurementTypeEdit",
         component: () =>
           import(
@@ -676,7 +685,7 @@ const routes = [
       },
       // Measurement type delete
       {
-        path: "metadata/structural/measurementTypes/delete/",
+        path: "metadata/structural/measurementTypes/delete/:id",
         name: "MeasurementTypeDelete",
         component: () =>
           import(

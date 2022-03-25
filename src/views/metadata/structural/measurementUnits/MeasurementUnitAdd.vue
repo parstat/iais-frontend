@@ -141,7 +141,8 @@ export default {
           description: this.description,
           definition: this.definition,
           localId: this.localId,
-          link: this.link,
+          convertionRule: this.convertionRule,
+          abbreviation: this.abbreviation,
         };
         this.$store.dispatch("measurementUnit/save", formData);
         console.log(formData);

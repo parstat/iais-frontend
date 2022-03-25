@@ -126,6 +126,9 @@ export default {
       abbreviation: {
         required,
       },
+      localId: {
+        required,
+      },
     },
   },
   methods: {

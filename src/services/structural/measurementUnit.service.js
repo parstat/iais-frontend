@@ -5,13 +5,14 @@ export const measurementUnitService = {
   findById,
   save,
   update,
+  delete: _delete,
 };
 
 function findAll() {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenMeasurementUnit").then(
       (response) => {
-        resolve(response.data.concepts);
+        resolve(response.data.measurementUnits);
       },
       (error) => {
         reject(error);
@@ -24,7 +25,9 @@ function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenMeasurementUnit/" + id).then(
       (response) => {
-        var data = response.data.concept ? response.data.concept : null;
+        var data = response.data.measurementUnit
+          ? response.data.measurementUnit
+          : null;
         //console.log(data);
         resolve(data);
       },
@@ -97,5 +100,19 @@ function update(formData) {
           reject(error);
         }
       );
+  });
+}
+
+function _delete(id) {
+  return new Promise((resolve, reject) => {
+    axiosIais.delete("structural/ClosedMeasurementUnit/" + id).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }

@@ -41,7 +41,7 @@
                 pagination
               >
                 >
-                <template #actions="{}">
+                <template #actions="{ item }">
                   <td>
                     <span>
                       <router-link
@@ -70,7 +70,7 @@
                       <router-link
                         tag="a"
                         :to="{
-                          name: 'ConceptDelete',
+                          name: 'MeasurementUnitDelete',
                           params: { id: item.id },
                         }"
                       >

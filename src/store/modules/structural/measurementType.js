@@ -43,7 +43,7 @@ const actions = {
     measurementTypeService.save(formData).then(
       (data) => {
         console.log(data);
-        dispatch("message/success", "Measure type saved!", {
+        dispatch("message/success", "Measurement type saved!", {
           root: true,
         });
         router.push("/metadata/structural/measurementTypes");
@@ -57,7 +57,7 @@ const actions = {
     measurementTypeService.update(formData).then(
       (data) => {
         console.log(data);
-        dispatch("message/success", "Measure type updated!", {
+        dispatch("message/success", "Measurement type updated!", {
           root: true,
         });
         router.push("/metadata/structural/measurementTypes");
@@ -71,7 +71,7 @@ const actions = {
     measurementTypeService.delete(id).then(
       (data) => {
         console.log(data);
-        dispatch("message/success", "Measure type deleted!", {
+        dispatch("message/success", "Measurement type deleted!", {
           root: true,
         });
         router.push("/metadata/structural/measurementTypes");
