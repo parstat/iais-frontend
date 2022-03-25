@@ -233,11 +233,11 @@
         "concepts_title": "Концепции",
         "concepts_text": "Единица мысли, дифференцированная по характеристикам.",
         "concepts_link": "Перейти в раздел концепций",
-        "measurementUnit_title": "Measurement Units",
+        "measurementUnit_title": "Measurement Unit",
         "measurementUnit_text": "A Measurement Unit is the metric for a measurement in terms of an official unit of measurement.",
-        "measurementUnit_link": "Go to Measurement Units",
-        "measurementType_title": "Measurement Types",
-        "measurementType_text": "The Measurement Type defines the type of a measure e.g. mass or currency. The Measurement Type groups all Measurement Units, which can be converted into each other. A Measurement Type can have a standard Measurement Unit, which can be used for conversion between different Measurement Units.",
-        "measurementType_link": "Go to Measurement Types"
+        "measurementUnit_link": "Go to measurement Unit",
+        "measurementType_title": "Measurement Type",
+        "measurementType_text": "The Measurement Type defines the type of a measure e.g. mass or currency. The Measurement Type groups all Measurement Units, which can be converted into each other. A Measurement Type can have a standard Measurement Unit, which can be used for conversion between different Measurement Units. In both cards add a action button that will send to their list view.",
+        "measurementType_link": "Go to measurement type"
     }
 }

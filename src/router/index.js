@@ -634,6 +634,56 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
+      // Measurement type list
+      {
+        path: "metadata/structural/measurementTypes/",
+        name: "MeasurementTypeList",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeList"
+          ),
+        meta: { authorize: [] },
+      },
+      // Measurement type view
+      {
+        path: "metadata/structural/measurementTypes/view/",
+        name: "MeasurementTypeView",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeView"
+          ),
+        meta: { authorize: [] },
+      },
+      // Measurement type add
+      {
+        path: "metadata/structural/measurementTypes/add/",
+        name: "MeasurementTypeAdd",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeAdd"
+          ),
+        meta: { authorize: [] },
+      },
+      // Measurement type edit
+      {
+        path: "metadata/structural/measurementTypes/edit/",
+        name: "MeasurementTypeEdit",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeEdit"
+          ),
+        meta: { authorize: [] },
+      },
+      // Measurement type delete
+      {
+        path: "metadata/structural/measurementTypes/delete/",
+        name: "MeasurementTypeDelete",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeDelete"
+          ),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];
