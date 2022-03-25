@@ -5,7 +5,9 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-description" />
-            <span>{{ $t("referential.statistical_standard_header") }}</span>
+            <span
+              >&nbsp;{{ $t("referential.statistical_standard_header") }}</span
+            >
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -40,7 +42,7 @@
           >
             <template v-slot:no-options="{ search, searching }">
               <template v-if="searching">
-                <span>{{ $t("referential.no_found") }}</span>
+                <span>{{ $t("referential.no_found") }}&nbsp;</span>
                 <em>{{ search }}</em
                 >.
               </template>

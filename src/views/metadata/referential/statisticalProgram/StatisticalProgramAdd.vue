@@ -5,7 +5,7 @@
         <CCardBody>
           <CCardTitle>
             <CIcon name="cil-description" />
-            <span>{{ $t("referential.statistical_processes") }}</span>
+            <span>&nbsp;{{ $t("referential.statistical_processes") }}</span>
           </CCardTitle>
           <CRow>
             <CCol class="col-3 mr-2">
