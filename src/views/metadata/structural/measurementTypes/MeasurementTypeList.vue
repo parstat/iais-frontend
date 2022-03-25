@@ -70,7 +70,7 @@
                       </router-link>
                     </span>
 
-                    <!-- <span v-if="isAuthenticated && isAdmin" class="pl-2">
+                    <span v-if="isAuthenticated && isAdmin" class="pl-2">
                       <router-link
                         tag="a"
                         title="Delete"
@@ -81,7 +81,7 @@
                       >
                         <CIcon name="cil-trash" />
                       </router-link>
-                    </span> -->
+                    </span>
                   </td>
                 </template>
               </CSmartTable>

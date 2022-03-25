@@ -637,6 +637,16 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
+      // Measurement type delete
+      {
+        path: "metadata/structural/measurementTypes/delete/",
+        name: "MeasurementTypeDelete",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeDelete"
+          ),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];
