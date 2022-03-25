@@ -1,10 +1,10 @@
 <template>
-  <CRow v-if="concept">
+  <CRow v-if="measurementUnit">
     <CCol class="col-sm-12 col-md-6">
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>{{ concept.name }}</span>
+            <span>{{ measurementUnit.name }}</span>
           </CCardTitle>
           <CCardText>
             <CForm>
@@ -12,31 +12,31 @@
                 <span><strong>Description:</strong></span>
               </div>
               <div class="text-muted">
-                <span>{{ concept.description }}</span>
+                <span>{{ measurementUnit.description }}</span>
               </div>
               <div class="card-group">
-                <span><strong>Definition:</strong></span>
+                <span><strong>Abbreviation:</strong></span>
               </div>
               <div class="text-muted">
-                <span>{{ concept.definition }}</span>
+                <span>{{ measurementUnit.abbreviation }}</span>
               </div>
               <div class="card-group">
                 <span><strong>Version: </strong></span>
               </div>
               <div class="text-muted">
-                <span>{{ concept.version }}</span>
+                <span>{{ measurementUnit.version }}</span>
               </div>
               <div class="card-group">
                 <span><strong>Local id</strong></span>
               </div>
               <div class="text-muted">
-                <span>{{ concept.localId }}</span>
+                <span>{{ measurementUnit.localId }}</span>
               </div>
-              <div v-if="concept.link">
-                <div class="card-group">
-                  <span><strong>Link</strong></span>
-                </div>
-                <a v-bind:href="concept.link">{{ concept.name }} </a>
+              <div class="card-group">
+                <span><strong>Convertion Rule</strong></span>
+              </div>
+              <div class="text-muted">
+                <span>{{ measurementUnit.convertionRule }}</span>
               </div>
             </CForm>
           </CCardText>
@@ -58,7 +58,7 @@ import { mapGetters } from "vuex";
 //import { Context } from "@/common";
 
 export default {
-  name: "ConceptView",
+  name: "MeasurementUnitView",
   data() {
     return {
       disabled: false,
@@ -67,16 +67,16 @@ export default {
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("concept", ["concept"]),
+    ...mapGetters("measurementUnit", ["measurementUnit"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/concepts");
+      this.$router.push("/metadata/structural/measurementUnits");
     },
   },
   created() {
-    this.$store.dispatch("concept/findById", this.$route.params.id);
+    this.$store.dispatch("measurementUnit/findById", this.$route.params.id);
     //this.$store.dispatch("coreui/setContext", Context.Structural);
   },
 };

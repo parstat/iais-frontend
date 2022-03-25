@@ -20,6 +20,7 @@ import { variableRepresentation } from "./modules/structural/variableRepresentat
 import { unitType } from "./modules/structural/unitType";
 import { localization } from "./modules/localization";
 import { concept } from "./modules/structural/concept";
+import { measurementUnit } from "./modules/structural/measurementUnit";
 
 export default createStore({
   modules: {
@@ -43,5 +44,6 @@ export default createStore({
     unitType,
     localization,
     concept,
+    measurementUnit,
   }, //test
 });

@@ -4,9 +4,9 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Hello</span>
+            <span>Measurement Unit</span>
           </CCardTitle>
-          <CCardText v-if="concept">
+          <CCardText v-if="measurementUnit">
             <CForm>
               <label for="name">Name*</label>
               <input
@@ -14,36 +14,29 @@
                 type="text"
                 class="form-control"
                 :class="{
-                  'is-invalid': v$.concept.name.$error,
-                  'mb-3': !v$.concept.name.$error,
+                  'is-invalid': v$.measurementUnit.name.$error,
+                  'mb-3': !v$.measurementUnit.name.$error,
                 }"
-                placeholder="Concept name"
-                v-model.trim="concept.name"
+                placeholder="Measurement Unit name"
+                v-model.trim="measurementUnit.name"
               />
-              <div class="text-danger mb-3" v-if="v$.concept.name.$error">
-                Please enter a name for the Concept.
+              <div
+                class="text-danger mb-3"
+                v-if="v$.measurementUnit.name.$error"
+              >
+                Please enter a name for the Measurement Unit.
               </div>
             </CForm>
             <CForm>
-              <label for="description">Description*</label>
+              <label for="description">Description</label>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control"
-                :class="{
-                  'is-invalid': v$.concept.description.$error,
-                  'mb-3': !v$.concept.description.$error,
-                }"
-                placeholder="Concept description"
-                v-model.trim="concept.description"
+                placeholder="Measurement Unit description"
+                v-model.trim="measurementUnit.description"
               />
-              <div
-                class="text-danger mb-3"
-                v-if="v$.concept.description.$error"
-              >
-                Please enter a description.
-              </div>
             </CForm>
             <CForm>
               <label for="localId">Local id*</label>
@@ -52,34 +45,37 @@
                 type="text"
                 class="form-control"
                 :class="{
-                  'is-invalid': v$.concept.localId.$error,
-                  'mb-3': !v$.concept.localId.$error,
+                  'is-invalid': v$.measurementUnit.localId.$error,
+                  'mb-3': !v$.measurementUnit.localId.$error,
                 }"
                 placeholder="Local id"
-                v-model.trim="concept.localId"
+                v-model.trim="measurementUnit.localId"
               />
-              <div class="text-danger mb-3" v-if="v$.concept.localId.$error">
+              <div
+                class="text-danger mb-3"
+                v-if="v$.measurementUnit.localId.$error"
+              >
                 Please specify the local id.
               </div>
             </CForm>
             <CForm>
-              <label for="localId">Link</label>
+              <label for="abbreviation">Abbreviation</label>
               <input
                 id="link"
                 type="text"
                 class="form-control"
-                placeholder="Link"
-                v-model.trim="concept.link"
+                placeholder="Abbreviation"
+                v-model.trim="measurementUnit.abbreviation"
               />
             </CForm>
             <CForm>
-              <label for="definition">Definition</label>
+              <label for="convertionRule">Convertion Rule</label>
               <input
-                id="definition"
+                id="convertionRule"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Concept definition"
-                v-model.trim="concept.definition"
+                placeholder="Convertion Rule"
+                v-model.trim="measurementUnit.convertionRule"
               />
             </CForm>
             <div class="form-mandatory">*Mandatory fields</div>
@@ -109,9 +105,9 @@ import { mapGetters } from "vuex";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 export default {
-  name: "ConceptEdit",
+  name: "MeasurementUnitEdit",
   computed: {
-    ...mapGetters("concept", ["concept"]),
+    ...mapGetters("measurementUnit", ["measurementUnit"]),
   },
   data() {
     return {
@@ -120,25 +116,26 @@ export default {
     };
   },
   validations: {
-    concept: {
+    measurementUnit: {
       name: {
         required,
       },
       description: {
         required,
       },
-      localId: {
+      abbreviation: {
         required,
       },
     },
   },
   methods: {
     handleReset() {
-      this.concept.name = "";
-      this.concept.description = "";
-      this.concept.definition = "";
-      this.concept.localId = "";
-      this.concept.link = "";
+      this.measurementUnit.name = "";
+      this.measurementUnit.description = "";
+      this.measurementUnit.abbreviation = "";
+      this.measurementUnit.localId = "";
+      this.measurementUnit.convertionRule = "";
+      this.measurementUnit.isStandard = false;
       this.v$.$reset();
     },
     handleSave() {
@@ -147,20 +144,21 @@ export default {
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
-          id: this.concept.id,
-          name: this.concept.name,
-          description: this.concept.description,
-          definition: this.concept.definition,
-          localId: this.concept.localId,
-          link: this.concept.link,
+          id: this.measurementUnit.id,
+          name: this.measurementUnit.name,
+          description: this.measurementUnit.description,
+          abbreviation: this.measurementUnit.abbreviation,
+          localId: this.measurementUnit.localId,
+          convertionRule: this.measurementUnit.convertionRule,
+          isStandard: this.measurementUnit.isStandard,
         };
-        this.$store.dispatch("concept/update", formData);
+        this.$store.dispatch("measurementUnit/update", formData);
         console.log(formData);
       }
     },
   },
   created() {
-    this.$store.dispatch("concept/findById", this.$route.params.id);
+    this.$store.dispatch("measurementUnit/findById", this.$route.params.id);
   },
 };
 </script>

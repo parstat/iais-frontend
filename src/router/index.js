@@ -597,6 +597,43 @@ const routes = [
           import("@/views/metadata/structural/concept/ConceptDelete"),
         meta: { authorize: [] },
       },
+
+      {
+        path: "metadata/structural/measurementUnits/",
+        name: "MeasurementUnitList",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementUnits/MeasurementUnitList"
+          ),
+        meta: { authorize: [] },
+      },
+      {
+        path: "metadata/structural/measurementUnits/add/",
+        name: "MeasurementUnitAdd",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementUnits/MeasurementUnitAdd"
+          ),
+        meta: { authorize: [] },
+      },
+      {
+        path: "metadata/structural/measurementUnits/edit/:id",
+        name: "MeasurementUnitEdit",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementUnits/MeasurementUnitEdit"
+          ),
+        meta: { authorize: [] },
+      },
+      {
+        path: "metadata/structural/measurementUnits/view/:id",
+        name: "MeasurementUnitView",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementUnits/MeasurementUnitView"
+          ),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];

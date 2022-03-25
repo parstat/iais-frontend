@@ -4,7 +4,7 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Concept</span>
+            <span>Measurement Unit</span>
           </CCardTitle>
           <CCardText>
             <CForm>
@@ -17,30 +17,23 @@
                   'is-invalid': v$.name.$error,
                   'mb-3': !v$.name.$error,
                 }"
-                placeholder="Concept name"
+                placeholder="Measurement Unit name"
                 v-model.trim="name"
               />
               <div class="text-danger mb-3" v-if="v$.name.$error">
-                Please enter a name for the concept.
+                Please enter a name for the measurement unit.
               </div>
             </CForm>
             <CForm>
-              <label for="description">Description*</label>
+              <label for="description">Description</label>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control"
-                :class="{
-                  'is-invalid': v$.description.$error,
-                  'mb-3': !v$.description.$error,
-                }"
-                placeholder="Concept description"
+                placeholder="Measurement Unit description"
                 v-model.trim="description"
               />
-              <div class="text-danger mb-3" v-if="v$.description.$error">
-                Please enter a description.
-              </div>
             </CForm>
             <CForm>
               <label for="localId">Local id*</label>
@@ -60,23 +53,23 @@
               </div>
             </CForm>
             <CForm>
-              <label for="localId">Link</label>
+              <label for="abbreviation">Abbreviation*</label>
               <input
-                id="link"
+                id="appreviation"
                 type="text"
                 class="form-control"
-                placeholder="Link"
-                v-model.trim="link"
+                placeholder="Abbreviation"
+                v-model.trim="abbreviation"
               />
             </CForm>
             <CForm>
-              <label for="definition">Definition</label>
+              <label for="convertionRule">Convertion Rule</label>
               <input
                 id="definition"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Concept definition"
-                v-model.trim="definition"
+                placeholder="Convertion Rule"
+                v-model.trim="convertionRule"
               />
             </CForm>
             <div class="form-mandatory">*Mandatory fields</div>
@@ -105,23 +98,24 @@
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 export default {
-  name: "ConceptAdd",
+  name: "MeasurementUnitAdd",
   data() {
     return {
       disabled: false,
       v$: useValidate(),
       name: "",
       description: "",
-      definition: "",
+      abbreviation: "",
       localId: "",
-      link: "",
+      convertionRule: "",
+      isStandard: false,
     };
   },
   validations: {
     name: {
       required,
     },
-    description: {
+    abbreviation: {
       required,
     },
     localId: {
@@ -132,9 +126,9 @@ export default {
     handleReset() {
       this.name = "";
       this.description = "";
-      this.definition = "";
+      this.convertionRule = "";
       this.localId = "";
-      this.link = "";
+      this.abbreviation = "";
       this.v$.$reset();
     },
     handleSave() {
@@ -149,7 +143,7 @@ export default {
           localId: this.localId,
           link: this.link,
         };
-        this.$store.dispatch("concept/save", formData);
+        this.$store.dispatch("measurementUnit/save", formData);
         console.log(formData);
       }
     },
