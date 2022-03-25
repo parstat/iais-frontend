@@ -607,6 +607,16 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
+      // Measurement type view
+      {
+        path: "metadata/structural/measurementTypes/view/",
+        name: "MeasurementTypeView",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeView"
+          ),
+        meta: { authorize: [] },
+      },
       // Measurement type add
       {
         path: "metadata/structural/measurementTypes/add/",
@@ -614,6 +624,16 @@ const routes = [
         component: () =>
           import(
             "@/views/metadata/structural/measurementTypes/MeasurementTypeAdd"
+          ),
+        meta: { authorize: [] },
+      },
+      // Measurement type edit
+      {
+        path: "metadata/structural/measurementTypes/edit/",
+        name: "MeasurementTypeEdit",
+        component: () =>
+          import(
+            "@/views/metadata/structural/measurementTypes/MeasurementTypeEdit"
           ),
         meta: { authorize: [] },
       },

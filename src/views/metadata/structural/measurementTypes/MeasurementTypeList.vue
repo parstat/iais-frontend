@@ -41,7 +41,7 @@
                 :sorterValue="{ column: 'localId', state: 'asc' }"
                 pagination
               >
-                <!-- <template #actions="{ item }">
+                <template #actions="{ item }">
                   <td
                     style="text-align: right; width: 10%; padding-right: 20px"
                   >
@@ -70,7 +70,7 @@
                       </router-link>
                     </span>
 
-                    <span v-if="isAuthenticated && isAdmin" class="pl-2">
+                    <!-- <span v-if="isAuthenticated && isAdmin" class="pl-2">
                       <router-link
                         tag="a"
                         title="Delete"
@@ -81,9 +81,9 @@
                       >
                         <CIcon name="cil-trash" />
                       </router-link>
-                    </span>
+                    </span> -->
                   </td>
-                </template> -->
+                </template>
               </CSmartTable>
             </div>
             <CSpinner v-else color="primary" size="sm" />
