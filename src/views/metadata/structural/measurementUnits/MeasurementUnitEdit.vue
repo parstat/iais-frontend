@@ -33,7 +33,7 @@
                 rows="5"
                 id="description"
                 type="text"
-                class="form-control"
+                class="form-control mb-3"
                 placeholder="Measurement Unit description"
                 v-model.trim="measurementUnit.description"
               />
@@ -58,12 +58,32 @@
                 Please specify the local id.
               </div>
             </CForm>
+            <CForm v-if="measurementTypes">
+              <label for="measurementTypes"
+                ><span>Measurement type*</span></label
+              >
+              <v-select
+                label="name"
+                :options="measurementTypes"
+                v-model="measurementUnit.measurementType"
+                class="mb-3"
+                :class="{
+                  'is-invalid': v$.measurementUnit.measurementType.$error,
+                }"
+                :placeholder="'Select the type of the measurement'"
+              ></v-select>
+              <span
+                class="text-danger"
+                v-if="v$.measurementUnit.measurementType.$error"
+                >Please select a measurement type</span
+              >
+            </CForm>
             <CForm>
               <label for="abbreviation">Abbreviation</label>
               <input
                 id="link"
                 type="text"
-                class="form-control"
+                class="form-control mb-3"
                 placeholder="Abbreviation"
                 v-model.trim="measurementUnit.abbreviation"
               />
@@ -78,6 +98,13 @@
                 v-model.trim="measurementUnit.convertionRule"
               />
             </CForm>
+            <CFormSwitch
+              size="lg"
+              label="Is standard"
+              id="formSwitchCheckDefault"
+              v-model="measurementUnit.isStandard"
+              :checked="measurementUnit.isStandard"
+            />
             <div class="form-mandatory">*Mandatory fields</div>
           </CCardText>
           <CButton
@@ -108,6 +135,7 @@ export default {
   name: "MeasurementUnitEdit",
   computed: {
     ...mapGetters("measurementUnit", ["measurementUnit"]),
+    ...mapGetters("measurementType", ["measurementTypes"]),
   },
   data() {
     return {
@@ -129,6 +157,9 @@ export default {
       localId: {
         required,
       },
+      measurementType: {
+        required,
+      },
     },
   },
   methods: {
@@ -139,6 +170,7 @@ export default {
       this.measurementUnit.localId = "";
       this.measurementUnit.convertionRule = "";
       this.measurementUnit.isStandard = false;
+      this.measurementUnit.measurementType = "";
       this.v$.$reset();
     },
     handleSave() {
@@ -154,6 +186,7 @@ export default {
           localId: this.measurementUnit.localId,
           convertionRule: this.measurementUnit.convertionRule,
           isStandard: this.measurementUnit.isStandard,
+          measurementTypeId: this.measurementUnit.measurementType?.id ?? "",
         };
         this.$store.dispatch("measurementUnit/update", formData);
         console.log(formData);
@@ -162,6 +195,7 @@ export default {
   },
   created() {
     this.$store.dispatch("measurementUnit/findById", this.$route.params.id);
+    this.$store.dispatch("measurementType/findAll");
   },
 };
 </script>

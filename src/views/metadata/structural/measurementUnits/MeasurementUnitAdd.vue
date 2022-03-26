@@ -30,7 +30,7 @@
                 rows="5"
                 id="description"
                 type="text"
-                class="form-control"
+                class="form-control mb-3"
                 placeholder="Measurement Unit description"
                 v-model.trim="description"
               />
@@ -57,10 +57,27 @@
               <input
                 id="appreviation"
                 type="text"
-                class="form-control"
+                class="form-control mb-3"
                 placeholder="Abbreviation"
                 v-model.trim="abbreviation"
               />
+            </CForm>
+            <CForm v-if="measurementTypes">
+              <label for="measurementTypes"
+                ><span>Measurement type*</span></label
+              >
+              <v-select
+                label="name"
+                :options="measurementTypes"
+                :reduce="(measurementType) => measurementType.id"
+                v-model="measurementTypeId"
+                class="mb-3"
+                :class="{ 'is-invalid': v$.measurementTypeId.$error }"
+                :placeholder="'Select the type of the measurement'"
+              ></v-select>
+              <span class="text-danger" v-if="v$.measurementTypeId.$error"
+                >Please select a measurement type</span
+              >
             </CForm>
             <CForm>
               <label for="convertionRule">Convertion Rule</label>
@@ -72,6 +89,12 @@
                 v-model.trim="convertionRule"
               />
             </CForm>
+            <CFormSwitch
+              size="lg"
+              label="Is standard"
+              id="formSwitchCheckDefault"
+              v-model="isStandard"
+            />
             <div class="form-mandatory">*Mandatory fields</div>
           </CCardText>
           <CButton
@@ -97,6 +120,8 @@
 <script>
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import { mapGetters } from "vuex";
+
 export default {
   name: "MeasurementUnitAdd",
   data() {
@@ -109,7 +134,11 @@ export default {
       localId: "",
       convertionRule: "",
       isStandard: false,
+      measurementTypeId: "",
     };
+  },
+  computed: {
+    ...mapGetters("measurementType", ["measurementTypes"]),
   },
   validations: {
     name: {
@@ -121,6 +150,9 @@ export default {
     localId: {
       required,
     },
+    measurementTypeId: {
+      required,
+    },
   },
   methods: {
     handleReset() {
@@ -129,11 +161,14 @@ export default {
       this.convertionRule = "";
       this.localId = "";
       this.abbreviation = "";
+      this.isStandard = false;
+      this.measurementTypeId = "";
       this.v$.$reset();
     },
     handleSave() {
       this.v$.$touch(); //validate form data
       console.log(this.v$);
+      console.log(this.measurementTypeId);
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
@@ -143,12 +178,16 @@ export default {
           localId: this.localId,
           convertionRule: this.convertionRule,
           abbreviation: this.abbreviation,
+          isStandard: this.isStandard,
+          measurementTypeId: this.measurementTypeId,
         };
         this.$store.dispatch("measurementUnit/save", formData);
         console.log(formData);
       }
     },
   },
-  created() {},
+  created() {
+    this.$store.dispatch("measurementType/findAll");
+  },
 };
 </script>
