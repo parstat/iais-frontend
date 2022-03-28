@@ -69,7 +69,9 @@ const actions = {
         dispatch("message/success", "Code saved!", {
           root: true,
         });
-        router.push("/metadata/structuralal/codelist");
+        router.push(
+          "/metadata/structuralal/codelist/edit" + data.id + "?step=2"
+        );
       },
       (error) => {
         console.log(error);

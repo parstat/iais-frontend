@@ -50,13 +50,13 @@ function save(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
-      //definition: formData.definition,
-      local_id: formData.localId,
+      localId: formData.localId,
+      language: formData.language,
     };
 
     axiosIais
       .post(
-        "/structural/ClosedCodeLists/" + formData.localId,
+        "/structural/ClosedCodeLists/",
         new URLSearchParams(requestBody).toString(),
         config
       )
