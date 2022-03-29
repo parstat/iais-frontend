@@ -3,10 +3,14 @@
     <CRow class="w-100 justify-content-center">
       <CCol md="6">
         <div class="clearfix">
-          <h1 class="float-left display-3 mr-4">500</h1>
-          <h4 class="pt-3">Houston, we have a problem!</h4>
+          <h1 class="float-left display-3 mr-4">
+            <span>500</span>
+          </h1>
+          <h4 class="pt-3">
+            <span>Houston, we have a problem!</span>
+          </h4>
           <p class="text-muted">
-            {{ $t("common.error_occurred") }}
+            <span>{{ $t("common.error_occurred") }}</span>
           </p>
         </div>
         <div class="clearfix mb-3">

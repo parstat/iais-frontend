@@ -8,9 +8,9 @@
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">
+              <CFormLabel for="name">
                 <span>{{ $t("referential.name") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="name"
                 type="text"
@@ -20,9 +20,9 @@
               />
             </CForm>
             <CForm>
-              <label for="responsible">
+              <CFormLabel for="responsible">
                 <span>{{ $t("referential.description") }}</span>
-              </label>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
@@ -33,9 +33,9 @@
               />
             </CForm>
             <CForm>
-              <label for="responsible">
+              <CFormLabel for="responsible">
                 <span>{{ $t("referential.type") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="type"
                 type="text"
@@ -45,9 +45,9 @@
               />
             </CForm>
             <CForm>
-              <label for="responsible">
+              <CFormLabel for="responsible">
                 <span>{{ $t("referential.local_ID") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"
@@ -62,8 +62,8 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            ><span>{{ $t("referential.delete") }}</span></CButton
-          >
+            ><span>{{ $t("referential.delete") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

@@ -65,6 +65,7 @@
         "process_quality": "Process quality",
         "comments/notes": "Comments/Notes",
         "frequency": "Frequency",
+        "reason_of_change": "Reason of change",
         "next_process": "Next process",
         "add": "Add",
         "ID": "ID",
@@ -197,7 +198,8 @@
             "sub-phase_number": "Please specify the sub-phase number.",
             "GSBPM_sub_phase": "Please select a GSBPM sub-phase.",
             "next_GSBPM_sub_phase": "Please select the next GSBPM sub-phase.",
-            "frequency": "Please select a frequency for type."
+            "frequency": "Please select a frequency for type.",
+            "reason_of_change": "Please enter the reason of change."
         },
         "selection": {
             "organization": "Select an organization",
@@ -233,11 +235,11 @@
         "concepts_title": "Concepts",
         "concepts_text": "Unit of thought differentiated by characteristics.",
         "concepts_link": "Go to conceps section",
-        "measurementUnit_title": "Measurement Unit",
-        "measurementUnit_text": "A Measurement Unit is the metric for a measurement in terms of an official unit of measurement.",
+        "measurementUnit_title": "Measurement unit",
+        "measurementUnit_text": "A measurement unit is the metric for a measurement in terms of an official unit of measurement.",
         "measurementUnit_link": "Go to measurement unit",
-        "measurementType_title": "Measurement Type",
-        "measurementType_text": "The Measurement Type defines the type of a measure e.g. mass or currency. The Measurement Type groups all Measurement Units, which can be converted into each other. A Measurement Type can have a standard Measurement Unit, which can be used for conversion between different Measurement Units.",
+        "measurementType_title": "Measurement type",
+        "measurementType_text": "The measurement type defines the type of a measure e.g. mass or currency. The measurement type groups all measurement units, which can be converted into each other. A measurement type can have a standard measurement unit, which can be used for conversion between different measurement units.",
         "measurementType_link": "Go to measurement type"
     }
 }

@@ -26,39 +26,39 @@
     </CCardHeader>
     <CCardBody>
       <CCardText>
-        <div class="form-group mb-3" v-if="localSP">
-          <label for="description">
+        <CForm class="mb-3" v-if="localSP">
+          <CFormLabel for="description">
             <span>{{ $t("referential.organization") }}*</span>
-          </label>
+          </CFormLabel>
           <v-select
             label="name"
             :options="owners"
             v-model="localSP.owner"
             @input="updateOwner"
           ></v-select>
-        </div>
-        <div class="form-group mb-3" v-if="localSP">
-          <label for="description">
+        </CForm>
+        <CForm class="mb-3" v-if="localSP">
+          <CFormLabel for="description">
             <span>{{ $t("referential.division") }}*</span>
-          </label>
+          </CFormLabel>
           <v-select
             label="name"
             :options="maintainers"
             v-model="localSP.maintainer"
             @input="updateMaintainer"
           ></v-select>
-        </div>
-        <div class="form-group" v-if="localSP">
-          <label for="description">
+        </CForm>
+        <CForm class="mb-3" v-if="localSP">
+          <CFormLabel for="description">
             <span>{{ $t("referential.contact_person") }}*</span>
-          </label>
+          </CFormLabel>
           <v-select
             label="name"
             :options="contacts"
             v-model="localSP.contact"
             @input="updateContact"
           ></v-select>
-        </div>
+        </CForm>
       </CCardText>
     </CCardBody>
     <CCardFooter class="bg-white">

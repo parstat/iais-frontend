@@ -21,14 +21,17 @@
           <strong>{{ $t("user.settings") }}</strong>
         </CDropdownHeader>
         <CDropdownItem>
-          <CIcon name="cil-user" />{{ $t("user.profile") }}
+          <CIcon name="cil-user" />
+          <span>{{ $t("user.profile") }}</span>
         </CDropdownItem>
         <CDropdownItem>
-          <CIcon name="cil-settings" />{{ $t("user.settings") }}
+          <CIcon name="cil-settings" />
+          <span>{{ $t("user.settings") }}</span>
         </CDropdownItem>
         <CDropdownDivider />
         <CDropdownItem @click="logout">
-          <CIcon name="cil-lock-locked" />{{ $t("user.logout") }}
+          <CIcon name="cil-lock-locked" />
+          <span>{{ $t("user.logout") }}</span>
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

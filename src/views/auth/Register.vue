@@ -117,8 +117,8 @@
                   >
                 </div>
                 <CButton color="success" block @click.prevent="handleSubmit()"
-                  ><span>{{ $t("user.create_account") }}</span></CButton
-                >
+                  ><span>{{ $t("user.create_account") }}</span>
+                </CButton>
               </CForm>
             </CCardBody>
           </CCard>

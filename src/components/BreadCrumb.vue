@@ -11,9 +11,11 @@
         tag="a"
         class="text-decoration-none text-primary"
         :to="breadcrumb.to"
-        >{{ upperCaseFirst(breadcrumb.path) }}</router-link
-      >
-      <template v-else>{{ upperCaseFirst(breadcrumb.path) }}</template>
+        ><span>{{ upperCaseFirst(breadcrumb.path) }}</span>
+      </router-link>
+      <template v-else>
+        <span>{{ upperCaseFirst(breadcrumb.path) }}</span>
+      </template>
     </li>
   </ol>
 </template>

@@ -64,7 +64,8 @@
         "process_outputs": "Ieșirile de proces",
         "process_quality": "Calitatea procesului",
         "comments/notes": "Comentarii/Note",
-        "frequency": "Frecvență",
+        "frequency": "Frecvența",
+        "reason_of_change": "Motivul modificării",
         "next_process": "Următorul proces",
         "add": "Adaugă",
         "ID": "ID",
@@ -197,7 +198,8 @@
             "sub-phase_number": "Vă rugăm să specificați numărul subfazei.",
             "GSBPM_sub_phase": "Vă rugăm să selectați o subfază GSBPM.",
             "next_GSBPM_sub_phase": "Vă rugăm să selectați următoarea subfază GSBPM.",
-            "frequency": "Vă rugăm să selectați o frecvență pentru tip."
+            "frequency": "Vă rugăm să selectați o frecvență pentru tip.",
+            "reason_of_change": "Vă rugăm să introduceți motivul modificării."
         },
         "selection": {
             "organization": "Selectați o organizație",
@@ -233,11 +235,11 @@
         "concepts_title": "Concepte",
         "concepts_text": "Unitate de gândire diferențiată după caracteristici.",
         "concepts_link": "Accesați secțiunea de concepte",
-        "measurementUnit_title": "Measurement Unit",
-        "measurementUnit_text": "A Measurement Unit is the metric for a measurement in terms of an official unit of measurement.",
-        "measurementUnit_link": "Go to measurement Unit",
-        "measurementType_title": "Measurement Type",
-        "measurementType_text": "The Measurement Type defines the type of a measure e.g. mass or currency. The Measurement Type groups all Measurement Units, which can be converted into each other. A Measurement Type can have a standard Measurement Unit, which can be used for conversion between different Measurement Units.",
-        "measurementType_link": "Go to measurement type"
+        "measurementUnit_title": "Unitate de măsură",
+        "measurementUnit_text": "O unitate de măsură este metrica pentru o măsură în termenii unei unități de măsură oficiale.",
+        "measurementUnit_link": "Accesați unitatea de măsură",
+        "measurementType_title": "Tipul de măsurare",
+        "measurementType_text": "Tipul de măsurare definește tipul unei măsuri, de ex. masa sau moneda. Tipul de măsurare grupează toate unitățile de măsură, care pot fi convertite unele în altele. Un tip de măsurare poate avea o unitate de măsură standard, care poate fi utilizată pentru conversia între diferite unități de măsură.",
+        "measurementType_link": "Accesați tipul de măsurare"
     }
 }

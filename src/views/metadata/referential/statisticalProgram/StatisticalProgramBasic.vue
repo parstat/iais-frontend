@@ -3,9 +3,9 @@
     <CCardBody>
       <CCardText>
         <CForm>
-          <label for="localId"
-            ><span>{{ $t("referential.survey_ID") }}*</span></label
-          >
+          <CFormLabel for="localId">
+            <span>{{ $t("referential.survey_ID") }}*</span>
+          </CFormLabel>
           <input
             id="localId"
             type="text"
@@ -20,9 +20,9 @@
           }}</span>
         </CForm>
         <CForm>
-          <label for="name"
-            ><span>{{ $t("referential.survey_name") }}*</span></label
-          >
+          <CFormLabel for="name">
+            <span>{{ $t("referential.survey_name") }}*</span>
+          </CFormLabel>
           <input
             id="name"
             type="text"
@@ -37,9 +37,9 @@
           }}</span>
         </CForm>
         <CForm>
-          <label for="acronym"
-            ><span>{{ $t("referential.survey_acronym") }}*</span></label
-          >
+          <CFormLabel for="acronym">
+            <span>{{ $t("referential.survey_acronym") }}*</span>
+          </CFormLabel>
           <input
             id="acronym"
             type="text"
@@ -54,9 +54,9 @@
           }}</span>
         </CForm>
         <CForm>
-          <label for="description"
-            ><span>{{ $t("referential.survey_description") }}*</span></label
-          >
+          <CFormLabel for="description">
+            <span>{{ $t("referential.survey_description") }}*</span>
+          </CFormLabel>
           <textarea
             rows="3"
             id="description"

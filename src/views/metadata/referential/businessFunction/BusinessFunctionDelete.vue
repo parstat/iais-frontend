@@ -11,9 +11,9 @@
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">
+              <CFormLabel for="name">
                 <span>{{ $t("referential.name") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="name"
                 type="text"
@@ -23,9 +23,9 @@
               />
             </CForm>
             <CForm>
-              <label for="description">
+              <CFormLabel for="description">
                 <span>{{ $t("referential.description") }}</span>
-              </label>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
@@ -36,9 +36,9 @@
               />
             </CForm>
             <CForm>
-              <label for="localid">
+              <CFormLabel for="localId">
                 <span>{{ $t("referential.sub-phase_number") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"
@@ -53,8 +53,8 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            ><span>{{ $t("referential.delete") }}</span></CButton
-          >
+            ><span>{{ $t("referential.delete") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

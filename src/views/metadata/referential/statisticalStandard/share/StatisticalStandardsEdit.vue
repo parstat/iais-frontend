@@ -28,10 +28,10 @@
     </CCardHeader>
     <CCardBody>
       <CCardText>
-        <div class="form-group mb-3" v-if="statisticalStandards">
-          <label for="statisticalStandard">
+        <CForm class="mb-3" v-if="statisticalStandards">
+          <CFormLabel for="statisticalStandard">
             <span>{{ $t("referential.statistical_standard_header") }}</span>
-          </label>
+          </CFormLabel>
           <v-select
             label="name"
             :options="statisticalStandards"
@@ -63,7 +63,7 @@
               </div>
             </template>
           </v-select>
-        </div>
+        </CForm>
         <CRow>
           <CCol
             class="col-lg-4 col-md-6 col-sm-12"
