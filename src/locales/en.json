@@ -220,9 +220,20 @@
         "variables_title": "Variables",
         "variables_text": "The use of a Concept as a characteristic of a Population intended to be measured. The Variable combines the meaning of a Concept with a Unit type, to define the characteristic that is to be measured.",
         "variables_link": "Go to variables section",
-        "statistical_clasification_title": "Statistical classifications",
-        "statistical_clasification_text": "A Statistical classification is a set of Categories which may be assigned to one or more variables registered in statistical surveys or administrative files, and used in the production and dissemination of statistics. In a standard Statistical classification, the Categories at each Level of the classification structure must be mutually exclusive and jointly exhaustive of all objects/units in the population of interest.",
-        "statistical_clasification_link": "Go to structural clasifications section",
+        "statistical_classification": "Statistical classification",
+        "statistical_classification_title": "Statistical classifications",
+        "statistical_classification_text": "A Statistical classification is a set of Categories which may be assigned to one or more variables registered in statistical surveys or administrative files, and used in the production and dissemination of statistics. In a standard Statistical classification, the Categories at each Level of the classification structure must be mutually exclusive and jointly exhaustive of all objects/units in the population of interest.",
+        "statistical_classification_link": "Go to structural classifications section",
+        "statistical_classification_levels": "Levels",
+        "statistical_classification_items": "Items",
+        "statistical_classification_name": "Statistical Classification Name",
+        "statistical_classification_description": "Statistical Classification Description",
+        "statistical_classification_local_id": "Statistical Classification Id",
+        "statistical_classification_definition": "Statistical Classification Definition",
+        "statistical_classification_url": "Statistical Classification Link",
+        "statistical_classification_version": "Statistical Classification Version",
+        "statistical_classification_version_date": "Statistical Classification Date",
+        "statistical_classification_version_rationale": "Statistical Classification Version Description",
         "code_list_title": "Code list",
         "code_list_text": "A list of Categories where each Category has a predefined Code assigned to it.",
         "code_list_link": "Go to code list section",
@@ -243,6 +254,13 @@
         "measurementUnit_link": "Go to measurement unit",
         "measurementType_title": "Measurement type",
         "measurementType_text": "The measurement type defines the type of a measure e.g. mass or currency. The measurement type groups all measurement units, which can be converted into each other. A measurement type can have a standard measurement unit, which can be used for conversion between different measurement units.",
-        "measurementType_link": "Go to measurement type"
+        "measurementType_link": "Go to measurement type",
+        "validations":{
+            "statistical_classification_id": "Please enter a valid id",
+            "statistical_classification_name": "Please enter a valid name",
+            "statistical_classification_veresion": "Please enter a valid version",
+            "statistical_classification_description": "Please enter a valid description",
+            "statistical_classification_url": "Please enter a valid URL"
+        }
     }
 }

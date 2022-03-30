@@ -29,14 +29,14 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>{{ $t("structural.statistical_clasification_title") }}</span>
+            <span>{{ $t("structural.statistical_classification_title") }}</span>
           </CCardTitle>
           <CCardText>
             <!--
           <CProgress animated color="success" height="0.7rem" :value="20" />
           <br />
           -->
-            <span>{{ $t("structural.statistical_clasification_text") }}</span>
+            <span>{{ $t("structural.statistical_classification_text") }}</span>
           </CCardText>
           <CButton>
             <router-link
@@ -45,7 +45,7 @@
               :to="{ name: 'StructuralStatisticalClassificationsList' }"
               ><span class="icon-span"
                 >{{
-                  $t("structural.statistical_clasification_link")
+                  $t("structural.statistical_classification_link")
                 }}&nbsp;</span
               ><CIcon name="cil-arrow-right"
             /></router-link>
