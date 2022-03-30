@@ -477,6 +477,16 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
+      //Statistical Classifications Edit
+      {
+        path: "metadata/structural/classifications/edit/:id",
+        name: "StatisticalClassificationEdit",
+        component: () =>
+          import(
+            "@/views/metadata/structural/statisticalClassifications/StatisticalClassificationEdit"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
       //* Code List */
       {
         path: "metadata/structural/codelist/",
