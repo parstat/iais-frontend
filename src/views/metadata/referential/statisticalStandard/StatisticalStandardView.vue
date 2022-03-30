@@ -46,8 +46,8 @@
             size="sm"
             @click.prevent="handleBack()"
             :disabled="disabled"
-            ><span>{{ $t("referential.back") }}</span></CButton
-          >
+            ><span>{{ $t("referential.back") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

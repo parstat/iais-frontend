@@ -65,10 +65,12 @@
         "process_quality": "Process quality",
         "comments/notes": "Comments/Notes",
         "frequency": "Frequency",
+        "reason_of_change": "Reason of change",
         "next_process": "Next process",
         "add": "Add",
         "ID": "ID",
         "local_ID": "Local ID",
+        "GSBPM": "GSBPM",
         "account": "Account",
         "name": "Name",
         "acronym": "Acronym",
@@ -163,10 +165,11 @@
         "no_found": "No results found for",
         "last_process": "Last process",
         "search_statistical_standards": "Search statistical standards",
-        "search_for_legislative reference": "Start typing to search for a legislative reference.",
-        "search_for_statistical_standard": "Start typing to search for a statistical standard.",
-        "search_for_statistical_process": "Start typing to search for a statistical program.",
-        "search_for_GSBPM_sub_phase": "Start typing to search for a GSBPM sub-phase.",
+        "search_for_legislative reference": "Start typing to search for a legislative reference",
+        "search_for_statistical_standard": "Start typing to search for a statistical standard",
+        "search_for_statistical_process": "Start typing to search for a statistical program",
+        "search_for_GSBPM_sub_phase": "Start typing to search for a GSBPM sub-phase",
+        "search_for_business_service": "Start typing to search for a service",
         "validations": {
             "survey_ID": "Please enter survey ID.",
             "survey_name" : "Please enter survey name.",
@@ -197,7 +200,8 @@
             "sub-phase_number": "Please specify the sub-phase number.",
             "GSBPM_sub_phase": "Please select a GSBPM sub-phase.",
             "next_GSBPM_sub_phase": "Please select the next GSBPM sub-phase.",
-            "frequency": "Please select a frequency for type."
+            "frequency": "Please select a frequency for type.",
+            "reason_of_change": "Please enter the reason of change."
         },
         "selection": {
             "organization": "Select an organization",
@@ -208,16 +212,28 @@
             "legislative_references": "Select legislative references",
             "statistical_process": "Select a statistical process",
             "GSBPM_sub_phase": "Select a GSBPM sub-phase",
-            "frequency": "Select a Frequency"
+            "frequency": "Select a frequency",
+            "business_service": "Select a business service (software)"
         }
     },
     "structural": {
         "variables_title": "Variables",
         "variables_text": "The use of a Concept as a characteristic of a Population intended to be measured. The Variable combines the meaning of a Concept with a Unit type, to define the characteristic that is to be measured.",
         "variables_link": "Go to variables section",
-        "statistical_clasification_title": "Statistical classifications",
-        "statistical_clasification_text": "A Statistical classification is a set of Categories which may be assigned to one or more variables registered in statistical surveys or administrative files, and used in the production and dissemination of statistics. In a standard Statistical classification, the Categories at each Level of the classification structure must be mutually exclusive and jointly exhaustive of all objects/units in the population of interest.",
-        "statistical_clasification_link": "Go to structural clasifications section",
+        "statistical_classification": "Statistical classification",
+        "statistical_classification_title": "Statistical classifications",
+        "statistical_classification_text": "A Statistical classification is a set of Categories which may be assigned to one or more variables registered in statistical surveys or administrative files, and used in the production and dissemination of statistics. In a standard Statistical classification, the Categories at each Level of the classification structure must be mutually exclusive and jointly exhaustive of all objects/units in the population of interest.",
+        "statistical_classification_link": "Go to structural classifications section",
+        "statistical_classification_levels": "Levels",
+        "statistical_classification_items": "Items",
+        "statistical_classification_name": "Statistical Classification Name",
+        "statistical_classification_description": "Statistical Classification Description",
+        "statistical_classification_local_id": "Statistical Classification Id",
+        "statistical_classification_definition": "Statistical Classification Definition",
+        "statistical_classification_url": "Statistical Classification Link",
+        "statistical_classification_version": "Statistical Classification Version",
+        "statistical_classification_version_date": "Statistical Classification Date",
+        "statistical_classification_version_rationale": "Statistical Classification Version Description",
         "code_list_title": "Code list",
         "code_list_text": "A list of Categories where each Category has a predefined Code assigned to it.",
         "code_list_link": "Go to code list section",
@@ -233,11 +249,18 @@
         "concepts_title": "Concepts",
         "concepts_text": "Unit of thought differentiated by characteristics.",
         "concepts_link": "Go to conceps section",
-        "measurementUnit_title": "Measurement Unit",
-        "measurementUnit_text": "A Measurement Unit is the metric for a measurement in terms of an official unit of measurement.",
+        "measurementUnit_title": "Measurement unit",
+        "measurementUnit_text": "A measurement unit is the metric for a measurement in terms of an official unit of measurement.",
         "measurementUnit_link": "Go to measurement unit",
-        "measurementType_title": "Measurement Type",
-        "measurementType_text": "The Measurement Type defines the type of a measure e.g. mass or currency. The Measurement Type groups all Measurement Units, which can be converted into each other. A Measurement Type can have a standard Measurement Unit, which can be used for conversion between different Measurement Units. In both cards add a action button that will send to their list view.",
-        "measurementType_link": "Go to measurement type"
+        "measurementType_title": "Measurement type",
+        "measurementType_text": "The measurement type defines the type of a measure e.g. mass or currency. The measurement type groups all measurement units, which can be converted into each other. A measurement type can have a standard measurement unit, which can be used for conversion between different measurement units.",
+        "measurementType_link": "Go to measurement type",
+        "validations":{
+            "statistical_classification_id": "Please enter a valid id",
+            "statistical_classification_name": "Please enter a valid name",
+            "statistical_classification_veresion": "Please enter a valid version",
+            "statistical_classification_description": "Please enter a valid description",
+            "statistical_classification_url": "Please enter a valid URL"
+        }
     }
 }

@@ -3,9 +3,15 @@
     <CRow class="w-100 justify-content-center">
       <CCol md="6">
         <div class="clearfix">
-          <h1 class="float-left display-3 mr-4">401</h1>
-          <h4 class="pt-3">Ops, something went wrong!</h4>
-          <p class="text-muted">{{ $t("user.unauthorized") }}</p>
+          <h1 class="float-left display-3 mr-4">
+            <span>401</span>
+          </h1>
+          <h4 class="pt-3">
+            <span>Ops, something went wrong!</span>
+          </h4>
+          <p class="text-muted">
+            <span>{{ $t("user.unauthorized") }}</span>
+          </p>
         </div>
         <div class="clearfix mt-3">
           <router-link tag="a" to="/">

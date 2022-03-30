@@ -5,8 +5,11 @@
         <CCardHeader class="bg-white">
           <CCardTitle>
             <CIcon name="cil-description" />
-
-            Process Documentation v{{ version }}
+            <span
+              >&nbsp;{{ $t("referential.process_documentation") }} v{{
+                version
+              }}</span
+            >
           </CCardTitle>
           <CCardSubtitle>
             (survey:
@@ -34,47 +37,51 @@
                 <CNav class="flex-column" variant="pills" role="tab">
                   <CNavItem>
                     <CNavLink href="javascript:void(0);" active>
-                      Basic
+                      <span>{{ $t("referential.basic") }}</span>
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
                     <CNavLink href="javascript:void(0);" disabled>
-                      Divisions
+                      <span>{{ $t("referential.divisions") }}</span>
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
                     <CNavLink href="javascript:void(0);" disabled>
-                      StatisticalStandards
+                      <span>{{ $t("referential.statistical_standards") }}</span>
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
                     <CNavLink href="javascript:void(0);" disabled>
-                      Process Methods
+                      <span>{{
+                        $t("referential.process_methods_header")
+                      }}</span>
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
                     <CNavLink href="javascript:void(0);" disabled>
-                      Business Service/Software
+                      <span>{{
+                        $t("referential.business_service/software")
+                      }}</span>
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
                     <CNavLink href="javascript:void(0);" disabled>
-                      Process Input
+                      <span>{{ $t("referential.process_input") }}</span>
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
                     <CNavLink href="javascript:void(0);" disabled>
-                      Process Output
+                      <span>{{ $t("referential.process_output") }}</span>
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
                     <CNavLink href="javascript:void(0);" disabled>
-                      Process Quality
+                      <span>{{ $t("referential.process_quality") }}</span>
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
                     <CNavLink href="javascript:void(0);" disabled>
-                      Comments/Notes
+                      <span>{{ $t("referential.comments/notes") }}</span>
                     </CNavLink>
                   </CNavItem>
                 </CNav>
@@ -91,9 +98,13 @@
                         <CCardText>
                           <fieldset disabled>
                             <div class="mb-3">
-                              <CFormLabel for="statisticalProgram"
-                                >Statistical Process</CFormLabel
-                              >
+                              <CFormLabel for="statisticalProgram">
+                                <span
+                                  >{{
+                                    $t("referential.statistical_process")
+                                  }}*</span
+                                >
+                              </CFormLabel>
                               <CFormInput
                                 id="statisticalProgram"
                                 :placeholder="
@@ -102,9 +113,13 @@
                               />
                             </div>
                             <div class="mb-3">
-                              <CFormLabel for="businessFunction"
-                                >GSBPM Sub-phase*</CFormLabel
-                              >
+                              <CFormLabel for="businessFunction">
+                                <span
+                                  >{{
+                                    $t("referential.GSBPM_sub_phase")
+                                  }}*</span
+                                >
+                              </CFormLabel>
                               <CFormInput
                                 id="businessFunction"
                                 :placeholder="
@@ -117,57 +132,83 @@
                             </div>
                           </fieldset>
 
-                          <div class="form-group">
-                            <CFormLabel for="name"
-                              >Documentation name*</CFormLabel
-                            >
+                          <CForm>
+                            <CFormLabel for="name">
+                              <span
+                                >{{
+                                  $t("referential.documentation_name")
+                                }}*</span
+                              >
+                            </CFormLabel>
                             <CFormInput
                               id="name"
-                              placeholder="Documentation name"
+                              :placeholder="
+                                $t('referential.documentation_name')
+                              "
                               class="form-control"
                               :class="{
                                 'is-invalid': v$.name.$error,
                               }"
                               v-model="name"
                             />
-                          </div>
+                          </CForm>
 
-                          <div class="form-group">
-                            <label for="description"
-                              >Documentation description*</label
-                            >
+                          <CForm>
+                            <CFormLabel for="description">
+                              <span
+                                >{{
+                                  $t("referential.documentation_description")
+                                }}*</span
+                              >
+                            </CFormLabel>
                             <textarea
                               rows="5"
                               id="description"
                               type="text"
                               class="form-control"
                               :class="{ 'is-invalid': v$.description.$error }"
-                              placeholder="Doumentation description"
+                              :placeholder="
+                                $t('referential.documentation_description')
+                              "
                               v-model.trim="description"
                             />
                             <span
                               class="text-danger"
                               v-if="v$.description.$error"
-                              >Please enter survey description.</span
+                              >{{
+                                $t("referential.validations.survey_description")
+                              }}</span
                             >
-                          </div>
-                          <div class="form-group">
-                            <label for="frequency">Frequency*</label>
+                          </CForm>
+                          <CForm>
+                            <CFormLabel for="frequency">
+                              <span>{{ $t("referential.frequency") }}*</span>
+                            </CFormLabel>
                             <v-select
                               label="frequency"
                               :options="frequencies"
                               v-model="frequency"
                               :class="{ 'is-invalid': v$.frequency.$error }"
-                              placeholder="Select a Frequence"
+                              :placeholder="
+                                $t('referential.selection.frequency')
+                              "
                             ></v-select>
-                            <span class="text-danger" v-if="v$.frequency.$error"
-                              >Please frequency a type.</span
+                            <span
+                              class="text-danger"
+                              v-if="v$.frequency.$error"
+                              >{{
+                                $t("referential.validations.frequency")
+                              }}</span
                             >
-                          </div>
-                          <div class="form-group" v-if="businessFunctions">
-                            <label for="nextBusinessFunction"
-                              >Next GSBPM Sub-phase*</label
-                            >
+                          </CForm>
+                          <CForm v-if="businessFunctions">
+                            <CFormLabel for="nextBusinessFunction">
+                              <span
+                                >{{
+                                  $t("referential.next_GSBPM_sub_phase")
+                                }}*</span
+                              >
+                            </CFormLabel>
                             <v-select
                               label="name"
                               :options="businessFunctions"
@@ -175,7 +216,9 @@
                               :class="{
                                 'is-invalid': v$.nextBusinessFunction.$error,
                               }"
-                              placeholder="Select a GSBPM sub-phase"
+                              :placeholder="
+                                $t('referential.selection.GSBPM_sub_phase')
+                              "
                               :filtrable="false"
                               @search="searchBusinessFunctions"
                             >
@@ -183,11 +226,18 @@
                                 v-slot:no-options="{ search, searching }"
                               >
                                 <template v-if="searching">
-                                  No results found for <em>{{ search }}</em
+                                  <span
+                                    >{{
+                                      $t("referential.no_found")
+                                    }}&nbsp;</span
+                                  >
+                                  <em>{{ search }}</em
                                   >.
                                 </template>
                                 <em style="opacity: 0.5" v-else>
-                                  Start typing to search for a GSBPM sub-phase.
+                                  <span>{{
+                                    $t("referential.search_for_GSBPM_sub_phase")
+                                  }}</span>
                                 </em>
                               </template>
                               <template v-slot:content="option">
@@ -213,21 +263,25 @@
                             <span
                               class="text-danger"
                               v-if="v$.nextBusinessFunction.$error"
-                              >Please select the next GSBPM sub-phase.</span
+                              >{{
+                                $t("referential.validations.GSBPM_sub_phase")
+                              }}</span
                             >
-                          </div>
+                          </CForm>
                           <div>
                             <input
                               type="checkbox"
                               value="Last"
                               v-model="lastProcess"
                             />
-                            Last process
+                            <span>{{ $t("referential.last_process") }}</span>
                           </div>
-                          <div class="form-group">
-                            <label for="versionRationale"
-                              >Reason of chnage*</label
-                            >
+                          <CForm>
+                            <CFormLabel for="versionRationale">
+                              <span
+                                >{{ $t("referential.reason_of_change") }}*</span
+                              >
+                            </CFormLabel>
                             <textarea
                               rows="5"
                               id="description"
@@ -236,16 +290,22 @@
                               :class="{
                                 'is-invalid': v$.versionRationale.$error,
                               }"
-                              placeholder="Reason of change"
+                              :placeholder="$t('referential.reason_of_change')"
                               v-model.trim="versionRationale"
                             />
                             <span
                               class="text-danger"
                               v-if="v$.versionRationale.$error"
-                              >Please enter the reason of change.</span
+                              >{{
+                                $t("referential.validations.reason_of_change")
+                              }}</span
+                            >
+                          </CForm>
+                          <div class="form-mandatory">
+                            <span
+                              >*{{ $t("referential.mandatory_fields") }}</span
                             >
                           </div>
-                          <div class="form-mandatory">*Mandatory fields</div>
                         </CCardText>
 
                         <CButton
@@ -254,7 +314,7 @@
                           style="margin-right: 0.3rem"
                           @click.prevent="handleSubmit()"
                           :disabled="disabled"
-                          >Next
+                          ><span>{{ $t("referential.next") }}</span>
                         </CButton>
                       </CCardBody>
                     </CCard>

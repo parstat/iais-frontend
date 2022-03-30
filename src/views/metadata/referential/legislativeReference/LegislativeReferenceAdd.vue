@@ -8,9 +8,9 @@
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">
+              <CFormLabel for="name">
                 <span>{{ $t("referential.name") }}*</span>
-              </label>
+              </CFormLabel>
               <input
                 id="name"
                 type="text"
@@ -24,9 +24,9 @@
               }}</span>
             </CForm>
             <CForm>
-              <label for="description">
+              <CFormLabel for="description">
                 <span>{{ $t("referential.description") }}</span>
-              </label>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
@@ -42,9 +42,9 @@
               }}</span>
             </CForm>
             <CForm>
-              <label for="link">
+              <CFormLabel for="link">
                 <span>{{ $t("referential.link") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="link"
                 type="text"
@@ -54,9 +54,9 @@
               />
             </CForm>
             <CForm>
-              <label for="version">
+              <CFormLabel for="version">
                 <span>{{ $t("referential.version") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="version"
                 type="text"
@@ -66,9 +66,9 @@
               />
             </CForm>
             <CForm>
-              <label for="account">
+              <CFormLabel for="account">
                 <span>{{ $t("referential.type") }}*</span>
-              </label>
+              </CFormLabel>
               <v-select
                 label="type"
                 :options="types"
@@ -81,9 +81,9 @@
               }}</span>
             </CForm>
             <CForm>
-              <label for="localId">
+              <CFormLabel for="localId">
                 <span>{{ $t("referential.local_ID") }}*</span>
-              </label>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"
@@ -106,15 +106,15 @@
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            ><span>{{ $t("referential.save") }}</span></CButton
-          >
+            ><span>{{ $t("referential.save") }}</span>
+          </CButton>
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            ><span>{{ $t("referential.reset") }}</span></CButton
-          >
+            ><span>{{ $t("referential.reset") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

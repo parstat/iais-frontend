@@ -33,7 +33,7 @@
               />
             </CForm>
             <CForm>
-              <label for="localid">
+              <label for="localId">
                 <span>Local id</span>
               </label>
               <input

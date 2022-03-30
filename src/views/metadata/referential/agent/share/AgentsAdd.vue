@@ -26,9 +26,9 @@
       </CRow>
       <CCardText>
         <CForm v-if="owners">
-          <label for="organization"
-            ><span>{{ $t("referential.organization") }}*</span></label
-          >
+          <CFormLabel for="organization">
+            <span>{{ $t("referential.organization") }}*</span>
+          </CFormLabel>
           <v-select
             label="name"
             :options="owners"
@@ -42,9 +42,9 @@
           }}</span>
         </CForm>
         <CForm v-if="maintainers">
-          <label for="division"
-            ><span>{{ $t("referential.division") }}*</span></label
-          >
+          <CFormLabel for="division">
+            <span>{{ $t("referential.division") }}*</span>
+          </CFormLabel>
           <v-select
             label="name"
             :options="maintainers"
@@ -58,9 +58,9 @@
           }}</span>
         </CForm>
         <CForm v-if="contacts">
-          <label for="contact"
-            ><span>{{ $t("referential.contact_person") }}*</span></label
-          >
+          <CFormLabel for="contact">
+            <span>{{ $t("referential.contact_person") }}*</span>
+          </CFormLabel>
           <v-select
             label="name"
             :options="contacts"

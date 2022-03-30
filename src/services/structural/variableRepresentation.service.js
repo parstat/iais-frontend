@@ -25,7 +25,7 @@ function findAll() {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenRepresentations/" + id).then(
+    axiosIais.get("/structural/OpenRepresentationVariable/" + id).then(
       (response) => {
         var data = response.data.representedVariable
           ? response.data.representedVariable

@@ -8,9 +8,9 @@
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="description">
+              <CFormLabel for="description">
                 <span>{{ $t("referential.description") }}</span>
-              </label>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
@@ -21,9 +21,9 @@
               />
             </CForm>
             <CForm>
-              <label for="localid">
+              <CFormLabel for="localId">
                 <span>{{ $t("referential.local_ID") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"

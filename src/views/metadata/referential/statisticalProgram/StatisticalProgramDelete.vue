@@ -15,9 +15,9 @@
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">
+              <CFormLabel for="name">
                 <span>{{ $t("referential.survey_ID") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"
@@ -27,9 +27,9 @@
               />
             </CForm>
             <CForm>
-              <label for="name">
+              <CFormLabel for="name">
                 <span>{{ $t("referential.survey_name") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="name"
                 type="text"
@@ -39,9 +39,9 @@
               />
             </CForm>
             <CForm>
-              <label for="acronym">
+              <CFormLabel for="acronym">
                 <span>{{ $t("referential.survey_acronym") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="acronym"
                 type="text"
@@ -51,9 +51,9 @@
               />
             </CForm>
             <CForm>
-              <label for="responsible">
+              <CFormLabel for="responsible">
                 <span>{{ $t("referential.survey_description") }}</span>
-              </label>
+              </CFormLabel>
               <input
                 id="description"
                 type="text"
@@ -69,8 +69,8 @@
               size="sm"
               @click.prevent="handleDelete()"
               :disabled="disabled"
-              ><span>{{ $t("referential.delete") }}</span></CButton
-            >
+              ><span>{{ $t("referential.delete") }}</span>
+            </CButton>
           </div>
         </CCardBody>
       </CCard>

@@ -1,5 +1,5 @@
 <template>
-  <div class="row" v-if="statisticalProgram">
+  <CRow v-if="statisticalProgram">
     <div class="jumbotron jumbotron-fluid col-lg-12">
       <div class="container">
         <h2 class="display-5">
@@ -53,7 +53,7 @@
         ></app-documentations>
       </CCol>
     </CRow>
-  </div>
+  </CRow>
 </template>
 <script>
 import AgentsView from "../agent/share/AgentsView";

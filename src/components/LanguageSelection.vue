@@ -2,7 +2,7 @@
   <div>
     <select v-model="$i18n.locale" class="form-select">
       <option v-for="lang in langs" :key="lang.value" :value="lang.value">
-        {{ lang.label }}
+        <span>{{ lang.label }}</span>
       </option>
     </select>
   </div>

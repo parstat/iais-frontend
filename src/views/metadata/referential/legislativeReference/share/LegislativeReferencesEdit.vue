@@ -29,9 +29,9 @@
     <CCardBody>
       <CCardText>
         <div class="form-group mb-3" v-if="legislativeReferences">
-          <label for="description">
+          <CFormLabel for="description">
             <span>{{ $t("referential.legislative_references_header") }}</span>
-          </label>
+          </CFormLabel>
           <v-select
             label="name"
             :options="legislativeReferences"

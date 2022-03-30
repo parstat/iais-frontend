@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-description" />
-            Business Services
+            <span>&nbsp;{{ $t("referential.business_service_header") }}</span>
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -18,7 +18,7 @@
                   class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
-                  <span class="icon-span">Add</span>
+                  <span class="icon-span">{{ $t("referential.add") }}</span>
                 </router-link>
               </span>
             </CNavItem>
@@ -27,23 +27,26 @@
       </CRow>
       <CCardText>
         <CForm>
-          <label for="businessService">Business Service</label>
+          <CFormLabel for="businessService">
+            <span>{{ $t("referential.business_service_header") }}</span>
+          </CFormLabel>
           <v-select
             label="name"
             :options="businessServices"
-            placeholder="Select a business service (software)"
+            :placeholder="$t('referential.selection.business_service')"
             :filtrable="false"
             @search="searchBusinessService"
             @input="addBusinessService"
           >
             <template v-slot:no-options="{ search, searching }">
               <template v-if="searching">
-                No results found for <em>{{ search }}</em
+                <span>{{ $t("referential.no_found") }}&nbsp;</span>
+                <em>{{ search }}</em
                 >.
               </template>
-              <em style="opacity: 0.5" v-else
-                >Start typing to search for a service.</em
-              >
+              <em style="opacity: 0.5" v-else>
+                <span>{{ $t("referential.search_for_business_service") }}</span>
+              </em>
             </template>
             <template v-slot:content="option">
               <div class="d-center">
@@ -66,7 +69,7 @@
                 <CRow>
                   <CCol class="col-9">
                     <CCardTitle component="h6">
-                      {{ businessService.name }}
+                      <span>{{ businessService.name }}</span>
                     </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
@@ -83,7 +86,9 @@
                 </CRow>
               </CCardHeader>
               <CCardBody>
-                <CCardText>{{ businessService.description }}</CCardText>
+                <CCardText>
+                  <span>{{ businessService.description }}</span>
+                </CCardText>
               </CCardBody>
             </CCard>
           </CCol>
@@ -95,16 +100,14 @@
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('back')"
-        >
-          Back
+          ><span>{{ $t("referential.back") }}</span>
         </CButton>
         <CButton
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('next')"
-        >
-          Next
+          ><span>{{ $t("referential.next") }}</span>
         </CButton>
       </CCardFooter>
     </CCardBody>
