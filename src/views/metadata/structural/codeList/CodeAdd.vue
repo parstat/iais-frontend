@@ -42,7 +42,7 @@
                               'is-invalid': v$.name.$error,
                               'mb-3': !v$.name.$error,
                             }"
-                            placeholder="Unit type name"
+                            placeholder="Code name"
                             v-model.trim="name"
                           />
                           <div class="text-danger mb-3" v-if="v$.name.$error">
@@ -60,7 +60,7 @@
                               'is-invalid': v$.description.$error,
                               'mb-3': !v$.description.$error,
                             }"
-                            placeholder="Unit type description"
+                            placeholder="Code description"
                             v-model.trim="description"
                           />
                           <div
@@ -71,16 +71,16 @@
                           </div>
                         </CForm>
                         <CForm>
-                          <label for="name">Language*</label>
+                          <label for="language">Language*</label>
                           <input
-                            id="name"
+                            id="language"
                             type="text"
                             class="form-control"
                             :class="{
                               'is-invalid': v$.language.$error,
                               'mb-3': !v$.language.$error,
                             }"
-                            placeholder="Unit type name"
+                            placeholder="Code language"
                             v-model.trim="language"
                           />
                           <div
@@ -179,13 +179,6 @@ export default {
         this.$store.dispatch("code/save", formData);
         console.log(formData);
       }
-    },
-    handleReset() {
-      this.form.name = "";
-      this.form.description = "";
-      this.form.language = "";
-      this.form.localId = "";
-      this.v$.$reset();
     },
   },
 };

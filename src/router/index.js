@@ -477,16 +477,6 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
-      //Statistical Classifications Edit
-      {
-        path: "metadata/structural/classifications/edit/:id",
-        name: "StatisticalClassificationEdit",
-        component: () =>
-          import(
-            "@/views/metadata/structural/statisticalClassifications/StatisticalClassificationEdit"
-          ),
-        meta: { authorize: [Role.User, Role.Admin] },
-      },
       //* Code List */
       {
         path: "metadata/structural/codelist/",
@@ -500,6 +490,14 @@ const routes = [
         path: "metadata/structural/codelist/add",
         name: "CodeAdd",
         component: () => import("@/views/metadata/structural/codeList/CodeAdd"),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
+      //Code Edit
+      {
+        path: "metadata/structural/codelist/edit/:id",
+        name: "CodeEdit",
+        component: () =>
+          import("@/views/metadata/structural/codeList/CodeEdit"),
         meta: { authorize: [Role.User, Role.Admin] },
       },
       //Code View

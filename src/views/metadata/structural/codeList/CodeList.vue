@@ -57,16 +57,16 @@
                       </router-link>
                     </span>
                     <span v-if="isAuthenticated" class="pl-2">
-                      <!-- <router-link
-                      tag="a"
-                      title="Edit"
-                      :to="{
-                        name: 'CodeEdit',
-                        params: { id: item.id },
-                      }"
-                    >
-                      <CIcon name="cil-pencil" />
-                    </router-link> -->
+                      <router-link
+                        tag="a"
+                        title="Edit"
+                        :to="{
+                          name: 'CodeEdit',
+                          params: { id: item.id },
+                        }"
+                      >
+                        <CIcon name="cil-pencil" />
+                      </router-link>
                     </span>
 
                     <span v-if="isAuthenticated && isAdmin" class="pl-2">
