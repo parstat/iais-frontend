@@ -5,7 +5,11 @@
         <CCardHeader class="bg-white">
           <CCardTitle>
             <CIcon name="cil-description" />
-            <span>Process Documentation v{{ version }}</span>
+            <span
+              >&nbsp;{{ $t("referential.process_documentation") }} v{{
+                version
+              }}</span
+            >
           </CCardTitle>
           <CCardSubtitle>
             (survey:

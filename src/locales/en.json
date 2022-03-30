@@ -70,6 +70,7 @@
         "add": "Add",
         "ID": "ID",
         "local_ID": "Local ID",
+        "GSBPM": "GSBPM",
         "account": "Account",
         "name": "Name",
         "acronym": "Acronym",
@@ -164,10 +165,11 @@
         "no_found": "No results found for",
         "last_process": "Last process",
         "search_statistical_standards": "Search statistical standards",
-        "search_for_legislative reference": "Start typing to search for a legislative reference.",
-        "search_for_statistical_standard": "Start typing to search for a statistical standard.",
-        "search_for_statistical_process": "Start typing to search for a statistical program.",
-        "search_for_GSBPM_sub_phase": "Start typing to search for a GSBPM sub-phase.",
+        "search_for_legislative reference": "Start typing to search for a legislative reference",
+        "search_for_statistical_standard": "Start typing to search for a statistical standard",
+        "search_for_statistical_process": "Start typing to search for a statistical program",
+        "search_for_GSBPM_sub_phase": "Start typing to search for a GSBPM sub-phase",
+        "search_for_business_service": "Start typing to search for a service",
         "validations": {
             "survey_ID": "Please enter survey ID.",
             "survey_name" : "Please enter survey name.",
@@ -210,7 +212,8 @@
             "legislative_references": "Select legislative references",
             "statistical_process": "Select a statistical process",
             "GSBPM_sub_phase": "Select a GSBPM sub-phase",
-            "frequency": "Select a Frequency"
+            "frequency": "Select a frequency",
+            "business_service": "Select a business service (software)"
         }
     },
     "structural": {

@@ -26,7 +26,7 @@
                         },
                       }"
                     >
-                      <CIcon name="cil-plus" /> Add
+                      <CIcon name="cil-plus" />Add
                     </router-link>
                   </span>
                 </CNavItem>
