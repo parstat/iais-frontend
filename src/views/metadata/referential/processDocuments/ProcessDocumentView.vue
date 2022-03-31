@@ -22,7 +22,7 @@
                 <CCardLink
                   v-if="processDocument.externalLink"
                   :href="processDocument.externalLink"
-                  ><span>{{ $t("referential.link") }}</span> ...
+                  ><span>{{ $t("referential.link") }}&nbsp;...</span>
                 </CCardLink>
               </CCardBody>
             </CCard>
