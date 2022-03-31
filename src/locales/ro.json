@@ -70,6 +70,7 @@
         "add": "Adaugă",
         "ID": "ID",
         "local_ID": "ID local",
+        "GSBPM": "GSBPM",
         "account": "Cont",
         "name": "Nume",
         "acronym": "Acronim",
@@ -164,10 +165,11 @@
         "no_found": "Nu s-au găsit rezultate pentru",
         "last_process": "Ultimul proces",
         "search_statistical_standards": "Căutați standarde statistice",
-        "search_for_legislative reference": "Începeți să tastați pentru a căuta o referință legislativă.",
-        "search_for_statistical_standard": "Începeți să tastați pentru a căuta un standard statistic.",
-        "search_for_statistical_process": "Începeți să tastați pentru a căuta un program statistic.",
-        "search_for_GSBPM_sub_phase": "Începeți să tastați pentru a căuta o subfază GSBPM.",
+        "search_for_legislative reference": "Începeți să tastați pentru a căuta o referință legislativă",
+        "search_for_statistical_standard": "Începeți să tastați pentru a căuta un standard statistic",
+        "search_for_statistical_process": "Începeți să tastați pentru a căuta un program statistic",
+        "search_for_GSBPM_sub_phase": "Începeți să tastați pentru a căuta o subfază GSBPM",
+        "search_for_business_service": "Începeți să tastați pentru a căuta un serviciu",
         "validations": {
             "survey_ID": "Vă rugăm să introduceți codul sondajului.",
             "survey_name" : "Vă rugăm să introduceți numele sondajului.",
@@ -210,7 +212,8 @@
             "legislative_references": "Selectați referințe legislative",
             "statistical_process": "Selectați un proces statistic",
             "GSBPM_sub_phase": "Selectați o subfază GSBPM",
-            "frequency": "Selectați o frecvență"
+            "frequency": "Selectați o frecvență",
+            "business_service": "Selectați un serviciu de afaceri (software)"
         }
     },
     "structural": {

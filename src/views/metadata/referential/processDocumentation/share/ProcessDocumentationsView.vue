@@ -1,7 +1,7 @@
 <template>
   <CCard v-if="viewProcessDocumentation.length">
     <CCardHeader class="bg-white" component="h5">
-      Process Documentations
+      <span>{{ $t("referential.process_documentation") }}</span>
     </CCardHeader>
     <CCardBody>
       <div class="table-responsive">
@@ -33,9 +33,9 @@
       </div>
     </CCardBody>
     <CCardFooter class="bg-white">
-      <CButton color="primary" size="sm" @click.prevent="$emit('back')"
-        >Back</CButton
-      >
+      <CButton color="primary" size="sm" @click.prevent="$emit('back')">
+        <span>{{ $t("referential.back") }}</span>
+      </CButton>
     </CCardFooter>
   </CCard>
 </template>
@@ -50,31 +50,31 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("referential.ID"),
         },
         {
           key: "gsbpm",
-          label: "GSBPM",
+          label: this.$i18n.t("referential.GSBPM"),
         },
         {
           key: "name",
-          label: "Name",
+          label: this.$i18n.t("referential.name"),
         },
         {
           key: "frequency",
-          label: "Frequency",
+          label: this.$i18n.t("referential.frequency"),
         },
         {
           key: "nextSubPhase",
-          label: "Next",
+          label: this.$i18n.t("referential.next"),
         },
         {
           key: "version",
-          label: "Version",
+          label: this.$i18n.t("referential.version"),
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("referential.actions"),
           _style: "width:1%",
           sorter: false,
           filter: false,

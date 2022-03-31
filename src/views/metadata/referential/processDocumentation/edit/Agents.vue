@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-user" />
-            Agents
+            <span>&nbsp;{{ $t("referential.agents") }}</span>
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -18,7 +18,7 @@
                   class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
-                  <span class="icon-span">Add</span>
+                  <span class="icon-span">{{ $t("referential.add") }}</span>
                 </router-link>
               </span>
             </CNavItem>
@@ -28,7 +28,9 @@
       <CCardText>
         <CForm v-if="maintainers">
           <div class="mb-3">
-            <CFormLabel for="division">Division*</CFormLabel>
+            <CFormLabel for="division">
+              <span>{{ $t("referential.division") }}*</span>
+            </CFormLabel>
             <v-select
               label="name"
               :options="maintainers"
@@ -46,7 +48,7 @@
                   <CRow>
                     <CCol class="col-9">
                       <CCardTitle component="h6">
-                        {{ maintainer.name }}
+                        <span>{{ maintainer.name }}</span>
                       </CCardTitle>
                     </CCol>
                     <CCol class="col3">
@@ -72,7 +74,7 @@
                 </CCardHeader>
                 <CCardBody>
                   <CCardText>
-                    {{ maintainer.description }}
+                    <span>{{ maintainer.description }}</span>
                   </CCardText>
                 </CCardBody>
               </CCard>
@@ -86,16 +88,14 @@
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('back')"
-        >
-          Back
+          ><span>{{ $t("referential.back") }}</span>
         </CButton>
         <CButton
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('next')"
-        >
-          Next
+          ><span>{{ $t("referential.next") }}</span>
         </CButton>
       </CCardFooter>
     </CCardBody>

@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-user" />
-            <span>{{ $t("referential.agents") }}</span>
+            <span>&nbsp;{{ $t("referential.agents") }}</span>
           </CCardTitle>
         </CCol>
         <CCol class="col-3">

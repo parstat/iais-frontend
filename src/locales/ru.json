@@ -70,6 +70,7 @@
         "add": "Добавлять",
         "ID": "ИД",
         "local_ID": "Местный ИД",
+        "GSBPM": "GSBPM",
         "account": "Аккаунт",
         "name": "Имя",
         "acronym": "Акроним",
@@ -164,10 +165,11 @@
         "no_found": "Не найдено результатов для",
         "last_process": "Последний процесс",
         "search_statistical_standards": "Поисковые статистические стандарты",
-        "search_for_legislative reference": "Начните вводить текст, чтобы найти справку на законодательство.",
-        "search_for_statistical_standard": "Начните вводить для поиска статистического стандарта.",
-        "search_for_statistical_process": "Начните вводить для поиска статистической программы.",
-        "search_for_GSBPM_sub_phase": "Начните вводить текст, чтобы найти субфазу GSBPM.",
+        "search_for_legislative reference": "Начните вводить текст чтобы найти справку на законодательство",
+        "search_for_statistical_standard": "Начните вводить для поиска статистического стандарта",
+        "search_for_statistical_process": "Начните вводить для поиска статистической программы",
+        "search_for_GSBPM_sub_phase": "Начните вводить текст чтобы найти субфазу GSBPM",
+        "search_for_business_service": "Начните вводить текст для поиска услуги",
         "validations": {
             "survey_ID": "Пожалуйста введите ИД опроса.",
             "survey_name" : "Пожалуйста введите название опроса.",
@@ -210,7 +212,8 @@
             "legislative_references": "Выберите справки на законодательство",
             "statistical_process": "Выберите статистический процесс",
             "GSBPM_sub_phase": "Выберите субфазу GSBPM",
-            "frequency": "Выберите частоту"
+            "frequency": "Выберите частоту",
+            "business_service": "Выберите бизнес-услугу (программное обеспечение)"
         }
     },
     "structural": {
