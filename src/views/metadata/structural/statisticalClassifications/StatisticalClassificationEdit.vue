@@ -114,6 +114,12 @@
                       ><CIcon nam="cil-check-alt"
                     /></span>
                   </template>
+                  <app-statistical-classificaition-items
+                    :items="statisticalClassification.rootItems"
+                    @uploadItems="handleUploadItems"
+                    @finish="finish"
+                    @back="back"
+                  />
                 </CTabPane>
               </CTabContent>
             </CCol>
@@ -126,6 +132,8 @@
 <script>
 import StatisticalClassificationBasic from "./share/StatisticalClassificationBasic";
 import StatisticalClassificationLevels from "./share/StatisticalClassificationLevels";
+import StatisticalClassificationItems from "./share/StatisticalClassificationItems.vue";
+
 import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
@@ -142,6 +150,7 @@ export default {
   components: {
     "app-statistical-classification-basic": StatisticalClassificationBasic,
     "app-statistical-classificaition-levels": StatisticalClassificationLevels,
+    "app-statistical-classificaition-items": StatisticalClassificationItems,
   },
   methods: {
     handleUpdateBasic(basic, fieldsChanged) {
@@ -184,8 +193,27 @@ export default {
           );
         });
     },
+    handleUploadItems(uploadedItems) {
+      const formData = {
+        statisticalClassificationId: this.statisticalClassification.id,
+        rootItems: uploadedItems.rootItems,
+        aggregationType: uploadedItems.aggregationType,
+      };
+      this.$store
+        .dispatch("statisticalClassification/uploadItems", formData)
+        .then((data) => {
+          this.$store.dispatch(
+            "statisticalClassification/findById",
+            data.value
+          );
+        });
+    },
     nextLevels(fieldChanged) {
       this.editedLevels = fieldChanged;
+      this.next();
+    },
+    nextItems(fieldChanged) {
+      this.editedItems = fieldChanged;
       this.next();
     },
     next() {
@@ -193,6 +221,9 @@ export default {
     },
     back() {
       this.activeTab--;
+    },
+    finish() {
+      this.$router.push("/metadata/structural/classifications/");
     },
   },
   computed: {

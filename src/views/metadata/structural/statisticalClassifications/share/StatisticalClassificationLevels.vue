@@ -155,8 +155,7 @@ export default {
           levelNumber: this.levelNumber,
         };
         console.log(formData);
-        this.$emit("handleAddLevel", formData, this.fieldChanged);
-        this.fieldChanged = false;
+        this.$emit("handleAddLevel", formData);
       }
     },
   },
