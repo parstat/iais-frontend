@@ -251,6 +251,21 @@
         "measurementUnit_link": "Перейти к единице измерения",
         "measurementType_title": "Тип измерения",
         "measurementType_text": "Тип измерения определяет тип меры, например. масса или валюта. Тип измерения объединяет все единицы измерения, которые могут быть преобразованы друг в друга. Тип измерения может иметь стандартную единицу измерения, которую можно использовать для преобразования между различными единицами измерения.",
-        "measurementType_link": "Перейти к типу измерения"
+        "measurementType_link": "Перейти к типу измерения",
+        "level_local_id": "Level Local Id",
+        "level_name": "Level Name",
+        "level_description": "Level Description",
+        "level_number": "Level Number",
+        "level_add_button": "Add",
+        "validations":{
+            "statistical_classification_id": "Please enter a valid id",
+            "statistical_classification_name": "Please enter a valid name",
+            "statistical_classification_veresion": "Please enter a valid version",
+            "statistical_classification_description": "Please enter a valid description",
+            "statistical_classification_url": "Please enter a valid URL",
+            "level_id": "Please enter a valid level id",
+            "level_name": "Please enter a valid level name",
+            "level_number": "Please enter a valid level number"
+        }
     }
 }

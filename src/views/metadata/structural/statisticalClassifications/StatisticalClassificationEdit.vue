@@ -3,7 +3,11 @@
     <CCol class="col-12">
       <CCard v-if="statisticalClassification">
         <CCardHeader class="bg-white" component="h5">
-          <span> {{ statisticalClassification.name }}</span>
+          <span>
+            {{ statisticalClassification.name }}
+            {{ statisticalClassification.localId }}
+            {{ statisticalClassification.version }}</span
+          >
         </CCardHeader>
         <CCardBody>
           <CRow>
@@ -90,6 +94,12 @@
                       ><CIcon nam="cil-check-alt"
                     /></span>
                   </template>
+                  <app-statistical-classificaition-levels
+                    :levels="statisticalClassification.levels"
+                    @addLevel="handleAddLevel"
+                    @next="nextLevels"
+                    @back="back"
+                  />
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
@@ -115,6 +125,7 @@
 </template>
 <script>
 import StatisticalClassificationBasic from "./share/StatisticalClassificationBasic";
+import StatisticalClassificationLevels from "./share/StatisticalClassificationLevels";
 import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
@@ -130,12 +141,13 @@ export default {
   },
   components: {
     "app-statistical-classification-basic": StatisticalClassificationBasic,
+    "app-statistical-classificaition-levels": StatisticalClassificationLevels,
   },
   methods: {
     handleUpdateBasic(basic, fieldsChanged) {
       if (fieldsChanged) {
         const formData = {
-          id: this.statisticalProgram.id,
+          id: this.statisticalClassification.id,
           localId: basic.localId,
           name: basic.name,
           vesion: basic.version,
@@ -153,6 +165,34 @@ export default {
         //do nothing
         this.next();
       }
+    },
+    handleAddLevel(level) {
+      const formData = {
+        statisticalClassificationId: this.statisticalClassification.id,
+        localId: level.localId,
+        name: level.name,
+        description: level.description,
+        levelNumber: level.levelNumber,
+      };
+      this.$store
+        .dispatch("statisticalClassification/addLevel", formData)
+        .then((data) => {
+          console.log(data);
+          this.$store.dispatch(
+            "statisticalClassification/findById",
+            data.value
+          );
+        });
+    },
+    nextLevels(fieldChanged) {
+      this.editedLevels = fieldChanged;
+      this.next();
+    },
+    next() {
+      this.activeTab++;
+    },
+    back() {
+      this.activeTab--;
     },
   },
   computed: {
