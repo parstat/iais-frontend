@@ -234,6 +234,7 @@
         "statistical_classification_version": "Statistical Classification Version",
         "statistical_classification_version_date": "Statistical Classification Date",
         "statistical_classification_version_rationale": "Statistical Classification Version Description",
+        "statistical_classification_aggregation_type": "Aggregation Type",
         "code_list_title": "Code list",
         "code_list_text": "A list of Categories where each Category has a predefined Code assigned to it.",
         "code_list_link": "Go to code list section",

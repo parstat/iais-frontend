@@ -91,7 +91,7 @@
                       $t("structural.statistical_classification_levels")
                     }}</span>
                     <span class="float-right" v-if="editedLevels"
-                      ><CIcon nam="cil-check-alt"
+                      ><CIcon name="cil-check-alt"
                     /></span>
                   </template>
                   <app-statistical-classificaition-levels
@@ -116,6 +116,11 @@
                   </template>
                   <app-statistical-classificaition-items
                     :items="statisticalClassification.rootItems"
+                    :aggregationType="
+                      statisticalClassification.levels.length
+                        ? 'PARENT_CHILD'
+                        : 'NONE'
+                    "
                     @uploadItems="handleUploadItems"
                     @finish="finish"
                     @back="back"
@@ -142,6 +147,7 @@ export default {
   data() {
     return {
       activeTab: 0,
+      aggregationType: "PARENT_CHILD",
       editedBasic: false,
       editedLevels: false,
       editedItems: false,
