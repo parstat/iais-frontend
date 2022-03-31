@@ -218,10 +218,10 @@ export default {
       });
     },
     getItemsRecursivly() {
-      this.rootItems = [];
       this.content.data.forEach((row) => {
         if (row.parent === "") {
           row.value = row.labelEn;
+          delete row.parent;
           this.rootItems.push(row);
         }
       });
@@ -233,6 +233,7 @@ export default {
       this.content.data.forEach((row) => {
         if (row.parent === parent.code) {
           row.value = row.labelEn;
+          delete row.parent;
           parent.children.push(row);
           this.getChildren(row);
         }
