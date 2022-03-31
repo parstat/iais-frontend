@@ -38,33 +38,14 @@
             <CModalTitle>CSV items</CModalTitle>
           </CModalHeader>
           <CModalBody>
-            <!--<div class="table-responsive">
-              <table v-if="parsed">
-                <thead>
-                  <tr>
-                    <th
-                      v-for="(header, key) in content.meta.fields"
-                      v-bind:key="'header-' + key"
-                    >
-                      {{ header }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="(row, rowKey) in content.data"
-                    v-bind:key="'row-' + rowKey"
-                  >
-                    <td
-                      v-for="(column, columnKey) in content.meta.fields"
-                      v-bind:key="'row-' + rowKey + '-column-' + columnKey"
-                    >
-                      <input v-model="content.data[rowKey][column]" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div> -->
+            <CButton color="primary" class="mb-3" @click="getItemsRecursivly"
+              >Parce CSV</CButton
+            >
+            <div style="height: 400px; overflow-y: scroll">
+              <TreeNode v-for="node in rootItems" :key="node.id" :node="node">
+              </TreeNode>
+            </div>
+            <!--
             <div class="table-responsive">
               <CSpinner v-if="!parsed" color="primary" size="sm" />
               <CFormLabel v-if="!parsed"> Parsing csv file </CFormLabel>
@@ -81,8 +62,8 @@
                 :sorterValue="{ column: 'localId', state: 'asc' }"
                 pagination
               >
-              </CSmartTable>
-            </div>
+              </CSmartTable> 
+            </div> -->
           </CModalBody>
           <CModalFooter>
             <CButton
@@ -95,9 +76,7 @@
             >
               Close
             </CButton>
-            <CButton color="primary" @click="getItemsRecursivly"
-              >Preview items</CButton
-            >
+            <CButton color="primary">Uplaod items</CButton>
           </CModalFooter>
         </CModal>
 
@@ -160,37 +139,38 @@ export default {
       content: [],
       parsed: false,
       visibleCsvModal: false,
+      levelNumber: 1,
       rootItems: [],
       columns: [
         {
-          key: "LevelNumber",
+          key: "levelNumber",
           label: "Level Number",
         },
         {
-          key: "Code",
+          key: "code",
           label: "Code",
         },
         {
-          key: "Parent",
+          key: "parent",
           label: "Parent",
         },
         {
-          key: "LabelEn",
+          key: "labelEn",
           label: "EN",
         },
         {
-          key: "LabelRu",
+          key: "labelRu",
           label: "RU",
         },
         {
-          key: "LabelRo",
+          key: "labelRo",
           label: "RO",
         },
       ],
     };
   },
   validations: {
-    uploadedItems: {
+    rootItems: {
       required,
     },
     localAggregationType: {
@@ -238,8 +218,10 @@ export default {
       });
     },
     getItemsRecursivly() {
+      this.rootItems = [];
       this.content.data.forEach((row) => {
-        if (row.Parent === "") {
+        if (row.parent === "") {
+          row.value = row.labelEn;
           this.rootItems.push(row);
         }
       });
@@ -249,7 +231,8 @@ export default {
     getChildren(parent) {
       parent.children = [];
       this.content.data.forEach((row) => {
-        if (row.Parent === parent.Code) {
+        if (row.parent === parent.code) {
+          row.value = row.labelEn;
           parent.children.push(row);
           this.getChildren(row);
         }

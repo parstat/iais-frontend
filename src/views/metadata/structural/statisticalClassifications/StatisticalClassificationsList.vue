@@ -56,11 +56,7 @@
                         <CIcon name="cil-magnifying-glass" />
                       </router-link>
                     </span>
-                    <span
-                      v-if="isAuthenticated"
-                      class="pl-2"
-                      v-c-tooltip="'Edit'"
-                    >
+                    <span v-if="isAuthenticated" class="pl-2">
                       <router-link
                         tag="a"
                         title="Edit"
