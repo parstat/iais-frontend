@@ -3,36 +3,42 @@
     <CCardBody>
       <CCardTitle>
         <CIcon name="cil-description" />
-        Comments/Notes
+        <span>&nbsp;{{ $t("referential.comments/notes") }}</span>
       </CCardTitle>
       <CCardText>
         <CForm>
-          <label for="name">Title*</label>
+          <CFormLabel for="name">
+            <span>{{ $t("referential.title") }}*</span>
+          </CFormLabel>
           <input
             id="document_name"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.name.$error }"
-            placeholder="Process comment/note title"
+            :placeholder="$t('referential.process_comment/note_title')"
             v-model.trim="name"
           />
-          <label for="description">Comment/Note*</label>
+          <CFormLabel for="description">
+            <span>{{ $t("referential.comment/note") }}*</span>
+          </CFormLabel>
           <textarea
             rows="5"
             id="document_description"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.description.$error }"
-            placeholder="Process comment/note"
+            :placeholder="$t('referential.process_comment/note')"
             v-model.trim="description"
           />
 
-          <label for="link">Add an external link</label>
+          <CFormLabel for="link">
+            <span>{{ $t("referential.add_external_link") }}</span>
+          </CFormLabel>
           <input
             id="document_link"
             type="text"
             class="form-control mb-3"
-            placeholder="Process document link"
+            :placeholder="$t('referential.process_document_link')"
             v-model.trim="link"
           />
         </CForm>
@@ -42,8 +48,7 @@
             size="sm"
             style="margin-right: 0.3rem"
             @click="addProcessDocument"
-          >
-            Add
+            ><span>{{ $t("referential.add") }}</span>
           </CButton>
         </div>
         <CRow>
@@ -57,7 +62,7 @@
                 <CRow>
                   <CCol class="col-9">
                     <CCardTitle component="h6">
-                      {{ processDocument.name }}
+                      <span>{{ processDocument.name }}</span>
                     </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
@@ -74,12 +79,14 @@
                 </CRow>
               </CCardHeader>
               <CCardBody>
-                <CCardText>{{ processDocument.description }}</CCardText>
+                <CCardText>
+                  <span>{{ processDocument.description }}</span>
+                </CCardText>
                 <CCardLink
                   v-if="processDocument.externalLink"
                   :href="processDocument.externalLink"
-                  >Link...</CCardLink
-                >
+                  ><span>{{ $t("referential.link") }}&nbsp;...</span>
+                </CCardLink>
               </CCardBody>
             </CCard>
           </CCol>
@@ -91,8 +98,7 @@
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('finish')"
-        >
-          Finish
+          ><span>{{ $t("referential.finish") }}</span>
         </CButton>
       </CCardFooter>
     </CCardBody>
