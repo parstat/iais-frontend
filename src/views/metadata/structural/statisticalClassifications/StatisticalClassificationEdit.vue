@@ -3,7 +3,11 @@
     <CCol class="col-12">
       <CCard v-if="statisticalClassification">
         <CCardHeader class="bg-white" component="h5">
-          <span> {{ statisticalClassification.name }}</span>
+          <span>
+            {{ statisticalClassification.name }}
+            {{ statisticalClassification.localId }}
+            {{ statisticalClassification.version }}</span
+          >
         </CCardHeader>
         <CCardBody>
           <CRow>
@@ -87,9 +91,15 @@
                       $t("structural.statistical_classification_levels")
                     }}</span>
                     <span class="float-right" v-if="editedLevels"
-                      ><CIcon nam="cil-check-alt"
+                      ><CIcon name="cil-check-alt"
                     /></span>
                   </template>
+                  <app-statistical-classificaition-levels
+                    :levels="statisticalClassification.levels"
+                    @addLevel="handleAddLevel"
+                    @next="nextLevels"
+                    @back="back"
+                  />
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
@@ -104,6 +114,17 @@
                       ><CIcon nam="cil-check-alt"
                     /></span>
                   </template>
+                  <app-statistical-classificaition-items
+                    :items="statisticalClassification.rootItems"
+                    :aggregationType="
+                      statisticalClassification.levels.length
+                        ? 'PARENT_CHILD'
+                        : 'NONE'
+                    "
+                    @uploadItems="handleUploadItems"
+                    @finish="finish"
+                    @back="back"
+                  />
                 </CTabPane>
               </CTabContent>
             </CCol>
@@ -115,6 +136,9 @@
 </template>
 <script>
 import StatisticalClassificationBasic from "./share/StatisticalClassificationBasic";
+import StatisticalClassificationLevels from "./share/StatisticalClassificationLevels";
+import StatisticalClassificationItems from "./share/StatisticalClassificationItems.vue";
+
 import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
@@ -123,6 +147,7 @@ export default {
   data() {
     return {
       activeTab: 0,
+      aggregationType: "PARENT_CHILD",
       editedBasic: false,
       editedLevels: false,
       editedItems: false,
@@ -130,12 +155,14 @@ export default {
   },
   components: {
     "app-statistical-classification-basic": StatisticalClassificationBasic,
+    "app-statistical-classificaition-levels": StatisticalClassificationLevels,
+    "app-statistical-classificaition-items": StatisticalClassificationItems,
   },
   methods: {
     handleUpdateBasic(basic, fieldsChanged) {
       if (fieldsChanged) {
         const formData = {
-          id: this.statisticalProgram.id,
+          id: this.statisticalClassification.id,
           localId: basic.localId,
           name: basic.name,
           vesion: basic.version,
@@ -153,6 +180,56 @@ export default {
         //do nothing
         this.next();
       }
+    },
+    handleAddLevel(level) {
+      const formData = {
+        statisticalClassificationId: this.statisticalClassification.id,
+        localId: level.localId,
+        name: level.name,
+        description: level.description,
+        levelNumber: level.levelNumber,
+      };
+      this.$store
+        .dispatch("statisticalClassification/addLevel", formData)
+        .then((data) => {
+          console.log(data);
+          this.$store.dispatch(
+            "statisticalClassification/findById",
+            data.value
+          );
+        });
+    },
+    handleUploadItems(uploadedItems) {
+      const formData = {
+        statisticalClassificationId: this.statisticalClassification.id,
+        rootItems: uploadedItems.rootItems,
+        aggregationType: uploadedItems.aggregationType,
+      };
+      this.$store
+        .dispatch("statisticalClassification/uploadItems", formData)
+        .then((data) => {
+          this.$store.dispatch(
+            "statisticalClassification/findById",
+            data.value
+          );
+        });
+    },
+    nextLevels(fieldChanged) {
+      this.editedLevels = fieldChanged;
+      this.next();
+    },
+    nextItems(fieldChanged) {
+      this.editedItems = fieldChanged;
+      this.next();
+    },
+    next() {
+      this.activeTab++;
+    },
+    back() {
+      this.activeTab--;
+    },
+    finish() {
+      this.$router.push("/metadata/structural/classifications/");
     },
   },
   computed: {

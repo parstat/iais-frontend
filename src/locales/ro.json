@@ -262,6 +262,21 @@
         "measurementUnit_link": "Accesați unitatea de măsură",
         "measurementType_title": "Tipul de măsurare",
         "measurementType_text": "Tipul de măsurare definește tipul unei măsuri, de ex. masa sau moneda. Tipul de măsurare grupează toate unitățile de măsură, care pot fi convertite unele în altele. Un tip de măsurare poate avea o unitate de măsură standard, care poate fi utilizată pentru conversia între diferite unități de măsură.",
-        "measurementType_link": "Accesați tipul de măsurare"
+        "measurementType_link": "Accesați tipul de măsurare",
+        "level_local_id": "Level Local Id",
+        "level_name": "Level Name",
+        "level_description": "Level Description",
+        "level_number": "Level Number",
+        "level_add_button": "Add",
+        "validations":{
+            "statistical_classification_id": "Please enter a valid id",
+            "statistical_classification_name": "Please enter a valid name",
+            "statistical_classification_veresion": "Please enter a valid version",
+            "statistical_classification_description": "Please enter a valid description",
+            "statistical_classification_url": "Please enter a valid URL",
+            "level_id": "Please enter a valid level id",
+            "level_name": "Please enter a valid level name",
+            "level_number": "Please enter a valid level number"
+        }
     }
 }

@@ -61,7 +61,7 @@
                       class="pl-2"
                       v-c-tooltip="'Edit'"
                     >
-                      <!--  <router-link
+                      <router-link
                         tag="a"
                         title="Edit"
                         :to="{
@@ -70,7 +70,7 @@
                         }"
                       >
                         <CIcon name="cil-pencil" />
-                      </router-link> -->
+                      </router-link>
                     </span>
 
                     <span

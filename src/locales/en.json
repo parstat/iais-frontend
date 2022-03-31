@@ -242,6 +242,7 @@
         "statistical_classification_version": "Statistical Classification Version",
         "statistical_classification_version_date": "Statistical Classification Date",
         "statistical_classification_version_rationale": "Statistical Classification Version Description",
+        "statistical_classification_aggregation_type": "Aggregation Type",
         "code_list_title": "Code list",
         "code_list_text": "A list of Categories where each Category has a predefined Code assigned to it.",
         "code_list_link": "Go to code list section",
@@ -263,12 +264,20 @@
         "measurementType_title": "Measurement type",
         "measurementType_text": "The measurement type defines the type of a measure e.g. mass or currency. The measurement type groups all measurement units, which can be converted into each other. A measurement type can have a standard measurement unit, which can be used for conversion between different measurement units.",
         "measurementType_link": "Go to measurement type",
+        "level_local_id": "Level Local Id",
+        "level_name": "Level Name",
+        "level_description": "Level Description",
+        "level_number": "Level Number",
+        "level_add_button": "Add",
         "validations":{
             "statistical_classification_id": "Please enter a valid id",
             "statistical_classification_name": "Please enter a valid name",
             "statistical_classification_veresion": "Please enter a valid version",
             "statistical_classification_description": "Please enter a valid description",
-            "statistical_classification_url": "Please enter a valid URL"
+            "statistical_classification_url": "Please enter a valid URL",
+            "level_id": "Please enter a valid level id",
+            "level_name": "Please enter a valid level name",
+            "level_number": "Please enter a valid level number"
         }
     }
 }
