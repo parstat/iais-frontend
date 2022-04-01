@@ -24,58 +24,26 @@
         <label>
           <input type="file" accept=".csv" @change="handleFileUpload($event)" />
         </label>
-        <br />
-        <br />
-        <CModal
-          :visible="visibleCsvModal"
-          @close="
-            () => {
-              visibleCsvModal = false;
-            }
-          "
+        <CButton color="info" variant="ghost" v-if="file" @click="parseFile"
+          >Parse file</CButton
         >
+        <br />
+        <br />
+        <CModal :visible="visibleCsvModal" @close="closeModal">
           <CModalHeader>
             <CModalTitle>CSV items</CModalTitle>
           </CModalHeader>
           <CModalBody>
             <CButton color="primary" class="mb-3" @click="getItemsRecursivly"
-              >Parce CSV</CButton
+              >Parse CSV</CButton
             >
             <div style="height: 400px; overflow-y: scroll">
               <TreeNode v-for="node in rootItems" :key="node.id" :node="node">
               </TreeNode>
             </div>
-            <!--
-            <div class="table-responsive">
-              <CSpinner v-if="!parsed" color="primary" size="sm" />
-              <CFormLabel v-if="!parsed"> Parsing csv file </CFormLabel>
-              <CSmartTable
-                v-if="rootItems.length"
-                :items="rootItems"
-                :activePage="1"
-                :columns="columns"
-                columnFilter
-                cleaner
-                itemsPerPageSelect
-                :itemsPerPage="5"
-                columnSorter
-                :sorterValue="{ column: 'localId', state: 'asc' }"
-                pagination
-              >
-              </CSmartTable> 
-            </div> -->
           </CModalBody>
           <CModalFooter>
-            <CButton
-              color="secondary"
-              @click="
-                () => {
-                  visibleCsvModal = false;
-                }
-              "
-            >
-              Close
-            </CButton>
+            <CButton color="secondary" @click="closeModal"> Close </CButton>
             <CButton color="primary">Uplaod items</CButton>
           </CModalFooter>
         </CModal>
@@ -204,7 +172,9 @@ export default {
     },
     handleFileUpload(event) {
       this.file = event.target.files[0];
-      this.parseFile();
+      if (this.file) {
+        this.parseFile();
+      }
     },
     parseFile() {
       this.visibleCsvModal = true;
@@ -220,7 +190,7 @@ export default {
     getItemsRecursivly() {
       this.content.data.forEach((row) => {
         if (row.parent === "") {
-          row.value = row.labelEn;
+          //row.value = row.labelEn;
           delete row.parent;
           this.rootItems.push(row);
         }
@@ -232,12 +202,17 @@ export default {
       parent.children = [];
       this.content.data.forEach((row) => {
         if (row.parent === parent.code) {
-          row.value = row.labelEn;
+          //row.value = row.labelEn;
           delete row.parent;
           parent.children.push(row);
           this.getChildren(row);
         }
       });
+    },
+    closeModal() {
+      this.rootItems = [];
+      this.visibleCsvModal = false;
+      //this.parsed = false;
     },
   },
 };
