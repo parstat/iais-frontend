@@ -19,9 +19,9 @@
                 :placeholder="$t('referential.process_method_name')"
                 v-model.trim="name"
               />
-              <span class="text-danger" v-if="v$.name.$error">{{
-                $t("referential.validations.process_method_name")
-              }}</span>
+              <span class="text-danger" v-if="v$.name.$error">
+                {{ $t("referential.validations.process_method_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -36,9 +36,9 @@
                 :placeholder="$t('referential.process_method_description')"
                 v-model.trim="description"
               />
-              <span class="text-danger" v-if="v$.description.$error">{{
-                $t("referential.validations.process_method_description")
-              }}</span>
+              <span class="text-danger" v-if="v$.description.$error">
+                {{ $t("referential.validations.process_method_description") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="version">
@@ -51,9 +51,9 @@
                 :placeholder="$t('referential.process_method_version')"
                 v-model.trim="version"
               />
-              <span class="text-danger" v-if="v$.description.$error">{{
-                $t("referential.validations.process_method_version")
-              }}</span>
+              <span class="text-danger" v-if="v$.description.$error">
+                {{ $t("referential.validations.process_method_version") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="localId">
@@ -67,9 +67,9 @@
                 :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error">{{
-                $t("referential.validations.process_method_local_ID")
-              }}</span>
+              <span class="text-danger" v-if="v$.localId.$error">
+                {{ $t("referential.validations.process_method_local_ID") }}
+              </span>
             </CForm>
             <div class="form-mandatory">
               <span>*{{ $t("referential.mandatory_fields") }}</span>

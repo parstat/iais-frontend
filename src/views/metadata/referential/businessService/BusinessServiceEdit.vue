@@ -39,10 +39,9 @@
               <span
                 class="text-danger"
                 v-if="v$.businessService.description.$error"
-                >{{
-                  $t("referential.validations.business_service_description")
-                }}</span
               >
+                {{ $t("referential.validations.business_service_description") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="localId">
@@ -59,10 +58,9 @@
               <span
                 class="text-danger"
                 v-if="v$.businessService.localId.$error"
-                >{{
-                  $t("referential.validations.business_service_local_ID")
-                }}</span
               >
+                {{ $t("referential.validations.business_service_local_ID") }}
+              </span>
             </CForm>
           </CCardText>
           <CButton

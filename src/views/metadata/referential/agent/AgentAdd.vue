@@ -21,9 +21,9 @@
                 :placeholder="$t('referential.agent_name')"
                 v-model.trim="name"
               />
-              <span class="text-danger" v-if="v$.name.$error">{{
-                $t("referential.validations.agent_name")
-              }}</span>
+              <span class="text-danger" v-if="v$.name.$error">
+                {{ $t("referential.validations.agent_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -51,9 +51,9 @@
                 :placeholder="$t('referential.selection.type')"
                 @input="getParents"
               ></v-select>
-              <span class="text-danger" v-if="v$.type.$error">{{
-                $t("referential.validations.type")
-              }}</span>
+              <span class="text-danger" v-if="v$.type.$error">
+                {{ $t("referential.validations.type") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="parent">
@@ -79,9 +79,9 @@
                 :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error">{{
-                $t("referential.validations.local_ID")
-              }}</span>
+              <span class="text-danger" v-if="v$.localId.$error">
+                {{ $t("referential.validations.local_ID") }}
+              </span>
             </CForm>
             <div class="form-mandatory">
               <span>*{{ $t("referential.mandatory_fields") }}</span>

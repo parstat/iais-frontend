@@ -5,7 +5,7 @@
         <CCol class="col-9">
           <CCardTitle>
             <CIcon name="cil-description" />
-            Process Methods
+            <span>&nbsp;{{ $t("referential.process_methods_header") }}</span>
           </CCardTitle>
         </CCol>
         <CCol class="col-3">
@@ -18,7 +18,9 @@
                   class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
-                  <span class="icon-span">Add</span>
+                  <span class="icon-span">
+                    {{ $t("referential.add") }}
+                  </span>
                 </router-link>
               </span>
             </CNavItem>
@@ -27,23 +29,26 @@
       </CRow>
       <CCardText>
         <CForm v-if="processMethods">
-          <label for="processMethod">Process Method</label>
+          <CFormLabel for="processMethod">
+            <span>{{ $t("referential.process_method") }}</span>
+          </CFormLabel>
           <v-select
             label="name"
             :options="processMethods"
-            placeholder="Select a process method"
+            :placeholder="$t('referential.selection.process_method')"
             :filtrable="false"
             @search="searchProcessMethod"
             @input="addProcessMethod"
           >
             <template v-slot:no-options="{ search, searching }">
               <template v-if="searching">
-                No results found for <em>{{ search }}</em
+                <span>{{ $t("referential.no_found") }}&nbsp;</span>
+                <em>{{ search }}</em
                 >.
               </template>
-              <em style="opacity: 0.5" v-else
-                >Start typing to search for a method.</em
-              >
+              <em style="opacity: 0.5" v-else>
+                <span>{{ $t("referential.search_for_process_method") }}</span>
+              </em>
             </template>
             <template v-slot:content="option">
               <div class="d-center">
@@ -66,7 +71,7 @@
                 <CRow>
                   <CCol class="col-9">
                     <CCardTitle component="h6">
-                      {{ processMethod.name }}
+                      <span>{{ processMethod.name }}</span>
                     </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
@@ -82,7 +87,9 @@
               </CCardHeader>
 
               <CCardBody>
-                <CCardText>{{ processMethod.description }}</CCardText>
+                <CCardText>
+                  <span>{{ processMethod.description }}</span>
+                </CCardText>
               </CCardBody>
             </CCard>
           </CCol>
@@ -94,16 +101,14 @@
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('back')"
-        >
-          Back
+          ><span>{{ $t("referential.back") }}</span>
         </CButton>
         <CButton
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('next')"
-        >
-          Next
+          ><span>{{ $t("referential.next") }}</span>
         </CButton>
       </CCardFooter>
     </CCardBody>

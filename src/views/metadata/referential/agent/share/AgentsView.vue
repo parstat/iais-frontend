@@ -99,7 +99,7 @@
                   </span>
                 </div>
                 <div class="card-slot" v-if="contact.description">
-                  <span> {{ contact.description }}</span>
+                  <span>{{ contact.description }}</span>
                 </div>
                 <div v-if="contact.localId" class="mb-2">
                   <span>

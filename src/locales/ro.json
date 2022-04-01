@@ -22,6 +22,10 @@
         "error_message": "Mesaj de eroare: ",
         "goto_homepage": "Mergi la pagina principală"
     },
+    "error": {
+        "500": "Houston, avem o problemă!",
+        "401": "Ups! Ceva a mers prost!"
+    },
     "user": {
         "profile": "Profil",
         "settings": "Setări",
@@ -58,11 +62,18 @@
     "referential": {
         "statistical_process": "Proces statistic",
         "statistical_processes": "Procese statistice",
+        "process_name": "Numele procesului",
         "process_input": "Intrarea procesului",
         "process_inputs": "Intrările de proces",
+        "process_input_name": "Numele intrării procesului",
+        "process_input_description": "Descrierea intrării procesului",
         "process_output": "Ieșirea procesului",
         "process_outputs": "Ieșirile de proces",
+        "process_output_name": "Numele ieșirii procesului",
+        "process_output_description": "Descrierea rezultatelor procesului",
         "process_quality": "Calitatea procesului",
+        "process_quality_name": "Numele calității procesului",
+        "process_quality_description": "Descrierea calității procesului",
         "comments/notes": "Comentarii/Note",
         "frequency": "Frecvența",
         "reason_of_change": "Motivul modificării",
@@ -178,6 +189,7 @@
         "search_for_statistical_process": "Începeți să tastați pentru a căuta un program statistic",
         "search_for_GSBPM_sub_phase": "Începeți să tastați pentru a căuta o subfază GSBPM",
         "search_for_business_service": "Începeți să tastați pentru a căuta un serviciu",
+        "search_for_process_method": "Începeți să tastați pentru a căuta o metodă",
         "validations": {
             "survey_ID": "Vă rugăm să introduceți codul sondajului.",
             "survey_name" : "Vă rugăm să introduceți numele sondajului.",
@@ -209,7 +221,8 @@
             "GSBPM_sub_phase": "Vă rugăm să selectați o subfază GSBPM.",
             "next_GSBPM_sub_phase": "Vă rugăm să selectați următoarea subfază GSBPM.",
             "frequency": "Vă rugăm să selectați o frecvență pentru tip.",
-            "reason_of_change": "Vă rugăm să introduceți motivul modificării."
+            "reason_of_change": "Vă rugăm să introduceți motivul modificării.",
+            "process_output_name": "Vă rugăm să introduceți un nume de ieșire a procesului."
         },
         "selection": {
             "organization": "Selectați o organizație",
@@ -221,7 +234,9 @@
             "statistical_process": "Selectați un proces statistic",
             "GSBPM_sub_phase": "Selectați o subfază GSBPM",
             "frequency": "Selectați o frecvență",
-            "business_service": "Selectați un serviciu de afaceri (software)"
+            "business_service": "Selectați un serviciu de afaceri (software)",
+            "process_method": "Selectați o metodă de proces",
+            "statistical_standards": "Selectați standardele statistice"
         }
     },
     "structural": {
@@ -267,7 +282,7 @@
         "level_name": "Level Name",
         "level_description": "Level Description",
         "level_number": "Level Number",
-        "level_add_button": "Add",
+        "level_add_button": "Adaugă",
         "validations":{
             "statistical_classification_id": "Please enter a valid id",
             "statistical_classification_name": "Please enter a valid name",

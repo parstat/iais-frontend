@@ -22,6 +22,10 @@
         "error_message": "Сообщение об ошибке: ",
         "goto_homepage": "Вернуться на домашнюю страницу"
     },
+    "error": {
+        "500": "Хьюстон, у нас проблема!",
+        "401": "Упс! Что-то пошло не так!"
+    },
     "user": {
         "profile": "Профиль",
         "settings": "Настройки",
@@ -58,11 +62,18 @@
     "referential": {
         "statistical_process": "Статистический процесс",
         "statistical_processes": "Статистические процессы",
+        "process_name": "Имя процесса",
         "process_input": "Вход процесса",
         "process_inputs": "Входные процессы",
+        "process_input_name": "Имя входа процесса",
+        "process_input_description": "Описание входа процесса",
         "process_output": "Выход процесса",
         "process_outputs": "Выходные процессы",
+        "process_output_name": "Имя вывода процесса",
+        "process_output_description": "Описание вывода процесса",
         "process_quality": "Качество процесса",
+        "process_quality_name": "Название качества процесса",
+        "process_quality_description": "Описание качества процесса",
         "comments/notes": "Комментарии/Заметки",
         "frequency": "Частота",
         "reason_of_change": "Причина изменения",
@@ -178,6 +189,7 @@
         "search_for_statistical_process": "Начните вводить для поиска статистической программы",
         "search_for_GSBPM_sub_phase": "Начните вводить текст чтобы найти субфазу GSBPM",
         "search_for_business_service": "Начните вводить текст для поиска услуги",
+        "search_for_process_method": "Начните вводить для поиска метода",
         "validations": {
             "survey_ID": "Пожалуйста введите ИД опроса.",
             "survey_name" : "Пожалуйста введите название опроса.",
@@ -209,7 +221,8 @@
             "GSBPM_sub_phase": "Пожалуйста выберите субфазу GSBPM.",
             "next_GSBPM_sub_phase": "Пожалуйста выберите следующую субфазу GSBPM.",
             "frequency": "Пожалуйста выберите частоту для типа.",
-            "reason_of_change": "Пожалуйста укажите причину изменения."
+            "reason_of_change": "Пожалуйста укажите причину изменения.",
+            "process_output_name": "Пожалуйста введите название процесса."
         },
         "selection": {
             "organization": "Выберите организацию",
@@ -221,7 +234,9 @@
             "statistical_process": "Выберите статистический процесс",
             "GSBPM_sub_phase": "Выберите субфазу GSBPM",
             "frequency": "Выберите частоту",
-            "business_service": "Выберите бизнес-услугу (программное обеспечение)"
+            "business_service": "Выберите бизнес-услугу (программное обеспечение)",
+            "process_method": "Выберите способ обработки",
+            "statistical_standards": "Выберите статистические стандарты"
         }
     },
     "structural": {
@@ -267,7 +282,7 @@
         "level_name": "Level Name",
         "level_description": "Level Description",
         "level_number": "Level Number",
-        "level_add_button": "Add",
+        "level_add_button": "Добавлять",
         "validations":{
             "statistical_classification_id": "Please enter a valid id",
             "statistical_classification_name": "Please enter a valid name",

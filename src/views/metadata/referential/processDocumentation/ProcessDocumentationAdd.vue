@@ -146,12 +146,13 @@
                             <span
                               class="text-danger"
                               v-if="v$.statisticalProgram.$error"
-                              >{{
+                            >
+                              {{
                                 $t(
                                   "referential.validations.statistical_process"
                                 )
-                              }}</span
-                            >
+                              }}
+                            </span>
                           </CForm>
                           <CForm v-if="businessFunctions">
                             <CFormLabel for="statisticalProgram">
@@ -214,10 +215,11 @@
                             <span
                               class="text-danger"
                               v-if="v$.businessFunction.$error"
-                              >{{
-                                $t("referential.validations.GSBPM_sub_phase")
-                              }}</span
                             >
+                              {{
+                                $t("referential.validations.GSBPM_sub_phase")
+                              }}
+                            </span>
                           </CForm>
                           <CForm class="mb-3">
                             <CFormLabel for="name">
@@ -262,10 +264,11 @@
                             <span
                               class="text-danger"
                               v-if="v$.description.$error"
-                              >{{
-                                $t("referential.validations.survey_description")
-                              }}</span
                             >
+                              {{
+                                $t("referential.validations.survey_description")
+                              }}
+                            </span>
                           </CForm>
                           <CForm class="mb-3">
                             <CFormLabel for="frequency">
@@ -283,10 +286,9 @@
                             <span
                               class="text-danger"
                               v-if="v$.frequency.$error"
-                              >{{
-                                $t("referential.validations.frequency")
-                              }}</span
                             >
+                              {{ $t("referential.validations.frequency") }}
+                            </span>
                           </CForm>
                           <CForm class="mb-3" v-if="businessFunctions">
                             <CFormLabel for="nextBusinessFunction">
@@ -351,12 +353,13 @@
                             <span
                               class="text-danger"
                               v-if="v$.nextBusinessFunction.$error"
-                              >{{
+                            >
+                              {{
                                 $t(
                                   "referential.validations.next_GSBPM_sub_phase"
                                 )
-                              }}</span
-                            >
+                              }}
+                            </span>
                           </CForm>
                           <div>
                             <CFormSwitch
