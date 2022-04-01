@@ -71,13 +71,32 @@ const actions = {
         dispatch("message/success", "Statistical Classification saved!", {
           root: true,
         });
-        router.push("/metadata/structuralal/classifications");
+        router.push(
+          "/metadata/structural/classifications/edit/" +
+            data +
+            "?step=2"
+        );
       },
       (error) => {
         console.log(error);
       }
     );
   },
+
+  addLevel({ dispatch }, formData) {
+    statisticalClassificationService.addLevel(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Level added!", {
+          root: true,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+
   delete({ dispatch }, id) {
     statisticalClassificationService.delete(id).then(
       (data) => {
@@ -99,7 +118,19 @@ const actions = {
         dispatch("message/success", "Statistical Classification updated!", {
           root: true,
         });
-        router.push("/metadata/structuralal/classifications");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  uploadItems({ dispatch }, formData) {
+    statisticalClassificationService.uploadItems(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Items uploaded!", {
+          root: true,
+        });
       },
       (error) => {
         console.log(error);

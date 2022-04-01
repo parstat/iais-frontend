@@ -8,6 +8,8 @@ export const statisticalClassificationService = {
   save,
   update,
   delete: _delete,
+  addLevel,
+  uploadItems,
 };
 
 function findAll() {
@@ -45,23 +47,21 @@ function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
     };
 
     const requestBody = {
+      localId: formData.localId,
       name: formData.name,
       description: formData.description,
-      //definition: formData.definition,
-      local_id: formData.localId,
+      definition: formData.definition,
+      link: formData.link,
+      version: formData.version ? formData.version : "",
     };
 
     axiosIais
-      .post(
-        "/structural/ClosedStatisticalClassifications/" + formData.localId,
-        new URLSearchParams(requestBody).toString(),
-        config
-      )
+      .post("/structural/ClosedStatisticalClassifications", requestBody, config)
       .then(
         (response) => {
           //console.log(response.data);
@@ -78,21 +78,85 @@ function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
     };
 
     const requestBody = {
+      id: formData.id,
+      localId: formData.localId,
       name: formData.name,
       description: formData.description,
-      //definition: formData.definition,
-      local_id: formData.localId,
+      definition: formData.definition,
+      link: formData.link,
+      version: formData.version ? formData.version : "",
     };
 
     axiosIais
-      .patch(
-        "/structural/ClosedStatisticalClassifications/" + formData.id,
-        new URLSearchParams(requestBody).toString(),
+      .put("/structural/ClosedStatisticalClassifications", requestBody, config)
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function addLevel(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const requestBody = {
+      statisticalClassificationId: formData.statisticalClassificationId,
+      localId: formData.localId,
+      name: formData.name,
+      description: formData.description,
+      levelNumber: formData.levelNumber,
+    };
+
+    axiosIais
+      .put(
+        "/structural/ClosedStatisticalClassifications/level/add",
+        requestBody,
+        config
+      )
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+function uploadItems(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const requestBody = {
+      statisticalClassificationId: formData.statisticalClassificationId,
+      aggregationType: formData.aggregationType,
+      rootItems: formData.rootItems,
+    };
+
+    axiosIais
+      .put(
+        "/structural/ClosedStatisticalClassifications/upload",
+        requestBody,
         config
       )
       .then(

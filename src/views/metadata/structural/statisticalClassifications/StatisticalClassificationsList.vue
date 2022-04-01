@@ -8,13 +8,13 @@
               <CCardTitle> Statistical Classifications </CCardTitle>
             </CCol>
             <CCol class="col-3">
-              <CNav>
+              <CNav class="justify-content-end">
                 <CNavItem>
                   <router-link
                     v-if="isAuthenticated"
                     tag="a"
-                    to="/metadata/structural/statisticalClassifications/add"
-                    class="card-header-action"
+                    to="/metadata/structural/classifications/add"
+                    class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />
                     <span class="icon-span"
