@@ -13,7 +13,7 @@
                   <router-link
                     v-if="isAuthenticated"
                     tag="a"
-                    to="/metadata/structural/statisticalClassifications/add"
+                    to="/metadata/structural/classifications/add"
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />

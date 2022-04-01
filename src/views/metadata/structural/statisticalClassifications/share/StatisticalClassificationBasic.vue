@@ -78,7 +78,7 @@
             @change="fieldChanged = true"
           />
           <span class="text-danger" v-if="v$.localDescription.$error">{{
-            $t("referential.validations.statistical_classification_description")
+            $t("structural.validations.statistical_classification_description")
           }}</span>
         </CForm>
         <CForm>
@@ -96,7 +96,7 @@
             @change="fieldChanged = true"
           />
           <span class="text-danger" v-if="v$.localLink.$error">{{
-            $t("referential.validations.statistical_classification_url")
+            $t("structural.validations.statistical_classification_url")
           }}</span>
         </CForm>
       </CCardText>

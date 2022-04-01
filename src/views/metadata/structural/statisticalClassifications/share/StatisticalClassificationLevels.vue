@@ -74,6 +74,7 @@
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
+          class="mb-3"
           @click="addLevel"
           ><span>{{ $t("structural.level_add_button") }}</span>
         </CButton>
