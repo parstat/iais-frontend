@@ -39,16 +39,17 @@
         </CForm>
         <CForm>
           <label for="label">Label*</label>
-          <v-select
-            label="name"
-            :options="labels"
-            v-model="label"
-            class="mb-3"
+          <input
+            id="label"
+            type="text"
+            class="form-control"
             :class="{
               'is-invalid': v$.label.$error,
+              'mb-3': !v$.label.$error,
             }"
-            :placeholder="'Select the label'"
-          ></v-select>
+            placeholder="Code label"
+            v-model.trim="codeName"
+          />
           <div class="text-danger mb-3" v-if="v$.label.$error">
             Please enter a label.
           </div>
