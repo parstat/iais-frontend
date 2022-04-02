@@ -17,9 +17,10 @@
                 class="text-decoration-none text-primary"
                 tag="a"
                 :to="{ name: 'StatisticalProgramList' }"
-                ><span class="icon-span"
-                  >{{ $t("common.referential_metadata_link") }}&nbsp;</span
-                ><CIcon name="cil-arrow-right"
+                ><span class="icon-span">
+                  {{ $t("common.referential_metadata_link") }}&nbsp;
+                </span>
+                <CIcon name="cil-arrow-right"
               /></router-link>
             </span>
           </CButton>
@@ -42,9 +43,10 @@
               tag="a"
               class="text-decoration-none text-primary"
               :to="{ name: 'StructuralComponents' }"
-              ><span class="icon-span"
-                >{{ $t("common.structural_metadata_link") }}&nbsp;</span
-              ><CIcon name="cil-arrow-right"
+              ><span class="icon-span">
+                {{ $t("common.structural_metadata_link") }}&nbsp;
+              </span>
+              <CIcon name="cil-arrow-right"
             /></router-link>
           </CButton>
         </CCardFooter>
@@ -62,9 +64,10 @@
         </CCardBody>
         <CCardFooter class="bg-white">
           <CButton disabled>
-            <span class="icon-span"
-              >{{ $t("common.process_metadata_link") }}&nbsp;</span
-            ><CIcon name="cil-arrow-right" />
+            <span class="icon-span">
+              {{ $t("common.process_metadata_link") }}&nbsp;
+            </span>
+            <CIcon name="cil-arrow-right" />
           </CButton>
         </CCardFooter>
       </CCard>

@@ -175,10 +175,11 @@
                             <span
                               class="text-danger"
                               v-if="v$.description.$error"
-                              >{{
-                                $t("referential.validations.survey_description")
-                              }}</span
                             >
+                              {{
+                                $t("referential.validations.survey_description")
+                              }}
+                            </span>
                           </CForm>
                           <CForm>
                             <CFormLabel for="frequency">
@@ -196,10 +197,9 @@
                             <span
                               class="text-danger"
                               v-if="v$.frequency.$error"
-                              >{{
-                                $t("referential.validations.frequency")
-                              }}</span
                             >
+                              {{ $t("referential.validations.frequency") }}
+                            </span>
                           </CForm>
                           <CForm v-if="businessFunctions">
                             <CFormLabel for="nextBusinessFunction">
@@ -263,10 +263,11 @@
                             <span
                               class="text-danger"
                               v-if="v$.nextBusinessFunction.$error"
-                              >{{
-                                $t("referential.validations.GSBPM_sub_phase")
-                              }}</span
                             >
+                              {{
+                                $t("referential.validations.GSBPM_sub_phase")
+                              }}
+                            </span>
                           </CForm>
                           <div>
                             <input

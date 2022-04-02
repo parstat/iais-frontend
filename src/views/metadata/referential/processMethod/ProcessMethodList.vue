@@ -17,9 +17,9 @@
                 class="text-decoration-none text-primary"
               >
                 <CIcon name="cil-plus" />
-                <span class="icon-span">{{
-                  $t("referential.new_method")
-                }}</span>
+                <span class="icon-span">
+                  {{ $t("referential.new_method") }}
+                </span>
               </router-link>
             </CNavItem>
           </CNav>

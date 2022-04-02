@@ -37,8 +37,9 @@
                   <span
                     class="help-block"
                     :class="{ show: v$.username.$error }"
-                    >{{ $t("please_enter_username") }}</span
                   >
+                    {{ $t("please_enter_username") }}
+                  </span>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -93,8 +94,9 @@
                   <span
                     class="help-block"
                     :class="{ show: v$.password.$error }"
-                    >{{ $t("user.validations.password_invalid") }}</span
                   >
+                    {{ $t("user.validations.password_invalid") }}
+                  </span>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -113,11 +115,12 @@
                   <span
                     class="help-block"
                     :class="{ show: v$.confirmpassword.$error }"
-                    >{{ $t("user.validations.passwords_no_match") }}</span
                   >
+                    {{ $t("user.validations.passwords_no_match") }}
+                  </span>
                 </div>
-                <CButton color="success" block @click.prevent="handleSubmit()"
-                  ><span>{{ $t("user.create_account") }}</span>
+                <CButton color="success" block @click.prevent="handleSubmit()">
+                  <span>{{ $t("user.create_account") }}</span>
                 </CButton>
               </CForm>
             </CCardBody>

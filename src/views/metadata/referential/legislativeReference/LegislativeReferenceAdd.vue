@@ -19,9 +19,9 @@
                 :placeholder="$t('referential.legislative_reference_name')"
                 v-model.trim="name"
               />
-              <span class="text-danger" v-if="v$.name.$error">{{
-                $t("referential.validations.legislative_reference_name")
-              }}</span>
+              <span class="text-danger" v-if="v$.name.$error">
+                {{ $t("referential.validations.legislative_reference_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -76,9 +76,9 @@
                 :class="{ 'is-invalid': v$.type.$error }"
                 :placeholder="$t('referential.selection.type')"
               ></v-select>
-              <span class="text-danger" v-if="v$.type.$error">{{
-                $t("referential.validations.type")
-              }}</span>
+              <span class="text-danger" v-if="v$.type.$error">
+                {{ $t("referential.validations.type") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="localId">
@@ -92,9 +92,9 @@
                 :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error">{{
-                $t("referential.validations.local_ID")
-              }}</span>
+              <span class="text-danger" v-if="v$.localId.$error">
+                {{ $t("referential.validations.local_ID") }}
+              </span>
             </CForm>
             <div class="form-mandatory">
               <span>*{{ $t("referential.mandatory_fields") }}</span>

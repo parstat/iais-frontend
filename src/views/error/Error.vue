@@ -7,7 +7,7 @@
             <span>500</span>
           </h1>
           <h4 class="pt-3">
-            <span>Houston, we have a problem!</span>
+            <span>{{ $t("error.500") }}</span>
           </h4>
           <p class="text-muted">
             <span>{{ $t("common.error_occurred") }}</span>

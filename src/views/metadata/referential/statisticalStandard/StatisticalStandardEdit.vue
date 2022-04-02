@@ -22,10 +22,9 @@
               <span
                 class="text-danger"
                 v-if="v$.statisticalStandard.name.$error"
-                >{{
-                  $t("referential.validations.statistical_standard_name")
-                }}</span
               >
+                {{ $t("referential.validations.statistical_standard_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -56,8 +55,9 @@
               <span
                 class="text-danger"
                 v-if="v$.statisticalStandard.type.$error"
-                >{{ $t("referential.validations.type") }}</span
               >
+                {{ $t("referential.validations.type") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="localId">
@@ -73,10 +73,11 @@
               <span
                 class="text-danger"
                 v-if="v$.statisticalStandard.localId.$error"
-                >{{
-                  $t("referential.validations.statistical_standard_local_ID")
-                }}</span
               >
+                {{
+                  $t("referential.validations.statistical_standard_local_ID")
+                }}
+              </span>
             </CForm>
           </CCardText>
           <CButton

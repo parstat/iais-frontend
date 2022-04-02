@@ -21,9 +21,9 @@
                 :placeholder="$t('referential.process_method_name')"
                 v-model.trim="processMethod.name"
               />
-              <span class="text-danger" v-if="v$.processMethod.name.$error">{{
-                $t("referential.validations.process_method_name")
-              }}</span>
+              <span class="text-danger" v-if="v$.processMethod.name.$error">
+                {{ $t("referential.validations.process_method_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -41,10 +41,8 @@
                 class="text-danger"
                 v-if="v$.processMethod.description.$error"
               >
-                {{
-                  $t("referential.validations.process_method_description")
-                }}</span
-              >
+                {{ $t("referential.validations.process_method_description") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="localId">
@@ -58,10 +56,8 @@
                 v-model.trim="processMethod.localId"
               />
               <span class="text-danger" v-if="v$.processMethod.localId.$error">
-                {{
-                  $t("referential.validations.process_method_local_ID")
-                }}</span
-              >
+                {{ $t("referential.validations.process_method_local_ID") }}
+              </span>
             </CForm>
           </CCardText>
           <CButton

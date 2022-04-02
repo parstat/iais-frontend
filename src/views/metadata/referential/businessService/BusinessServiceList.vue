@@ -19,9 +19,9 @@
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />
-                    <span class="icon-span">{{
-                      $t("referential.new_business_service")
-                    }}</span>
+                    <span class="icon-span">
+                      {{ $t("referential.new_business_service") }}
+                    </span>
                   </router-link>
                 </CNavItem>
               </CNav>

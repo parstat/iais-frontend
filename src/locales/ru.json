@@ -22,6 +22,10 @@
         "error_message": "Сообщение об ошибке: ",
         "goto_homepage": "Вернуться на домашнюю страницу"
     },
+    "error": {
+        "500": "Хьюстон, у нас проблема!",
+        "401": "Упс! Что-то пошло не так!"
+    },
     "user": {
         "profile": "Профиль",
         "settings": "Настройки",
@@ -58,19 +62,32 @@
     "referential": {
         "statistical_process": "Статистический процесс",
         "statistical_processes": "Статистические процессы",
+        "process_name": "Имя процесса",
         "process_input": "Вход процесса",
         "process_inputs": "Входные процессы",
+        "process_input_name": "Имя входа процесса",
+        "process_input_description": "Описание входа процесса",
         "process_output": "Выход процесса",
         "process_outputs": "Выходные процессы",
+        "process_output_name": "Имя вывода процесса",
+        "process_output_description": "Описание вывода процесса",
         "process_quality": "Качество процесса",
+        "process_quality_name": "Название качества процесса",
+        "process_quality_description": "Описание качества процесса",
         "comments/notes": "Комментарии/Заметки",
         "frequency": "Частота",
         "reason_of_change": "Причина изменения",
         "next_process": "Следующий процесс",
         "add": "Добавлять",
+        "add_external_link": "Добавить внешнюю ссылку",
         "ID": "ИД",
         "local_ID": "Местный ИД",
         "GSBPM": "GSBPM",
+        "title": "Заголовок",
+        "comment/note": "Комментарий/Примечание",
+        "process_comment/note": "Обработать комментарий/примечание",
+        "process_comment/note_title": "Обработать заголовок комментария/примечания",
+        "process_document_link": "Обработать ссылку на документ",
         "account": "Аккаунт",
         "name": "Имя",
         "acronym": "Акроним",
@@ -102,6 +119,7 @@
         "legislative_reference_description": "Справочное описание законодательства",
         "statistical_standards": "Статистические стандарты",
         "process_documentation": "Документация по процессу",
+        "process_documentation_basic_variables": "Основные переменные документирования процесса",
         "documentation_name": "Название документации",
         "documentation_description": "Описание документации",
         "survey": "опрос",
@@ -137,6 +155,7 @@
         "reset": "Сбросить",
         "delete": "Удалить",
         "update": "Обновить",
+        "finish": "Финиш",
         "organization": "Организация",
         "division": "Дивизия",
         "divisions": "Дивизионы",
@@ -170,6 +189,7 @@
         "search_for_statistical_process": "Начните вводить для поиска статистической программы",
         "search_for_GSBPM_sub_phase": "Начните вводить текст чтобы найти субфазу GSBPM",
         "search_for_business_service": "Начните вводить текст для поиска услуги",
+        "search_for_process_method": "Начните вводить для поиска метода",
         "validations": {
             "survey_ID": "Пожалуйста введите ИД опроса.",
             "survey_name" : "Пожалуйста введите название опроса.",
@@ -201,7 +221,8 @@
             "GSBPM_sub_phase": "Пожалуйста выберите субфазу GSBPM.",
             "next_GSBPM_sub_phase": "Пожалуйста выберите следующую субфазу GSBPM.",
             "frequency": "Пожалуйста выберите частоту для типа.",
-            "reason_of_change": "Пожалуйста укажите причину изменения."
+            "reason_of_change": "Пожалуйста укажите причину изменения.",
+            "process_output_name": "Пожалуйста введите название процесса."
         },
         "selection": {
             "organization": "Выберите организацию",
@@ -213,7 +234,9 @@
             "statistical_process": "Выберите статистический процесс",
             "GSBPM_sub_phase": "Выберите субфазу GSBPM",
             "frequency": "Выберите частоту",
-            "business_service": "Выберите бизнес-услугу (программное обеспечение)"
+            "business_service": "Выберите бизнес-услугу (программное обеспечение)",
+            "process_method": "Выберите способ обработки",
+            "statistical_standards": "Выберите статистические стандарты"
         }
     },
     "structural": {
@@ -254,6 +277,21 @@
         "measurementUnit_link": "Перейти к единице измерения",
         "measurementType_title": "Тип измерения",
         "measurementType_text": "Тип измерения определяет тип меры, например. масса или валюта. Тип измерения объединяет все единицы измерения, которые могут быть преобразованы друг в друга. Тип измерения может иметь стандартную единицу измерения, которую можно использовать для преобразования между различными единицами измерения.",
-        "measurementType_link": "Перейти к типу измерения"
+        "measurementType_link": "Перейти к типу измерения",
+        "level_local_id": "Level Local Id",
+        "level_name": "Level Name",
+        "level_description": "Level Description",
+        "level_number": "Level Number",
+        "level_add_button": "Добавлять",
+        "validations":{
+            "statistical_classification_id": "Please enter a valid id",
+            "statistical_classification_name": "Please enter a valid name",
+            "statistical_classification_veresion": "Please enter a valid version",
+            "statistical_classification_description": "Please enter a valid description",
+            "statistical_classification_url": "Please enter a valid URL",
+            "level_id": "Please enter a valid level id",
+            "level_name": "Please enter a valid level name",
+            "level_number": "Please enter a valid level number"
+        }
     }
 }

@@ -4,14 +4,14 @@
       <CCard v-if="processDocumentation">
         <CCardHeader class="bg-white" component="h5">
           <CIcon name="cil-description" />
-          Process Documentation
+          <span>&nbsp;{{ $t("referential.process_documentation") }}</span>
           <CCardSubtitle class="mt-1 text-secondary">
-            (survey:
+            ({{ $t("referential.survey") }}:
             {{
               processDocumentation.statisticalProgram
                 ? processDocumentation.statisticalProgram.name
                 : ""
-            }}, sub-phase:
+            }}, {{ $t("referential.sub_phase") }}:
             {{
               processDocumentation.businessFunction
                 ? processDocumentation.businessFunction.localId
@@ -37,8 +37,7 @@
                         activeTab = 0;
                       }
                     "
-                  >
-                    Basic
+                    ><span>{{ $t("referential.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -50,8 +49,7 @@
                         activeTab = 1;
                       }
                     "
-                  >
-                    Divisions
+                    ><span>{{ $t("referential.divisions") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -63,8 +61,7 @@
                         activeTab = 2;
                       }
                     "
-                  >
-                    Statistical Standards
+                    ><span>{{ $t("referential.statistical_standards") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -76,8 +73,7 @@
                         activeTab = 3;
                       }
                     "
-                  >
-                    Process Methods
+                    ><span>{{ $t("referential.process_methods_header") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -89,8 +85,9 @@
                         activeTab = 4;
                       }
                     "
-                  >
-                    Business Service/Software
+                    ><span>{{
+                      $t("referential.business_service/software")
+                    }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -102,8 +99,7 @@
                         activeTab = 5;
                       }
                     "
-                  >
-                    Process Input
+                    ><span>{{ $t("referential.process_input") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -115,8 +111,7 @@
                         activeTab = 6;
                       }
                     "
-                  >
-                    Provess Output
+                    ><span>{{ $t("referential.process_output") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -128,8 +123,7 @@
                         activeTab = 7;
                       }
                     "
-                  >
-                    Process Quality
+                    ><span>{{ $t("referential.process_quality") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -141,8 +135,7 @@
                         activeTab = 8;
                       }
                     "
-                  >
-                    Comments/Notes
+                    ><span>{{ $t("referential.comments/notes") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>

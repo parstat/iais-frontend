@@ -22,6 +22,10 @@
         "error_message": "Mesaj de eroare: ",
         "goto_homepage": "Mergi la pagina principală"
     },
+    "error": {
+        "500": "Houston, avem o problemă!",
+        "401": "Ups! Ceva a mers prost!"
+    },
     "user": {
         "profile": "Profil",
         "settings": "Setări",
@@ -58,19 +62,32 @@
     "referential": {
         "statistical_process": "Proces statistic",
         "statistical_processes": "Procese statistice",
+        "process_name": "Numele procesului",
         "process_input": "Intrarea procesului",
         "process_inputs": "Intrările de proces",
+        "process_input_name": "Numele intrării procesului",
+        "process_input_description": "Descrierea intrării procesului",
         "process_output": "Ieșirea procesului",
         "process_outputs": "Ieșirile de proces",
+        "process_output_name": "Numele ieșirii procesului",
+        "process_output_description": "Descrierea rezultatelor procesului",
         "process_quality": "Calitatea procesului",
+        "process_quality_name": "Numele calității procesului",
+        "process_quality_description": "Descrierea calității procesului",
         "comments/notes": "Comentarii/Note",
         "frequency": "Frecvența",
         "reason_of_change": "Motivul modificării",
         "next_process": "Următorul proces",
         "add": "Adaugă",
+        "add_external_link": "Adaugă un link extern",
         "ID": "ID",
         "local_ID": "ID local",
         "GSBPM": "GSBPM",
+        "title": "Titlu",
+        "comment/note": "Comentariu/Notă",
+        "process_comment/note": "Procesează comentariul/notă",
+        "process_comment/note_title": "Procesează titlul comentariului/notă",
+        "process_document_link": "Procesați linkul documentului",
         "account": "Cont",
         "name": "Nume",
         "acronym": "Acronim",
@@ -102,6 +119,7 @@
         "legislative_reference_description": "Descrierea referințelor legislative",
         "statistical_standards": "Standarde statistice",
         "process_documentation": "Documentația procesului",
+        "process_documentation_basic_variables": "Variabilele de bază ale documentației procesului",
         "documentation_name": "Numele documentației",
         "documentation_description": "Descrierea documentației",
         "survey": "sondaj",
@@ -137,6 +155,7 @@
         "reset": "Resetează",
         "delete": "Șterge",
         "update": "Actualizați",
+        "finish": "Termină",
         "organization": "Organizaţie",
         "division": "Diviziune",
         "divisions": "Diviziuni",
@@ -170,6 +189,7 @@
         "search_for_statistical_process": "Începeți să tastați pentru a căuta un program statistic",
         "search_for_GSBPM_sub_phase": "Începeți să tastați pentru a căuta o subfază GSBPM",
         "search_for_business_service": "Începeți să tastați pentru a căuta un serviciu",
+        "search_for_process_method": "Începeți să tastați pentru a căuta o metodă",
         "validations": {
             "survey_ID": "Vă rugăm să introduceți codul sondajului.",
             "survey_name" : "Vă rugăm să introduceți numele sondajului.",
@@ -201,7 +221,8 @@
             "GSBPM_sub_phase": "Vă rugăm să selectați o subfază GSBPM.",
             "next_GSBPM_sub_phase": "Vă rugăm să selectați următoarea subfază GSBPM.",
             "frequency": "Vă rugăm să selectați o frecvență pentru tip.",
-            "reason_of_change": "Vă rugăm să introduceți motivul modificării."
+            "reason_of_change": "Vă rugăm să introduceți motivul modificării.",
+            "process_output_name": "Vă rugăm să introduceți un nume de ieșire a procesului."
         },
         "selection": {
             "organization": "Selectați o organizație",
@@ -213,7 +234,9 @@
             "statistical_process": "Selectați un proces statistic",
             "GSBPM_sub_phase": "Selectați o subfază GSBPM",
             "frequency": "Selectați o frecvență",
-            "business_service": "Selectați un serviciu de afaceri (software)"
+            "business_service": "Selectați un serviciu de afaceri (software)",
+            "process_method": "Selectați o metodă de proces",
+            "statistical_standards": "Selectați standardele statistice"
         }
     },
     "structural": {
@@ -254,6 +277,21 @@
         "measurementUnit_link": "Accesați unitatea de măsură",
         "measurementType_title": "Tipul de măsurare",
         "measurementType_text": "Tipul de măsurare definește tipul unei măsuri, de ex. masa sau moneda. Tipul de măsurare grupează toate unitățile de măsură, care pot fi convertite unele în altele. Un tip de măsurare poate avea o unitate de măsură standard, care poate fi utilizată pentru conversia între diferite unități de măsură.",
-        "measurementType_link": "Accesați tipul de măsurare"
+        "measurementType_link": "Accesați tipul de măsurare",
+        "level_local_id": "Level Local Id",
+        "level_name": "Level Name",
+        "level_description": "Level Description",
+        "level_number": "Level Number",
+        "level_add_button": "Adaugă",
+        "validations":{
+            "statistical_classification_id": "Please enter a valid id",
+            "statistical_classification_name": "Please enter a valid name",
+            "statistical_classification_veresion": "Please enter a valid version",
+            "statistical_classification_description": "Please enter a valid description",
+            "statistical_classification_url": "Please enter a valid URL",
+            "level_id": "Please enter a valid level id",
+            "level_name": "Please enter a valid level name",
+            "level_number": "Please enter a valid level number"
+        }
     }
 }

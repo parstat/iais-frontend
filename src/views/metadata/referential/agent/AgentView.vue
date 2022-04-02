@@ -29,7 +29,9 @@
               </span>
             </div>
             <div class="card-slot">
-              <span v-if="agent.parent">{{ agent.parent.name }}</span>
+              <span v-if="agent.parent">
+                {{ agent.parent.name }}
+              </span>
               <span v-else class="pl-4">&ndash;</span>
             </div>
             <div class="card-group">

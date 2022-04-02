@@ -477,6 +477,26 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
+      //Statistical Classifications Add
+      {
+        path: "metadata/structural/classifications/add",
+        name: "StatisticalClassificationAdd",
+        component: () =>
+          import(
+            "@/views/metadata/structural/statisticalClassifications/StatisticalClassificationAdd"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
+      //Statistical Classifications Edit
+      {
+        path: "metadata/structural/classifications/edit/:id",
+        name: "StatisticalClassificationEdit",
+        component: () =>
+          import(
+            "@/views/metadata/structural/statisticalClassifications/StatisticalClassificationEdit"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
       //* Code List */
       {
         path: "metadata/structural/codelist/",

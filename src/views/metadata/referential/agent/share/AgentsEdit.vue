@@ -17,7 +17,9 @@
                 class="text-decoration-none text-primary"
               >
                 <CIcon name="cil-plus" />
-                <span class="icon-span">{{ $t("referential.add") }}</span>
+                <span class="icon-span">
+                  {{ $t("referential.add") }}
+                </span>
               </router-link>
             </CNavItem>
           </CNav>

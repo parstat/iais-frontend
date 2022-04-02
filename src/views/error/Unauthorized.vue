@@ -7,7 +7,7 @@
             <span>401</span>
           </h1>
           <h4 class="pt-3">
-            <span>Ops, something went wrong!</span>
+            <span>{{ $t("error.401") }}</span>
           </h4>
           <p class="text-muted">
             <span>{{ $t("user.unauthorized") }}</span>
@@ -16,7 +16,7 @@
         <div class="clearfix mt-3">
           <router-link tag="a" to="/">
             <CIcon name="cilHome"></CIcon>
-            <span>{{ $t("common.goto_home") }}</span>
+            <span>&nbsp;{{ $t("common.goto_home") }}</span>
           </router-link>
         </div>
       </CCol>

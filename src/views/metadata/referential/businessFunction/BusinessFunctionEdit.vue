@@ -19,13 +19,9 @@
                 :placeholder="$t('referential.business_function_name')"
                 v-model.trim="businessFunction.name"
               />
-              <span
-                class="text-danger"
-                v-if="v$.businessFunction.name.$error"
-                >{{
-                  $t("referential.validations.business_function_name")
-                }}</span
-              >
+              <span class="text-danger" v-if="v$.businessFunction.name.$error">
+                {{ $t("referential.validations.business_function_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -45,10 +41,11 @@
               <span
                 class="text-danger"
                 v-if="v$.businessFunction.description.$error"
-                >{{
-                  $t("referential.validations.business_function_description")
-                }}</span
               >
+                {{
+                  $t("referential.validations.business_function_description")
+                }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="localId">
@@ -65,10 +62,9 @@
               <span
                 class="text-danger"
                 v-if="v$.businessFunction.localId.$error"
-                >{{
-                  $t("referential.validations.business_function_local_ID")
-                }}</span
               >
+                {{ $t("referential.validations.business_function_local_ID") }}
+              </span>
             </CForm>
           </CCardText>
           <CButton
