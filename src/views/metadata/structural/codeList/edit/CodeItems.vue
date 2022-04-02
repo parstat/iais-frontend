@@ -20,6 +20,23 @@
           </div>
         </CForm>
         <CForm>
+          <label for="label">Label*</label>
+          <input
+            id="label"
+            type="text"
+            class="form-control"
+            :class="{
+              'is-invalid': v$.label.$error,
+              'mb-3': !v$.label.$error,
+            }"
+            placeholder="Code label"
+            v-model.trim="label"
+          />
+          <div class="text-danger mb-3" v-if="v$.label.$error">
+            Please enter a label.
+          </div>
+        </CForm>
+        <CForm>
           <label for="description">Description*</label>
           <textarea
             rows="5"
@@ -37,23 +54,6 @@
             Please enter a description.
           </div>
         </CForm>
-        <CForm>
-          <label for="label">Label*</label>
-          <input
-            id="label"
-            type="text"
-            class="form-control"
-            :class="{
-              'is-invalid': v$.label.$error,
-              'mb-3': !v$.label.$error,
-            }"
-            placeholder="Code label"
-            v-model.trim="codeName"
-          />
-          <div class="text-danger mb-3" v-if="v$.label.$error">
-            Please enter a label.
-          </div>
-        </CForm>
         <div class="form-mandatory">
           <span>*Mandatory fields</span>
         </div>
@@ -68,20 +68,50 @@
       </CButton>
       <hr />
       <div class="code-items-section">
-        <CRow>
-          <CCol
-            class="col-4"
-            v-for="cardItem of code.codeItems"
-            :key="cardItem.id"
+        <div class="table-responsive" v-if="!isLoading">
+          <CSmartTable
+            v-if="code.codeItems?.length"
+            :activePage="1"
+            :items="code.codeItems"
+            :columns="codeItemsColumns"
+            columnFilter
+            cleaner
+            itemsPerPageSelect
+            :itemsPerPage="5"
+            columnSorter
+            pagination
           >
-            <CCard>
-              <CCardHeader>{{ cardItem.code }}</CCardHeader>
-              <CCardText>
-                {{ cardItem.description }}
-              </CCardText>
-            </CCard>
-          </CCol>
-        </CRow>
+            <!-- <template #actions="{ item }">
+              <td style="text-align: right; width: 10%; padding-right: 20px">
+                <span v-if="isAuthenticated" class="pl-2">
+                  <router-link
+                    tag="a"
+                    title="Edit"
+                    :to="{
+                      name: 'CodeEdit',
+                      params: { id: item.id },
+                    }"
+                  >
+                    <CIcon name="cil-pencil" />
+                  </router-link>
+                </span>
+
+                <span v-if="isAuthenticated && isAdmin" class="pl-2">
+                   <router-link
+                      tag="a"
+                      title="Delete"
+                      :to="{
+                        name: 'CodeDelete',
+                        params: { id: item.id },
+                      }"
+                    >
+                      <CIcon name="cil-trash" />
+                    </router-link>
+                </span>
+              </td>
+            </template> -->
+          </CSmartTable>
+        </div>
       </div>
     </CCardBody>
   </CCard>
@@ -95,6 +125,8 @@ export default {
   name: "CodeEditBasic",
   computed: {
     ...mapGetters("code", ["code"]),
+    ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
+    ...mapGetters("coreui", ["isLoading"]),
   },
   data() {
     return {
@@ -103,6 +135,17 @@ export default {
       codeName: "",
       description: "",
       label: "",
+      codeItemsColumns: [
+        "code",
+        "value",
+        {
+          key: "actions",
+          label: "Actions",
+          _style: "",
+          sorter: false,
+          filter: false,
+        },
+      ],
     };
   },
   validations: {
@@ -128,7 +171,7 @@ export default {
           label: this.label,
         };
         this.$store.dispatch("code/addCodeItem", formData).then(() => {
-          this.$emit("next");
+          this.$store.dispatch("code/findById", this.$route.params.id);
         });
         console.log(formData);
       }

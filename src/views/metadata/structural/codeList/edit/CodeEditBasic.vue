@@ -38,23 +38,6 @@
           </div>
         </CForm>
         <CForm>
-          <label for="language">Language*</label>
-          <input
-            id="language"
-            type="text"
-            class="form-control"
-            :class="{
-              'is-invalid': v$.code.language.$error,
-              'mb-3': !v$.code.language.$error,
-            }"
-            placeholder="Code language"
-            v-model.trim="code.language"
-          />
-          <div class="text-danger mb-3" v-if="v$.code.language.$error">
-            Please enter a language.
-          </div>
-        </CForm>
-        <CForm>
           <label for="localId">Local id*</label>
           <input
             id="localId"
@@ -112,9 +95,6 @@ export default {
       description: {
         required,
       },
-      language: {
-        required,
-      },
       localId: {
         required,
       },
@@ -129,7 +109,6 @@ export default {
           id: this.code.id,
           name: this.code.name,
           description: this.code.description,
-          language: this.code.language,
           localId: this.code.localId,
         };
         this.$store.dispatch("code/update", formData).then(() => {

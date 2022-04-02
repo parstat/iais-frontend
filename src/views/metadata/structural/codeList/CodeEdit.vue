@@ -54,7 +54,7 @@
                     aria-labelledby="home-tab"
                     :visible="activeTab === 1"
                   >
-                    <app-code-items @next="next"></app-code-items>
+                    <app-code-items></app-code-items>
                   </CTabPane>
                 </CTabContent>
               </CTabContent>

@@ -69,9 +69,7 @@ const actions = {
         dispatch("message/success", "Code saved!", {
           root: true,
         });
-        router.push(
-          "/metadata/structuralal/codelist/edit" + data.id + "?step=2"
-        );
+        router.push("/metadata/structural/codelist/edit/" + data + "?step=2");
       },
       (error) => {
         console.log(error);
@@ -85,7 +83,7 @@ const actions = {
         dispatch("message/success", "Code deleted!", {
           root: true,
         });
-        router.push("/metadata/structuralal/codelist");
+        router.push("/metadata/structural/codelist");
       },
       (error) => {
         console.log(error);
@@ -99,7 +97,33 @@ const actions = {
         dispatch("message/success", "Code updated!", {
           root: true,
         });
-        router.push("/metadata/structuralal/codelist");
+        router.push("/metadata/structural/codelist");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  addCodeItem({ dispatch }, formData) {
+    codeService.addCodeItem(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Code item added!", {
+          root: true,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  removeCodeItem({ dispatch }, id) {
+    codeService.addCodeItem(id).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Code item removed!", {
+          root: true,
+        });
       },
       (error) => {
         console.log(error);
