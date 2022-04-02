@@ -72,9 +72,7 @@ const actions = {
           root: true,
         });
         router.push(
-          "/metadata/structural/classifications/edit/" +
-            data +
-            "?step=2"
+          "/metadata/structural/classifications/edit/" + data + "?step=2"
         );
       },
       (error) => {
