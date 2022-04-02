@@ -71,26 +71,6 @@
                           </div>
                         </CForm>
                         <CForm>
-                          <label for="language">Language*</label>
-                          <input
-                            id="language"
-                            type="text"
-                            class="form-control"
-                            :class="{
-                              'is-invalid': v$.language.$error,
-                              'mb-3': !v$.language.$error,
-                            }"
-                            placeholder="Code language"
-                            v-model.trim="language"
-                          />
-                          <div
-                            class="text-danger mb-3"
-                            v-if="v$.language.$error"
-                          >
-                            Please enter a language.
-                          </div>
-                        </CForm>
-                        <CForm>
                           <label for="localId">Local id*</label>
                           <input
                             id="localId"
@@ -146,7 +126,6 @@ export default {
       v$: useValidate(),
       name: "",
       description: "",
-      language: "",
       localId: "",
       disabled: false,
     };
@@ -156,9 +135,6 @@ export default {
       required,
     },
     description: {
-      required,
-    },
-    language: {
       required,
     },
     localId: {
@@ -173,7 +149,6 @@ export default {
         const formData = {
           name: this.name,
           description: this.description,
-          language: this.language,
           localId: this.localId,
         };
         this.$store.dispatch("code/save", formData);
