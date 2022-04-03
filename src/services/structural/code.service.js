@@ -9,6 +9,7 @@ export const codeService = {
   update,
   addCodeItem,
   removeCodeItem,
+  updateCodeItem,
   delete: _delete,
 };
 
@@ -138,6 +139,36 @@ function removeCodeItem(id) {
         reject(error);
       }
     );
+  });
+}
+
+function updateCodeItem(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const requestBody = {
+      code: formData.codeName,
+      description: formData.description,
+      value: formData.label,
+      id: formData.id,
+    };
+
+    // TODO: This endpoint does not exists.
+    axiosIais
+      .put("/structural/ClosedCodeLists/codeitems/update", requestBody, config)
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 

@@ -130,6 +130,19 @@ const actions = {
       }
     );
   },
+  updateCodeItem({ dispatch }, formData) {
+    codeService.addCodeItem(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Code item updated!", {
+          root: true,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
 };
 
 const getters = {
