@@ -92,17 +92,12 @@
                     <CIcon name="cil-pencil" />
                   </span>
 
-                  <span v-if="isAuthenticated && isAdmin" class="pl-2">
-                    <!-- <router-link
-                      tag="a"
-                      title="Delete"
-                      :to="{
-                        name: 'CodeDelete',
-                        params: { id: item.id },
-                      }"
-                    >
-                      <CIcon name="cil-trash" />
-                    </router-link> -->
+                  <span
+                    v-if="isAuthenticated && isAdmin"
+                    class="pl-2 clickable"
+                    @click="openDeleteDialog(item)"
+                  >
+                    <CIcon name="cil-trash" />
                   </span>
                 </td>
               </template>
@@ -117,6 +112,12 @@
       @closeDialog="showEditDialog = false"
       @codeItemUpdated="reloadCodeList()"
     ></app-code-item-edit>
+    <app-code-item-delete
+      :showDeleteDialog="showDeleteDialog"
+      :item="item"
+      @closeDialog="showDeleteDialog = false"
+      @codeItemDeleted="reloadCodeList()"
+    ></app-code-item-delete>
   </div>
 </template>
 <script>
@@ -125,10 +126,10 @@ import { required } from "@vuelidate/validators";
 import { mapGetters } from "vuex";
 
 import CodeItemEdit from "./CodeItemEdit.vue";
+import CodeItemDelete from "./CodeItemDelete.vue";
 
 export default {
   name: "CodeEditBasic",
-  inheritAttrs: false,
   computed: {
     ...mapGetters("code", ["code"]),
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
@@ -142,6 +143,7 @@ export default {
       description: "",
       label: "",
       showEditDialog: false,
+      showDeleteDialog: false,
       item: null,
       codeItemsColumns: [
         "code",
@@ -158,6 +160,7 @@ export default {
   },
   components: {
     "app-code-item-edit": CodeItemEdit,
+    "app-code-item-delete": CodeItemDelete,
   },
   validations: {
     codeName: {
@@ -188,12 +191,19 @@ export default {
       }
     },
     reloadCodeList() {
+      this.item = null;
+      this.showEditDialog = false;
+      this.showDeleteDialog = false;
       this.$store.dispatch("code/findById", this.$route.params.id);
     },
     openEditDialog(item) {
       console.log(item);
       this.item = item;
       this.showEditDialog = true;
+    },
+    openDeleteDialog(item) {
+      this.item = item;
+      this.showDeleteDialog = true;
     },
   },
   created() {
