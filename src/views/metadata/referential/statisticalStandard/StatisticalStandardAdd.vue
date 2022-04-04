@@ -19,9 +19,9 @@
                 :placeholder="$t('referential.statistical_standard_name')"
                 v-model.trim="name"
               />
-              <span class="text-danger" v-if="v$.name.$error">{{
-                $t("referential.validations.statistical_standard_name")
-              }}</span>
+              <span class="text-danger" v-if="v$.name.$error">
+                {{ $t("referential.validations.statistical_standard_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -38,9 +38,11 @@
                 "
                 v-model.trim="description"
               />
-              <span class="text-danger" v-if="v$.description.$error">{{
-                $t("referential.validations.statistical_standard_description")
-              }}</span>
+              <span class="text-danger" v-if="v$.description.$error">
+                {{
+                  $t("referential.validations.statistical_standard_description")
+                }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="link">
@@ -77,9 +79,9 @@
                 :class="{ 'is-invalid': v$.type.$error }"
                 :placeholder="$t('referential.selection.type')"
               ></v-select>
-              <span class="text-danger" v-if="v$.type.$error">{{
-                $t("referential.validations.type")
-              }}</span>
+              <span class="text-danger" v-if="v$.type.$error">
+                {{ $t("referential.validations.type") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="localId">
@@ -93,9 +95,9 @@
                 :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error">{{
-                $t("referential.validations.local_ID")
-              }}</span>
+              <span class="text-danger" v-if="v$.localId.$error">
+                {{ $t("referential.validations.local_ID") }}
+              </span>
             </CForm>
             <div class="form-mandatory">
               <span>*{{ $t("referential.mandatory_fields") }}</span>

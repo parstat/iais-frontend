@@ -19,9 +19,9 @@
                 :placeholder="$t('referential.business_service_name')"
                 v-model.trim="name"
               />
-              <span class="text-danger" v-if="v$.name.$error">{{
-                $t("referential.validations.business_service_name")
-              }}</span>
+              <span class="text-danger" v-if="v$.name.$error">
+                {{ $t("referential.validations.business_service_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -36,9 +36,9 @@
                 :placeholder="$t('referential.business_service_description')"
                 v-model.trim="description"
               />
-              <span class="text-danger" v-if="v$.description.$error">{{
-                $t("referential.validations.business_service_description")
-              }}</span>
+              <span class="text-danger" v-if="v$.description.$error">
+                {{ $t("referential.validations.business_service_description") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="version">
@@ -64,9 +64,9 @@
                 :placeholder="$t('referential.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error">{{
-                $t("referential.validations.business_service_local_ID")
-              }}</span>
+              <span class="text-danger" v-if="v$.localId.$error">
+                {{ $t("referential.validations.business_service_local_ID") }}
+              </span>
             </CForm>
             <div class="form-mandatory">
               <span>*{{ $t("referential.mandatory_fields") }}</span>

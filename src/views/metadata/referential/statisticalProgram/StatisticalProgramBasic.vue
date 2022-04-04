@@ -15,9 +15,9 @@
             v-model.trim="localLocalId"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localLocalId.$error">{{
-            $t("referential.validations.survey_ID")
-          }}</span>
+          <span class="text-danger" v-if="v$.localLocalId.$error">
+            {{ $t("referential.validations.survey_ID") }}
+          </span>
         </CForm>
         <CForm>
           <CFormLabel for="name">
@@ -32,9 +32,9 @@
             v-model.trim="localName"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localName.$error">{{
-            $t("referential.validations.survey_name")
-          }}</span>
+          <span class="text-danger" v-if="v$.localName.$error">
+            {{ $t("referential.validations.survey_name") }}
+          </span>
         </CForm>
         <CForm>
           <CFormLabel for="acronym">
@@ -49,9 +49,9 @@
             v-model.trim="localAcronym"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localAcronym.$error">{{
-            $t("referential.validations.survey_acronym")
-          }}</span>
+          <span class="text-danger" v-if="v$.localAcronym.$error">
+            {{ $t("referential.validations.survey_acronym") }}
+          </span>
         </CForm>
         <CForm>
           <CFormLabel for="description">
@@ -67,9 +67,9 @@
             v-model.trim="localDescription"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localDescription.$error">{{
-            $t("referential.validations.survey_description")
-          }}</span>
+          <span class="text-danger" v-if="v$.localDescription.$error">
+            {{ $t("referential.validations.survey_description") }}
+          </span>
         </CForm>
         <div class="form-mandatory">
           <span>*{{ $t("referential.mandatory_fields") }}</span>

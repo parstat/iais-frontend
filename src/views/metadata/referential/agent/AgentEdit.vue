@@ -19,9 +19,9 @@
                 :placeholder="$t('referential.agent_name')"
                 v-model.trim="agent.name"
               />
-              <span class="text-danger" v-if="v$.agent.name.$error">{{
-                $t("referential.validations.agent_name")
-              }}</span>
+              <span class="text-danger" v-if="v$.agent.name.$error">
+                {{ $t("referential.validations.agent_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -48,9 +48,9 @@
                 :class="{ 'is-invalid': v$.agent.type.$error }"
                 :placeholder="$t('referential.selection.type')"
               ></v-select>
-              <span class="text-danger" v-if="v$.agent.type.$error">{{
-                $t("referential.validations.type")
-              }}</span>
+              <span class="text-danger" v-if="v$.agent.type.$error">
+                {{ $t("referential.validations.type") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="parent">

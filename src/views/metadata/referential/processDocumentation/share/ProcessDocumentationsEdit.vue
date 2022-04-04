@@ -7,7 +7,7 @@
             <CCol class="col-9">
               <CCardTitle component="h5">
                 <CIcon name="cil-description" />
-                Process documentation
+                <span>&nbsp;{{ $t("referential.process_documentation") }}</span>
               </CCardTitle>
             </CCol>
             <CCol class="col-3">
@@ -26,7 +26,8 @@
                         },
                       }"
                     >
-                      <CIcon name="cil-plus" />Add
+                      <CIcon name="cil-plus" />
+                      <span>{{ $t("referential.add") }}</span>
                     </router-link>
                   </span>
                 </CNavItem>
@@ -103,16 +104,14 @@
             size="sm"
             style="margin-right: 0.3rem"
             @click="$emit('back')"
-          >
-            Back
+            ><span>{{ $t("referential.back") }}</span>
           </CButton>
           <CButton
             color="primary"
             size="sm"
             style="margin-right: 0.3rem"
             @click="$emit('next')"
-          >
-            Finish
+            ><span>{{ $t("referential.finish") }}</span>
           </CButton>
         </CCardFooter>
       </CCard>
@@ -131,32 +130,32 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("referential.ID"),
           _style: { width: "10%" },
         },
         {
           key: "name",
-          label: "Process name",
+          label: this.$i18n.t("referential.process_name"),
           _style: { width: "40%" },
         },
         {
           key: "frequency",
-          label: "Frequency",
+          label: this.$i18n.t("referential.frequency"),
           _style: { width: "20%" },
         },
         {
           key: "nextSubPhase",
-          label: "Next",
+          label: this.$i18n.t("referential.next"),
           _style: { width: "20%" },
         },
         {
           key: "version",
-          label: "Version",
+          label: this.$i18n.t("referential.version"),
           _style: { width: "5%" },
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("referential.actions"),
           _style: { width: "5%" },
           sorter: false,
           filter: false,

@@ -3,27 +3,31 @@
     <CCardBody>
       <CCardTitle>
         <CIcon name="cil-description" />
-        Process Inputs
+        <span>&nbsp;{{ $t("referential.process_inputs") }}</span>
       </CCardTitle>
       <CCardText>
         <CForm>
-          <label for="name">Process input name*</label>
+          <CFormLabel for="name">
+            <span>{{ $t("referential.process_input_name") }}*</span>
+          </CFormLabel>
           <input
             id="input_name"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.name.$error }"
-            placeholder="Process input name"
+            :placeholder="$t('referential.process_input_name')"
             v-model.trim="name"
           />
-          <label for="description">Process input description*</label>
+          <CFormLabel for="description">
+            <span>{{ $t("referential.process_input_description") }}*</span>
+          </CFormLabel>
           <textarea
             rows="5"
             id="input_description"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.description.$error }"
-            placeholder="Process input description"
+            :placeholder="$t('referential.process_input_description')"
             v-model.trim="description"
           />
           <div>
@@ -32,8 +36,7 @@
               size="sm"
               style="margin-right: 0.3rem"
               @click="addProcessInput"
-            >
-              Add
+              ><span>{{ $t("referential.add") }}</span>
             </CButton>
           </div>
         </CForm>
@@ -48,7 +51,7 @@
                 <CRow>
                   <CCol class="col-9">
                     <CCardTitle component="h6">
-                      {{ processInput.name }}
+                      <span>{{ processInput.name }}</span>
                     </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
@@ -63,7 +66,9 @@
                 </CRow>
               </CCardHeader>
               <CCardBody>
-                <CCardText>{{ processInput.description }} </CCardText>
+                <CCardText>
+                  <span>{{ processInput.description }}</span>
+                </CCardText>
               </CCardBody>
             </CCard>
           </CCol>
@@ -75,16 +80,14 @@
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('back')"
-        >
-          Back
+          ><span>{{ $t("referential.back") }}</span>
         </CButton>
         <CButton
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('next')"
-        >
-          Next
+          ><span>{{ $t("referential.next") }}</span>
         </CButton>
       </CCardFooter>
     </CCardBody>

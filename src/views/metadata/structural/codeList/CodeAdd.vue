@@ -1,138 +1,135 @@
 <template>
-  <CRow class="col-sm-12 col-md-6">
+  <CRow class="col-12">
     <CCard>
-      <CCardHeader>
+      <CCardHeader class="bg-white">
         <span>Code</span>
       </CCardHeader>
       <CCardBody>
-        <CCardGroup>
-          <label for="name"><span>Name*</span></label>
-          <input
-            id="name"
-            type="text"
-            class="form-control"
-            :class="{ 'is-invalid': v$.name.$error }"
-            placeholder="Code name"
-            v-model.trim="form.name"
-          />
-          <span class="help-block" :class="{ show: v$.name.$error }"
-            >Please enter variable name.</span
-          >
-        </CCardGroup>
-        <CCardGroup>
-          <label for="description"><span>Description</span></label>
-          <textarea
-            rows="5"
-            id="description"
-            type="text"
-            class="form-control"
-            placeholder="Code description"
-            v-model.trim="form.description"
-          />
-          <span class="help-block">Please enter a description</span>
-        </CCardGroup>
-        <CCardGroup>
-          <label for="definition"><span>Language</span></label>
-          <input
-            id="language"
-            type="text"
-            class="form-control"
-            placeholder="Code language"
-            v-model.trim="form.language"
-          />
-          <span class="help-block">Please enter a language</span>
-        </CCardGroup>
-        <CCardGroup>
-          <label for="localId"><span>Local id*</span></label>
-          <input
-            id="localId"
-            type="text"
-            class="form-control capitalize"
-            :class="{ 'is-invalid': v$.localId.$error }"
-            placeholder="Local id"
-            v-model.trim="form.localId"
-          />
-          <span class="help-block" :class="{ show: v$.localId.$error }"
-            >Please specify a local id.</span
-          >
-        </CCardGroup>
-        <div class="form-mandatory"><span>*Mandatory fields</span></div>
+        <CCardText>
+          <CRow>
+            <CCol class="col-3 mr-2">
+              <CNav class="flex-column" variant="pills" role="tab">
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" active>
+                    <span>Basic</span>
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    <span>Code Items</span>
+                  </CNavLink>
+                </CNavItem>
+              </CNav>
+            </CCol>
+
+            <CCol class="col-9">
+              <CTabContent>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="true"
+                >
+                  <CCard>
+                    <CCardBody>
+                      <CCardText>
+                        <CForm>
+                          <label for="name">Name*</label>
+                          <input
+                            id="name"
+                            type="text"
+                            class="form-control"
+                            :class="{
+                              'is-invalid': v$.name.$error,
+                              'mb-3': !v$.name.$error,
+                            }"
+                            placeholder="Code name"
+                            v-model.trim="name"
+                          />
+                          <div class="text-danger mb-3" v-if="v$.name.$error">
+                            Please enter a name for the code.
+                          </div>
+                        </CForm>
+                        <CForm>
+                          <label for="description">Description*</label>
+                          <textarea
+                            rows="5"
+                            id="description"
+                            type="text"
+                            class="form-control"
+                            :class="{
+                              'is-invalid': v$.description.$error,
+                              'mb-3': !v$.description.$error,
+                            }"
+                            placeholder="Code description"
+                            v-model.trim="description"
+                          />
+                          <div
+                            class="text-danger mb-3"
+                            v-if="v$.description.$error"
+                          >
+                            Please enter a description.
+                          </div>
+                        </CForm>
+                        <CForm>
+                          <label for="localId">Local id*</label>
+                          <input
+                            id="localId"
+                            type="text"
+                            class="form-control"
+                            :class="{
+                              'is-invalid': v$.localId.$error,
+                              'mb-3': !v$.localId.$error,
+                            }"
+                            placeholder="Local id"
+                            v-model.trim="localId"
+                          />
+                          <div
+                            class="text-danger mb-3"
+                            v-if="v$.localId.$error"
+                          >
+                            Please specify the local id.
+                          </div>
+                        </CForm>
+                        <div class="form-mandatory">
+                          <span>*Mandatory fields</span>
+                        </div>
+                      </CCardText>
+                    </CCardBody>
+                    <CCardFooter class="bg-white">
+                      <CButton
+                        color="primary"
+                        size="sm"
+                        style="margin-right: 0.3rem"
+                        @click.prevent="handleSubmit()"
+                        :disabled="disabled"
+                        ><span>Next</span>
+                      </CButton>
+                    </CCardFooter>
+                  </CCard>
+                </CTabPane>
+              </CTabContent>
+            </CCol>
+          </CRow>
+        </CCardText>
       </CCardBody>
-      <CCardFooter>
-        <CButton
-          color="primary"
-          size="sm"
-          style="margin-right: 0.3rem"
-          @click.prevent="Submit()"
-          :disabled="disabled"
-          ><span>Save</span></CButton
-        >
-        <CButton
-          color="danger"
-          size="sm"
-          @click.prevent="handleReset()"
-          :disabled="disabled"
-          ><span>Reset</span></CButton
-        >
-      </CCardFooter>
     </CCard>
   </CRow>
 </template>
 <script>
-//import { mapGetters } from "vuex";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
-//import { Variable } from "@/common";
-import axios from "axios";
-
-let axiosConfig = {
-  headers: {
-    "Content-Type": "application/json;charset=UTF-8",
-    Accept: "application/json",
-    "Access-Control-Allow-Origin": "*",
-  },
-};
 
 export default {
   name: "CodeAdd",
   data() {
     return {
       v$: useValidate(),
-      form: {
-        name: "",
-        description: "",
-        language: "",
-        localId: "",
-      },
+      name: "",
+      description: "",
+      localId: "",
       disabled: false,
-      //variable: []
     };
   },
-  mounted() {
-    this.loading = true;
-    axios
-      //.get("http://localhost:5300/variables/" + this.$route.params.id)
-      //.get("http://iais.francecentral.cloudapp.azure.com:8080/api/v1/referential/agents")
-      .get(
-        "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/OpenVariables" +
-          this.$route.params.id
-      )
-      .then((response) => (this.variables = response.data.variables))
-      .catch((error) => console.log(error))
-      .finally(() => (this.loading = false));
-  },
-  /*
-  computed: {
-    ...mapGetters("variable", ["parents"]),
-    types() {
-      var types = [];
-      for (const key of Object.keys(Variable)) {
-        types.push(Variable[key]);
-      }
-      return types;
-    }
-  },
-  */
   validations: {
     name: {
       required,
@@ -152,32 +149,11 @@ export default {
         const formData = {
           name: this.name,
           description: this.description,
-          language: this.language,
           localId: this.localId,
         };
         this.$store.dispatch("code/save", formData);
         console.log(formData);
       }
-    },
-    Submit() {
-      axios
-        .post(
-          "http://iais.francecentral.cloudapp.azure.com:8080/api/v1/structural/ClosedCodeLists",
-          this.form,
-          axiosConfig
-        )
-        .then(
-          function () {
-            alert("Code has been saved with success!");
-          }.bind(this)
-        );
-    },
-    handleReset() {
-      this.form.name = "";
-      this.form.description = "";
-      this.form.language = "";
-      this.form.localId = "";
-      this.v$.$reset();
     },
   },
 };
@@ -185,5 +161,17 @@ export default {
 <style scoped>
 .capitalize {
   text-transform: uppercase;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  border-left-width: 4px;
+  border-left-style: solid;
+  background-color: #f8f8f8;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  border-left-color: #321fdb;
+  color: #321fdb;
+  border-radius: unset;
+  padding-left: 0.8rem;
 }
 </style>

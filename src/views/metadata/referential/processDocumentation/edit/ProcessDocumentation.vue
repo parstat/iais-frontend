@@ -82,8 +82,9 @@
             <span
               class="text-danger"
               v-if="v$.processDocumentation.frequency.$error"
-              >{{ $t("referential.validations.frequency") }}</span
             >
+              {{ $t("referential.validations.frequency") }}
+            </span>
           </div>
           <div class="mb-3" v-if="businessFunctions">
             <CFormLabel for="nextBusinessFunction">
@@ -129,8 +130,9 @@
             <span
               class="text-danger mb-3"
               v-if="v$.processDocumentation.nextSubPhase.$error"
-              >{{ $t("referential.validations.next_GSBPM_sub_phase") }}</span
             >
+              {{ $t("referential.validations.next_GSBPM_sub_phase") }}
+            </span>
             <div>
               <CFormSwitch
                 :label="$t('referential.last_process')"

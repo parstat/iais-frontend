@@ -17,7 +17,9 @@
                   class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
-                  <span class="icon-span">{{ $t("referential.add") }}</span>
+                  <span class="icon-span">
+                    {{ $t("referential.add") }}
+                  </span>
                 </router-link>
               </span>
             </CNavItem>
@@ -37,9 +39,9 @@
             :class="{ 'is-invalid': v$.owner.$error }"
             :placeholder="$t('referential.selection.organization')"
           ></v-select>
-          <span class="text-danger" v-if="v$.owner.$error">{{
-            $t("referential.validations.organization")
-          }}</span>
+          <span class="text-danger" v-if="v$.owner.$error">
+            {{ $t("referential.validations.organization") }}
+          </span>
         </CForm>
         <CForm v-if="maintainers">
           <CFormLabel for="division">
@@ -53,9 +55,9 @@
             :class="{ 'is-invalid': v$.maintainer.$error }"
             :placeholder="$t('referential.selection.division')"
           ></v-select>
-          <span class="text-danger" v-if="v$.maintainer.$error">{{
-            $t("referential.validations.division")
-          }}</span>
+          <span class="text-danger" v-if="v$.maintainer.$error">
+            {{ $t("referential.validations.division") }}
+          </span>
         </CForm>
         <CForm v-if="contacts">
           <CFormLabel for="contact">
@@ -69,9 +71,9 @@
             :class="{ 'is-invalid': v$.contact.$error }"
             :placeholder="$t('referential.selection.contact_person')"
           ></v-select>
-          <span class="text-danger" v-if="v$.contact.$error">{{
-            $t("referential.validations.contact_person")
-          }}</span>
+          <span class="text-danger" v-if="v$.contact.$error">
+            {{ $t("referential.validations.contact_person") }}
+          </span>
         </CForm>
       </CCardText>
       <CButton

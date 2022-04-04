@@ -512,6 +512,14 @@ const routes = [
         component: () => import("@/views/metadata/structural/codeList/CodeAdd"),
         meta: { authorize: [Role.User, Role.Admin] },
       },
+      //Code Edit
+      {
+        path: "metadata/structural/codelist/edit/:id",
+        name: "CodeEdit",
+        component: () =>
+          import("@/views/metadata/structural/codeList/CodeEdit"),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
       //Code View
       {
         path: "metadata/structural/codelist/view/:id",

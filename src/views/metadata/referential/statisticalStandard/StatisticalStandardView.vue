@@ -7,9 +7,9 @@
             <span>{{ statisticalStandard.name }}</span>
           </CCardTitle>
           <CCardText>
-            <label for="description">
+            <CFormLabel for="description">
               <strong>{{ $t("referential.description") }}:</strong>
-            </label>
+            </CFormLabel>
             <div class="text-muted" id="description">
               <span>{{ statisticalStandard.description }}</span>
             </div>

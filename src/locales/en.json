@@ -22,6 +22,10 @@
         "error_message": "Error message: ",
         "goto_homepage": "Go to homepage"
     },
+    "error": {
+        "500": "Houston, we have a problem!",
+        "401": "Oops, something went wrong!"
+    },
     "user": {
         "profile": "Profile",
         "settings": "Settings",
@@ -58,11 +62,18 @@
     "referential": {
         "statistical_process": "Statistical process",
         "statistical_processes": "Statistical processes",
+        "process_name": "Process name",
         "process_input": "Process input",
         "process_inputs": "Process inputs",
+        "process_input_name": "Process input name",
+        "process_input_description": "Process input description",
         "process_output": "Process output",
         "process_outputs": "Process outputs",
+        "process_output_name": "Process output name",
+        "process_output_description": "Process output description",
         "process_quality": "Process quality",
+        "process_quality_name": "Process quality name",
+        "process_quality_description": "Process quality description",
         "comments/notes": "Comments/Notes",
         "frequency": "Frequency",
         "reason_of_change": "Reason of change",
@@ -178,6 +189,7 @@
         "search_for_statistical_process": "Start typing to search for a statistical program",
         "search_for_GSBPM_sub_phase": "Start typing to search for a GSBPM sub-phase",
         "search_for_business_service": "Start typing to search for a service",
+        "search_for_process_method": "Start typing to search for a method",
         "validations": {
             "survey_ID": "Please enter survey ID.",
             "survey_name" : "Please enter survey name.",
@@ -209,7 +221,8 @@
             "GSBPM_sub_phase": "Please select a GSBPM sub-phase.",
             "next_GSBPM_sub_phase": "Please select the next GSBPM sub-phase.",
             "frequency": "Please select a frequency for type.",
-            "reason_of_change": "Please enter the reason of change."
+            "reason_of_change": "Please enter the reason of change.",
+            "process_output_name": "Please enter a process output name."
         },
         "selection": {
             "organization": "Select an organization",
@@ -221,7 +234,9 @@
             "statistical_process": "Select a statistical process",
             "GSBPM_sub_phase": "Select a GSBPM sub-phase",
             "frequency": "Select a frequency",
-            "business_service": "Select a business service (software)"
+            "business_service": "Select a business service (software)",
+            "process_method": "Select a process method",
+            "statistical_standards": "Select statistical standards"
         }
     },
     "structural": {
@@ -236,7 +251,7 @@
         "statistical_classification_items": "Items",
         "statistical_classification_name": "Statistical Classification Name",
         "statistical_classification_description": "Statistical Classification Description",
-        "statistical_classification_local_id": "Statistical Classification Id",
+        "statistical_classification_local_id": "Statistical Classification ID",
         "statistical_classification_definition": "Statistical Classification Definition",
         "statistical_classification_url": "Statistical Classification Link",
         "statistical_classification_version": "Statistical Classification Version",
@@ -264,13 +279,13 @@
         "measurementType_title": "Measurement type",
         "measurementType_text": "The measurement type defines the type of a measure e.g. mass or currency. The measurement type groups all measurement units, which can be converted into each other. A measurement type can have a standard measurement unit, which can be used for conversion between different measurement units.",
         "measurementType_link": "Go to measurement type",
-        "level_local_id": "Level Local Id",
-        "level_name": "Level Name",
-        "level_description": "Level Description",
-        "level_number": "Level Number",
+        "level_local_id": "Level local ID",
+        "level_name": "Level name",
+        "level_description": "Level description",
+        "level_number": "Level number",
         "level_add_button": "Add",
         "validations":{
-            "statistical_classification_id": "Please enter a valid id",
+            "statistical_classification_id": "Please enter a valid ID",
             "statistical_classification_name": "Please enter a valid name",
             "statistical_classification_veresion": "Please enter a valid version",
             "statistical_classification_description": "Please enter a valid description",

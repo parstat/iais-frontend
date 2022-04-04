@@ -22,10 +22,9 @@
               <span
                 class="text-danger"
                 v-if="v$.legislativeReference.name.$error"
-                >{{
-                  $t("referential.validations.legislative_reference_name")
-                }}</span
               >
+                {{ $t("referential.validations.legislative_reference_name") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="description">
@@ -47,12 +46,13 @@
               <span
                 class="text-danger"
                 v-if="v$.legislativeReference.description.$error"
-                >{{
+              >
+                {{
                   $t(
                     "referential.validations.legislative_reference_description"
                   )
-                }}</span
-              >
+                }}
+              </span>
             </CForm>
             <CForm class="mb-3">
               <CFormLabel for="account">
@@ -68,8 +68,9 @@
               <span
                 class="text-danger"
                 v-if="v$.legislativeReference.type.$error"
-                >{{ $t("referential.validations.type") }}</span
               >
+                {{ $t("referential.validations.type") }}
+              </span>
             </CForm>
             <CForm>
               <CFormLabel for="localId">

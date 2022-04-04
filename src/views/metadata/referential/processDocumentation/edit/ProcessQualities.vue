@@ -3,27 +3,31 @@
     <CCardBody>
       <CCardTitle>
         <CIcon name="cil-description" />
-        Process Quality
+        <span>&nbsp;{{ $t("referential.process_quality") }}</span>
       </CCardTitle>
       <CCardText>
         <CForm>
-          <label for="name">Process qualtiy name*</label>
+          <CFormLabel for="name">
+            <span>{{ $t("referential.process_quality_name") }}*</span>
+          </CFormLabel>
           <input
             id="quality_name"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.name.$error }"
-            placeholder="Process quality name"
+            :placeholder="$t('referential.process_quality_name')"
             v-model.trim="name"
           />
-          <label for="description">Process quality description*</label>
+          <CFormLabel for="description">
+            <span>{{ $t("referential.process_quality_name") }}*</span>
+          </CFormLabel>
           <textarea
             rows="5"
             id="quality_description"
             type="text"
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.description.$error }"
-            placeholder="Process quality description"
+            :placeholder="$t('referential.process_quality_description')"
             v-model.trim="description"
           />
         </CForm>
@@ -33,8 +37,7 @@
             size="sm"
             style="margin-right: 0.3rem"
             @click="addProcessQuality"
-          >
-            Add
+            ><span>{{ $t("referential.add") }}</span>
           </CButton>
         </div>
         <CRow>
@@ -48,7 +51,7 @@
                 <CRow>
                   <CCol class="col-9">
                     <CCardTitle component="h6">
-                      {{ processQuality.name }}
+                      <span>{{ processQuality.name }}</span>
                     </CCardTitle>
                   </CCol>
                   <CCol class="col-3">
@@ -64,7 +67,9 @@
               </CCardHeader>
 
               <CCardBody>
-                <CCardText>{{ processQuality.description }}</CCardText>
+                <CCardText>
+                  <span>{{ processQuality.description }}</span>
+                </CCardText>
               </CCardBody>
             </CCard>
           </CCol>
@@ -76,16 +81,14 @@
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('back')"
-        >
-          Back
+          ><span>{{ $t("referential.back") }}</span>
         </CButton>
         <CButton
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('next')"
-        >
-          Next
+          ><span>{{ $t("referential.next") }}</span>
         </CButton>
       </CCardFooter>
     </CCardBody>

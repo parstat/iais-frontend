@@ -7,6 +7,9 @@ export const codeService = {
   findById,
   save,
   update,
+  addCodeItem,
+  removeCodeItem,
+  updateCodeItem,
   delete: _delete,
 };
 
@@ -43,23 +46,76 @@ function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
     };
 
     const requestBody = {
       name: formData.name,
       description: formData.description,
-      //definition: formData.definition,
-      local_id: formData.localId,
+      localId: formData.localId,
+      // language: formData.language,
+    };
+
+    axiosIais.post("/structural/ClosedCodeLists/", requestBody, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function update(formData) {
+  // TODO: Add correct method for editing a code list
+  // return new Promise((resolve, reject) => {
+  //   const config = {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   };
+
+  //   const requestBody = {
+  //     name: formData.name,
+  //     description: formData.description,
+  //     localId: formData.localId,
+  //   };
+
+  //   axiosIais
+  //     .patch("/structural/ClosedCodeLists/" + formData.id, requestBody, config)
+  //     .then(
+  //       (response) => {
+  //         //console.log(response.data);
+  //         resolve(response.data);
+  //       },
+  //       (error) => {
+  //         reject(error);
+  //       }
+  //     );
+  // });
+  console.log(formData);
+}
+
+function addCodeItem(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const requestBody = {
+      code: formData.codeName,
+      description: formData.description,
+      value: formData.label,
+      nodeSetId: formData.nodeSetId,
     };
 
     axiosIais
-      .post(
-        "/structural/ClosedCodeLists/" + formData.localId,
-        new URLSearchParams(requestBody).toString(),
-        config
-      )
+      .put("/structural/ClosedCodeLists/codeitems/add", requestBody, config)
       .then(
         (response) => {
           //console.log(response.data);
@@ -72,27 +128,38 @@ function save(formData) {
   });
 }
 
-function update(formData) {
+function removeCodeItem(id) {
+  return new Promise((resolve, reject) => {
+    axiosIais.put("/structural/ClosedCodeLists/codeitems/remove/" + id).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function updateCodeItem(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
     };
 
     const requestBody = {
-      name: formData.name,
+      code: formData.codeName,
       description: formData.description,
-      //definition: formData.definition,
-      local_id: formData.localId,
+      value: formData.label,
+      id: formData.id,
     };
 
+    // TODO: This endpoint does not exists.
     axiosIais
-      .patch(
-        "/structural/ClosedCodeLists/" + formData.id,
-        new URLSearchParams(requestBody).toString(),
-        config
-      )
+      .put("/structural/ClosedCodeLists/codeitems/update", requestBody, config)
       .then(
         (response) => {
           //console.log(response.data);
