@@ -181,7 +181,7 @@ export default {
         this.next();
       }
     },
-    handleAddLevel(level) {
+    async handleAddLevel(level) {
       const formData = {
         statisticalClassificationId: this.statisticalClassification.id,
         localId: level.localId,
@@ -189,30 +189,30 @@ export default {
         description: level.description,
         levelNumber: level.levelNumber,
       };
-      this.$store
-        .dispatch("statisticalClassification/addLevel", formData)
-        .then((data) => {
-          console.log(data);
-          this.$store.dispatch(
-            "statisticalClassification/findById",
-            data.value
-          );
-        });
+      await this.$store.dispatch(
+        "statisticalClassification/addLevel",
+        formData
+      );
+      this.$store.dispatch(
+        "statisticalClassification/findById",
+        this.statisticalClassification.id
+      );
+      this.$emit("resetLevelFields");
     },
-    handleUploadItems(uploadedItems) {
+    async handleUploadItems(uploadedItems) {
       const formData = {
         statisticalClassificationId: this.statisticalClassification.id,
         rootItems: uploadedItems.rootItems,
         aggregationType: uploadedItems.aggregationType,
       };
-      this.$store
-        .dispatch("statisticalClassification/uploadItems", formData)
-        .then((data) => {
-          this.$store.dispatch(
-            "statisticalClassification/findById",
-            data.value
-          );
-        });
+      await this.$store.dispatch(
+        "statisticalClassification/uploadItems",
+        formData
+      );
+      this.$store.dispatch(
+        "statisticalClassification/findById",
+        this.statisticalClassification.id
+      );
     },
     nextLevels(fieldChanged) {
       this.editedLevels = fieldChanged;
@@ -246,3 +246,20 @@ export default {
   },
 };
 </script>
+<style scoped>
+.capitalize {
+  text-transform: uppercase;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  border-left-width: 4px;
+  border-left-style: solid;
+  background-color: #f8f8f8;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  border-left-color: #321fdb;
+  color: #321fdb;
+  border-radius: unset;
+  padding-left: 0.8rem;
+}
+</style>

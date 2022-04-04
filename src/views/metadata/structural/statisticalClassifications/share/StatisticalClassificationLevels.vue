@@ -10,7 +10,7 @@
           <input
             id="localId"
             type="text"
-            class="form-control mb-3"
+            class="form-control mb-3 capitalize"
             :class="{ 'is-invalid': v$.levelLocalId.$error }"
             :placeholder="$t('structural.level_local_id')"
             v-model.trim="levelLocalId"
@@ -30,7 +30,7 @@
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.levelName.$error }"
             :placeholder="$t('structural.level_name')"
-            v-model.trim="levelLocalId"
+            v-model.trim="levelName"
             @change="fieldChanged = true"
           />
           <span class="text-danger" v-if="v$.levelName.$error">{{
@@ -63,7 +63,7 @@
             class="form-control mb-3"
             :class="{ 'is-invalid': v$.levelNumber.$error }"
             :placeholder="$t('structural.level_number')"
-            v-model.trim="levelLocalId"
+            v-model.trim="levelNumber"
             @change="fieldChanged = true"
           />
           <span class="text-danger" v-if="v$.levelNumber.$error">{{
@@ -156,9 +156,23 @@ export default {
           levelNumber: this.levelNumber,
         };
         console.log(formData);
-        this.$emit("handleAddLevel", formData);
+        this.$emit("addLevel", formData);
+        //this.resetFields();
       }
+    },
+    resetLevelFields() {
+      this.levelLocalId = "";
+      this.levelName = "";
+      this.levelDescription = "";
+      this.levelNumber = "";
+      this.disabled = false;
+      this.fieldChanged = false;
     },
   },
 };
 </script>
+<style scoped>
+.capitalize {
+  text-transform: uppercase;
+}
+</style>

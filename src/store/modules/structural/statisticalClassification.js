@@ -81,8 +81,8 @@ const actions = {
     );
   },
 
-  addLevel({ dispatch }, formData) {
-    statisticalClassificationService.addLevel(formData).then(
+  async addLevel({ dispatch }, formData) {
+    return statisticalClassificationService.addLevel(formData).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Level added!", {
@@ -122,8 +122,8 @@ const actions = {
       }
     );
   },
-  uploadItems({ dispatch }, formData) {
-    statisticalClassificationService.uploadItems(formData).then(
+  async uploadItems({ dispatch }, formData) {
+    return statisticalClassificationService.uploadItems(formData).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Items uploaded!", {
