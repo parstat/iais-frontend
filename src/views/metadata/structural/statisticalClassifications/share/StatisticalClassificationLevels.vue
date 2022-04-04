@@ -78,7 +78,7 @@
           @click="addLevel"
           ><span>{{ $t("structural.level_add_button") }}</span>
         </CButton>
-        <CRow>
+        <CRow class="mb-3">
           <CCol
             class="col-sm-6 col-md-6 col-lg-3 mt-3"
             v-for="level in levels"
@@ -157,7 +157,7 @@ export default {
         };
         console.log(formData);
         this.$emit("addLevel", formData);
-        //this.resetFields();
+        this.resetLevelFields();
       }
     },
     resetLevelFields() {
@@ -167,6 +167,7 @@ export default {
       this.levelNumber = "";
       this.disabled = false;
       this.fieldChanged = false;
+      this.v$.$reset();
     },
   },
 };

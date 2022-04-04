@@ -197,7 +197,6 @@ export default {
         "statisticalClassification/findById",
         this.statisticalClassification.id
       );
-      this.$emit("resetLevelFields");
     },
     async handleUploadItems(uploadedItems) {
       const formData = {
