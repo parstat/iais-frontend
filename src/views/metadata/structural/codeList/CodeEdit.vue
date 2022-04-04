@@ -67,7 +67,7 @@
 </template>
 <script>
 import CodeEditBasic from "./edit/CodeEditBasic.vue";
-import CodeItems from "./edit/CodeItems.vue";
+import CodeItems from "./edit/CodeItemAdd.vue";
 
 export default {
   name: "CodeEdit",

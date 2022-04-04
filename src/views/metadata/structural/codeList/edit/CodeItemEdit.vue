@@ -1,5 +1,5 @@
 <template>
-  <CModal :visible="showEditDialog" backdrop="static" @close="closeDialog()">
+  <CModal :visible="visible" backdrop="static" @close="closeDialog()">
     <CModalHeader>
       <CModalTitle>Edit Code Item</CModalTitle>
     </CModalHeader>
@@ -73,18 +73,14 @@ import { required } from "@vuelidate/validators";
 export default {
   inheritAttrs: false,
   name: "CodeItemEdit",
-  props: ["showEditDialog", "item"],
+  props: ["item"],
   emits: ["closeDialog", "codeItemUpdated"],
-  watch: {
-    item: function (newVal) {
-      this.codeName = newVal.code;
-      this.description = newVal.description;
-      this.label = newVal.value;
-    },
+  mounted() {
+    this.showDialog();
   },
   data(instance) {
-    console.log(this.item);
     return {
+      visible: false,
       v$: useValidate(),
       codeName: instance.item?.code,
       description: instance.item?.description,
@@ -103,8 +99,12 @@ export default {
     },
   },
   methods: {
+    showDialog() {
+      setTimeout(() => {
+        this.visible = true;
+      }, 100);
+    },
     closeDialog() {
-      console.log(this.item);
       this.$emit("closeDialog");
     },
     editCodeItem() {

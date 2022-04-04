@@ -107,7 +107,7 @@
       </CCardBody>
     </CCard>
     <app-code-item-edit
-      :showEditDialog="showEditDialog"
+      v-if="showEditDialog"
       :item="item"
       @closeDialog="showEditDialog = false"
       @codeItemUpdated="reloadCodeList()"

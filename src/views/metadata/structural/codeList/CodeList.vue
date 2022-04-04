@@ -131,11 +131,11 @@ export default {
   },
   methods: {
     setChecked(item) {
-      if(item.isSentinel) {
+      if (item.isSentinel) {
         return "checked";
       }
       return "";
-    }
+    },
   },
   created() {
     this.$store.dispatch("code/findAll");
