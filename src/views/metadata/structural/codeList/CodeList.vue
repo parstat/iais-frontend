@@ -108,7 +108,11 @@ export default {
         },
         {
           key: "name",
-          label: "Code Name",
+          label: "Code List Name",
+        },
+        {
+          key: "nodeSetType",
+          label: "Type",
         },
         {
           key: "actions",
@@ -124,6 +128,14 @@ export default {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
     ...mapGetters("code", ["codes"]),
+  },
+  methods: {
+    setChecked(item) {
+      if(item.isSentinel) {
+        return "checked";
+      }
+      return "";
+    }
   },
   created() {
     this.$store.dispatch("code/findAll");

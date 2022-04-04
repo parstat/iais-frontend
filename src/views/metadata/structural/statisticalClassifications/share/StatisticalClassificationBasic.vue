@@ -154,7 +154,7 @@ export default {
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
-          localId: this.localLocalId,
+          localId: this.localLocalId.trim().toUpperCase(),
           name: this.localName,
           version: this.localVersion,
           link: this.localLink,

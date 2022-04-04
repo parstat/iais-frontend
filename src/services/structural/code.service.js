@@ -54,6 +54,7 @@ function save(formData) {
       name: formData.name,
       description: formData.description,
       localId: formData.localId,
+      isSentinel: formData.isSentinel,
       // language: formData.language,
     };
 

@@ -32,6 +32,7 @@
         <CModal :visible="visibleCsvModal" @close="closeModal">
           <CModalHeader>
             <CModalTitle>CSV items</CModalTitle>
+            <CSpinner v-if="localIsLoading" color="primary" size="sm" />
           </CModalHeader>
           <CModalBody>
             <CButton color="primary" class="mb-3" @click="getItemsRecursivly"
@@ -44,7 +45,7 @@
           </CModalBody>
           <CModalFooter>
             <CButton color="secondary" @click="closeModal"> Close </CButton>
-            <CButton color="primary">Uplaod items</CButton>
+            <CButton color="primary" @click="uploadItems">Uplaod items</CButton>
           </CModalFooter>
         </CModal>
 
@@ -93,6 +94,7 @@ import TreeNode from "@/components/TreeNode";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import { AggregationType } from "@/common";
+import { mapGetters } from "vuex";
 
 export default {
   name: "StatisticalClassificationItems",
@@ -107,8 +109,8 @@ export default {
       content: [],
       parsed: false,
       visibleCsvModal: false,
-      levelNumber: 1,
       rootItems: [],
+      localIsLoading: false,
       columns: [
         {
           key: "levelNumber",
@@ -156,18 +158,21 @@ export default {
       }
       return types;
     },
+    ...mapGetters("coreui", ["isLoading"]),
   },
   methods: {
-    uploadItems() {
+    async uploadItems() {
+      this.localIsLoading = true;
       this.v$.$touch(); //validate form data
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
           aggregationType: this.localAggregationType,
-          rootItens: this.rootItems,
+          rootItems: this.rootItems,
+          reset: () => this.resetItemFields(),
         };
         console.log(formData);
-        this.$emit("handleUploadItems", formData);
+        this.$emit("uploadItems", formData);
       }
     },
     handleFileUpload(event) {
@@ -196,7 +201,6 @@ export default {
         }
       });
       this.rootItems.forEach(this.getChildren);
-      console.log(this.rootItems);
     },
     getChildren(parent) {
       parent.children = [];
@@ -213,6 +217,16 @@ export default {
       this.rootItems = [];
       this.visibleCsvModal = false;
       //this.parsed = false;
+    },
+    resetItemFields() {
+      this.rootItems = [];
+      this.file = "";
+      this.content = [];
+      //this.parsed = false;
+      this.localAggregationType = this.aggregationType;
+      this.visibleCsvModal = false;
+      this.localIsLoading = false;
+      this.v$.$reset();
     },
   },
 };
