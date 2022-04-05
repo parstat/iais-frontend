@@ -35,7 +35,11 @@
             <CSpinner v-if="localIsLoading" color="primary" size="sm" />
           </CModalHeader>
           <CModalBody>
-            <CButton color="primary" class="mb-3" @click="getItemsRecursivly"
+            <CButton
+              color="primary"
+              class="mb-3"
+              @click.prevent="getItemsRecursivly"
+              :disabled="parseDisabled"
               >Parse CSV</CButton
             >
             <div style="height: 400px; overflow-y: scroll">
@@ -45,7 +49,12 @@
           </CModalBody>
           <CModalFooter>
             <CButton color="secondary" @click="closeModal"> Close </CButton>
-            <CButton color="primary" @click="uploadItems">Uplaod items</CButton>
+            <CButton
+              color="primary"
+              @click.prevent="uploadItems"
+              :disabled="disabled"
+              >Uplaod items</CButton
+            >
           </CModalFooter>
         </CModal>
 
@@ -111,6 +120,8 @@ export default {
       visibleCsvModal: false,
       rootItems: [],
       localIsLoading: false,
+      parseDisabled: false,
+      disabled: false,
       columns: [
         {
           key: "levelNumber",
@@ -193,6 +204,7 @@ export default {
       });
     },
     getItemsRecursivly() {
+      this.parseDisabled = true;
       this.content.data.forEach((row) => {
         if (row.parent === "") {
           //row.value = row.labelEn;
@@ -226,6 +238,8 @@ export default {
       this.localAggregationType = this.aggregationType;
       this.visibleCsvModal = false;
       this.localIsLoading = false;
+      this.disabled = false;
+      this.parseDisabled = false;
       this.v$.$reset();
     },
   },

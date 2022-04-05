@@ -104,7 +104,8 @@
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
-        @click="next"
+        @click.prevent="next"
+        :disabled="disabled"
         ><span>{{ $t("referential.next") }}</span>
       </CButton>
     </CCardBody>
@@ -164,6 +165,7 @@ export default {
         console.log(formData);
         this.$emit("next", formData, this.fieldChanged);
         this.fieldChanged = false;
+        this.disabled = false;
       }
     },
   },

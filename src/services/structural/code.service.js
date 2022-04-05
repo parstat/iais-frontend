@@ -131,7 +131,7 @@ function addCodeItem(formData) {
 
 function removeCodeItem(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.put("/structural/ClosedCodeLists/codeitems/remove/" + id).then(
+    axiosIais.delete("/structural/ClosedCodeLists/codeitems/remove/" + id).then(
       (response) => {
         //console.log(response.data);
         resolve(response.data);
