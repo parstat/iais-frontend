@@ -137,8 +137,8 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "CodeEditBasic",
+  props: ["code"],
   computed: {
-    ...mapGetters("code", ["code"]),
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
   },
@@ -200,6 +200,10 @@ export default {
       this.showEditDialog = false;
       this.showDeleteDialog = false;
       this.disabled = false;
+      this.codeName = "";
+      this.description = "";
+      this.label = "";
+      this.v$.$reset();
       this.$store.dispatch("code/findById", this.$route.params.id);
     },
     openEditDialog(item) {
@@ -232,9 +236,6 @@ export default {
           });
       }
     },
-  },
-  created() {
-    this.$store.dispatch("code/findById", this.$route.params.id);
   },
 };
 </script>

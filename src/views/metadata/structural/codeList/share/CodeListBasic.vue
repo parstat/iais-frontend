@@ -1,5 +1,5 @@
 <template>
-  <CCard v-if="code">
+  <CCard>
     <CCardBody>
       <CCardText>
         <CForm>
@@ -9,13 +9,14 @@
             type="text"
             class="form-control"
             :class="{
-              'is-invalid': v$.code.name.$error,
-              'mb-3': !v$.code.name.$error,
+              'is-invalid': v$.localName.$error,
+              'mb-3': !v$.localName.$error,
             }"
             placeholder="Code name"
-            v-model.trim="code.name"
+            v-model.trim="localName"
+            @change="fieldChanged = true"
           />
-          <div class="text-danger mb-3" v-if="v$.code.name.$error">
+          <div class="text-danger mb-3" v-if="v$.localName.$error">
             Please enter a name for the code.
           </div>
         </CForm>
@@ -27,13 +28,14 @@
             type="text"
             class="form-control"
             :class="{
-              'is-invalid': v$.code.description.$error,
-              'mb-3': !v$.code.description.$error,
+              'is-invalid': v$.localDescription.$error,
+              'mb-3': !v$.localDescription.$error,
             }"
             placeholder="Code description"
-            v-model.trim="code.description"
+            v-model.trim="localDescription"
+            @change="fieldChanged = true"
           />
-          <div class="text-danger mb-3" v-if="v$.code.description.$error">
+          <div class="text-danger mb-3" v-if="v$.localDescription.$error">
             Please enter a description.
           </div>
         </CForm>
@@ -44,13 +46,14 @@
             type="text"
             class="form-control"
             :class="{
-              'is-invalid': v$.code.localId.$error,
-              'mb-3': !v$.code.localId.$error,
+              'is-invalid': v$.localLocalId.$error,
+              'mb-3': !v$.localLocalId.$error,
             }"
             placeholder="Local id"
-            v-model.trim="code.localId"
+            v-model.trim="localLocalId"
+            @change="fieldChanged = true"
           />
-          <div class="text-danger mb-3" v-if="v$.code.localId.$error">
+          <div class="text-danger mb-3" v-if="v$.localLocalId.$error">
             Please specify the local id.
           </div>
         </CForm>
@@ -74,51 +77,48 @@
 <script>
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
-import { mapGetters } from "vuex";
 
 export default {
   name: "CodeEditBasic",
-  computed: {
-    ...mapGetters("code", ["code"]),
-  },
+  props: ["name", "description", "localId", "sentinel"],
+  emits: ["next"],
   data() {
     return {
       disabled: false,
       v$: useValidate(),
+      localName: this.name,
+      localDescription: this.description,
+      localLocalId: this.localId,
+      localSentinel: this.sentinel,
+      fieldChanged: false, //do nothing if nothing changes
     };
   },
   validations: {
-    code: {
-      name: {
-        required,
-      },
-      description: {
-        required,
-      },
-      localId: {
-        required,
-      },
+    localName: {
+      required,
+    },
+    localDescription: {
+      required,
+    },
+    localLocalId: {
+      required,
     },
   },
   methods: {
     handleSubmit() {
       this.v$.$touch(); //validate form data
-      if (!this.v$.$invalid) {
+      console.log(!this.v$.$invalid && this.fieldChanged);
+      if (!this.v$.$invalid && this.fieldChanged) {
         this.disabled = true; //disable buttons
         const formData = {
-          id: this.code.id,
-          name: this.code.name,
-          description: this.code.description,
-          localId: this.code.localId,
+          name: this.localName,
+          description: this.localDescription,
+          localId: this.localLocalId,
+          sentinel: this.localSentinel,
         };
-        this.$store.dispatch("code/update", formData).then(() => {
-          this.$emit("next");
-        });
+        this.$emit("next", formData, this.fieldChanged);
       }
     },
-  },
-  created() {
-    this.$store.dispatch("code/findById", this.$route.params.id);
   },
 };
 </script>

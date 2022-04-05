@@ -29,78 +29,9 @@
                   aria-labelledby="home-tab"
                   :visible="true"
                 >
-                  <CCard>
-                    <CCardBody>
-                      <CCardText>
-                        <CForm>
-                          <label for="name">Name*</label>
-                          <input
-                            id="name"
-                            type="text"
-                            class="form-control"
-                            :class="{
-                              'is-invalid': v$.name.$error,
-                              'mb-3': !v$.name.$error,
-                            }"
-                            placeholder="Code name"
-                            v-model.trim="name"
-                          />
-                          <div class="text-danger mb-3" v-if="v$.name.$error">
-                            Please enter a name for the code.
-                          </div>
-                        </CForm>
-                        <CForm>
-                          <label for="description">Description</label>
-                          <textarea
-                            rows="5"
-                            id="description"
-                            type="text"
-                            class="form-control mb-3"
-                            placeholder="Code description"
-                            v-model.trim="description"
-                          />
-                        </CForm>
-                        <CForm>
-                          <label for="localId">Local id*</label>
-                          <input
-                            id="localId"
-                            type="text"
-                            class="form-control capitalize"
-                            :class="{
-                              'is-invalid': v$.localId.$error,
-                              'mb-3': !v$.localId.$error,
-                            }"
-                            placeholder="Local id"
-                            v-model.trim="localId"
-                          />
-                          <div
-                            class="text-danger mb-3"
-                            v-if="v$.localId.$error"
-                          >
-                            Please specify the local id.
-                          </div>
-                          <CFormSwitch
-                            label="Sentinel (Special code list)"
-                            id="isSentinel"
-                            v-model="sentinel"
-                          />
-                        </CForm>
-                        <div class="form-mandatory">
-                          <span>*Mandatory fields</span>
-                        </div>
-                      </CCardText>
-                    </CCardBody>
-                    <CCardFooter class="bg-white">
-                      <CButton
-                        color="primary"
-                        size="sm"
-                        style="margin-right: 0.3rem"
-                        @click.prevent="handleSubmit()"
-                        :disabled="disabled"
-                        ><span>Next</span>
-                      </CButton>
-                    </CCardFooter>
-                  </CCard>
+                  <app-code-list-basic
+                    @next="handleSubmit"
+                  ></app-code-list-basic>
                 </CTabPane>
               </CTabContent>
             </CCol>
@@ -111,43 +42,29 @@
   </CRow>
 </template>
 <script>
-import useValidate from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
+import CodeListBasic from "./share/CodeListBasic.vue";
 
 export default {
   name: "CodeAdd",
+  components: {
+    "app-code-list-basic": CodeListBasic,
+  },
   data() {
     return {
-      v$: useValidate(),
-      name: "",
-      description: "",
-      localId: "",
-      sentinel: false,
       disabled: false,
     };
   },
-  validations: {
-    name: {
-      required,
-    },
-    localId: {
-      required,
-    },
-  },
   methods: {
-    handleSubmit() {
-      this.v$.$touch(); //validate form data
-      if (!this.v$.$invalid) {
-        this.disabled = true; //disable buttons
-        const formData = {
-          name: this.name.trim(),
-          description: this.description ? this.description.trim : "",
-          localId: this.localId.trim().toUpperCase(),
-          isSentinel: this.sentinel,
-        };
-        this.$store.dispatch("code/save", formData);
-        console.log(formData);
-      }
+    handleSubmit(basic) {
+      this.disabled = true; //disable buttons
+      const formData = {
+        name: basic.name.trim(),
+        description: basic.description ? basic.description.trim : "",
+        localId: basic.localId.trim().toUpperCase(),
+        isSentinel: basic.sentinel,
+      };
+      this.$store.dispatch("code/save", formData);
+      console.log(formData);
     },
   },
 };

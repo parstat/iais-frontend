@@ -4,7 +4,7 @@
       <CCardHeader class="bg-white">
         <span>Code</span>
       </CCardHeader>
-      <CCardBody>
+      <CCardBody v-if="code">
         <CCardText>
           <CRow>
             <CCol class="col-3 mr-2">
@@ -45,7 +45,13 @@
                   aria-labelledby="home-tab"
                   :visible="activeTab === 0"
                 >
-                  <app-code-edit-basic @next="next"></app-code-edit-basic>
+                  <app-code-list-basic
+                    :name="code.name"
+                    :description="code.description"
+                    :localId="code.localId"
+                    :sentinel="code.sentinel"
+                    @next="handleSubmit"
+                  ></app-code-list-basic>
                 </CTabPane>
 
                 <CTabContent>
@@ -54,7 +60,7 @@
                     aria-labelledby="home-tab"
                     :visible="activeTab === 1"
                   >
-                    <app-code-items></app-code-items>
+                    <app-code-items :code="code"></app-code-items>
                   </CTabPane>
                 </CTabContent>
               </CTabContent>
@@ -66,21 +72,42 @@
   </CRow>
 </template>
 <script>
-import CodeEditBasic from "./edit/CodeEditBasic.vue";
-import CodeItems from "./edit/CodeItem.vue";
+import CodeListBasic from "./share/CodeListBasic.vue";
+import CodeItems from "./share/CodeItem.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "CodeEdit",
+  computed: {
+    ...mapGetters("code", ["code"]),
+  },
   data() {
     return {
       activeTab: 0,
     };
   },
   components: {
-    "app-code-edit-basic": CodeEditBasic,
+    "app-code-list-basic": CodeListBasic,
     "app-code-items": CodeItems,
   },
   methods: {
+    handleSubmit(basic, fieldsChanged) {
+      if (fieldsChanged) {
+        this.disabled = true; //disable buttons
+        const formData = {
+          id: this.code.id,
+          name: basic.name,
+          description: basic.description ? basic.description : "",
+          localId: basic.localId,
+          sentinel: basic.sentinel,
+        };
+        this.$store.dispatch("code/update", formData).then(() => {
+          this.next();
+        });
+      } else {
+        this.next();
+      }
+    },
     next() {
       this.activeTab++;
     },
@@ -89,6 +116,7 @@ export default {
     },
   },
   created() {
+    this.$store.dispatch("code/findById", this.$route.params.id);
     this.activeTab = this.$route.query.step ? this.$route.query.step - 1 : 0;
   },
 };
