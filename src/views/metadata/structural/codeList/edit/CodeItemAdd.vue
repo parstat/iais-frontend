@@ -69,7 +69,7 @@
         </CButton>
         <hr />
         <div class="code-items-section">
-          <div class="table-responsive" v-if="!isLoading">
+          <div class="table-responsive">
             <CSmartTable
               v-if="code.codeItems?.length"
               :activePage="1"
@@ -185,7 +185,9 @@ export default {
           label: this.label,
         };
         this.$store.dispatch("code/addCodeItem", formData).then(() => {
-          this.reloadCodeList();
+          setTimeout(() => {
+            this.reloadCodeList();
+          }, 1000);
         });
         console.log(formData);
       }
@@ -194,6 +196,7 @@ export default {
       this.item = null;
       this.showEditDialog = false;
       this.showDeleteDialog = false;
+      this.disabled = false;
       this.$store.dispatch("code/findById", this.$route.params.id);
     },
     openEditDialog(item) {

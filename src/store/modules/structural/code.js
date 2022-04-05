@@ -113,6 +113,9 @@ const actions = {
       },
       (error) => {
         console.log(error);
+        dispatch("message/error", "Code item could not be added!", {
+          root: true,
+        });
       }
     );
   },
