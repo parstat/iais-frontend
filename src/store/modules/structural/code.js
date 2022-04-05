@@ -97,7 +97,6 @@ const actions = {
         dispatch("message/success", "Code updated!", {
           root: true,
         });
-        router.push("/metadata/structural/codelist");
       },
       (error) => {
         console.log(error);

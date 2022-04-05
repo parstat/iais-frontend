@@ -71,33 +71,30 @@ function save(formData) {
 }
 
 function update(formData) {
-  // TODO: Add correct method for editing a code list
-  // return new Promise((resolve, reject) => {
-  //   const config = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  //   const requestBody = {
-  //     name: formData.name,
-  //     description: formData.description,
-  //     localId: formData.localId,
-  //   };
+    const requestBody = {
+      id: formData.id,
+      name: formData.name,
+      description: formData.description,
+      localId: formData.localId,
+    };
 
-  //   axiosIais
-  //     .patch("/structural/ClosedCodeLists/" + formData.id, requestBody, config)
-  //     .then(
-  //       (response) => {
-  //         //console.log(response.data);
-  //         resolve(response.data);
-  //       },
-  //       (error) => {
-  //         reject(error);
-  //       }
-  //     );
-  // });
-  console.log(formData);
+    axiosIais.put("/structural/ClosedCodeLists", requestBody, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
 }
 
 function addCodeItem(formData) {

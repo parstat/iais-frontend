@@ -114,7 +114,6 @@ export default {
         this.$store.dispatch("code/update", formData).then(() => {
           this.$emit("next");
         });
-        console.log(formData);
       }
     },
   },
