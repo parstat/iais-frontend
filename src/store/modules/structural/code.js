@@ -119,8 +119,9 @@ const actions = {
       }
     );
   },
-  removeCodeItem({ dispatch }, id) {
-    codeService.removeCodeItem(id).then(
+  removeCodeItem({ dispatch }, codeDetails) {
+    console.log(codeDetails);
+    codeService.removeCodeItem(codeDetails).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Code item removed!", {

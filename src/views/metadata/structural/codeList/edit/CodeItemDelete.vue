@@ -8,8 +8,10 @@
       not be undone. Are you sure you want to delete this Code Item?</CModalBody
     >
     <CModalFooter>
-      <CButton color="secondary" @click="closeDialog()"> Close </CButton>
-      <CButton color="danger" @click="deleteCodeItem()"
+      <CButton color="secondary" @click="closeDialog()" :disabled="disabled">
+        Close
+      </CButton>
+      <CButton color="danger" @click="deleteCodeItem()" :disabled="disabled"
         >Delete Code Item</CButton
       >
     </CModalFooter>
@@ -20,14 +22,9 @@ export default {
   name: "codeItemDelete",
   props: ["showDeleteDialog", "item"],
   emits: ["closeDialog", "codeItemDeleted"],
-  watch: {
-    item: function (newVal) {
-      this.itemId = newVal.id;
-    },
-  },
   data() {
     return {
-      itemId: null,
+      disabled: false,
     };
   },
   methods: {
@@ -36,10 +33,24 @@ export default {
       this.$emit("closeDialog");
     },
     deleteCodeItem() {
-      if (this.item?.id) {
-        this.$store.dispatch("code/removeCodeItem", this.item.id).then(() => {
-          this.$emit("codeItemDeleted");
-        });
+      const codeListId = this.$route.params.id;
+      if (codeListId && this.item?.id) {
+        this.disabled = true;
+        this.$store
+          .dispatch("code/removeCodeItem", {
+            codeListId,
+            codeItemId: this.item.code,
+          })
+          .then(() => {
+            setTimeout(() => {
+              this.$emit("codeItemDeleted");
+              this.disabled = false;
+            }, 1000);
+          })
+          .catch((error) => {
+            console.log(error);
+            this.disabled = false;
+          });
       }
     },
   },

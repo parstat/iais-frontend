@@ -84,16 +84,16 @@
             >
               <template #actions="{ item }">
                 <td style="text-align: right; width: 10%; padding-right: 20px">
-                  <span
+                  <!-- <span
                     v-if="isAuthenticated"
                     class="pl-2 clickable"
                     @click="openEditDialog(item)"
                   >
                     <CIcon name="cil-pencil" />
-                  </span>
+                  </span> -->
 
                   <span
-                    v-if="isAuthenticated && isAdmin"
+                    v-if="isAuthenticated"
                     class="pl-2 clickable"
                     @click="openDeleteDialog(item)"
                   >

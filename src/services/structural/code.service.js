@@ -126,17 +126,21 @@ function addCodeItem(formData) {
   });
 }
 
-function removeCodeItem(id) {
+function removeCodeItem(codeDetails) {
+  console.log(codeDetails);
   return new Promise((resolve, reject) => {
-    axiosIais.delete("/structural/ClosedCodeLists/codeitems/remove/" + id).then(
-      (response) => {
-        //console.log(response.data);
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .delete(
+        `/structural/ClosedCodeLists/${codeDetails.codeListId}/codeitems/${codeDetails.codeItemId}`
+      )
+      .then(
+        (response) => {
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 
