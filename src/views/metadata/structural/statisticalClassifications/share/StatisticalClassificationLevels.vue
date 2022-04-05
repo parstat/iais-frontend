@@ -92,8 +92,9 @@
             <CModalTitle>Delete level</CModalTitle>
           </CModalHeader>
           <CModalBody>
-            Are you sure you want to proceed deletion of '{{ levelToDelete.levelNumber}}. {{ levelToDelete.name }}' level? 
-            This cannot be undone!
+            Are you sure you want to proceed deletion of '{{
+              levelToDelete.levelNumber
+            }}. {{ levelToDelete.name }}' level? This cannot be undone!
           </CModalBody>
           <CModalFooter>
             <CButton
@@ -107,7 +108,7 @@
             >
               Cancel
             </CButton>
-            <CButton color="primary" @click="removeLevel">Proceed</CButton>
+            <CButton color="danger" @click="removeLevel">Proceed</CButton>
           </CModalFooter>
         </CModal>
 
