@@ -95,6 +95,22 @@ const actions = {
     );
   },
 
+  async removeLevel({ dispatch }, formData) {
+    return statisticalClassificationService
+      .removeLevel(formData.statisticalClassificationId, formData.levelId)
+      .then(
+        (data) => {
+          console.log(data);
+          dispatch("message/success", "Level removed!", {
+            root: true,
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  },
+
   delete({ dispatch }, id) {
     statisticalClassificationService.delete(id).then(
       (data) => {

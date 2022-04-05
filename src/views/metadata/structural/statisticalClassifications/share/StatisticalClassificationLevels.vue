@@ -78,6 +78,39 @@
           @click="addLevel"
           ><span>{{ $t("structural.level_add_button") }}</span>
         </CButton>
+
+        <CModal
+          :visible="visibleModal"
+          @close="
+            () => {
+              visibleModal = false;
+              levelToDelete = '';
+            }
+          "
+        >
+          <CModalHeader>
+            <CModalTitle>Delete level</CModalTitle>
+          </CModalHeader>
+          <CModalBody>
+            Are you sure you want to proceed deletion of '{{ levelToDelete.levelNumber}}. {{ levelToDelete.name }}' level? 
+            This cannot be undone!
+          </CModalBody>
+          <CModalFooter>
+            <CButton
+              color="secondary"
+              @click="
+                () => {
+                  visibleModal = false;
+                  levelToDelete = '';
+                }
+              "
+            >
+              Cancel
+            </CButton>
+            <CButton color="primary" @click="removeLevel">Proceed</CButton>
+          </CModalFooter>
+        </CModal>
+
         <CRow class="mb-3">
           <CCol
             class="col-sm-6 col-md-6 col-lg-3 mt-3"
@@ -86,9 +119,22 @@
           >
             <CCard>
               <CCardBody>
-                <CCardTitle
-                  >{{ level.levelNumber }}. {{ level.name }}</CCardTitle
-                >
+                <CRow>
+                  <CCol class="col-9">
+                    <CCardTitle>
+                      <span>{{ level.levelNumber }}. {{ level.name }}</span>
+                    </CCardTitle>
+                  </CCol>
+                  <CCol class="col-3">
+                    <CNav class="justify-content-end">
+                      <CNavItem>
+                        <span v-on:click="alertDeleteLevel(level)">
+                          <CIcon name="cil-trash" />
+                        </span>
+                      </CNavItem>
+                    </CNav>
+                  </CCol>
+                </CRow>
                 <CCardText>
                   <span>{{ level.description }}</span>
                 </CCardText>
@@ -129,6 +175,8 @@ export default {
       levelName: "",
       levelDescription: "",
       levelNumber: "",
+      levelToDelete: "",
+      visibleModal: false,
       disabled: false,
       fieldChanged: false, //do nothing if nothing changes
     };
@@ -155,10 +203,20 @@ export default {
           description: this.levelDescription,
           levelNumber: this.levelNumber,
         };
-        console.log(formData);
+        //console.log(formData);
         this.$emit("addLevel", formData);
         this.resetLevelFields();
       }
+    },
+
+    alertDeleteLevel(level) {
+      this.visibleModal = true;
+      this.levelToDelete = level;
+    },
+
+    removeLevel() {
+      this.visibleModal = false;
+      this.$emit("removeLevel", this.levelToDelete);
     },
     resetLevelFields() {
       this.levelLocalId = "";

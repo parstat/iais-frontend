@@ -97,6 +97,7 @@
                   <app-statistical-classificaition-levels
                     :levels="statisticalClassification.levels"
                     @addLevel="handleAddLevel"
+                    @removeLevel="handleRemoveLevel"
                     @next="nextLevels"
                     @back="back"
                   />
@@ -181,6 +182,7 @@ export default {
         this.next();
       }
     },
+
     async handleAddLevel(level) {
       const formData = {
         statisticalClassificationId: this.statisticalClassification.id,
@@ -191,6 +193,20 @@ export default {
       };
       await this.$store.dispatch(
         "statisticalClassification/addLevel",
+        formData
+      );
+      this.$store.dispatch(
+        "statisticalClassification/findById",
+        this.statisticalClassification.id
+      );
+    },
+    async handleRemoveLevel(level) {
+      const formData = {
+        statisticalClassificationId: this.statisticalClassification.id,
+        levelId: level.id,
+      };
+      await this.$store.dispatch(
+        "statisticalClassification/removeLevel",
         formData
       );
       this.$store.dispatch(
