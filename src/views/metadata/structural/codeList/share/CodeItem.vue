@@ -84,14 +84,6 @@
             >
               <template #actions="{ item }">
                 <td style="text-align: right; width: 10%; padding-right: 20px">
-                  <!-- <span
-                    v-if="isAuthenticated"
-                    class="pl-2 clickable"
-                    @click="openEditDialog(item)"
-                  >
-                    <CIcon name="cil-pencil" />
-                  </span> -->
-
                   <span
                     v-if="isAuthenticated"
                     class="pl-2 clickable"
@@ -149,7 +141,6 @@ export default {
       codeName: "",
       description: "",
       label: "",
-      showEditDialog: false,
       showDeleteDialog: false,
       item: null,
       codeItemsColumns: [
@@ -210,10 +201,6 @@ export default {
       console.log(item);
       this.item = item;
       this.showEditDialog = true;
-    },
-    openDeleteDialog(item) {
-      this.item = item;
-      this.showDeleteDialog = true;
     },
     deleteCodeItem() {
       const codeListId = this.$route.params.id;
