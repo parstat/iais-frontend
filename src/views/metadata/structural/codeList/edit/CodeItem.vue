@@ -106,27 +106,34 @@
         </div>
       </CCardBody>
     </CCard>
-    <app-code-item-edit
-      v-if="showEditDialog"
-      :item="item"
-      @closeDialog="showEditDialog = false"
-      @codeItemUpdated="reloadCodeList()"
-    ></app-code-item-edit>
-    <app-code-item-delete
-      :showDeleteDialog="showDeleteDialog"
-      :item="item"
-      @closeDialog="showDeleteDialog = false"
-      @codeItemDeleted="reloadCodeList()"
-    ></app-code-item-delete>
+    <CModal
+      backdrop="static"
+      :visible="showDeleteDialog"
+      @close="showDeleteDialog = false"
+    >
+      <CModalHeader>
+        <CModalTitle>Delete Code Item: {{ item?.code }}?</CModalTitle>
+      </CModalHeader>
+      <CModalBody
+        >This action will remove the Code Item form the Code List. This action
+        can not be undone. Are you sure you want to delete this Code
+        Item?</CModalBody
+      >
+      <CModalFooter>
+        <CButton color="secondary" @click="closeDialog()" :disabled="disabled">
+          Close
+        </CButton>
+        <CButton color="danger" @click="deleteCodeItem()" :disabled="disabled"
+          >Delete Code Item</CButton
+        >
+      </CModalFooter>
+    </CModal>
   </div>
 </template>
 <script>
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import { mapGetters } from "vuex";
-
-import CodeItemEdit from "./CodeItemEdit.vue";
-import CodeItemDelete from "./CodeItemDelete.vue";
 
 export default {
   name: "CodeEditBasic",
@@ -157,10 +164,6 @@ export default {
         },
       ],
     };
-  },
-  components: {
-    "app-code-item-edit": CodeItemEdit,
-    "app-code-item-delete": CodeItemDelete,
   },
   validations: {
     codeName: {
@@ -207,6 +210,27 @@ export default {
     openDeleteDialog(item) {
       this.item = item;
       this.showDeleteDialog = true;
+    },
+    deleteCodeItem() {
+      const codeListId = this.$route.params.id;
+      if (codeListId && this.item?.id) {
+        this.disabled = true;
+        this.$store
+          .dispatch("code/removeCodeItem", {
+            codeListId,
+            codeItemId: this.item.code,
+          })
+          .then(() => {
+            setTimeout(() => {
+              this.reloadCodeList();
+              this.disabled = false;
+            }, 1000);
+          })
+          .catch((error) => {
+            console.log(error);
+            this.disabled = false;
+          });
+      }
     },
   },
   created() {
