@@ -116,7 +116,7 @@ function addCodeItem(formData) {
     };
 
     axiosIais
-      .put("/structural/ClosedCodeLists/codeitems/add", requestBody, config)
+      .put("/structural/ClosedCodeLists/codeitems", requestBody, config)
       .then(
         (response) => {
           //console.log(response.data);

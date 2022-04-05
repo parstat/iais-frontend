@@ -6,7 +6,8 @@
           {{ node.levelName }} {{ node.code }}:
         </strong>
         <strong v-else>{{ node.code }}:</strong>
-        {{ node.value ? node.value : node.labelEn }}
+        <span v-if="node.value">{{ node.value }} </span>
+        <pre v-if="node.label"> {{ node.label }} </pre>
         <br v-if="node.description" />
         <i v-if="node.description">{{ node.description }}</i>
       </span>

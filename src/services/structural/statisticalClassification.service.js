@@ -125,7 +125,7 @@ function addLevel(formData) {
 
     axiosIais
       .put(
-        "/structural/ClosedStatisticalClassifications/levels/add",
+        "/structural/ClosedStatisticalClassifications/levels",
         requestBody,
         config
       )
@@ -146,7 +146,7 @@ function removeLevel(statisticalClassificationId, levelId) {
       .delete(
         "/structural/ClosedStatisticalClassifications/" +
           statisticalClassificationId +
-          "/levels/remove/" +
+          "/levels/" +
           levelId
       )
       .then(

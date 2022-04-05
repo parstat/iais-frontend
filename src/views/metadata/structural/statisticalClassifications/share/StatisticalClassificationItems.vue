@@ -42,7 +42,7 @@
               :disabled="parseDisabled"
               >Parse CSV</CButton
             >
-            <div style="height: 400px; overflow-y: scroll">
+            <div style="height: 450px; overflow: scroll">
               <TreeNode v-for="node in rootItems" :key="node.id" :node="node">
               </TreeNode>
             </div>
@@ -209,6 +209,24 @@ export default {
         if (row.parent === "") {
           //row.value = row.labelEn;
           delete row.parent;
+          var label = {
+            en: row.labelEn,
+            ro: row.labelRo,
+            ru: row.labelRu,
+          };
+          var desc = {
+            en: row.descriptionEn ? row.descriptionEn : "",
+            ro: row.descriptionRo ? row.descriptionRo : "",
+            ru: row.descriptionRu ? row.descriptionRu : "",
+          };
+          delete row.labelEn;
+          delete row.labelRo;
+          delete row.labelRu;
+          delete row.descriptionEn;
+          delete row.descriptionRo;
+          delete row.descriptionRu;
+          row.label = label;
+          row.desc = desc;
           this.rootItems.push(row);
         }
       });
@@ -220,6 +238,27 @@ export default {
         if (row.parent === parent.code) {
           //row.value = row.labelEn;
           delete row.parent;
+          var label = {
+            En: row.labelEn,
+            Ro: row.labelRo,
+            Ru: row.labelRu,
+          };
+          delete row.labelEn;
+          delete row.labelRo;
+          delete row.labelRu;
+          var desc = {
+            en: row.descriptionEn ? row.descriptionEn : "",
+            ro: row.descriptionRo ? row.descriptionRo : "",
+            ru: row.descriptionRu ? row.descriptionRu : "",
+          };
+          delete row.labelEn;
+          delete row.labelRo;
+          delete row.labelRu;
+          delete row.descriptionEn;
+          delete row.descriptionRo;
+          delete row.descriptionRu;
+          row.label = label;
+          row.desc = desc;
           parent.children.push(row);
           this.getChildren(row);
         }

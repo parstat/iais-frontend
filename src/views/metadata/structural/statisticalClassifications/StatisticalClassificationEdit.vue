@@ -1,15 +1,16 @@
 <template>
   <CRow>
     <CCol class="col-12">
-      <CCard v-if="statisticalClassification">
+      <CCard>
         <CCardHeader class="bg-white" component="h5">
-          <span>
+          <span v-if="statisticalClassification">
             {{ statisticalClassification.name }}
             {{ statisticalClassification.localId }}
             {{ statisticalClassification.version }}</span
           >
+          <CSpinner v-else color="primary" size="sm" />
         </CCardHeader>
-        <CCardBody>
+        <CCardBody v-if="statisticalClassification">
           <CRow>
             <CCol class="col-3 mr-2">
               <CNav class="flex-column" variant="pills" role="tab">
@@ -252,6 +253,8 @@ export default {
     },
   },
   computed: {
+    ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
+    ...mapGetters("coreui", ["isLoading"]),
     ...mapGetters("statisticalClassification", ["statisticalClassification"]),
   },
 
