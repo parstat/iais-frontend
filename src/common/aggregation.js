@@ -1,5 +1,5 @@
 export const AggregationType = {
   None: "NONE",
-  Parent_Child: "PARENT_CHILD",
+  Child_Parent: "CHILD_PARENT",
   Part_whole: "PART_WHOLE",
 };

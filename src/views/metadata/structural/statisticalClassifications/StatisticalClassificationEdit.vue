@@ -120,7 +120,7 @@
                     :items="statisticalClassification.rootItems"
                     :aggregationType="
                       statisticalClassification.levels.length
-                        ? 'PARENT_CHILD'
+                        ? 'CHILD_PARENT'
                         : 'NONE'
                     "
                     @uploadItems="handleUploadItems"
@@ -149,7 +149,7 @@ export default {
   data() {
     return {
       activeTab: 0,
-      aggregationType: "PARENT_CHILD",
+      aggregationType: "CHILD_PARENT",
       editedBasic: false,
       editedLevels: false,
       editedItems: false,
@@ -221,13 +221,14 @@ export default {
         rootItems: uploadedItems.rootItems,
         aggregationType: uploadedItems.aggregationType,
       };
-      //await this.$store.dispatch(
-      //  "statisticalClassification/uploadItems",
-      //  formData
-      //);
-      console.log("Sending data to server...");
-      await new Promise((resolve) => setTimeout(resolve, 3000)); // 3 sec
-      console.log(formData);
+      console.log(formData)
+      await this.$store.dispatch(
+        "statisticalClassification/uploadItems",
+        formData
+      );
+      //console.log("Sending data to server...");
+      //await new Promise((resolve) => setTimeout(resolve, 3000)); // 3 sec
+      //console.log(formData);
       uploadedItems.reset();
       this.$store.dispatch(
         "statisticalClassification/findById",

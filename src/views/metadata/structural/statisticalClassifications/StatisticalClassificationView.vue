@@ -1,5 +1,5 @@
 <template>
-  <CRow>
+  <CRow v-if="!isLoading">
     <div
       class="jumbotron jumbotron-fluid col-lg-12 p-2 mb-3"
       v-if="statisticalClassification"
@@ -77,6 +77,7 @@
       </CCardBody>
     </CCard>
   </CRow>
+   <CSpinner v-else color="primary" size="sm" />
 </template>
 
 <script>
