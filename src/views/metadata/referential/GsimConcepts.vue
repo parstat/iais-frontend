@@ -20,8 +20,8 @@
                 ><span class="icon-span">
                   {{ $t("referential.business_function_link") }}&nbsp;
                 </span>
-                <CIcon name="cil-arrow-right"
-              /></router-link>
+                <CIcon name="cil-arrow-right" />
+              </router-link>
             </span>
           </CButton>
         </CCardFooter>
@@ -46,8 +46,8 @@
               ><span class="icon-span">
                 {{ $t("referential.agents_link") }}&nbsp;
               </span>
-              <CIcon name="cil-arrow-right"
-            /></router-link>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardFooter>
       </CCard>
@@ -72,8 +72,8 @@
               ><span class="icon-span">
                 {{ $t("referential.process_methods_link") }}&nbsp;
               </span>
-              <CIcon name="cil-arrow-right"
-            /></router-link>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardFooter>
       </CCard>
@@ -98,8 +98,8 @@
               ><span class="icon-span">
                 {{ $t("referential.legislative_references_link") }}&nbsp;
               </span>
-              <CIcon name="cil-arrow-right"
-            /></router-link>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardFooter>
       </CCard>
@@ -124,8 +124,8 @@
               ><span class="icon-span">
                 {{ $t("referential.statistical_standard_link") }}&nbsp;
               </span>
-              <CIcon name="cil-arrow-right"
-            /></router-link>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardFooter>
       </CCard>
@@ -150,8 +150,8 @@
               ><span class="icon-span">
                 {{ $t("referential.business_service_link") }}&nbsp;
               </span>
-              <CIcon name="cil-arrow-right"
-            /></router-link>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardFooter>
       </CCard>

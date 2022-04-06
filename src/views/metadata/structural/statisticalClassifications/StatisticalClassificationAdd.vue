@@ -2,7 +2,7 @@
   <CRow>
     <CCol class="col-12">
       <CCardHeader class="bg-white" component="h5">
-        <span> Create a Statistical Classification</span>
+        <span>Create a Statistical Classification</span>
       </CCardHeader>
       <CCardBody>
         <CRow>
@@ -46,9 +46,9 @@
               >
                 <template #title>
                   <span>{{ $t("referential.basic") }}</span>
-                  <span class="float-right" v-if="editedBasic"
-                    ><CIcon name="cil-check-alt"
-                  /></span>
+                  <span class="float-right" v-if="editedBasic">
+                    <CIcon name="cil-check-alt" />
+                  </span>
                 </template>
                 <app-statistical-classification-basic @next="handleBasic" />
               </CTabPane>

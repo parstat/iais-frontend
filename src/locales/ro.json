@@ -240,6 +240,16 @@
         }
     },
     "structural": {
+        "local_ID": "ID local",
+        "description": "Descriere",
+        "version": "Versiune",
+        "measures": "Măsuri",
+        "actions": "Acțiuni",
+        "representations": "Reprezentări",
+        "name": "Nume",
+        "new_variable": "Variabilă nouă",
+        "back": "Înapoi",
+        "variable_name": "Nume variabilă",
         "variables_title": "Variabile",
         "variables_text": "Utilizarea unui Concept ca caracteristică a unei Populații care urmează să fie măsurată. Variabila combină semnificația unui Concept cu un tip de unitate, pentru a defini caracteristica care urmează să fie măsurată.",
         "variables_link": "Accesați secțiunea de variabile",

@@ -68,9 +68,9 @@
                 >
                   <template #title>
                     <span>{{ $t("referential.basic") }}</span>
-                    <span class="float-right" v-if="editedBasic"
-                      ><CIcon name="cil-check-alt"
-                    /></span>
+                    <span class="float-right" v-if="editedBasic">
+                      <CIcon name="cil-check-alt" />
+                    </span>
                   </template>
                   <app-statistical-classification-basic
                     :localId="statisticalClassification.localId"
@@ -91,9 +91,9 @@
                     <span>{{
                       $t("structural.statistical_classification_levels")
                     }}</span>
-                    <span class="float-right" v-if="editedLevels"
-                      ><CIcon name="cil-check-alt"
-                    /></span>
+                    <span class="float-right" v-if="editedLevels">
+                      <CIcon name="cil-check-alt" />
+                    </span>
                   </template>
                   <app-statistical-classificaition-levels
                     :levels="statisticalClassification.levels"
@@ -113,9 +113,9 @@
                     <span>{{
                       $t("structural.statistical_classification_items")
                     }}</span>
-                    <span class="float-right" v-if="editedItems"
-                      ><CIcon nam="cil-check-alt"
-                    /></span>
+                    <span class="float-right" v-if="editedItems">
+                      <CIcon name="cil-check-alt" />
+                    </span>
                   </template>
                   <app-statistical-classificaition-items
                     :items="statisticalClassification.rootItems"

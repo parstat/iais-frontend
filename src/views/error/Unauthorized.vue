@@ -15,7 +15,7 @@
         </div>
         <div class="clearfix mt-3">
           <router-link tag="a" to="/">
-            <CIcon name="cilHome"></CIcon>
+            <CIcon name="cilHome" />
             <span>&nbsp;{{ $t("common.goto_home") }}</span>
           </router-link>
         </div>

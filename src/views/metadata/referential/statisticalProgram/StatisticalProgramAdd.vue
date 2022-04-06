@@ -62,9 +62,9 @@
                 >
                   <template #title>
                     <span>{{ $t("referential.basic") }}</span>
-                    <span class="float-right" v-if="editedBasic"
-                      ><CIcon name="cil-check-alt"
-                    /></span>
+                    <span class="float-right" v-if="editedBasic">
+                      <CIcon name="cil-check-alt" />
+                    </span>
                   </template>
                   <app-statistical-program-basic @next="handleBasic" />
                 </CTabPane>
@@ -75,9 +75,9 @@
                 >
                   <template #title>
                     <span>{{ $t("referential.agents") }}</span>
-                    <span class="float-right" v-if="editedAgents"
-                      ><CIcon nam="cil-check-alt"
-                    /></span>
+                    <span class="float-right" v-if="editedAgents">
+                      <CIcon nam="cil-check-alt" />
+                    </span>
                   </template>
                   <app-agents-add @back="handleBack" @next="handleSubmit" />
                 </CTabPane>

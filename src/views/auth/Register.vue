@@ -24,7 +24,7 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cilUser" size="xl"></CIcon>
+                      <CIcon name="cilUser" size="xl" />
                     </div>
                   </div>
                   <input
@@ -44,7 +44,7 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cilAt" size="xl"></CIcon>
+                      <CIcon name="cilAt" size="xl" />
                     </div>
                   </div>
                   <input
@@ -61,7 +61,7 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cilUser" size="xl"></CIcon>
+                      <CIcon name="cilUser" size="xl" />
                     </div>
                   </div>
                   <input
@@ -81,7 +81,7 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cil-lock-locked" size="xl"></CIcon>
+                      <CIcon name="cil-lock-locked" size="xl" />
                     </div>
                   </div>
                   <input
@@ -101,7 +101,7 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <CIcon name="cil-lock-locked" size="xl"></CIcon>
+                      <CIcon name="cil-lock-locked" size="xl" />
                     </div>
                   </div>
                   <input
