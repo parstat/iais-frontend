@@ -8,6 +8,30 @@
           </CCardTitle>
           <CCardText>
             <CForm>
+              <label for="localId">
+                <span>Local id</span>
+              </label>
+              <input
+                id="localId"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="statisticalClassification.localId"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <label for="version">
+                <span>Version</span>
+              </label>
+              <input
+                id="version"
+                type="text"
+                class="form-control mb-3"
+                v-model.trim="statisticalClassification.version"
+                disabled
+              />
+            </CForm>
+            <CForm>
               <label for="name">
                 <span>Name</span>
               </label>
@@ -33,14 +57,15 @@
               />
             </CForm>
             <CForm>
-              <label for="localId">
-                <span>Local id</span>
+              <label for="link">
+                <span>Link</span>
               </label>
-              <input
-                id="localId"
+              <textarea
+                rows="5"
+                id="link"
                 type="text"
                 class="form-control mb-3"
-                v-model.trim="statisticalClassification.localId"
+                v-model.trim="statisticalClassification.link"
                 disabled
               />
             </CForm>

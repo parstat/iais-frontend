@@ -103,7 +103,7 @@ export default {
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/statisticalClassifications");
+      this.$router.push("/metadata/structural/classifications");
     },
   },
   created() {
