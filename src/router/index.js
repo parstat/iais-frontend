@@ -497,35 +497,36 @@ const routes = [
           ),
         meta: { authorize: [Role.User, Role.Admin] },
       },
-      //* Code List */
+      //* Code Lists */
       {
         path: "metadata/structural/codelist/",
         name: "StructuralCodeList",
         component: () =>
-          import("@/views/metadata/structural/codeList/CodeList"),
+          import("@/views/metadata/structural/codeList/CodeLists"),
         meta: { authorize: [] },
       },
-      //Code Add
+      //CodeList Add
       {
         path: "metadata/structural/codelist/add",
         name: "CodeAdd",
-        component: () => import("@/views/metadata/structural/codeList/CodeAdd"),
+        component: () =>
+          import("@/views/metadata/structural/codeList/CodeListAdd"),
         meta: { authorize: [Role.User, Role.Admin] },
       },
-      //Code Edit
+      //CodeList Edit
       {
         path: "metadata/structural/codelist/edit/:id",
         name: "CodeEdit",
         component: () =>
-          import("@/views/metadata/structural/codeList/CodeEdit"),
+          import("@/views/metadata/structural/codeList/CodeListEdit"),
         meta: { authorize: [Role.User, Role.Admin] },
       },
-      //Code View
+      //CodeList View
       {
         path: "metadata/structural/codelist/view/:id",
         name: "CodeView",
         component: () =>
-          import("@/views/metadata/structural/codeList/CodeView"),
+          import("@/views/metadata/structural/codeList/CodeListView"),
         meta: { authorize: [] },
       },
       // *Correspondence Tables

@@ -45,7 +45,7 @@
 import CodeListBasic from "./share/CodeListBasic.vue";
 
 export default {
-  name: "CodeAdd",
+  name: "CodeListAdd",
   components: {
     "app-code-list-basic": CodeListBasic,
   },

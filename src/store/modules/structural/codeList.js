@@ -1,27 +1,26 @@
 import router from "@/router";
-import { codeService } from "@/services";
+import { codeListService } from "@/services";
 
 const state = {
-  codes: [],
-  code: null,
+  codeLists: [],
+  codeList: null,
 };
 
 const mutations = {
-  SET_CODES(state, codes) {
-    state.codes = codes ? codes : [];
+  SET_CODELISTS(state, codeLists) {
+    state.codeLists = codeLists ? codeLists : [];
   },
-  SET_CODE(state, code) {
-    state.code = code;
+  SET_CODELIST(state, codeList) {
+    state.codeList = codeList;
   },
 };
 
 const actions = {
   findAll({ commit }) {
-    codeService.findAll().then(
+    codeListService.findAll().then(
       (data) => {
-        commit("SET_CODES", data);
-        commit("SET_CODE", null); //clear business function
-        console.log(data);
+        commit("SET_CODELISTS", data);
+        commit("SET_CODELIST", null); //clear business function
       },
       (error) => {
         console.log(error);
@@ -29,9 +28,9 @@ const actions = {
     );
   },
   findById({ commit }, id) {
-    codeService.findById(id).then(
+    codeListService.findById(id).then(
       (data) => {
-        commit("SET_CODE", data);
+        commit("SET_CODELIST", data);
         console.log(data);
       },
       (error) => {
@@ -41,9 +40,9 @@ const actions = {
   },
 
   findByLocalId({ commit }, localId) {
-    codeService.findByLocalId(localId).then(
+    codeListService.findByLocalId(localId).then(
       (data) => {
-        commit("SET_CODE", data);
+        commit("SET_CODELIST", data);
       },
       (error) => {
         console.log(error);
@@ -52,9 +51,9 @@ const actions = {
   },
 
   findByName({ commit }, name) {
-    codeService.findByName(name).then(
+    codeListService.findByName(name).then(
       (data) => {
-        commit("SET_CODES", data);
+        commit("SET_CODELISTS", data);
         //commit("SET_BUSINESS_FUNCTION", null); //clear business function
       },
       (error) => {
@@ -63,7 +62,7 @@ const actions = {
     );
   },
   save({ dispatch }, formData) {
-    codeService.save(formData).then(
+    codeListService.save(formData).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Code saved!", {
@@ -77,10 +76,10 @@ const actions = {
     );
   },
   delete({ dispatch }, id) {
-    codeService.delete(id).then(
+    codeListService.delete(id).then(
       (data) => {
         console.log(data);
-        dispatch("message/success", "Code deleted!", {
+        dispatch("message/success", "Code List deleted!", {
           root: true,
         });
         router.push("/metadata/structural/codelist");
@@ -91,10 +90,10 @@ const actions = {
     );
   },
   update({ dispatch }, formData) {
-    codeService.update(formData).then(
+    codeListService.update(formData).then(
       (data) => {
         console.log(data);
-        dispatch("message/success", "Code updated!", {
+        dispatch("message/success", "Code List updated!", {
           root: true,
         });
       },
@@ -104,7 +103,7 @@ const actions = {
     );
   },
   addCodeItem({ dispatch }, formData) {
-    codeService.addCodeItem(formData).then(
+    codeListService.addCodeItem(formData).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Code item added!", {
@@ -119,9 +118,9 @@ const actions = {
       }
     );
   },
-  removeCodeItem({ dispatch }, codeDetails) {
-    console.log(codeDetails);
-    codeService.removeCodeItem(codeDetails).then(
+  removeCodeItem({ dispatch }, codeListDetails) {
+    console.log(codeListDetails);
+    codeListService.removeCodeItem(codeListDetails).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Code item removed!", {
@@ -134,7 +133,7 @@ const actions = {
     );
   },
   updateCodeItem({ dispatch }, formData) {
-    codeService.addCodeItem(formData).then(
+    codeListService.addCodeItem(formData).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Code item updated!", {
@@ -149,15 +148,15 @@ const actions = {
 };
 
 const getters = {
-  codes: (state) => {
-    return state.codes;
+  codeLists: (state) => {
+    return state.codeLists;
   },
-  code: (state) => {
-    return state.code;
+  codeList: (state) => {
+    return state.codeList;
   },
 };
 
-export const code = {
+export const codeList = {
   namespaced: true,
   state,
   mutations,

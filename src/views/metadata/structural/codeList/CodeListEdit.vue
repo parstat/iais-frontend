@@ -1,10 +1,12 @@
 <template>
   <CRow class="col-12">
-    <CCard>
+    <CCard v-if="codeList">
       <CCardHeader class="bg-white">
-        <span>Code</span>
+        <CCardTitle>
+          <span>{{ codeList.name }}</span>
+        </CCardTitle>
       </CCardHeader>
-      <CCardBody v-if="code">
+      <CCardBody>
         <CCardText>
           <CRow>
             <CCol class="col-3 mr-2">
@@ -32,7 +34,7 @@
                       }
                     "
                   >
-                    <span>Code Items</span>
+                    <span>Items</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -46,10 +48,10 @@
                   :visible="activeTab === 0"
                 >
                   <app-code-list-basic
-                    :name="code.name"
-                    :description="code.description"
-                    :localId="code.localId"
-                    :sentinel="code.sentinel"
+                    :name="codeList.name"
+                    :description="codeList.description"
+                    :localId="codeList.localId"
+                    :sentinel="codeList.sentinel"
                     @next="handleSubmit"
                   ></app-code-list-basic>
                 </CTabPane>
@@ -60,7 +62,7 @@
                     aria-labelledby="home-tab"
                     :visible="activeTab === 1"
                   >
-                    <app-code-items :code="code"></app-code-items>
+                    <app-code-items :codeList="codeList"></app-code-items>
                   </CTabPane>
                 </CTabContent>
               </CTabContent>
@@ -73,13 +75,13 @@
 </template>
 <script>
 import CodeListBasic from "./share/CodeListBasic.vue";
-import CodeItems from "./share/CodeItem.vue";
+import CodeListItems from "./share/CodeListItems.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "CodeEdit",
+  name: "CodeListEdit",
   computed: {
-    ...mapGetters("code", ["code"]),
+    ...mapGetters("codeList", ["codeList"]),
   },
   data() {
     return {
@@ -88,20 +90,20 @@ export default {
   },
   components: {
     "app-code-list-basic": CodeListBasic,
-    "app-code-items": CodeItems,
+    "app-code-items": CodeListItems,
   },
   methods: {
     handleSubmit(basic, fieldsChanged) {
       if (fieldsChanged) {
         this.disabled = true; //disable buttons
         const formData = {
-          id: this.code.id,
+          id: this.codeList.id,
           name: basic.name,
           description: basic.description ? basic.description : "",
           localId: basic.localId,
           sentinel: basic.sentinel,
         };
-        this.$store.dispatch("code/update", formData).then(() => {
+        this.$store.dispatch("codeList/update", formData).then(() => {
           this.next();
         });
       } else {
@@ -116,7 +118,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("code/findById", this.$route.params.id);
+    this.$store.dispatch("codeList/findById", this.$route.params.id);
     this.activeTab = this.$route.query.step ? this.$route.query.step - 1 : 0;
   },
 };

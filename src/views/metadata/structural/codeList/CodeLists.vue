@@ -6,7 +6,7 @@
           <CRow>
             <CCol class="col-9">
               <CCardTitle>
-                <span>Code List</span>
+                <span>Code Lists</span>
               </CCardTitle>
             </CCol>
             <CCol class="col-3">
@@ -28,9 +28,9 @@
           <CCardText>
             <div class="table-responsive" v-if="!isLoading">
               <CSmartTable
-                v-if="codes.length"
+                v-if="codeLists.length"
                 :activePage="1"
-                :items="codes"
+                :items="codeLists"
                 :columns="columns"
                 columnFilter
                 cleaner
@@ -98,7 +98,7 @@ import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
 export default {
-  name: "CodeList",
+  name: "CodeLists",
   data() {
     return {
       columns: [
@@ -127,7 +127,7 @@ export default {
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("code", ["codes"]),
+    ...mapGetters("codeList", ["codeLists"]),
   },
   methods: {
     setChecked(item) {
@@ -138,7 +138,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("code/findAll");
+    this.$store.dispatch("codeList/findAll");
     this.$store.dispatch("coreui/setContext", Context.Structural);
   },
 };

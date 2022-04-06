@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CCard v-if="code">
+    <CCard v-if="codeList">
       <CCardBody>
         <CCardText>
           <CForm>
@@ -10,13 +10,13 @@
               type="text"
               class="form-control"
               :class="{
-                'is-invalid': v$.codeName.$error,
-                'mb-3': !v$.codeName.$error,
+                'is-invalid': v$.code.$error,
+                'mb-3': !v$.code.$error,
               }"
               placeholder="Code item code"
-              v-model.trim="codeName"
+              v-model.trim="code"
             />
-            <div class="text-danger mb-3" v-if="v$.codeName.$error">
+            <div class="text-danger mb-3" v-if="v$.code.$error">
               Please enter a code for the code item.
             </div>
           </CForm>
@@ -38,22 +38,15 @@
             </div>
           </CForm>
           <CForm>
-            <label for="description">Description*</label>
+            <label for="description">Description</label>
             <textarea
               rows="5"
               id="description"
               type="text"
               class="form-control"
-              :class="{
-                'is-invalid': v$.description.$error,
-                'mb-3': !v$.description.$error,
-              }"
               placeholder="Unit type description"
               v-model.trim="description"
             />
-            <div class="text-danger mb-3" v-if="v$.description.$error">
-              Please enter a description.
-            </div>
           </CForm>
           <div class="form-mandatory">
             <span>*Mandatory fields</span>
@@ -71,9 +64,9 @@
         <div class="code-items-section">
           <div class="table-responsive">
             <CSmartTable
-              v-if="code.codeItems?.length"
+              v-if="codeList.codeItems?.length"
               :activePage="1"
-              :items="code.codeItems"
+              :items="codeList.codeItems"
               :columns="codeItemsColumns"
               columnFilter
               cleaner
@@ -112,7 +105,11 @@
         Item?</CModalBody
       >
       <CModalFooter>
-        <CButton color="secondary" @click="closeDialog()" :disabled="disabled">
+        <CButton
+          color="secondary"
+          @click="() => (showDeleteDialog = false)"
+          :disabled="disabled"
+        >
           Close
         </CButton>
         <CButton color="danger" @click="deleteCodeItem()" :disabled="disabled"
@@ -128,8 +125,8 @@ import { required } from "@vuelidate/validators";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "CodeEditBasic",
-  props: ["code"],
+  name: "CodeListItems",
+  props: ["codeList"],
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
@@ -138,7 +135,7 @@ export default {
     return {
       disabled: false,
       v$: useValidate(),
-      codeName: "",
+      code: "",
       description: "",
       label: "",
       showDeleteDialog: false,
@@ -157,10 +154,7 @@ export default {
     };
   },
   validations: {
-    codeName: {
-      required,
-    },
-    description: {
+    code: {
       required,
     },
     label: {
@@ -173,12 +167,12 @@ export default {
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
-          nodeSetId: this.code.id,
-          codeName: this.codeName,
+          nodeSetId: this.codeList.id,
+          code: this.code,
           description: this.description,
           label: this.label,
         };
-        this.$store.dispatch("code/addCodeItem", formData).then(() => {
+        this.$store.dispatch("codeList/addCodeItem", formData).then(() => {
           setTimeout(() => {
             this.reloadCodeList();
           }, 1000);
@@ -191,23 +185,31 @@ export default {
       this.showEditDialog = false;
       this.showDeleteDialog = false;
       this.disabled = false;
-      this.codeName = "";
+      this.code = "";
       this.description = "";
       this.label = "";
       this.v$.$reset();
-      this.$store.dispatch("code/findById", this.$route.params.id);
+      this.$store.dispatch("codeList/findById", this.$route.params.id);
     },
     openEditDialog(item) {
       console.log(item);
       this.item = item;
       this.showEditDialog = true;
     },
+    openDeleteDialog(item) {
+      console.log(item);
+      this.item = item;
+      this.showDeleteDialog = true;
+    },
+    closeDeleteDialog() {
+      this.showDeleteDialog = false;
+    },
     deleteCodeItem() {
       const codeListId = this.$route.params.id;
       if (codeListId && this.item?.id) {
         this.disabled = true;
         this.$store
-          .dispatch("code/removeCodeItem", {
+          .dispatch("codeList/removeCodeItem", {
             codeListId,
             codeItemId: this.item.code,
           })

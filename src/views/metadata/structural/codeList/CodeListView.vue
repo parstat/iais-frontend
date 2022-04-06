@@ -87,7 +87,7 @@ import { mapGetters } from "vuex";
 //import { Context } from "@/common";
 
 export default {
-  name: "CodeView",
+  name: "CodeListView",
   data() {
     return {
       disabled: false,
@@ -96,7 +96,7 @@ export default {
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("code", ["code"]),
+    ...mapGetters("codeList", ["codeList"]),
   },
   methods: {
     handleBack() {
@@ -105,7 +105,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("code/findById", this.$route.params.id);
+    this.$store.dispatch("codeList/findById", this.$route.params.id);
     //this.$store.dispatch("coreui/setContext", Context.Structural);
   },
 };

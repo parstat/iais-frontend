@@ -12,12 +12,12 @@
               'is-invalid': v$.localName.$error,
               'mb-3': !v$.localName.$error,
             }"
-            placeholder="Code name"
+            placeholder="Code List name"
             v-model.trim="localName"
             @change="fieldChanged = true"
           />
           <div class="text-danger mb-3" v-if="v$.localName.$error">
-            Please enter a name for the code.
+            Please enter a name for the code list.
           </div>
         </CForm>
         <CForm>
@@ -31,7 +31,7 @@
               'is-invalid': v$.localDescription.$error,
               'mb-3': !v$.localDescription.$error,
             }"
-            placeholder="Code description"
+            placeholder="Code List description"
             v-model.trim="localDescription"
             @change="fieldChanged = true"
           />

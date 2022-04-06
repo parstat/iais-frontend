@@ -77,7 +77,7 @@
       </CCardBody>
     </CCard>
   </CRow>
-   <CSpinner v-else color="primary" size="sm" />
+  <CSpinner v-else color="primary" size="sm" />
 </template>
 
 <script>

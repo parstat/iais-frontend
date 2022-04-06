@@ -221,7 +221,7 @@ export default {
         rootItems: uploadedItems.rootItems,
         aggregationType: uploadedItems.aggregationType,
       };
-      console.log(formData)
+      console.log(formData);
       await this.$store.dispatch(
         "statisticalClassification/uploadItems",
         formData

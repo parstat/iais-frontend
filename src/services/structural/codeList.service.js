@@ -2,7 +2,7 @@ import { axiosIais } from "@/http";
 
 //import axios from "axios";
 
-export const codeService = {
+export const codeListService = {
   findAll,
   findById,
   save,
@@ -106,7 +106,7 @@ function addCodeItem(formData) {
     };
 
     const requestBody = {
-      code: formData.codeName,
+      code: formData.code,
       description: formData.description,
       value: formData.label,
       nodeSetId: formData.nodeSetId,
