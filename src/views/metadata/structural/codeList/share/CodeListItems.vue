@@ -13,7 +13,7 @@
                 'is-invalid': v$.code.$error,
                 'mb-3': !v$.code.$error,
               }"
-              placeholder="Code item code"
+              placeholder="Code"
               v-model.trim="code"
             />
             <div class="text-danger mb-3" v-if="v$.code.$error">
@@ -21,20 +21,54 @@
             </div>
           </CForm>
           <CForm>
-            <label for="label">Label*</label>
+            <label for="label">Label En</label>
             <input
               id="label"
               type="text"
               class="form-control"
               :class="{
-                'is-invalid': v$.label.$error,
-                'mb-3': !v$.label.$error,
+                'is-invalid': v$.label.en.$error,
+                'mb-3': !v$.label.en.$error,
               }"
-              placeholder="Code label"
-              v-model.trim="label"
+              placeholder="English label"
+              v-model.trim="label.en"
             />
-            <div class="text-danger mb-3" v-if="v$.label.$error">
-              Please enter a label.
+            <div class="text-danger mb-3" v-if="v$.label.en.$error">
+              Please enter a label in English.
+            </div>
+          </CForm>
+          <CForm>
+            <label for="label">Label Ro</label>
+            <input
+              id="label"
+              type="text"
+              class="form-control"
+              :class="{
+                'is-invalid': v$.label.ro.$error,
+                'mb-3': !v$.label.ro.$error,
+              }"
+              placeholder="Romanian label"
+              v-model.trim="label.ro"
+            />
+            <div class="text-danger mb-3" v-if="v$.label.ro.$error">
+              Please enter a label in Romanian.
+            </div>
+          </CForm>
+          <CForm>
+            <label for="label">Label Ru</label>
+            <input
+              id="label"
+              type="text"
+              class="form-control"
+              :class="{
+                'is-invalid': v$.label.ru.$error,
+                'mb-3': !v$.label.ru.$error,
+              }"
+              placeholder="Russian label"
+              v-model.trim="label.ru"
+            />
+            <div class="text-danger mb-3" v-if="v$.label.ru.$error">
+              Please enter label in Russian.
             </div>
           </CForm>
           <CForm>
@@ -130,6 +164,7 @@ export default {
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("localization", ["locale"]),
   },
   data() {
     return {
@@ -137,7 +172,11 @@ export default {
       v$: useValidate(),
       code: "",
       description: "",
-      label: "",
+      label: {
+        en: "",
+        ro: "",
+        ru: "",
+      },
       showDeleteDialog: false,
       item: null,
       codeItemsColumns: [
@@ -158,7 +197,21 @@ export default {
       required,
     },
     label: {
-      required,
+      en: {
+        required: function () {
+          return !(this.locale === "en");
+        },
+      },
+      ro: {
+        required: function () {
+          return !(this.locale === "ro");
+        },
+      },
+      ru: {
+        required: function () {
+          return !(this.locale === "ru");
+        },
+      },
     },
   },
   methods: {
