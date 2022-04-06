@@ -1,13 +1,15 @@
 <template>
   <CRow>
-    <div class="jumbotron jumbotron-fluid col-lg-12 p-2 mb-3" v-if="code">
+    <div class="jumbotron jumbotron-fluid col-lg-12 p-2 mb-3" v-if="codeList">
       <div class="p-3">
         <h2 class="display-5">
-          {{ code.name }}
-          <span class="lead">( {{ code.version || code.localId }} )</span>
+          {{ codeList.name }}
+          <span class="lead"
+            >( {{ codeList.version || codeList.localId }} )</span
+          >
         </h2>
         <p class="lead">
-          <span><strong>Description:</strong></span> {{ code.description }}
+          <span><strong>Description:</strong></span> {{ codeList.description }}
         </p>
       </div>
     </div>
@@ -17,58 +19,23 @@
           <span>Code Items</span>
         </CCardTitle>
         <CCardText>
-          <table class="table table-hover" v-if="code">
-            <thead>
-              <tr>
-                <th scope="col"><span>Code</span></th>
-                <th scope="col"><span>Value</span></th>
-                <th scope="col" colspan="2" width="2%"><span>Actions</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="item in code.codeItems" :key="item.index">
-                <td>{{ item.code }}</td>
-                <td>{{ item.value }}</td>
-                <template v-if="isAuthenticated">
-                  <td>
-                    <!--  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'CodeItemsEdit',
-                      params: { id: code.id },
-                    }"
-                  >
-                    <CIcon name="cil-pencil" />
-                  </router-link> -->
-                  </td>
-                  <td v-if="isAdmin">
-                    <!--  <router-link
-                    tag="a"
-                    :to="{
-                      name: 'CodeItemsDelete',
-                      params: { id: code.id },
-                    }"
-                  >
-                    <CIcon name="cil-trash" />
-                  </router-link> -->
-                  </td>
-                </template>
-                <template v-else>
-                  <td>
-                    <router-link
-                      tag="a"
-                      :to="{
-                        name: 'CodeView',
-                        params: { id: code.id },
-                      }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
-                    </router-link>
-                  </td>
-                </template>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive" v-if="!isLoading">
+            <CSmartTable
+              v-if="codeList"
+              :items="codeList.codeItems"
+              :activePage="1"
+              :columns="columns"
+              columnFilter
+              cleaner
+              itemsPerPageSelect
+              :itemsPerPage="5"
+              columnSorter
+              :sorterValue="{ column: 'code', state: 'asc' }"
+              pagination
+            >
+            </CSmartTable>
+          </div>
+          <CSpinner v-else color="primary" size="sm" />
         </CCardText>
         <CButton
           color="primary"
@@ -91,6 +58,16 @@ export default {
   data() {
     return {
       disabled: false,
+      columns: [
+        {
+          key: "code",
+          label: "Code",
+        },
+        {
+          key: "value",
+          label: "Value",
+        },
+      ],
     };
   },
   computed: {
