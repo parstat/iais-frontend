@@ -9,6 +9,7 @@ export const statisticalClassificationService = {
   update,
   delete: _delete,
   addLevel,
+  updateLevel,
   removeLevel,
   uploadItems,
 };
@@ -140,6 +141,40 @@ function addLevel(formData) {
       );
   });
 }
+
+function updateLevel(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const requestBody = {
+      statisticalClassificationId: formData.statisticalClassificationId,
+      levelId: formData.levelId,
+      name: formData.name,
+      description: formData.description,
+    };
+
+    axiosIais
+      .patch(
+        "/structural/ClosedStatisticalClassifications/levels",
+        requestBody,
+        config
+      )
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+
 function removeLevel(statisticalClassificationId, levelId) {
   return new Promise((resolve, reject) => {
     axiosIais

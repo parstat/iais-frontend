@@ -95,6 +95,20 @@ const actions = {
     );
   },
 
+  async updateLevel({ dispatch }, formData) {
+    return statisticalClassificationService.updateLevel(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Level updated!", {
+          root: true,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+
   async removeLevel({ dispatch }, formData) {
     return statisticalClassificationService
       .removeLevel(formData.statisticalClassificationId, formData.levelId)

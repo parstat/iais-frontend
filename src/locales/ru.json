@@ -283,6 +283,7 @@
         "level_description": "Описание уровня",
         "level_number": "Номер уровня",
         "level_add_button": "Добавлять",
+        "level_update_button": "Update",
         "validations":{
             "statistical_classification_id": "Пожалуйста введите действительный ИД",
             "statistical_classification_name": "Пожалуйста введите действительное имя",

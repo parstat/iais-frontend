@@ -15,6 +15,7 @@
             :placeholder="$t('structural.level_local_id')"
             v-model.trim="levelLocalId"
             @change="fieldChanged = true"
+            :disabled="edit"
           />
           <span class="text-danger" v-if="v$.levelLocalId.$error">{{
             $t("structural.validations.level_id")
@@ -65,12 +66,14 @@
             :placeholder="$t('structural.level_number')"
             v-model.trim="levelNumber"
             @change="fieldChanged = true"
+            :disabled="edit"
           />
           <span class="text-danger" v-if="v$.levelNumber.$error">{{
             $t("structural.validations.level_number")
           }}</span>
         </CForm>
         <CButton
+          v-if="!edit"
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
@@ -78,7 +81,15 @@
           @click="addLevel"
           ><span>{{ $t("structural.level_add_button") }}</span>
         </CButton>
-
+        <CButton
+          v-else
+          color="primary"
+          size="sm"
+          style="margin-right: 0.3rem"
+          class="mb-3"
+          @click="updateLevel"
+          ><span>{{ $t("structural.level_update_button") }}</span>
+        </CButton>
         <CModal
           :visible="visibleModal"
           @close="
@@ -129,6 +140,11 @@
                   <CCol class="col-3">
                     <CNav class="justify-content-end">
                       <CNavItem>
+                        <span v-on:click="editModeLevel(level)">
+                          <CIcon name="cil-pencil" />
+                        </span>
+                      </CNavItem>
+                      <CNavItem>
                         <span v-on:click="alertDeleteLevel(level)">
                           <CIcon name="cil-trash" />
                         </span>
@@ -177,6 +193,8 @@ export default {
       levelDescription: "",
       levelNumber: "",
       levelToDelete: "",
+      levelId: "",
+      edit: false,
       visibleModal: false,
       disabled: false,
       fieldChanged: false, //do nothing if nothing changes
@@ -209,12 +227,33 @@ export default {
         this.resetLevelFields();
       }
     },
+    updateLevel() {
+      this.v$.$touch(); //validate form data
+      if (!this.v$.$invalid) {
+        this.disabled = true; //disable buttons
+        const formData = {
+          id: this.levelId,
+          name: this.levelName,
+          description: this.levelDescription,
+        };
+        //console.log(formData);
+        this.$emit("updateLevel", formData);
+        this.resetLevelFields();
+      }
+    },
 
     alertDeleteLevel(level) {
       this.visibleModal = true;
       this.levelToDelete = level;
     },
-
+    editModeLevel(level) {
+      this.levelName = level.name;
+      this.levelDescription = level.description;
+      this.levelLocalId = level.localId;
+      this.levelNumber = level.levelNumber;
+      this.levelId = level.id;
+      this.edit = true;
+    },
     removeLevel() {
       this.visibleModal = false;
       this.$emit("removeLevel", this.levelToDelete);
@@ -226,6 +265,8 @@ export default {
       this.levelNumber = "";
       this.disabled = false;
       this.fieldChanged = false;
+      this.edit = false;
+      this.levelId = "";
       this.v$.$reset();
     },
   },

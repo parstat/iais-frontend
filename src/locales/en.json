@@ -284,6 +284,7 @@
         "level_description": "Level description",
         "level_number": "Level number",
         "level_add_button": "Add",
+        "level_update_button": "Update",
         "validations":{
             "statistical_classification_id": "Please enter a valid ID",
             "statistical_classification_name": "Please enter a valid name",
