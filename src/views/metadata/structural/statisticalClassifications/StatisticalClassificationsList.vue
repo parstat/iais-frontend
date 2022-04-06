@@ -28,7 +28,7 @@
           <CCardText>
             <div class="table-responsive" v-if="!isLoading">
               <CSmartTable
-                v-if="statisticalClassifications.length"
+                v-if="statisticalClassifications"
                 :items="statisticalClassifications"
                 :activePage="1"
                 :columns="columns"
@@ -69,12 +69,8 @@
                       </router-link>
                     </span>
 
-                    <span
-                      v-if="isAuthenticated && isAdmin"
-                      class="pl-2"
-                      v-c-tooltip="'Delete'"
-                    >
-                      <!-- <router-link
+                    <span v-if="isAuthenticated && isAdmin" class="pl-2">
+                      <router-link
                         tag="a"
                         title="Delete"
                         :to="{
@@ -83,7 +79,7 @@
                         }"
                       >
                         <CIcon name="cil-trash" />
-                      </router-link> -->
+                      </router-link>
                     </span>
                   </td>
                 </template>

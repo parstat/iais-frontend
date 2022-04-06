@@ -118,7 +118,7 @@ const actions = {
         dispatch("message/success", "Statistical Classification deleted!", {
           root: true,
         });
-        router.push("/metadata/structuralal/classifications");
+        router.push("/metadata/structural/classifications");
       },
       (error) => {
         console.log(error);

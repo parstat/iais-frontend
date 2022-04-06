@@ -11,7 +11,7 @@
           <input
             id="localId"
             type="text"
-            class="form-control mb-3"
+            class="form-control mb-3 capitalize"
             :class="{ 'is-invalid': v$.localLocalId.$error }"
             :placeholder="$t('structural.statistical_classification_local_id')"
             v-model.trim="localLocalId"
@@ -171,3 +171,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.capitalize {
+  text-transform: uppercase;
+}
+</style>

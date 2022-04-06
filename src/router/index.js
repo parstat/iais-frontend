@@ -497,6 +497,16 @@ const routes = [
           ),
         meta: { authorize: [Role.User, Role.Admin] },
       },
+      //Statistical Classifications Delete
+      {
+        path: "metadata/structural/classifications/delete/:id",
+        name: "StatisticalClassificationDelete",
+        component: () =>
+          import(
+            "@/views/metadata/structural/statisticalClassifications/StatisticalClassificationDelete"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
       //* Code Lists */
       {
         path: "metadata/structural/codelist/",
