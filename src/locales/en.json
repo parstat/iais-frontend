@@ -240,6 +240,16 @@
         }
     },
     "structural": {
+        "local_ID": "Local ID",
+        "description": "Description",
+        "version": "Version",
+        "measures": "Measures",
+        "actions": "Actions",
+        "representations": "Representations",
+        "name": "Name",
+        "new_variable": "New variable",
+        "back": "Back",
+        "variable_name": "Variable name",
         "variables_title": "Variables",
         "variables_text": "The use of a Concept as a characteristic of a Population intended to be measured. The Variable combines the meaning of a Concept with a Unit type, to define the characteristic that is to be measured.",
         "variables_link": "Go to variables section",

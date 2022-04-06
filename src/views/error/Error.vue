@@ -19,7 +19,7 @@
         </div>
         <div class="clearfix mb-3">
           <router-link tag="a" to="/">
-            <CIcon name="cilHome"></CIcon>
+            <CIcon name="cilHome" />
             <span>&nbsp;{{ $t("common.goto_homepage") }}</span>
           </router-link>
         </div>

@@ -15,10 +15,11 @@
                 tag="a"
                 class="text-decoration-none text-primary"
                 :to="{ name: 'StructuralVariableList' }"
-                ><span class="icon-span"
-                  >{{ $t("structural.variables_link") }}&nbsp;</span
-                ><CIcon name="cil-arrow-right"
-              /></router-link>
+                ><span class="icon-span">
+                  {{ $t("structural.variables_link") }}&nbsp;
+                </span>
+                <CIcon name="cil-arrow-right" />
+              </router-link>
             </span>
           </CButton>
         </CCardBody>
@@ -43,12 +44,11 @@
               class="text-decoration-none text-primary"
               tag="a"
               :to="{ name: 'StructuralStatisticalClassificationsList' }"
-              ><span class="icon-span"
-                >{{
-                  $t("structural.statistical_classification_link")
-                }}&nbsp;</span
-              ><CIcon name="cil-arrow-right"
-            /></router-link>
+              ><span class="icon-span">
+                {{ $t("structural.statistical_classification_link") }}&nbsp;
+              </span>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardBody>
       </CCard>
@@ -68,10 +68,11 @@
               tag="a"
               :to="{ name: 'StructuralCodeList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span"
-                >{{ $t("structural.code_list_link") }}&nbsp;</span
-              ><CIcon name="cil-arrow-right"
-            /></router-link>
+              ><span class="icon-span">
+                {{ $t("structural.code_list_link") }}&nbsp;
+              </span>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardBody>
       </CCard>
@@ -90,10 +91,11 @@
               tag="a"
               :to="{ name: 'CorrespondenceTableList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span"
-                >{{ $t("structural.correspondance_table_link") }}&nbsp;</span
-              ><CIcon name="cil-arrow-right"
-            /></router-link>
+              ><span class="icon-span">
+                {{ $t("structural.correspondance_table_link") }}&nbsp;
+              </span>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardBody>
       </CCard>
@@ -109,9 +111,9 @@
           </CCardText>
           <CButton disabled>
             <!--<router-link tag="a" :to="{ name: 'BusinessFunctionList' }"> -->
-            <span class="icon-span"
-              >{{ $t("structural.data_sets_link") }}&nbsp;</span
-            >
+            <span class="icon-span">
+              {{ $t("structural.data_sets_link") }}&nbsp;
+            </span>
             <CIcon name="cil-arrow-right" />
             <!--</router-link>-->
           </CButton>
@@ -132,9 +134,9 @@
               tag="a"
               :to="{ name: 'UnitTypeList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span"
-                >{{ $t("structural.unit_types_link") }}&nbsp;</span
-              >
+              ><span class="icon-span">
+                {{ $t("structural.unit_types_link") }}&nbsp;
+              </span>
               <CIcon name="cil-arrow-right" />
             </router-link>
           </CButton>
@@ -155,9 +157,9 @@
               tag="a"
               :to="{ name: 'ConceptList' }"
               class="text-decoration-none text-primary"
-              ><span class="icon-span"
-                >{{ $t("structural.concepts_link") }}&nbsp;</span
-              >
+              ><span class="icon-span">
+                {{ $t("structural.concepts_link") }}&nbsp;
+              </span>
               <CIcon name="cil-arrow-right" />
             </router-link>
           </CButton>
@@ -178,10 +180,9 @@
               tag="a"
               :to="{ name: 'MeasurementUnitList' }"
               class="text-decoration-none text-primary"
-            >
-              <span class="icon-span"
-                >{{ $t("structural.measurementUnit_link") }}&nbsp;</span
-              >
+              ><span class="icon-span">
+                {{ $t("structural.measurementUnit_link") }}&nbsp;
+              </span>
               <CIcon name="cil-arrow-right" />
             </router-link>
           </CButton>
@@ -202,10 +203,9 @@
               tag="a"
               :to="{ name: 'MeasurementTypeList' }"
               class="text-decoration-none text-primary"
-            >
-              <span class="icon-span"
-                >{{ $t("structural.measurementType_link") }}&nbsp;</span
-              >
+              ><span class="icon-span">
+                {{ $t("structural.measurementType_link") }}&nbsp;
+              </span>
               <CIcon name="cil-arrow-right" />
             </router-link>
           </CButton>

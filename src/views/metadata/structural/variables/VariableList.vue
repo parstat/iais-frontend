@@ -5,7 +5,9 @@
         <CCardBody>
           <CRow>
             <CCol class="col-9">
-              <CCardTitle> Variables </CCardTitle>
+              <CCardTitle>
+                <span>{{ $t("structural.variables_title") }}</span>
+              </CCardTitle>
             </CCol>
             <CCol class="col-3">
               <CNav class="justify-content-end">
@@ -17,7 +19,9 @@
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />
-                    <span class="icon-span">New Variable</span>
+                    <span class="icon-span">
+                      {{ $t("structural.new_variable") }}
+                    </span>
                   </router-link>
                 </CNavItem>
               </CNav>
@@ -94,30 +98,33 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("structural.local_ID"),
         },
         {
           key: "name",
-          label: "Variable Name",
+          label: this.$i18n.t("structural.new_variable"),
         },
         {
           key: "description",
+          label: this.$i18n.t("structural.description"),
           filter: false,
           sorter: false,
         },
         {
           key: "version",
+          label: this.$i18n.t("structural.version"),
           filter: false,
           sorter: false,
         },
         {
           key: "measures",
+          label: this.$i18n.t("structural.measures"),
           filter: false,
           sorter: false,
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("structural.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,

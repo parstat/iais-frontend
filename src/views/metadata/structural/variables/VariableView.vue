@@ -3,31 +3,46 @@
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="variable">
       <div class="p-3">
         <h2 class="display-5">
-          {{ variable.name }}
+          <span>{{ variable.name }}</span>
           <span class="lead">( {{ variable.version }} )</span>
         </h2>
         <p class="lead">
-          <strong>Description:</strong> {{ variable.description }}
+          <span>
+            <strong>{{ $t("structural.description") }}:</strong>
+            {{ variable.description }}
+          </span>
         </p>
       </div>
     </div>
 
     <CCard class="col-12">
       <CCardBody>
-        <CCardTitle> Representations </CCardTitle>
+        <CCardTitle>
+          <span>{{ $t("structural.representations") }}</span>
+        </CCardTitle>
         <CCardText>
           <table class="table table-hover" v-if="variable">
             <thead>
               <tr>
-                <th scope="col">LocalId</th>
-                <th scope="col">Name</th>
-                <th scope="col" colspan="2" width="2%">Actions</th>
+                <th scope="col">
+                  <span>{{ $t("structural.local_ID") }}</span>
+                </th>
+                <th scope="col">
+                  <span>{{ $t("structural.name") }}</span>
+                </th>
+                <th scope="col" colspan="2" width="2%">
+                  <span>{{ $t("structural.actions") }}</span>
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="item in variable.representations" :key="item.index">
-                <td>{{ item.localId }}</td>
-                <td>{{ item.name }}</td>
+                <td>
+                  <span>{{ item.localId }}</span>
+                </td>
+                <td>
+                  <span>{{ item.name }}</span>
+                </td>
                 <template v-if="isAuthenticated">
                   <td>
                     <router-link
@@ -85,8 +100,8 @@
           size="sm"
           @click.prevent="handleBack()"
           :disabled="disabled"
-          >Back</CButton
-        >
+          ><span>{{ $t("structural.back") }}</span>
+        </CButton>
       </CCardBody>
     </CCard>
   </CRow>

@@ -20,8 +20,8 @@
                 ><span class="icon-span">
                   {{ $t("common.referential_metadata_link") }}&nbsp;
                 </span>
-                <CIcon name="cil-arrow-right"
-              /></router-link>
+                <CIcon name="cil-arrow-right" />
+              </router-link>
             </span>
           </CButton>
         </CCardFooter>
@@ -46,8 +46,8 @@
               ><span class="icon-span">
                 {{ $t("common.structural_metadata_link") }}&nbsp;
               </span>
-              <CIcon name="cil-arrow-right"
-            /></router-link>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardFooter>
       </CCard>

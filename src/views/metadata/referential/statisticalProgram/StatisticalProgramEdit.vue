@@ -88,9 +88,9 @@
                 >
                   <template #title>
                     <span>{{ $t("referential.basic") }}</span>
-                    <span class="float-right" v-if="editedBasic"
-                      ><CIcon name="cil-check-alt"
-                    /></span>
+                    <span class="float-right" v-if="editedBasic">
+                      <CIcon name="cil-check-alt" />
+                    </span>
                   </template>
                   <app-statistical-program-basic
                     :localId="statisticalProgram.localId"
@@ -107,9 +107,9 @@
                 >
                   <template #title>
                     <span>{{ $t("referential.agents") }}</span>
-                    <span class="float-right" v-if="editedAgents"
-                      ><CIcon nam="cil-check-alt"
-                    /></span>
+                    <span class="float-right" v-if="editedAgents">
+                      <CIcon nam="cil-check-alt" />
+                    </span>
                   </template>
                   <app-agents-edit
                     :sp="statisticalProgram"
@@ -124,9 +124,9 @@
                 >
                   <template #title>
                     <span>{{ $t("referential.legislative_references") }}</span>
-                    <span class="float-right" v-if="editedReferences"
-                      ><CIcon name="cil-check-alt"
-                    /></span>
+                    <span class="float-right" v-if="editedReferences">
+                      <CIcon name="cil-check-alt" />
+                    </span>
                   </template>
                   <app-references-edit
                     :references="statisticalProgram.legislativeReferences"
@@ -145,9 +145,9 @@
                 >
                   <template #title>
                     <span>{{ $t("referential.statistical_standards") }}</span>
-                    <span class="float-right" v-if="editedStandards"
-                      ><CIcon name="cil-check-alt"
-                    /></span>
+                    <span class="float-right" v-if="editedStandards">
+                      <CIcon name="cil-check-alt" />
+                    </span>
                   </template>
                   <app-standards-edit
                     :standards="statisticalProgram.statisticalStandards"
