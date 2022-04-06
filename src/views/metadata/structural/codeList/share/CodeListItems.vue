@@ -21,7 +21,9 @@
             </div>
           </CForm>
           <CForm>
-            <label for="label">Label En</label>
+            <label for="label"
+              >Label En<span v-if="locale === 'en'">*</span></label
+            >
             <input
               id="label"
               type="text"
@@ -38,7 +40,9 @@
             </div>
           </CForm>
           <CForm>
-            <label for="label">Label Ro</label>
+            <label for="label"
+              >Label Ro<span v-if="locale === 'ro'">*</span></label
+            >
             <input
               id="label"
               type="text"
@@ -55,7 +59,9 @@
             </div>
           </CForm>
           <CForm>
-            <label for="label">Label Ru</label>
+            <label for="label"
+              >Label Ru<span v-if="locale === 'ru'">*</span></label
+            >
             <input
               id="label"
               type="text"

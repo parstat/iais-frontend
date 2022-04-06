@@ -3,6 +3,24 @@
     <CCardBody>
       <CCardText>
         <CForm>
+          <label for="localId">Local id*</label>
+          <input
+            id="localId"
+            type="text"
+            class="form-control"
+            :class="{
+              'is-invalid': v$.localLocalId.$error,
+              'mb-3': !v$.localLocalId.$error,
+            }"
+            placeholder="Local id"
+            v-model.trim="localLocalId"
+            @change="fieldChanged = true"
+          />
+          <div class="text-danger mb-3" v-if="v$.localLocalId.$error">
+            Please specify the local id.
+          </div>
+        </CForm>
+        <CForm>
           <label for="name">Name*</label>
           <input
             id="name"
@@ -39,24 +57,7 @@
             Please enter a description.
           </div>
         </CForm>
-        <CForm>
-          <label for="localId">Local id*</label>
-          <input
-            id="localId"
-            type="text"
-            class="form-control"
-            :class="{
-              'is-invalid': v$.localLocalId.$error,
-              'mb-3': !v$.localLocalId.$error,
-            }"
-            placeholder="Local id"
-            v-model.trim="localLocalId"
-            @change="fieldChanged = true"
-          />
-          <div class="text-danger mb-3" v-if="v$.localLocalId.$error">
-            Please specify the local id.
-          </div>
-        </CForm>
+
         <div class="form-mandatory">
           <span>*Mandatory fields</span>
         </div>
