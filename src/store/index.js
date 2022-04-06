@@ -13,7 +13,7 @@ import { businessFunction } from "./modules/referential/businessFunction";
 import { processMethod } from "./modules/referential/processMethod";
 import { processDocumentation } from "./modules/referential/processDocumentation";
 import { variable } from "./modules/structural/variable"; //added by GV
-import { code } from "./modules/structural/code"; //added by GV
+import { codeList } from "./modules/structural/codeList"; //added by GV
 import { correspondence } from "./modules/structural/correspondence"; //added by GV
 import { statisticalClassification } from "./modules/structural/statisticalClassification"; //added by GV
 import { variableRepresentation } from "./modules/structural/variableRepresentation"; //added by GV
@@ -38,7 +38,7 @@ export default createStore({
     processMethod,
     processDocumentation,
     variable, //added by GV
-    code, //added by GV
+    codeList, //added by GV
     correspondence, //added by GV
     statisticalClassification,
     variableRepresentation,

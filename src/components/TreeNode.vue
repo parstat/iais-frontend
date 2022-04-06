@@ -1,12 +1,13 @@
 <template>
   <div :style="nodeMargin">
-    <b-alert show class="d-flex justify-content-between mb-1">
+    <CAlert color="secondary" class="d-flex justify-content-between mb-1">
       <span>
         <strong v-if="node.levelName">
           {{ node.levelName }} {{ node.code }}:
         </strong>
         <strong v-else>{{ node.code }}:</strong>
-        {{ node.value ? node.value : node.labelEn }}
+        <span v-if="node.value">{{ node.value }} </span>
+        <pre v-if="node.label"> {{ node.label }} </pre>
         <br v-if="node.description" />
         <i v-if="node.description">{{ node.description }}</i>
       </span>
@@ -19,7 +20,7 @@
         <CIcon name="cil-minus" v-if="showChildren" />
         <CIcon name="cil-plus" v-else />
       </span>
-    </b-alert>
+    </CAlert>
     <div v-if="hasChildren" v-show="showChildren">
       <TreeNode
         v-for="child in node.children"

@@ -1,15 +1,16 @@
 <template>
   <CRow>
     <CCol class="col-12">
-      <CCard v-if="statisticalClassification">
+      <CCard>
         <CCardHeader class="bg-white" component="h5">
-          <span>
+          <span v-if="statisticalClassification">
             {{ statisticalClassification.name }}
             {{ statisticalClassification.localId }}
             {{ statisticalClassification.version }}</span
           >
+          <CSpinner v-else color="primary" size="sm" />
         </CCardHeader>
-        <CCardBody>
+        <CCardBody v-if="statisticalClassification">
           <CRow>
             <CCol class="col-3 mr-2">
               <CNav class="flex-column" variant="pills" role="tab">
@@ -97,6 +98,7 @@
                   <app-statistical-classificaition-levels
                     :levels="statisticalClassification.levels"
                     @addLevel="handleAddLevel"
+                    @removeLevel="handleRemoveLevel"
                     @next="nextLevels"
                     @back="back"
                   />
@@ -118,7 +120,7 @@
                     :items="statisticalClassification.rootItems"
                     :aggregationType="
                       statisticalClassification.levels.length
-                        ? 'PARENT_CHILD'
+                        ? 'CHILD_PARENT'
                         : 'NONE'
                     "
                     @uploadItems="handleUploadItems"
@@ -147,7 +149,7 @@ export default {
   data() {
     return {
       activeTab: 0,
-      aggregationType: "PARENT_CHILD",
+      aggregationType: "CHILD_PARENT",
       editedBasic: false,
       editedLevels: false,
       editedItems: false,
@@ -181,6 +183,7 @@ export default {
         this.next();
       }
     },
+
     async handleAddLevel(level) {
       const formData = {
         statisticalClassificationId: this.statisticalClassification.id,
@@ -198,19 +201,34 @@ export default {
         this.statisticalClassification.id
       );
     },
+    async handleRemoveLevel(level) {
+      const formData = {
+        statisticalClassificationId: this.statisticalClassification.id,
+        levelId: level.id,
+      };
+      await this.$store.dispatch(
+        "statisticalClassification/removeLevel",
+        formData
+      );
+      this.$store.dispatch(
+        "statisticalClassification/findById",
+        this.statisticalClassification.id
+      );
+    },
     async handleUploadItems(uploadedItems) {
       const formData = {
         statisticalClassificationId: this.statisticalClassification.id,
         rootItems: uploadedItems.rootItems,
         aggregationType: uploadedItems.aggregationType,
       };
-      //await this.$store.dispatch(
-      //  "statisticalClassification/uploadItems",
-      //  formData
-      //);
-      console.log("Sending data to server...");
-      await new Promise((resolve) => setTimeout(resolve, 3000)); // 3 sec
       console.log(formData);
+      await this.$store.dispatch(
+        "statisticalClassification/uploadItems",
+        formData
+      );
+      //console.log("Sending data to server...");
+      //await new Promise((resolve) => setTimeout(resolve, 3000)); // 3 sec
+      //console.log(formData);
       uploadedItems.reset();
       this.$store.dispatch(
         "statisticalClassification/findById",
@@ -236,6 +254,8 @@ export default {
     },
   },
   computed: {
+    ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
+    ...mapGetters("coreui", ["isLoading"]),
     ...mapGetters("statisticalClassification", ["statisticalClassification"]),
   },
 

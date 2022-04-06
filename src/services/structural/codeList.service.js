@@ -2,7 +2,7 @@ import { axiosIais } from "@/http";
 
 //import axios from "axios";
 
-export const codeService = {
+export const codeListService = {
   findAll,
   findById,
   save,
@@ -71,33 +71,30 @@ function save(formData) {
 }
 
 function update(formData) {
-  // TODO: Add correct method for editing a code list
-  // return new Promise((resolve, reject) => {
-  //   const config = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  //   const requestBody = {
-  //     name: formData.name,
-  //     description: formData.description,
-  //     localId: formData.localId,
-  //   };
+    const requestBody = {
+      id: formData.id,
+      name: formData.name,
+      description: formData.description,
+      localId: formData.localId,
+    };
 
-  //   axiosIais
-  //     .patch("/structural/ClosedCodeLists/" + formData.id, requestBody, config)
-  //     .then(
-  //       (response) => {
-  //         //console.log(response.data);
-  //         resolve(response.data);
-  //       },
-  //       (error) => {
-  //         reject(error);
-  //       }
-  //     );
-  // });
-  console.log(formData);
+    axiosIais.put("/structural/ClosedCodeLists", requestBody, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
 }
 
 function addCodeItem(formData) {
@@ -109,14 +106,14 @@ function addCodeItem(formData) {
     };
 
     const requestBody = {
-      code: formData.codeName,
+      code: formData.code,
       description: formData.description,
       value: formData.label,
       nodeSetId: formData.nodeSetId,
     };
 
     axiosIais
-      .put("/structural/ClosedCodeLists/codeitems/add", requestBody, config)
+      .put("/structural/ClosedCodeLists/codeitems", requestBody, config)
       .then(
         (response) => {
           //console.log(response.data);
@@ -129,17 +126,21 @@ function addCodeItem(formData) {
   });
 }
 
-function removeCodeItem(id) {
+function removeCodeItem(codeDetails) {
+  console.log(codeDetails);
   return new Promise((resolve, reject) => {
-    axiosIais.delete("/structural/ClosedCodeLists/codeitems/remove/" + id).then(
-      (response) => {
-        //console.log(response.data);
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .delete(
+        `/structural/ClosedCodeLists/${codeDetails.codeListId}/codeitems/${codeDetails.codeItemId}`
+      )
+      .then(
+        (response) => {
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 
