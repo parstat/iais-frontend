@@ -1,6 +1,6 @@
 <template>
   <div :style="nodeMargin">
-    <b-alert show class="d-flex justify-content-between mb-1">
+    <b-alert variant="primary" show class="d-flex justify-content-between mb-1">
       <span>
         <strong v-if="node.levelName">
           {{ node.levelName }} {{ node.code }}:
