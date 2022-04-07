@@ -4,52 +4,60 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <strong>Variable</strong>
+            <span>
+              <strong>{{ $t("structural.variables_title") }}</strong>
+            </span>
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">Name</label>
+              <CFormLabel for="name">
+                <span>{{ $t("structural.name") }}</span>
+              </CFormLabel>
               <input
                 id="name"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.variable.name.$error }"
-                placeholder="Variable name"
+                :placeholder="$t('structural.variable_name')"
                 v-model.trim="variable.name"
               />
-              <span class="text-danger" v-if="v$.variable.name.$error"
-                >Please enter variable name.</span
-              >
+              <span class="text-danger" v-if="v$.variable.name.$error">
+                {{ $t("structural.validations.variable_name") }}
+              </span>
             </CForm>
             <CForm>
-              <label for="description">Description</label>
+              <CFormLabel for="description">
+                <span>{{ $t("structural.description") }}</span>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.variable.description.$error }"
-                placeholder="Variable description"
+                :placeholder="$t('structural.variable_description')"
                 v-model.trim="variable.description"
               />
               <span class="text-danger" v-if="v$.variable.description.$error">
-                Please enter a variable description</span
-              >
+                {{ $t("structural.validations.variable_description") }}
+              </span>
             </CForm>
 
             <CForm>
-              <label for="localId">Local id</label>
+              <CFormLabel for="localId">
+                <span>{{ $t("structural.local_ID") }}</span>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"
                 class="form-control mb-3"
                 :class="{ 'is-invalid': v$.variable.localId.$error }"
-                placeholder="Local id"
+                :placeholder="$t('structural.local_ID')"
                 v-model.trim="variable.localId"
               />
               <span class="text-danger" v-if="v$.variable.localId.$error">
-                Please enter a variable local id</span
-              >
+                {{ $t("structural.validations.variable_local_ID") }}
+              </span>
             </CForm>
           </CCardText>
           <CButton
@@ -58,15 +66,15 @@
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Update</CButton
-          >
+            ><span>{{ $t("structural.update") }}</span>
+          </CButton>
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            >Reset</CButton
-          >
+            ><span>{{ $t("structural.reset") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

@@ -4,76 +4,90 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <strong>Variable</strong>
+            <span>
+              <strong>{{ $t("structural.variables_title") }}</strong>
+            </span>
           </CCardTitle>
           <CCardText>
             <CForm class="mb-3">
-              <label for="name">Name*</label>
+              <CFormLabel for="name">
+                <span>{{ $t("structural.name") }}*</span>
+              </CFormLabel>
               <input
                 id="name"
                 type="text"
                 class="form-control"
                 :class="{ 'is-invalid': v$.name.$error }"
-                placeholder="Variable name"
+                :placeholder="$t('structural.variable_name')"
                 v-model.trim="name"
               />
-              <span class="text-danger" v-if="v$.name.$error"
-                >Please enter variable name.</span
-              >
+              <span class="text-danger" v-if="v$.name.$error">
+                {{ $t("structural.validations.variable_name") }}
+              </span>
             </CForm>
             <CForm class="mb-3">
-              <label for="description">Description</label>
+              <CFormLabel for="description">
+                <span>{{ $t("structural.description") }}</span>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control"
                 :class="{ 'is-invalid': v$.description.$error }"
-                placeholder="Variable description"
+                :placeholder="$t('structural.variable_description')"
                 v-model.trim="description"
               />
-              <span class="text-danger" v-if="v$.description.$error"
-                >Please enter a description</span
-              >
+              <span class="text-danger" v-if="v$.description.$error">
+                {{ $t("structural.validations.variable_description") }}
+              </span>
             </CForm>
             <CForm class="mb-3">
-              <label for="definition">Definition</label>
+              <CFormLabel for="definition">
+                <span>{{ $t("structural.definition") }}</span>
+              </CFormLabel>
               <input
                 id="definition"
                 type="text"
                 class="form-control"
-                placeholder="Variable Definition"
+                :placeholder="$t('structural.variable_definition')"
                 v-model.trim="definition"
               />
             </CForm>
             <CForm v-if="unitTypes">
-              <label for="measures">Measures*</label>
+              <CFormLabel for="measures">
+                <span>{{ $t("structural.measures") }}*</span>
+              </CFormLabel>
               <v-select
                 label="name"
                 :options="unitTypes"
                 v-model="measures"
                 :class="{ 'is-invalid': v$.measures.$error }"
-                placeholder="Select a unit type"
+                :placeholder="$t('structural.selection.unit_type')"
               ></v-select>
-              <span class="help-block" :class="{ show: v$.measures.$error }"
-                >Please select a unit type.</span
-              >
+              <span class="text-danger" v-if="v$.measures.$error">
+                {{ $t("structural.validations.unit_type") }}
+              </span>
             </CForm>
             <CForm class="mb-3">
-              <label for="localId">Local id*</label>
+              <CFormLabel for="localId">
+                <span>{{ $t("structural.local_ID") }}*</span>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"
                 class="form-control capitalize"
                 :class="{ 'is-invalid': v$.localId.$error }"
-                placeholder="Local id"
+                :placeholder="$t('structural.local_ID')"
                 v-model.trim="localId"
               />
-              <span class="text-danger" v-if="v$.localId.$error"
-                >Please specify a local id.</span
-              >
+              <span class="text-danger" v-if="v$.localId.$error">
+                <span>{{ $t("structural.validations.local_ID") }}</span>
+              </span>
             </CForm>
-            <div class="form-mandatory">*Mandatory fields</div>
+            <div class="form-mandatory">
+              <span>*{{ $t("structural.mandatory_fields") }}</span>
+            </div>
           </CCardText>
           <CButton
             color="primary"
@@ -81,15 +95,15 @@
             style="margin-right: 0.3rem"
             @click.prevent="handleSubmit()"
             :disabled="disabled"
-            >Save</CButton
-          >
+            ><span>{{ $t("structural.save") }}</span>
+          </CButton>
           <CButton
             color="danger"
             size="sm"
             @click.prevent="handleReset()"
             :disabled="disabled"
-            >Reset</CButton
-          >
+            ><span>{{ $t("structural.reset") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

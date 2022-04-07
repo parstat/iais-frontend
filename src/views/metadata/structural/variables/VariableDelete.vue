@@ -4,11 +4,13 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            {{ variable.name }}
+            <span>{{ variable.name }}</span>
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="description">Description</label>
+              <CFormLabel for="description">
+                <span>{{ $t("structural.description") }}</span>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
@@ -19,7 +21,9 @@
               />
             </CForm>
             <CForm v-if="variable.account">
-              <label for="responsible">Account</label>
+              <CFormLabel for="responsible">
+                <span>{{ $t("structural.account") }}</span>
+              </CFormLabel>
               <input
                 id="account"
                 type="text"
@@ -29,7 +33,9 @@
               />
             </CForm>
             <CForm>
-              <label for="type">Type</label>
+              <CFormLabel for="type">
+                <span>{{ $t("structural.type") }}</span>
+              </CFormLabel>
               <input
                 id="type"
                 type="text"
@@ -44,8 +50,8 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            >Delete</CButton
-          >
+            ><span>{{ $t("structural.delete") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>
