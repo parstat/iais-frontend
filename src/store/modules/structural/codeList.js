@@ -109,6 +109,7 @@ const actions = {
         dispatch("message/success", "Code item added!", {
           root: true,
         });
+        dispatch("findById", data);
       },
       (error) => {
         console.log(error);
@@ -119,13 +120,13 @@ const actions = {
     );
   },
   removeCodeItem({ dispatch }, codeListDetails) {
-    console.log(codeListDetails);
     codeListService.removeCodeItem(codeListDetails).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Code item removed!", {
           root: true,
         });
+        dispatch("findById", codeListDetails.codeListId);
       },
       (error) => {
         console.log(error);

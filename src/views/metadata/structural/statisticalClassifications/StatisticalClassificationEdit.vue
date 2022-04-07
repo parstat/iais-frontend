@@ -185,7 +185,7 @@ export default {
       }
     },
 
-    async handleAddLevel(level) {
+    handleAddLevel(level) {
       const formData = {
         statisticalClassificationId: this.statisticalClassification.id,
         localId: level.localId,
@@ -193,64 +193,32 @@ export default {
         description: level.description,
         levelNumber: level.levelNumber,
       };
-      await this.$store.dispatch(
-        "statisticalClassification/addLevel",
-        formData
-      );
-      this.$store.dispatch(
-        "statisticalClassification/findById",
-        this.statisticalClassification.id
-      );
+      this.$store.dispatch("statisticalClassification/addLevel", formData);
     },
-    async handleUpdateLevel(level) {
+    handleUpdateLevel(level) {
       const formData = {
         statisticalClassificationId: this.statisticalClassification.id,
         levelId: level.id,
         name: level.name,
         description: level.description,
       };
-      await this.$store.dispatch(
-        "statisticalClassification/updateLevel",
-        formData
-      );
-      this.$store.dispatch(
-        "statisticalClassification/findById",
-        this.statisticalClassification.id
-      );
+      this.$store.dispatch("statisticalClassification/updateLevel", formData);
     },
-    async handleRemoveLevel(level) {
+    handleRemoveLevel(level) {
       const formData = {
         statisticalClassificationId: this.statisticalClassification.id,
         levelId: level.id,
       };
-      await this.$store.dispatch(
-        "statisticalClassification/removeLevel",
-        formData
-      );
-      this.$store.dispatch(
-        "statisticalClassification/findById",
-        this.statisticalClassification.id
-      );
+      this.$store.dispatch("statisticalClassification/removeLevel", formData);
     },
-    async handleUploadItems(uploadedItems) {
+    handleUploadItems(uploadedItems) {
       const formData = {
         statisticalClassificationId: this.statisticalClassification.id,
         rootItems: uploadedItems.rootItems,
         aggregationType: uploadedItems.aggregationType,
       };
       console.log(formData);
-      await this.$store.dispatch(
-        "statisticalClassification/uploadItems",
-        formData
-      );
-      //console.log("Sending data to server...");
-      //await new Promise((resolve) => setTimeout(resolve, 3000)); // 3 sec
-      //console.log(formData);
-      uploadedItems.reset();
-      this.$store.dispatch(
-        "statisticalClassification/findById",
-        this.statisticalClassification.id
-      );
+      this.$store.dispatch("statisticalClassification/uploadItems", formData);
     },
     nextLevels(fieldChanged) {
       this.editedLevels = fieldChanged;

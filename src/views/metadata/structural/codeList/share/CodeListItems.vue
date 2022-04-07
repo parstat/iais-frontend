@@ -205,23 +205,23 @@ export default {
     label: {
       en: {
         required: function () {
-          return !(this.locale === "en");
+          return !(this.locale === "en" && this.label.en === "");
         },
       },
       ro: {
         required: function () {
-          return !(this.locale === "ro");
+          return !(this.locale === "ro" && this.label.ro === "");
         },
       },
       ru: {
         required: function () {
-          return !(this.locale === "ru");
+          return !(this.locale === "ru" && this.label.ru === "");
         },
       },
     },
   },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       this.v$.$touch(); //validate form data
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
@@ -231,12 +231,8 @@ export default {
           description: this.description,
           label: this.label,
         };
-        this.$store.dispatch("codeList/addCodeItem", formData).then(() => {
-          setTimeout(() => {
-            this.reloadCodeList();
-          }, 1000);
-        });
-        console.log(formData);
+        this.$store.dispatch("codeList/addCodeItem", formData);
+        this.reloadCodeList();
       }
     },
     reloadCodeList() {
@@ -248,7 +244,7 @@ export default {
       this.description = "";
       this.label = "";
       this.v$.$reset();
-      this.$store.dispatch("codeList/findById", this.$route.params.id);
+      //this.$store.dispatch("codeList/findById", this.$route.params.id);
     },
     openEditDialog(item) {
       console.log(item);
@@ -267,21 +263,11 @@ export default {
       const codeListId = this.$route.params.id;
       if (codeListId && this.item?.id) {
         this.disabled = true;
-        this.$store
-          .dispatch("codeList/removeCodeItem", {
-            codeListId,
-            codeItemId: this.item.code,
-          })
-          .then(() => {
-            setTimeout(() => {
-              this.reloadCodeList();
-              this.disabled = false;
-            }, 1000);
-          })
-          .catch((error) => {
-            console.log(error);
-            this.disabled = false;
-          });
+        this.$store.dispatch("codeList/removeCodeItem", {
+          codeListId,
+          codeItemId: this.item.code,
+        });
+        this.reloadCodeList();
       }
     },
   },

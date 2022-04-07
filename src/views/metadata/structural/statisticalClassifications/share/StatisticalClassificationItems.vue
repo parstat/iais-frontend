@@ -2,6 +2,7 @@
   <CCard class="mb-3">
     <CCardBody>
       <CCardTitle> Upload Items </CCardTitle>
+
       <CCardText>
         <CFormLabel for="localId">
           <span>{{
@@ -21,9 +22,13 @@
         <span class="text-danger" v-if="v$.localAggregationType.$error">{{
           $t("referential.validations.type")
         }}</span>
-        <label>
+        <label class="mb-3">
           <input type="file" accept=".csv" @change="handleFileUpload($event)" />
         </label>
+        <CAlert color="primary" v-if="isLoading">
+          <CSpinner color="primary" size="sm" />
+          <span>Uploading. Plase wait!</span>
+        </CAlert>
         <CButton color="info" variant="ghost" v-if="file" @click="parseFile"
           >Parse file</CButton
         >
@@ -32,7 +37,6 @@
         <CModal :visible="visibleCsvModal" @close="closeModal">
           <CModalHeader>
             <CModalTitle>CSV items</CModalTitle>
-            <CSpinner v-if="localIsLoading" color="primary" size="sm" />
           </CModalHeader>
           <CModalBody>
             <CButton
@@ -119,7 +123,6 @@ export default {
       parsed: false,
       visibleCsvModal: false,
       rootItems: [],
-      localIsLoading: false,
       parseDisabled: false,
       disabled: false,
       columns: [
@@ -180,10 +183,10 @@ export default {
         const formData = {
           aggregationType: this.localAggregationType,
           rootItems: this.rootItems,
-          reset: () => this.resetItemFields(),
         };
         console.log(formData);
         this.$emit("uploadItems", formData);
+        this.resetItemFields();
       }
     },
     handleFileUpload(event) {
@@ -276,7 +279,6 @@ export default {
       //this.parsed = false;
       this.localAggregationType = this.aggregationType;
       this.visibleCsvModal = false;
-      this.localIsLoading = false;
       this.disabled = false;
       this.parseDisabled = false;
       this.v$.$reset();

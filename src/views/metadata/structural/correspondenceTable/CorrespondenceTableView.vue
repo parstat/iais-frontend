@@ -84,7 +84,7 @@ export default {
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/correspondence");
+      this.$router.push("/metadata/structural/correspondences");
     },
   },
   created() {

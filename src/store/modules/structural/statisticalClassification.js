@@ -81,13 +81,14 @@ const actions = {
     );
   },
 
-  async addLevel({ dispatch }, formData) {
-    return statisticalClassificationService.addLevel(formData).then(
+  addLevel({ dispatch }, formData) {
+    statisticalClassificationService.addLevel(formData).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Level added!", {
           root: true,
         });
+        dispatch("findById", data);
       },
       (error) => {
         console.log(error);
@@ -95,13 +96,14 @@ const actions = {
     );
   },
 
-  async updateLevel({ dispatch }, formData) {
-    return statisticalClassificationService.updateLevel(formData).then(
+  updateLevel({ dispatch }, formData) {
+    statisticalClassificationService.updateLevel(formData).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Level updated!", {
           root: true,
         });
+        dispatch("findById", data);
       },
       (error) => {
         console.log(error);
@@ -109,8 +111,8 @@ const actions = {
     );
   },
 
-  async removeLevel({ dispatch }, formData) {
-    return statisticalClassificationService
+  removeLevel({ dispatch }, formData) {
+    statisticalClassificationService
       .removeLevel(formData.statisticalClassificationId, formData.levelId)
       .then(
         (data) => {
@@ -118,6 +120,7 @@ const actions = {
           dispatch("message/success", "Level removed!", {
             root: true,
           });
+          dispatch("findById", formData.statisticalClassificationId);
         },
         (error) => {
           console.log(error);
@@ -152,13 +155,14 @@ const actions = {
       }
     );
   },
-  async uploadItems({ dispatch }, formData) {
-    return statisticalClassificationService.uploadItems(formData).then(
+  uploadItems({ dispatch }, formData) {
+    statisticalClassificationService.uploadItems(formData).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Items uploaded!", {
           root: true,
         });
+        dispatch("findById", data);
       },
       (error) => {
         console.log(error);
