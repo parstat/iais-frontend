@@ -32,6 +32,7 @@
                 :items="correspondences"
                 :activePage="1"
                 :columns="columns"
+                columnFilter
                 itemsPerPageSelect
                 :itemsPerPage="5"
                 pagination

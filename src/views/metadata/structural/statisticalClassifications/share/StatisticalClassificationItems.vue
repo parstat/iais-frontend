@@ -4,7 +4,7 @@
       <CCardTitle> Upload Items </CCardTitle>
 
       <CCardText>
-        <CFormLabel for="localId">
+        <CFormLabel for="aggregationType">
           <span>{{
             $t("structural.statistical_classification_aggregation_type")
           }}</span>
