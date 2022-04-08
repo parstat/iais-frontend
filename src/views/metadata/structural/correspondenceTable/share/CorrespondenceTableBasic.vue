@@ -19,22 +19,32 @@
           <CFormLabel for="source">
             <span>{{ $t("structural.correspondence_table_source") }}</span>
           </CFormLabel>
-          <v-select class="mb-3"
+          <v-select
+            class="mb-3"
             label="name"
-            :options="selectedNodeSetType === 'STATISTICAL_CLASSIFICATION' ? statisticalClassifications : codeLists"
+            :options="
+              selectedNodeSetType === 'STATISTICAL_CLASSIFICATION'
+                ? statisticalClassifications
+                : codeLists
+            "
             @search="searchNodeset"
             @input="setSourceNodeset"
-             :filterable="false"
+            :filterable="false"
           />
         </CForm>
         <CForm>
           <CFormLabel for="target">
             <span>{{ $t("structural.correspondence_table_target") }}</span>
           </CFormLabel>
-          <v-select class="mb-3"
+          <v-select
+            class="mb-3"
             label="name"
             :filterable="false"
-            :options="selectedNodeSetType === 'STATISTICAL_CLASSIFICATION' ? statisticalClassifications : codeLists"
+            :options="
+              selectedNodeSetType === 'STATISTICAL_CLASSIFICATION'
+                ? statisticalClassifications
+                : codeLists
+            "
             @search="searchNodeset"
             @input="setTargetNodeset"
           />
@@ -86,18 +96,16 @@ export default {
     },
     search: _.debounce((name, loading, vm) => {
       if (name.length > 0) {
-        if(vm.selectedNodeSetType === "STATISTICAL_CLASSIFICATION") {
+        if (vm.selectedNodeSetType === "STATISTICAL_CLASSIFICATION") {
           vm.$store
             .dispatch("statisticalClassification/findByName", escape(name))
             .then(() => {
               loading(false);
             });
         } else {
-           vm.$store
-            .dispatch("codeList/findByName", escape(name))
-            .then(() => {
-              loading(false);
-            });
+          vm.$store.dispatch("codeList/findByName", escape(name)).then(() => {
+            loading(false);
+          });
         }
       } else {
         loading(false);
@@ -114,8 +122,6 @@ export default {
       this.targetNodeSet = selectedTargetNodeset;
       console.log(this.targetNodeSet);
     },
-
-
   },
   computed: {
     nodeSetTypes() {
