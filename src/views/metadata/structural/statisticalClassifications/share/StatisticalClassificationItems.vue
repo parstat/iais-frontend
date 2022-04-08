@@ -1,13 +1,14 @@
 <template>
   <CCard class="mb-3">
     <CCardBody>
-      <CCardTitle> Upload Items </CCardTitle>
-
+      <CCardTitle>
+        <span>{{ $t("structural.upload_items") }}</span>
+      </CCardTitle>
       <CCardText>
         <CFormLabel for="aggregationType">
-          <span>{{
-            $t("structural.statistical_classification_aggregation_type")
-          }}</span>
+          <span>
+            {{ $t("structural.statistical_classification_aggregation_type") }}
+          </span>
         </CFormLabel>
         <v-select
           label="Aggregation Type"
@@ -19,24 +20,26 @@
             $t('structural.statistical_classification_aggregation_type')
           "
         ></v-select>
-        <span class="text-danger" v-if="v$.localAggregationType.$error">{{
-          $t("referential.validations.type")
-        }}</span>
-        <label class="mb-3">
+        <span class="text-danger" v-if="v$.localAggregationType.$error">
+          {{ $t("referential.validations.type") }}
+        </span>
+        <CFormLabel class="mb-3">
           <input type="file" accept=".csv" @change="handleFileUpload($event)" />
-        </label>
+        </CFormLabel>
         <CAlert color="primary" v-if="isLoading">
           <CSpinner color="primary" size="sm" />
-          <span>Uploading. Plase wait!</span>
+          <span>{{ $t("structural.uploading_wait") }}</span>
         </CAlert>
-        <CButton color="info" variant="ghost" v-if="file" @click="parseFile"
-          >Parse file</CButton
-        >
+        <CButton color="info" variant="ghost" v-if="file" @click="parseFile">
+          <span>{{ $t("structural.parse_file") }}</span>
+        </CButton>
         <br />
         <br />
         <CModal :visible="visibleCsvModal" @close="closeModal">
           <CModalHeader>
-            <CModalTitle>CSV items</CModalTitle>
+            <CModalTitle>
+              <span>{{ $t("structural.CSV_items") }}</span>
+            </CModalTitle>
           </CModalHeader>
           <CModalBody>
             <CButton
@@ -44,21 +47,23 @@
               class="mb-3"
               @click.prevent="getItemsRecursivly"
               :disabled="parseDisabled"
-              >Parse CSV</CButton
-            >
+              ><span>{{ $t("structural.parse_CSV") }}</span>
+            </CButton>
             <div style="height: 450px; overflow: scroll">
               <TreeNode v-for="node in rootItems" :key="node.id" :node="node">
               </TreeNode>
             </div>
           </CModalBody>
           <CModalFooter>
-            <CButton color="secondary" @click="closeModal"> Close </CButton>
+            <CButton color="secondary" @click="closeModal">
+              <span>{{ $t("structural.close") }}</span>
+            </CButton>
             <CButton
               color="primary"
               @click.prevent="uploadItems"
               :disabled="disabled"
-              >Uplaod items</CButton
-            >
+              ><span>{{ $t("structural.upload_items") }}</span>
+            </CButton>
           </CModalFooter>
         </CModal>
 
@@ -70,7 +75,11 @@
         <CCollapse :visible="visible">
           <CCard v-if="items.length" class="mb-3">
             <CCardBody>
-              <CCardTitle> Statistical Classification Items </CCardTitle>
+              <CCardTitle>
+                <span>
+                  {{ $t("structural.statistical_classification_items") }}
+                </span>
+              </CCardTitle>
               <CCardText>
                 <TreeNode v-for="node in items" :key="node.id" :node="node">
                 </TreeNode>
@@ -79,7 +88,7 @@
           </CCard>
           <CCard v-else>
             <CCardText>
-              There are no itmes yet in the statistical classifciation
+              <span>{{ $t("structural.no_items") }}</span>
             </CCardText>
           </CCard>
         </CCollapse>
@@ -95,7 +104,7 @@
           size="sm"
           style="margin-right: 0.3rem"
           @click="$emit('finish')"
-          ><span>Finish</span>
+          ><span>{{ $t("referential.finish") }}</span>
         </CButton>
       </CCardText>
     </CCardBody>
@@ -128,15 +137,15 @@ export default {
       columns: [
         {
           key: "levelNumber",
-          label: "Level Number",
+          label: this.$i18n.t("structural.level_number"),
         },
         {
           key: "code",
-          label: "Code",
+          label: this.$i18n.t("structural.code"),
         },
         {
           key: "parent",
-          label: "Parent",
+          label: this.$i18n.t("structural.parent"),
         },
         {
           key: "labelEn",

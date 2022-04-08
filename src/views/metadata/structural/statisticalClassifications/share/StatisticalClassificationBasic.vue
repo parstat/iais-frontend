@@ -4,9 +4,9 @@
       <CCardText>
         <CForm>
           <CFormLabel for="localId">
-            <span
-              >{{ $t("structural.statistical_classification_local_id") }}*</span
-            >
+            <span>
+              {{ $t("structural.statistical_classification_local_id") }}*
+            </span>
           </CFormLabel>
           <input
             id="localId"
@@ -17,9 +17,9 @@
             v-model.trim="localLocalId"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localLocalId.$error">{{
-            $t("structural.validations.statistical_classification_id")
-          }}</span>
+          <span class="text-danger" v-if="v$.localLocalId.$error">
+            {{ $t("structural.validations.statistical_classification_id") }}
+          </span>
         </CForm>
         <CForm>
           <CFormLabel for="name">
@@ -34,15 +34,15 @@
             v-model.trim="localName"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localName.$error">{{
-            $t("structural.validations.statistical_classification_name")
-          }}</span>
+          <span class="text-danger" v-if="v$.localName.$error">
+            {{ $t("structural.validations.statistical_classification_name") }}
+          </span>
         </CForm>
         <CForm>
           <CFormLabel for="version">
-            <span
-              >{{ $t("structural.statistical_classification_version") }}*</span
-            >
+            <span>
+              {{ $t("structural.statistical_classification_version") }}*
+            </span>
           </CFormLabel>
           <input
             id="acronym"
@@ -53,17 +53,17 @@
             v-model.trim="localVersion"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localVersion.$error">{{
-            $t("structural.validations.statistical_classification_veresion")
-          }}</span>
+          <span class="text-danger" v-if="v$.localVersion.$error">
+            {{
+              $t("structural.validations.statistical_classification_veresion")
+            }}
+          </span>
         </CForm>
         <CForm>
           <CFormLabel for="description">
-            <span
-              >{{
-                $t("structural.statistical_classification_description")
-              }}*</span
-            >
+            <span>
+              {{ $t("structural.statistical_classification_description") }}*
+            </span>
           </CFormLabel>
           <textarea
             rows="3"
@@ -77,9 +77,13 @@
             v-model.trim="localDescription"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localDescription.$error">{{
-            $t("structural.validations.statistical_classification_description")
-          }}</span>
+          <span class="text-danger" v-if="v$.localDescription.$error">
+            {{
+              $t(
+                "structural.validations.statistical_classification_description"
+              )
+            }}
+          </span>
         </CForm>
         <CForm>
           <CFormLabel for="link">
@@ -95,9 +99,9 @@
             v-model.trim="localLink"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.localLink.$error">{{
-            $t("structural.validations.statistical_classification_url")
-          }}</span>
+          <span class="text-danger" v-if="v$.localLink.$error">
+            {{ $t("structural.validations.statistical_classification_url") }}
+          </span>
         </CForm>
       </CCardText>
       <CButton

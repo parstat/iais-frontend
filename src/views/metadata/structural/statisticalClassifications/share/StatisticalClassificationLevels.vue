@@ -1,25 +1,27 @@
 <template>
   <CCard class="mb-3">
     <CCardBody>
-      <CCardTitle> Levels </CCardTitle>
+      <CCardTitle>
+        <span>{{ $t("structural.levels") }}</span>
+      </CCardTitle>
       <CCardText>
         <CForm>
           <CFormLabel for="localId">
-            <span>{{ $t("structural.level_local_id") }}*</span>
+            <span>{{ $t("structural.level_local_ID") }}*</span>
           </CFormLabel>
           <input
             id="localId"
             type="text"
             class="form-control mb-3 capitalize"
             :class="{ 'is-invalid': v$.levelLocalId.$error }"
-            :placeholder="$t('structural.level_local_id')"
+            :placeholder="$t('structural.level_local_ID')"
             v-model.trim="levelLocalId"
             @change="fieldChanged = true"
             :disabled="edit"
           />
-          <span class="text-danger" v-if="v$.levelLocalId.$error">{{
-            $t("structural.validations.level_id")
-          }}</span>
+          <span class="text-danger" v-if="v$.levelLocalId.$error">
+            {{ $t("structural.validations.level_ID") }}
+          </span>
         </CForm>
         <CForm>
           <CFormLabel for="name">
@@ -34,9 +36,9 @@
             v-model.trim="levelName"
             @change="fieldChanged = true"
           />
-          <span class="text-danger" v-if="v$.levelName.$error">{{
-            $t("structural.validations.level_name")
-          }}</span>
+          <span class="text-danger" v-if="v$.levelName.$error">
+            {{ $t("structural.validations.level_name") }}
+          </span>
         </CForm>
         <CForm>
           <CFormLabel for="description">
@@ -68,9 +70,9 @@
             @change="fieldChanged = true"
             :disabled="edit"
           />
-          <span class="text-danger" v-if="v$.levelNumber.$error">{{
-            $t("structural.validations.level_number")
-          }}</span>
+          <span class="text-danger" v-if="v$.levelNumber.$error">
+            {{ $t("structural.validations.level_number") }}
+          </span>
         </CForm>
         <CButton
           v-if="!edit"
@@ -100,12 +102,16 @@
           "
         >
           <CModalHeader>
-            <CModalTitle>Delete level</CModalTitle>
+            <CModalTitle>
+              <span>{{ $t("structural.delete_level") }}</span>
+            </CModalTitle>
           </CModalHeader>
           <CModalBody>
-            Are you sure you want to proceed deletion of '{{
-              levelToDelete.levelNumber
-            }}. {{ levelToDelete.name }}' level? This cannot be undone!
+            <span>
+              {{ $t("referential.proceed_deletion") }}
+              '{{ levelToDelete.levelNumber }}. {{ levelToDelete.name }}'
+              {{ $t("referential.level_undone") }}
+            </span>
           </CModalBody>
           <CModalFooter>
             <CButton
@@ -116,10 +122,11 @@
                   levelToDelete = '';
                 }
               "
-            >
-              Cancel
+              ><span>{{ $t("referential.cancel") }}</span>
             </CButton>
-            <CButton color="danger" @click="removeLevel">Proceed</CButton>
+            <CButton color="danger" @click="removeLevel">
+              <span>{{ $t("referential.proceed") }}</span>
+            </CButton>
           </CModalFooter>
         </CModal>
 
