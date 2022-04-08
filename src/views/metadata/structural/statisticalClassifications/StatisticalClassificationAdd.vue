@@ -2,7 +2,7 @@
   <CRow>
     <CCol class="col-12">
       <CCardHeader class="bg-white" component="h5">
-        <span>Create a Statistical Classification</span>
+        <span>{{ $t("structural.create_statistical_classification") }}</span>
       </CCardHeader>
       <CCardBody>
         <CRow>
@@ -23,16 +23,12 @@
               </CNavItem>
               <CNavItem>
                 <CNavLink href="javascript:void(0);" disabled>
-                  <span>{{
-                    $t("structural.statistical_classification_levels")
-                  }}</span>
+                  <span>{{ $t("structural.levels") }}</span>
                 </CNavLink>
               </CNavItem>
               <CNavItem>
                 <CNavLink href="javascript:void(0);" disabled>
-                  <span>{{
-                    $t("structural.statistical_classification_items")
-                  }}</span>
+                  <span>{{ $t("structural.items") }}</span>
                 </CNavLink>
               </CNavItem>
             </CNav>

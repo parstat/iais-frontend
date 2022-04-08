@@ -5,7 +5,11 @@
         <CCardBody>
           <CRow>
             <CCol class="col-9">
-              <CCardTitle> Statistical Classifications </CCardTitle>
+              <CCardTitle>
+                <span>
+                  {{ $t("structural.statistical_classification_title") }}
+                </span>
+              </CCardTitle>
             </CCol>
             <CCol class="col-3">
               <CNav class="justify-content-end">
@@ -17,9 +21,9 @@
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />
-                    <span class="icon-span"
-                      >New Statistical Classifications</span
-                    >
+                    <span class="icon-span">
+                      {{ $t("structural.new_statistical_classification") }}
+                    </span>
                   </router-link>
                 </CNavItem>
               </CNav>
@@ -103,24 +107,24 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("structural.local_ID"),
         },
         {
           key: "name",
-          label: "Name",
+          label: this.$i18n.t("structural.name"),
         },
         {
           key: "version",
-          label: "Version",
+          label: this.$i18n.t("structural.version"),
         },
         {
           key: "versionDate",
-          label: "Version Date",
+          label: this.$i18n.t("structural.version_date"),
         },
         {
           key: "actions",
-          label: "",
-          _style: "",
+          label: this.$i18n.t("structural.actions"),
+          _style: { width: "1%" },
           sorter: false,
           filter: false,
         },
