@@ -6,7 +6,7 @@
     >
       <div class="p-3">
         <h2 class="display-5">
-          {{ statisticalClassification.name }}
+          <span>{{ statisticalClassification.name }}</span>
           <span class="lead"
             >(
             {{
@@ -17,22 +17,28 @@
           >
         </h2>
         <p class="lead">
-          <strong>Description: </strong>
-          {{ statisticalClassification.description }}
+          <span>
+            <strong>{{ $t("structural.description") }}:</strong>
+            {{ statisticalClassification.description }}
+          </span>
         </p>
         <p class="lead">
-          <strong>Link: </strong>
-          <a v-bind:href="statisticalClassification.link"
-            >{{ statisticalClassification.localId }}
-            {{ statisticalClassification.version }}
-          </a>
+          <span>
+            <strong>{{ $t("structural.link") }}:&nbsp;</strong>
+            <a v-bind:href="statisticalClassification.link">
+              {{ statisticalClassification.localId }}
+              {{ statisticalClassification.version }}
+            </a>
+          </span>
         </p>
       </div>
     </div>
 
     <CCard v-if="statisticalClassification" class="mb-3">
       <CCardBody>
-        <CCardTitle> Levels </CCardTitle>
+        <CCardTitle>
+          <span>{{ $t("structural.levels") }}</span>
+        </CCardTitle>
         <CCardText>
           <CRow>
             <CCol
@@ -42,9 +48,9 @@
             >
               <CCard>
                 <CCardBody>
-                  <CCardTitle
-                    >{{ level.levelNumber }}. {{ level.name }}</CCardTitle
-                  >
+                  <CCardTitle>
+                    <span>{{ level.levelNumber }}. {{ level.name }}</span>
+                  </CCardTitle>
                   <CCardText>
                     <span>{{ level.description }}</span>
                   </CCardText>
@@ -58,7 +64,9 @@
     <!-- statisticalClassificationItems -->
     <CCard v-if="statisticalClassification">
       <CCardBody>
-        <CCardTitle> Statistical Classification Items </CCardTitle>
+        <CCardTitle>
+          <span>{{ $t("structural.statistical_classification_items") }}</span>
+        </CCardTitle>
         <CCardText>
           <TreeNode
             v-for="node in statisticalClassification.rootItems"
@@ -72,8 +80,8 @@
           size="sm"
           @click.prevent="handleBack()"
           :disabled="disabled"
-          >Back</CButton
-        >
+          ><span>{{ $t("structural.back") }}</span>
+        </CButton>
       </CCardBody>
     </CCard>
   </CRow>

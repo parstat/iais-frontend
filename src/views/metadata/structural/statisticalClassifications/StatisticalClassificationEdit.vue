@@ -6,8 +6,8 @@
           <span v-if="statisticalClassification">
             {{ statisticalClassification.name }}
             {{ statisticalClassification.localId }}
-            {{ statisticalClassification.version }}</span
-          >
+            {{ statisticalClassification.version }}
+          </span>
           <CSpinner v-else color="primary" size="sm" />
         </CCardHeader>
         <CCardBody v-if="statisticalClassification">
@@ -37,9 +37,7 @@
                       }
                     "
                   >
-                    <span>{{
-                      $t("structural.statistical_classification_levels")
-                    }}</span>
+                    <span>{{ $t("structural.levels") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -52,9 +50,7 @@
                       }
                     "
                   >
-                    <span>{{
-                      $t("structural.statistical_classification_items")
-                    }}</span>
+                    <span>{{ $t("structural.items") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -88,9 +84,7 @@
                   :visible="activeTab === 1"
                 >
                   <template #title>
-                    <span>{{
-                      $t("structural.statistical_classification_levels")
-                    }}</span>
+                    <span>{{ $t("structural.levels") }}</span>
                     <span class="float-right" v-if="editedLevels">
                       <CIcon name="cil-check-alt" />
                     </span>
@@ -110,9 +104,7 @@
                   :visible="activeTab === 2"
                 >
                   <template #title>
-                    <span>{{
-                      $t("structural.statistical_classification_items")
-                    }}</span>
+                    <span>{{ $t("structural.items") }}</span>
                     <span class="float-right" v-if="editedItems">
                       <CIcon name="cil-check-alt" />
                     </span>

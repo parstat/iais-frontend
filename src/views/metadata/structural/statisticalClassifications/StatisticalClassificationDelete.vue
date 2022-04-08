@@ -4,13 +4,13 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Sattistical Classificaion</span>
+            <span>{{ $t("structural.statistical_classification") }}</span>
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="localId">
-                <span>Local id</span>
-              </label>
+              <CFormLabel for="localId">
+                <span>{{ $t("referential.local_ID") }}</span>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"
@@ -20,9 +20,9 @@
               />
             </CForm>
             <CForm>
-              <label for="version">
-                <span>Version</span>
-              </label>
+              <CFormLabel for="version">
+                <span>{{ $t("structural.version") }}</span>
+              </CFormLabel>
               <input
                 id="version"
                 type="text"
@@ -32,9 +32,9 @@
               />
             </CForm>
             <CForm>
-              <label for="name">
-                <span>Name</span>
-              </label>
+              <CFormLabel for="name">
+                <span>{{ $t("structural.name") }}</span>
+              </CFormLabel>
               <input
                 id="name"
                 type="text"
@@ -44,9 +44,9 @@
               />
             </CForm>
             <CForm>
-              <label for="description">
-                <span>Description</span>
-              </label>
+              <CFormLabel for="description">
+                <span>{{ $t("structural.description") }}</span>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
@@ -57,9 +57,9 @@
               />
             </CForm>
             <CForm>
-              <label for="link">
-                <span>Link</span>
-              </label>
+              <CFormLabel for="link">
+                <span>{{ $t("structural.link") }}</span>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="link"
@@ -75,8 +75,8 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            ><span>Delete</span></CButton
-          >
+            ><span>{{ $t("structural.delete") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>
