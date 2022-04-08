@@ -67,7 +67,9 @@ const actions = {
         dispatch("message/success", "Correspondence saved!", {
           root: true,
         });
-        router.push("/metadata/structuralal/correspondences");
+        router.push(
+          "/metadata/structural/correspondences/edit/" + data + "?step=2"
+        );
       },
       (error) => {
         console.log(error);

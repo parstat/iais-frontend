@@ -82,10 +82,10 @@ export default {
 
   data() {
     return {
-      selectedNodeSetType: "",
+      selectedNodeSetType: "STATISTICAL_CLASSIFICATION",
       selectedRelationship: "ONE_TO_ONE",
-      targetNodeset: {},
-      sourceNodeSet: {},
+      targetNodesetId: "",
+      sourceNodeSetId: "",
       disabled: false,
     };
   },
@@ -96,6 +96,7 @@ export default {
     },
     search: _.debounce((name, loading, vm) => {
       if (name.length > 0) {
+        console.log(vm.selectedNodeSetType);
         if (vm.selectedNodeSetType === "STATISTICAL_CLASSIFICATION") {
           vm.$store
             .dispatch("statisticalClassification/findByName", escape(name))
@@ -112,15 +113,25 @@ export default {
       }
     }, 500),
     next() {
-      console.log("next");
+      this.disabled = true; //disable buttons
+      console.log(this.sourceNodeSet);
+      const formData = {
+        sourceId: this.sourceNodeSetId,
+        targetId: this.targetNodeSetId,
+        relationship: this.selectedRelationship,
+      };
+      this.$emit("next", formData);
+      this.disabled = false;
     },
     setSourceNodeset(selectedSourceNodeset) {
-      this.sourceNodeSet = selectedSourceNodeset;
-      console.log(this.sourceNodeSet);
+      if (typeof selectedSourceNodeset !== "undefined") {
+        this.sourceNodeSetId = selectedSourceNodeset.id;
+      }
     },
     setTargetNodeset(selectedTargetNodeset) {
-      this.targetNodeSet = selectedTargetNodeset;
-      console.log(this.targetNodeSet);
+      if (typeof selectedTargetNodeset !== "undefined") {
+        this.targetNodeSetId = selectedTargetNodeset.id;
+      }
     },
   },
   computed: {

@@ -45,23 +45,19 @@ function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
     };
 
     const requestBody = {
-      name: formData.name,
-      description: formData.description,
+      sourceId: formData.sourceId,
+      targetId: formData.targetId,
       //definition: formData.definition,
-      local_id: formData.localId,
+      relationship: formData.relationship,
     };
 
     axiosIais
-      .post(
-        "/structural/ClosedCorrespondence/" + formData.localId,
-        new URLSearchParams(requestBody).toString(),
-        config
-      )
+      .post("/structural/ClosedCorrespondence", requestBody, config)
       .then(
         (response) => {
           //console.log(response.data);
