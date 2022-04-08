@@ -219,7 +219,7 @@
                               :placeholder="
                                 $t('referential.selection.GSBPM_sub_phase')
                               "
-                              :filtrable="false"
+                              :filterable="false"
                               @search="searchBusinessFunctions"
                             >
                               <template

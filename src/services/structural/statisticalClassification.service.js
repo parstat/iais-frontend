@@ -4,6 +4,7 @@ import { axiosIais } from "@/http";
 
 export const statisticalClassificationService = {
   findAll,
+  findByName,
   findById,
   save,
   update,
@@ -44,7 +45,19 @@ function findById(id) {
     );
   });
 }
-
+function findByName(name) {
+  return new Promise((resolve, reject) => {
+    axiosIais.get("/structural/OpenStatisticalClassifications", { parmas: { name: name }}).then(
+      (response) => {
+       
+        resolve(response.data.statisticalClassifications);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
 function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {

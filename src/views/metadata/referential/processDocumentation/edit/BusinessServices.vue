@@ -36,7 +36,7 @@
             label="name"
             :options="businessServices"
             :placeholder="$t('referential.selection.business_service')"
-            :filtrable="false"
+            :filterable="false"
             @search="searchBusinessService"
             @input="addBusinessService"
           >

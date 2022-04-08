@@ -101,7 +101,7 @@
                               :placeholder="
                                 $t('referential.selection.statistical_process')
                               "
-                              :filtrable="false"
+                              :filterable="false"
                               @search="searchStatisticalPrograms"
                               class="mb-3"
                             >
@@ -170,7 +170,7 @@
                               :placeholder="
                                 $t('referential.selection.GSBPM_sub_phase')
                               "
-                              :filtrable="false"
+                              :filterable="false"
                               @search="searchBusinessFunctions"
                               class="mb-3"
                             >
@@ -308,7 +308,7 @@
                               :placeholder="
                                 $t('referential.selection.GSBPM_sub_phase')
                               "
-                              :filtrable="false"
+                              :filterable="false"
                               @search="searchBusinessFunctions"
                               class="mb-3"
                             >

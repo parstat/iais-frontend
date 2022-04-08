@@ -1,7 +1,7 @@
 <template>
   <CCard>
     <CCardBody>
-      <CCardText>
+      <CCardText v-if="codeLists && statisticalClassifications">
         <CForm>
           <CFormLabel for="nodesetType">
             <span>{{
@@ -19,13 +19,25 @@
           <CFormLabel for="source">
             <span>{{ $t("structural.correspondence_table_source") }}</span>
           </CFormLabel>
-          <v-select class="mb-3"> </v-select>
+          <v-select class="mb-3"
+            label="name"
+            :options="selectedNodeSetType === 'STATISTICAL_CLASSIFICATION' ? statisticalClassifications : codeLists"
+            @search="searchNodeset"
+            @input="setSourceNodeset"
+             :filterable="false"
+          />
         </CForm>
         <CForm>
           <CFormLabel for="target">
             <span>{{ $t("structural.correspondence_table_target") }}</span>
           </CFormLabel>
-          <v-select class="mb-3"> </v-select>
+          <v-select class="mb-3"
+            label="name"
+            :filterable="false"
+            :options="selectedNodeSetType === 'STATISTICAL_CLASSIFICATION' ? statisticalClassifications : codeLists"
+            @search="searchNodeset"
+            @input="setTargetNodeset"
+          />
         </CForm>
         <CForm>
           <CFormLabel for="relationship">
@@ -37,7 +49,7 @@
           </v-select>
         </CForm>
       </CCardText>
-            <CButton
+      <CButton
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
@@ -52,6 +64,7 @@
 import { NodeSetType } from "@/common";
 import { Relationship } from "@/common";
 import { mapGetters } from "vuex";
+import _ from "lodash";
 
 export default {
   name: "CorrespondenceTableBasic",
@@ -59,11 +72,51 @@ export default {
 
   data() {
     return {
-      selectedNodeSetType: "STATISTICAL_CLASSIFICATION",
+      selectedNodeSetType: "",
       selectedRelationship: "ONE_TO_ONE",
+      targetNodeset: {},
+      sourceNodeSet: {},
+      disabled: false,
     };
   },
-  methods: {},
+  methods: {
+    searchNodeset(name, loading) {
+      loading(true);
+      this.search(name, loading, this);
+    },
+    search: _.debounce((name, loading, vm) => {
+      if (name.length > 0) {
+        if(vm.selectedNodeSetType === "STATISTICAL_CLASSIFICATION") {
+          vm.$store
+            .dispatch("statisticalClassification/findByName", escape(name))
+            .then(() => {
+              loading(false);
+            });
+        } else {
+           vm.$store
+            .dispatch("codeList/findByName", escape(name))
+            .then(() => {
+              loading(false);
+            });
+        }
+      } else {
+        loading(false);
+      }
+    }, 500),
+    next() {
+      console.log("next");
+    },
+    setSourceNodeset(selectedSourceNodeset) {
+      this.sourceNodeSet = selectedSourceNodeset;
+      console.log(this.sourceNodeSet);
+    },
+    setTargetNodeset(selectedTargetNodeset) {
+      this.targetNodeSet = selectedTargetNodeset;
+      console.log(this.targetNodeSet);
+    },
+
+
+  },
   computed: {
     nodeSetTypes() {
       var types = [];
@@ -80,6 +133,8 @@ export default {
       return relationships;
     },
     ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("codeList", ["codeLists"]),
+    ...mapGetters("statisticalClassification", ["statisticalClassifications"]),
   },
 };
 </script>

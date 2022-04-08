@@ -4,6 +4,7 @@ import { axiosIais } from "@/http";
 
 export const codeListService = {
   findAll,
+  findByName,
   findById,
   save,
   update,
@@ -26,7 +27,18 @@ function findAll() {
     );
   });
 }
-
+function findByName(name) {
+  return new Promise((resolve, reject) => {
+    axiosIais.get("/structural/OpenCodeLists", { params: { name: name } }).then(
+      (response) => {
+        resolve(response.data.codeLists);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
 function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenCodeLists/" + id).then(

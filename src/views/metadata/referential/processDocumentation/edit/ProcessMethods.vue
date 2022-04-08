@@ -36,7 +36,7 @@
             label="name"
             :options="processMethods"
             :placeholder="$t('referential.selection.process_method')"
-            :filtrable="false"
+            :filterable="false"
             @search="searchProcessMethod"
             @input="addProcessMethod"
           >

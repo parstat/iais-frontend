@@ -38,7 +38,7 @@
             label="name"
             :options="legislativeReferences"
             :placeholder="$t('referential.selection.legislative_references')"
-            :filtrable="false"
+            :filterable="false"
             @search="searchLegislativeReference"
             @input="addLegislativeReference"
           >

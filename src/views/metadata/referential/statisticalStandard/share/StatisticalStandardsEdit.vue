@@ -38,7 +38,7 @@
             label="name"
             :options="statisticalStandards"
             :placeholder="$t('referential.search_statistical_standards')"
-            :filtrable="false"
+            :filterable="false"
             @search="searchStatisticalStandard"
             @input="addStatisticalStandard"
           >

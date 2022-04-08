@@ -95,7 +95,7 @@
               :options="businessFunctions"
               v-model="processDocumentation.nextSubPhase"
               :placeholder="$t('referential.selection.GSBPM_sub_phase')"
-              :filtrable="false"
+              :filterable="false"
               @search="searchBusinessFunctions"
               :class="{
                 'is-invalid': v$.processDocumentation.nextSubPhase.$error,
