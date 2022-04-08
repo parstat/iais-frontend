@@ -539,6 +539,14 @@ const routes = [
           import("@/views/metadata/structural/codeList/CodeListView"),
         meta: { authorize: [] },
       },
+      //Code List delete
+      {
+        path: "metadata/structural/codelist/delete/:id",
+        name: "CodeDelete",
+        component: () =>
+          import("@/views/metadata/structural/codeList/CodeListDelete"),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
       // *Correspondence Tables
       // Correspondence Table List
       {

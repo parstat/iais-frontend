@@ -55,12 +55,10 @@ function save(formData) {
       description: formData.description,
       localId: formData.localId,
       isSentinel: formData.isSentinel,
-      // language: formData.language,
     };
 
     axiosIais.post("/structural/ClosedCodeLists/", requestBody, config).then(
       (response) => {
-        //console.log(response.data);
         resolve(response.data);
       },
       (error) => {
@@ -87,7 +85,6 @@ function update(formData) {
 
     axiosIais.put("/structural/ClosedCodeLists", requestBody, config).then(
       (response) => {
-        //console.log(response.data);
         resolve(response.data);
       },
       (error) => {
@@ -164,7 +161,6 @@ function updateCodeItem(formData) {
       .put("/structural/ClosedCodeLists/codeitems/update", requestBody, config)
       .then(
         (response) => {
-          //console.log(response.data);
           resolve(response.data);
         },
         (error) => {
@@ -178,7 +174,6 @@ function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("/structural/ClosedCodeLists/" + id).then(
       (response) => {
-        //console.log(response.data);
         resolve(response.data);
       },
       (error) => {
