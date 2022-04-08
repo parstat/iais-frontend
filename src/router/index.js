@@ -560,6 +560,16 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
+      // Correspondence Table Add
+      {
+        path: "metadata/structural/correspondences/add",
+        name: "CorrespondenceTableAdd",
+        component: () =>
+          import(
+            "@/views/metadata/structural/correspondenceTable/CorrespondenceTableAdd"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
       //Unit Types List
       {
         path: "metadata/structural/unitTypes/",

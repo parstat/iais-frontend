@@ -162,7 +162,6 @@ export default {
           description: this.localDescription,
           definition: this.definition,
         };
-        console.log(formData);
         this.$emit("next", formData, this.fieldChanged);
         this.fieldChanged = false;
         this.disabled = false;
