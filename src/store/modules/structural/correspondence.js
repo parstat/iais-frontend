@@ -104,6 +104,32 @@ const actions = {
       }
     );
   },
+  addMapping({ dispatch }, formData) {
+    correspondenceService.addMapping(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Correspondence mapping added!", {
+          root: true,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  removeMapping({ dispatch }, formData) {
+    correspondenceService.removeMapping(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Correspondence mapping removed!", {
+          root: true,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
 };
 
 const getters = {

@@ -578,6 +578,16 @@ const routes = [
           ),
         meta: { authorize: [Role.User, Role.Admin] },
       },
+      // Correspondence Table edit
+      {
+        path: "metadata/structural/correspondences/edit/:id",
+        name: "CorrespondenceTableEdit",
+        component: () =>
+          import(
+            "@/views/metadata/structural/correspondenceTable/CorrespondenceTableEdit"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
       //Unit Types List
       {
         path: "metadata/structural/unitTypes/",

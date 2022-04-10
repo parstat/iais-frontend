@@ -28,10 +28,11 @@ const actions = {
     );
   },
   findById({ commit }, id) {
-    codeListService.findById(id).then(
+    return codeListService.findById(id).then(
       (data) => {
         commit("SET_CODELIST", data);
         console.log(data);
+        return data;
       },
       (error) => {
         console.log(error);

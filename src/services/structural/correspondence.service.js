@@ -8,6 +8,8 @@ export const correspondenceService = {
   save,
   update,
   delete: _delete,
+  addMapping,
+  removeMapping,
 };
 
 function findAll() {
@@ -74,21 +76,22 @@ function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
     };
 
     const requestBody = {
-      name: formData.name,
-      description: formData.description,
+      id: formData.id,
+      sourceId: formData.sourceId,
+      targetId: formData.targetId,
       //definition: formData.definition,
-      local_id: formData.localId,
+      relationship: formData.relationship,
     };
 
     axiosIais
       .patch(
         "/structural/ClosedCorrespondence/" + formData.id,
-        new URLSearchParams(requestBody).toString(),
+        requestBody,
         config
       )
       .then(
@@ -114,5 +117,53 @@ function _delete(id) {
         reject(error);
       }
     );
+  });
+}
+
+function addMapping(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const requestBody = {
+      correspondenceId: formData.correspondenceId,
+      sourceId: formData.sourceId,
+      targetId: formData.targetId,
+    };
+
+    axiosIais
+      .put("/structural/ClosedCorrespondence/mapping/add", requestBody, config)
+      .then(
+        (response) => {
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function removeMapping(formData) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .delete(
+        "/structural/ClosedCorrespondence/" +
+          formData.correspondenceId +
+          "/mapping/" +
+          formData.mappingId +
+          "/remove"
+      )
+      .then(
+        (response) => {
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }

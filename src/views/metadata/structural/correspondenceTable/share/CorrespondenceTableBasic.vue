@@ -12,6 +12,7 @@
             class="mb-3"
             :options="nodeSetTypes"
             v-model="selectedNodeSetType"
+            :disabled="isEdit"
           >
           </v-select>
         </CForm>
@@ -30,6 +31,8 @@
             @search="searchNodeset"
             @input="setSourceNodeset"
             :filterable="false"
+            v-model="selectedSource"
+            :disabled="isEdit"
           />
         </CForm>
         <CForm>
@@ -47,6 +50,8 @@
             "
             @search="searchNodeset"
             @input="setTargetNodeset"
+            v-model="selectedTarget"
+            :disabled="isEdit"
           />
         </CForm>
         <CForm>
@@ -55,7 +60,11 @@
               $t("structural.correspondence_table_relationship")
             }}</span>
           </CFormLabel>
-          <v-select :options="relationships" v-model="selectedRelationship">
+          <v-select
+            :options="relationships"
+            v-model="selectedRelationship"
+            :disabled="isEdit"
+          >
           </v-select>
         </CForm>
       </CCardText>
@@ -78,13 +87,15 @@ import _ from "lodash";
 
 export default {
   name: "CorrespondenceTableBasic",
-  props: ["sourceId", "targetId", "relationship"],
+  props: ["source", "target", "relationship", "isEdit"],
 
   data() {
     return {
       selectedNodeSetType: "STATISTICAL_CLASSIFICATION",
-      selectedRelationship: "ONE_TO_ONE",
-      targetNodesetId: "",
+      selectedRelationship: this.relationship ?? "ONE_TO_ONE",
+      selectedSource: this.source,
+      selectedTarget: this.target,
+      targetNodeSetId: "",
       sourceNodeSetId: "",
       disabled: false,
     };
