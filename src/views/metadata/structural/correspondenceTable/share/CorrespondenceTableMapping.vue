@@ -187,18 +187,18 @@ export default {
       }, 1000);
     },
     async uploadItems() {
-      this.localIsLoading = true;
-      this.v$.$touch(); //validate form data
-      if (!this.v$.$invalid) {
-        this.disabled = true; //disable buttons
-        const formData = {
-          aggregationType: this.localAggregationType,
-          rootItems: this.rootItems,
-        };
-        console.log(formData);
-        this.$emit("uploadItems", formData);
-        this.resetItemFields();
-      }
+      // this.localIsLoading = true;
+      // this.v$.$touch(); //validate form data
+      // if (!this.v$.$invalid) {
+      //   this.disabled = true; //disable buttons
+      //   const formData = {
+      //     aggregationType: this.localAggregationType,
+      //     rootItems: this.rootItems,
+      //   };
+      //   console.log(formData);
+      //   this.$emit("uploadItems", formData);
+      //   this.resetItemFields();
+      // }
     },
     handleFileUpload(event) {
       this.file = event.target.files[0];
