@@ -72,15 +72,25 @@
               }}</span>
             </CCol>
             <CCol class="col-3">
-
-                <CButton
-                  color="primary"
-                  variant="outline"
-                  :onclick="changeView"
-                >
-                  <span v-if="isHierarchicalView">Flat</span>
-                  <span v-else>Hierarchical</span>
-                </CButton>
+              <CNavbar
+                expand="lg"
+                color-scheme="light"
+                class="bg-white justify-content-end"
+              >
+                <CNavbarNav>
+                  <CDropdown variant="nav-item" :popper="false">
+                    <CDropdownToggle color="secondary">View</CDropdownToggle>
+                    <CDropdownMenu>
+                      <CDropdownItem
+                        href="javascript:void(0);"
+                        @click="changeView"
+                        ><span v-if="!isHierarchicalView">Hierarchical</span>
+                        <span v-else>Flat</span></CDropdownItem
+                      >
+                    </CDropdownMenu>
+                  </CDropdown>
+                </CNavbarNav>
+              </CNavbar>
             </CCol>
           </CRow>
         </CCardTitle>
@@ -168,10 +178,10 @@ export default {
     },
     changeView() {
       this.isHierarchicalView = !this.isHierarchicalView;
-      if(this.flatStatisticalClassificationItems.length == 0) {
-      this.statisticalClassification.rootItems.forEach((ri) => {
-        this.createFlatFileRecursivly(ri, ri.code);
-      });
+      if (this.flatStatisticalClassificationItems.length == 0) {
+        this.statisticalClassification.rootItems.forEach((ri) => {
+          this.createFlatFileRecursivly(ri, ri.code);
+        });
       }
     },
     createFlatFileRecursivly(item, rootCode) {
