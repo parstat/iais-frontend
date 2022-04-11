@@ -180,23 +180,24 @@ export default {
       this.isHierarchicalView = !this.isHierarchicalView;
       if (this.flatStatisticalClassificationItems.length == 0) {
         this.statisticalClassification.rootItems.forEach((ri) => {
-          this.createFlatFileRecursivly(ri, ri.code);
+          this.createFlatFileRecursivly(ri, ri.code, "");
         });
       }
     },
-    createFlatFileRecursivly(item, rootCode) {
-      var scItem = {};
-      scItem.order = rootCode !== item.code ? rootCode + item.code : item.code;
-      scItem.code = item.levelNumber
-        ? item.code.padStart(item.code.length + item.levelNumber, "-")
+    createFlatFileRecursivly(item, rootCode, parentCode) {
+      var flatItem = {};
+      flatItem.order =
+        rootCode !== item.code ? rootCode + item.code : item.code;
+      flatItem.code = item.levelNumber
+        ? item.code.padStart(item.code.length + item.levelNumber - 1, "-")
         : item.code;
-      scItem.parentCode = item.parentCode ? item.parentCode : "";
-      scItem.value = item.value;
-      scItem.levelNumber = item.levelNumber;
-      this.flatStatisticalClassificationItems.push(scItem);
+      flatItem.parentCode = parentCode ? parentCode : "";
+      flatItem.value = item.value;
+      flatItem.levelNumber = item.levelNumber;
+      this.flatStatisticalClassificationItems.push(flatItem);
       if (item.children) {
         item.children.forEach((i) =>
-          this.createFlatFileRecursivly(i, rootCode)
+          this.createFlatFileRecursivly(i, rootCode, item.code)
         );
       }
     },
