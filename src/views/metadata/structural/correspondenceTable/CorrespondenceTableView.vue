@@ -60,7 +60,7 @@ import { mapGetters } from "vuex";
 //import { Context } from "@/common";
 
 export default {
-  name: "CodeView",
+  name: "CorrespondenceTableView",
   data() {
     return {
       disabled: false,

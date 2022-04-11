@@ -94,16 +94,16 @@
                       class="pl-2"
                       v-c-tooltip="'Delete'"
                     >
-                      <!--  <router-link
+                      <router-link
                         tag="a"
                         title="Delete"
                         :to="{
-                          name: 'CorrespondenceDelete',
+                          name: 'CorrespondenceTableDelete',
                           params: { id: item.id },
                         }"
                       >
                         <CIcon name="cil-trash" />
-                      </router-link> -->
+                      </router-link>
                     </span>
                   </td>
                 </template>

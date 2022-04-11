@@ -111,7 +111,6 @@ function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("/structural/ClosedCorrespondence/" + id).then(
       (response) => {
-        //console.log(response.data);
         resolve(response.data);
       },
       (error) => {

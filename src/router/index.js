@@ -588,6 +588,16 @@ const routes = [
           ),
         meta: { authorize: [Role.User, Role.Admin] },
       },
+      // Correspondence Table delete
+      {
+        path: "metadata/structural/correspondences/delete/:id",
+        name: "CorrespondenceTableDelete",
+        component: () =>
+          import(
+            "@/views/metadata/structural/correspondenceTable/CorrespondenceTableDelete"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
       //Unit Types List
       {
         path: "metadata/structural/unitTypes/",
