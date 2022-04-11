@@ -101,7 +101,7 @@
                               <CFormLabel for="statisticalProgram">
                                 <span
                                   >{{
-                                    $t("referential.statistical_process")
+                                    $t("referential.statistical_program")
                                   }}*</span
                                 >
                               </CFormLabel>

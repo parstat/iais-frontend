@@ -14,7 +14,7 @@
           <fieldset disabled>
             <div class="mb-3">
               <CFormLabel for="statisticalProgram">
-                <span>{{ $t("referential.statistical_process") }}</span>
+                <span>{{ $t("referential.statistical_program") }}</span>
               </CFormLabel>
               <CFormInput
                 id="statisticalProgram"
