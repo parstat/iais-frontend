@@ -87,7 +87,7 @@
                             <CFormLabel for="statisticalProgram">
                               <span
                                 >{{
-                                  $t("referential.statistical_process")
+                                  $t("referential.statistical_program")
                                 }}*</span
                               >
                             </CFormLabel>
@@ -99,7 +99,7 @@
                                 'is-invalid': v$.statisticalProgram.$error,
                               }"
                               :placeholder="
-                                $t('referential.selection.statistical_process')
+                                $t('referential.selection.statistical_program')
                               "
                               :filterable="false"
                               @search="searchStatisticalPrograms"
@@ -120,7 +120,7 @@
                                 <em style="opacity: 0.5" v-else>
                                   <span>{{
                                     $t(
-                                      "referential.search_for_statistical_process"
+                                      "referential.search_for_statistical_program"
                                     )
                                   }}</span>
                                 </em>
@@ -149,7 +149,7 @@
                             >
                               {{
                                 $t(
-                                  "referential.validations.statistical_process"
+                                  "referential.validations.statistical_program"
                                 )
                               }}
                             </span>

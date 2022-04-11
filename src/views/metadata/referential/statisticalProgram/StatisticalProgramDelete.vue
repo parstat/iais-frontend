@@ -8,7 +8,7 @@
               <CIcon name="cil-trash" />
               <span>
                 <strong class="icon-header">{{
-                  $t("referential.statistical_process")
+                  $t("referential.statistical_program")
                 }}</strong>
               </span>
             </header>

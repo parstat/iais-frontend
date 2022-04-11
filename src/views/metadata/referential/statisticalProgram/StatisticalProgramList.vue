@@ -6,7 +6,7 @@
           <CRow>
             <CCol class="col-9">
               <CCardTitle>
-                <span>{{ $t("referential.statistical_processes") }}</span>
+                <span>{{ $t("referential.statistical_programs") }}</span>
               </CCardTitle>
             </CCol>
             <CCol class="col-3">

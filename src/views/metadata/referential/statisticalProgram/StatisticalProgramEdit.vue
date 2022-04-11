@@ -4,7 +4,7 @@
       <CCard v-if="statisticalProgram">
         <CCardHeader class="bg-white" component="h5">
           <span
-            >{{ $t("referential.statistical_process") }}:
+            >{{ $t("referential.statistical_program") }}:
             {{ statisticalProgram.name }}</span
           >
         </CCardHeader>

@@ -5,7 +5,7 @@
         <CCardBody>
           <CCardTitle>
             <CIcon name="cil-description" />
-            <span>&nbsp;{{ $t("referential.statistical_processes") }}</span>
+            <span>&nbsp;{{ $t("referential.statistical_programs") }}</span>
           </CCardTitle>
           <CRow>
             <CCol class="col-3 mr-2">
@@ -146,5 +146,17 @@ export default {
   padding-top: 0rem;
   scroll-padding-bottom: 0rem;
   box-shadow: none !important;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  border-left-width: 4px;
+  border-left-style: solid;
+  background-color: #f8f8f8;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  border-left-color: #321fdb;
+  color: #321fdb;
+  border-radius: unset;
+  padding-left: 0.8rem;
 }
 </style>
