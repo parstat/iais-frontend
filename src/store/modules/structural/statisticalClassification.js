@@ -4,6 +4,7 @@ import { statisticalClassificationService } from "@/services";
 const state = {
   statisticalClassifications: [],
   statisticalClassification: null,
+  flatStatisticalClassification: null,
 };
 
 const mutations = {
@@ -15,6 +16,9 @@ const mutations = {
   SET_STATISTICAL_CLASSIFICATION(state, statisticalClassification) {
     state.statisticalClassification = statisticalClassification;
   },
+  SET_FLAT_STATISTICAL_CLASSIFICATION(state, flatStatisticalClassification) {
+    state.flatStatisticalClassification = flatStatisticalClassification;
+  },
 };
 
 const actions = {
@@ -23,6 +27,7 @@ const actions = {
       (data) => {
         commit("SET_STATISTICAL_CLASSIFICATIONS", data);
         commit("SET_STATISTICAL_CLASSIFICATION", null);
+        commit("SET_FLAT_STATISTICAL_CLASSIFICATION", null);
         console.log(data);
       },
       (error) => {
@@ -46,6 +51,17 @@ const actions = {
     statisticalClassificationService.findByLocalId(localId).then(
       (data) => {
         commit("SET_STATISTICAL_CLASSIFICATION", data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+
+  findFlatById({ commit }, id) {
+    statisticalClassificationService.findFlatById(id).then(
+      (data) => {
+        commit("SET_FLAT_STATISTICAL_CLASSIFICATION", data);
       },
       (error) => {
         console.log(error);
@@ -177,6 +193,9 @@ const getters = {
   },
   statisticalClassification: (state) => {
     return state.statisticalClassification;
+  },
+  flatStatisticalClassification: (state) => {
+    return state.flatStatisticalClassification;
   },
 };
 

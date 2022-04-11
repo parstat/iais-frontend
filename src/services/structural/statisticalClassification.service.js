@@ -6,6 +6,7 @@ export const statisticalClassificationService = {
   findAll,
   findByName,
   findById,
+  findFlatById,
   save,
   update,
   delete: _delete,
@@ -45,6 +46,24 @@ function findById(id) {
     );
   });
 }
+
+function findFlatById(id) {
+  return new Promise((resolve, reject) => {
+    axiosIais.get("/structural/OpenStatisticalClassifications/flat/" + id).then(
+      (response) => {
+        var data = response.data.statisticalClassification
+          ? response.data.statisticalClassification
+          : null;
+        //console.log(data);
+        resolve(data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
 function findByName(name) {
   return new Promise((resolve, reject) => {
     axiosIais

@@ -65,15 +65,48 @@
     <CCard v-if="statisticalClassification">
       <CCardBody>
         <CCardTitle>
-          <span>{{ $t("structural.statistical_classification_items") }}</span>
+          <CRow>
+            <CCol class="col-9">
+              <span>{{
+                $t("structural.statistical_classification_items")
+              }}</span>
+            </CCol>
+            <CCol class="col-3">
+
+                <CButton
+                  color="primary"
+                  variant="outline"
+                  :onclick="changeView"
+                >
+                  <span v-if="isHierarchicalView">Flat</span>
+                  <span v-else>Hierarchical</span>
+                </CButton>
+            </CCol>
+          </CRow>
         </CCardTitle>
-        <CCardText>
+        <CCardText v-if="isHierarchicalView">
           <TreeNode
             v-for="node in statisticalClassification.rootItems"
             :key="node.id"
             :node="node"
           >
           </TreeNode>
+        </CCardText>
+        <CCardText v-else>
+          <CSmartTable
+            v-if="flatStatisticalClassificationItems"
+            :items="flatStatisticalClassificationItems"
+            :activePage="1"
+            :columns="columns"
+            columnFilter
+            cleaner
+            itemsPerPageSelect
+            :itemsPerPage="15"
+            columnSorter
+            :sorterValue="{ column: 'order', state: 'asc' }"
+            pagination
+          >
+          </CSmartTable>
         </CCardText>
         <CButton
           color="primary"
@@ -100,7 +133,27 @@ export default {
   },
   data() {
     return {
+      isHierarchicalView: true,
       disabled: false,
+      flatStatisticalClassificationItems: [],
+      columns: [
+        {
+          key: "code",
+          label: "Code",
+        },
+        {
+          key: "parentCode",
+          label: "Parent Code",
+        },
+        {
+          key: "levelNumber",
+          label: "LevelNumber",
+        },
+        {
+          key: "value",
+          label: "Value",
+        },
+      ],
     };
   },
   computed: {
@@ -112,6 +165,30 @@ export default {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/structural/classifications");
+    },
+    changeView() {
+      this.isHierarchicalView = !this.isHierarchicalView;
+      if(this.flatStatisticalClassificationItems.length == 0) {
+      this.statisticalClassification.rootItems.forEach((ri) => {
+        this.createFlatFileRecursivly(ri, ri.code);
+      });
+      }
+    },
+    createFlatFileRecursivly(item, rootCode) {
+      var scItem = {};
+      scItem.order = rootCode !== item.code ? rootCode + item.code : item.code;
+      scItem.code = item.levelNumber
+        ? item.code.padStart(item.code.length + item.levelNumber, "-")
+        : item.code;
+      scItem.parentCode = item.parentCode ? item.parentCode : "";
+      scItem.value = item.value;
+      scItem.levelNumber = item.levelNumber;
+      this.flatStatisticalClassificationItems.push(scItem);
+      if (item.children) {
+        item.children.forEach((i) =>
+          this.createFlatFileRecursivly(i, rootCode)
+        );
+      }
     },
   },
   created() {
