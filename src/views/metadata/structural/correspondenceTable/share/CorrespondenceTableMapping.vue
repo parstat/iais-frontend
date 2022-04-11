@@ -35,9 +35,6 @@
           <CSpinner color="primary" size="sm" />
           <span>{{ $t("structural.uploading_wait") }}</span>
         </CAlert>
-        <CButton color="info" variant="ghost" v-if="file" @click="parseFile">
-          <span>{{ $t("structural.parse_file") }}</span>
-        </CButton>
         <br />
         <CButton
           color="primary"
@@ -75,6 +72,36 @@
         </CSmartTable>
       </div>
     </CCardBody>
+    <CModal :visible="visibleCsvModal" @close="closeModal">
+      <CModalHeader>
+        <CModalTitle>
+          <span>{{ $t("structural.CSV_items") }}</span>
+        </CModalTitle>
+      </CModalHeader>
+      <CModalBody>
+        <CSmartTable
+          v-if="content?.data?.length"
+          :items="content.data"
+          :activePage="1"
+          :columns="content.meta.fields"
+          columnFilter
+          itemsPerPageSelect
+          :itemsPerPage="5"
+          pagination
+        ></CSmartTable>
+      </CModalBody>
+      <CModalFooter>
+        <CButton color="secondary" @click="closeModal">
+          <span>{{ $t("structural.close") }}</span>
+        </CButton>
+        <CButton
+          color="primary"
+          @click.prevent="uploadItems"
+          :disabled="disabled"
+          ><span>{{ $t("structural.upload_items") }}</span>
+        </CButton>
+      </CModalFooter>
+    </CModal>
     <CModal
       backdrop="static"
       :visible="showDeleteDialog"
@@ -148,7 +175,7 @@ export default {
       showDeleteDialog: false,
 
       file: "",
-      content: [],
+      content: null,
       parsed: false,
       visibleCsvModal: false,
     };
@@ -186,20 +213,32 @@ export default {
       this.targetCodeItem = "";
       this.disabled = false;
       this.showDeleteDialog = false;
+      this.visibleCsvModal = false;
+      this.parsed = false;
+      this.content = null;
     },
     async uploadItems() {
-      // this.localIsLoading = true;
-      // this.v$.$touch(); //validate form data
-      // if (!this.v$.$invalid) {
-      //   this.disabled = true; //disable buttons
-      //   const formData = {
-      //     aggregationType: this.localAggregationType,
-      //     rootItems: this.rootItems,
-      //   };
-      //   console.log(formData);
-      //   this.$emit("uploadItems", formData);
-      //   this.resetItemFields();
-      // }
+      if (this.content) {
+        this.disabled = true;
+        const mappingCsv = this.content.data.map((element) => {
+          return {
+            sourceCode: element.source,
+            targetCode: element.target,
+          };
+        });
+        const formData = {
+          mappingCsv,
+          correspondenceId: this.correspondence.id,
+        };
+        this.$store
+          .dispatch("correspondence/uploadMapping", formData)
+          .then(() => {
+            this.resetForm();
+          })
+          .catch(() => {
+            this.resetForm();
+          });
+      }
     },
     handleFileUpload(event) {
       this.file = event.target.files[0];
@@ -215,8 +254,14 @@ export default {
         complete: function (results) {
           this.content = results;
           this.parsed = true;
+          this.visibleCsvModal = true;
+          console.log(results);
         }.bind(this),
       });
+    },
+    closeModal() {
+      this.content = null;
+      this.visibleCsvModal = false;
     },
   },
   created() {
