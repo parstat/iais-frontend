@@ -111,6 +111,7 @@ const actions = {
         dispatch("message/success", "Correspondence mapping added!", {
           root: true,
         });
+        dispatch("findById", data);
       },
       (error) => {
         console.log(error);
@@ -124,6 +125,7 @@ const actions = {
         dispatch("message/success", "Correspondence mapping removed!", {
           root: true,
         });
+        dispatch("findById", formData.correspondenceId);
       },
       (error) => {
         console.log(error);

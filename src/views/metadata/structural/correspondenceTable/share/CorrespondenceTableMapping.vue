@@ -17,7 +17,7 @@
         </CForm>
         <CForm>
           <CFormLabel for="sourceId">
-            <span>Source item</span>
+            <span>Target item</span>
           </CFormLabel>
           <v-select
             id="sourceId"
@@ -157,11 +157,11 @@ export default {
     addMapping() {
       const formData = {
         correspondenceId: this.correspondence.id,
-        sourceId: this.sourceCodeItem.code,
-        targetId: this.targetCodeItem.code,
+        sourceId: this.sourceCodeItem.id,
+        targetId: this.targetCodeItem.id,
       };
       this.$store.dispatch("correspondence/addMapping", formData).then(() => {
-        this.reloadData();
+        this.resetForm();
       });
     },
     openDeleteDialog(mapping) {
@@ -177,14 +177,15 @@ export default {
         this.$store
           .dispatch("correspondence/removeMapping", formData)
           .then(() => {
-            this.reloadData();
+            this.resetForm();
           });
       }
     },
-    reloadData() {
-      setTimeout(() => {
-        this.$store.dispatch("correspondence/findById", this.$route.params.id);
-      }, 1000);
+    resetForm() {
+      this.sourceCodeItem = "";
+      this.targetCodeItem = "";
+      this.disabled = false;
+      this.showDeleteDialog = false;
     },
     async uploadItems() {
       // this.localIsLoading = true;

@@ -232,19 +232,22 @@ export default {
           label: this.label,
         };
         this.$store.dispatch("codeList/addCodeItem", formData);
-        this.reloadCodeList();
+        this.resetForm();
       }
     },
-    reloadCodeList() {
+    resetForm() {
       this.item = null;
       this.showEditDialog = false;
       this.showDeleteDialog = false;
       this.disabled = false;
       this.code = "";
       this.description = "";
-      this.label = "";
+      this.label = {
+        en: "",
+        ro: "",
+        ru: "",
+      };
       this.v$.$reset();
-      //this.$store.dispatch("codeList/findById", this.$route.params.id);
     },
     openEditDialog(item) {
       console.log(item);

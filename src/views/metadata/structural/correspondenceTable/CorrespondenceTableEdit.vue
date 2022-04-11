@@ -122,6 +122,7 @@ export default {
   created() {
     this.$store.dispatch("correspondence/findById", this.$route.params.id);
     this.$store.dispatch("coreui/setContext", Context.Structural);
+    this.activeTab = this.$route.query.step ? this.$route.query.step - 1 : 0;
   },
 };
 </script>

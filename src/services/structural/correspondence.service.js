@@ -154,8 +154,7 @@ function removeMapping(formData) {
         "/structural/ClosedCorrespondence/" +
           formData.correspondenceId +
           "/mapping/" +
-          formData.mappingId +
-          "/remove"
+          formData.mappingId
       )
       .then(
         (response) => {
