@@ -10,6 +10,7 @@ export const correspondenceService = {
   delete: _delete,
   addMapping,
   removeMapping,
+  uploadMapping,
 };
 
 function findAll() {
@@ -156,6 +157,27 @@ function removeMapping(formData) {
           "/mapping/" +
           formData.mappingId
       )
+      .then(
+        (response) => {
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function uploadMapping(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    axiosIais
+      .put("/structural/ClosedCorrespondence/mapping/upload", formData, config)
       .then(
         (response) => {
           resolve(response.data);

@@ -132,6 +132,20 @@ const actions = {
       }
     );
   },
+  uploadMapping({ dispatch }, formData) {
+    correspondenceService.uploadMapping(formData).then(
+      (data) => {
+        console.log(data);
+        dispatch("message/success", "Correspondence mappings uploaded!", {
+          root: true,
+        });
+        dispatch("findById", formData.correspondenceId);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
 };
 
 const getters = {
