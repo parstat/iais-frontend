@@ -65,34 +65,24 @@
     <CCard v-if="statisticalClassification">
       <CCardBody>
         <CCardTitle>
-          <CRow>
-            <CCol class="col-9">
+          <CNavbar expand="lg" color-scheme="light" class="bg-white">
+            <CNavbarBrand href="javascript:void(0);">
               <span>{{
                 $t("structural.statistical_classification_items")
-              }}</span>
-            </CCol>
-            <CCol class="col-3">
-              <CNavbar
-                expand="lg"
-                color-scheme="light"
-                class="bg-white justify-content-end"
-              >
-                <CNavbarNav>
-                  <CDropdown variant="nav-item" :popper="false">
-                    <CDropdownToggle color="secondary">View</CDropdownToggle>
-                    <CDropdownMenu>
-                      <CDropdownItem
-                        href="javascript:void(0);"
-                        @click="changeView"
-                        ><span v-if="!isHierarchicalView">Hierarchical</span>
-                        <span v-else>Flat</span></CDropdownItem
-                      >
-                    </CDropdownMenu>
-                  </CDropdown>
-                </CNavbarNav>
-              </CNavbar>
-            </CCol>
-          </CRow>
+              }}</span></CNavbarBrand
+            >
+            <CNavbarNav>
+              <CDropdown variant="nav-item" :popper="false">
+                <CDropdownToggle color="secondary">View</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="javascript:void(0);" @click="changeView"
+                    ><span v-if="isHierarchicalView">Flat</span>
+                    <span v-else>Hierarchical</span></CDropdownItem
+                  >
+                </CDropdownMenu>
+              </CDropdown>
+            </CNavbarNav>
+          </CNavbar>
         </CCardTitle>
         <CCardText v-if="isHierarchicalView">
           <TreeNode
@@ -157,7 +147,7 @@ export default {
         },
         {
           key: "levelNumber",
-          label: "LevelNumber",
+          label: "Level Number",
         },
         {
           key: "value",
