@@ -93,20 +93,22 @@
           </TreeNode>
         </CCardText>
         <CCardText v-else>
-          <CSmartTable
-            v-if="flatStatisticalClassificationItems"
-            :items="flatStatisticalClassificationItems"
-            :activePage="1"
-            :columns="columns"
-            columnFilter
-            cleaner
-            itemsPerPageSelect
-            :itemsPerPage="15"
-            columnSorter
-            :sorterValue="{ column: 'order', state: 'asc' }"
-            pagination
-          >
-          </CSmartTable>
+          <div class="table-responsive">
+            <CSmartTable
+              v-if="flatStatisticalClassificationItems"
+              :items="flatStatisticalClassificationItems"
+              :activePage="1"
+              :columns="columns"
+              columnFilter
+              cleaner
+              itemsPerPageSelect
+              :itemsPerPage="15"
+              columnSorter
+              :sorterValue="{ column: 'order', state: 'asc' }"
+              pagination
+            >
+            </CSmartTable>
+          </div>
         </CCardText>
         <CButton
           color="primary"
