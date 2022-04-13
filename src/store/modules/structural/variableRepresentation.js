@@ -70,7 +70,7 @@ const actions = {
         dispatch("message/success", "Variable Representation saved!", {
           root: true,
         });
-        router.push("/metadata/structuralal/variable/representation");
+        router.push("/metadata/structural/variable/representation");
       },
       (error) => {
         console.log(error);
@@ -84,7 +84,7 @@ const actions = {
         dispatch("message/success", "Variable Representation deleted!", {
           root: true,
         });
-        router.push("/metadata/structuralal/variable/representation");
+        router.push("/metadata/structural/variable/representation");
       },
       (error) => {
         console.log(error);
@@ -98,7 +98,7 @@ const actions = {
         dispatch("message/success", "Variable Representation updated!", {
           root: true,
         });
-        router.push("/metadata/structuralal/variable/representation");
+        router.push("/metadata/structural/variable/representation");
       },
       (error) => {
         console.log(error);

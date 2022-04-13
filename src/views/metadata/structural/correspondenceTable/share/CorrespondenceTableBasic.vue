@@ -2,6 +2,7 @@
   <CCard>
     <CCardBody>
       <CCardText v-if="codeLists && statisticalClassifications">
+        <CCardTitle> Correspondence </CCardTitle>
         <CForm>
           <CFormLabel for="nodesetType">
             <span>{{

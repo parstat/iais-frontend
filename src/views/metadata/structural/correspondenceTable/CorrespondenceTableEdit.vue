@@ -2,7 +2,11 @@
   <CRow v-if="correspondence">
     <CCol class="col-12">
       <CCardHeader class="bg-white" component="h5">
-        <span>Create a Correspondence Table</span>
+        <span
+          >Edit Correspondence Table between
+          {{ correspondence.source.name }} and
+          {{ correspondence.target.name }}</span
+        >
       </CCardHeader>
       <CCardBody>
         <CRow>
