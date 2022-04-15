@@ -682,7 +682,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementUnits/MeasurementUnitList"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       {
         path: "metadata/structural/measurementUnits/add/",
@@ -691,7 +691,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementUnits/MeasurementUnitAdd"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       {
         path: "metadata/structural/measurementUnits/edit/:id",
@@ -700,7 +700,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementUnits/MeasurementUnitEdit"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       {
         path: "metadata/structural/measurementUnits/view/:id",
@@ -709,7 +709,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementUnits/MeasurementUnitView"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       {
         path: "metadata/structural/measurementUnits/delete/:id",
@@ -718,7 +718,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementUnits/MeasurementUnitDelete"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       // Measurement type list
       {
@@ -728,7 +728,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementTypes/MeasurementTypeList"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       // Measurement type view
       {
@@ -738,7 +738,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementTypes/MeasurementTypeView"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       // Measurement type add
       {
@@ -748,7 +748,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementTypes/MeasurementTypeAdd"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       // Measurement type edit
       {
@@ -758,7 +758,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementTypes/MeasurementTypeEdit"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       // Measurement type delete
       {
@@ -768,7 +768,7 @@ const routes = [
           import(
             "@/views/metadata/structural/measurementTypes/MeasurementTypeDelete"
           ),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
     ],
   },

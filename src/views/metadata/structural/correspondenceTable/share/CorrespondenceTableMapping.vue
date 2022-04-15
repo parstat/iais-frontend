@@ -2,32 +2,39 @@
   <CCard>
     <CCardBody>
       <CCardText v-if="sourceCodeList && targetCodeList">
-        <CForm>
-          <CFormLabel for="sourceId">
-            <span>Source item</span>
-          </CFormLabel>
-          <v-select
-            id="sourceId"
-            class="mb-3"
-            label="code"
-            :options="sourceCodeList.codeItems"
-            v-model="sourceCodeItem"
-          >
-          </v-select>
-        </CForm>
-        <CForm>
-          <CFormLabel for="sourceId">
-            <span>Target item</span>
-          </CFormLabel>
-          <v-select
-            id="sourceId"
-            class="mb-3"
-            label="code"
-            :options="targetCodeList.codeItems"
-            v-model="targetCodeItem"
-          >
-          </v-select>
-        </CForm>
+        <CCardTitle> Add/Remove Mappings </CCardTitle>
+        <CRow>
+          <CCol class="col-6">
+            <CForm>
+              <CFormLabel for="sourceId">
+                <span>Source item</span>
+              </CFormLabel>
+              <v-select
+                id="sourceId"
+                class="mb-3"
+                label="code"
+                :options="sourceCodeList.codeItems"
+                v-model="sourceCodeItem"
+              >
+              </v-select>
+            </CForm>
+          </CCol>
+          <CCol class="col-6">
+            <CForm>
+              <CFormLabel for="sourceId">
+                <span>Target item</span>
+              </CFormLabel>
+              <v-select
+                id="sourceId"
+                class="mb-3"
+                label="code"
+                :options="targetCodeList.codeItems"
+                v-model="targetCodeItem"
+              >
+              </v-select>
+            </CForm>
+          </CCol>
+        </CRow>
         <CFormLabel class="mb-3">
           <input type="file" accept=".csv" @change="handleFileUpload($event)" />
         </CFormLabel>

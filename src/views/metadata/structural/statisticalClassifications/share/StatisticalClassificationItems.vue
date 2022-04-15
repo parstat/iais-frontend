@@ -50,7 +50,7 @@
               ><span>{{ $t("structural.parse_CSV") }}</span>
             </CButton>
             <div style="height: 450px; overflow: scroll">
-              <TreeNode v-for="node in rootItems" :key="node.id" :node="node">
+              <TreeNode v-for="node in rootItems" :key="node.code" :node="node">
               </TreeNode>
             </div>
           </CModalBody>
@@ -217,64 +217,60 @@ export default {
     },
     getItemsRecursivly() {
       this.parseDisabled = true;
-      this.content.data.forEach((row) => {
-        if (row.parent === "") {
-          //row.value = row.labelEn;
-          delete row.parent;
-          var label = {
-            en: row.labelEn,
-            ro: row.labelRo,
-            ru: row.labelRu,
-          };
-          var desc = {
-            en: row.descriptionEn ? row.descriptionEn : "",
-            ro: row.descriptionRo ? row.descriptionRo : "",
-            ru: row.descriptionRu ? row.descriptionRu : "",
-          };
-          delete row.labelEn;
-          delete row.labelRo;
-          delete row.labelRu;
-          delete row.descriptionEn;
-          delete row.descriptionRo;
-          delete row.descriptionRu;
-          row.label = label;
-          row.desc = desc;
-          this.rootItems.push(row);
-        }
-      });
+      this.rootItems = this.content.data
+        .filter((row) => {
+          return row.parent === "";
+        })
+        .map((row) => {
+          if (row.parent === "") {
+            return {
+              children: [],
+              code: row.code,
+              levelNumber: row.levelNumber,
+              label: {
+                en: row.labelEn,
+                ro: row.labelRo,
+                ru: row.labelRu,
+              },
+              desc: {
+                en: row.descriptionEn ? row.descriptionEn : "",
+                ro: row.descriptionRo ? row.descriptionRo : "",
+                ru: row.descriptionRu ? row.descriptionRu : "",
+              },
+            };
+          }
+        });
       this.rootItems.forEach(this.getChildren);
     },
     getChildren(parent) {
-      parent.children = [];
-      this.content.data.forEach((row) => {
-        if (row.parent === parent.code) {
-          //row.value = row.labelEn;
-          delete row.parent;
-          var label = {
-            En: row.labelEn,
-            Ro: row.labelRo,
-            Ru: row.labelRu,
-          };
-          delete row.labelEn;
-          delete row.labelRo;
-          delete row.labelRu;
-          var desc = {
-            en: row.descriptionEn ? row.descriptionEn : "",
-            ro: row.descriptionRo ? row.descriptionRo : "",
-            ru: row.descriptionRu ? row.descriptionRu : "",
-          };
-          delete row.labelEn;
-          delete row.labelRo;
-          delete row.labelRu;
-          delete row.descriptionEn;
-          delete row.descriptionRo;
-          delete row.descriptionRu;
-          row.label = label;
-          row.desc = desc;
-          parent.children.push(row);
-          this.getChildren(row);
-        }
-      });
+      this.content.data
+        .filter((row) => {
+          return row.parent === parent.code;
+        })
+        .forEach(
+          (row) => {
+            //if (row.parent === parent.code) {
+            //row.value = row.labelEn;
+            var child = {
+              children: [],
+              code: row.code,
+              levelNumber: row.levelNumber,
+              label: {
+                en: row.labelEn,
+                ro: row.labelRo,
+                ru: row.labelRu,
+              },
+              desc: {
+                en: row.descriptionEn ? row.descriptionEn : "",
+                ro: row.descriptionRo ? row.descriptionRo : "",
+                ru: row.descriptionRu ? row.descriptionRu : "",
+              },
+            };
+            parent.children.push(child);
+            this.getChildren(child);
+          }
+          // }
+        );
     },
     closeModal() {
       this.rootItems = [];
