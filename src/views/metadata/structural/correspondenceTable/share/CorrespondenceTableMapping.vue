@@ -160,7 +160,7 @@ export default {
         {
           key: "actions",
           label: "Actions",
-          _style: "",
+          _style: { width: "1%" },
           sorter: false,
           filter: false,
         },

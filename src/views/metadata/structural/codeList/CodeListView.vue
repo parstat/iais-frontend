@@ -3,20 +3,23 @@
     <div class="jumbotron jumbotron-fluid col-lg-12 p-2 mb-3" v-if="codeList">
       <div class="p-3">
         <h2 class="display-5">
-          {{ codeList.name }}
-          <span class="lead"
-            >( {{ codeList.version || codeList.localId }} )</span
-          >
+          <span>{{ codeList.name }}</span>
+          <span class="lead">
+            ( {{ codeList.version || codeList.localId }} )
+          </span>
         </h2>
         <p class="lead">
-          <span><strong>Description:</strong></span> {{ codeList.description }}
+          <span>
+            <strong>{{ $t("structural.description") }}:</strong>
+            {{ codeList.description }}
+          </span>
         </p>
       </div>
     </div>
     <CCard>
       <CCardBody>
         <CCardTitle>
-          <span>Code Items</span>
+          <span>{{ $t("structural.code_items") }}</span>
         </CCardTitle>
         <CCardText>
           <div class="table-responsive" v-if="!isLoading">
@@ -42,8 +45,8 @@
           size="sm"
           @click.prevent="handleBack()"
           :disabled="disabled"
-          >Back</CButton
-        >
+          ><span>{{ $t("structural.back") }}</span>
+        </CButton>
       </CCardBody>
     </CCard>
   </CRow>
@@ -61,11 +64,11 @@ export default {
       columns: [
         {
           key: "code",
-          label: "Code",
+          label: this.$i18n.t("structural.code"),
         },
         {
           key: "value",
-          label: "Value",
+          label: this.$i18n.t("structural.value"),
         },
       ],
     };

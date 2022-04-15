@@ -4,39 +4,45 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Sattistical Classificaion</span>
+            <span>{{ $t("structural.statistical_classification") }}</span>
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="localId">Local id</label>
+              <CFormLabel for="localId">
+                <span>{{ $t("structural.local_ID") }}</span>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Local id"
+                :placeholder="$t('structural.local_ID')"
                 v-model.trim="codeList.localId"
                 disabled
               />
             </CForm>
             <CForm>
-              <label for="name">Name</label>
+              <CFormLabel for="name">
+                <span>{{ $t("structural.name") }}</span>
+              </CFormLabel>
               <input
                 id="name"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Code List name"
+                :placeholder="$t('structural.code_list_name')"
                 v-model.trim="codeList.name"
                 disabled
               />
             </CForm>
             <CForm>
-              <label for="description">Description</label>
+              <CFormLabel for="description">
+                <span>{{ $t("structural.description") }}</span>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Code List description"
+                :placeholder="$t('structural.code_list_description')"
                 v-model.trim="codeList.description"
                 disabled
               />
@@ -47,8 +53,8 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            ><span>Delete</span></CButton
-          >
+            ><span>{{ $t("structural.delete") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

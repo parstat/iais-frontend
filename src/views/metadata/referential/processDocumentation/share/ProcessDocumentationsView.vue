@@ -75,7 +75,7 @@ export default {
         {
           key: "actions",
           label: this.$i18n.t("referential.actions"),
-          _style: "width:1%",
+          _style: { width: "1%" },
           sorter: false,
           filter: false,
         },

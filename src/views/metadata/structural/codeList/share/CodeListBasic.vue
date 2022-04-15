@@ -3,7 +3,9 @@
     <CCardBody>
       <CCardText>
         <CForm>
-          <label for="localId">Local id*</label>
+          <CFormLabel for="localId">
+            <span>{{ $t("structural.local_ID") }}*</span>
+          </CFormLabel>
           <input
             id="localId"
             type="text"
@@ -12,16 +14,18 @@
               'is-invalid': v$.localLocalId.$error,
               'mb-3': !v$.localLocalId.$error,
             }"
-            placeholder="Local id"
+            :placeholder="$t('structural.local_ID')"
             v-model.trim="localLocalId"
             @change="fieldChanged = true"
           />
-          <div class="text-danger mb-3" v-if="v$.localLocalId.$error">
-            Please specify the local id.
-          </div>
+          <span class="text-danger mb-3" v-if="v$.localLocalId.$error">
+            {{ $t("structural.validations.local_ID") }}
+          </span>
         </CForm>
         <CForm>
-          <label for="name">Name*</label>
+          <CFormLabel for="name">
+            <span>{{ $t("structural.name") }}*</span>
+          </CFormLabel>
           <input
             id="name"
             type="text"
@@ -30,16 +34,18 @@
               'is-invalid': v$.localName.$error,
               'mb-3': !v$.localName.$error,
             }"
-            placeholder="Code List name"
+            :placeholder="$t('structural.code_list_name')"
             v-model.trim="localName"
             @change="fieldChanged = true"
           />
-          <div class="text-danger mb-3" v-if="v$.localName.$error">
-            Please enter a name for the code list.
-          </div>
+          <span class="text-danger mb-3" v-if="v$.localName.$error">
+            {{ $t("structural.validations.code_list_name") }}
+          </span>
         </CForm>
         <CForm>
-          <label for="description">Description*</label>
+          <CFormLabel for="description">
+            <span>{{ $t("structural.description") }}*</span>
+          </CFormLabel>
           <textarea
             rows="5"
             id="description"
@@ -49,17 +55,17 @@
               'is-invalid': v$.localDescription.$error,
               'mb-3': !v$.localDescription.$error,
             }"
-            placeholder="Code List description"
+            :placeholder="$t('structural.code_list_description')"
             v-model.trim="localDescription"
             @change="fieldChanged = true"
           />
-          <div class="text-danger mb-3" v-if="v$.localDescription.$error">
-            Please enter a description.
-          </div>
+          <span class="text-danger mb-3" v-if="v$.localDescription.$error">
+            {{ $t("structural.validations.description") }}
+          </span>
         </CForm>
 
         <div class="form-mandatory">
-          <span>*Mandatory fields</span>
+          <span>*{{ $t("structural.mandatory_fields") }}</span>
         </div>
       </CCardText>
     </CCardBody>
@@ -70,7 +76,7 @@
         style="margin-right: 0.3rem"
         @click.prevent="handleSubmit()"
         :disabled="disabled"
-        ><span>Next</span>
+        ><span>{{ $t("structural.next") }}</span>
       </CButton>
     </CCardFooter>
   </CCard>

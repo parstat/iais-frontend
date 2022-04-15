@@ -4,7 +4,9 @@
       <CCardBody>
         <CCardText>
           <CForm>
-            <label for="code">Code*</label>
+            <CFormLabel for="code">
+              <span>{{ $t("structural.code") }}*</span>
+            </CFormLabel>
             <input
               id="code"
               type="text"
@@ -13,17 +15,18 @@
                 'is-invalid': v$.code.$error,
                 'mb-3': !v$.code.$error,
               }"
-              placeholder="Code"
+              :placeholder="$t('structural.code')"
               v-model.trim="code"
             />
-            <div class="text-danger mb-3" v-if="v$.code.$error">
-              Please enter a code for the code item.
-            </div>
+            <span class="text-danger mb-3" v-if="v$.code.$error">
+              {{ $t("structural.validations.code") }}
+            </span>
           </CForm>
           <CForm>
-            <label for="label"
-              >Label En<span v-if="locale === 'en'">*</span></label
-            >
+            <CFormLabel for="label">
+              <span>{{ $t("structural.label_en") }}</span>
+              <span v-if="locale === 'en'">*</span>
+            </CFormLabel>
             <input
               id="label"
               type="text"
@@ -32,17 +35,18 @@
                 'is-invalid': v$.label.en.$error,
                 'mb-3': !v$.label.en.$error,
               }"
-              placeholder="English label"
+              :placeholder="$t('structural.label_english')"
               v-model.trim="label.en"
             />
-            <div class="text-danger mb-3" v-if="v$.label.en.$error">
-              Please enter a label in English.
-            </div>
+            <span class="text-danger mb-3" v-if="v$.label.en.$error">
+              {{ $t("structural.validations.label_english") }}
+            </span>
           </CForm>
           <CForm>
-            <label for="label"
-              >Label Ro<span v-if="locale === 'ro'">*</span></label
-            >
+            <CFormLabel for="label">
+              <span>{{ $t("structural.label_ro") }}</span>
+              <span v-if="locale === 'ro'">*</span>
+            </CFormLabel>
             <input
               id="label"
               type="text"
@@ -51,17 +55,18 @@
                 'is-invalid': v$.label.ro.$error,
                 'mb-3': !v$.label.ro.$error,
               }"
-              placeholder="Romanian label"
+              :placeholder="$t('structural.label_romanian')"
               v-model.trim="label.ro"
             />
-            <div class="text-danger mb-3" v-if="v$.label.ro.$error">
-              Please enter a label in Romanian.
-            </div>
+            <span class="text-danger mb-3" v-if="v$.label.ro.$error">
+              {{ $t("structural.validations.label_romanian") }}
+            </span>
           </CForm>
           <CForm>
-            <label for="label"
-              >Label Ru<span v-if="locale === 'ru'">*</span></label
-            >
+            <CFormLabel for="label">
+              <span>{{ $t("structural.label_ru") }}</span>
+              <span v-if="locale === 'ru'">*</span>
+            </CFormLabel>
             <input
               id="label"
               type="text"
@@ -70,26 +75,28 @@
                 'is-invalid': v$.label.ru.$error,
                 'mb-3': !v$.label.ru.$error,
               }"
-              placeholder="Russian label"
+              :placeholder="$t('structural.label_russian')"
               v-model.trim="label.ru"
             />
-            <div class="text-danger mb-3" v-if="v$.label.ru.$error">
-              Please enter label in Russian.
-            </div>
+            <span class="text-danger mb-3" v-if="v$.label.ru.$error">
+              {{ $t("structural.validations.label_russian") }}
+            </span>
           </CForm>
           <CForm>
-            <label for="description">Description</label>
+            <CFormLabel for="description">
+              <span>{{ $t("structural.description") }}</span>
+            </CFormLabel>
             <textarea
               rows="5"
               id="description"
               type="text"
               class="form-control"
-              placeholder="Unit type description"
+              :placeholder="$t('structural.unit_type_description')"
               v-model.trim="description"
             />
           </CForm>
           <div class="form-mandatory">
-            <span>*Mandatory fields</span>
+            <span>*{{ $t("structural.mandatory_fields") }}</span>
           </div>
         </CCardText>
         <CButton
@@ -98,7 +105,7 @@
           style="margin-right: 0.3rem"
           @click.prevent="handleSubmit()"
           :disabled="disabled"
-          ><span>Add code item</span>
+          ><span>{{ $t("structural.add_code_item") }}</span>
         </CButton>
         <hr />
         <div class="code-items-section">
@@ -137,24 +144,25 @@
       @close="showDeleteDialog = false"
     >
       <CModalHeader>
-        <CModalTitle>Delete Code Item: {{ item?.code }}?</CModalTitle>
+        <CModalTitle>
+          <span
+            >{{ $t("structural.delete_code_item") }}: {{ item?.code }}?</span
+          >
+        </CModalTitle>
       </CModalHeader>
-      <CModalBody
-        >This action will remove the Code Item form the Code List. This action
-        can not be undone. Are you sure you want to delete this Code
-        Item?</CModalBody
-      >
+      <CModalBody>
+        <span>{{ $t("structural.delete_code_item_text") }}</span>
+      </CModalBody>
       <CModalFooter>
         <CButton
           color="secondary"
           @click="() => (showDeleteDialog = false)"
           :disabled="disabled"
-        >
-          Close
+          ><span>{{ $t("structural.close") }}</span>
         </CButton>
         <CButton color="danger" @click="deleteCodeItem()" :disabled="disabled"
-          >Delete Code Item</CButton
-        >
+          ><span>{{ $t("structural.delete_code_item") }}</span>
+        </CButton>
       </CModalFooter>
     </CModal>
   </div>
@@ -186,12 +194,18 @@ export default {
       showDeleteDialog: false,
       item: null,
       codeItemsColumns: [
-        "code",
-        "value",
+        {
+          key: "code",
+          label: this.$i18n.t("structural.code"),
+        },
+        {
+          key: "value",
+          label: this.$i18n.t("structural.value"),
+        },
         {
           key: "actions",
-          label: "Actions",
-          _style: "",
+          label: this.$i18n.t("structural.actions"),
+          _style: { width: "1%" },
           sorter: false,
           filter: false,
         },

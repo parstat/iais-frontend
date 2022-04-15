@@ -2,7 +2,7 @@
   <CRow class="col-12">
     <CCard>
       <CCardHeader class="bg-white">
-        <span>Code</span>
+        <span>{{ $t("structural.code") }}</span>
       </CCardHeader>
       <CCardBody>
         <CCardText>
@@ -11,12 +11,12 @@
               <CNav class="flex-column" variant="pills" role="tab">
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" active>
-                    <span>Basic</span>
+                    <span>{{ $t("structural.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" disabled>
-                    <span>Code Items</span>
+                    <span>{{ $t("structural.code_items") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>

@@ -6,7 +6,7 @@
           <CRow>
             <CCol class="col-9">
               <CCardTitle>
-                <span>Code Lists</span>
+                <span>{{ $t("structural.code_lists") }}</span>
               </CCardTitle>
             </CCol>
             <CCol class="col-3">
@@ -19,7 +19,9 @@
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />
-                    <span class="icon-span">New Code</span>
+                    <span class="icon-span">
+                      {{ $t("structural.new_code") }}
+                    </span>
                   </router-link>
                 </CNavItem>
               </CNav>
@@ -104,20 +106,20 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("structural.local_ID"),
         },
         {
           key: "name",
-          label: "Code List Name",
+          label: this.$i18n.t("structural.code_list_name"),
         },
         {
           key: "nodeSetType",
-          label: "Type",
+          label: this.$i18n.t("structural.type"),
         },
         {
           key: "actions",
-          label: "Actions",
-          _style: "",
+          label: this.$i18n.t("structural.actions"),
+          _style: { width: "1%" },
           sorter: false,
           filter: false,
         },

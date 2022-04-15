@@ -21,7 +21,7 @@
                       }
                     "
                   >
-                    <span>Basic</span>
+                    <span>{{ $t("structural.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -34,7 +34,7 @@
                       }
                     "
                   >
-                    <span>Items</span>
+                    <span>{{ $t("structural.items") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
