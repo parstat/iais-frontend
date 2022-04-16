@@ -1,181 +1,83 @@
 <template>
   <CRow>
-    <CCol class="col-sm-12 col-md-6">
-      <CCard>
-        <CCardBody>
-          <CCardTitle>
-            <span>
-              <strong>{{ $t("structural.variables_title") }}</strong>
-            </span>
-          </CCardTitle>
-          <CCardText>
-            <CForm class="mb-3">
-              <CFormLabel for="name">
-                <span>{{ $t("structural.name") }}*</span>
-              </CFormLabel>
-              <input
-                id="name"
-                type="text"
-                class="form-control"
-                :class="{ 'is-invalid': v$.name.$error }"
-                :placeholder="$t('structural.variable_name')"
-                v-model.trim="name"
-              />
-              <span class="text-danger" v-if="v$.name.$error">
-                {{ $t("structural.validations.variable_name") }}
-              </span>
-            </CForm>
-            <CForm class="mb-3">
-              <CFormLabel for="description">
-                <span>{{ $t("structural.description") }}</span>
-              </CFormLabel>
-              <textarea
-                rows="5"
-                id="description"
-                type="text"
-                class="form-control"
-                :class="{ 'is-invalid': v$.description.$error }"
-                :placeholder="$t('structural.variable_description')"
-                v-model.trim="description"
-              />
-              <span class="text-danger" v-if="v$.description.$error">
-                {{ $t("structural.validations.variable_description") }}
-              </span>
-            </CForm>
-            <CForm class="mb-3">
-              <CFormLabel for="definition">
-                <span>{{ $t("structural.definition") }}</span>
-              </CFormLabel>
-              <input
-                id="definition"
-                type="text"
-                class="form-control"
-                :placeholder="$t('structural.variable_definition')"
-                v-model.trim="definition"
-              />
-            </CForm>
-            <CForm v-if="unitTypes">
-              <CFormLabel for="measures">
-                <span>{{ $t("structural.measures") }}*</span>
-              </CFormLabel>
-              <v-select
-                label="name"
-                :options="unitTypes"
-                v-model="measures"
-                :class="{ 'is-invalid': v$.measures.$error }"
-                :placeholder="$t('structural.selection.unit_type')"
-              ></v-select>
-              <span class="text-danger" v-if="v$.measures.$error">
-                {{ $t("structural.validations.unit_type") }}
-              </span>
-            </CForm>
-            <CForm class="mb-3">
-              <CFormLabel for="localId">
-                <span>{{ $t("structural.local_ID") }}*</span>
-              </CFormLabel>
-              <input
-                id="localId"
-                type="text"
-                class="form-control capitalize"
-                :class="{ 'is-invalid': v$.localId.$error }"
-                :placeholder="$t('structural.local_ID')"
-                v-model.trim="localId"
-              />
-              <span class="text-danger" v-if="v$.localId.$error">
-                <span>{{ $t("structural.validations.local_ID") }}</span>
-              </span>
-            </CForm>
-            <div class="form-mandatory">
-              <span>*{{ $t("structural.mandatory_fields") }}</span>
-            </div>
-          </CCardText>
-          <CButton
-            color="primary"
-            size="sm"
-            style="margin-right: 0.3rem"
-            @click.prevent="handleSubmit()"
-            :disabled="disabled"
-            ><span>{{ $t("structural.save") }}</span>
-          </CButton>
-          <CButton
-            color="danger"
-            size="sm"
-            @click.prevent="handleReset()"
-            :disabled="disabled"
-            ><span>{{ $t("structural.reset") }}</span>
-          </CButton>
-        </CCardBody>
-      </CCard>
+    <CCol class="col-12">
+      <CCardHeader class="bg-white" component="h5">
+        <span>Create a Correspondence Table</span>
+      </CCardHeader>
+      <CCardBody>
+        <CRow>
+          <CCol class="col-3 mr-2">
+            <CNav class="flex-column" variant="pills" role="tab">
+              <CNavItem>
+                <CNavLink
+                  href="javascript:void(0);"
+                  :active="activeTab === 0"
+                  @click="
+                    () => {
+                      activeTab = 0;
+                    }
+                  "
+                >
+                  <span>{{ $t("referential.basic") }}</span>
+                </CNavLink>
+              </CNavItem>
+              <CNavItem>
+                <CNavLink href="javascript:void(0);" disabled>
+                  <span>Representations</span>
+                </CNavLink>
+              </CNavItem>
+            </CNav>
+          </CCol>
+          <CCol class="col-9 ml-2">
+            <CTabContent>
+              <CTabPane
+                role="tabpanel"
+                aria-labelledby="home-tab"
+                :visible="activeTab === 0"
+              >
+                <template #title>
+                  <span>{{ $t("referential.basic") }}</span>
+                  <span class="float-right" v-if="editedBasic">
+                    <CIcon name="cil-check-alt" />
+                  </span>
+                </template>
+                <app-variable-basic @next="handleBasic" />
+              </CTabPane>
+            </CTabContent>
+          </CCol>
+        </CRow>
+      </CCardBody>
     </CCol>
   </CRow>
 </template>
 <script>
-import { mapGetters } from "vuex";
-import useValidate from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
+import VariableBasic from "./share/VariableBasic.vue";
+
 import { Context } from "@/common";
-//import { Variable } from "@/common";
 
 export default {
   name: "VariableAdd",
   data() {
     return {
-      v$: useValidate(),
-      name: "",
-      description: "",
-      definition: "",
-      localId: "",
       disabled: false,
-      measures: "",
-      //variable: []
+      activeTab: 0,
     };
   },
-
-  computed: {
-    ...mapGetters("unitType", ["unitTypes"]),
-  },
-
-  validations: {
-    name: {
-      required,
-    },
-    description: {
-      required,
-    },
-    localId: {
-      required,
-    },
-    measures: {
-      required,
-    },
-  },
   methods: {
-    handleSubmit() {
-      this.v$.$touch(); //validate form data
-      if (!this.v$.$invalid) {
-        this.disabled = true; //disable buttons
-        const jsonVariable = {
-          name: this.name,
-          description: this.description,
-          definition: this.definition,
-          localId: this.localId.toUpperCase(),
-          measuresId: this.measures ? this.measures.id : "",
-        };
-        this.$store.dispatch("variable/save", jsonVariable);
-        console.log(jsonVariable);
-      }
+    handleBasic(basic) {
+      this.disabled = true;
+      const formData = {
+        localId: basic.localId,
+        name: basic.name,
+        description: basic.description,
+      };
+      this.$store.dispatch("variable/save", formData);
     },
-    handleReset() {
-      this.name = "";
-      this.description = "";
-      this.definition = "";
-      this.localId = "";
-      this.meausures = "";
-      this.v$.$reset();
-    },
+  },
+  components: {
+    "app-variable-basic": VariableBasic,
   },
   created() {
-    this.$store.dispatch("unitType/findAll");
     this.$store.dispatch("coreui/setContext", Context.Structural);
   },
 };
@@ -183,5 +85,17 @@ export default {
 <style scoped>
 .capitalize {
   text-transform: uppercase;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  border-left-width: 4px;
+  border-left-style: solid;
+  background-color: #f8f8f8;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  border-left-color: #321fdb;
+  color: #321fdb;
+  border-radius: unset;
+  padding-left: 0.8rem;
 }
 </style>
