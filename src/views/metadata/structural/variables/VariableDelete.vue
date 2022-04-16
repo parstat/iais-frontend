@@ -56,6 +56,21 @@
                 disabled
               />
             </CForm>
+            <div class="table-responsive" v-if="variable">
+              <CSmartTable
+                v-if="variable.representations?.length"
+                :activePage="1"
+                :items="variable.representations"
+                :columns="variableColumns"
+                columnFilter
+                cleaner
+                itemsPerPageSelect
+                :itemsPerPage="5"
+                columnSorter
+                pagination
+              >
+              </CSmartTable>
+            </div>
           </CCardText>
           <CButton
             color="primary"
@@ -76,6 +91,16 @@ export default {
   name: "VariableDelete",
   data() {
     return {
+      variableColumns: [
+        {
+          key: "localId",
+          label: "Local ID",
+        },
+        {
+          key: "Name",
+          label: "name",
+        },
+      ],
       disabled: false,
     };
   },
