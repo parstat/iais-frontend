@@ -28,13 +28,21 @@
             id="description"
             type="text"
             class="form-control"
-            :class="{ 'is-invalid': v$.description.$error }"
             :placeholder="$t('structural.variable_description')"
             v-model.trim="selectedDescription"
           />
-          <span class="text-danger" v-if="v$.description.$error">
-            {{ $t("structural.validations.variable_description") }}
-          </span>
+        </CForm>
+        <CForm class="mb-3">
+          <CFormLabel for="definition">
+            <span>{{ $t("structural.definition") }}</span>
+          </CFormLabel>
+          <input
+            id="definition"
+            type="text"
+            class="form-control"
+            :placeholder="$t('structural.variable_definition')"
+            v-model.trim="selectedDefinition"
+          />
         </CForm>
         <CForm class="mb-3">
           <CFormLabel for="localId">
@@ -75,7 +83,7 @@ import { required } from "@vuelidate/validators";
 
 export default {
   name: "VariableBasic",
-  props: ["name", "localId", "description"],
+  props: ["name", "localId", "description", "definition"],
 
   data() {
     return {
@@ -83,14 +91,12 @@ export default {
       selectedName: this.name ?? "",
       selectedDescription: this.description ?? "",
       selectedLocalId: this.localId ?? "",
+      selectedDefinition: this.definition ?? "",
       disabled: false,
     };
   },
   validations: {
     name: {
-      required,
-    },
-    description: {
       required,
     },
     localId: {
@@ -104,6 +110,7 @@ export default {
         name: this.selectedName,
         localId: this.selectedLocalId,
         description: this.selectedDescription ?? "",
+        definition: this.definition ?? "",
       };
       this.$emit("next", formData);
       this.disabled = false;

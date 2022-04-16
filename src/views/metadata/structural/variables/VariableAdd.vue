@@ -70,6 +70,7 @@ export default {
         localId: basic.localId,
         name: basic.name,
         description: basic.description,
+        definition: basic.definition,
       };
       this.$store.dispatch("variable/save", formData);
     },

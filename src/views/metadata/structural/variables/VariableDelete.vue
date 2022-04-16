@@ -9,38 +9,50 @@
           <CCardText>
             <CForm>
               <CFormLabel for="description">
-                <span>{{ $t("structural.description") }}</span>
+                <span>{{ $t("structural.local_ID") }}</span>
               </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
                 type="text"
                 class="form-control mb-3"
-                v-model.trim="variable.description"
+                v-model.trim="variable.localId"
                 disabled
               />
             </CForm>
             <CForm v-if="variable.account">
               <CFormLabel for="responsible">
-                <span>{{ $t("structural.account") }}</span>
+                <span>{{ $t("structural.name") }}</span>
               </CFormLabel>
               <input
                 id="account"
                 type="text"
                 class="form-control"
-                v-model.trim="variable.account.name"
+                v-model.trim="variable.name"
                 disabled
               />
             </CForm>
             <CForm>
               <CFormLabel for="type">
-                <span>{{ $t("structural.type") }}</span>
+                <span>{{ $t("structural.description") }}</span>
               </CFormLabel>
               <input
                 id="type"
                 type="text"
                 class="form-control"
-                v-model.trim="variable.type"
+                v-model.trim="variable.description"
+                disabled
+              />
+            </CForm>
+            <CForm>
+              <CFormLabel for="type">
+                <span>{{ $t("structural.definition") }}</span>
+              </CFormLabel>
+              <input
+                id="type"
+                type="text"
+                class="form-control"
+                v-model.trim="variable.definition"
                 disabled
               />
             </CForm>
