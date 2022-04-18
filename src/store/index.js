@@ -23,6 +23,7 @@ import { concept } from "./modules/structural/concept";
 import { measurementUnit } from "./modules/structural/measurementUnit";
 import { measurementType } from "./modules/structural/measurementType";
 import { unitDataSet } from "./modules/structural/unitDataSet";
+import { valueDomain } from "./modules/structural/valueDomain";
 
 export default createStore({
   modules: {
@@ -49,5 +50,6 @@ export default createStore({
     measurementUnit,
     measurementType,
     unitDataSet,
+    valueDomain,
   }, //test
 });

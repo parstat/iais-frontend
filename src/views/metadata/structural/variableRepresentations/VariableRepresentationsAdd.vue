@@ -23,12 +23,28 @@
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink href="javascript:void(0);" disabled>
+                  <CNavLink
+                    href="javascript:void(0);"
+                    :active="activeTab === 1"
+                    @click="
+                      () => {
+                        activeTab = 1;
+                      }
+                    "
+                  >
                     <span>Substantive Value Domain</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink href="javascript:void(0);" disabled>
+                  <CNavLink
+                    href="javascript:void(0);"
+                    :active="activeTab === 2"
+                    @click="
+                      () => {
+                        activeTab = 2;
+                      }
+                    "
+                  >
                     <span>Sentinel Value Domain</span>
                   </CNavLink>
                 </CNavItem>
@@ -49,6 +65,35 @@
                   </template>
                   <app-variable-representation-basic @next="handleBasic" />
                 </CTabPane>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="activeTab === 1"
+                >
+                  <template #title>
+                    <span>Substantive Value Domain</span>
+                  </template>
+                  <app-variable-value-domain
+                    :isRequired="true"
+                    :domain="substantiveValueDomain"
+                    @next="handleSubstantiveValueDomain"
+                  />
+                </CTabPane>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="activeTab === 2"
+                >
+                  <template #title>
+                    <span>Sentinel Value Domain</span>
+                  </template>
+                  <app-variable-value-domain
+                    :isRequired="false"
+                    :isLast="true"
+                    :domain="sentinelValueDomain"
+                    @next="handleSentinelValueDomain"
+                  />
+                </CTabPane>
               </CTabContent>
             </CCol>
           </CRow>
@@ -59,6 +104,7 @@
 </template>
 <script>
 import VariableRepresentationBasic from "./share/VariableRepresentationBasic.vue";
+import VariableSubstantiveValueDomain from "./share/VariableValueDomain.vue";
 
 import { Context } from "@/common";
 
@@ -68,22 +114,41 @@ export default {
     return {
       disabled: false,
       activeTab: 0,
+      formData: {
+        variableId: "",
+        name: "",
+        localId: "",
+        description: "",
+        sentinelValueDomainId: "",
+        substantiveValueDomainId: "",
+      },
+      substantiveValueDomain: null,
+      sentinelValueDomain: null,
     };
   },
   methods: {
     handleBasic(basic) {
       this.disabled = true;
-      const formData = {
-        localId: basic.localId,
-        name: basic.name,
-        description: basic.description,
-        variableId: basic.variableId,
-      };
-      this.$store.dispatch("variableRepresentation/save", formData);
+      this.formData.localId = basic.localId;
+      this.formData.name = basic.name;
+      this.formData.description = basic.description;
+      this.formData.variableId = basic.variableId;
+      this.activeTab++;
+    },
+    handleSubstantiveValueDomain(substantiveValueDomain) {
+      this.substantiveValueDomain = substantiveValueDomain;
+      this.activeTab++;
+    },
+    handleSentinelValueDomain(sentinelValueDomain) {
+      this.sentinelValueDomain = sentinelValueDomain;
+      this.formData.substantiveValueDomainId = this.substantiveValueDomain.id;
+      this.formData.sentinelValueDomainId = sentinelValueDomain.id;
+      this.$store.dispatch("valueDomain/findAll", this.formData);
     },
   },
   components: {
     "app-variable-representation-basic": VariableRepresentationBasic,
+    "app-variable-value-domain": VariableSubstantiveValueDomain,
   },
   created() {
     this.$store.dispatch("coreui/setContext", Context.Structural);
