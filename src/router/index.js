@@ -770,6 +770,21 @@ const routes = [
           ),
         meta: { authorize: [Role.User, Role.Admin] },
       },
+      //Dataset
+      {
+        path: "metadata/structural/unitDataSets/",
+        name: "UnitDataSetList",
+        component: () =>
+          import("@/views/metadata/structural/unitDataSet/UnitDataSetList"),
+        meta: { authorize: [] },
+      },
+      {
+        path: "metadata/structural/unitDataSets/view/:id",
+        name: "UnitDataSetView",
+        component: () =>
+          import("@/views/metadata/structural/unitDataSet/UnitDataSetView"),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];

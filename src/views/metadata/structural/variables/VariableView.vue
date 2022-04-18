@@ -1,6 +1,6 @@
 <template>
   <CRow>
-    <div class="jumbotron jumbotron-fluid col-lg-12 p-2" v-if="variable">
+    <div class="jumbotron jumbotron-fluid col-lg-12 p-2 mb-3" v-if="variable">
       <div class="p-3">
         <h2 class="display-5">
           <span>{{ variable.name }}</span>
@@ -135,3 +135,15 @@ export default {
   },
 };
 </script>
+<style scoped>
+.jumbotron {
+  border: 1px solid #ced2d8;
+  box-shadow: 0 1px 1px 0 rgba(60, 75, 100, 0.14),
+    0 2px 1px -1px rgba(60, 75, 100, 0.12), 0 1px 3px 0 rgba(60, 75, 100, 0.2);
+}
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 1.5rem 2rem;
+  }
+}
+</style>

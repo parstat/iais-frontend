@@ -131,13 +131,17 @@
           <CCardText>
             <span>{{ $t("structural.data_sets_text") }}</span>
           </CCardText>
-          <CButton disabled>
-            <!--<router-link tag="a" :to="{ name: 'BusinessFunctionList' }"> -->
-            <span class="icon-span">
-              {{ $t("structural.data_sets_link") }}&nbsp;
-            </span>
-            <CIcon name="cil-arrow-right" />
-            <!--</router-link>-->
+          <CButton>
+            <router-link
+              tag="a"
+              :to="{ name: 'UnitDataSetList' }"
+              class="text-decoration-none text-primary"
+            >
+              <span class="icon-span">
+                {{ $t("structural.data_sets_link") }}&nbsp;
+              </span>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
           </CButton>
         </CCardBody>
       </CCard>
