@@ -60,7 +60,22 @@
             <span>{{ $t("structural.validations.local_ID") }}</span>
           </span>
         </CForm>
-        <div class="form-mandatory">
+        <CForm v-if="unitTypes">
+          <CFormLabel for="measures">
+            <span>{{ $t("structural.measures") }}*</span>
+          </CFormLabel>
+          <v-select
+            label="name"
+            :options="unitTypes"
+            v-model="selectedMeasures"
+            :class="{ 'is-invalid': v$.measures.$error }"
+            :placeholder="$t('structural.selection.unit_type')"
+          ></v-select>
+          <span class="text-danger" v-if="v$.measures.$error">
+            {{ $t("structural.validations.unit_type") }}
+          </span>
+        </CForm>
+        <div class="form-mandatory mt-3">
           <span>*{{ $t("structural.mandatory_fields") }}</span>
         </div>
       </CCardText>
@@ -83,7 +98,7 @@ import { required } from "@vuelidate/validators";
 
 export default {
   name: "VariableBasic",
-  props: ["name", "localId", "description", "definition"],
+  props: ["name", "localId", "description", "definition", "measures"],
 
   data() {
     return {
@@ -92,6 +107,7 @@ export default {
       selectedDescription: this.description ?? "",
       selectedLocalId: this.localId ?? "",
       selectedDefinition: this.definition ?? "",
+      selectedMeasure: this.measures ?? "",
       disabled: false,
     };
   },
@@ -102,22 +118,33 @@ export default {
     localId: {
       required,
     },
+    measures: {
+      required,
+    },
   },
   methods: {
     next() {
-      this.disabled = true; //disable buttons
-      const formData = {
-        name: this.selectedName,
-        localId: this.selectedLocalId,
-        description: this.selectedDescription ?? "",
-        definition: this.definition ?? "",
-      };
-      this.$emit("next", formData);
-      this.disabled = false;
+      this.v$.$touch();
+      if (!this.v$.$invalid) {
+        this.disabled = true; //disable buttons
+        const formData = {
+          name: this.selectedName,
+          localId: this.selectedLocalId.toUpperCase(),
+          description: this.selectedDescription ?? "",
+          definition: this.definition ?? "",
+          measures: this.selectedMeasure.id,
+        };
+        this.$emit("next", formData);
+        this.disabled = false;
+      }
     },
   },
   computed: {
     ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("unitType", ["unitTypes"]),
+  },
+  created() {
+    this.$store.dispatch("unitType/findAll");
   },
 };
 </script>
