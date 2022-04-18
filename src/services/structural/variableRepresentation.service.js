@@ -4,7 +4,7 @@ import { axiosIais } from "@/http";
 export const variableRepresentationService = {
   findAll,
   findById,
-  //save,
+  save,
   //update,
   //delete: _delete
 };
@@ -39,5 +39,31 @@ function findById(id) {
         reject(error);
       }
     );
+  });
+}
+
+function save(variable) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    axiosIais
+      .post(
+        "/structural/ClosedRepresentationVariable",
+        JSON.stringify(variable),
+        config
+      )
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }

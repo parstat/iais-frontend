@@ -5,7 +5,7 @@
         <CRow>
           <CCol class="col-9">
             <CCardTitle>
-              <span>Variable Representations</span>
+              <span>Represented Variable</span>
             </CCardTitle>
           </CCol>
           <CCol class="col-3">
@@ -13,7 +13,10 @@
               <CNavItem>
                 <router-link
                   tag="a"
-                  to="metadata/structural/classifications/add"
+                  :to="{
+                    name: 'VariableRepresentationsAdd',
+                    params: { id: variable?.id ?? '11' },
+                  }"
                   class="text-decoration-none text-primary"
                 >
                   <CIcon name="cil-plus" />
