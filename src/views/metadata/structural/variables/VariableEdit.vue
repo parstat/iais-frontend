@@ -1,141 +1,145 @@
 <template>
-  <CRow v-if="variable">
-    <CCol class="col-sm-12 col-md-6">
+  <CRow>
+    <CCol class="col-12">
       <CCard>
+        <CCardHeader class="bg-white" component="h5">
+          <span>Edit a Variable</span>
+        </CCardHeader>
         <CCardBody>
-          <CCardTitle>
-            <span>
-              <strong>{{ $t("structural.variables_title") }}</strong>
-            </span>
-          </CCardTitle>
-          <CCardText>
-            <CForm>
-              <CFormLabel for="name">
-                <span>{{ $t("structural.name") }}</span>
-              </CFormLabel>
-              <input
-                id="name"
-                type="text"
-                class="form-control mb-3"
-                :class="{ 'is-invalid': v$.variable.name.$error }"
-                :placeholder="$t('structural.variable_name')"
-                v-model.trim="variable.name"
-              />
-              <span class="text-danger" v-if="v$.variable.name.$error">
-                {{ $t("structural.validations.variable_name") }}
-              </span>
-            </CForm>
-            <CForm>
-              <CFormLabel for="description">
-                <span>{{ $t("structural.description") }}</span>
-              </CFormLabel>
-              <textarea
-                rows="5"
-                id="description"
-                type="text"
-                class="form-control mb-3"
-                :class="{ 'is-invalid': v$.variable.description.$error }"
-                :placeholder="$t('structural.variable_description')"
-                v-model.trim="variable.description"
-              />
-              <span class="text-danger" v-if="v$.variable.description.$error">
-                {{ $t("structural.validations.variable_description") }}
-              </span>
-            </CForm>
-
-            <CForm>
-              <CFormLabel for="localId">
-                <span>{{ $t("structural.local_ID") }}</span>
-              </CFormLabel>
-              <input
-                id="localId"
-                type="text"
-                class="form-control mb-3"
-                :class="{ 'is-invalid': v$.variable.localId.$error }"
-                :placeholder="$t('structural.local_ID')"
-                v-model.trim="variable.localId"
-              />
-              <span class="text-danger" v-if="v$.variable.localId.$error">
-                {{ $t("structural.validations.variable_local_ID") }}
-              </span>
-            </CForm>
-          </CCardText>
-          <CButton
-            color="primary"
-            size="sm"
-            style="margin-right: 0.3rem"
-            @click.prevent="handleSubmit()"
-            :disabled="disabled"
-            ><span>{{ $t("structural.update") }}</span>
-          </CButton>
-          <CButton
-            color="danger"
-            size="sm"
-            @click.prevent="handleReset()"
-            :disabled="disabled"
-            ><span>{{ $t("structural.reset") }}</span>
-          </CButton>
+          <CRow>
+            <CCol class="col-3 mr-2">
+              <CNav class="flex-column" variant="pills" role="tab">
+                <CNavItem>
+                  <CNavLink
+                    href="javascript:void(0);"
+                    :active="activeTab === 0"
+                    @click="
+                      () => {
+                        activeTab = 0;
+                      }
+                    "
+                  >
+                    <span>{{ $t("referential.basic") }}</span>
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink
+                    href="javascript:void(0);"
+                    :active="activeTab === 1"
+                    @click="
+                      () => {
+                        activeTab = 1;
+                      }
+                    "
+                  >
+                    <span>Representations</span>
+                  </CNavLink>
+                </CNavItem>
+              </CNav>
+            </CCol>
+            <CCol class="col-9 ml-2">
+              <CTabContent>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="activeTab === 0"
+                >
+                  <template #title>
+                    <span>{{ $t("referential.basic") }}</span>
+                    <span class="float-right" v-if="editedBasic">
+                      <CIcon name="cil-check-alt" />
+                    </span>
+                  </template>
+                  <app-variable-basic
+                    :isEdit="true"
+                    :name="variable?.name"
+                    :localId="variable?.localId"
+                    :description="variable?.description"
+                    :definition="variable?.definition"
+                    :measures="variable?.measures"
+                    @next="handleBasic"
+                  />
+                </CTabPane>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="activeTab === 1"
+                >
+                  <template #title>
+                    <span>Representations</span>
+                  </template>
+                  <app-variable-representation />
+                </CTabPane>
+              </CTabContent>
+            </CCol>
+          </CRow>
         </CCardBody>
       </CCard>
     </CCol>
   </CRow>
 </template>
-
 <script>
+import VariableBasic from "./share/VariableBasic.vue";
+import VariableRepresentation from "./share/VariableRepresentation.vue";
+
+import { Context } from "@/common";
 import { mapGetters } from "vuex";
-import useValidate from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
 
 export default {
-  name: "VariableEdit",
-  computed: {
-    ...mapGetters("variable", ["variable"]),
-  },
+  name: "VariableAdd",
   data() {
     return {
-      v$: useValidate(),
       disabled: false,
+      activeTab: 0,
     };
   },
-  validations: {
-    variable: {
-      name: {
-        required,
-      },
-      description: {
-        required,
-      },
-      localId: {
-        required,
-      },
+  methods: {
+    handleBasic(basic) {
+      this.disabled = true;
+      const formData = {
+        localId: basic.localId,
+        name: basic.name,
+        description: basic.description,
+        definition: basic.definition,
+        measuresId: basic.measuresId,
+      };
+      this.$store.dispatch("variable/update", formData).then(() => {
+        this.activeTab = 1;
+      });
     },
   },
-  methods: {
-    handleSubmit() {
-      this.v$.$touch(); //validate form data
-      if (!this.v$.$invalid) {
-        this.disabled = true; //disable buttons
-        const formData = {
-          id: this.variable.id,
-          name: this.variable.name,
-          description: this.variable.description,
-          //definition: this.variable.definition,
-          localId: this.variable.localId,
-        };
-        this.$store.dispatch("variable/update", formData);
-        console.log(formData);
-      }
-    },
-    handleReset() {
-      this.variable.name = "";
-      this.variable.description = "";
-      //this.variable.definition = "";
-      this.variable.localId = "";
-      this.v$.$reset();
-    },
+  components: {
+    "app-variable-basic": VariableBasic,
+    "app-variable-representation": VariableRepresentation,
+  },
+  computed: {
+    ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
+    ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("variable", ["variable"]),
   },
   created() {
     this.$store.dispatch("variable/findById", this.$route.params.id);
+    this.$store.dispatch("coreui/setContext", Context.Structural);
   },
 };
 </script>
+<style scoped>
+.capitalize {
+  text-transform: uppercase;
+}
+.nav-item {
+  width: 100%;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  border-left-width: 4px;
+  border-left-style: solid;
+  background-color: #f8f8f8;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  border-left-color: #321fdb;
+  color: #321fdb;
+  border-radius: unset;
+  padding-left: 0.8rem;
+}
+</style>

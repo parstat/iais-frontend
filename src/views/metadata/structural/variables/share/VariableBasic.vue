@@ -55,6 +55,7 @@
             :class="{ 'is-invalid': v$.selectedLocalId.$error }"
             :placeholder="$t('structural.local_ID')"
             v-model.trim="selectedLocalId"
+            :disabled="isEdit"
           />
           <span class="text-danger" v-if="v$.selectedLocalId.$error">
             <span>{{ $t("structural.validations.local_ID") }}</span>
@@ -70,6 +71,7 @@
             v-model="selectedMeasure"
             :class="{ 'is-invalid': v$.selectedMeasure.$error }"
             :placeholder="$t('structural.selection.unit_type')"
+            :disabled="isEdit"
           ></v-select>
           <span class="text-danger" v-if="v$.selectedMeasure.$error">
             {{ $t("structural.validations.unit_type") }}
@@ -98,7 +100,7 @@ import { required } from "@vuelidate/validators";
 
 export default {
   name: "VariableBasic",
-  props: ["name", "localId", "description", "definition", "measures"],
+  props: ["isEdit", "name", "localId", "description", "definition", "measures"],
 
   data() {
     return {
