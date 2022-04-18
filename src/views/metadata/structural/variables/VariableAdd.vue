@@ -71,6 +71,7 @@ export default {
         name: basic.name,
         description: basic.description,
         definition: basic.definition,
+        measuresId: basic.measuresId,
       };
       this.$store.dispatch("variable/save", formData);
     },

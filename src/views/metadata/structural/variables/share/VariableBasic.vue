@@ -11,11 +11,11 @@
             id="name"
             type="text"
             class="form-control"
-            :class="{ 'is-invalid': v$.name.$error }"
+            :class="{ 'is-invalid': v$.selectedName.$error }"
             :placeholder="$t('structural.variable_name')"
             v-model.trim="selectedName"
           />
-          <span class="text-danger" v-if="v$.name.$error">
+          <span class="text-danger" v-if="v$.selectedName.$error">
             {{ $t("structural.validations.variable_name") }}
           </span>
         </CForm>
@@ -52,11 +52,11 @@
             id="localId"
             type="text"
             class="form-control capitalize"
-            :class="{ 'is-invalid': v$.localId.$error }"
+            :class="{ 'is-invalid': v$.selectedLocalId.$error }"
             :placeholder="$t('structural.local_ID')"
             v-model.trim="selectedLocalId"
           />
-          <span class="text-danger" v-if="v$.localId.$error">
+          <span class="text-danger" v-if="v$.selectedLocalId.$error">
             <span>{{ $t("structural.validations.local_ID") }}</span>
           </span>
         </CForm>
@@ -67,11 +67,11 @@
           <v-select
             label="name"
             :options="unitTypes"
-            v-model="selectedMeasures"
-            :class="{ 'is-invalid': v$.measures.$error }"
+            v-model="selectedMeasure"
+            :class="{ 'is-invalid': v$.selectedMeasure.$error }"
             :placeholder="$t('structural.selection.unit_type')"
           ></v-select>
-          <span class="text-danger" v-if="v$.measures.$error">
+          <span class="text-danger" v-if="v$.selectedMeasure.$error">
             {{ $t("structural.validations.unit_type") }}
           </span>
         </CForm>
@@ -112,13 +112,13 @@ export default {
     };
   },
   validations: {
-    name: {
+    selectedName: {
       required,
     },
-    localId: {
+    selectedLocalId: {
       required,
     },
-    measures: {
+    selectedMeasure: {
       required,
     },
   },
@@ -131,11 +131,12 @@ export default {
           name: this.selectedName,
           localId: this.selectedLocalId.toUpperCase(),
           description: this.selectedDescription ?? "",
-          definition: this.definition ?? "",
-          measures: this.selectedMeasure.id,
+          definition: this.selectedDefinition ?? "",
+          measuresId: this.selectedMeasure.id,
         };
         this.$emit("next", formData);
         this.disabled = false;
+        console.log(this.selectedMeasure);
       }
     },
   },
