@@ -276,6 +276,7 @@
         "variables_title": "Variables",
         "variables_text": "The use of a Concept as a characteristic of a Population intended to be measured. The Variable combines the meaning of a Concept with a Unit type, to define the characteristic that is to be measured.",
         "variables_link": "Go to variables section",
+        "variable_create": "Create Variable",
         "new_statistical_classification": "New statistical classification",
         "create_statistical_classification": "Create a statistical classification",
         "statistical_classification": "Statistical classification",
@@ -381,6 +382,10 @@
         },
         "selection": {
             "unit_type": "Select a unit type"
+        },
+        "dataset": {
+            "exchange_channel": "Exchange Channel",
+            "exchange_direction": "Exchange Direction"
         }
     }
 }

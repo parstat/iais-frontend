@@ -276,6 +276,7 @@
         "variables_title": "Переменные",
         "variables_text": "Использование Понятия в качестве характеристики Населения, которое предполагается измерить. Переменная сочетает в себе значение Kонцепции с Типом единицы, чтобы определить характеристику, которая должна быть измерена.",
         "variables_link": "Перейти в раздел переменных",
+        "variable_create": "Create Variable",
         "new_statistical_classification": "Новая статистическая классификация",
         "create_statistical_classification": "Создать статистическую классификацию",
         "statistical_classification": "Статистическая классификация",
@@ -380,6 +381,10 @@
         },
         "selection": {
             "unit_type": "Выберите тип единицы"
+        },
+        "dataset": {
+            "exchange_channel": "Exchange Channel",
+            "exchange_direction": "Exchange Direction"
         }
     }
 }

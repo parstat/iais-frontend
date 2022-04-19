@@ -1,50 +1,52 @@
 <template>
   <CRow>
     <CCol class="col-12">
-      <CCardHeader class="bg-white" component="h5">
-        <span>{{ $t("structural.create_correspondance_table") }}</span>
-      </CCardHeader>
-      <CCardBody>
-        <CRow>
-          <CCol class="col-3 mr-2">
-            <CNav class="flex-column" variant="pills" role="tab">
-              <CNavItem>
-                <CNavLink
-                  href="javascript:void(0);"
-                  :active="activeTab === 0"
-                  @click="
-                    () => {
-                      activeTab = 0;
-                    }
-                  "
-                  ><span>{{ $t("structural.basic") }}</span>
-                </CNavLink>
-              </CNavItem>
-              <CNavItem>
-                <CNavLink href="javascript:void(0);" disabled>
-                  <span>{{ $t("structural.representations") }}</span>
-                </CNavLink>
-              </CNavItem>
-            </CNav>
-          </CCol>
-          <CCol class="col-9 ml-2">
-            <CTabContent>
-              <CTabPane
-                role="tabpanel"
-                aria-labelledby="home-tab"
-                :visible="activeTab === 0"
-                ><template #title>
-                  <span>{{ $t("referential.basic") }}</span>
-                  <span class="float-right" v-if="editedBasic">
-                    <CIcon name="cil-check-alt" />
-                  </span>
-                </template>
-                <app-variable-basic @next="handleBasic" />
-              </CTabPane>
-            </CTabContent>
-          </CCol>
-        </CRow>
-      </CCardBody>
+      <CCard>
+        <CCardHeader class="bg-white" component="h5">
+          <span>{{ $t("structural.variable_create") }}</span>
+        </CCardHeader>
+        <CCardBody>
+          <CRow>
+            <CCol class="col-3 mr-2">
+              <CNav class="flex-column" variant="pills" role="tab">
+                <CNavItem>
+                  <CNavLink
+                    href="javascript:void(0);"
+                    :active="activeTab === 0"
+                    @click="
+                      () => {
+                        activeTab = 0;
+                      }
+                    "
+                    ><span>{{ $t("structural.basic") }}</span>
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="javascript:void(0);" disabled>
+                    <span>{{ $t("structural.representations") }}</span>
+                  </CNavLink>
+                </CNavItem>
+              </CNav>
+            </CCol>
+            <CCol class="col-9 ml-2">
+              <CTabContent>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="activeTab === 0"
+                  ><template #title>
+                    <span>{{ $t("referential.basic") }}</span>
+                    <span class="float-right" v-if="editedBasic">
+                      <CIcon name="cil-check-alt" />
+                    </span>
+                  </template>
+                  <app-variable-basic @next="handleBasic" />
+                </CTabPane>
+              </CTabContent>
+            </CCol>
+          </CRow>
+        </CCardBody>
+      </CCard>
     </CCol>
   </CRow>
 </template>

@@ -276,6 +276,7 @@
         "variables_title": "Variabile",
         "variables_text": "Utilizarea unui Concept ca caracteristică a unei Populații care urmează să fie măsurată. Variabila combină semnificația unui Concept cu un tip de unitate, pentru a defini caracteristica care urmează să fie măsurată.",
         "variables_link": "Accesați secțiunea de variabile",
+        "variable_create": "Create Variable",
         "new_statistical_classification": "Noua clasificare statistică",
         "create_statistical_classification": "Creați o clasificare statistică",
         "statistical_classification": "Clasificare statistică",
@@ -380,6 +381,10 @@
         },
         "selection": {
             "unit_type": "Selectați un tip de unitate"
+        },
+        "dataset": {
+            "exchange_channel": "Exchange Channel",
+            "exchange_direction": "Exchange Direction"
         }
     }
 }
