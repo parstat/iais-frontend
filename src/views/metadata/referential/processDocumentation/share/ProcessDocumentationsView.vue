@@ -15,8 +15,7 @@
           sorter
           pagination
           :sorterValue="{ column: 'localId', asc: 'true' }"
-        >
-          <template #actions="{ item }">
+          ><template #actions="{ item }">
             <td style="padding: 0.75rem 0.4rem">
               <router-link
                 tag="a"
@@ -24,8 +23,7 @@
                   name: 'ProcessDocumentationView',
                   params: { id: item.id },
                 }"
-              >
-                <CIcon name="cil-magnifying-glass" />
+                ><CIcon name="cil-magnifying-glass" />
               </router-link>
             </td>
           </template>

@@ -9,8 +9,7 @@
           xs
           v-for="processQuality of processQualities"
           :key="processQuality.id"
-        >
-          <CCard>
+          ><CCard>
             <CCardHeader component="h6">
               <span>{{ processQuality.name }}</span>
             </CCardHeader>

@@ -18,8 +18,7 @@
                       v-if="isAuthenticated"
                       tag="a"
                       to="/metadata/referential/add"
-                    >
-                      <CIcon name="cil-plus" />
+                      ><CIcon name="cil-plus" />
                       <span>{{ $t("referential.add") }}</span>
                     </router-link>
                   </span>
@@ -37,8 +36,7 @@
               :items-per-page="5"
               columnSorter
               pagination
-            >
-              <template #actions="{ item }">
+              ><template #actions="{ item }">
                 <td>
                   <span v-if="isAuthenticated">
                     <router-link
@@ -47,8 +45,7 @@
                         name: 'StatisticalProgramEdit',
                         params: { id: item.id },
                       }"
-                    >
-                      <CIcon name="cil-pencil" />
+                      ><CIcon name="cil-pencil" />
                     </router-link>
                   </span>
                   <span>
@@ -58,8 +55,7 @@
                         name: 'StatisticalProgramView',
                         params: { id: item.id },
                       }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
+                      ><CIcon name="cil-magnifying-glass" />
                     </router-link>
                   </span>
                   <span v-if="isAuthenticated && isAdmin">
@@ -69,8 +65,7 @@
                         name: 'StatisticalProgramDelete',
                         params: { id: item.id },
                       }"
-                    >
-                      <CIcon name="cil-trash" />
+                      ><CIcon name="cil-trash" />
                     </router-link>
                   </span>
                 </td>

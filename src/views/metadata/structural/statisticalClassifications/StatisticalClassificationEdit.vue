@@ -23,8 +23,7 @@
                         activeTab = 0;
                       }
                     "
-                  >
-                    <span>{{ $t("referential.basic") }}</span>
+                    ><span>{{ $t("referential.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -36,8 +35,7 @@
                         activeTab = 1;
                       }
                     "
-                  >
-                    <span>{{ $t("structural.levels") }}</span>
+                    ><span>{{ $t("structural.levels") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -49,8 +47,7 @@
                         activeTab = 2;
                       }
                     "
-                  >
-                    <span>{{ $t("structural.items") }}</span>
+                    ><span>{{ $t("structural.items") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -61,8 +58,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 0"
-                >
-                  <template #title>
+                  ><template #title>
                     <span>{{ $t("referential.basic") }}</span>
                     <span class="float-right" v-if="editedBasic">
                       <CIcon name="cil-check-alt" />
@@ -82,8 +78,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 1"
-                >
-                  <template #title>
+                  ><template #title>
                     <span>{{ $t("structural.levels") }}</span>
                     <span class="float-right" v-if="editedLevels">
                       <CIcon name="cil-check-alt" />
@@ -102,8 +97,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 2"
-                >
-                  <template #title>
+                  ><template #title>
                     <span>{{ $t("structural.items") }}</span>
                     <span class="float-right" v-if="editedItems">
                       <CIcon name="cil-check-alt" />

@@ -10,8 +10,7 @@
             xs
             v-for="processInputSpecification of processInputSpecifications"
             :key="processInputSpecification.id"
-          >
-            <CCard>
+            ><CCard>
               <CCardHeader component="h6">
                 <span>{{ processInputSpecification.name }}</span>
               </CCardHeader>

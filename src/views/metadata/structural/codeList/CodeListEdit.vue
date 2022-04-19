@@ -20,8 +20,7 @@
                         activeTab = 0;
                       }
                     "
-                  >
-                    <span>{{ $t("structural.basic") }}</span>
+                    ><span>{{ $t("structural.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -33,8 +32,7 @@
                         activeTab = 1;
                       }
                     "
-                  >
-                    <span>{{ $t("structural.items") }}</span>
+                    ><span>{{ $t("structural.items") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -46,8 +44,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 0"
-                >
-                  <app-code-list-basic
+                  ><app-code-list-basic
                     :name="codeList.name"
                     :description="codeList.description"
                     :localId="codeList.localId"
@@ -61,8 +58,7 @@
                     role="tabpanel"
                     aria-labelledby="home-tab"
                     :visible="activeTab === 1"
-                  >
-                    <app-code-items :codeList="codeList"></app-code-items>
+                    ><app-code-items :codeList="codeList"></app-code-items>
                   </CTabPane>
                 </CTabContent>
               </CTabContent>

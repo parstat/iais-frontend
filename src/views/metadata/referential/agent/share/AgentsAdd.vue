@@ -15,8 +15,7 @@
                   tag="a"
                   to="/metadata/referential/gsim/agent/add"
                   class="text-decoration-none text-primary"
-                >
-                  <CIcon name="cil-plus" />
+                  ><CIcon name="cil-plus" />
                   <span class="icon-span">
                     {{ $t("referential.add") }}
                   </span>

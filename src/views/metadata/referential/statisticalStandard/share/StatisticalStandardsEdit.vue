@@ -17,8 +17,7 @@
                 tag="a"
                 to="/metadata/referential/gsim/standard/add"
                 class="text-decoration-none text-primary"
-              >
-                <CIcon name="cil-plus" />
+                ><CIcon name="cil-plus" />
                 <span class="icon-span">
                   {{ $t("referential.add") }}
                 </span>
@@ -41,8 +40,7 @@
             :filterable="false"
             @search="searchStatisticalStandard"
             @input="addStatisticalStandard"
-          >
-            <template v-slot:no-options="{ search, searching }">
+            ><template v-slot:no-options="{ search, searching }">
               <template v-if="searching">
                 <span>{{ $t("referential.no_found") }}&nbsp;</span>
                 <em>{{ search }}</em
@@ -71,8 +69,7 @@
             class="col-lg-4 col-md-6 col-sm-12"
             v-for="statisticalStandard of standards"
             :key="statisticalStandard.id"
-          >
-            <CCard class="card-border bg-lighter mb-3">
+            ><CCard class="card-border bg-lighter mb-3">
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
@@ -90,8 +87,7 @@
                             name: 'StatisticalStandardView',
                             params: { id: statisticalStandard.id },
                           }"
-                        >
-                          <CIcon name="cil-magnifying-glass" />
+                          ><CIcon name="cil-magnifying-glass" />
                         </router-link>
                       </CNavItem>
                       <CNavItem>
@@ -100,8 +96,7 @@
                           @click="
                             removeStatisticalStandard(statisticalStandard)
                           "
-                        >
-                          <CIcon name="cil-trash" />
+                          ><CIcon name="cil-trash" />
                         </span>
                       </CNavItem>
                     </CNav>

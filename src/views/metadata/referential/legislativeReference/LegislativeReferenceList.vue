@@ -15,8 +15,7 @@
                 tag="a"
                 to="/metadata/referential/gsim/regulation/add"
                 class="text-decoration-none text-primary"
-              >
-                <CIcon name="cil-plus" />
+                ><CIcon name="cil-plus" />
                 <span class="icon-span">
                   {{ $t("referential.new_regulation") }}
                 </span>
@@ -36,8 +35,7 @@
             :items-per-page="5"
             columnSorter
             pagination
-          >
-            <template #actions="{ item }">
+            ><template #actions="{ item }">
               <td>
                 <span>
                   <router-link
@@ -46,8 +44,7 @@
                       name: 'LegislativeReferenceView',
                       params: { id: item.id },
                     }"
-                  >
-                    <CIcon name="cil-magnifying-glass" />
+                    ><CIcon name="cil-magnifying-glass" />
                   </router-link>
                 </span>
                 <span v-if="isAuthenticated">
@@ -57,8 +54,7 @@
                       name: 'LegislativeReferenceEdit',
                       params: { id: item.id },
                     }"
-                  >
-                    <CIcon name="cil-pencil" />
+                    ><CIcon name="cil-pencil" />
                   </router-link>
                 </span>
                 <span v-if="isAdmin">
@@ -68,8 +64,7 @@
                       name: 'LegislativeReferenceDelete',
                       params: { id: item.id },
                     }"
-                  >
-                    <CIcon name="cil-trash" />
+                    ><CIcon name="cil-trash" />
                   </router-link>
                 </span>
               </td>

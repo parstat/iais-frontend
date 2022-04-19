@@ -16,8 +16,7 @@
                   tag="a"
                   to="/metadata/referential/gsim/agent/add"
                   class="text-decoration-none text-primary"
-                >
-                  <CIcon name="cil-plus" />
+                  ><CIcon name="cil-plus" />
                   <span class="icon-span">
                     {{ $t("referential.add") }}
                   </span>
@@ -44,8 +43,7 @@
               class="col-lg-4 col-md-6 col-sm-12"
               v-for="maintainer of processDocumentation.maintainers"
               :key="maintainer.id"
-            >
-              <CCard class="card-border bg-lighter mb-3 mr-3">
+              ><CCard class="card-border bg-lighter mb-3 mr-3">
                 <CCardHeader>
                   <CRow>
                     <CCol class="col-9">
@@ -63,8 +61,7 @@
                               name: 'AgentView',
                               params: { id: maintainer.id },
                             }"
-                          >
-                            <CIcon name="cil-magnifying-glass" />
+                            ><CIcon name="cil-magnifying-glass" />
                           </router-link>
                         </CNavItem>
                         <CNavItem v-on:click="removeMaintainer(maintainer)">

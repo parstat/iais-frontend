@@ -12,8 +12,7 @@
                 name: 'ProcessDocumentationEdit',
                 params: { id: processDocumentation.id },
               }"
-            >
-              <CIcon name="cil-pencil" />
+              ><CIcon name="cil-pencil" />
             </router-link>
           </h2>
           <p class="lead">
@@ -42,8 +41,7 @@
                   id: nextDocumentation.id,
                 },
               }"
-            >
-              <span>
+              ><span>
                 {{ processDocumentation.nextSubPhase.localId }}
                 {{ processDocumentation.nextSubPhase.name }}
               </span>

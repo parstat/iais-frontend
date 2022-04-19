@@ -16,8 +16,7 @@
               name: 'StatisticalProgramEdit',
               params: { id: statisticalProgram.id },
             }"
-          >
-            <CIcon name="cil-pencil" />
+            ><CIcon name="cil-pencil" />
           </router-link>
         </h2>
         <span>

@@ -4,8 +4,7 @@
       <CHeaderToggler
         class="ps-1"
         @click="$store.dispatch('coreui/toggleSidebar')"
-      >
-        <CIcon icon="cil-menu" size="lg" />
+        ><CIcon icon="cil-menu" size="lg" />
       </CHeaderToggler>
       <CHeaderBrand class="mx-auto d-lg-none" to="/">
         <img src="/img/logo.png" height="40" />

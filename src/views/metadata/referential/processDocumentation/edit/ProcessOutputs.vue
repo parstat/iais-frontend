@@ -21,7 +21,6 @@
           <span class="text-danger" v-if="v$.name.$error">
             {{ $t("referential.validations.process_output_name") }}
           </span>
-
           <CFormLabel for="description">
             <span>{{ $t("referential.process_output_description") }}*</span>
           </CFormLabel>
@@ -49,8 +48,7 @@
             class="col-md-4 mb-3"
             v-for="processOutput of processDocumentation.processOutputSpecifications"
             :key="processOutput.id"
-          >
-            <CCard class="card card-border bg-lighter mt-3 mb-3 mr-3">
+            ><CCard class="card card-border bg-lighter mt-3 mb-3 mr-3">
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
@@ -69,7 +67,6 @@
                   </CCol>
                 </CRow>
               </CCardHeader>
-
               <CCardBody>
                 <CCardText>
                   <span>{{ processOutput.description }}</span>

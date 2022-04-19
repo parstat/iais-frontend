@@ -16,8 +16,7 @@
         v-if="hasChildren"
         @click="toggleChildren"
         @keypress="toggleChildren"
-      >
-        <CIcon name="cil-minus" v-if="showChildren" />
+        ><CIcon name="cil-minus" v-if="showChildren" />
         <CIcon name="cil-plus" v-else />
       </span>
     </CAlert>

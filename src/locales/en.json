@@ -258,7 +258,6 @@
         "type": "Type",
         "parent": "Parent",
         "link": "Link",
-        "new_variable": "New variable",
         "definition": "Definition",
         "basic": "Basic",
         "value": "Value",
@@ -269,6 +268,8 @@
         "label_romanian": "Romanian label",
         "label_ru": "Label Ru",
         "label_russian": "Russian label",
+        "new_variable": "New variable",
+        "variable": "Variable",
         "variable_definition": "Variable definition",
         "variable_name": "Variable name",
         "variable_description": "Variable description",
@@ -300,6 +301,7 @@
         "code_list_title": "Code list",
         "code_list_text": "A list of Categories where each Category has a predefined Code assigned to it.",
         "code_list_link": "Go to code list section",
+        "create_correspondance_table": "Create a Correspondence table",
         "correspondance_table_title": "Correspondence table",
         "correspondance_table_text": "A Correspondence table expresses the relationship between two Statistical classifications. These are typically: two versions from the same Classification series; Statistical classifications from different Classification series; a variant and the version on which it is based; or, different versions of a variant. In the first and last examples, the Correspondence table facilitates comparability over time. Correspondence relationships are shown in both directions.",
         "correspondance_table_link": "Go to correspondence table section",
@@ -315,7 +317,12 @@
         "unit_types_title": "Unit types",
         "unit_types_text": "A Unit type is a class of objects of interest. A Unit type is used to describe a class or group of units based on a single characteristic, but with no specification of time and geography. For example, the unit type of “Person” groups together a set of units based on the characteristic that they are Persons.",
         "unit_types_link": "Go to unit types section",
+        "new_concept": "New concept",
+        "concept": "Concept",
         "concepts_title": "Concepts",
+        "concept_name": "Concept name",
+        "concept_description": "Concept description",
+        "concept_definition": "Concept definition",
         "concepts_text": "Unit of thought differentiated by characteristics.",
         "concepts_link": "Go to conceps section",
         "measurementUnit_title": "Measurement unit",
@@ -369,7 +376,8 @@
             "label_english": "Please enter a label in English.",
             "label_romanian": "Please enter a label in Romanian.",
             "label_russian": "Please enter a label in Russian.",
-            "description": "Please enter a description."
+            "description": "Please enter a description.",
+            "concept_name": "Please enter a name for the Concept."
         },
         "selection": {
             "unit_type": "Select a unit type"

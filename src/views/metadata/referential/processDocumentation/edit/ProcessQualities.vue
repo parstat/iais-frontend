@@ -45,8 +45,7 @@
             class="col-md-4 mt-3"
             v-for="processQuality of processDocumentation.processQualities"
             :key="processQuality.id"
-          >
-            <CCard class="card-border bg-lighter mb-3">
+            ><CCard class="card-border bg-lighter mb-3">
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
@@ -65,7 +64,6 @@
                   </CCol>
                 </CRow>
               </CCardHeader>
-
               <CCardBody>
                 <CCardText>
                   <span>{{ processQuality.description }}</span>

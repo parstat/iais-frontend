@@ -17,8 +17,7 @@
                     tag="a"
                     to="/metadata/structural/codelist/add"
                     class="text-decoration-none text-primary"
-                  >
-                    <CIcon name="cil-plus" />
+                    ><CIcon name="cil-plus" />
                     <span class="icon-span">
                       {{ $t("structural.new_code") }}
                     </span>
@@ -41,8 +40,7 @@
                 columnSorter
                 :sorterValue="{ column: 'localId', state: 'asc' }"
                 pagination
-              >
-                <template #actions="{ item }">
+                ><template #actions="{ item }">
                   <td
                     style="text-align: right; width: 10%; padding-right: 20px"
                   >
@@ -54,8 +52,7 @@
                           name: 'CodeView',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-magnifying-glass" />
+                        ><CIcon name="cil-magnifying-glass" />
                       </router-link>
                     </span>
                     <span v-if="isAuthenticated" class="pl-2">
@@ -66,8 +63,7 @@
                           name: 'CodeEdit',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-pencil" />
+                        ><CIcon name="cil-pencil" />
                       </router-link>
                     </span>
 
@@ -79,8 +75,7 @@
                           name: 'CodeDelete',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-trash" />
+                        ><CIcon name="cil-trash" />
                       </router-link>
                     </span>
                   </td>

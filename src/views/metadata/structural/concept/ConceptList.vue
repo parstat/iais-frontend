@@ -5,7 +5,9 @@
         <CCardBody>
           <CRow>
             <CCol class="col-9">
-              <CCardTitle> Concepts </CCardTitle>
+              <CCardTitle>
+                <span>{{ $t("structural.concepts_title") }}</span>
+              </CCardTitle>
             </CCol>
             <CCol class="col-3">
               <CNav class="justify-content-end">
@@ -17,7 +19,9 @@
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />
-                    <span class="icon-span">New Concept</span>
+                    <span class="icon-span">
+                      {{ $t("structural.new_concept") }}
+                    </span>
                   </router-link>
                 </CNavItem>
               </CNav>
@@ -51,8 +55,7 @@
                           name: 'ConceptView',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-magnifying-glass" />
+                        ><CIcon name="cil-magnifying-glass" />
                       </router-link>
                     </span>
                     <span v-if="isAuthenticated">
@@ -62,8 +65,7 @@
                           name: 'ConceptEdit',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-pencil" />
+                        ><CIcon name="cil-pencil" />
                       </router-link>
                     </span>
                     <span v-if="isAdmin">
@@ -73,8 +75,7 @@
                           name: 'ConceptDelete',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-trash" />
+                        ><CIcon name="cil-trash" />
                       </router-link>
                     </span>
                   </td>
@@ -100,14 +101,15 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("structural.local_ID"),
         },
         {
           key: "name",
-          label: "Concept Name",
+          label: this.$i18n.t("structural.concept_name"),
         },
         {
           key: "description",
+          label: this.$i18n.t("structural.description"),
           filter: false,
           sorter: false,
         },
@@ -118,7 +120,7 @@ export default {
         // },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("structural.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,

@@ -9,8 +9,7 @@
           xs
           v-for="statisticalStandard of statisticalStandards"
           :key="statisticalStandard.id"
-        >
-          <CCard>
+          ><CCard>
             <CCardHeader>
               <CRow>
                 <CCol class="col-9">
@@ -29,8 +28,7 @@
                             name: 'StatisticalStandardView',
                             params: { id: statisticalStandard.id },
                           }"
-                        >
-                          <CIcon name="cil-magnifying-glass" />
+                          ><CIcon name="cil-magnifying-glass" />
                         </router-link>
                       </span>
                     </CNavItem>

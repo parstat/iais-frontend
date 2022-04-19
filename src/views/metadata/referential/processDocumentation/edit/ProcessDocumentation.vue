@@ -101,8 +101,7 @@
                 'is-invalid': v$.processDocumentation.nextSubPhase.$error,
               }"
               class="mb-3"
-            >
-              <template v-slot:no-options="{ search, searching }">
+              ><template v-slot:no-options="{ search, searching }">
                 <template v-if="searching">
                   <span>{{ $t("referential.no_found") }}&nbsp;</span>
                   <em>{{ search }}</em

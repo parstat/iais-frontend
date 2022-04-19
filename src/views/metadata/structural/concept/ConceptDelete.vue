@@ -4,13 +4,13 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Concept</span>
+            <span>{{ $t("structural.concept") }}</span>
           </CCardTitle>
           <CCardText>
             <CForm>
-              <label for="name">
-                <span>Name</span>
-              </label>
+              <CFormLabel for="name">
+                <span>{{ $t("structural.name") }}</span>
+              </CFormLabel>
               <input
                 id="name"
                 type="text"
@@ -20,9 +20,9 @@
               />
             </CForm>
             <CForm>
-              <label for="description">
-                <span>Description</span>
-              </label>
+              <CFormLabel for="description">
+                <span>{{ $t("structural.description") }}</span>
+              </CFormLabel>
               <textarea
                 rows="5"
                 id="description"
@@ -33,9 +33,9 @@
               />
             </CForm>
             <CForm>
-              <label for="localId">
-                <span>Local id</span>
-              </label>
+              <CFormLabel for="localId">
+                <span>{{ $t("structural.local_ID") }}</span>
+              </CFormLabel>
               <input
                 id="localId"
                 type="text"
@@ -50,8 +50,8 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            ><span>Delete</span></CButton
-          >
+            ><span>{{ $t("structural.delete") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

@@ -25,8 +25,7 @@
                           business_function: nextSubPhase,
                         },
                       }"
-                    >
-                      <CIcon name="cil-plus" />
+                      ><CIcon name="cil-plus" />
                       <span>{{ $t("referential.add") }}</span>
                     </router-link>
                   </span>
@@ -46,8 +45,7 @@
               hover
               sorter
               pagination
-            >
-              <template #actions="{ item }">
+              ><template #actions="{ item }">
                 <td>
                   <span v-if="isAuthenticated">
                     <router-link
@@ -56,8 +54,7 @@
                         name: 'ProcessDocumentationEdit',
                         params: { id: item.id },
                       }"
-                    >
-                      <CIcon name="cil-pencil" />
+                      ><CIcon name="cil-pencil" />
                     </router-link>
                   </span>
                   <span v-if="isAdmin">
@@ -67,8 +64,7 @@
                         name: 'ProcessDocumentationDelete',
                         params: { id: item.id },
                       }"
-                    >
-                      <CIcon name="cil-trash" />
+                      ><CIcon name="cil-trash" />
                     </router-link>
                   </span>
                   <span v-if="isAuthenticated">
@@ -78,8 +74,7 @@
                         name: 'ProcessDocumentationClone',
                         params: { id: item.id },
                       }"
-                    >
-                      <CIcon name="cil-copy" />
+                      ><CIcon name="cil-copy" />
                     </router-link>
                   </span>
                   <span>
@@ -89,8 +84,7 @@
                         name: 'ProcessDocumentationView',
                         params: { id: item.id },
                       }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
+                      ><CIcon name="cil-magnifying-glass" />
                     </router-link>
                   </span>
                 </td>

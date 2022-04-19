@@ -15,8 +15,7 @@
                 tag="a"
                 to="/metadata/referential/gsim/standard/add"
                 class="text-decoration-none text-primary"
-              >
-                <CIcon name="cil-plus" />
+                ><CIcon name="cil-plus" />
                 <span class="icon-span">
                   {{ $t("referential.new_standard") }}
                 </span>
@@ -44,8 +43,7 @@
                     name: 'StatisticalStandardEdit',
                     params: { id: item.id },
                   }"
-                >
-                  <CIcon name="cil-pencil" />
+                  ><CIcon name="cil-pencil" />
                 </router-link>
               </span>
               <span>
@@ -55,8 +53,7 @@
                     name: 'StatisticalStandardView',
                     params: { id: item.id },
                   }"
-                >
-                  <CIcon name="cil-magnifying-glass" />
+                  ><CIcon name="cil-magnifying-glass" />
                 </router-link>
               </span>
               <span v-if="isAuthenticated && isAdmin">
@@ -66,8 +63,7 @@
                     name: 'StatisticalStandardDelete',
                     params: { id: item.id },
                   }"
-                >
-                  <CIcon name="cil-trash" />
+                  ><CIcon name="cil-trash" />
                 </router-link>
               </span>
             </td>

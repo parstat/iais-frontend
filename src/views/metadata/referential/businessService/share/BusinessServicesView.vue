@@ -9,8 +9,7 @@
           xs
           v-for="businessService of businessServices"
           :key="businessService.id"
-        >
-          <CCard>
+          ><CCard>
             <CCardHeader component="h6">
               <CRow>
                 <CCol class="col-9">
@@ -27,8 +26,7 @@
                           name: 'BusinessServiceView',
                           params: { id: businessService.id },
                         }"
-                      >
-                        <CIcon name="cil-magnifying-glass" />
+                        ><CIcon name="cil-magnifying-glass" />
                       </router-link>
                     </CNavItem>
                   </CNav>

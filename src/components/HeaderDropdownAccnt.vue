@@ -5,8 +5,7 @@
       class="c-header-nav-items"
       placement="bottom-end"
       add-menu-classes="pt-0"
-    >
-      <CDropdownToggle placement="bottom-end" class="py-0" :caret="false">
+      ><CDropdownToggle placement="bottom-end" class="py-0" :caret="false">
         <div class="c-avatar">
           <img
             src="/img/avatars/user.png"

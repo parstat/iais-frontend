@@ -45,8 +45,7 @@
             class="col-md-4 mb-3"
             v-for="processInput of processDocumentation.processInputSpecifications"
             :key="processInput.id"
-          >
-            <CCard class="card card-border bg-lighter mt-3 mb-3 mr-3">
+            ><CCard class="card card-border bg-lighter mt-3 mb-3 mr-3">
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">

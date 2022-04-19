@@ -68,8 +68,7 @@
                 :itemsPerPage="5"
                 columnSorter
                 pagination
-              >
-              </CSmartTable>
+              ></CSmartTable>
             </div>
           </CCardText>
           <CButton
@@ -94,11 +93,11 @@ export default {
       variableColumns: [
         {
           key: "localId",
-          label: "Local ID",
+          label: this.$i18n.t("structural.local_ID"),
         },
         {
           key: "Name",
-          label: "name",
+          label: this.$i18n.t("structural.name"),
         },
       ],
       disabled: false,

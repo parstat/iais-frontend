@@ -9,32 +9,42 @@
           <CCardText>
             <CForm>
               <div class="card-group">
-                <span><strong>Description:</strong></span>
+                <span>
+                  <strong>{{ $t("structural.description") }}:</strong>
+                </span>
               </div>
               <div class="text-muted">
                 <span>{{ concept.description }}</span>
               </div>
               <div class="card-group">
-                <span><strong>Definition:</strong></span>
+                <span>
+                  <strong>{{ $t("structural.definition") }}:</strong>
+                </span>
               </div>
               <div class="text-muted">
                 <span>{{ concept.definition }}</span>
               </div>
               <div class="card-group">
-                <span><strong>Version: </strong></span>
+                <span>
+                  <strong>{{ $t("structural.version") }}:</strong>
+                </span>
               </div>
               <div class="text-muted">
                 <span>{{ concept.version }}</span>
               </div>
               <div class="card-group">
-                <span><strong>Local id</strong></span>
+                <span>
+                  <strong>{{ $t("structural.local_ID") }}</strong>
+                </span>
               </div>
               <div class="text-muted">
                 <span>{{ concept.localId }}</span>
               </div>
               <div v-if="concept.link">
                 <div class="card-group">
-                  <span><strong>Link</strong></span>
+                  <span>
+                    <strong>{{ $t("structural.link") }}</strong>
+                  </span>
                 </div>
                 <a v-bind:href="concept.link">{{ concept.name }} </a>
               </div>
@@ -45,8 +55,8 @@
             size="sm"
             @click.prevent="handleBack()"
             :disabled="disabled"
-            >Back</CButton
-          >
+            ><span>{{ $t("structural.back") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

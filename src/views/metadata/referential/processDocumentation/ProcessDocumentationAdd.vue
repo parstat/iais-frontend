@@ -79,8 +79,7 @@
                     role="tabpanel"
                     aria-labelledby="home-tab"
                     :visible="true"
-                  >
-                    <CCard>
+                    ><CCard>
                       <CCardBody>
                         <CCardText>
                           <CForm>
@@ -104,11 +103,9 @@
                               :filterable="false"
                               @search="searchStatisticalPrograms"
                               class="mb-3"
-                            >
-                              <template
+                              ><template
                                 v-slot:no-options="{ search, searching }"
-                              >
-                                <template v-if="searching">
+                                ><template v-if="searching">
                                   <span
                                     >{{
                                       $t("referential.no_found")

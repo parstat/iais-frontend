@@ -9,8 +9,7 @@
           xs
           v-for="processOutputSpecification of processOutputSpecifications"
           :key="processOutputSpecification.id"
-        >
-          <CCard>
+          ><CCard>
             <CCardHeader component="h6">
               <span>{{ processOutputSpecification.name }}</span>
             </CCardHeader>

@@ -38,8 +38,8 @@
             size="sm"
             @click.prevent="handleDelete()"
             :disabled="disabled"
-            ><span>{{ $t("referential.delete") }}</span></CButton
-          >
+            ><span>{{ $t("referential.delete") }}</span>
+          </CButton>
         </CCardBody>
       </CCard>
     </CCol>

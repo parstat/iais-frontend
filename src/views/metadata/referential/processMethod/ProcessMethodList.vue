@@ -15,8 +15,7 @@
                 tag="a"
                 to="/metadata/referential/gsim/method/add"
                 class="text-decoration-none text-primary"
-              >
-                <CIcon name="cil-plus" />
+                ><CIcon name="cil-plus" />
                 <span class="icon-span">
                   {{ $t("referential.new_method") }}
                 </span>
@@ -35,8 +34,7 @@
             :items-per-page="5"
             columnSorter
             pagination
-          >
-            <template #actions="{ item }">
+            ><template #actions="{ item }">
               <td>
                 <span>
                   <router-link
@@ -45,8 +43,7 @@
                       name: 'ProcessMethodView',
                       params: { id: item.id },
                     }"
-                  >
-                    <CIcon name="cil-magnifying-glass" />
+                    ><CIcon name="cil-magnifying-glass" />
                   </router-link>
                 </span>
                 <span v-if="isAuthenticated">
@@ -56,8 +53,7 @@
                       name: 'ProcessMethodEdit',
                       params: { id: item.id },
                     }"
-                  >
-                    <CIcon name="cil-pencil" />
+                    ><CIcon name="cil-pencil" />
                   </router-link>
                 </span>
                 <span v-if="isAdmin">
@@ -67,8 +63,7 @@
                       name: 'ProcessMethodDelete',
                       params: { id: item.id },
                     }"
-                  >
-                    <CIcon name="cil-trash" />
+                    ><CIcon name="cil-trash" />
                   </router-link>
                 </span>
               </td>

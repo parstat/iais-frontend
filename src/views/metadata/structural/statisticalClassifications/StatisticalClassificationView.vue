@@ -45,8 +45,7 @@
               class="col-sm-6 col-md-3 mt-3"
               v-for="level in statisticalClassification.levels"
               :key="level.id"
-            >
-              <CCard>
+              ><CCard>
                 <CCardBody>
                   <CCardTitle>
                     <span>{{ level.levelNumber }}. {{ level.name }}</span>
@@ -70,16 +69,15 @@
               <span>{{
                 $t("structural.statistical_classification_items")
               }}</span></CNavbarBrand
-            >
-            <CNavbarNav>
+            ><CNavbarNav>
               <CDropdown variant="nav-item" :popper="false">
                 <CDropdownToggle color="secondary">View</CDropdownToggle>
                 <CDropdownMenu>
                   <CDropdownItem href="javascript:void(0);" @click="changeView"
                     ><span v-if="isHierarchicalView">Flat</span>
                     <span v-else>Hierarchical</span></CDropdownItem
-                  >
-                </CDropdownMenu>
+                  ></CDropdownMenu
+                >
               </CDropdown>
             </CNavbarNav>
           </CNavbar>
@@ -89,8 +87,7 @@
             v-for="node in statisticalClassification.rootItems"
             :key="node.id"
             :node="node"
-          >
-          </TreeNode>
+          ></TreeNode>
         </CCardText>
         <CCardText v-else>
           <div class="table-responsive">
@@ -106,8 +103,7 @@
               columnSorter
               :sorterValue="{ column: 'order', state: 'asc' }"
               pagination
-            >
-            </CSmartTable>
+            ></CSmartTable>
           </div>
         </CCardText>
         <CButton

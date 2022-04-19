@@ -136,8 +136,7 @@
               tag="a"
               :to="{ name: 'UnitDataSetList' }"
               class="text-decoration-none text-primary"
-            >
-              <span class="icon-span">
+              ><span class="icon-span">
                 {{ $t("structural.data_sets_link") }}&nbsp;
               </span>
               <CIcon name="cil-arrow-right" />

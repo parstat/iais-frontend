@@ -100,8 +100,7 @@
               levelToDelete = '';
             }
           "
-        >
-          <CModalHeader>
+          ><CModalHeader>
             <CModalTitle>
               <span>{{ $t("structural.delete_level") }}</span>
             </CModalTitle>
@@ -135,8 +134,7 @@
             class="col-sm-6 col-md-6 col-lg-3 mt-3"
             v-for="level in levels"
             :key="level.id"
-          >
-            <CCard>
+            ><CCard>
               <CCardBody>
                 <CRow>
                   <CCol class="col-9">

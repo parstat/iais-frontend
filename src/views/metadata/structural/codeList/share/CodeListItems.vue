@@ -121,15 +121,13 @@
               :itemsPerPage="5"
               columnSorter
               pagination
-            >
-              <template #actions="{ item }">
+              ><template #actions="{ item }">
                 <td style="text-align: right; width: 10%; padding-right: 20px">
                   <span
                     v-if="isAuthenticated"
                     class="pl-2 clickable"
                     @click="openDeleteDialog(item)"
-                  >
-                    <CIcon name="cil-trash" />
+                    ><CIcon name="cil-trash" />
                   </span>
                 </td>
               </template>
@@ -142,8 +140,7 @@
       backdrop="static"
       :visible="showDeleteDialog"
       @close="showDeleteDialog = false"
-    >
-      <CModalHeader>
+      ><CModalHeader>
         <CModalTitle>
           <span
             >{{ $t("structural.delete_code_item") }}: {{ item?.code }}?</span

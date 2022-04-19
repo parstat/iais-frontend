@@ -9,8 +9,7 @@
           xs
           v-for="legislativeReference of legislativeReferences"
           :key="legislativeReference.id"
-        >
-          <CCard>
+          ><CCard>
             <CCardHeader>
               <CRow>
                 <CCol class="col-9">
@@ -28,8 +27,7 @@
                             name: 'LegislativeReferenceView',
                             params: { id: legislativeReference.id },
                           }"
-                        >
-                          <CIcon name="cil-magnifying-glass" />
+                          ><CIcon name="cil-magnifying-glass" />
                         </router-link>
                       </span>
                     </CNavItem>

@@ -28,8 +28,7 @@
                             name: 'ProcessMethodView',
                             params: { id: processMethod.id },
                           }"
-                        >
-                          <CIcon name="cil-magnifying-glass" />
+                          ><CIcon name="cil-magnifying-glass" />
                         </router-link>
                       </span>
                     </CNavItem>

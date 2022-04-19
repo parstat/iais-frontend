@@ -21,8 +21,7 @@
                         activeTab = 0;
                       }
                     "
-                  >
-                    <span>{{ $t("referential.basic") }}</span>
+                    ><span>{{ $t("referential.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -34,8 +33,7 @@
                         activeTab = 1;
                       }
                     "
-                  >
-                    <span>{{ $t("referential.agents") }}</span>
+                    ><span>{{ $t("referential.agents") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -47,8 +45,7 @@
                         activeTab = 2;
                       }
                     "
-                  >
-                    <span>{{ $t("referential.legislative_reference") }}</span>
+                    ><span>{{ $t("referential.legislative_reference") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -60,8 +57,7 @@
                         activeTab = 3;
                       }
                     "
-                  >
-                    <span>{{ $t("referential.statistical_standards") }}</span>
+                    ><span>{{ $t("referential.statistical_standards") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -73,8 +69,7 @@
                         activeTab = 4;
                       }
                     "
-                  >
-                    <span>{{ $t("referential.process_documentation") }}</span>
+                    ><span>{{ $t("referential.process_documentation") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -85,8 +80,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 0"
-                >
-                  <template #title>
+                  ><template #title>
                     <span>{{ $t("referential.basic") }}</span>
                     <span class="float-right" v-if="editedBasic">
                       <CIcon name="cil-check-alt" />
@@ -104,8 +98,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 1"
-                >
-                  <template #title>
+                  ><template #title>
                     <span>{{ $t("referential.agents") }}</span>
                     <span class="float-right" v-if="editedAgents">
                       <CIcon nam="cil-check-alt" />
@@ -121,8 +114,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 2"
-                >
-                  <template #title>
+                  ><template #title>
                     <span>{{ $t("referential.legislative_references") }}</span>
                     <span class="float-right" v-if="editedReferences">
                       <CIcon name="cil-check-alt" />
@@ -142,8 +134,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 3"
-                >
-                  <template #title>
+                  ><template #title>
                     <span>{{ $t("referential.statistical_standards") }}</span>
                     <span class="float-right" v-if="editedStandards">
                       <CIcon name="cil-check-alt" />
@@ -161,8 +152,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 4"
-                >
-                  <app-documentations-edit
+                  ><app-documentations-edit
                     :statisticalProgramName="statisticalProgram.name"
                     :statisticalProgramId="statisticalProgram.id"
                     :documentations="statisticalProgram.processDocumentations"

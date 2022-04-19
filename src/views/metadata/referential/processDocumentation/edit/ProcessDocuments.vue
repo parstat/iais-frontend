@@ -30,7 +30,6 @@
             :placeholder="$t('referential.process_comment/note')"
             v-model.trim="description"
           />
-
           <CFormLabel for="link">
             <span>{{ $t("referential.add_external_link") }}</span>
           </CFormLabel>
@@ -56,8 +55,7 @@
             class="col-md-4 mt-3"
             v-for="processDocument of processDocumentation.documents"
             :key="processDocument.id"
-          >
-            <CCard class="card-border bg-lighter mb-3">
+            ><CCard class="card-border bg-lighter mb-3">
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
@@ -70,8 +68,7 @@
                       <CNavItem>
                         <span
                           v-on:click="removeProcessDocument(processDocument)"
-                        >
-                          <CIcon name="cil-trash" />
+                          ><CIcon name="cil-trash" />
                         </span>
                       </CNavItem>
                     </CNav>

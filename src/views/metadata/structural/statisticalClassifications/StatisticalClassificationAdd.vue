@@ -17,8 +17,7 @@
                       activeTab = 0;
                     }
                   "
-                >
-                  <span>{{ $t("referential.basic") }}</span>
+                  ><span>{{ $t("referential.basic") }}</span>
                 </CNavLink>
               </CNavItem>
               <CNavItem>
@@ -39,8 +38,7 @@
                 role="tabpanel"
                 aria-labelledby="home-tab"
                 :visible="activeTab === 0"
-              >
-                <template #title>
+                ><template #title>
                   <span>{{ $t("referential.basic") }}</span>
                   <span class="float-right" v-if="editedBasic">
                     <CIcon name="cil-check-alt" />

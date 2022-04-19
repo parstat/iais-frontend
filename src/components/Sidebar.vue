@@ -10,8 +10,7 @@
           value: event,
         })
     "
-  >
-    <CSidebarBrand class="d-md-down-none" to="/">
+    ><CSidebarBrand class="d-md-down-none" to="/">
       <CIcon name="cil-terminal" size="lg" />
       <span class="brand">&nbsp;IAIS Meta</span>
     </CSidebarBrand>

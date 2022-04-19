@@ -10,8 +10,7 @@
             xs
             v-for="processDocument of documents"
             :key="processDocument.id"
-          >
-            <CCard>
+            ><CCard>
               <CCardHeader component="h6">
                 <span>{{ processDocument.name }}</span>
               </CCardHeader>

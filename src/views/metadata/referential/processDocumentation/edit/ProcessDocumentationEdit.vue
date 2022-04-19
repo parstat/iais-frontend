@@ -146,65 +146,56 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 0"
-                >
-                  <app-process-documentation @next="next">
+                  ><app-process-documentation @next="next">
                   </app-process-documentation>
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 1"
-                >
-                  <app-agents @back="back" @next="next"></app-agents>
+                  ><app-agents @back="back" @next="next"></app-agents>
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 2"
-                >
-                  <app-standards @next="next" @back="back"></app-standards>
+                  ><app-standards @next="next" @back="back"></app-standards>
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 3"
-                >
-                  <app-methods @next="next" @back="back"></app-methods>
+                  ><app-methods @next="next" @back="back"></app-methods>
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 4"
-                >
-                  <app-services @next="next" @back="back"></app-services>
+                  ><app-services @next="next" @back="back"></app-services>
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 5"
-                >
-                  <app-inputs @next="next" @back="back"></app-inputs>
+                  ><app-inputs @next="next" @back="back"></app-inputs>
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 6"
-                >
-                  <app-outputs @next="next" @back="back"></app-outputs>
+                  ><app-outputs @next="next" @back="back"></app-outputs>
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 7"
-                >
-                  <app-qualities @next="next" @back="back"></app-qualities>
+                  ><app-qualities @next="next" @back="back"></app-qualities>
                 </CTabPane>
                 <CTabPane
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 8"
-                >
-                  <app-documents @finish="finish"></app-documents>
+                  ><app-documents @finish="finish"></app-documents>
                 </CTabPane>
               </CTabContent>
             </CCol>

@@ -28,8 +28,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="true"
-                >
-                  <app-code-list-basic
+                  ><app-code-list-basic
                     @next="handleSubmit"
                   ></app-code-list-basic>
                 </CTabPane>

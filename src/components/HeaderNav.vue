@@ -4,8 +4,7 @@
       class="text-decoration-none text-primary"
       tag="a"
       to="/metadata/referential/gsim"
-    >
-      <CIcon name="cil-puzzle" />
+      ><CIcon name="cil-puzzle" />
       <span class="header-link icon-span">
         &nbsp;{{ $t("header.gsim_objects") }}
       </span>

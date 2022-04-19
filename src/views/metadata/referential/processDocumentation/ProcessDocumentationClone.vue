@@ -92,8 +92,7 @@
                     role="tabpanel"
                     aria-labelledby="home-tab"
                     :visible="true"
-                  >
-                    <CCard>
+                    ><CCard>
                       <CCardBody>
                         <CCardText>
                           <fieldset disabled>

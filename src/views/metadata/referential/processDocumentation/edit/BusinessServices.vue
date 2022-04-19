@@ -16,8 +16,7 @@
                   tag="a"
                   to="/metadata/referential/gsim/service/add"
                   class="text-decoration-none text-primary"
-                >
-                  <CIcon name="cil-plus" />
+                  ><CIcon name="cil-plus" />
                   <span class="icon-span">
                     {{ $t("referential.add") }}
                   </span>
@@ -39,8 +38,7 @@
             :filterable="false"
             @search="searchBusinessService"
             @input="addBusinessService"
-          >
-            <template v-slot:no-options="{ search, searching }">
+            ><template v-slot:no-options="{ search, searching }">
               <template v-if="searching">
                 <span>{{ $t("referential.no_found") }}&nbsp;</span>
                 <em>{{ search }}</em
@@ -65,8 +63,7 @@
             class="col-md-4 mb-3"
             v-for="businessService of processDocumentation.businessServices"
             :key="businessService.id"
-          >
-            <CCard class="card-border bg-lighter mt-3 mb-3 mr-3">
+            ><CCard class="card-border bg-lighter mt-3 mb-3 mr-3">
               <CCardHeader>
                 <CRow>
                   <CCol class="col-9">
@@ -79,8 +76,7 @@
                       <CNavItem>
                         <span
                           v-on:click="removeBusinessService(businessService)"
-                        >
-                          <CIcon name="cil-trash" />
+                          ><CIcon name="cil-trash" />
                         </span>
                       </CNavItem>
                     </CNav>
