@@ -3,7 +3,7 @@
     <CCol class="col-12">
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          <span>{{ $t("structural.variable_create") }}</span>
+          <span>Create a Variable</span>
         </CCardHeader>
         <CCardBody>
           <CRow>
@@ -18,12 +18,13 @@
                         activeTab = 0;
                       }
                     "
-                    ><span>{{ $t("structural.basic") }}</span>
+                  >
+                    <span>{{ $t("referential.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" disabled>
-                    <span>{{ $t("structural.representations") }}</span>
+                    <span>Representations</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -34,7 +35,8 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 0"
-                  ><template #title>
+                >
+                  <template #title>
                     <span>{{ $t("referential.basic") }}</span>
                     <span class="float-right" v-if="editedBasic">
                       <CIcon name="cil-check-alt" />
@@ -71,6 +73,7 @@ export default {
         name: basic.name,
         description: basic.description,
         definition: basic.definition,
+        measuresId: basic.measuresId,
       };
       this.$store.dispatch("variable/save", formData);
     },
@@ -86,6 +89,9 @@ export default {
 <style scoped>
 .capitalize {
   text-transform: uppercase;
+}
+.nav-item {
+  width: 100%;
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {

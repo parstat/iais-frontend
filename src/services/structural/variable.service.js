@@ -74,8 +74,7 @@ function update(formData) {
     const requestBody = {
       name: formData.name,
       description: formData.description,
-      //definition: formData.definition,
-      local_id: formData.localId,
+      definition: formData.definition,
     };
 
     axiosIais

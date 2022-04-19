@@ -2,9 +2,7 @@
   <CCard>
     <CCardBody>
       <CCardText>
-        <CCardTitle>
-          <span>{{ $t("structural.variable") }}</span>
-        </CCardTitle>
+        <CCardTitle> Variable </CCardTitle>
         <CForm class="mb-3">
           <CFormLabel for="name">
             <span>{{ $t("structural.name") }}*</span>
@@ -13,11 +11,11 @@
             id="name"
             type="text"
             class="form-control"
-            :class="{ 'is-invalid': v$.name.$error }"
+            :class="{ 'is-invalid': v$.selectedName.$error }"
             :placeholder="$t('structural.variable_name')"
             v-model.trim="selectedName"
           />
-          <span class="text-danger" v-if="v$.name.$error">
+          <span class="text-danger" v-if="v$.selectedName.$error">
             {{ $t("structural.validations.variable_name") }}
           </span>
         </CForm>
@@ -54,15 +52,32 @@
             id="localId"
             type="text"
             class="form-control capitalize"
-            :class="{ 'is-invalid': v$.localId.$error }"
+            :class="{ 'is-invalid': v$.selectedLocalId.$error }"
             :placeholder="$t('structural.local_ID')"
             v-model.trim="selectedLocalId"
+            :disabled="isEdit"
           />
-          <span class="text-danger" v-if="v$.localId.$error">
+          <span class="text-danger" v-if="v$.selectedLocalId.$error">
             <span>{{ $t("structural.validations.local_ID") }}</span>
           </span>
         </CForm>
-        <div class="form-mandatory">
+        <CForm v-if="unitTypes">
+          <CFormLabel for="measures">
+            <span>{{ $t("structural.measures") }}*</span>
+          </CFormLabel>
+          <v-select
+            label="name"
+            :options="unitTypes"
+            v-model="selectedMeasure"
+            :class="{ 'is-invalid': v$.selectedMeasure.$error }"
+            placeholder="Select a measure"
+            :disabled="isEdit"
+          ></v-select>
+          <span class="text-danger" v-if="v$.selectedMeasure.$error">
+            {{ $t("structural.validations.unit_type") }}
+          </span>
+        </CForm>
+        <div class="form-mandatory mt-3">
           <span>*{{ $t("structural.mandatory_fields") }}</span>
         </div>
       </CCardText>
@@ -85,7 +100,7 @@ import { required } from "@vuelidate/validators";
 
 export default {
   name: "VariableBasic",
-  props: ["name", "localId", "description", "definition"],
+  props: ["isEdit", "name", "localId", "description", "definition", "measures"],
 
   data() {
     return {
@@ -94,32 +109,45 @@ export default {
       selectedDescription: this.description ?? "",
       selectedLocalId: this.localId ?? "",
       selectedDefinition: this.definition ?? "",
+      selectedMeasure: this.measures ?? "",
       disabled: false,
     };
   },
   validations: {
-    name: {
+    selectedName: {
       required,
     },
-    localId: {
+    selectedLocalId: {
+      required,
+    },
+    selectedMeasure: {
       required,
     },
   },
   methods: {
     next() {
-      this.disabled = true; //disable buttons
-      const formData = {
-        name: this.selectedName,
-        localId: this.selectedLocalId,
-        description: this.selectedDescription ?? "",
-        definition: this.definition ?? "",
-      };
-      this.$emit("next", formData);
-      this.disabled = false;
+      this.v$.$touch();
+      if (!this.v$.$invalid) {
+        this.disabled = true; //disable buttons
+        const formData = {
+          name: this.selectedName,
+          localId: this.selectedLocalId.toUpperCase(),
+          description: this.selectedDescription ?? "",
+          definition: this.selectedDefinition ?? "",
+          measuresId: this.selectedMeasure.id,
+        };
+        this.$emit("next", formData);
+        this.disabled = false;
+        console.log(this.selectedMeasure);
+      }
     },
   },
   computed: {
     ...mapGetters("coreui", ["isLoading"]),
+    ...mapGetters("unitType", ["unitTypes"]),
+  },
+  created() {
+    this.$store.dispatch("unitType/findAll");
   },
 };
 </script>

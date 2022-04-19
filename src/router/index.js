@@ -457,6 +457,16 @@ const routes = [
           ),
         meta: { authorize: [] },
       },
+      //* Variable Representations Add*/
+      {
+        path: "metadata/structural/variables/:id/representations/add",
+        name: "VariableRepresentationsAdd",
+        component: () =>
+          import(
+            "@/views/metadata/structural/variableRepresentations/VariableRepresentationsAdd"
+          ),
+        meta: { authorize: [] },
+      },
       //* Statistical Classifications */
       {
         path: "metadata/structural/classifications/",
