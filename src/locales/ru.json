@@ -384,7 +384,9 @@
         },
         "dataset": {
             "exchange_channel": "Exchange Channel",
-            "exchange_direction": "Exchange Direction"
+            "exchange_direction": "Exchange Direction",
+            "connection": "Connection",
+            "filter_expression": "Filter Expression"
         }
     }
 }

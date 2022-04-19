@@ -38,30 +38,74 @@
               </span>
             </p>
           </CCol>
+          <CCol class="col-md-6 col-sm-12">
+            <p class="lead">
+              <span>
+                <strong>{{ $t("structural.type") }}:</strong>
+                {{ unitDataSet.type }}
+              </span>
+            </p>
+          </CCol>
+          <CCol class="col-md-6 col-sm-12">
+            <p class="lead">
+              <span>
+                <strong>{{ $t("structural.dataset.connection") }}:</strong>
+                {{ unitDataSet.connection }}
+              </span>
+            </p>
+          </CCol>
+          <CCol class="col-md-6 col-sm-12">
+            <p class="lead">
+              <span>
+                <strong
+                  >{{ $t("structural.dataset.filter_expression") }}:</strong
+                >
+                {{ unitDataSet.filterExpression }}
+              </span>
+            </p>
+          </CCol>
         </CRow>
-        <p class="lead">
-          <span>
-            <strong>{{ $t("structural.type") }}:</strong>
-            {{ unitDataSet.type }}
-          </span>
-        </p>
       </div>
     </div>
     <CCol class="col-12">
       <CCard>
+        <CCardHeader class="bg-white">
+          <CCardTitle> Records </CCardTitle>
+        </CCardHeader>
         <CCardBody>
           <CCardText>
-            <CForm>
-              <div class="text-muted">
-                <span>{{ unitDataSet.connection }}</span>
-              </div>
-              <div class="card-group">
-                <span><strong>Filter Expression:</strong></span>
-              </div>
-              <div class="text-muted">
-                <span>{{ unitDataSet.filterExpression }}</span>
-              </div>
-            </CForm>
+            <CRow>
+              <CCol
+                :sm="6"
+                v-for="record in unitDataSet.structure.logicalRecords"
+                :key="record.id"
+              >
+                <CCard>
+                  <CCardBody>
+                    <CCardTitle>
+                      <span> {{ record.name }}</span>
+                    </CCardTitle>
+                    <div class="table-responsive">
+                      <CSmartTable
+                        v-if="record"
+                        :items="record.components"
+                        :activePage="1"
+                        header
+                        :columns="columns"
+                        columnFilter
+                        cleaner
+                        itemsPerPageSelect
+                        :itemsPerPage="5"
+                        columnSorter
+                        :sorterValue="{ column: 'localId', state: 'asc' }"
+                        pagination
+                      >
+                      </CSmartTable>
+                    </div>
+                  </CCardBody>
+                </CCard>
+              </CCol>
+            </CRow>
           </CCardText>
           <CButton
             color="primary"
@@ -83,6 +127,24 @@ export default {
   name: "UnitDataSetView",
   data() {
     return {
+      columns: [
+        {
+          key: "localId",
+          label: "Id",
+        },
+        {
+          key: "name",
+          label: "Column Name",
+        },
+        {
+          key: "type",
+          label: "Type",
+        },
+        {
+          key: "representationLink",
+          label: "Representation",
+        },
+      ],
       disabled: false,
     };
   },
