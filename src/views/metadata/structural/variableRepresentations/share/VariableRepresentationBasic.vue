@@ -2,7 +2,7 @@
   <CCard>
     <CCardBody>
       <CCardText>
-        <CCardTitle> Variable </CCardTitle>
+        <CCardTitle> Variable Representation</CCardTitle>
         <CForm class="mb-3">
           <CFormLabel for="name">
             <span>{{ $t("structural.name") }}*</span>
@@ -12,11 +12,11 @@
             type="text"
             class="form-control"
             :class="{ 'is-invalid': v$.selectedName.$error }"
-            :placeholder="$t('structural.variable_name')"
+            :placeholder="'Variable Representation name'"
             v-model.trim="selectedName"
           />
           <span class="text-danger" v-if="v$.selectedName.$error">
-            {{ $t("structural.validations.variable_name") }}
+            Please enter a name for the Variable Representation.
           </span>
         </CForm>
         <CForm class="mb-3">
@@ -28,7 +28,7 @@
             id="description"
             type="text"
             class="form-control"
-            :placeholder="$t('structural.variable_description')"
+            :placeholder="'Variable Representation description'"
             v-model.trim="selectedDescription"
           />
         </CForm>

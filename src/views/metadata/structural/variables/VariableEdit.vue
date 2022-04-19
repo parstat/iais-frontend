@@ -51,12 +51,13 @@
                     </span>
                   </template>
                   <app-variable-basic
+                    v-if="variable"
                     :isEdit="true"
-                    :name="variable?.name"
-                    :localId="variable?.localId"
-                    :description="variable?.description"
-                    :definition="variable?.definition"
-                    :measures="variable?.measures"
+                    :name="variable.name"
+                    :localId="variable.localId"
+                    :description="variable.description"
+                    :definition="variable.definition"
+                    :measures="variable.measures"
                     @next="handleBasic"
                   />
                 </CTabPane>

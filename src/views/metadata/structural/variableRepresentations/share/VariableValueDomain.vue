@@ -41,8 +41,18 @@
             v-model="selectedDomain"
           >
           </v-select>
+          <span class="text-danger" v-if="v$.selectedDomain?.$error">
+            <span>Please select a value domain</span>
+          </span>
         </CForm>
       </CCardText>
+      <CButton
+        size="sm"
+        style="margin-right: 0.3rem"
+        @click.prevent="previous"
+        :disabled="disabled"
+        ><span>Previous</span>
+      </CButton>
       <CButton
         color="primary"
         size="sm"
@@ -85,15 +95,14 @@ export default {
   methods: {
     next() {
       this.v$.$touch();
-      console.log(this.$route.params);
       if (this.$route.params.id && !this.v$.$invalid) {
         this.disabled = true; //disable buttons
-        const formData = {
-          valueDomainId: this.selectedDomain.id,
-        };
-        this.$emit("next", formData);
-        this.disabled = false;
+        this.$emit("next", this.selectedDomain);
+        this.disabled = this.isLast || false;
       }
+    },
+    previous() {
+      this.$emit("previous");
     },
   },
   computed: {

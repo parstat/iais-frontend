@@ -13,11 +13,6 @@
                   <CNavLink
                     href="javascript:void(0);"
                     :active="activeTab === 0"
-                    @click="
-                      () => {
-                        activeTab = 0;
-                      }
-                    "
                   >
                     <span>{{ $t("referential.basic") }}</span>
                   </CNavLink>
@@ -26,11 +21,6 @@
                   <CNavLink
                     href="javascript:void(0);"
                     :active="activeTab === 1"
-                    @click="
-                      () => {
-                        activeTab = 1;
-                      }
-                    "
                   >
                     <span>Substantive Value Domain</span>
                   </CNavLink>
@@ -39,11 +29,6 @@
                   <CNavLink
                     href="javascript:void(0);"
                     :active="activeTab === 2"
-                    @click="
-                      () => {
-                        activeTab = 2;
-                      }
-                    "
                   >
                     <span>Sentinel Value Domain</span>
                   </CNavLink>
@@ -76,6 +61,7 @@
                   <app-variable-value-domain
                     :isRequired="true"
                     :domain="substantiveValueDomain"
+                    @previous="previous"
                     @next="handleSubstantiveValueDomain"
                   />
                 </CTabPane>
@@ -91,6 +77,7 @@
                     :isRequired="false"
                     :isLast="true"
                     :domain="sentinelValueDomain"
+                    @previous="previous"
                     @next="handleSentinelValueDomain"
                   />
                 </CTabPane>
@@ -140,10 +127,23 @@ export default {
       this.activeTab++;
     },
     handleSentinelValueDomain(sentinelValueDomain) {
-      this.sentinelValueDomain = sentinelValueDomain;
-      this.formData.substantiveValueDomainId = this.substantiveValueDomain.id;
-      this.formData.sentinelValueDomainId = sentinelValueDomain.id;
-      this.$store.dispatch("valueDomain/findAll", this.formData);
+      if (this.isValidFormData()) {
+        this.sentinelValueDomain = sentinelValueDomain;
+        this.formData.substantiveValueDomainId = this.substantiveValueDomain.id;
+        this.formData.sentinelValueDomainId = sentinelValueDomain.id;
+        this.$store.dispatch("variableRepresentation/save", this.formData);
+      }
+    },
+    previous() {
+      this.activeTab--;
+    },
+    isValidFormData() {
+      return (
+        this.formData.name &&
+        this.formData.variableId &&
+        this.formData.localId &&
+        this.substantiveValueDomain
+      );
     },
   },
   components: {
