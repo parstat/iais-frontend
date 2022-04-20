@@ -5,6 +5,7 @@ import { axiosIais } from "@/http";
 export const valueDomainService = {
   findAll,
   findById,
+  findByName,
   save,
   update,
   //   delete: _delete,
@@ -30,6 +31,22 @@ function findById(id) {
       (response) => {
         var data = response.data.valueDomain ? response.data.valueDomain : null;
         resolve(data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function findByName(name, scope) {
+  var queryString = "?name=" + name ?? "";
+  queryString += "&scope=" + scope ?? "";
+  return new Promise((resolve, reject) => {
+    axiosIais.get("/structural/OpenValueDomain" + queryString).then(
+      (response) => {
+        console.log(response);
+        resolve(response.data.valueDomains);
       },
       (error) => {
         reject(error);

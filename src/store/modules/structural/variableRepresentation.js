@@ -70,9 +70,7 @@ const actions = {
         dispatch("message/success", "Variable Representation saved!", {
           root: true,
         });
-        router.push(
-          "/metadata/structural/variables/edit/" + formData.variableId
-        );
+        return data;
       },
       (error) => {
         console.log(error);

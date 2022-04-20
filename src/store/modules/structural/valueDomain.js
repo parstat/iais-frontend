@@ -1,6 +1,8 @@
 import { valueDomainService } from "@/services";
 
 const state = {
+  substantiveValueDomains: [],
+  sentinelValueDomains: [],
   valueDomains: [],
   valueDomain: null,
 };
@@ -8,6 +10,12 @@ const state = {
 const mutations = {
   SET_VALUE_DOMAINS(state, valueDomains) {
     state.valueDomains = valueDomains ? valueDomains : [];
+  },
+  SET_SUBSTANTIVE_VALUE_DOMAINS(state, valueDomains) {
+    state.substantiveValueDomains = valueDomains ? valueDomains : [];
+  },
+  SET_SENTINEL_VALUE_DOMAINS(state, valueDomains) {
+    state.sentinelValueDomains = valueDomains ? valueDomains : [];
   },
   SET_VALUE_DOMAIN(state, valueDomain) {
     state.valueDomain = valueDomain;
@@ -50,10 +58,19 @@ const actions = {
     );
   },
 
-  findByName({ commit }, name) {
-    valueDomainService.findByName(name).then(
+  findByName({ commit }, formData) {
+    valueDomainService.findByName(formData.name, formData.scope).then(
       (data) => {
-        commit("SET_VALUE_DOMAINS", data);
+        if (!formData.scope) {
+          commit("SET_VALUE_DOMAINS", data);
+        } else {
+          if (formData.scope === "SENTINEL") {
+            commit("SET_SENTINEL_VALUE_DOMAINS", data);
+          }
+          if (formData.scope === "SUBSTANTIVE") {
+            commit("SET_SUBSTANTIVE_VALUE_DOMAINS", data);
+          }
+        }
       },
       (error) => {
         console.log(error);
@@ -107,6 +124,12 @@ const getters = {
   },
   valueDomain: (state) => {
     return state.valueDomain;
+  },
+  substantiveValueDomains: (state) => {
+    return state.substantiveValueDomains;
+  },
+  sentinelValueDomains: (state) => {
+    return state.sentinelValueDomains;
   },
 };
 
