@@ -70,42 +70,60 @@
     <CCol class="col-12">
       <CCard>
         <CCardHeader class="bg-white">
-          <CCardTitle> Records </CCardTitle>
+          <CCardTitle> {{ unitDataSet.structure.name }} </CCardTitle>
         </CCardHeader>
         <CCardBody>
           <CCardText>
-            <CRow>
-              <CCol
-                :sm="6"
-                v-for="record in unitDataSet.structure.logicalRecords"
-                :key="record.id"
-              >
-                <CCard>
-                  <CCardBody>
-                    <CCardTitle>
-                      <span> {{ record.name }}</span>
-                    </CCardTitle>
-                    <div class="table-responsive">
-                      <CSmartTable
-                        v-if="record"
-                        :items="record.components"
-                        :activePage="1"
-                        header
-                        :columns="columns"
-                        columnFilter
-                        cleaner
-                        itemsPerPageSelect
-                        :itemsPerPage="5"
-                        columnSorter
-                        :sorterValue="{ column: 'localId', state: 'asc' }"
-                        pagination
-                      >
-                      </CSmartTable>
-                    </div>
-                  </CCardBody>
-                </CCard>
-              </CCol>
-            </CRow>
+            <CCard>
+              <CCardBody>
+                <CCardTitle> Records </CCardTitle>
+                <CRow>
+                  <CCol
+                    :sm="6"
+                    v-for="record in unitDataSet.structure.logicalRecords"
+                    :key="record.id"
+                  >
+                    <CCard class="mb-3 mt-3">
+                      <CCardBody>
+                        <CCardTitle>
+                          <span> {{ record.name }}</span>
+                        </CCardTitle>
+                        <div class="table-responsive">
+                          <CSmartTable
+                            v-if="record"
+                            :items="record.components"
+                            :activePage="1"
+                            header
+                            :columns="columns"
+                            columnFilter
+                            cleaner
+                            itemsPerPageSelect
+                            :itemsPerPage="5"
+                            columnSorter
+                            :sorterValue="{ column: 'localId', state: 'asc' }"
+                            pagination
+                          >
+                            <template #show_representation="{ item }">
+                              <td class="py-2">
+                                <CButton
+                                  color="primary"
+                                  variant="outline"
+                                  square
+                                  size="sm"
+                                  @click="showRepresentation(item)"
+                                >
+                                  Show
+                                </CButton>
+                              </td>
+                            </template>
+                          </CSmartTable>
+                        </div>
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
+                </CRow>
+              </CCardBody>
+            </CCard>
           </CCardText>
           <CButton
             color="primary"
@@ -134,15 +152,18 @@ export default {
         },
         {
           key: "name",
-          label: "Column Name",
+          label: "Name",
         },
         {
           key: "type",
           label: "Type",
         },
         {
-          key: "representationLink",
+          key: "show_representation",
           label: "Representation",
+          _style: { width: "1%" },
+          filter: false,
+          sorter: false,
         },
       ],
       disabled: false,
@@ -155,6 +176,9 @@ export default {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push("/metadata/structural/unitDataSets");
+    },
+    showRepresentation(item) {
+      this.$router.push(item.representationLink);
     },
   },
   created() {
