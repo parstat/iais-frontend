@@ -41,6 +41,19 @@
                 :sorterValue="{ column: 'localId', state: 'asc' }"
                 pagination
               >
+                <template #show_program="{ item }">
+                  <td class="py-2">
+                    <CButton
+                      color="primary"
+                      variant="outline"
+                      square
+                      size="sm"
+                      @click="showProgram(item)"
+                    >
+                      Show
+                    </CButton>
+                  </td>
+                </template>
                 <template #actions="{ item }">
                   <td
                     style="text-align: right; width: 10%; padding-right: 20px"
@@ -124,8 +137,11 @@ export default {
           label: "Direction",
         },
         {
-          key: "statisticalProgramLink",
+          key: "show_program",
           label: "Program",
+          _style: { width: "1%" },
+          filter: false,
+          sorter: false,
         },
         {
           key: "actions",
@@ -141,6 +157,11 @@ export default {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
     ...mapGetters("unitDataSet", ["unitDataSets"]),
+  },
+  methods: {
+    showProgram(item) {
+      this.$router.push(item.statisticalProgramLink);
+    },
   },
   created() {
     this.$store.dispatch("unitDataSet/findAll");
