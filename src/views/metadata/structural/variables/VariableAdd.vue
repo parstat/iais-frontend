@@ -3,7 +3,7 @@
     <CCol class="col-12">
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          <span>Create a Variable</span>
+          <span>{{ $t("structural.create_variable") }}</span>
         </CCardHeader>
         <CCardBody>
           <CRow>
@@ -18,13 +18,12 @@
                         activeTab = 0;
                       }
                     "
-                  >
-                    <span>{{ $t("referential.basic") }}</span>
+                    ><span>{{ $t("structural.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
                   <CNavLink href="javascript:void(0);" disabled>
-                    <span>Representations</span>
+                    <span>{{ $t("structural.representations") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -35,8 +34,7 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 0"
-                >
-                  <template #title>
+                  ><template #title>
                     <span>{{ $t("referential.basic") }}</span>
                     <span class="float-right" v-if="editedBasic">
                       <CIcon name="cil-check-alt" />

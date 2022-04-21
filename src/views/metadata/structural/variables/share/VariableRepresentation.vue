@@ -5,7 +5,7 @@
         <CRow>
           <CCol class="col-9">
             <CCardTitle>
-              <span>Represented Variable</span>
+              <span>{{ $t("structural.represented_variable") }}</span>
             </CCardTitle>
           </CCol>
         </CRow>
@@ -24,7 +24,7 @@
               :disabled="isEdit"
             />
             <span class="text-danger" v-if="v$.localId.$error">
-              <span>{{ $t("structural.validations.local_ID") }}</span>
+              {{ $t("structural.validations.local_ID") }}
             </span>
           </CForm>
           <CForm class="mb-3">
@@ -36,11 +36,11 @@
               type="text"
               class="form-control"
               :class="{ 'is-invalid': v$.name.$error }"
-              :placeholder="'Variable Representation name'"
+              :placeholder="$t('structural.variable_representation_name')"
               v-model.trim="name"
             />
             <span class="text-danger" v-if="v$.name.$error">
-              Please enter a name for the Variable Representation.
+              {{ $t("structural.validations.variable_representation_name") }}
             </span>
           </CForm>
           <CForm class="mb-3">
@@ -52,7 +52,7 @@
               id="description"
               type="text"
               class="form-control"
-              :placeholder="'Variable Representation description'"
+              :placeholder="$t('structural.variable_representation_description')"
               v-model.trim="description"
             />
           </CForm>
@@ -61,7 +61,7 @@
             <CRow>
               <CCol class="col-8">
                 <CFormLabel for="source">
-                  <span>Sentinel Value Domain</span>
+                  <span>{{ $t("structural.sentinel_value") }}</span>
                 </CFormLabel>
               </CCol>
               <CCol class="col-4">
@@ -74,9 +74,10 @@
                         params: { id: variable?.id ?? '11' },
                       }"
                       class="text-decoration-none text-primary"
-                    >
-                      <CIcon name="cil-plus" />
-                      <span class="icon-span"> Sentinel Value Domain </span>
+                      ><CIcon name="cil-plus" />
+                      <span class="icon-span">
+                        {{ $t("structural.sentinel_value") }}
+                      </span>
                     </router-link>
                   </CNavItem>
                 </CNav>
@@ -98,7 +99,7 @@
             <CRow>
               <CCol class="col-8">
                 <CFormLabel for="target">
-                  <span>Substantive Value Domain *</span>
+                  <span>{{ $t("structural.substantive_value") }}*</span>
                 </CFormLabel>
               </CCol>
               <CCol class="col-4">
@@ -111,9 +112,10 @@
                         params: { id: variable?.id ?? '11' },
                       }"
                       class="text-decoration-none text-primary"
-                    >
-                      <CIcon name="cil-plus" />
-                      <span class="icon-span"> Substantive Value Domain </span>
+                      ><CIcon name="cil-plus" />
+                      <span class="icon-span">
+                        {{ $t("structural.substantive_value") }}
+                      </span>
                     </router-link>
                   </CNavItem>
                 </CNav>
@@ -154,8 +156,7 @@
           :itemsPerPage="5"
           columnSorter
           pagination
-        >
-          <template #actions="{ item }">
+          ><template #actions="{ item }">
             <span v-if="isAuthenticated" class="pl-2">
               <!-- <router-link
                 tag="a"
@@ -178,7 +179,7 @@
                 }"
               > -->
               <CIcon name="cil-trash" />
-              {{ item.name }}
+              <span>{{ item.name }}</span>
               <!--</router-link> -->
             </span>
           </template>
@@ -219,15 +220,15 @@ export default {
       variableColumns: [
         {
           key: "localId",
-          label: "Local ID",
+          label: this.$i18n.t("structural.local_ID"),
         },
         {
           key: "name",
-          label: "Name",
+          label: this.$i18n.t("structural.name"),
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("structural.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,

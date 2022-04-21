@@ -240,6 +240,9 @@
         }
     },
     "structural": {
+        "view": "Вид",
+        "flat": "Плоский",
+        "hierarchical": "Иерархический",
         "CSV_items": "CSV элементы",
         "parse_CSV": "Разборка CSV",
         "description": "Описание",
@@ -261,6 +264,8 @@
         "definition": "Определение",
         "basic": "Базовый",
         "value": "Ценность",
+        "sentinel_value": "Контрольный домен значений",
+        "substantive_value": "Домен существенной ценности",
         "label": "Этикетка",
         "label_en": "Этикетка En",
         "label_english": "Английская этикетка",
@@ -269,6 +274,9 @@
         "label_ru": "Этикетка Ru",
         "label_russian": "Российская этикетка",
         "new_variable": "Новая переменная",
+        "create_variable": "Создать переменную",
+        "edit_variable": "Редактировать переменную",
+        "represented_variable": "Представленная переменная",
         "variable": "Переменная",
         "variable_definition": "Определение переменной",
         "variable_name": "Имя переменной",
@@ -277,6 +285,8 @@
         "variables_text": "Использование Понятия в качестве характеристики Населения, которое предполагается измерить. Переменная сочетает в себе значение Kонцепции с Типом единицы, чтобы определить характеристику, которая должна быть измерена.",
         "variables_link": "Перейти в раздел переменных",
         "variable_create": "Create Variable",
+        "variable_representation_name": "Название представления переменной",
+        "variable_representation_description": "Описание представления переменной",
         "new_statistical_classification": "Новая статистическая классификация",
         "create_statistical_classification": "Создать статистическую классификацию",
         "statistical_classification": "Статистическая классификация",
@@ -293,6 +303,7 @@
         "statistical_classification_version_date": "Дата статистической классификации",
         "statistical_classification_version_rationale": "Описание версии статистической классификации",
         "new_code": "Новый код",
+        "parent_code": "Исходный код",
         "code": "Код",
         "code_items": "Элементы кода",
         "code_list_name": "Название списка кодов",
@@ -377,10 +388,12 @@
             "label_romanian": "Пожалуйста введите этикетку на румынском языке.",
             "label_russian": "Пожалуйста введите метку на русском языке.",
             "description": "Пожалуйста введите описание.",
-            "concept_name": "Пожалуйста введите название концепции."
+            "concept_name": "Пожалуйста введите название концепции.",
+            "variable_representation_name": "Пожалуйста введите название для представления переменной."
         },
         "selection": {
-            "unit_type": "Выберите тип единицы"
+            "unit_type": "Выберите тип единицы",
+            "measure": "Выберите меру"
         },
         "dataset": {
             "exchange_channel": "Exchange Channel",
