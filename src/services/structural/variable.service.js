@@ -7,6 +7,7 @@ export const variableService = {
   findById,
   save,
   update,
+  addRepresentation,
   delete: _delete,
 };
 
@@ -81,6 +82,31 @@ function update(formData) {
       .patch(
         "/structural/ClosedVariables/" + formData.id,
         new URLSearchParams(requestBody).toString(),
+        config
+      )
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+function addRepresentation(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    axiosIais
+      .post(
+        "/structural/ClosedRepresentationVariable",
+        JSON.stringify(formData),
         config
       )
       .then(

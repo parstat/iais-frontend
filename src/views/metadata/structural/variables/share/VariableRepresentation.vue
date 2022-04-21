@@ -275,7 +275,7 @@ export default {
         this.substantiveValueDomainId = selectedValueDomain.id;
       }
     },
-    async handleSave() {
+    handleSave() {
       this.v$.$touch(); //validate form data
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
@@ -289,9 +289,8 @@ export default {
           substantiveValueDomainId: this.substantiveValueDomainId,
         };
         console.log(formData);
-        await this.$store.dispatch("variableRepresentation/save", formData);
+        this.$store.dispatch("variable/addRepresentation", formData);
         this.resetRepresentationFields();
-        this.$store.dispatch("variable/findById", this.variable.id);
       }
     },
 
