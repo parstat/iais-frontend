@@ -240,6 +240,9 @@
         }
     },
     "structural": {
+        "view": "View",
+        "flat": "Flat",
+        "hierarchical": "Hierarchical",
         "CSV_items": "CSV items",
         "parse_CSV": "Parse CSV",
         "description": "Description",
@@ -261,6 +264,8 @@
         "definition": "Definition",
         "basic": "Basic",
         "value": "Value",
+        "sentinel_value": "Sentinel value domain",
+        "substantive_value": "Substantive value domain",
         "label": "Label",
         "label_en": "Label En",
         "label_english": "English label",
@@ -269,6 +274,9 @@
         "label_ru": "Label Ru",
         "label_russian": "Russian label",
         "new_variable": "New variable",
+        "create_variable": "Create a variable",
+        "edit_variable": "Edit a variable",
+        "represented_variable": "Represented variable",
         "variable": "Variable",
         "variable_definition": "Variable definition",
         "variable_name": "Variable name",
@@ -277,6 +285,8 @@
         "variables_text": "The use of a Concept as a characteristic of a Population intended to be measured. The Variable combines the meaning of a Concept with a Unit type, to define the characteristic that is to be measured.",
         "variables_link": "Go to variables section",
         "variable_create": "Create Variable",
+        "variable_representation_name": "Variable representation name",
+        "variable_representation_description": "Variable representation description",
         "new_statistical_classification": "New statistical classification",
         "create_statistical_classification": "Create a statistical classification",
         "statistical_classification": "Statistical classification",
@@ -294,6 +304,7 @@
         "statistical_classification_version_rationale": "Statistical classification version description",
         "statistical_classification_aggregation_type": "Aggregation Type",
         "new_code": "New code",
+        "parent_code": "Parent code",
         "code": "Code",
         "code_items": "Code items",
         "code_list_name": "Code list name",
@@ -378,10 +389,12 @@
             "label_romanian": "Please enter a label in Romanian.",
             "label_russian": "Please enter a label in Russian.",
             "description": "Please enter a description.",
-            "concept_name": "Please enter a name for the Concept."
+            "concept_name": "Please enter a name for the Concept.",
+            "variable_representation_name": "Please enter a name for the variable representation."
         },
         "selection": {
-            "unit_type": "Select a unit type"
+            "unit_type": "Select a unit type",
+            "measure": "Select a measure"
         },
         "dataset": {
             "exchange_channel": "Exchange Channel",

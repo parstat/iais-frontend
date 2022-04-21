@@ -240,6 +240,9 @@
         }
     },
     "structural": {
+        "view": "Vedere",
+        "flat": "Plat",
+        "hierarchical": "Ierarhic",
         "CSV_items": "Itemi CSV",
         "parse_CSV": "Parsează CSV",
         "description": "Descriere",
@@ -261,6 +264,8 @@
         "definition": "Definiție",
         "basic": "De bază",
         "value": "Valoare",
+        "sentinel_value": "Domeniul valoric de control",
+        "substantive_value": "Domeniul valoric de fond",
         "label": "Etichetă",
         "label_en": "Eticheta En",
         "label_english": "Eticheta engleză",
@@ -269,6 +274,9 @@
         "label_ru": "Eticheta Ru",
         "label_russian": "Eticheta rusească",
         "new_variable": "Variabilă nouă",
+        "create_variable": "Creați o variabilă",
+        "edit_variable": "Editați o variabilă",
+        "represented_variable": "Variabila reprezentată",
         "variable": "Variabilă",
         "variable_definition": "Definiția variabilei",
         "variable_name": "Numele variabilei",
@@ -277,6 +285,8 @@
         "variables_text": "Utilizarea unui Concept ca caracteristică a unei Populații care urmează să fie măsurată. Variabila combină semnificația unui Concept cu un tip de unitate, pentru a defini caracteristica care urmează să fie măsurată.",
         "variables_link": "Accesați secțiunea de variabile",
         "variable_create": "Create Variable",
+        "variable_representation_name": "Denumirea reprezentării variabilei",
+        "variable_representation_description": "Descrierea reprezentării variabilei",
         "new_statistical_classification": "Noua clasificare statistică",
         "create_statistical_classification": "Creați o clasificare statistică",
         "statistical_classification": "Clasificare statistică",
@@ -293,6 +303,7 @@
         "statistical_classification_version_date": "Data clasificarii statistice",
         "statistical_classification_version_rationale": "Descrierea versiunii clasificării statistice",
         "new_code": "Cod nou",
+        "parent_code": "Codul sursă",
         "code": "Cod",
         "code_items": "Itemi de cod",
         "code_list_name": "Numele listei de coduri",
@@ -377,10 +388,12 @@
             "label_romanian": "Vă rugăm să introduceți o etichetă în limba română.",
             "label_russian": "Vă rugăm să introduceți o etichetă în limba rusă.",
             "description": "Vă rugăm să introduceți o descriere.",
-            "concept_name": "Vă rugăm să introduceți un nume pentru concept."
+            "concept_name": "Vă rugăm să introduceți un nume pentru concept.",
+            "variable_representation_name": "Vă rugăm să introduceți un nume pentru reprezentarea variabilei."
         },
         "selection": {
-            "unit_type": "Selectați un tip de unitate"
+            "unit_type": "Selectați un tip de unitate",
+            "measure": "Selectați o măsură"
         },
         "dataset": {
             "exchange_channel": "Exchange Channel",

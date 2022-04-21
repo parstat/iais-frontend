@@ -2,7 +2,9 @@
   <CCard>
     <CCardBody>
       <CCardText>
-        <CCardTitle> Variable </CCardTitle>
+        <CCardTitle>
+          <span>{{ $t("structural.variable") }}</span>
+        </CCardTitle>
         <CForm class="mb-3">
           <CFormLabel for="name">
             <span>{{ $t("structural.name") }}*</span>
@@ -58,7 +60,7 @@
             :disabled="isEdit"
           />
           <span class="text-danger" v-if="v$.selectedLocalId.$error">
-            <span>{{ $t("structural.validations.local_ID") }}</span>
+            {{ $t("structural.validations.local_ID") }}
           </span>
         </CForm>
         <CForm v-if="unitTypes">
@@ -70,7 +72,7 @@
             :options="unitTypes"
             v-model="selectedMeasure"
             :class="{ 'is-invalid': v$.selectedMeasure.$error }"
-            placeholder="Select a measure"
+            :placeholder="$t('structural.selection.measure')"
             :disabled="isEdit"
           ></v-select>
           <span class="text-danger" v-if="v$.selectedMeasure.$error">

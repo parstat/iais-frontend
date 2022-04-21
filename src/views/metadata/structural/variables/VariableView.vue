@@ -51,8 +51,7 @@
                         name: 'VariableRepresentationsView',
                         params: { id: item.id },
                       }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
+                      ><CIcon name="cil-magnifying-glass" />
                     </router-link>
                   </td>
                   <td>
@@ -86,8 +85,7 @@
                         name: 'VariableRepresentationsView',
                         params: { id: item.id },
                       }"
-                    >
-                      <CIcon name="cil-magnifying-glass" />
+                      ><CIcon name="cil-magnifying-glass" />
                     </router-link>
                   </td>
                 </template>

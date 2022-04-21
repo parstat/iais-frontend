@@ -17,8 +17,7 @@
                     tag="a"
                     to="/metadata/structural/concepts/add"
                     class="text-decoration-none text-primary"
-                  >
-                    <CIcon name="cil-plus" />
+                    ><CIcon name="cil-plus" />
                     <span class="icon-span">
                       {{ $t("structural.new_concept") }}
                     </span>
@@ -44,8 +43,7 @@
                 :sorterValue="{ column: 'localId', state: 'asc' }"
                 pagination
               >
-                >
-                <template #actions="{ item }">
+                ><template #actions="{ item }">
                   <td>
                     <span>
                       <router-link

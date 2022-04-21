@@ -68,16 +68,23 @@
             <CNavbarBrand href="javascript:void(0);">
               <span>{{
                 $t("structural.statistical_classification_items")
-              }}</span></CNavbarBrand
-            ><CNavbarNav>
+              }}</span>
+            </CNavbarBrand>
+            <CNavbarNav>
               <CDropdown variant="nav-item" :popper="false">
-                <CDropdownToggle color="secondary">View</CDropdownToggle>
+                <CDropdownToggle color="secondary">
+                  <span>{{ $t("structural.view") }}</span>
+                </CDropdownToggle>
                 <CDropdownMenu>
-                  <CDropdownItem href="javascript:void(0);" @click="changeView"
-                    ><span v-if="isHierarchicalView">Flat</span>
-                    <span v-else>Hierarchical</span></CDropdownItem
-                  ></CDropdownMenu
-                >
+                  <CDropdownItem href="javascript:void(0);" @click="changeView">
+                    <span v-if="isHierarchicalView">
+                      {{ $t("structural.flat") }}
+                    </span>
+                    <span v-else>
+                      {{ $t("structural.hierarchical") }}
+                    </span>
+                  </CDropdownItem>
+                </CDropdownMenu>
               </CDropdown>
             </CNavbarNav>
           </CNavbar>
@@ -137,19 +144,19 @@ export default {
       columns: [
         {
           key: "code",
-          label: "Code",
+          label: this.$i18n.t("structural.code"),
         },
         {
           key: "parentCode",
-          label: "Parent Code",
+          label: this.$i18n.t("structural.parent_code"),
         },
         {
           key: "levelNumber",
-          label: "Level Number",
+          label: this.$i18n.t("structural.level_number"),
         },
         {
           key: "value",
-          label: "Value",
+          label: this.$i18n.t("structural.value"),
         },
       ],
     };
