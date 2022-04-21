@@ -387,7 +387,10 @@
             "exchange_channel": "Exchange Channel",
             "exchange_direction": "Exchange Direction",
             "connection": "Connection",
-            "filter_expression": "Filter Expression"
+            "filter_expression": "Filter Expression",
+            "group": "Group",
+            "reporting_begin": "Reporting Begin",
+            "reporting_end": "Reporting End"
         }
     }
 }

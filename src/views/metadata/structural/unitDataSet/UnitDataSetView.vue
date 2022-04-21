@@ -17,124 +17,201 @@
             {{ unitDataSet.description }}
           </span>
         </p>
-        <CRow>
-          <CCol class="col-md-6 col-sm-12">
-            <p class="lead">
-              <span>
-                <strong
-                  >{{ $t("structural.dataset.exchange_channel") }}:</strong
-                >
-                {{ unitDataSet.exchangeChannel }}
-              </span>
-            </p>
-          </CCol>
-          <CCol class="col-md-6 col-sm-12">
-            <p class="lead">
-              <span>
-                <strong
-                  >{{ $t("structural.dataset.exchange_direction") }}:</strong
-                >
-                {{ unitDataSet.exchangeDirection }}
-              </span>
-            </p>
-          </CCol>
-          <CCol class="col-md-6 col-sm-12">
-            <p class="lead">
-              <span>
-                <strong>{{ $t("structural.type") }}:</strong>
-                {{ unitDataSet.type }}
-              </span>
-            </p>
-          </CCol>
-          <CCol class="col-md-6 col-sm-12">
-            <p class="lead">
-              <span>
-                <strong>{{ $t("structural.dataset.connection") }}:</strong>
-                {{ unitDataSet.connection }}
-              </span>
-            </p>
-          </CCol>
-          <CCol class="col-md-6 col-sm-12">
-            <p class="lead">
-              <span>
-                <strong
-                  >{{ $t("structural.dataset.filter_expression") }}:</strong
-                >
-                {{ unitDataSet.filterExpression }}
-              </span>
-            </p>
-          </CCol>
-        </CRow>
       </div>
     </div>
-    <CCol class="col-12">
-      <CCard>
-        <CCardHeader class="bg-white">
-          <CCardTitle> {{ unitDataSet.structure.name }} </CCardTitle>
-        </CCardHeader>
-        <CCardBody>
-          <CCardText>
-            <CCard>
-              <CCardBody>
-                <CCardTitle> Records </CCardTitle>
-                <CRow>
-                  <CCol
-                    :sm="6"
-                    v-for="record in unitDataSet.structure.logicalRecords"
-                    :key="record.id"
-                  >
-                    <CCard class="mb-3 mt-3">
-                      <CCardBody>
-                        <CCardTitle>
-                          <span> {{ record.name }}</span>
-                        </CCardTitle>
-                        <div class="table-responsive">
-                          <CSmartTable
-                            v-if="record"
-                            :items="record.components"
-                            :activePage="1"
-                            header
-                            :columns="columns"
-                            columnFilter
-                            cleaner
-                            itemsPerPageSelect
-                            :itemsPerPage="5"
-                            columnSorter
-                            :sorterValue="{ column: 'localId', state: 'asc' }"
-                            pagination
-                          >
-                            <template #show_representation="{ item }">
-                              <td class="py-2">
-                                <CButton
-                                  color="primary"
-                                  variant="outline"
-                                  square
-                                  size="sm"
-                                  @click="showRepresentation(item)"
-                                >
-                                  Show
-                                </CButton>
-                              </td>
-                            </template>
-                          </CSmartTable>
-                        </div>
-                      </CCardBody>
-                    </CCard>
-                  </CCol>
-                </CRow>
-              </CCardBody>
-            </CCard>
-          </CCardText>
-          <CButton
-            color="primary"
-            size="sm"
-            @click.prevent="handleBack()"
-            :disabled="disabled"
-            >Back</CButton
-          >
-        </CCardBody>
-      </CCard>
-    </CCol>
+    <CRow>
+      <CCol class="col-12 mb-3">
+        <CCard>
+          <CCardHeader class="bg-white">
+            <CCardTitle> Dataset Infromation </CCardTitle>
+          </CCardHeader>
+          <CCardBody>
+            <CCardText>
+              <CRow>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong
+                        >{{
+                          $t("structural.dataset.exchange_channel")
+                        }}:</strong
+                      >
+                      {{ unitDataSet.exchangeChannel }}
+                    </span>
+                  </p>
+                </CCol>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong
+                        >{{
+                          $t("structural.dataset.exchange_direction")
+                        }}:</strong
+                      >
+                      {{ unitDataSet.exchangeDirection }}
+                    </span>
+                  </p>
+                </CCol>
+              </CRow>
+              <CRow>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong>{{ $t("structural.type") }}:</strong>
+                      {{ unitDataSet.type }}
+                    </span>
+                  </p>
+                </CCol>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong
+                        >{{ $t("structural.dataset.connection") }}:</strong
+                      >
+                      {{ unitDataSet.connection }}
+                    </span>
+                  </p>
+                </CCol>
+              </CRow>
+              <CRow>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong
+                        >{{
+                          $t("structural.dataset.filter_expression")
+                        }}:</strong
+                      >
+                      {{ unitDataSet.filterExpression }}
+                    </span>
+                  </p>
+                </CCol>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong
+                        >{{ $t("structural.dataset.reporting_begin") }}:</strong
+                      >
+                      {{ unitDataSet.reportingBegin }}
+                    </span>
+                  </p>
+                </CCol>
+              </CRow>
+              <CRow>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong
+                        >{{ $t("structural.dataset.reporting_end") }}:</strong
+                      >
+                      {{ unitDataSet.reportingEnd }}
+                    </span>
+                  </p>
+                </CCol>
+              </CRow>
+            </CCardText>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
+    <CRow>
+      <CCol class="col-12">
+        <CCard>
+          <CCardHeader class="bg-white">
+            <CCardTitle> Dataset Structure </CCardTitle>
+          </CCardHeader>
+          <CCardBody>
+            <CCardText>
+              <CRow>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong>{{ $t("structural.name") }}:</strong>
+                      {{ unitDataSet.structure.name }}
+                    </span>
+                  </p>
+                </CCol>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong>{{ $t("structural.description") }}:</strong>
+                      {{ unitDataSet.structure.description }}
+                    </span>
+                  </p>
+                </CCol>
+              </CRow>
+              <CRow>
+                <CCol class="col-md-6 col-sm-12">
+                  <p class="lead">
+                    <span>
+                      <strong>{{ $t("structural.dataset.group") }}:</strong>
+                      {{ unitDataSet.structure.group }}
+                    </span>
+                  </p>
+                </CCol>
+              </CRow>
+              <CCard>
+                <CCardBody>
+                  <CCardTitle> Records </CCardTitle>
+                  <CRow>
+                    <CCol
+                      :sm="6"
+                      v-for="record in unitDataSet.structure.logicalRecords"
+                      :key="record.id"
+                    >
+                      <CCard class="mb-3 mt-3">
+                        <CCardBody>
+                          <CCardTitle>
+                            <span> {{ record.name }}</span>
+                          </CCardTitle>
+                          <div class="table-responsive">
+                            <CSmartTable
+                              v-if="record"
+                              :items="record.components"
+                              :activePage="1"
+                              header
+                              :columns="columns"
+                              columnFilter
+                              cleaner
+                              itemsPerPageSelect
+                              :itemsPerPage="5"
+                              columnSorter
+                              :sorterValue="{ column: 'localId', state: 'asc' }"
+                              pagination
+                            >
+                              <template #show_representation="{ item }">
+                                <td class="py-2">
+                                  <CButton
+                                    color="primary"
+                                    variant="outline"
+                                    square
+                                    size="sm"
+                                    @click="showRepresentation(item)"
+                                  >
+                                    Show
+                                  </CButton>
+                                </td>
+                              </template>
+                            </CSmartTable>
+                          </div>
+                        </CCardBody>
+                      </CCard>
+                    </CCol>
+                  </CRow>
+                </CCardBody>
+              </CCard>
+            </CCardText>
+            <CButton
+              color="primary"
+              size="sm"
+              @click.prevent="handleBack()"
+              :disabled="disabled"
+              >Back</CButton
+            >
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
   </CRow>
 </template>
 
