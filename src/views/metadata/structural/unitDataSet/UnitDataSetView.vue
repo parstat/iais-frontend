@@ -182,7 +182,11 @@
                                 <p class="lead">
                                   <span>
                                     <strong
-                                      >{{ $t("structural.dataset.record.unit_type") }}:</strong
+                                      >{{
+                                        $t(
+                                          "structural.dataset.record.unit_type"
+                                        )
+                                      }}:</strong
                                     >
                                     {{ record.unitType }}
                                   </span>

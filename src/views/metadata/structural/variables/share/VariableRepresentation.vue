@@ -52,7 +52,9 @@
               id="description"
               type="text"
               class="form-control"
-              :placeholder="$t('structural.variable_representation_description')"
+              :placeholder="
+                $t('structural.variable_representation_description')
+              "
               v-model.trim="description"
             />
           </CForm>
