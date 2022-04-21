@@ -1,4 +1,4 @@
-import router from "@/router";
+// import router from "@/router";
 import { variableRepresentationService } from "@/services";
 
 const state = {
@@ -63,42 +63,32 @@ const actions = {
       }
     );
   },
-  save({ dispatch }, formData) {
-    variableRepresentationService.save(formData).then(
-      (data) => {
-        console.log(data);
-        dispatch("message/success", "Variable Representation saved!", {
-          root: true,
-        });
-        return data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  addRepresentation({ dispatch }, formData) {
+    variableRepresentationService.addRepresentation(formData).then(() => {
+      dispatch("message/success", "Representation added", {
+        root: true,
+      });
+    });
   },
-  delete({ dispatch }, id) {
-    variableRepresentationService.delete(id).then(
-      (data) => {
-        console.log(data);
-        dispatch("message/success", "Variable Representation deleted!", {
-          root: true,
-        });
-        router.push("/metadata/structural/variable/representation");
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  },
-  update({ dispatch }, formData) {
-    variableRepresentationService.update(formData).then(
-      (data) => {
-        console.log(data);
+  updateRepresentation({ dispatch }, formData) {
+    console.log(formData);
+    variableRepresentationService.updateRepresentation(formData).then(
+      () => {
         dispatch("message/success", "Variable Representation updated!", {
           root: true,
         });
-        router.push("/metadata/structural/variable/representation");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  deleteRepresentation({ dispatch }, id) {
+    variableRepresentationService.delete(id).then(
+      () => {
+        dispatch("message/success", "Variable Representation deleted!", {
+          root: true,
+        });
       },
       (error) => {
         console.log(error);

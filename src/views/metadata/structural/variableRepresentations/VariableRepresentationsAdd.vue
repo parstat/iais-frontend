@@ -61,8 +61,6 @@
                   <app-variable-value-domain
                     :isRequired="true"
                     :domain="substantiveValueDomain"
-                    @previous="previous"
-                    @next="handleSubstantiveValueDomain"
                   />
                 </CTabPane>
                 <CTabPane
@@ -77,8 +75,6 @@
                     :isRequired="false"
                     :isLast="true"
                     :domain="sentinelValueDomain"
-                    @previous="previous"
-                    @next="handleSentinelValueDomain"
                   />
                 </CTabPane>
               </CTabContent>
@@ -121,21 +117,6 @@ export default {
       this.formData.description = basic.description;
       this.formData.variableId = basic.variableId;
       this.activeTab++;
-    },
-    handleSubstantiveValueDomain(substantiveValueDomain) {
-      this.substantiveValueDomain = substantiveValueDomain;
-      this.activeTab++;
-    },
-    handleSentinelValueDomain(sentinelValueDomain) {
-      if (this.isValidFormData()) {
-        this.sentinelValueDomain = sentinelValueDomain;
-        this.formData.substantiveValueDomainId = this.substantiveValueDomain.id;
-        this.formData.sentinelValueDomainId = sentinelValueDomain.id;
-        this.$store.dispatch("variableRepresentation/save", this.formData);
-      }
-    },
-    previous() {
-      this.activeTab--;
     },
     isValidFormData() {
       return (

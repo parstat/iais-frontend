@@ -7,7 +7,6 @@ export const variableService = {
   findById,
   save,
   update,
-  addRepresentation,
   delete: _delete,
 };
 
@@ -95,32 +94,6 @@ function update(formData) {
       );
   });
 }
-function addRepresentation(formData) {
-  return new Promise((resolve, reject) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    axiosIais
-      .post(
-        "/structural/ClosedRepresentationVariable",
-        JSON.stringify(formData),
-        config
-      )
-      .then(
-        (response) => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
-  });
-}
-
 function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("/structural/ClosedVariables/" + id).then(

@@ -146,48 +146,86 @@
           :disabled="disabled"
           ><span>{{ $t("referential.add") }}</span>
         </CButton>
-
-        <CSmartTable
-          v-if="variable?.representations?.length"
-          :activePage="1"
-          :items="variable?.representations"
-          :columns="variableColumns"
-          columnFilter
-          cleaner
-          itemsPerPageSelect
-          :itemsPerPage="5"
-          columnSorter
-          pagination
-          ><template #actions="{ item }">
-            <span v-if="isAuthenticated" class="pl-2">
-              <!-- <router-link
-                tag="a"
-                title="Edit"
-                :to="{
-                  name: 'VariableRepresentationEdit',
-                  params: { id: variable.id, representationId: item.id },
-                }"
-              > -->
-              <CIcon name="cil-pencil" />
-              <!-- </router-link> -->
-            </span>
-            <span v-if="isAuthenticated" class="pl-2">
-              <!-- <router-link
-                tag="a"
-                title="Delete"
-                :to="{
-                  name: 'VariableRepresentationDelete',
-                  params: { id: variable.id, representationId: item.id },
-                }"
-              > -->
-              <CIcon name="cil-trash" />
-              <span>{{ item.name }}</span>
-              <!--</router-link> -->
-            </span>
-          </template>
-        </CSmartTable>
+        <hr />
+        <CRow v-if="variable?.representations?.length">
+          <CCol
+            class="col-4"
+            v-for="representation in variable.representations"
+            :key="representation.id"
+          >
+            <CCard class="mb-3">
+              <CCardBody>
+                <CRow>
+                  <CCol class="col-9">
+                    <CCardTitle>
+                      <span>{{ representation.name }}</span>
+                    </CCardTitle>
+                  </CCol>
+                  <CCol class="col-3">
+                    <CNav class="justify-content-end">
+                      <CNavItem>
+                        <span
+                          v-on:click="
+                            editVariableRepresentation(representation)
+                          "
+                        >
+                          <CIcon name="cil-pencil" />
+                        </span>
+                      </CNavItem>
+                      <CNavItem>
+                        <span
+                          v-on:click="
+                            deleteVariableRepresentation(representation)
+                          "
+                        >
+                          <CIcon name="cil-trash" />
+                        </span>
+                      </CNavItem>
+                    </CNav>
+                  </CCol>
+                </CRow>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+        <CCard v-else>
+          <CCardText>
+            <span>There are no items yet in the variable.</span>
+          </CCardText>
+        </CCard>
       </CCardText>
     </CCardBody>
+    <CModal
+      backdrop="static"
+      :visible="showDeleteDialog"
+      @close="
+        () => {
+          showDeleteDialog = false;
+        }
+      "
+    >
+      <CModalHeader>
+        <CModalTitle>Delete representation</CModalTitle>
+      </CModalHeader>
+      <CModalBody
+        >This action will remove the representation from the variable. This
+        action cannot be undone. Are you sure you want to doelete this
+        representation?</CModalBody
+      >
+      <CModalFooter>
+        <CButton
+          color="secondary"
+          @click="
+            () => {
+              showDeleteDialog = false;
+            }
+          "
+        >
+          Close
+        </CButton>
+        <CButton color="danger" @click="handleDelete">Delete</CButton>
+      </CModalFooter>
+    </CModal>
   </CCard>
 </template>
 
@@ -219,23 +257,8 @@ export default {
       sentinelValueDomainId: null,
       substantiveValueDomainId: null,
       isEdit: false,
-      variableColumns: [
-        {
-          key: "localId",
-          label: this.$i18n.t("structural.local_ID"),
-        },
-        {
-          key: "name",
-          label: this.$i18n.t("structural.name"),
-        },
-        {
-          key: "actions",
-          label: this.$i18n.t("structural.actions"),
-          _style: { width: "1%" },
-          sorter: false,
-          filter: false,
-        },
-      ],
+      representationId: "",
+      showDeleteDialog: false,
     };
   },
   validations: {
@@ -278,7 +301,32 @@ export default {
         this.substantiveValueDomainId = selectedValueDomain.id;
       }
     },
+    editVariableRepresentation(representation) {
+      this.isEdit = true;
+      this.name = representation.name;
+      this.description = representation.description;
+      this.localId = representation.localId;
+      this.representationId = representation.id;
+      // this.substantiveValueDomainId = representation.substantiveValueDomainId;
+      // this.sentinelValueDomainId = representation.sentinelValueDomainId;
+    },
+    deleteVariableRepresentation(representation) {
+      this.representationId = representation.id;
+      this.showDeleteDialog = true;
+    },
+    handleDelete() {
+      this.$store
+        .dispatch(
+          "variableRepresentation/deleteRepresentation",
+          this.representationId
+        )
+        .then(() => {
+          this.$store.dispatch("variable/findById", this.$route.params.id);
+          this.disabled = false;
+        });
+    },
     handleSave() {
+      this.disabled = true;
       this.v$.$touch(); //validate form data
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
@@ -286,13 +334,28 @@ export default {
           variableId: this.variable.id,
           name: this.name,
           description: this.description,
-          definition: this.definition ?? "",
           localId: this.localId.toUpperCase(),
           sentinelValueDomainId: this.sentinelValueDomainId,
           substantiveValueDomainId: this.substantiveValueDomainId,
         };
         console.log(formData);
-        this.$store.dispatch("variable/addRepresentation", formData);
+        if (this.isEdit) {
+          formData.id = this.representationId;
+          this.$store
+            .dispatch("variableRepresentation/updateRepresentation", formData)
+            .then(() => {
+              this.$store.dispatch("variable/findById", this.$route.params.id);
+              this.disabled = false;
+            });
+        } else {
+          this.$store
+            .dispatch("variableRepresentation/addRepresentation", formData)
+            .then(() => {
+              this.$store.dispatch("variable/findById", this.$route.params.id);
+              this.disabled = false;
+            });
+        }
+
         this.resetRepresentationFields();
       }
     },
