@@ -389,7 +389,10 @@
             "filter_expression": "Filter Expression",
             "group": "Group",
             "reporting_begin": "Reporting Begin",
-            "reporting_end": "Reporting End"
+            "reporting_end": "Reporting End",
+            "record": {
+                "parent": "Parent Record"
+            }
         }
     }
 }

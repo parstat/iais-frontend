@@ -164,36 +164,65 @@
                           <CCardTitle>
                             <span> {{ record.name }}</span>
                           </CCardTitle>
-                          <div class="table-responsive">
-                            <CSmartTable
-                              v-if="record"
-                              :items="record.components"
-                              :activePage="1"
-                              header
-                              :columns="columns"
-                              columnFilter
-                              cleaner
-                              itemsPerPageSelect
-                              :itemsPerPage="5"
-                              columnSorter
-                              :sorterValue="{ column: 'localId', state: 'asc' }"
-                              pagination
-                            >
-                              <template #show_representation="{ item }">
-                                <td class="py-2">
-                                  <CButton
-                                    color="primary"
-                                    variant="outline"
-                                    square
-                                    size="sm"
-                                    @click="showRepresentation(item)"
-                                  >
-                                    Show
-                                  </CButton>
-                                </td>
-                              </template>
-                            </CSmartTable>
-                          </div>
+                          <CCardText>
+                            <CRow>
+                              <CCol class="col-md-6 col-sm-12">
+                                <p class="lead">
+                                  <span>
+                                    <strong
+                                      >{{
+                                        $t("structural.dataset.record.parent")
+                                      }}:</strong
+                                    >
+                                    {{ record.parentRecord }}
+                                  </span>
+                                </p>
+                              </CCol>
+                              <CCol class="col-md-6 col-sm-12">
+                                <p class="lead">
+                                  <span>
+                                    <strong
+                                      >{{ $t("structural.dataset.record.unit_type") }}:</strong
+                                    >
+                                    {{ record.unitType }}
+                                  </span>
+                                </p>
+                              </CCol>
+                            </CRow>
+                            <div class="table-responsive">
+                              <CSmartTable
+                                v-if="record"
+                                :items="record.components"
+                                :activePage="1"
+                                header
+                                :columns="columns"
+                                columnFilter
+                                cleaner
+                                itemsPerPageSelect
+                                :itemsPerPage="5"
+                                columnSorter
+                                :sorterValue="{
+                                  column: 'localId',
+                                  state: 'asc',
+                                }"
+                                pagination
+                              >
+                                <template #show_representation="{ item }">
+                                  <td class="py-2">
+                                    <CButton
+                                      color="primary"
+                                      variant="outline"
+                                      square
+                                      size="sm"
+                                      @click="showRepresentation(item)"
+                                    >
+                                      Show
+                                    </CButton>
+                                  </td>
+                                </template>
+                              </CSmartTable>
+                            </div>
+                          </CCardText>
                         </CCardBody>
                       </CCard>
                     </CCol>
