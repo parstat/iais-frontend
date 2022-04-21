@@ -105,14 +105,12 @@ const actions = {
     );
   },
   addRepresentation({ dispatch }, formData) {
-    variableService.addRepresentation(formData).then(
-      (data) => {
-        dispatch("message/success", "Representation added", {
-          root: true,
-        });
-        dispatch("findById", data);
-      }
-    );
+    variableService.addRepresentation(formData).then((data) => {
+      dispatch("message/success", "Representation added", {
+        root: true,
+      });
+      dispatch("findById", data);
+    });
   },
 };
 
