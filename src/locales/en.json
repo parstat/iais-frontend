@@ -406,7 +406,8 @@
             "reporting_end": "Reporting End",
             "record": {
                 "parent": "Parent Record",
-                "unit_type": "Unit Type"
+                "unit_type": "Unit Type",
+                "table_name": "Table Name"
             }
         }
     }
