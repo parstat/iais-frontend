@@ -279,10 +279,13 @@
         "create_variable": "Creați o variabilă",
         "edit_variable": "Editați o variabilă",
         "represented_variable": "Variabila reprezentată",
-        "variable": "Variabilă",
-        "variable_definition": "Definiția variabilei",
-        "variable_name": "Numele variabilei",
-        "variable_description": "Descrierea variabilei",
+        "variable": {
+            "text": "Variabilă",
+            "name": "Variabilă",
+            "edit": "Variabilă Edit",
+            "description": "Descrierea variabilei",
+            "definition": "Definiția variabilei"
+         },
         "variables_title": "Variabile",
         "variables_text": "Utilizarea unui Concept ca caracteristică a unei Populații care urmează să fie măsurată. Variabila combină semnificația unui Concept cu un tip de unitate, pentru a defini caracteristica care urmează să fie măsurată.",
         "variables_link": "Accesați secțiunea de variabile",

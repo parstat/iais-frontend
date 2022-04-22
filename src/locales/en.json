@@ -280,12 +280,12 @@
         "edit_variable": "Edit a variable",
         "represented_variable": "Represented variable",
         "variable": {
-           "name": "Variable",
-           "edit": "Variable Edit"
+           "text": "Variable",
+           "name": "Variable Name",
+           "edit": "Variable Edit",
+           "definition": "Variable definition",
+           "description": "Variable description"
         },
-        "variable_definition": "Variable definition",
-        "variable_name": "Variable name",
-        "variable_description": "Variable description",
         "variables_title": "Variables",
         "variables_text": "The use of a Concept as a characteristic of a Population intended to be measured. The Variable combines the meaning of a Concept with a Unit type, to define the characteristic that is to be measured.",
         "variables_link": "Go to variables section",
