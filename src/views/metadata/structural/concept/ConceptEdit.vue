@@ -99,14 +99,14 @@
             color="primary"
             size="sm"
             style="margin-right: 0.3rem"
-            @click.prevent="handleSave()"
+            @click="handleSave()"
             :disabled="disabled"
             ><span>{{ $t("structural.update") }}</span>
           </CButton>
           <CButton
             color="danger"
             size="sm"
-            @click.prevent="handleReset()"
+            @click="handleReset()"
             :disabled="disabled"
             ><span>{{ $t("structural.reset") }}</span>
           </CButton>

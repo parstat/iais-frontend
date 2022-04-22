@@ -63,27 +63,30 @@ const actions = {
       }
     );
   },
-  addRepresentation({ dispatch }, formData) {
-    variableRepresentationService.addRepresentation(formData).then(() => {
+  save({ dispatch }, formData) {
+    variableRepresentationService.save(formData).then((data) => {
       dispatch("message/success", "Representation added", {
         root: true,
       });
+      return data;
     });
   },
-  updateRepresentation({ dispatch }, formData) {
+  update({ dispatch }, formData) {
     console.log(formData);
-    variableRepresentationService.updateRepresentation(formData).then(
-      () => {
+    variableRepresentationService.update(formData).then(
+      (data) => {
         dispatch("message/success", "Variable Representation updated!", {
           root: true,
         });
+        return data;
       },
       (error) => {
         console.log(error);
       }
     );
   },
-  deleteRepresentation({ dispatch }, id) {
+
+  delete({ dispatch }, id) {
     variableRepresentationService.delete(id).then(
       () => {
         dispatch("message/success", "Variable Representation deleted!", {

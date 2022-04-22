@@ -73,7 +73,7 @@
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
-        @click.prevent="next"
+        @click="next"
         :disabled="disabled"
         ><span>{{ $t("referential.next") }}</span>
       </CButton>

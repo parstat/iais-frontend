@@ -47,7 +47,7 @@
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
-          @click.prevent="addMapping"
+          @click="addMapping"
           :disabled="disabled"
           ><span>Add mapping</span>
         </CButton>
@@ -103,7 +103,7 @@
         </CButton>
         <CButton
           color="primary"
-          @click.prevent="uploadItems"
+          @click="uploadItems"
           :disabled="disabled"
           ><span>{{ $t("structural.upload_items") }}</span>
         </CButton>

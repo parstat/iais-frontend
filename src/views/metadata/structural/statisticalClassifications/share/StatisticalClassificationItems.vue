@@ -45,7 +45,7 @@
             <CButton
               color="primary"
               class="mb-3"
-              @click.prevent="getItemsRecursivly"
+              @click="getItemsRecursivly"
               :disabled="parseDisabled"
               ><span>{{ $t("structural.parse_CSV") }}</span>
             </CButton>
@@ -60,7 +60,7 @@
             </CButton>
             <CButton
               color="primary"
-              @click.prevent="uploadItems"
+              @click="uploadItems"
               :disabled="disabled"
               ><span>{{ $t("structural.upload_items") }}</span>
             </CButton>

@@ -67,20 +67,21 @@ function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
     };
 
     const requestBody = {
+      id: formData.id,
       name: formData.name,
       description: formData.description,
       definition: formData.definition,
     };
 
     axiosIais
-      .patch(
-        "/structural/ClosedVariables/" + formData.id,
-        new URLSearchParams(requestBody).toString(),
+      .put(
+        "/structural/ClosedVariables/",
+        JSON.stringify(requestBody),
         config
       )
       .then(

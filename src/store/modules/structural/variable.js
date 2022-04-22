@@ -97,7 +97,6 @@ const actions = {
         dispatch("message/success", "Variable updated!", {
           root: true,
         });
-        router.push("/metadata/structural/variables");
       },
       (error) => {
         console.log(error);

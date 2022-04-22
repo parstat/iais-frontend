@@ -96,7 +96,7 @@
                           $t("structural.dataset.reporting_period")
                         }}:</strong
                       >
-                      <date-picker
+                      <Datepicker
                         v-model="rangeDate"
                         range
                         autoApply
@@ -243,7 +243,7 @@
             <CButton
               color="primary"
               size="sm"
-              @click.prevent="handleBack()"
+              @click="handleBack()"
               :disabled="disabled"
               >Back</CButton
             >

@@ -152,7 +152,7 @@
           color="primary"
           size="sm"
           style="margin-right: 0.3rem"
-          @click.prevent="handleSubmit()"
+          @click="handleSubmit()"
           :disabled="disabled"
           ><span>{{ $t("referential.next") }}</span>
         </CButton>

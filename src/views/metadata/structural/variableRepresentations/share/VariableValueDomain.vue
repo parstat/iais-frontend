@@ -49,7 +49,7 @@
       <CButton
         size="sm"
         style="margin-right: 0.3rem"
-        @click.prevent="previous"
+        @click="previous"
         :disabled="disabled"
         ><span>Previous</span>
       </CButton>
@@ -57,7 +57,7 @@
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
-        @click.prevent="next"
+        @click="next"
         :disabled="disabled"
         ><span>{{
           isLast ? $t("referential.finish") : $t("referential.next")

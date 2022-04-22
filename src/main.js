@@ -33,7 +33,8 @@ app.provide("icons", icons);
 app.provide("iconsMaterial", materialIcons);
 app.component("v-select", vSelect);
 app.component("m-select", Multiselect);
-app.component("date-picker", Datepicker);
+// eslint-disable-next-line vue/multi-word-component-names
+app.component("Datepicker", Datepicker);
 
 app.config.globalProperties.$filters = {
   truncateString(value) {

@@ -31,7 +31,7 @@
       </div>
     </CCardBody>
     <CCardFooter class="bg-white">
-      <CButton color="primary" size="sm" @click.prevent="$emit('back')">
+      <CButton color="primary" size="sm" @click="$emit('back')">
         <span>{{ $t("referential.back") }}</span>
       </CButton>
     </CCardFooter>

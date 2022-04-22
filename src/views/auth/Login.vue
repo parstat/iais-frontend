@@ -50,7 +50,7 @@
                     <CButton
                       color="primary"
                       class="btn-block"
-                      @click.prevent="handleSubmit"
+                      @click="handleSubmit"
                       ><span>{{ $t("user.signin") }}</span>
                     </CButton>
                   </CCol>

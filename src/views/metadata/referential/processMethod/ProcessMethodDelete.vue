@@ -35,7 +35,7 @@
           <CButton
             color="primary"
             size="sm"
-            @click.prevent="handleDelete()"
+            @click="handleDelete()"
             :disabled="disabled"
             ><span>{{ $t("referential.delete") }}</span>
           </CButton>

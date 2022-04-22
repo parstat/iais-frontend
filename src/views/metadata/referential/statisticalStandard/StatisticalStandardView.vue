@@ -44,7 +44,7 @@
           <CButton
             color="primary"
             size="sm"
-            @click.prevent="handleBack()"
+            @click="handleBack()"
             :disabled="disabled"
             ><span>{{ $t("referential.back") }}</span>
           </CButton>

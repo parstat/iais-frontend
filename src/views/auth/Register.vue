@@ -119,7 +119,7 @@
                     {{ $t("user.validations.passwords_no_match") }}
                   </span>
                 </div>
-                <CButton color="success" block @click.prevent="handleSubmit()">
+                <CButton color="success" block @click="handleSubmit()">
                   <span>{{ $t("user.create_account") }}</span>
                 </CButton>
               </CForm>

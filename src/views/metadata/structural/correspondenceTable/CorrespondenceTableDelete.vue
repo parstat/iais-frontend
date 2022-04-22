@@ -47,7 +47,7 @@
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
-        @click.prevent="deleteCorrespondence"
+        @click="deleteCorrespondence"
         :disabled="disabled"
         ><span>{{ $t("referential.delete") }}</span>
       </CButton>

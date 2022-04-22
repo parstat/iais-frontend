@@ -30,7 +30,7 @@
                         activeTab = 1;
                       }
                     "
-                    ><span>{{ $t("referential.representations") }}</span>
+                    ><span>{{ $t("structural.representations") }}</span>
                   </CNavLink>
                 </CNavItem>
               </CNav>
@@ -94,6 +94,7 @@ export default {
     handleBasic(basic) {
       this.disabled = true;
       const formData = {
+        id: this.variable.id,
         localId: basic.localId,
         name: basic.name,
         description: basic.description,

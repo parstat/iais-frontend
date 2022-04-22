@@ -4,9 +4,9 @@ import { axiosIais } from "@/http";
 export const variableRepresentationService = {
   findAll,
   findById,
-  addRepresentation,
-  deleteRepresentation,
-  updateRepresentation,
+  save,
+  delete: _delete,
+  update,
   //delete: _delete
 };
 
@@ -43,7 +43,7 @@ function findById(id) {
   });
 }
 
-function addRepresentation(formData) {
+function save(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
@@ -69,7 +69,7 @@ function addRepresentation(formData) {
   });
 }
 
-function updateRepresentation(formData) {
+function update(formData) {
   return new Promise((resolve, reject) => {
     const config = {
       headers: {
@@ -95,7 +95,7 @@ function updateRepresentation(formData) {
   });
 }
 
-function deleteRepresentation(id) {
+function _delete(id) {
   return new Promise((resolve, reject) => {
     axiosIais.delete("/structural/ClosedRepresentationVariable/" + id).then(
       (response) => {

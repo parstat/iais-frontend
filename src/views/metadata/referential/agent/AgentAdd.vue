@@ -91,14 +91,14 @@
             color="primary"
             size="sm"
             style="margin-right: 0.3rem"
-            @click.prevent="handleSubmit()"
+            @click="handleSubmit"
             :disabled="disabled"
             ><span>{{ $t("referential.save") }}</span>
           </CButton>
           <CButton
             color="danger"
             size="sm"
-            @click.prevent="handleReset()"
+            @click="handleReset()"
             :disabled="disabled"
             ><span>{{ $t("referential.reset") }}</span>
           </CButton>

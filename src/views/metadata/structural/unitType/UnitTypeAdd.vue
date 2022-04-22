@@ -75,14 +75,14 @@
             color="primary"
             size="sm"
             style="margin-right: 0.3rem"
-            @click.prevent="handleSave()"
+            @click="handleSave()"
             :disabled="disabled"
             >Save</CButton
           >
           <CButton
             color="danger"
             size="sm"
-            @click.prevent="handleReset()"
+            @click="handleReset()"
             :disabled="disabled"
             >Reset</CButton
           >

@@ -144,7 +144,8 @@
           style="margin-right: 0.3rem"
           @click="handleSave"
           :disabled="disabled"
-          ><span>{{ $t("referential.add") }}</span>
+          ><span v-if="!isEdit">{{ $t("referential.add") }}</span>
+          <span v-else> {{ $t("referential.update") }}</span>
         </CButton>
         <hr />
         <CRow v-if="variable?.representations?.length">
@@ -304,8 +305,8 @@ export default {
       this.description = representation.description;
       this.localId = representation.localId;
       this.representationId = representation.id;
-      // this.substantiveValueDomainId = representation.substantiveValueDomainId;
-      // this.sentinelValueDomainId = representation.sentinelValueDomainId;
+      this.substantiveValueDomain = representation.substantiveValueDomain;
+      this.sentinelValueDomain = representation.sentinelValueDomain;
     },
     deleteVariableRepresentation(representation) {
       this.representationId = representation.id;
@@ -339,14 +340,14 @@ export default {
         if (this.isEdit) {
           formData.id = this.representationId;
           this.$store
-            .dispatch("variableRepresentation/updateRepresentation", formData)
+            .dispatch("variableRepresentation/update", formData)
             .then(() => {
               this.$store.dispatch("variable/findById", this.$route.params.id);
               this.disabled = false;
             });
         } else {
           this.$store
-            .dispatch("variableRepresentation/addRepresentation", formData)
+            .dispatch("variableRepresentation/save", formData)
             .then(() => {
               this.$store.dispatch("variable/findById", this.$route.params.id);
               this.disabled = false;

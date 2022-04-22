@@ -74,7 +74,7 @@
           <CButton
             color="primary"
             size="sm"
-            @click.prevent="handleDelete()"
+            @click="handleDelete()"
             :disabled="disabled"
             ><span>{{ $t("structural.delete") }}</span>
           </CButton>

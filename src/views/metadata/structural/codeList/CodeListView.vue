@@ -43,7 +43,7 @@
         <CButton
           color="primary"
           size="sm"
-          @click.prevent="handleBack()"
+          @click="handleBack()"
           :disabled="disabled"
           ><span>{{ $t("structural.back") }}</span>
         </CButton>
