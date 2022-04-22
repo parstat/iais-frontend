@@ -152,8 +152,7 @@
             class="col-4"
             v-for="representation in variable.representations"
             :key="representation.id"
-          >
-            <CCard class="mb-3">
+            ><CCard class="mb-3">
               <CCardBody>
                 <CRow>
                   <CCol class="col-9">
@@ -168,8 +167,7 @@
                           v-on:click="
                             editVariableRepresentation(representation)
                           "
-                        >
-                          <CIcon name="cil-pencil" />
+                          ><CIcon name="cil-pencil" />
                         </span>
                       </CNavItem>
                       <CNavItem>
@@ -177,8 +175,7 @@
                           v-on:click="
                             deleteVariableRepresentation(representation)
                           "
-                        >
-                          <CIcon name="cil-trash" />
+                          ><CIcon name="cil-trash" />
                         </span>
                       </CNavItem>
                     </CNav>
@@ -203,15 +200,14 @@
           showDeleteDialog = false;
         }
       "
-    >
-      <CModalHeader>
+      ><CModalHeader>
         <CModalTitle>Delete representation</CModalTitle>
       </CModalHeader>
       <CModalBody
         >This action will remove the representation from the variable. This
         action cannot be undone. Are you sure you want to doelete this
-        representation?</CModalBody
-      >
+        representation?
+      </CModalBody>
       <CModalFooter>
         <CButton
           color="secondary"
@@ -220,10 +216,11 @@
               showDeleteDialog = false;
             }
           "
-        >
-          Close
+          ><span>{{ $t("referential.close") }}</span>
         </CButton>
-        <CButton color="danger" @click="handleDelete">Delete</CButton>
+        <CButton color="danger" @click="handleDelete">
+          <span>{{ $t("referential.delete") }}</span>
+        </CButton>
       </CModalFooter>
     </CModal>
   </CCard>

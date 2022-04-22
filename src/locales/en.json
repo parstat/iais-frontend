@@ -286,7 +286,6 @@
         "variables_title": "Variables",
         "variables_text": "The use of a Concept as a characteristic of a Population intended to be measured. The Variable combines the meaning of a Concept with a Unit type, to define the characteristic that is to be measured.",
         "variables_link": "Go to variables section",
-        "variable_create": "Create Variable",
         "variable_representation_name": "Variable representation name",
         "variable_representation_description": "Variable representation description",
         "new_statistical_classification": "New statistical classification",
@@ -399,18 +398,18 @@
             "measure": "Select a measure"
         },
         "dataset": {
-            "exchange_channel": "Exchange Channel",
-            "exchange_direction": "Exchange Direction",
+            "exchange_channel": "Exchange channel",
+            "exchange_direction": "Exchange direction",
             "connection": "Connection",
-            "filter_expression": "Filter Expression",
+            "filter_expression": "Filter expression",
             "group": "Group",
             "reporting_begin": "Reporting Begin",
             "reporting_end": "Reporting End",
             "reporting_period": "Reporting Period",
             "record": {
-                "parent": "Parent Record",
-                "unit_type": "Unit Type",
-                "table_name": "Table Name"
+                "parent": "Parent record",
+                "unit_type": "Unit type",
+                "table_name": "Table name"
             }
         }
     }
