@@ -150,8 +150,6 @@
                   </p>
                 </CCol>
               </CRow>
-              <CCard>
-                <CCardBody>
                   <CCardTitle> Records </CCardTitle>
                   <CRow>
                     <CCol
@@ -171,6 +169,20 @@
                                   <span>
                                     <strong
                                       >{{
+                                        $t(
+                                          "structural.dataset.record.table_name"
+                                        )
+                                      }}:</strong
+                                    >
+                                    {{ record.localId }}
+                                  </span>
+                                </p>
+                              </CCol>
+                              <CCol class="col-md-6 col-sm-12">
+                                <p class="lead" v-if="record.parentRecord">
+                                  <span>
+                                    <strong
+                                      >{{
                                         $t("structural.dataset.record.parent")
                                       }}:</strong
                                     >
@@ -178,6 +190,8 @@
                                   </span>
                                 </p>
                               </CCol>
+                            </CRow>
+                            <CRow>
                               <CCol class="col-md-6 col-sm-12">
                                 <p class="lead">
                                   <span>
@@ -231,8 +245,6 @@
                       </CCard>
                     </CCol>
                   </CRow>
-                </CCardBody>
-              </CCard>
             </CCardText>
             <CButton
               color="primary"
@@ -258,7 +270,7 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: "Column",
         },
         {
           key: "name",
