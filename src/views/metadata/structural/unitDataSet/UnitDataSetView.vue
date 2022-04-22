@@ -150,101 +150,97 @@
                   </p>
                 </CCol>
               </CRow>
-                  <CCardTitle> Records </CCardTitle>
-                  <CRow>
-                    <CCol
-                      :sm="6"
-                      v-for="record in unitDataSet.structure.logicalRecords"
-                      :key="record.id"
-                    >
-                      <CCard class="mb-3 mt-3">
-                        <CCardBody>
-                          <CCardTitle>
-                            <span> {{ record.name }}</span>
-                          </CCardTitle>
-                          <CCardText>
-                            <CRow>
-                              <CCol class="col-md-6 col-sm-12">
-                                <p class="lead">
-                                  <span>
-                                    <strong
-                                      >{{
-                                        $t(
-                                          "structural.dataset.record.table_name"
-                                        )
-                                      }}:</strong
-                                    >
-                                    {{ record.localId }}
-                                  </span>
-                                </p>
-                              </CCol>
-                              <CCol class="col-md-6 col-sm-12">
-                                <p class="lead" v-if="record.parentRecord">
-                                  <span>
-                                    <strong
-                                      >{{
-                                        $t("structural.dataset.record.parent")
-                                      }}:</strong
-                                    >
-                                    {{ record.parentRecord }}
-                                  </span>
-                                </p>
-                              </CCol>
-                            </CRow>
-                            <CRow>
-                              <CCol class="col-md-6 col-sm-12">
-                                <p class="lead">
-                                  <span>
-                                    <strong
-                                      >{{
-                                        $t(
-                                          "structural.dataset.record.unit_type"
-                                        )
-                                      }}:</strong
-                                    >
-                                    {{ record.unitType }}
-                                  </span>
-                                </p>
-                              </CCol>
-                            </CRow>
-                            <div class="table-responsive">
-                              <CSmartTable
-                                v-if="record"
-                                :items="record.components"
-                                :activePage="1"
-                                header
-                                :columns="columns"
-                                columnFilter
-                                cleaner
-                                itemsPerPageSelect
-                                :itemsPerPage="5"
-                                columnSorter
-                                :sorterValue="{
-                                  column: 'localId',
-                                  state: 'asc',
-                                }"
-                                pagination
-                              >
-                                <template #show_representation="{ item }">
-                                  <td class="py-2">
-                                    <CButton
-                                      color="primary"
-                                      variant="outline"
-                                      square
-                                      size="sm"
-                                      @click="showRepresentation(item)"
-                                    >
-                                      Show
-                                    </CButton>
-                                  </td>
-                                </template>
-                              </CSmartTable>
-                            </div>
-                          </CCardText>
-                        </CCardBody>
-                      </CCard>
-                    </CCol>
-                  </CRow>
+              <CCardTitle> Records </CCardTitle>
+              <CRow>
+                <CCol
+                  :sm="6"
+                  v-for="record in unitDataSet.structure.logicalRecords"
+                  :key="record.id"
+                >
+                  <CCard class="mb-3 mt-3">
+                    <CCardBody>
+                      <CCardTitle>
+                        <span> {{ record.name }}</span>
+                      </CCardTitle>
+                      <CCardText>
+                        <CRow>
+                          <CCol class="col-md-6 col-sm-12">
+                            <p class="lead">
+                              <span>
+                                <strong
+                                  >{{
+                                    $t("structural.dataset.record.table_name")
+                                  }}:</strong
+                                >
+                                {{ record.localId }}
+                              </span>
+                            </p>
+                          </CCol>
+                          <CCol class="col-md-6 col-sm-12">
+                            <p class="lead" v-if="record.parentRecord">
+                              <span>
+                                <strong
+                                  >{{
+                                    $t("structural.dataset.record.parent")
+                                  }}:</strong
+                                >
+                                {{ record.parentRecord }}
+                              </span>
+                            </p>
+                          </CCol>
+                        </CRow>
+                        <CRow>
+                          <CCol class="col-md-6 col-sm-12">
+                            <p class="lead">
+                              <span>
+                                <strong
+                                  >{{
+                                    $t("structural.dataset.record.unit_type")
+                                  }}:</strong
+                                >
+                                {{ record.unitType }}
+                              </span>
+                            </p>
+                          </CCol>
+                        </CRow>
+                        <div class="table-responsive">
+                          <CSmartTable
+                            v-if="record"
+                            :items="record.components"
+                            :activePage="1"
+                            header
+                            :columns="columns"
+                            columnFilter
+                            cleaner
+                            itemsPerPageSelect
+                            :itemsPerPage="5"
+                            columnSorter
+                            :sorterValue="{
+                              column: 'localId',
+                              state: 'asc',
+                            }"
+                            pagination
+                          >
+                            <template #show_representation="{ item }">
+                              <td class="py-2">
+                                <CButton
+                                  color="primary"
+                                  variant="outline"
+                                  square
+                                  size="sm"
+                                  @click="showRepresentation(item)"
+                                >
+                                  Show
+                                </CButton>
+                              </td>
+                            </template>
+                          </CSmartTable>
+                        </div>
+                      </CCardText>
+                    </CCardBody>
+                  </CCard>
+                </CCol>
+              </CRow>
             </CCardText>
             <CButton
               color="primary"
