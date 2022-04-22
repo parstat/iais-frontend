@@ -86,25 +86,23 @@
                     </span>
                   </p>
                 </CCol>
-                <CCol class="col-md-6 col-sm-12">
-                  <p class="lead">
-                    <span>
-                      <strong
-                        >{{ $t("structural.dataset.reporting_begin") }}:</strong
-                      >
-                      {{ unitDataSet.reportingBegin }}
-                    </span>
-                  </p>
-                </CCol>
               </CRow>
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
                   <p class="lead">
                     <span>
                       <strong
-                        >{{ $t("structural.dataset.reporting_end") }}:</strong
+                        >{{
+                          $t("structural.dataset.reporting_period")
+                        }}:</strong
                       >
-                      {{ unitDataSet.reportingEnd }}
+                      <date-picker
+                        v-model="rangeDate"
+                        range
+                        autoApply
+                        readonly
+                        :format="format"
+                      />
                     </span>
                   </p>
                 </CCol>
@@ -262,6 +260,17 @@ import { mapGetters } from "vuex";
 export default {
   name: "UnitDataSetView",
   data() {
+    const format = (range) => {
+      return (
+        this.$i18n.t("structural.begin") +
+        ": " +
+        range[0].toLocaleDateString() +
+        " - " +
+        this.$i18n.t("structural.end") +
+        ": " +
+        range[1].toLocaleDateString()
+      );
+    };
     return {
       columns: [
         {
@@ -285,10 +294,20 @@ export default {
         },
       ],
       disabled: false,
+      rangeDate: "",
+      format,
     };
   },
   computed: {
     ...mapGetters("unitDataSet", ["unitDataSet"]),
+  },
+  watch: {
+    unitDataSet: function getRange() {
+      this.rangeDate = [
+        this.unitDataSet.reportingBegin,
+        this.unitDataSet.reportingEnd,
+      ];
+    },
   },
   methods: {
     handleBack() {

@@ -240,6 +240,8 @@
         }
     },
     "structural": {
+        "begin": "Begin",
+        "end": "End",
         "view": "View",
         "flat": "Flat",
         "hierarchical": "Hierarchical",
@@ -404,6 +406,7 @@
             "group": "Group",
             "reporting_begin": "Reporting Begin",
             "reporting_end": "Reporting End",
+            "reporting_period": "Reporting Period",
             "record": {
                 "parent": "Parent Record",
                 "unit_type": "Unit Type",
