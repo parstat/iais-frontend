@@ -29,73 +29,117 @@
             <CCardText>
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
-                  <p class="lead">
-                    <span>
-                      <strong
-                        >{{
-                          $t("structural.dataset.exchange_channel")
-                        }}:</strong
-                      >
-                      {{ unitDataSet.exchangeChannel }}
-                    </span>
-                  </p>
+                  <CRow>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        <span>
+                          <strong
+                            >{{
+                              $t("structural.dataset.exchange_channel")
+                            }}:</strong
+                          >
+                        </span>
+                      </p>
+                    </CCol>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        {{ unitDataSet.exchangeChannel }}
+                      </p>
+                    </CCol>
+                  </CRow>
                 </CCol>
                 <CCol class="col-md-6 col-sm-12">
-                  <p class="lead">
-                    <span>
-                      <strong
-                        >{{
-                          $t("structural.dataset.exchange_direction")
-                        }}:</strong
-                      >
-                      {{ unitDataSet.exchangeDirection }}
-                    </span>
-                  </p>
-                </CCol>
-              </CRow>
-              <CRow>
-                <CCol class="col-md-6 col-sm-12">
-                  <p class="lead">
-                    <span>
-                      <strong>{{ $t("structural.type") }}:</strong>
-                      {{ unitDataSet.type }}
-                    </span>
-                  </p>
-                </CCol>
-                <CCol class="col-md-6 col-sm-12">
-                  <p class="lead">
-                    <span>
-                      <strong
-                        >{{ $t("structural.dataset.connection") }}:</strong
-                      >
-                      {{ unitDataSet.connection }}
-                    </span>
-                  </p>
+                  <CRow>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        <span>
+                          <strong
+                            >{{
+                              $t("structural.dataset.exchange_direction")
+                            }}:</strong
+                          >
+                        </span>
+                      </p>
+                    </CCol>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        {{ unitDataSet.exchangeDirection }}
+                      </p>
+                    </CCol>
+                  </CRow>
                 </CCol>
               </CRow>
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
-                  <p class="lead">
-                    <span>
-                      <strong
-                        >{{
-                          $t("structural.dataset.filter_expression")
-                        }}:</strong
-                      >
-                      {{ unitDataSet.filterExpression }}
-                    </span>
-                  </p>
+                  <CRow>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        <span>
+                          <strong>{{ $t("structural.type") }}:</strong>
+                        </span>
+                      </p>
+                    </CCol>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        {{ unitDataSet.type }}
+                      </p>
+                    </CCol>
+                  </CRow>
+                </CCol>
+                <CCol class="col-md-6 col-sm-12">
+                  <CRow>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        <span>
+                          <strong
+                            >{{ $t("structural.dataset.connection") }}:</strong
+                          >
+                        </span>
+                      </p>
+                    </CCol>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">{{ unitDataSet.connection }}</p>
+                    </CCol>
+                  </CRow>
                 </CCol>
               </CRow>
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
-                  <p class="lead">
-                    <span>
-                      <strong
-                        >{{
-                          $t("structural.dataset.reporting_period")
-                        }}:</strong
-                      >
+                  <CRow>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        <span>
+                          <strong
+                            >{{
+                              $t("structural.dataset.filter_expression")
+                            }}:</strong
+                          >
+                        </span>
+                      </p>
+                    </CCol>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        {{ unitDataSet.filterExpression }}
+                      </p>
+                    </CCol>
+                  </CRow>
+                </CCol>
+              </CRow>
+              <CRow>
+                <CCol class="col-md-6">
+                  <CRow>
+                    <CCol class="col-md-6 col-sm-12">
+                      <p class="lead">
+                        <span>
+                          <strong
+                            >{{
+                              $t("structural.dataset.reporting_period")
+                            }}:</strong
+                          >
+                        </span>
+                      </p>
+                    </CCol>
+                    <CCol class="col-md-6 col-sm-6">
                       <Datepicker
                         v-model="rangeDate"
                         range
@@ -103,8 +147,8 @@
                         readonly
                         :format="format"
                       />
-                    </span>
-                  </p>
+                    </CCol>
+                  </CRow>
                 </CCol>
               </CRow>
             </CCardText>
