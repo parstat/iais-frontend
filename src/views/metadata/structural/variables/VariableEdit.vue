@@ -3,7 +3,7 @@
     <CCol class="col-12">
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          <span>{{ $t("referential.edit_variable") }}</span>
+          <span>{{ $t("structural.variable.edit") }}</span>
         </CCardHeader>
         <CCardBody>
           <CRow>

@@ -279,7 +279,10 @@
         "create_variable": "Create a variable",
         "edit_variable": "Edit a variable",
         "represented_variable": "Represented variable",
-        "variable": "Variable",
+        "variable": {
+           "name": "Variable",
+           "edit": "Variable Edit"
+        },
         "variable_definition": "Variable definition",
         "variable_name": "Variable name",
         "variable_description": "Variable description",

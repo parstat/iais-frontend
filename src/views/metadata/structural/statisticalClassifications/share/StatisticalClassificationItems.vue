@@ -58,10 +58,7 @@
             <CButton color="secondary" @click="closeModal">
               <span>{{ $t("structural.close") }}</span>
             </CButton>
-            <CButton
-              color="primary"
-              @click="uploadItems"
-              :disabled="disabled"
+            <CButton color="primary" @click="uploadItems" :disabled="disabled"
               ><span>{{ $t("structural.upload_items") }}</span>
             </CButton>
           </CModalFooter>

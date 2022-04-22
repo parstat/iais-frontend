@@ -79,11 +79,7 @@ function update(formData) {
     };
 
     axiosIais
-      .put(
-        "/structural/ClosedVariables/",
-        JSON.stringify(requestBody),
-        config
-      )
+      .put("/structural/ClosedVariables/", JSON.stringify(requestBody), config)
       .then(
         (response) => {
           //console.log(response.data);

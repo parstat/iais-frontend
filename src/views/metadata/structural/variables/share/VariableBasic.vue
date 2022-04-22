@@ -3,7 +3,7 @@
     <CCardBody>
       <CCardText>
         <CCardTitle>
-          <span>{{ $t("structural.variable") }}</span>
+          <span>{{ $t("structural.variable.name") }}</span>
         </CCardTitle>
         <CForm class="mb-3">
           <CFormLabel for="name">
