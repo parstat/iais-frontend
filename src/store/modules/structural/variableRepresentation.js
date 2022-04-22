@@ -64,16 +64,14 @@ const actions = {
     );
   },
   save({ dispatch }, formData) {
-    variableRepresentationService.save(formData).then((data) => {
+    return variableRepresentationService.save(formData).then(() => {
       dispatch("message/success", "Representation added", {
         root: true,
       });
-      return data;
     });
   },
   update({ dispatch }, formData) {
-    console.log(formData);
-    variableRepresentationService.update(formData).then(
+    return variableRepresentationService.update(formData).then(
       (data) => {
         dispatch("message/success", "Variable Representation updated!", {
           root: true,
@@ -87,7 +85,7 @@ const actions = {
   },
 
   delete({ dispatch }, id) {
-    variableRepresentationService.delete(id).then(
+    return variableRepresentationService.delete(id).then(
       () => {
         dispatch("message/success", "Variable Representation deleted!", {
           root: true,

@@ -217,7 +217,7 @@
               showDeleteDialog = false;
             }
           "
-          ><span>{{ $t("referential.close") }}</span>
+          ><span>{{ $t("structural.close") }}</span>
         </CButton>
         <CButton color="danger" @click="handleDelete">
           <span>{{ $t("referential.delete") }}</span>
@@ -314,13 +314,11 @@ export default {
     },
     handleDelete() {
       this.$store
-        .dispatch(
-          "variableRepresentation/deleteRepresentation",
-          this.representationId
-        )
+        .dispatch("variableRepresentation/delete", this.representationId)
         .then(() => {
           this.$store.dispatch("variable/findById", this.$route.params.id);
           this.disabled = false;
+          this.showDeleteDialog = false;
         });
     },
     handleSave() {
@@ -336,7 +334,6 @@ export default {
           sentinelValueDomainId: this.sentinelValueDomainId,
           substantiveValueDomainId: this.substantiveValueDomainId,
         };
-        console.log(formData);
         if (this.isEdit) {
           formData.id = this.representationId;
           this.$store
