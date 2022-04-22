@@ -404,14 +404,9 @@
             "reporting_begin": "Reporting begin",
             "reporting_end": "Reporting end",
             "record": {
-<<<<<<< HEAD
                 "parent": "Parent record",
-                "unit_type": "Unit type"
-=======
-                "parent": "Parent Record",
-                "unit_type": "Unit Type",
-                "table_name": "Table Name"
->>>>>>> caf6d7cebdbd268a28f03b600b99877a33125298
+                "unit_type": "Unit type",
+                "table_name": "Table name"
             }
         }
     }

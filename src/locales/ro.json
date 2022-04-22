@@ -403,14 +403,9 @@
             "reporting_begin": "Începe raportarea",
             "reporting_end": "Sfârșitul raportării",
             "record": {
-<<<<<<< HEAD
                 "parent": "Dosarul sursei",
-                "unit_type": "Tip de unitate"
-=======
-                "parent": "Parent Record",
-                "unit_type": "Unit Type",
-                "table_name": "Table Name"
->>>>>>> caf6d7cebdbd268a28f03b600b99877a33125298
+                "unit_type": "Tip de unitate",
+                "table_name": "Numele tabelului"
             }
         }
     }

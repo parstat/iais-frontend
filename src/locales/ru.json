@@ -403,14 +403,9 @@
             "reporting_begin": "Начало отчетности",
             "reporting_end": "Конец отчета",
             "record": {
-<<<<<<< HEAD
                 "parent": "Исходный курс",
-                "unit_type": "Тип единицы"
-=======
-                "parent": "Parent Record",
-                "unit_type": "Unit Type",
-                "table_name": "Table Name"
->>>>>>> caf6d7cebdbd268a28f03b600b99877a33125298
+                "unit_type": "Тип единицы",
+                "table_name": "Имя таблицы"
             }
         }
     }
