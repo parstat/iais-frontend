@@ -69,18 +69,14 @@
               <CCol class="col-4">
                 <CNav class="justify-content-end">
                   <CNavItem>
-                    <router-link
-                      tag="a"
-                      :to="{
-                        name: 'VariableRepresentationsAdd',
-                        params: { id: variable?.id ?? '11' },
-                      }"
-                      class="text-decoration-none text-primary"
-                      ><CIcon name="cil-plus" />
-                      <span class="icon-span">
-                        {{ $t("structural.sentinel_value") }}
-                      </span>
-                    </router-link>
+                    <a
+                      class="link-button"
+                      @click.prevent="openValueDomainDialog('sentinel')"
+                    >
+                      <CIcon name="cil-plus" />{{
+                        $t("structural.sentinel_value")
+                      }}
+                    </a>
                   </CNavItem>
                 </CNav>
               </CCol>
@@ -107,18 +103,14 @@
               <CCol class="col-4">
                 <CNav class="justify-content-end">
                   <CNavItem>
-                    <router-link
-                      tag="a"
-                      :to="{
-                        name: 'VariableRepresentationsAdd',
-                        params: { id: variable?.id ?? '11' },
-                      }"
-                      class="text-decoration-none text-primary"
-                      ><CIcon name="cil-plus" />
-                      <span class="icon-span">
-                        {{ $t("structural.substantive_value") }}
-                      </span>
-                    </router-link>
+                    <a
+                      class="link-button"
+                      @click.prevent="openValueDomainDialog('substantive')"
+                    >
+                      <CIcon name="cil-plus" />{{
+                        $t("structural.substantive_value")
+                      }}
+                    </a>
                   </CNavItem>
                 </CNav>
               </CCol>
@@ -224,6 +216,13 @@
         </CButton>
       </CModalFooter>
     </CModal>
+
+    <app-value-domain-form
+      :showDiealog="showValueDomainDialog"
+      :selectedValueDomainType="valueDomainType"
+      @success="handleSuccess"
+      @close="closeValueDomainDialog"
+    ></app-value-domain-form>
   </CCard>
 </template>
 
@@ -232,6 +231,8 @@ import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import { mapGetters } from "vuex";
 import _ from "lodash";
+
+import ValueDomainForm from "./ValueDomainForm.vue";
 
 export default {
   name: "VariableRepresentation",
@@ -242,6 +243,9 @@ export default {
       "sentinelValueDomains",
     ]),
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
+  },
+  components: {
+    "app-value-domain-form": ValueDomainForm,
   },
   data() {
     return {
@@ -257,6 +261,9 @@ export default {
       isEdit: false,
       representationId: "",
       showDeleteDialog: false,
+
+      showValueDomainDialog: false,
+      valueDomainType: "",
     };
   },
   validations: {
@@ -311,6 +318,23 @@ export default {
     deleteVariableRepresentation(representation) {
       this.representationId = representation.id;
       this.showDeleteDialog = true;
+    },
+    openValueDomainDialog(valueDomainType) {
+      this.valueDomainType = valueDomainType;
+      this.showValueDomainDialog = true;
+    },
+    closeValueDomainDialog() {
+      this.valueDomainType = null;
+      this.showValueDomainDialog = false;
+    },
+    handleSuccess(data) {
+      if (data.scope === "SENTINEL") {
+        this.sentinelValueDomain = data;
+        this.sentinelValueDomainId = data.id;
+      } else {
+        this.substantiveValueDomain = data;
+        this.substantiveValueDomainId = data.id;
+      }
     },
     handleDelete() {
       this.$store
@@ -373,5 +397,10 @@ export default {
 <style scoped>
 .capitalize {
   text-transform: uppercase;
+}
+.link-button {
+  text-decoration: none;
+  color: #0d6efd;
+  cursor: pointer;
 }
 </style>
