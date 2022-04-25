@@ -51,6 +51,23 @@
         />
       </CForm>
       <CForm class="mb-3">
+        <CFormLabel for="scope">
+          <span>Value domain scope*</span>
+        </CFormLabel>
+        <v-select
+          id="scope"
+          label="label"
+          :options="valueDomainScopes"
+          v-model="valueDomainScope"
+          :class="{ 'is-invalid': v$.valueDomainScope.$error }"
+          :placeholder="'Select the scope'"
+          :disabled="isEdit"
+        ></v-select>
+        <span class="text-danger" v-if="v$.valueDomainScope.$error">
+          Please select a scope for the value domain.
+        </span>
+      </CForm>
+      <CForm class="mb-3">
         <CFormLabel for="type">
           <span>Value domain type*</span>
         </CFormLabel>
@@ -69,26 +86,9 @@
       </CForm>
       <CForm class="mb-3">
         <CFormLabel for="scope">
-          <span>Value domain scope*</span>
-        </CFormLabel>
-        <v-select
-          id="scope"
-          label="label"
-          :options="valueDomainScopes"
-          v-model="valueDomainScope"
-          :class="{ 'is-invalid': v$.valueDomainScope.$error }"
-          :placeholder="'Select the scope'"
-          :disabled="isEdit"
-        ></v-select>
-        <span class="text-danger" v-if="v$.valueDomainScope.$error">
-          Please select a scope for the value domain.
-        </span>
-      </CForm>
-      <CForm class="mb-3">
-        <CFormLabel for="scope">
           <span
             >Value domain enumeration type
-            {{ valueDomainScope?.value === "ENUMERATED" ? "*" : "" }}</span
+            {{ valueDomainType?.value === "ENUMERATED" ? "*" : "" }}</span
           >
         </CFormLabel>
         <v-select
@@ -109,7 +109,7 @@
         <CFormLabel for="expression">
           <span
             >Expression
-            {{ valueDomainScope?.value === "DESCRIBED" ? "*" : "" }}
+            {{ valueDomainType?.value === "DESCRIBED" ? "*" : "" }}
           </span>
         </CFormLabel>
         <input
@@ -164,8 +164,8 @@
           <span>
             Node set
             {{
-              this.valueDomainScope?.value === "ENUMERATED" &&
-              this.valueDomainType?.value === "SUBSTANTIVE"
+              this.valueDomainType?.value === "ENUMERATED" &&
+              this.valueDomainScope?.value === "SUBSTANTIVE"
                 ? "*"
                 : ""
             }}
@@ -176,7 +176,8 @@
           label="name"
           :filterable="false"
           :options="
-            valueDomainEnumerationType?.value === 'CODE_LIST'
+            valueDomainEnumerationType?.value === 'CODE_LIST' ||
+            valueDomainScope?.value === 'SENTINEL'
               ? codeLists
               : statisticalClassifications
           "
@@ -184,11 +185,7 @@
           @input="setNodeSet"
           v-model="valueDomainNodeSet"
           :placeholder="'Select node set'"
-          :disabled="
-            isEdit ||
-            valueDomainScope?.value === 'DESCRIBED' ||
-            valueDomainType?.value === 'SENTINEL'
-          "
+          :disabled="isEdit || valueDomainType?.value === 'DESCRIBED'"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainNodeSet?.$error">
           Please select the node set.
@@ -211,7 +208,7 @@
           :options="statisticalClassification.levels"
           v-model="valueDomainLevel"
           :placeholder="'Select level'"
-          :disabled="isEdit || valueDomainScope?.value === 'DESCRIBED'"
+          :disabled="isEdit || valueDomainType?.value === 'DESCRIBED'"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainLevel?.$error">
           Please select the level.
@@ -238,11 +235,11 @@ import _ from "lodash";
 
 export default {
   name: "ValueDomainForm",
-  props: ["isEdit", "showDiealog", "selectedValueDomainType"],
+  props: ["isEdit", "showDiealog", "selectedValueDomainScope"],
   emits: ["success", "close"],
   watch: {
-    selectedValueDomainType(newSelectedValue) {
-      this.valueDomainType = {
+    selectedValueDomainScope(newSelectedValue) {
+      this.valueDomainScope = {
         label: newSelectedValue?.toUpperCase(),
         value: newSelectedValue?.toUpperCase(),
       };
@@ -264,11 +261,11 @@ export default {
       valueDomainNodeSet: "",
       valueDomainLevel: "",
 
-      valueDomainTypes: [
+      valueDomainScopes: [
         { label: "SENTINEL", value: "SENTINEL" },
         { label: "SUBSTANTIVE", value: "SUBSTANTIVE" },
       ],
-      valueDomainScopes: [
+      valueDomainTypes: [
         {
           label: "DESCRIBED",
           value: "DESCRIBED",
@@ -332,20 +329,21 @@ export default {
     validations.valueDomainDataType = { required };
     validations.valueDomainType = { required };
     validations.valueDomainMeasurementUnit = { required };
-    if (this.valueDomainScope?.value === "DESCRIBED") {
+    if (this.valueDomainType?.value === "DESCRIBED") {
       validations.valueDomainExpresion = { required };
     }
-    if (this.valueDomainScope?.value === "ENUMERATED") {
+    if (this.valueDomainType?.value === "ENUMERATED") {
       validations.valueDomainEnumerationType = { required };
     }
     if (
-      this.valueDomainScope?.value === "ENUMERATED" &&
-      this.valueDomainType?.value === "SUBSTANTIVE"
+      this.valueDomainType?.value === "ENUMERATED" &&
+      this.valueDomainScope?.value === "SUBSTANTIVE"
     ) {
       validations.valueDomainNodeSet = { required };
     }
     if (
-      this.valueDomainEnumerationType?.value === "STATISTICAL_CLASSIFICATION"
+      this.valueDomainEnumerationType?.value === "STATISTICAL_CLASSIFICATION" &&
+      this.valueDomainType?.value === "SUBSTANTIVE"
     ) {
       validations.valueDomainLevel = { required };
     }
@@ -367,7 +365,7 @@ export default {
         };
         if (
           vm.valueDomainEnumerationType?.value === "CODE_LIST" ||
-          vm.valueDomainType?.value === "SENTINEL"
+          vm.valueDomainScope?.value === "SENTINEL"
         ) {
           vm.$store.dispatch("codeList/findByName", formData).then(() => {
             loading(false);
@@ -408,6 +406,7 @@ export default {
     },
     handleSubmit() {
       this.v$.$validate();
+      console.log(this.v$);
       if (!this.v$.$invalid) {
         const formData = {
           localId: this.valueDomainLocalID,
@@ -415,12 +414,12 @@ export default {
           description: this.valueDomainDescription ?? "",
           type: this.valueDomainType.value,
           scope: this.valueDomainScope.value,
-          enumeration: this.valueDomainEnumerationType?.value ?? "",
+          // enumeration: this.valueDomainEnumerationType?.value ?? "",
           expression: this.valueDomainExpresion ?? "",
           dataType: this.valueDomainDataType.value,
-          measurementUnit: this.valueDomainMeasurementUnit.id,
-          nodeSet: this.valueDomainNodeSet?.id ?? "",
-          level: this.valueDomainLevel?.id ?? "",
+          measurementUnitId: this.valueDomainMeasurementUnit.id,
+          nodesetId: this.valueDomainNodeSet?.id ?? "",
+          levelId: this.valueDomainLevel?.id ?? "",
         };
         this.$store.dispatch("valueDomain/save", formData).then(() => {
           this.$emit("success", formData);

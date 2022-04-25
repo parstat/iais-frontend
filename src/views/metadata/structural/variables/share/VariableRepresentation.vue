@@ -219,7 +219,7 @@
 
     <app-value-domain-form
       :showDiealog="showValueDomainDialog"
-      :selectedValueDomainType="valueDomainType"
+      :selectedValueDomainScope="valueDomainType"
       @success="handleSuccess"
       @close="closeValueDomainDialog"
     ></app-value-domain-form>
