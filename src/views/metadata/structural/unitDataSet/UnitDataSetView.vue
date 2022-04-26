@@ -30,7 +30,7 @@
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
                   <CRow class="mb-3">
-                    <CCol class="col-sm-4">
+                    <CCol class="col-sm-12">
                       <CFormLabel
                         for="exchangeChannel"
                         class="col-form-label"
@@ -38,8 +38,6 @@
                           $t("structural.dataset.exchange_channel")
                         }}</CFormLabel
                       >
-                    </CCol>
-                    <CCol class="col-sm-8">
                       <CFormInput
                         type="text"
                         id="exchangeChannel"
@@ -51,7 +49,7 @@
                 </CCol>
                 <CCol class="col-md-6 col-sm-12">
                   <CRow class="mb-3">
-                    <CCol class="col-sm-4">
+                    <CCol class="col-sm-12">
                       <CFormLabel
                         for="exchangeDirection"
                         class="col-form-label"
@@ -59,8 +57,6 @@
                           $t("structural.dataset.exchange_direction")
                         }}</CFormLabel
                       >
-                    </CCol>
-                    <CCol class="col-sm-8">
                       <CFormInput
                         type="text"
                         id="exchangeDirection"
@@ -74,12 +70,10 @@
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
                   <CRow class="mb-3">
-                    <CCol class="col-sm-4">
+                    <CCol class="col-sm-12">
                       <CFormLabel for="type" class="col-form-label">{{
                         $t("structural.type")
                       }}</CFormLabel>
-                    </CCol>
-                    <CCol class="col-sm-8">
                       <CFormInput
                         type="text"
                         id="type"
@@ -91,12 +85,10 @@
                 </CCol>
                 <CCol class="col-md-6 col-sm-12">
                   <CRow class="mb-3">
-                    <CCol class="col-sm-4">
+                    <CCol class="col-sm-12">
                       <CFormLabel for="connection" class="col-form-label">{{
                         $t("structural.dataset.connection")
                       }}</CFormLabel>
-                    </CCol>
-                    <CCol class="col-sm-8">
                       <CFormInput
                         type="text"
                         id="connection"
@@ -110,7 +102,7 @@
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
                   <CRow class="mb-3">
-                    <CCol class="col-sm-4">
+                    <CCol class="col-sm-12">
                       <CFormLabel
                         for="filterExpression"
                         class="col-form-label"
@@ -118,8 +110,6 @@
                           $t("structural.dataset.filter_expression")
                         }}</CFormLabel
                       >
-                    </CCol>
-                    <CCol class="col-sm-8">
                       <CFormInput
                         type="text"
                         id="filterExpression"
@@ -133,7 +123,7 @@
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
                   <CRow class="mb-3">
-                    <CCol class="col-sm-4">
+                    <CCol class="col-sm-12">
                       <CFormLabel
                         for="reportingPeriod"
                         class="col-form-label"
@@ -141,8 +131,6 @@
                           $t("structural.dataset.reporting_period")
                         }}</CFormLabel
                       >
-                    </CCol>
-                    <CCol class="col-sm-8">
                       <Datepicker
                         v-model="rangeDate"
                         range
@@ -170,12 +158,10 @@
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
                   <CRow class="mb-3">
-                    <CCol class="col-sm-4">
+                    <CCol class="col-sm-12">
                       <CFormLabel for="structureName" class="col-form-label">
                         {{ $t("structural.name") }}
                       </CFormLabel>
-                    </CCol>
-                    <CCol class="col-sm-8">
                       <CFormInput
                         type="text"
                         id="structureName"
@@ -186,16 +172,14 @@
                   </CRow>
                 </CCol>
                 <CCol class="col-md-6 col-sm-12">
-                  <CRow class="mb-3">
-                    <CCol class="col-sm-4">
+                  <CRow class="mb-3" v-if="unitDataSet.structure.description">
+                    <CCol class="col-sm-12">
                       <CFormLabel
                         for="structureDescription"
                         class="col-form-label"
                       >
                         {{ $t("structural.description") }}
                       </CFormLabel>
-                    </CCol>
-                    <CCol class="col-sm-8">
                       <CFormInput
                         type="text"
                         id="structureDescription"
@@ -208,13 +192,11 @@
               </CRow>
               <CRow>
                 <CCol class="col-md-6 col-sm-12">
-                  <CRow class="mb-3">
-                    <CCol class="col-sm-4">
+                  <CRow class="mb-3" v-if="unitDataSet.structure.group">
+                    <CCol class="col-sm-12">
                       <CFormLabel for="structureGroup" class="col-form-label">
                         {{ $t("structural.dataset.group") }}
                       </CFormLabel>
-                    </CCol>
-                    <CCol class="col-sm-8">
                       <CFormInput
                         type="text"
                         id="structureGroup"
@@ -238,78 +220,46 @@
                         <span> {{ record.name }}</span>
                       </CCardTitle>
                       <CCardText>
-                        <CRow>
+                        <CRow class="mb-3">
                           <CCol class="col-sm-12">
-                            <CRow class="mb-3">
-                              <CCol class="col-sm-4">
-                                <CFormLabel
-                                  for="tableName"
-                                  class="col-form-label"
-                                >
-                                  {{
-                                    $t("structural.dataset.record.table_name")
-                                  }}
-                                </CFormLabel>
-                              </CCol>
-                              <CCol class="col-sm-8">
-                                <CFormInput
-                                  type="text"
-                                  id="tableName"
-                                  :value="record.localId"
-                                  readonly
-                                />
-                              </CCol>
-                            </CRow>
+                            <CFormLabel for="tableName" class="col-form-label">
+                              {{ $t("structural.dataset.record.table_name") }}
+                            </CFormLabel>
+                            <CFormInput
+                              type="text"
+                              id="tableName"
+                              :value="record.localId"
+                              readonly
+                            />
+                          </CCol>
+                        </CRow>
+                        <CRow v-if="record.parentRecord" class="mb-3">
+                          <CCol class="col-sm-12">
+                            <CFormLabel
+                              for="parentRecord"
+                              class="col-form-label"
+                            >
+                              {{ $t("structural.dataset.record.parent") }}
+                            </CFormLabel>
+                            <CFormInput
+                              type="text"
+                              id="parentRecord"
+                              :value="record.parentRecord"
+                              readonly
+                            />
                           </CCol>
                         </CRow>
                         <CRow>
                           <CCol class="col-sm-12">
-                            <CCol class="col-sm-12" v-if="record.parentRecord">
-                              <CRow class="mb-3">
-                                <CCol class="col-sm-4">
-                                  <CFormLabel
-                                    for="parentRecord"
-                                    class="col-form-label"
-                                  >
-                                    {{ $t("structural.dataset.record.parent") }}
-                                  </CFormLabel>
-                                </CCol>
-                                <CCol class="col-sm-8">
-                                  <CFormInput
-                                    type="text"
-                                    id="parentRecord"
-                                    :value="record.parentRecord"
-                                    readonly
-                                  />
-                                </CCol>
-                              </CRow>
-                            </CCol>
-                          </CCol>
-                        </CRow>
-                        <CRow>
-                          <CCol class="col-sm-12">
-                            <CCol class="col-sm-12">
-                              <CRow class="mb-3">
-                                <CCol class="col-sm-4">
-                                  <CFormLabel
-                                    for="unitType"
-                                    class="col-form-label"
-                                  >
-                                    {{
-                                      $t("structural.dataset.record.unit_type")
-                                    }}
-                                  </CFormLabel>
-                                </CCol>
-                                <CCol class="col-sm-8">
-                                  <CFormInput
-                                    type="text"
-                                    id="unitType"
-                                    :value="record.unitType"
-                                    readonly
-                                  />
-                                </CCol>
-                              </CRow>
-                            </CCol>
+                            <CFormLabel for="unitType" class="col-form-label">
+                              {{ $t("structural.dataset.record.unit_type") }}
+                            </CFormLabel>
+                            <CFormInput
+                              type="text"
+                              id="unitType"
+                              :value="record.unitType"
+                              readonly
+                            />
                           </CCol>
                         </CRow>
                         <div class="table-responsive">
