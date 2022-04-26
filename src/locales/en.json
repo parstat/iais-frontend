@@ -281,8 +281,8 @@
         "represented_variable": "Represented variable",
         "variable": {
            "text": "Variable",
-           "name": "Variable Name",
-           "edit": "Variable Edit",
+           "name": "Variable name",
+           "edit": "Variable edit",
            "definition": "Variable definition",
            "description": "Variable description"
         },
@@ -401,6 +401,7 @@
             "measure": "Select a measure"
         },
         "dataset": {
+            "reporting_period": "Reporting period",
             "exchange_channel": "Exchange channel",
             "exchange_direction": "Exchange direction",
             "connection": "Connection",
@@ -408,7 +409,6 @@
             "group": "Group",
             "reporting_begin": "Reporting Begin",
             "reporting_end": "Reporting End",
-            "reporting_period": "Reporting Period",
             "record": {
                 "parent": "Parent record",
                 "unit_type": "Unit type",

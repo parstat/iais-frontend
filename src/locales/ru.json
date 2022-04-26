@@ -240,8 +240,8 @@
         }
     },
     "structural": {
-        "begin": "Begin",
-        "end": "End",
+        "begin": "Начать",
+        "end": "Заканчивать",
         "view": "Вид",
         "flat": "Плоский",
         "hierarchical": "Иерархический",
@@ -279,11 +279,10 @@
         "create_variable": "Создать переменную",
         "edit_variable": "Редактировать переменную",
         "represented_variable": "Представленная переменная",
-        
         "variable": {
             "text": "Переменная",
             "name": "Имя переменной",
-            "edit": "Переменная Edit",
+            "edit": "Редактировать переменную",
             "definition": "Определение переменной",
             "description": "Описание переменной"
         },
@@ -401,6 +400,7 @@
             "measure": "Выберите меру"
         },
         "dataset": {
+            "reporting_period": "Отчетный период",
             "exchange_channel": "Канал обмена",
             "exchange_direction": "Направление обмена",
             "connection": "Связь",

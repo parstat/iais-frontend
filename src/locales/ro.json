@@ -240,8 +240,8 @@
         }
     },
     "structural": {
-        "begin": "Begin",
-        "end": "End",
+        "begin": "Începe",
+        "end": "Încheia",
         "view": "Vedere",
         "flat": "Plat",
         "hierarchical": "Ierarhic",
@@ -281,11 +281,11 @@
         "represented_variable": "Variabila reprezentată",
         "variable": {
             "text": "Variabilă",
-            "name": "Variabilă",
-            "edit": "Variabilă Edit",
-            "description": "Descrierea variabilei",
-            "definition": "Definiția variabilei"
-         },
+            "name": "Numele variabilei",
+            "edit": "Editare variabilă",
+            "definition": "Definiția variabilei",
+            "description": "Descrierea variabilei"
+        },
         "variables_title": "Variabile",
         "variables_text": "Utilizarea unui Concept ca caracteristică a unei Populații care urmează să fie măsurată. Variabila combină semnificația unui Concept cu un tip de unitate, pentru a defini caracteristica care urmează să fie măsurată.",
         "variables_link": "Accesați secțiunea de variabile",
@@ -400,7 +400,7 @@
             "measure": "Selectați o măsură"
         },
         "dataset": {
-            "reporting_period": "Reporting Period",
+            "reporting_period": "Perioada de raportare",
             "exchange_channel": "Canal de schimb",
             "exchange_direction": "Schimb de direcție",
             "connection": "Conexiune",
