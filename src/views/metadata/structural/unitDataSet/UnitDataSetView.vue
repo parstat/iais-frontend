@@ -249,7 +249,7 @@
                             />
                           </CCol>
                         </CRow>
-                        <CRow>
+                        <CRow class="mb-3">
                           <CCol class="col-sm-12">
                             <CFormLabel for="unitType" class="col-form-label">
                               {{ $t("structural.dataset.record.unit_type") }}
@@ -262,39 +262,45 @@
                             />
                           </CCol>
                         </CRow>
-                        <div class="table-responsive">
-                          <CSmartTable
-                            v-if="record"
-                            :items="record.components"
-                            :activePage="1"
-                            header
-                            :columns="columns"
-                            columnFilter
-                            cleaner
-                            itemsPerPageSelect
-                            :itemsPerPage="5"
-                            columnSorter
-                            :sorterValue="{
-                              column: 'localId',
-                              state: 'asc',
-                            }"
-                            pagination
-                          >
-                            <template #show_representation="{ item }">
-                              <td class="py-2">
-                                <CButton
-                                  color="primary"
-                                  variant="outline"
-                                  square
-                                  size="sm"
-                                  @click="showRepresentation(item)"
-                                >
-                                  Show
-                                </CButton>
-                              </td>
-                            </template>
-                          </CSmartTable>
-                        </div>
+                        <CRow>
+                          <CCol class="col-sm-12">
+                            <CFormLabel for="columns" class="col-form-label">
+                              {{ $t("structural.dataset.record.columns") }}
+                            </CFormLabel>
+                            <div class="table-responsive">
+                              <CSmartTable
+                                v-if="record"
+                                :items="record.components"
+                                :activePage="1"
+                                header
+                                :columns="columns"
+                                columnFilter
+                                itemsPerPageSelect
+                                :itemsPerPage="5"
+                                columnSorter
+                                :sorterValue="{
+                                  column: 'localId',
+                                  state: 'asc',
+                                }"
+                                pagination
+                              >
+                                <template #show_representation="{ item }">
+                                  <td class="py-2">
+                                    <CButton
+                                      color="primary"
+                                      variant="outline"
+                                      square
+                                      size="sm"
+                                      @click="showRepresentation(item)"
+                                    >
+                                      Show
+                                    </CButton>
+                                  </td>
+                                </template>
+                              </CSmartTable>
+                            </div>
+                          </CCol>
+                        </CRow>
                       </CCardText>
                     </CCardBody>
                   </CCard>

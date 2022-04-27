@@ -414,7 +414,8 @@
             "record": {
                 "parent": "Исходный курс",
                 "unit_type": "Тип единицы",
-                "table_name": "Имя таблицы"
+                "table_name": "Имя таблицы",
+                "columns": "Table columns"
             }
         }
     }

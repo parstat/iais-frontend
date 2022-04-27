@@ -414,7 +414,8 @@
             "record": {
                 "parent": "Dosarul sursei",
                 "unit_type": "Tip de unitate",
-                "table_name": "Numele tabelului"
+                "table_name": "Numele tabelului",
+                "columns": "Table columns"
             }
         }
     }

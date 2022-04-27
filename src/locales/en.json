@@ -415,7 +415,8 @@
             "record": {
                 "parent": "Parent record",
                 "unit_type": "Unit type",
-                "table_name": "Table name"
+                "table_name": "Table name",
+                "columns": "Table columns"
             }
         }
     }
