@@ -798,7 +798,7 @@ const routes = [
       //DataStructure
       {
         path: "metadata/structural/dataStructures/",
-        name: "UnitDataSetList",
+        name: "DataStructureList",
         component: () =>
           import("@/views/metadata/structural/dataStructure/DataStructureList"),
         meta: { authorize: [] },

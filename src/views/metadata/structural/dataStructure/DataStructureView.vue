@@ -124,18 +124,40 @@
                   }"
                   pagination
                 >
-                  <template #show_representation="{ item }">
+                  <template #show_details="{ item, index }">
                     <td class="py-2">
                       <CButton
                         color="primary"
                         variant="outline"
                         square
                         size="sm"
-                        @click="showRepresentation(item)"
+                        @click="toggleDetails(item, index)"
                       >
-                        Show
+                        {{ Boolean(item._toggled) ? "Hide" : "Show" }}
                       </CButton>
                     </td>
+                  </template>
+                  <template #details="{ item }">
+                    <CCollapse :visible="this.details.includes(item.localId)">
+                      <CCardBody v-if="item.representation">
+                        <h6>Representation</h6>
+                        <p class="text-muted">
+                          Name : {{ item.representation.name }}
+                        </p>
+                        <p class="text-muted">
+                          Variable : {{ item.representation.variableName }}
+                        </p>
+                        <h6>Included in records</h6>
+                        <CFormSwitch
+                          v-for="record in item.records"
+                          :key="record.localId"
+                          :label="record.name"
+                          :id="record.localId"
+                          checked
+                          disabled
+                        />
+                      </CCardBody>
+                    </CCollapse>
                   </template>
                 </CSmartTable>
               </div>
@@ -165,24 +187,31 @@ export default {
         {
           key: "localId",
           label: "Column",
+          filter: true,
+          sorter: true,
         },
         {
           key: "name",
           label: "Name",
+          filter: true,
+          sorter: true,
         },
         {
           key: "type",
           label: "Type",
+          filter: true,
+          sorter: true,
         },
         {
-          key: "show_representation",
-          label: "Representation",
+          key: "show_details",
+          label: "Details",
           _style: { width: "1%" },
           filter: false,
           sorter: false,
         },
       ],
       disabled: false,
+      details: [],
     };
   },
   computed: {
@@ -193,8 +222,14 @@ export default {
       this.disabled = true; //disable button
       this.$router.push("/metadata/structural/dataStructures");
     },
-    showRepresentation(item) {
-      this.$router.push(item.representationLink);
+    toggleDetails(item) {
+      if (this.details.includes(item.localId)) {
+        this.details = this.details.filter(
+          (_localId) => _localId !== item.localId
+        );
+        return;
+      }
+      this.details.push(item.localId);
     },
   },
   created() {
