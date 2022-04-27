@@ -133,7 +133,11 @@
                         size="sm"
                         @click="toggleDetails(item, index)"
                       >
-                        {{ Boolean(item._toggled) ? "Hide" : "Show" }}
+                        {{
+                          Boolean(this.details.includes(item.localId))
+                            ? "Hide"
+                            : "Show"
+                        }}
                       </CButton>
                     </td>
                   </template>
