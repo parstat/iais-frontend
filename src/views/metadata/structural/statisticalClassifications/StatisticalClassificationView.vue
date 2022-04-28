@@ -65,18 +65,23 @@
       <CCardBody>
         <CCardTitle>
           <CNavbar expand="lg" color-scheme="light" class="bg-white">
-            <CNavbarBrand href="javascript:void(0);">
+            <CNavbarBrand component="h6">
               <span>{{
                 $t("structural.statistical_classification_items")
               }}</span>
             </CNavbarBrand>
             <CNavbarNav>
-              <CDropdown variant="nav-item" :popper="false">
-                <CDropdownToggle color="secondary">
-                  <span>{{ $t("structural.view") }}</span>
+              <CDropdown variant="btn-group" :popper="false">
+                <CDropdownToggle color="primary">
+                  <span v-if="isHierarchicalView">
+                    {{ $t("structural.hierarchical") }}
+                  </span>
+                  <span v-else>
+                    {{ $t("structural.flat") }}
+                  </span>
                 </CDropdownToggle>
                 <CDropdownMenu>
-                  <CDropdownItem href="javascript:void(0);" @click="changeView">
+                  <CDropdownItem @click="changeView">
                     <span v-if="isHierarchicalView">
                       {{ $t("structural.flat") }}
                     </span>
