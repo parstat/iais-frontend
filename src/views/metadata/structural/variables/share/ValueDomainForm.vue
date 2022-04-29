@@ -144,7 +144,13 @@
           Please select a measurement unit
         </span>
       </CForm>
-      <CForm class="mb-3" v-if="valueDomainType?.value === 'ENUMERATED'">
+      <CForm
+        class="mb-3"
+        v-if="
+          valueDomainType?.value === 'ENUMERATED' &&
+          (codeLists || statisticalClassifications)
+        "
+      >
         <CFormLabel for="nodeSet">
           <span>
             Node set
@@ -180,7 +186,7 @@
         class="mb-3"
         v-if="
           valueDomainEnumerationType?.value === 'STATISTICAL_CLASSIFICATION' &&
-          statisticalClassification?.levels
+          statisticalClassificationLevels?.length
         "
         ><CFormLabel for="levels">
           <span>Level*</span>
@@ -189,7 +195,7 @@
           id="levels"
           label="name"
           :filterable="false"
-          :options="statisticalClassification.levels"
+          :options="statisticalClassificationLevels"
           v-model="valueDomainLevel"
           :placeholder="'Select level'"
           :disabled="isEdit || valueDomainType?.value === 'DESCRIBED'"
@@ -362,7 +368,7 @@ export default {
           selectedValue?.id
         ) {
           this.$store.dispatch(
-            "statisticalClassification/findById",
+            "statisticalClassification/findLevels",
             selectedValue.id
           );
         }
@@ -399,7 +405,7 @@ export default {
     ...mapGetters("measurementUnit", ["measurementUnits"]),
     ...mapGetters("statisticalClassification", [
       "statisticalClassifications",
-      "statisticalClassification",
+      "statisticalClassificationLevels",
     ]),
     ...mapGetters("codeList", ["codeLists"]),
   },

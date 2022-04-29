@@ -7,6 +7,7 @@ export const statisticalClassificationService = {
   findByName,
   findById,
   findFlatById,
+  findLevels,
   save,
   update,
   delete: _delete,
@@ -61,6 +62,22 @@ function findFlatById(id) {
         reject(error);
       }
     );
+  });
+}
+function findLevels(id) {
+  return new Promise((resolve, reject) => {
+    axiosIais
+      .get("/structural/OpenStatisticalClassifications/" + id + "/levels")
+      .then(
+        (response) => {
+          var data = response.data.levels ? response.data.levels : null;
+          //console.log(data);
+          resolve(data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 

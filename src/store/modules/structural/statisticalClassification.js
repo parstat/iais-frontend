@@ -5,6 +5,7 @@ const state = {
   statisticalClassifications: [],
   statisticalClassification: null,
   flatStatisticalClassification: null,
+  statisticalClassificationLevels: [],
 };
 
 const mutations = {
@@ -15,9 +16,16 @@ const mutations = {
   },
   SET_STATISTICAL_CLASSIFICATION(state, statisticalClassification) {
     state.statisticalClassification = statisticalClassification;
+    state.statisticalClassificationLevels = []; //emtpy the levels
   },
   SET_FLAT_STATISTICAL_CLASSIFICATION(state, flatStatisticalClassification) {
     state.flatStatisticalClassification = flatStatisticalClassification;
+  },
+  SET_STATISTICAL_CLASSIFICATION_LEVELS(
+    state,
+    statisticalClassificationLevels
+  ) {
+    state.statisticalClassificationLevels = statisticalClassificationLevels;
   },
 };
 
@@ -28,6 +36,7 @@ const actions = {
         commit("SET_STATISTICAL_CLASSIFICATIONS", data);
         commit("SET_STATISTICAL_CLASSIFICATION", null);
         commit("SET_FLAT_STATISTICAL_CLASSIFICATION", null);
+        commit("SET_STATISTICAL_CLASSIFICATION_LEVELS", null);
         console.log(data);
       },
       (error) => {
@@ -62,6 +71,17 @@ const actions = {
     statisticalClassificationService.findFlatById(id).then(
       (data) => {
         commit("SET_FLAT_STATISTICAL_CLASSIFICATION", data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+
+  findLevels({ commit }, id) {
+    statisticalClassificationService.findLevels(id).then(
+      (data) => {
+        commit("SET_STATISTICAL_CLASSIFICATION_LEVELS", data);
       },
       (error) => {
         console.log(error);
@@ -196,6 +216,9 @@ const getters = {
   },
   flatStatisticalClassification: (state) => {
     return state.flatStatisticalClassification;
+  },
+  statisticalClassificationLevels: (state) => {
+    return state.statisticalClassificationLevels;
   },
 };
 
