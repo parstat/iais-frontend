@@ -270,7 +270,9 @@
         "basic": "Базовый",
         "value": "Ценность",
         "value_domain": "Ценностный домен",
-        "sentinel_value": "Контрольный домен значений",
+        "value_domain_name": "Доменное имя ценности",
+        "value_domain_description": "Описание домена ценности",
+        "sentinel_value": "Контрольный домен ценности",
         "substantive_value": "Домен существенной ценности",
         "label": "Этикетка",
         "label_en": "Этикетка En",
@@ -421,7 +423,7 @@
                 "parent": "Исходный курс",
                 "unit_type": "Тип единицы",
                 "table_name": "Имя таблицы",
-                "columns": "Table columns"
+                "columns": "Столбцы таблицы"
             }
         }
     }

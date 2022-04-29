@@ -32,7 +32,7 @@
           type="text"
           class="form-control"
           :class="{ 'is-invalid': v$.valueDomainName.$error }"
-          :placeholder="'Value domain name'"
+          :placeholder="$t('structural.value_domain_name')"
           v-model.trim="valueDomainName"
         />
         <span class="text-danger" v-if="v$.valueDomainName.$error">
@@ -48,7 +48,7 @@
           id="description"
           type="text"
           class="form-control"
-          :placeholder="'Value domain description'"
+          :placeholder="$t('structural.value_domain_description')"
           v-model.trim="valueDomainDescription"
         />
       </CForm>

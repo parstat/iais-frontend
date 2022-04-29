@@ -270,6 +270,8 @@
         "basic": "De bază",
         "value": "Valoare",
         "value_domain": "Domeniul valoric",
+        "value_domain_name": "Nume domeniul valoric",
+        "value_domain_description": "Descrierea domeniului valoric",
         "sentinel_value": "Domeniul valoric de control",
         "substantive_value": "Domeniul valoric de fond",
         "label": "Etichetă",
@@ -421,7 +423,7 @@
                 "parent": "Dosarul sursei",
                 "unit_type": "Tip de unitate",
                 "table_name": "Numele tabelului",
-                "columns": "Table columns"
+                "columns": "Coloane de tabel"
             }
         }
     }

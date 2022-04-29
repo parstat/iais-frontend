@@ -270,6 +270,8 @@
         "basic": "Basic",
         "value": "Value",
         "value_domain": "Value domain",
+        "value_domain_name": "Value domain name",
+        "value_domain_description": "Value domain description",
         "sentinel_value": "Sentinel value domain",
         "substantive_value": "Substantive value domain",
         "label": "Label",
