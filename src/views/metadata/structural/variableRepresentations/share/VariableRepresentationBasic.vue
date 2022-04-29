@@ -46,7 +46,7 @@
             :disabled="isEdit"
           />
           <span class="text-danger" v-if="v$.selectedLocalId.$error">
-            <span>{{ $t("structural.validations.local_ID") }}</span>
+            {{ $t("structural.validations.local_ID") }}
           </span>
         </CForm>
         <div class="form-mandatory mt-3">

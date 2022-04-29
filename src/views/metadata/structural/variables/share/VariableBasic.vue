@@ -30,7 +30,7 @@
             id="description"
             type="text"
             class="form-control"
-            :placeholder="$t('structural.variable_description')"
+            :placeholder="$t('structural.variable.description')"
             v-model.trim="selectedDescription"
           />
         </CForm>
