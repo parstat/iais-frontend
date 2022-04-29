@@ -65,10 +65,11 @@ function findFlatById(id) {
 }
 
 function findByName(name) {
+  console.log(name);
   return new Promise((resolve, reject) => {
     axiosIais
       .get("/structural/OpenStatisticalClassifications", {
-        parmas: { name: name },
+        params: { name: name },
       })
       .then(
         (response) => {

@@ -69,7 +69,7 @@
           Please select a type for the value domain.
         </span>
       </CForm>
-      <CForm class="mb-3">
+      <CForm class="mb-3" v-if="valueDomainType?.value === 'ENUMERATED'">
         <CFormLabel for="scope">
           <span
             >Value domain enumeration type
@@ -90,7 +90,7 @@
           Please select the enumeration for the value domain.
         </span>
       </CForm>
-      <CForm class="mb-3">
+      <CForm class="mb-3" v-if="valueDomainType?.value === 'DESCRIBED'">
         <CFormLabel for="expression">
           <span
             >Expression
@@ -144,13 +144,13 @@
           Please select a measurement unit
         </span>
       </CForm>
-      <CForm class="mb-3" v-if="statisticalClassifications || codeLists">
+      <CForm class="mb-3" v-if="valueDomainType?.value === 'ENUMERATED'">
         <CFormLabel for="nodeSet">
           <span>
             Node set
             {{
               this.valueDomainType?.value === "ENUMERATED" &&
-              this.valueDomainScope?.value === "SUBSTANTIVE"
+              this.selectedValueDomainScope?.value === "SUBSTANTIVE"
                 ? "*"
                 : ""
             }}
@@ -162,7 +162,7 @@
           :filterable="false"
           :options="
             valueDomainEnumerationType?.value === 'CODE_LIST' ||
-            valueDomainScope?.value === 'SENTINEL'
+            selectedValueDomainScope?.value === 'SENTINEL'
               ? codeLists
               : statisticalClassifications
           "
@@ -236,10 +236,6 @@ export default {
       valueDomainNodeSet: null,
       valueDomainLevel: null,
 
-      valueDomainScopes: [
-        { label: "SENTINEL", value: "SENTINEL" },
-        { label: "SUBSTANTIVE", value: "SUBSTANTIVE" },
-      ],
       valueDomainTypes: [
         {
           label: "DESCRIBED",
@@ -311,7 +307,7 @@ export default {
     }
     if (
       this.valueDomainType?.value === "ENUMERATED" &&
-      this.valueDomainScope?.value === "SUBSTANTIVE"
+      this.selectedValueDomainScope?.value === "SUBSTANTIVE"
     ) {
       validations.valueDomainNodeSet = { required };
     }
@@ -336,7 +332,7 @@ export default {
       if (name.length > 0) {
         if (
           vm.valueDomainEnumerationType?.value === "CODE_LIST" ||
-          vm.valueDomainScope?.value === "SENTINEL"
+          vm.selectedValueDomainScope?.value === "SENTINEL"
         ) {
           vm.$store.dispatch("codeList/findByName", escape(name)).then(() => {
             loading(false);
