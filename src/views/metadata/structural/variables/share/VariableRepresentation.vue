@@ -71,9 +71,11 @@
                   <CNavItem>
                     <a
                       class="link-button"
-                      @click.prevent="openValueDomainDialog('sentinel')"
-                      ><CIcon name="cil-plus" />
-                      {{ $t("structural.sentinel_value") }}
+                      @click.prevent="openValueDomainDialog('SENTINEL')"
+                    >
+                      <CIcon name="cil-plus" />{{
+                        $t("structural.sentinel_value")
+                      }}
                     </a>
                   </CNavItem>
                 </CNav>
@@ -103,9 +105,11 @@
                   <CNavItem>
                     <a
                       class="link-button"
-                      @click.prevent="openValueDomainDialog('substantive')"
-                      ><CIcon name="cil-plus" />
-                      {{ $t("structural.substantive_value") }}
+                      @click.prevent="openValueDomainDialog('SUBSTANTIVE')"
+                    >
+                      <CIcon name="cil-plus" />{{
+                        $t("structural.substantive_value")
+                      }}
                     </a>
                   </CNavItem>
                 </CNav>
@@ -215,7 +219,7 @@
 
     <app-value-domain-form
       :showDiealog="showValueDomainDialog"
-      :selectedValueDomainScope="valueDomainType"
+      :selectedValueDomainScope="valueDomainScope"
       @success="handleSuccess"
       @close="closeValueDomainDialog"
     ></app-value-domain-form>
@@ -259,7 +263,7 @@ export default {
       showDeleteDialog: false,
 
       showValueDomainDialog: false,
-      valueDomainType: "",
+      valueDomainScope: "",
     };
   },
   validations: {
@@ -315,12 +319,12 @@ export default {
       this.representationId = representation.id;
       this.showDeleteDialog = true;
     },
-    openValueDomainDialog(valueDomainType) {
-      this.valueDomainType = valueDomainType;
+    openValueDomainDialog(valueDomainScope) {
+      this.valueDomainScope = valueDomainScope;
       this.showValueDomainDialog = true;
     },
     closeValueDomainDialog() {
-      this.valueDomainType = null;
+      this.valueDomainScope = null;
       this.showValueDomainDialog = false;
     },
     handleSuccess(data) {
