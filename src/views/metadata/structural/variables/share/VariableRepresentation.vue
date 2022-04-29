@@ -71,7 +71,7 @@
                   <CNavItem>
                     <a
                       class="link-button"
-                      @click.prevent="openValueDomainDialog('sentinel')"
+                      @click.prevent="openValueDomainDialog('SENTINEL')"
                     >
                       <CIcon name="cil-plus" />{{
                         $t("structural.sentinel_value")
@@ -105,7 +105,7 @@
                   <CNavItem>
                     <a
                       class="link-button"
-                      @click.prevent="openValueDomainDialog('substantive')"
+                      @click.prevent="openValueDomainDialog('SUBSTANTIVE')"
                     >
                       <CIcon name="cil-plus" />{{
                         $t("structural.substantive_value")
@@ -219,7 +219,7 @@
 
     <app-value-domain-form
       :showDiealog="showValueDomainDialog"
-      :selectedValueDomainScope="valueDomainType"
+      :selectedValueDomainScope="valueDomainScope"
       @success="handleSuccess"
       @close="closeValueDomainDialog"
     ></app-value-domain-form>
@@ -263,7 +263,7 @@ export default {
       showDeleteDialog: false,
 
       showValueDomainDialog: false,
-      valueDomainType: "",
+      valueDomainScope: "",
     };
   },
   validations: {
@@ -319,12 +319,12 @@ export default {
       this.representationId = representation.id;
       this.showDeleteDialog = true;
     },
-    openValueDomainDialog(valueDomainType) {
-      this.valueDomainType = valueDomainType;
+    openValueDomainDialog(valueDomainScope) {
+      this.valueDomainScope = valueDomainScope;
       this.showValueDomainDialog = true;
     },
     closeValueDomainDialog() {
-      this.valueDomainType = null;
+      this.valueDomainScope = null;
       this.showValueDomainDialog = false;
     },
     handleSuccess(data) {

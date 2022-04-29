@@ -51,23 +51,6 @@
         />
       </CForm>
       <CForm class="mb-3">
-        <CFormLabel for="scope">
-          <span>Value domain scope*</span>
-        </CFormLabel>
-        <v-select
-          id="scope"
-          label="label"
-          :options="valueDomainScopes"
-          v-model="valueDomainScope"
-          :class="{ 'is-invalid': v$.valueDomainScope.$error }"
-          :placeholder="'Select the scope'"
-          :disabled="isEdit"
-        ></v-select>
-        <span class="text-danger" v-if="v$.valueDomainScope.$error">
-          Please select a scope for the value domain.
-        </span>
-      </CForm>
-      <CForm class="mb-3">
         <CFormLabel for="type">
           <span>Value domain type*</span>
         </CFormLabel>
@@ -237,14 +220,6 @@ export default {
   name: "ValueDomainForm",
   props: ["isEdit", "showDiealog", "selectedValueDomainScope"],
   emits: ["success", "close"],
-  watch: {
-    selectedValueDomainScope(newSelectedValue) {
-      this.valueDomainScope = {
-        label: newSelectedValue?.toUpperCase(),
-        value: newSelectedValue?.toUpperCase(),
-      };
-    },
-  },
   data() {
     return {
       v$: useValidate(),
@@ -253,13 +228,12 @@ export default {
       valueDomainName: "",
       valueDomainDescription: "",
       valueDomainType: "",
-      valueDomainScope: "",
       valueDomainEnumerationType: "",
       valueDomainExpresion: "",
       valueDomainDataType: "STRING",
       valueDomainMeasurementUnit: "",
-      valueDomainNodeSet: "",
-      valueDomainLevel: "",
+      valueDomainNodeSet: null,
+      valueDomainLevel: null,
 
       valueDomainScopes: [
         { label: "SENTINEL", value: "SENTINEL" },
@@ -325,7 +299,6 @@ export default {
     const validations = {};
     validations.valueDomainLocalID = { required };
     validations.valueDomainName = { required };
-    validations.valueDomainScope = { required };
     validations.valueDomainDataType = { required };
     validations.valueDomainType = { required };
     validations.valueDomainMeasurementUnit = { required };
@@ -351,8 +324,8 @@ export default {
   },
   methods: {
     resetNodeSetAndLevels() {
-      this.valueDomainNodeSet = "";
-      this.valueDomainLevel = "";
+      this.valueDomainNodeSet = null;
+      this.valueDomainLevel = null;
     },
     searchNodeSet(name, loading) {
       loading(true);
@@ -360,19 +333,16 @@ export default {
     },
     search: _.debounce((name, loading, vm) => {
       if (name.length > 0) {
-        var formData = {
-          name,
-        };
         if (
           vm.valueDomainEnumerationType?.value === "CODE_LIST" ||
           vm.valueDomainScope?.value === "SENTINEL"
         ) {
-          vm.$store.dispatch("codeList/findByName", formData).then(() => {
+          vm.$store.dispatch("codeList/findByName", escape(name)).then(() => {
             loading(false);
           });
         } else {
           vm.$store
-            .dispatch("statisticalClassification/findByName", formData)
+            .dispatch("statisticalClassification/findByName", escape(name))
             .then(() => {
               loading(false);
             });
@@ -413,13 +383,13 @@ export default {
           name: this.valueDomainName,
           description: this.valueDomainDescription ?? "",
           type: this.valueDomainType.value,
-          scope: this.valueDomainScope.value,
+          scope: this.selectedValueDomainScope,
           // enumeration: this.valueDomainEnumerationType?.value ?? "",
           expression: this.valueDomainExpresion ?? "",
           dataType: this.valueDomainDataType.value,
           measurementUnitId: this.valueDomainMeasurementUnit.id,
-          nodesetId: this.valueDomainNodeSet?.id ?? "",
-          levelId: this.valueDomainLevel?.id ?? "",
+          nodesetId: this.valueDomainNodeSet?.id ?? null,
+          levelId: this.valueDomainLevel?.id ?? null,
         };
         this.$store.dispatch("valueDomain/save", formData).then(() => {
           this.$emit("success", formData);
