@@ -334,6 +334,9 @@
         "data_sets_title": "Наборы данных",
         "data_sets_text": "Набор данных, который соответствует известной структуре и описывает аспекты одного или нескольких модулей.",
         "data_sets_link": "Перейти в раздел наборов данных",
+        "data_structures_title": "Data Structures",
+        "data_structure_text": "Defines the structure of an organized collection of data (Data Set).",
+        "data_structures_link": "Go to data structures section",
         "unit_type_description": "Описание типа юнита",
         "unit_types_title": "Типы юнитов",
         "unit_types_text": "Тип юнит это класс объектов, представляющих интерес. Тип единицы используется для описания класса или группы единиц на основе одной характеристики, но без указания времени и географии. Например, тип единицы измерения «Люди» объединяет набор единиц на основании того признака, что они являются Лицами.",
@@ -417,7 +420,8 @@
             "record": {
                 "parent": "Исходный курс",
                 "unit_type": "Тип единицы",
-                "table_name": "Имя таблицы"
+                "table_name": "Имя таблицы",
+                "columns": "Table columns"
             }
         }
     }

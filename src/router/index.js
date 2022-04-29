@@ -795,6 +795,21 @@ const routes = [
           import("@/views/metadata/structural/unitDataSet/UnitDataSetView"),
         meta: { authorize: [] },
       },
+      //DataStructure
+      {
+        path: "metadata/structural/dataStructures/",
+        name: "DataStructureList",
+        component: () =>
+          import("@/views/metadata/structural/dataStructure/DataStructureList"),
+        meta: { authorize: [] },
+      },
+      {
+        path: "metadata/structural/dataStructures/view/:id",
+        name: "DataStructureView",
+        component: () =>
+          import("@/views/metadata/structural/dataStructure/DataStructureView"),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];
