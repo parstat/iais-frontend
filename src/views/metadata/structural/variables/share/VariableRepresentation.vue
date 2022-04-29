@@ -72,10 +72,8 @@
                     <a
                       class="link-button"
                       @click.prevent="openValueDomainDialog('sentinel')"
-                    >
-                      <CIcon name="cil-plus" />{{
-                        $t("structural.sentinel_value")
-                      }}
+                      ><CIcon name="cil-plus" />
+                      {{ $t("structural.sentinel_value") }}
                     </a>
                   </CNavItem>
                 </CNav>
@@ -106,10 +104,8 @@
                     <a
                       class="link-button"
                       @click.prevent="openValueDomainDialog('substantive')"
-                    >
-                      <CIcon name="cil-plus" />{{
-                        $t("structural.substantive_value")
-                      }}
+                      ><CIcon name="cil-plus" />
+                      {{ $t("structural.substantive_value") }}
                     </a>
                   </CNavItem>
                 </CNav>
@@ -180,7 +176,7 @@
         </CRow>
         <CCard v-else>
           <CCardText>
-            <span>There are no items yet in the variable.</span>
+            <span>{{ $t("structural.variable_no_items") }}</span>
           </CCardText>
         </CCard>
       </CCardText>
@@ -194,12 +190,12 @@
         }
       "
       ><CModalHeader>
-        <CModalTitle>Delete representation</CModalTitle>
+        <CModalTitle>
+          <span>{{ $t("structural.delete_representation") }}</span>
+        </CModalTitle>
       </CModalHeader>
-      <CModalBody
-        >This action will remove the representation from the variable. This
-        action cannot be undone. Are you sure you want to doelete this
-        representation?
+      <CModalBody>
+        <span>{{ $t("structural.delete_representation_question") }}</span>
       </CModalBody>
       <CModalFooter>
         <CButton

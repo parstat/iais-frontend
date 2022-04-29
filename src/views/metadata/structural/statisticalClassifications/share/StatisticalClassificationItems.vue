@@ -65,7 +65,7 @@
         </CModal>
 
         <CFormSwitch
-          label="Show uploaded items"
+          :label="$t('structural.show_upload_items')"
           id="formSwitchCheckDefault"
           v-model="visible"
         />

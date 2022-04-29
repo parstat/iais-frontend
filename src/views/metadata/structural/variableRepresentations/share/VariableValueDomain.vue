@@ -42,7 +42,7 @@
           >
           </v-select>
           <span class="text-danger" v-if="v$.selectedDomain?.$error">
-            <span>Please select a value domain</span>
+            Please select a value domain.
           </span>
         </CForm>
       </CCardText>

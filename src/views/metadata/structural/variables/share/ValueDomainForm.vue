@@ -1,7 +1,9 @@
 <template>
   <CModal backdrop="static" :visible="showDiealog" @close="closeDialog">
     <CModalHeader>
-      <CModalTitle> Value domain</CModalTitle>
+      <CModalTitle>
+        <span>{{ $t("structural.value_domain") }}</span>
+      </CModalTitle>
     </CModalHeader>
     <CModalBody>
       <CForm class="mb-3">
@@ -18,7 +20,7 @@
           :disabled="isEdit"
         />
         <span class="text-danger" v-if="v$.valueDomainLocalID.$error">
-          <span>{{ $t("structural.validations.local_ID") }}</span>
+          {{ $t("structural.validations.local_ID") }}
         </span>
       </CForm>
       <CForm class="mb-3">
@@ -197,8 +199,7 @@
           valueDomainEnumerationType?.value === 'STATISTICAL_CLASSIFICATION' &&
           statisticalClassification?.levels
         "
-      >
-        <CFormLabel for="levels">
+        ><CFormLabel for="levels">
           <span>Level*</span>
         </CFormLabel>
         <v-select
