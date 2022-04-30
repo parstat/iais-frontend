@@ -125,6 +125,10 @@
               v-model="substantiveValueDomain"
               :disabled="isEdit"
             />
+
+            <span class="text-danger" v-if="v$.substantiveValueDomain.$error">
+              Please select a value domain
+            </span>
           </CForm>
           <div class="form-mandatory mt-3">
             <span>*{{ $t("structural.mandatory_fields") }}</span>
@@ -273,6 +277,9 @@ export default {
     localId: {
       required,
     },
+    substantiveValueDomain: {
+      required,
+    },
   },
   methods: {
     searchSubstantiveValueDomain(name, loading) {
@@ -335,6 +342,8 @@ export default {
         this.substantiveValueDomain = data;
         this.substantiveValueDomainId = data.id;
       }
+      this.showValueDomainDialog = false;
+      this.valueDomainScope = "";
     },
     handleDelete() {
       this.$store
@@ -346,7 +355,6 @@ export default {
         });
     },
     handleSave() {
-      this.disabled = true;
       this.v$.$touch(); //validate form data
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons

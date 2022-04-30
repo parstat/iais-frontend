@@ -237,7 +237,10 @@ export default {
       valueDomainType: "",
       valueDomainEnumerationType: "",
       valueDomainExpresion: "",
-      valueDomainDataType: "STRING",
+      valueDomainDataType: {
+        label: "STRING",
+        value: "STRING",
+      },
       valueDomainMeasurementUnit: "",
       valueDomainNodeSet: null,
       valueDomainLevel: null,
@@ -394,10 +397,27 @@ export default {
           nodesetId: this.valueDomainNodeSet?.id ?? null,
           levelId: this.valueDomainLevel?.id ?? null,
         };
-        this.$store.dispatch("valueDomain/save", formData).then(() => {
+        this.$store.dispatch("valueDomain/save", formData).then((id) => {
+          formData.id = id;
           this.$emit("success", formData);
         });
       }
+    },
+    resetForm() {
+      this.disabled = false;
+      this.valueDomainLocalID = "";
+      this.valueDomainName = "";
+      this.valueDomainDescription = "";
+      this.valueDomainType = "";
+      this.valueDomainEnumerationType = "";
+      this.valueDomainExpresion = "";
+      this.valueDomainDataType = {
+        label: "STRING",
+        value: "STRING",
+      };
+      this.valueDomainMeasurementUnit = "";
+      this.valueDomainNodeSet = null;
+      this.valueDomainLevel = null;
     },
   },
   computed: {
