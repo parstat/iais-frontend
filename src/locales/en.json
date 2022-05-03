@@ -272,6 +272,8 @@
         "value_domain": "Value domain",
         "value_domain_name": "Value domain name",
         "value_domain_description": "Value domain description",
+        "value_domain_type": "Value domain type",
+        "value_domain_enumeration_type": "Value domain enumeration type",
         "sentinel_value": "Sentinel value domain",
         "substantive_value": "Substantive value domain",
         "label": "Label",
@@ -403,12 +405,17 @@
             "label_romanian": "Please enter a label in Romanian.",
             "label_russian": "Please enter a label in Russian.",
             "description": "Please enter a description.",
-            "concept_name": "Please enter a name for the Concept.",
-            "variable_representation_name": "Please enter a name for the variable representation."
+            "concept_name": "Please enter a name for the concept.",
+            "variable_representation_name": "Please enter a name for the variable representation.",
+            "value_domain": "Please enter a name for the value domain.",
+            "value_domain_type": "Please select a type for the value domain.",
+            "value_domain_enumeration": "Please select the enumeration for the value domain."
         },
         "selection": {
             "unit_type": "Select a unit type",
-            "measure": "Select a measure"
+            "measure": "Select a measure",
+            "value_domain_type": "Select the type of the value domain",
+            "enumeration": "Select the enumeration"
         },
         "dataset": {
             "reporting_period": "Reporting period",
