@@ -69,17 +69,17 @@
           Please select a type for the value domain.
         </span>
       </CForm>
-      <CForm class="mb-3" v-if="valueDomainType?.value === 'ENUMERATED'">
+      <CForm class="mb-3" v-if="valueDomainType === 'ENUMERATED'">
         <CFormLabel for="scope">
           <span
             >Value domain enumeration type
-            {{ valueDomainType?.value === "ENUMERATED" ? "*" : "" }}</span
+            {{ valueDomainType === "ENUMERATED" ? "*" : "" }}</span
           >
         </CFormLabel>
         <v-select
           id="scope"
           label="label"
-          :options="valueDomainEnumerationTypes"
+          :options="nodeSetTypes"
           v-model="valueDomainEnumerationType"
           :class="{ 'is-invalid': v$.valueDomainEnumerationType?.$error }"
           :placeholder="'Select the enumeration'"
@@ -90,11 +90,11 @@
           Please select the enumeration for the value domain.
         </span>
       </CForm>
-      <CForm class="mb-3" v-if="valueDomainType?.value === 'DESCRIBED'">
+      <CForm class="mb-3" v-if="valueDomainType === 'DESCRIBED'">
         <CFormLabel for="expression">
           <span
             >Expression
-            {{ valueDomainType?.value === "DESCRIBED" ? "*" : "" }}
+            {{ valueDomainType === "DESCRIBED" ? "*" : "" }}
           </span>
         </CFormLabel>
         <input
@@ -117,7 +117,7 @@
         <v-select
           id="dataType"
           label="label"
-          :options="valueDomainDataTypes"
+          :options="dataTypes"
           v-model="valueDomainDataType"
           :class="{ 'is-invalid': v$.valueDomainDataType.$error }"
           :placeholder="'Select the enumeration'"
@@ -147,7 +147,7 @@
       <CForm
         class="mb-3"
         v-if="
-          valueDomainType?.value === 'ENUMERATED' &&
+          valueDomainType === 'ENUMERATED' &&
           (codeLists || statisticalClassifications)
         "
       >
@@ -155,8 +155,8 @@
           <span>
             Node set
             {{
-              this.valueDomainType?.value === "ENUMERATED" &&
-              this.selectedValueDomainScope?.value === "SUBSTANTIVE"
+              this.valueDomainType === "ENUMERATED" &&
+              this.selectedValueDomainScope === "SUBSTANTIVE"
                 ? "*"
                 : ""
             }}
@@ -167,8 +167,8 @@
           label="name"
           :filterable="false"
           :options="
-            valueDomainEnumerationType?.value === 'CODE_LIST' ||
-            selectedValueDomainScope?.value === 'SENTINEL'
+            valueDomainEnumerationType === 'CODE_LIST' ||
+            selectedValueDomainScope === 'SENTINEL'
               ? codeLists
               : statisticalClassifications
           "
@@ -176,7 +176,7 @@
           @input="setNodeSet"
           v-model="valueDomainNodeSet"
           :placeholder="'Select node set'"
-          :disabled="isEdit || valueDomainType?.value === 'DESCRIBED'"
+          :disabled="isEdit || valueDomainType === 'DESCRIBED'"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainNodeSet?.$error">
           Please select the node set.
@@ -185,7 +185,7 @@
       <CForm
         class="mb-3"
         v-if="
-          valueDomainEnumerationType?.value === 'STATISTICAL_CLASSIFICATION' &&
+          valueDomainEnumerationType === 'STATISTICAL_CLASSIFICATION' &&
           statisticalClassificationLevels?.length
         "
         ><CFormLabel for="levels">
@@ -198,7 +198,7 @@
           :options="statisticalClassificationLevels"
           v-model="valueDomainLevel"
           :placeholder="'Select level'"
-          :disabled="isEdit || valueDomainType?.value === 'DESCRIBED'"
+          :disabled="isEdit || valueDomainType === 'DESCRIBED'"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainLevel?.$error">
           Please select the level.
@@ -221,6 +221,9 @@
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import { mapGetters } from "vuex";
+import { DataType } from "@/common";
+import { ValueDomainType } from "@/common";
+import { NodeSetType } from "@/common";
 import _ from "lodash";
 
 export default {
@@ -244,61 +247,6 @@ export default {
       valueDomainMeasurementUnit: "",
       valueDomainNodeSet: null,
       valueDomainLevel: null,
-
-      valueDomainTypes: [
-        {
-          label: "DESCRIBED",
-          value: "DESCRIBED",
-        },
-        {
-          label: "ENUMERATED",
-          value: "ENUMERATED",
-        },
-      ],
-      valueDomainEnumerationTypes: [
-        {
-          label: "CODE_LIST",
-          value: "CODE_LIST",
-        },
-        {
-          label: "STATISTICAL_CLASSIFICATION",
-          value: "STATISTICAL_CLASSIFICATION",
-        },
-      ],
-      valueDomainDataTypes: [
-        {
-          label: "INT",
-          value: "INT",
-        },
-        {
-          label: "SMALLINT",
-          value: "SMALLINT",
-        },
-        {
-          label: "LONG",
-          value: "LONG",
-        },
-        {
-          label: "DOUBLE",
-          value: "DOUBLE",
-        },
-        {
-          label: "FLOAT",
-          value: "FLOAT",
-        },
-        {
-          label: "BOOLEAN",
-          value: "BOOLEAN",
-        },
-        {
-          label: "CHAR",
-          value: "CHAR",
-        },
-        {
-          label: "STRING",
-          value: "STRING",
-        },
-      ],
     };
   },
   validations() {
@@ -308,21 +256,21 @@ export default {
     validations.valueDomainDataType = { required };
     validations.valueDomainType = { required };
     validations.valueDomainMeasurementUnit = { required };
-    if (this.valueDomainType?.value === "DESCRIBED") {
+    if (this.valueDomainType === "DESCRIBED") {
       validations.valueDomainExpresion = { required };
     }
-    if (this.valueDomainType?.value === "ENUMERATED") {
+    if (this.valueDomainType === "ENUMERATED") {
       validations.valueDomainEnumerationType = { required };
     }
     if (
-      this.valueDomainType?.value === "ENUMERATED" &&
-      this.selectedValueDomainScope?.value === "SUBSTANTIVE"
+      this.valueDomainType === "ENUMERATED" &&
+      this.selectedValueDomainScope === "SUBSTANTIVE"
     ) {
       validations.valueDomainNodeSet = { required };
     }
     if (
-      this.valueDomainEnumerationType?.value === "STATISTICAL_CLASSIFICATION" &&
-      this.valueDomainType?.value === "SUBSTANTIVE"
+      this.valueDomainEnumerationType === "STATISTICAL_CLASSIFICATION" &&
+      this.valueDomainType === "SUBSTANTIVE"
     ) {
       validations.valueDomainLevel = { required };
     }
@@ -340,8 +288,8 @@ export default {
     search: _.debounce((name, loading, vm) => {
       if (name.length > 0) {
         if (
-          vm.valueDomainEnumerationType?.value === "CODE_LIST" ||
-          vm.selectedValueDomainScope?.value === "SENTINEL"
+          vm.valueDomainEnumerationType === "CODE_LIST" ||
+          vm.selectedValueDomainScope === "SENTINEL"
         ) {
           vm.$store.dispatch("codeList/findByName", escape(name)).then(() => {
             loading(false);
@@ -366,8 +314,7 @@ export default {
       ) {
         this.valueDomainNodeSet = selectedValue;
         if (
-          this.valueDomainEnumerationType?.value ===
-            "STATISTICAL_CLASSIFICATION" &&
+          this.valueDomainEnumerationType === "STATISTICAL_CLASSIFICATION" &&
           selectedValue?.id
         ) {
           this.$store.dispatch(
@@ -388,11 +335,11 @@ export default {
           localId: this.valueDomainLocalID,
           name: this.valueDomainName,
           description: this.valueDomainDescription ?? "",
-          type: this.valueDomainType.value,
+          type: this.valueDomainType,
           scope: this.selectedValueDomainScope,
           // enumeration: this.valueDomainEnumerationType?.value ?? "",
           expression: this.valueDomainExpresion ?? "",
-          dataType: this.valueDomainDataType.value,
+          dataType: this.valueDomainDataType,
           measurementUnitId: this.valueDomainMeasurementUnit.id,
           nodesetId: this.valueDomainNodeSet?.id ?? null,
           levelId: this.valueDomainLevel?.id ?? null,
@@ -421,6 +368,27 @@ export default {
     },
   },
   computed: {
+    dataTypes() {
+      var types = [];
+      for (const key of Object.keys(DataType)) {
+        types.push(DataType[key]);
+      }
+      return types;
+    },
+    valueDomainTypes() {
+      var types = [];
+      for (const key of Object.keys(ValueDomainType)) {
+        types.push(ValueDomainType[key]);
+      }
+      return types;
+    },
+    nodeSetTypes() {
+      var types = [];
+      for (const key of Object.keys(NodeSetType)) {
+        types.push(NodeSetType[key]);
+      }
+      return types;
+    },
     ...mapGetters("coreui", ["isLoading"]),
     ...mapGetters("measurementUnit", ["measurementUnits"]),
     ...mapGetters("statisticalClassification", [

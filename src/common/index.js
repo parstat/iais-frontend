@@ -8,3 +8,5 @@ export * from "./frequency";
 export * from "./aggregation";
 export * from "./nodeSetType";
 export * from "./relationship";
+export * from "./dataType";
+export * from "./valueDomainType";
