@@ -73,13 +73,8 @@
         <CFormLabel for="scope">
           <span>
             {{ $t("structural.value_domain_enumeration_type") }}
-            {{ valueDomainType?.value === "ENUMERATED" ? "*" : "" }}
+            {{ valueDomainType === "ENUMERATED" ? "*" : "" }}
           </span>
-          <span
-            >Value domain enumeration type
-            {{ valueDomainType === "ENUMERATED" ? "*" : "" }}</span
-          >
-          >>>>>>> 861a7a642358a8b27531b1913f650aeacb40ab31
         </CFormLabel>
         <v-select
           id="scope"
