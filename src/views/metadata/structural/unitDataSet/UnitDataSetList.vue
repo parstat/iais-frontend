@@ -15,7 +15,7 @@
                   <router-link
                     v-if="isAuthenticated"
                     tag="a"
-                    to="/metadata/structural/unitTypes/add"
+                    to="/metadata/structural/unitDataSets/add"
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />
@@ -75,7 +75,7 @@
                         tag="a"
                         title="Edit"
                         :to="{
-                          name: 'UnitTypeEdit',
+                          name: 'unitDataSetEdit',
                           params: { id: item.id },
                         }"
                       >

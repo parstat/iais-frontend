@@ -44,10 +44,20 @@ function save(formData) {
     };
 
     const requestBody = {
+      localId: formData.localId,
+      structureId: formData.structureId,
+      statisticalProgramId: formData.statisticalProgramId,
       name: formData.name,
       description: formData.description,
-      definition: formData.definition,
-      localId: formData.localId,
+      version: formData.version,
+      versionDate: formData.versionDate,
+      versionRationale: formData.versionRationale,
+      exchangeChannel: formData.exchangeChannel,
+      exchangeDirection: formData.exchangeDirection,
+      reportingBegin: formData.reportingBegin,
+      reportingEnd: formData.reportingEnd,
+      connection: formData.connection,
+      filterExpression: formData.filterExpression,
     };
 
     axiosIais.post("structural/ClosedUnitDataSets", requestBody, config).then(
@@ -71,24 +81,32 @@ function update(formData) {
     };
 
     const requestBody = {
+      id: formData.id,
+      localId: formData.localId,
+      structureId: formData.structureId,
+      statisticalProgramId: formData.statisticalProgramId,
       name: formData.name,
       description: formData.description,
-      definition: formData.definition,
-      localId: formData.localId,
-      version: formData.version ? formData.version : "",
+      version: formData.version,
+      versionDate: formData.versionDate,
+      versionRationale: formData.versionRationale,
+      exchangeChannel: formData.exchangeChannel,
+      exchangeDirection: formData.exchangeDirection,
+      reportingBegin: formData.reportingBegin,
+      reportingEnd: formData.reportingEnd,
+      connection: formData.connection,
+      filterExpression: formData.filterExpression,
     };
 
-    axiosIais
-      .put("structural/ClosedUnitDataSets/" + formData.id, requestBody, config)
-      .then(
-        (response) => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.put("structural/ClosedUnitDataSets", requestBody, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 

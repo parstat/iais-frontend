@@ -10,3 +10,5 @@ export * from "./nodeSetType";
 export * from "./relationship";
 export * from "./dataType";
 export * from "./valueDomainType";
+export * from "./exchangeChannel";
+export * from "./exchangeDirection";

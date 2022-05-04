@@ -4,6 +4,7 @@ import { axiosIais } from "@/http";
 export const dataStructureService = {
   findAll,
   findById,
+  findByName,
   save,
   update,
   delete: _delete,
@@ -30,6 +31,20 @@ function findById(id) {
           : null;
         //console.log(data);
         resolve(data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+function findByName(name) {
+  var queryString = "?name=" + name ?? "";
+  return new Promise((resolve, reject) => {
+    axiosIais.get("/structural/OpenDataStructures" + queryString).then(
+      (response) => {
+        console.log(response);
+        resolve(response.data.dataStructures);
       },
       (error) => {
         reject(error);

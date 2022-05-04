@@ -40,6 +40,17 @@ const actions = {
       }
     );
   },
+  findByName({ commit }, id) {
+    dataStructureService.findByName(id).then(
+      (data) => {
+        commit("SET_DATASTRUCTURES", data);
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
   save({ dispatch }, formData) {
     dataStructureService.save(formData).then(
       (data) => {
