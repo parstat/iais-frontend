@@ -80,13 +80,13 @@
           id="scope"
           label="label"
           :options="nodeSetTypes"
-          v-model="valueDomainEnumerationType"
-          :class="{ 'is-invalid': v$.valueDomainEnumerationType?.$error }"
+          v-model="nodeSetType"
+          :class="{ 'is-invalid': v$.nodeSetType?.$error }"
           :placeholder="'Select the enumeration'"
           @input="resetNodeSetAndLevels"
           :disabled="isEdit"
         ></v-select>
-        <span class="text-danger" v-if="v$.valueDomainEnumerationType?.$error">
+        <span class="text-danger" v-if="v$.nodeSetType?.$error">
           Please select the enumeration for the value domain.
         </span>
       </CForm>
@@ -167,7 +167,7 @@
           label="name"
           :filterable="false"
           :options="
-            valueDomainEnumerationType === 'CODE_LIST' ||
+            nodeSetType === 'CODE_LIST' ||
             selectedValueDomainScope === 'SENTINEL'
               ? codeLists
               : statisticalClassifications
@@ -185,7 +185,7 @@
       <CForm
         class="mb-3"
         v-if="
-          valueDomainEnumerationType === 'STATISTICAL_CLASSIFICATION' &&
+          nodeSetType === 'STATISTICAL_CLASSIFICATION' &&
           statisticalClassificationLevels?.length
         "
         ><CFormLabel for="levels">
@@ -238,12 +238,9 @@ export default {
       valueDomainName: "",
       valueDomainDescription: "",
       valueDomainType: "",
-      valueDomainEnumerationType: "",
+      nodeSetType: "",
       valueDomainExpresion: "",
-      valueDomainDataType: {
-        label: "STRING",
-        value: "STRING",
-      },
+      valueDomainDataType: "STRING",
       valueDomainMeasurementUnit: "",
       valueDomainNodeSet: null,
       valueDomainLevel: null,
@@ -260,7 +257,7 @@ export default {
       validations.valueDomainExpresion = { required };
     }
     if (this.valueDomainType === "ENUMERATED") {
-      validations.valueDomainEnumerationType = { required };
+      validations.nodeSetType = { required };
     }
     if (
       this.valueDomainType === "ENUMERATED" &&
@@ -269,7 +266,7 @@ export default {
       validations.valueDomainNodeSet = { required };
     }
     if (
-      this.valueDomainEnumerationType === "STATISTICAL_CLASSIFICATION" &&
+      this.nodeSetType === "STATISTICAL_CLASSIFICATION" &&
       this.valueDomainType === "SUBSTANTIVE"
     ) {
       validations.valueDomainLevel = { required };
@@ -288,7 +285,7 @@ export default {
     search: _.debounce((name, loading, vm) => {
       if (name.length > 0) {
         if (
-          vm.valueDomainEnumerationType === "CODE_LIST" ||
+          vm.nodeSetType === "CODE_LIST" ||
           vm.selectedValueDomainScope === "SENTINEL"
         ) {
           vm.$store.dispatch("codeList/findByName", escape(name)).then(() => {
@@ -314,7 +311,7 @@ export default {
       ) {
         this.valueDomainNodeSet = selectedValue;
         if (
-          this.valueDomainEnumerationType === "STATISTICAL_CLASSIFICATION" &&
+          this.nodeSetType === "STATISTICAL_CLASSIFICATION" &&
           selectedValue?.id
         ) {
           this.$store.dispatch(
@@ -337,7 +334,7 @@ export default {
           description: this.valueDomainDescription ?? "",
           type: this.valueDomainType,
           scope: this.selectedValueDomainScope,
-          // enumeration: this.valueDomainEnumerationType?.value ?? "",
+          // enumeration: this.nodeSetType?.value ?? "",
           expression: this.valueDomainExpresion ?? "",
           dataType: this.valueDomainDataType,
           measurementUnitId: this.valueDomainMeasurementUnit.id,
@@ -356,7 +353,7 @@ export default {
       this.valueDomainName = "";
       this.valueDomainDescription = "";
       this.valueDomainType = "";
-      this.valueDomainEnumerationType = "";
+      this.nodeSetType = "";
       this.valueDomainExpresion = "";
       this.valueDomainDataType = {
         label: "STRING",
