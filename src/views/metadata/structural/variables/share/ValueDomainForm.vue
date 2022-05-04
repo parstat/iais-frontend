@@ -36,7 +36,7 @@
           v-model.trim="valueDomainName"
         />
         <span class="text-danger" v-if="v$.valueDomainName.$error">
-          Please enter a name for the Value Domain.
+          {{ $t("structural.validations.value_domain") }}
         </span>
       </CForm>
       <CForm class="mb-3">
@@ -54,7 +54,7 @@
       </CForm>
       <CForm class="mb-3">
         <CFormLabel for="type">
-          <span>Value domain type*</span>
+          <span>{{ $t("structural.value_domain_type") }}*</span>
         </CFormLabel>
         <v-select
           id="type"
@@ -62,19 +62,19 @@
           :options="valueDomainTypes"
           v-model="valueDomainType"
           :class="{ 'is-invalid': v$.valueDomainType.$error }"
-          :placeholder="'Select the type of the value domain'"
+          :placeholder="$t('structural.selection.value_domain_type')"
           :disabled="isEdit"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainType.$error">
-          Please select a type for the value domain.
+          {{ $t("structural.validations.value_domain_type") }}
         </span>
       </CForm>
       <CForm class="mb-3" v-if="valueDomainType === 'ENUMERATED'">
         <CFormLabel for="scope">
-          <span
-            >Value domain enumeration type
-            {{ valueDomainType === "ENUMERATED" ? "*" : "" }}</span
-          >
+          <span>
+            {{ $t("structural.value_domain_enumeration_type") }}
+            {{ valueDomainType === "ENUMERATED" ? "*" : "" }}
+          </span>
         </CFormLabel>
         <v-select
           id="scope"
@@ -120,7 +120,7 @@
           :options="dataTypes"
           v-model="valueDomainDataType"
           :class="{ 'is-invalid': v$.valueDomainDataType.$error }"
-          :placeholder="'Select the enumeration'"
+          :placeholder="$t('structural.selection.enumeration')"
           :disabled="isEdit"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainDataType.$error">

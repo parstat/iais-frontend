@@ -272,6 +272,8 @@
         "value_domain": "Domeniul valoric",
         "value_domain_name": "Nume domeniul valoric",
         "value_domain_description": "Descrierea domeniului valoric",
+        "value_domain_type": "Tip de domeniu valoric",
+        "value_domain_enumeration_type": "Tipul de enumerare a domeniului valoric",
         "sentinel_value": "Domeniul valoric de control",
         "substantive_value": "Domeniul valoric de fond",
         "label": "Etichetă",
@@ -404,11 +406,16 @@
             "label_russian": "Vă rugăm să introduceți o etichetă în limba rusă.",
             "description": "Vă rugăm să introduceți o descriere.",
             "concept_name": "Vă rugăm să introduceți un nume pentru concept.",
-            "variable_representation_name": "Vă rugăm să introduceți un nume pentru reprezentarea variabilei."
+            "variable_representation_name": "Vă rugăm să introduceți un nume pentru reprezentarea variabilei.",
+            "value_domain": "Vă rugăm să introduceți un nume pentru domeniul valoric.",
+            "value_domain_type": "Vă rugăm să selectați un tip pentru domeniul valoric.",
+            "value_domain_enumeration": "Vă rugăm să selectați enumerarea pentru domeniul valoric."
         },
         "selection": {
             "unit_type": "Selectați un tip de unitate",
-            "measure": "Selectați o măsură"
+            "measure": "Selectați o măsură",
+            "value_domain_type": "Selectați tipul domeniului valoric",
+            "enumeration": "Selectați enumerarea"
         },
         "dataset": {
             "reporting_period": "Perioada de raportare",
