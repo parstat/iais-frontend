@@ -247,31 +247,33 @@ export default {
     };
   },
   validations() {
-    const validations = {};
-    validations.valueDomainLocalID = { required };
-    validations.valueDomainName = { required };
-    validations.valueDomainDataType = { required };
-    validations.valueDomainType = { required };
-    validations.valueDomainMeasurementUnit = { required };
-    if (this.valueDomainType === "DESCRIBED") {
-      validations.valueDomainExpresion = { required };
+    if (this.showDiealog) {
+      const validations = {};
+      validations.valueDomainLocalID = { required };
+      validations.valueDomainName = { required };
+      validations.valueDomainDataType = { required };
+      validations.valueDomainType = { required };
+      validations.valueDomainMeasurementUnit = { required };
+      if (this.valueDomainType === "DESCRIBED") {
+        validations.valueDomainExpresion = { required };
+      }
+      if (this.valueDomainType === "ENUMERATED") {
+        validations.nodeSetType = { required };
+      }
+      if (
+        this.valueDomainType === "ENUMERATED" &&
+        this.selectedValueDomainScope === "SUBSTANTIVE"
+      ) {
+        validations.valueDomainNodeSet = { required };
+      }
+      if (
+        this.nodeSetType === "STATISTICAL_CLASSIFICATION" &&
+        this.valueDomainType === "SUBSTANTIVE"
+      ) {
+        validations.valueDomainLevel = { required };
+      }
+      return validations;
     }
-    if (this.valueDomainType === "ENUMERATED") {
-      validations.nodeSetType = { required };
-    }
-    if (
-      this.valueDomainType === "ENUMERATED" &&
-      this.selectedValueDomainScope === "SUBSTANTIVE"
-    ) {
-      validations.valueDomainNodeSet = { required };
-    }
-    if (
-      this.nodeSetType === "STATISTICAL_CLASSIFICATION" &&
-      this.valueDomainType === "SUBSTANTIVE"
-    ) {
-      validations.valueDomainLevel = { required };
-    }
-    return validations;
   },
   methods: {
     resetNodeSetAndLevels() {
@@ -322,6 +324,7 @@ export default {
       }
     },
     closeDialog() {
+      this.v$.$reset();
       this.$emit("close");
     },
     handleSubmit() {
@@ -362,6 +365,7 @@ export default {
       this.valueDomainMeasurementUnit = "";
       this.valueDomainNodeSet = null;
       this.valueDomainLevel = null;
+      this.v$.$reset();
     },
   },
   computed: {

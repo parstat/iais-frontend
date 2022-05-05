@@ -126,7 +126,7 @@
               :disabled="isEdit"
             />
 
-            <span class="text-danger" v-if="v$.substantiveValueDomain.$error">
+            <span class="text-danger" v-if="v$.substantiveValueDomainId.$error">
               Please select a value domain
             </span>
           </CForm>
@@ -146,10 +146,11 @@
         <hr />
         <CRow v-if="variable?.representations?.length">
           <CCol
-            class="col-4"
+            class="col-6 col-md-4"
             v-for="representation in variable.representations"
             :key="representation.id"
-            ><CCard class="mb-3">
+          >
+            <CCard class="mb-3">
               <CCardBody>
                 <CRow>
                   <CCol class="col-9">
@@ -277,7 +278,7 @@ export default {
     localId: {
       required,
     },
-    substantiveValueDomain: {
+    substantiveValueDomainId: {
       required,
     },
   },
@@ -356,6 +357,11 @@ export default {
     },
     handleSave() {
       this.v$.$touch(); //validate form data
+      //this.v$.valueDomainName.$reset();
+      //this.v$.valueDomainDataType.$reset();
+      //this.v$.valueDomainMeasurementUnit.$reset();
+      console.log(this.v$);
+      console.log(this.v$.valueDomainLocalID);
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {

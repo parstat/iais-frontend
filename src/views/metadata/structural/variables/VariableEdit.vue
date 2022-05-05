@@ -83,7 +83,7 @@ import { Context } from "@/common";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "VariableAdd",
+  name: "VariableEdit",
   data() {
     return {
       disabled: false,
@@ -105,6 +105,12 @@ export default {
         this.activeTab = 1;
       });
     },
+    next() {
+      this.activeTab++;
+    },
+    back() {
+      this.activeTab--;
+    },
   },
   components: {
     "app-variable-basic": VariableBasic,
@@ -117,6 +123,7 @@ export default {
   },
   created() {
     this.$store.dispatch("variable/findById", this.$route.params.id);
+    this.activeTab = this.$route.query.step ? this.$route.query.step - 1 : 0;
     this.$store.dispatch("coreui/setContext", Context.Structural);
   },
 };
