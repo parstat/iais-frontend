@@ -290,12 +290,17 @@ export default {
           vm.nodeSetType === "CODE_LIST" ||
           vm.selectedValueDomainScope === "SENTINEL"
         ) {
-          vm.$store.dispatch("codeList/findByName", escape(name)).then(() => {
-            loading(false);
-          });
+          vm.$store
+            .dispatch("codeList/findByName", encodeURIComponent(name))
+            .then(() => {
+              loading(false);
+            });
         } else {
           vm.$store
-            .dispatch("statisticalClassification/findByName", escape(name))
+            .dispatch(
+              "statisticalClassification/findByName",
+              encodeURIComponent(name)
+            )
             .then(() => {
               loading(false);
             });
@@ -332,7 +337,7 @@ export default {
       console.log(this.v$);
       if (!this.v$.$invalid) {
         const formData = {
-          localId: this.valueDomainLocalID,
+          localId: this.valueDomainLocalID.toUpperCase(),
           name: this.valueDomainName,
           description: this.valueDomainDescription ?? "",
           type: this.valueDomainType,
@@ -344,10 +349,8 @@ export default {
           nodesetId: this.valueDomainNodeSet?.id ?? null,
           levelId: this.valueDomainLevel?.id ?? null,
         };
-        this.$store.dispatch("valueDomain/save", formData).then((id) => {
-          formData.id = id;
-          this.$emit("success", formData);
-        });
+        this.$store.dispatch("valueDomain/save", formData);
+        this.closeDialog();
       }
     },
     resetForm() {
@@ -397,9 +400,15 @@ export default {
       "statisticalClassificationLevels",
     ]),
     ...mapGetters("codeList", ["codeLists"]),
+    ...mapGetters("valueDomain", ["valueDomain"]),
   },
   created() {
     this.$store.dispatch("measurementUnit/findAll");
   },
 };
 </script>
+<style scoped>
+.capitalize {
+  text-transform: uppercase;
+}
+</style>
