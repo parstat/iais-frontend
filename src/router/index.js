@@ -809,6 +809,13 @@ const routes = [
           import("@/views/metadata/structural/unitDataSet/UnitDataSetEdit"),
         meta: { authorize: [] },
       },
+      {
+        path: "metadata/structural/unitDataSets/delete/:id",
+        name: "UnitDataSetDelete",
+        component: () =>
+          import("@/views/metadata/structural/unitDataSet/UnitDataSetDelete"),
+        meta: { authorize: [] },
+      },
       //DataStructure
       {
         path: "metadata/structural/dataStructures/",

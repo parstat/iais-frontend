@@ -12,7 +12,7 @@
         }"
         placeholder="Local ID"
         v-model.trim="localId"
-        :disabled="isEdit"
+        :disabled="isEdit || isDelete"
       />
       <div class="text-danger mb-3" v-if="v$.name.$error">
         Please enter a local ID.
@@ -31,7 +31,7 @@
         :placeholder="'Select data structure'"
         @search="searchDataStructure"
         @input="setStructure"
-        :disabled="isEdit"
+        :disabled="isEdit || isDelete"
       ></v-select>
       <span class="text-danger" v-if="v$.structureId.$error">
         Please select a data structure
@@ -50,7 +50,7 @@
         :placeholder="'Select a statistical program'"
         @search="searchStatisticalProgram"
         @input="setStatisticalProgram"
-        :disabled="isEdit"
+        :disabled="isEdit || isDelete"
       ></v-select>
       <span class="text-danger" v-if="v$.statisticalProgramId.$error">
         Please select a statistical program
@@ -68,6 +68,7 @@
         }"
         placeholder="Unit data set name"
         v-model.trim="name"
+        :disabled="isDelete"
       />
       <div class="text-danger mb-3" v-if="v$.name.$error">
         Please enter a name for the unit data set.
@@ -82,6 +83,7 @@
         placeholder="Unit data set description"
         v-model.trim="description"
         rows="5"
+        :disabled="isDelete"
       ></textarea>
     </CForm>
     <CForm>
@@ -92,6 +94,7 @@
         class="form-control mb-3"
         placeholder="Unit data set version"
         v-model.trim="version"
+        :disabled="isDelete"
       />
     </CForm>
     <CForm>
@@ -103,13 +106,19 @@
         placeholder="Unit data set version rationale"
         v-model.trim="versionRationale"
         rows="5"
+        :disabled="isDelete"
       ></textarea>
     </CForm>
     <CForm>
       <CFormLabel for="versionDate">
         <span>Version date*</span>
       </CFormLabel>
-      <Datepicker id="versionDate" class="mb-3" v-model="versionDate" />
+      <Datepicker
+        id="versionDate"
+        class="mb-3"
+        v-model="versionDate"
+        :disabled="isDelete"
+      />
     </CForm>
     <CForm>
       <CFormLabel for="exchangeChannel">
@@ -123,6 +132,7 @@
         class="mb-3"
         :class="{ 'is-invalid': v$.exchangeChannel.$error }"
         :placeholder="'Select data structure'"
+        :disabled="isDelete"
       ></v-select>
       <span class="text-danger" v-if="v$.exchangeChannel.$error">
         Please select an exchange channel.
@@ -139,6 +149,7 @@
         class="mb-3"
         :class="{ 'is-invalid': v$.exchangeDirection.$error }"
         :placeholder="'Select data structure'"
+        :disabled="isDelete"
       ></v-select>
       <span class="text-danger" v-if="v$.exchangeDirection.$error">
         Please select an exchange direction.
@@ -155,6 +166,7 @@
         v-model="dummyDateHolder"
         @update:modelValue="handleDateSelect"
         @cleared="clearReportingDateRange"
+        :disabled="isDelete"
       />
     </CForm>
     <CForm>
@@ -169,6 +181,7 @@
         }"
         placeholder="Unit data set connection"
         v-model.trim="connection"
+        :disabled="isDelete"
       />
       <div class="text-danger mb-3" v-if="v$.connection.$error">
         Please enter a connection for the unit data set.
@@ -182,9 +195,10 @@
         class="form-control mb-3"
         placeholder="Unit data set filter expression"
         v-model.trim="filterExpression"
+        :disabled="isDelete"
       />
     </CForm>
-    <div class="form-mandatory">*Mandatory fields</div>
+    <div class="form-mandatory" :hidden="isDelete">*Mandatory fields</div>
     <div style="margin-top: 20px">
       <CButton
         color="primary"
@@ -192,13 +206,14 @@
         style="margin-right: 0.3rem"
         @click="handleSave()"
         :disabled="disabled"
-        >Save</CButton
+        >Delete</CButton
       >
       <CButton
         color="danger"
         size="sm"
         @click="handleReset()"
         :disabled="disabled"
+        :hidden="isDelete"
         >Reset</CButton
       >
     </div>
@@ -216,6 +231,7 @@ import _ from "lodash";
 export default {
   name: "UnitDataSetShared",
   props: [
+    "isDelete",
     "isEdit",
     "selectedLocalId",
     "selectedStructure",

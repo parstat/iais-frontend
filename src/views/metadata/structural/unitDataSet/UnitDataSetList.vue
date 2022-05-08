@@ -88,7 +88,7 @@
                         tag="a"
                         title="Delete"
                         :to="{
-                          name: 'UnitTypeDelete',
+                          name: 'UnitDataSetDelete',
                           params: { id: item.id },
                         }"
                       >
