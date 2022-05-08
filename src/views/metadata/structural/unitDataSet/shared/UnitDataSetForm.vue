@@ -12,6 +12,7 @@
         }"
         placeholder="Local ID"
         v-model.trim="localId"
+        :disabled="isEdit"
       />
       <div class="text-danger mb-3" v-if="v$.name.$error">
         Please enter a local ID.
@@ -30,6 +31,7 @@
         :placeholder="'Select data structure'"
         @search="searchDataStructure"
         @input="setStructure"
+        :disabled="isEdit"
       ></v-select>
       <span class="text-danger" v-if="v$.structureId.$error">
         Please select a data structure
@@ -41,11 +43,14 @@
       </CFormLabel>
       <v-select
         label="name"
-        :options="[]"
-        v-model="statsitcalProgram"
+        :options="statisticalPrograms"
+        v-model="statisticalProgramHolder"
         class="mb-3"
         :class="{ 'is-invalid': v$.statisticalProgramId.$error }"
         :placeholder="'Select a statistical program'"
+        @search="searchStatisticalProgram"
+        @input="setStatisticalProgram"
+        :disabled="isEdit"
       ></v-select>
       <span class="text-danger" v-if="v$.statisticalProgramId.$error">
         Please select a statistical program
@@ -211,9 +216,10 @@ import _ from "lodash";
 export default {
   name: "UnitDataSetShared",
   props: [
+    "isEdit",
     "selectedLocalId",
-    "selectedStructureId",
-    "selectedStatisticalProgramId",
+    "selectedStructure",
+    "selectedStatisticalProgramLink",
     "selectedName",
     "selectedDescription",
     "selectedVersion",
@@ -226,13 +232,19 @@ export default {
     "selectedConnection",
     "selectedFilterExpression",
   ],
+  watch: {
+    statisticalProgram: function (_new) {
+      this.statisticalProgramId = _new.id;
+      this.statisticalProgramHolder = _new;
+    },
+  },
   data() {
     return {
       disabled: false,
       v$: useValidate(),
       localId: this.selectedLocalId ?? "",
-      structureId: this.selectedStructureId ?? "0",
-      statisticalProgramId: this.selectedStatisticalProgramId ?? "",
+      structureId: this.selectedStructure?.id ?? "",
+      statisticalProgramId: "",
       name: this.selectedName ?? "",
       description: this.selectedDescription ?? "",
       version: this.selectedVersion ?? "",
@@ -244,11 +256,15 @@ export default {
       reportingEnd: this.selectedReportingEnd ?? "",
       connection: this.selectedConnection ?? "",
       filterExpression: this.selectedFilterExpression ?? "",
-      dataStructure: null,
-      statsitcalProgram: null,
+
+      dataStructure: this.selectedStructure ?? null,
+      statisticalProgramHolder: null,
       dummyDateHolder:
-        this.reportingBegin && this.reportingEnd
-          ? [new Date(this.reportingBegin), new Date(this.reportingEnd)]
+        this.selectedReportingBegin && this.selectedReportingEnd
+          ? [
+              new Date(this.selectedReportingBegin),
+              new Date(this.selectedReportingEnd),
+            ]
           : "",
     };
   },
@@ -329,6 +345,27 @@ export default {
         this.structureId = option.id;
       }
     },
+    searchStatisticalProgram(name, loading) {
+      loading(true);
+      this.doSearchStatisticalProgram(name, loading, this);
+    },
+    doSearchStatisticalProgram: _.debounce((name, loading, vm) => {
+      if (name.length > 0) {
+        vm.$store
+          .dispatch("statisticalProgram/findByName", escape(name))
+          .then(() => {
+            loading(false);
+          });
+      } else {
+        loading(false);
+      }
+    }, 500),
+    setStatisticalProgram(option) {
+      if (option) {
+        this.statisticalProgramHolder = option;
+        this.statisticalProgramId = option.id;
+      }
+    },
     handleDateSelect(data) {
       console.log(data);
       this.reportingBegin =
@@ -343,8 +380,6 @@ export default {
     },
     handleSave() {
       this.v$.$touch(); //validate form data
-      console.log(this.versionDate);
-      console.log(this.v$);
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
@@ -357,7 +392,7 @@ export default {
           versionDate:
             this.versionDate instanceof Date
               ? this.versionDate.toISOString()
-              : "",
+              : this.versionDate,
           versionRationale: this.versionRationale,
           exchangeChannel: this.exchangeChannel,
           exchangeDirection: this.exchangeDirection,
@@ -366,22 +401,41 @@ export default {
           connection: this.connection,
           filterExpression: this.filterExpression,
         };
-        this.$store.dispatch("unitDataSet/save", formData);
+        if (this.isEdit && this.$route.params.id) {
+          formData.id = this.$route.params.id;
+          this.$store.dispatch("unitDataSet/update", formData);
+        } else {
+          this.$store.dispatch("unitDataSet/save", formData);
+        }
         console.log(formData);
       }
     },
   },
   computed: {
     ...mapGetters("dataStructure", ["dataStructures"]),
+    ...mapGetters("statisticalProgram", [
+      "statisticalPrograms",
+      "statisticalProgram",
+    ]),
   },
   created() {
-    // if (this.structureId) {
-    //   this.$store
-    //     .dispatch("dataStructure/findAll", this.structureId)
-    //     .then(() => {
-    //       setTimeout(this.initDataStructure, 200);
-    //     });
-    // }
+    if (this.selectedStatisticalProgramLink) {
+      const lastIndexOfSlash =
+        this.selectedStatisticalProgramLink.lastIndexOf("/");
+      if (
+        lastIndexOfSlash !== -1 &&
+        lastIndexOfSlash === this.selectedStatisticalProgramLink.length - 2
+      ) {
+        const idOfStatisticalProgram =
+          this.selectedStatisticalProgramLink.substring(lastIndexOfSlash + 1);
+        if (idOfStatisticalProgram) {
+          this.$store.dispatch(
+            "statisticalProgram/findById",
+            idOfStatisticalProgram
+          );
+        }
+      }
+    }
   },
 };
 </script>
