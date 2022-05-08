@@ -86,9 +86,8 @@
               label="name"
               :options="sentinelValueDomains"
               @search="searchSentinelValueDomain"
-              @input="setSentinelValueDomain"
               :filterable="false"
-              v-model="sentinelValueDomain"
+              v-model="selectedSentinelValueDomain"
               :disabled="isEdit"
             />
           </CForm>
@@ -121,12 +120,14 @@
               :filterable="false"
               :options="substantiveValueDomains"
               @search="searchSubstantiveValueDomain"
-              @input="setSubstantiveValueDomain"
-              v-model="substantiveValueDomain"
+              v-model="selectedSubstantiveValueDomain"
               :disabled="isEdit"
             />
 
-            <span class="text-danger" v-if="v$.substantiveValueDomain.$error">
+            <span
+              class="text-danger"
+              v-if="v$.selectedSubstantiveValueDomain.$error"
+            >
               Please select a value domain
             </span>
           </CForm>
@@ -146,10 +147,11 @@
         <hr />
         <CRow v-if="variable?.representations?.length">
           <CCol
-            class="col-4"
+            class="col-6 col-md-4"
             v-for="representation in variable.representations"
             :key="representation.id"
-            ><CCard class="mb-3">
+          >
+            <CCard class="mb-3">
               <CCardBody>
                 <CRow>
                   <CCol class="col-9">
@@ -224,7 +226,6 @@
     <app-value-domain-form
       :showDiealog="showValueDomainDialog"
       :selectedValueDomainScope="valueDomainScope"
-      @success="handleSuccess"
       @close="closeValueDomainDialog"
     ></app-value-domain-form>
   </CCard>
@@ -245,6 +246,8 @@ export default {
     ...mapGetters("valueDomain", [
       "substantiveValueDomains",
       "sentinelValueDomains",
+      "substantiveValueDomain",
+      "sentinelValueDomain",
     ]),
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
   },
@@ -258,10 +261,8 @@ export default {
       name: "",
       description: "",
       localId: "",
-      sentinelValueDomain: "",
-      substantiveValueDomain: "",
-      sentinelValueDomainId: null,
-      substantiveValueDomainId: null,
+      selectedSentinelValueDomain: "",
+      selectedSubstantiveValueDomain: "",
       isEdit: false,
       representationId: "",
       showDeleteDialog: false,
@@ -277,8 +278,16 @@ export default {
     localId: {
       required,
     },
-    substantiveValueDomain: {
+    selectedSubstantiveValueDomain: {
       required,
+    },
+  },
+  watch: {
+    sentinelValueDomain: function () {
+      this.selectedSentinelValueDomain = this.sentinelValueDomain;
+    },
+    substantiveValueDomain: function () {
+      this.selectedSubstantiveValueDomain = this.substantiveValueDomain;
     },
   },
   methods: {
@@ -303,24 +312,15 @@ export default {
         loading(false);
       }
     }, 500),
-    setSentinelValueDomain(selectedValueDomain) {
-      if (typeof selectedValueDomain !== "undefined") {
-        this.sentinelValueDomainId = selectedValueDomain.id;
-      }
-    },
-    setSubstantiveValueDomain(selectedValueDomain) {
-      if (typeof selectedValueDomain !== "undefined") {
-        this.substantiveValueDomainId = selectedValueDomain.id;
-      }
-    },
     editVariableRepresentation(representation) {
       this.isEdit = true;
       this.name = representation.name;
       this.description = representation.description;
       this.localId = representation.localId;
       this.representationId = representation.id;
-      this.substantiveValueDomain = representation.substantiveValueDomain;
-      this.sentinelValueDomain = representation.sentinelValueDomain;
+      this.selectedSubstantiveValueDomain =
+        representation.substantiveValueDomain;
+      this.selectedSentinelValueDomain = representation.sentinelValueDomain;
     },
     deleteVariableRepresentation(representation) {
       this.representationId = representation.id;
@@ -334,17 +334,6 @@ export default {
       this.valueDomainScope = null;
       this.showValueDomainDialog = false;
     },
-    handleSuccess(data) {
-      if (data.scope === "SENTINEL") {
-        this.sentinelValueDomain = data;
-        this.sentinelValueDomainId = data.id;
-      } else {
-        this.substantiveValueDomain = data;
-        this.substantiveValueDomainId = data.id;
-      }
-      this.showValueDomainDialog = false;
-      this.valueDomainScope = "";
-    },
     handleDelete() {
       this.$store
         .dispatch("variableRepresentation/delete", this.representationId)
@@ -356,6 +345,7 @@ export default {
     },
     handleSave() {
       this.v$.$touch(); //validate form data
+      console.log(this.substantiveValueDomain);
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
@@ -363,8 +353,8 @@ export default {
           name: this.name,
           description: this.description,
           localId: this.localId.toUpperCase(),
-          sentinelValueDomainId: this.sentinelValueDomainId,
-          substantiveValueDomainId: this.substantiveValueDomainId,
+          sentinelValueDomainId: this.selectedSentinelValueDomain?.id,
+          substantiveValueDomainId: this.selectedSubstantiveValueDomain?.id,
         };
         if (this.isEdit) {
           formData.id = this.representationId;
@@ -391,10 +381,8 @@ export default {
       this.name = "";
       this.description = "";
       this.localId = "";
-      this.sentinelValueDomain = "";
-      this.substantiveValueDomain = "";
-      this.sentinelValueDomainId = null;
-      this.substantiveValueDomainId = null;
+      this.selectedSentinelValueDomain = "";
+      this.selectedSubstantiveValueDomain = "";
       this.isEdit = false;
       this.disabled = false;
       this.v$.$reset();

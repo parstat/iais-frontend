@@ -3,6 +3,8 @@ import { valueDomainService } from "@/services";
 const state = {
   substantiveValueDomains: [],
   sentinelValueDomains: [],
+  sentinelValueDomain: null,
+  substantiveValueDomain: null,
   valueDomains: [],
   valueDomain: null,
 };
@@ -16,6 +18,12 @@ const mutations = {
   },
   SET_SENTINEL_VALUE_DOMAINS(state, valueDomains) {
     state.sentinelValueDomains = valueDomains ? valueDomains : [];
+  },
+  SET_SUBSTANTIVE_VALUE_DOMAIN(state, valueDomain) {
+    state.substantiveValueDomain = valueDomain;
+  },
+  SET_SENTINEL_VALUE_DOMAIN(state, valueDomain) {
+    state.sentinelValueDomains = valueDomain;
   },
   SET_VALUE_DOMAIN(state, valueDomain) {
     state.valueDomain = valueDomain;
@@ -39,6 +47,11 @@ const actions = {
     valueDomainService.findById(id).then(
       (data) => {
         commit("SET_VALUE_DOMAIN", data);
+        if (data.scope === "SENTINEL") {
+          commit("SET_SENTINEL_VALUE_DOMAIN", data);
+        } else {
+          commit("SET_SUBSTANTIVE_VALUE_DOMAIN", data);
+        }
         console.log(data);
       },
       (error) => {
@@ -84,6 +97,7 @@ const actions = {
         dispatch("message/success", "Value domain saved!", {
           root: true,
         });
+        dispatch("findById", data);
       },
       (error) => {
         console.log(error);
@@ -130,6 +144,12 @@ const getters = {
   },
   sentinelValueDomains: (state) => {
     return state.sentinelValueDomains;
+  },
+  substantiveValueDomain: (state) => {
+    return state.substantiveValueDomain;
+  },
+  sentinelValueDomain: (state) => {
+    return state.sentinelValueDomain;
   },
 };
 
