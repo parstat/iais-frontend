@@ -201,12 +201,22 @@
     <div class="form-mandatory" :hidden="isDelete">*Mandatory fields</div>
     <div style="margin-top: 20px">
       <CButton
+        v-if="isDelete"
+        color="primary"
+        size="sm"
+        style="margin-right: 0.3rem"
+        @click="handleDelete()"
+        :disabled="disabled"
+        >Delete</CButton
+      >
+      <CButton
+        v-if="!isDelete"
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
         @click="handleSave()"
         :disabled="disabled"
-        >Delete</CButton
+        >Save</CButton
       >
       <CButton
         color="danger"
@@ -425,6 +435,9 @@ export default {
         }
         console.log(formData);
       }
+    },
+    handleDelete() {
+      this.$store.dispatch("unitDataSet/delete", this.$route.params.id);
     },
   },
   computed: {
