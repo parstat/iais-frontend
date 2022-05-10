@@ -5,7 +5,7 @@
       <input
         id="localId"
         type="text"
-        class="form-control"
+        class="form-control capitalize"
         :class="{
           'is-invalid': v$.localId.$error,
           'mb-3': !v$.localId.$error,
@@ -268,7 +268,7 @@ export default {
     return {
       disabled: false,
       v$: useValidate(),
-      localId: this.selectedLocalId ?? "",
+      localId: this.selectedLocalId ? this.selectedLocalId.toUpperCase() : "",
       structureId: this.selectedStructure?.id ?? "",
       statisticalProgramId: "",
       name: this.selectedName ?? "",
@@ -468,3 +468,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.capitalize {
+  text-transform: uppercase;
+}
+</style>
