@@ -72,10 +72,8 @@
                     <a
                       class="link-button"
                       @click.prevent="openValueDomainDialog('SENTINEL')"
-                    >
-                      <CIcon name="cil-plus" />{{
-                        $t("structural.sentinel_value")
-                      }}
+                      ><CIcon name="cil-plus" />
+                      {{ $t("structural.sentinel_value") }}
                     </a>
                   </CNavItem>
                 </CNav>
@@ -105,10 +103,8 @@
                     <a
                       class="link-button"
                       @click.prevent="openValueDomainDialog('SUBSTANTIVE')"
-                    >
-                      <CIcon name="cil-plus" />{{
-                        $t("structural.substantive_value")
-                      }}
+                      ><CIcon name="cil-plus" />
+                      {{ $t("structural.substantive_value") }}
                     </a>
                   </CNavItem>
                 </CNav>
@@ -128,7 +124,7 @@
               class="text-danger"
               v-if="v$.selectedSubstantiveValueDomain.$error"
             >
-              Please select a value domain
+              {{ $t("structural.validations.value_domain") }}
             </span>
           </CForm>
           <div class="form-mandatory mt-3">
@@ -150,8 +146,7 @@
             class="col-6 col-md-4"
             v-for="representation in variable.representations"
             :key="representation.id"
-          >
-            <CCard class="mb-3">
+            ><CCard class="mb-3">
               <CCardBody>
                 <CRow>
                   <CCol class="col-9">
