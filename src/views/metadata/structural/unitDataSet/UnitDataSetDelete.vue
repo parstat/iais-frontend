@@ -7,7 +7,7 @@
             <span>Unit data sets</span>
           </CCardTitle>
           <CCardText v-if="unitDataSet">
-            <app-unit-data-set-form-component
+            <app-unit-data-set-basic-component
               :isDelete="true"
               :selectedLocalId="unitDataSet.localId"
               :selectedStructure="unitDataSet.structure"
@@ -25,7 +25,7 @@
               :selectedReportingEnd="unitDataSet.reportingEnd"
               :selectedConnection="unitDataSet.connection"
               :selectedFilterExpression="unitDataSet.filterExpression"
-            ></app-unit-data-set-form-component>
+            ></app-unit-data-set-basic-component>
           </CCardText>
         </CCardBody>
       </CCard>
@@ -35,12 +35,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-import UnitDataSetForm from "./shared/UnitDataSetForm.vue";
+import UnitDataSetBasic from "./shared/UnitDataSetBasic.vue";
 
 export default {
   name: "UnitDataSetDelete",
   components: {
-    "app-unit-data-set-form-component": UnitDataSetForm,
+    "app-unit-data-set-basic-component": UnitDataSetBasic,
   },
   data() {
     return {};

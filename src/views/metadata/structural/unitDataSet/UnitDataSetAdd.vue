@@ -7,7 +7,7 @@
             <span>Unit data sets</span>
           </CCardTitle>
           <CCardText>
-            <app-unit-data-set-form-component></app-unit-data-set-form-component>
+            <app-unit-data-set-basic-component></app-unit-data-set-basic-component>
           </CCardText>
         </CCardBody>
       </CCard>
@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import UnitDataSetForm from "./shared/UnitDataSetForm.vue";
+import UnitDataSetBasic from "./shared/UnitDataSetBasic.vue";
 
 export default {
   name: "UnitDataSetAdd",
   components: {
-    "app-unit-data-set-form-component": UnitDataSetForm,
+    "app-unit-data-set-basic-component": UnitDataSetBasic,
   },
   data() {
     return {};
