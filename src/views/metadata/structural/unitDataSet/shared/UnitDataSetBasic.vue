@@ -111,7 +111,7 @@
     </CForm>
     <CForm>
       <CFormLabel for="versionDate">
-        <span>Version date*</span>
+        <span>Version date</span>
       </CFormLabel>
       <Datepicker
         id="versionDate"

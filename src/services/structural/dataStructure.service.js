@@ -60,16 +60,8 @@ function save(formData) {
       },
     };
 
-    const requestBody = {
-      name: formData.name,
-      description: formData.description,
-      definition: formData.definition,
-      localId: formData.localId,
-    };
-
-    axiosIais.post("structural/ClosedDataStructures", requestBody, config).then(
+    axiosIais.post("structural/ClosedDataStructures", formData, config).then(
       (response) => {
-        //console.log(response.data);
         resolve(response.data);
       },
       (error) => {

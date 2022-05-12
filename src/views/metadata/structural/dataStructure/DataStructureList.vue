@@ -15,7 +15,7 @@
                   <router-link
                     v-if="isAuthenticated"
                     tag="a"
-                    to="/metadata/structural/unitTypes/add"
+                    to="/metadata/structural/dataStructures/add"
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />

@@ -58,7 +58,7 @@ const actions = {
         dispatch("message/success", "Data Structure saved!", {
           root: true,
         });
-        router.push("/metadata/structural/dataStructures");
+        router.push("/metadata/structural/dataStructures/edit/" + data);
       },
       (error) => {
         console.log(error);
