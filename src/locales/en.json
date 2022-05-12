@@ -390,7 +390,7 @@
         "parse_file": "Parse the file",
         "proceed": "Proceed",
         "proceed_deletion": "Are you sure you want to proceed deletion of",
-        "validations":{
+        "validations": {
             "statistical_classification_id": "Please enter a valid ID.",
             "statistical_classification_name": "Please enter a valid name.",
             "statistical_classification_veresion": "Please enter a valid version.",

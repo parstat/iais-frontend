@@ -390,7 +390,7 @@
         "parse_file": "Разбирать файл",
         "proceed": "Продолжить",
         "proceed_deletion": "Вы уверены что хотите продолжить удаление",
-        "validations":{
+        "validations": {
             "statistical_classification_id": "Пожалуйста введите действительный ИД.",
             "statistical_classification_name": "Пожалуйста введите действительное имя.",
             "statistical_classification_veresion": "Пожалуйста введите действительную версию.",

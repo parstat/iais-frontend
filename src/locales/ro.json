@@ -391,7 +391,7 @@
         "parse_file": "Parsează dosarul",
         "proceed": "Procedă",
         "proceed_deletion": "Sunteți sigur că doriți să continuați ștergerea",
-        "validations":{
+        "validations": {
             "statistical_classification_id": "Vă rugăm să introduceți un ID valid.",
             "statistical_classification_name": "Vă rugăm să introduceți un nume valid.",
             "statistical_classification_veresion": "Vă rugăm să introduceți o versiune validă.",
