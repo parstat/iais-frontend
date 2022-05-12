@@ -35,8 +35,9 @@
               color="primary"
               size="sm"
               style="margin-right: 0.3rem"
-              @click="addProcessInput"
-              ><span>{{ $t("referential.add") }}</span>
+              @click="handleSave"
+              ><span v-if="isEdit">{{ $t("referential.update") }}</span>
+              <span v-else> {{ $t("referential.add") }}</span>
             </CButton>
           </div>
         </CForm>
@@ -55,6 +56,11 @@
                   </CCol>
                   <CCol class="col-3">
                     <CNav class="justify-content-end">
+                      <CNavItem>
+                        <span v-on:click="editProcessInput(processInput)">
+                          <CIcon name="cil-pencil" />
+                        </span>
+                      </CNavItem>
                       <CNavItem>
                         <span v-on:click="removeProcessInput(processInput)">
                           <CIcon name="cil-trash" />
@@ -105,7 +111,9 @@ export default {
       v$: useValidate(),
       name: "",
       description: "",
+      inputId: "",
       disabled: false,
+      isEdit: false,
     };
   },
   computed: {
@@ -120,6 +128,19 @@ export default {
     },
   },
   methods: {
+    editProcessInput(selectedProcessInput) {
+      this.isEdit = true;
+      this.name = selectedProcessInput.name;
+      this.description = selectedProcessInput.description;
+      this.inputId = selectedProcessInput.id;
+    },
+    handleSave() {
+      if (this.isEdit) {
+        this.updateProcessInput();
+      } else {
+        this.addProcessInput();
+      }
+    },
     addProcessInput() {
       this.v$.$touch();
       if (!this.v$.$invalid) {
@@ -132,11 +153,27 @@ export default {
         this.$store
           .dispatch("processDocumentation/addProcessInput", formData)
           .then(() => {
-            this.name = "";
+            (this.inputId = ""), (this.name = "");
             this.description = "";
             this.v$.$reset();
           });
       }
+    },
+    updateProcessInput() {
+      this.disabled = true; //disable buttons
+      const formData = {
+        id: this.inputId,
+        documentation: this.processDocumentation.id,
+        name: this.name,
+        description: this.description,
+      };
+      this.$store
+        .dispatch("processDocumentation/editProcessInput", formData)
+        .then(() => {
+          (this.inputId = ""), (this.name = "");
+          this.description = "";
+          this.v$.$reset();
+        });
     },
     removeProcessInput(selectedProcessInput) {
       const formData = {

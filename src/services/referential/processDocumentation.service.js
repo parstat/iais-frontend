@@ -16,8 +16,10 @@ export const processDocumentationService = {
   addMaintainer,
   removeMaintainer,
   addProcessInput,
+  editProcessInput,
   removeProcessInput,
   addProcessOutput,
+  editProcessOutput,
   removeProcessOutput,
   addProcessQuality,
   removeProcessQuality,
@@ -346,6 +348,41 @@ function addProcessInput(formData) {
   });
 }
 
+function editProcessInput(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
+
+    const requestBody = {
+      id: formData.id,
+      name: formData.name,
+      description: formData.description,
+    };
+
+    axiosIais
+      .patch(
+        "close/referential/process/documentations/" +
+          formData.documentation +
+          "/inputs/" +
+          formData.id,
+        new URLSearchParams(requestBody).toString(),
+        config
+      )
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+
 function removeProcessInput(formData) {
   return new Promise((resolve, reject) => {
     axiosIais
@@ -386,6 +423,41 @@ function addProcessOutput(formData) {
         "close/referential/process/documentations/" +
           formData.documentation +
           "/outputs/",
+        new URLSearchParams(requestBody).toString(),
+        config
+      )
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+}
+
+function editProcessOutput(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    };
+
+    const requestBody = {
+      id: formData.id,
+      name: formData.name,
+      description: formData.description,
+    };
+
+    axiosIais
+      .patch(
+        "close/referential/process/documentations/" +
+          formData.documentation +
+          "/outputs/" +
+          formData.id,
         new URLSearchParams(requestBody).toString(),
         config
       )

@@ -207,6 +207,16 @@ const actions = {
       }
     );
   },
+  editProcessInput({ commit }, formData) {
+    processDocumentationService.editProcessInput(formData).then(
+      (data) => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
 
   removeProcessInput({ commit }, formData) {
     processDocumentationService.removeProcessInput(formData).then(
@@ -221,6 +231,17 @@ const actions = {
 
   addProcessOutput({ commit }, formData) {
     processDocumentationService.addProcessOutput(formData).then(
+      (data) => {
+        commit("SET_PROCESS_DOCUMENTATION", data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+
+  editProcessOutput({ commit }, formData) {
+    processDocumentationService.editProcessOutput(formData).then(
       (data) => {
         commit("SET_PROCESS_DOCUMENTATION", data);
       },

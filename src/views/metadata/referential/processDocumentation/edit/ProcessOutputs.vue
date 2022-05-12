@@ -38,8 +38,9 @@
               color="primary"
               size="sm"
               style="margin-right: 0.3rem"
-              @click="addProcessOutput"
-              ><span>{{ $t("referential.add") }}</span>
+              @click="handleSave"
+              ><span v-if="isEdit">{{ $t("referential.update") }}</span>
+              <span v-else> {{ $t("referential.add") }}</span>
             </CButton>
           </div>
         </CForm>
@@ -58,6 +59,11 @@
                   </CCol>
                   <CCol class="col-3">
                     <CNav class="justify-content-end">
+                      <CNavItem>
+                        <span v-on:click="editProcessOutput(processOutput)">
+                          <CIcon name="cil-pencil" />
+                        </span>
+                      </CNavItem>
                       <CNavItem>
                         <span v-on:click="removeProcessOutput(processOutput)">
                           <CIcon name="cil-trash" />
@@ -108,7 +114,9 @@ export default {
       v$: useValidate(),
       name: "",
       description: "",
+      outputId: "",
       disabled: false,
+      isEdit: false,
     };
   },
   computed: {
@@ -123,6 +131,19 @@ export default {
     },
   },
   methods: {
+    editProcessOutput(selectedProcessOutput) {
+      this.isEdit = true;
+      this.name = selectedProcessOutput.name;
+      this.description = selectedProcessOutput.description;
+      this.outputId = selectedProcessOutput.id;
+    },
+    handleSave() {
+      if (this.isEdit) {
+        this.updateProcessOutput();
+      } else {
+        this.addProcessOutput();
+      }
+    },
     addProcessOutput() {
       this.v$.$touch();
       if (!this.v$.$invalid) {
@@ -135,11 +156,29 @@ export default {
         this.$store
           .dispatch("processDocumentation/addProcessOutput", formData)
           .then(() => {
+            this.outputId = "";
             this.name = "";
             this.description = "";
             this.v$.$reset();
           });
       }
+    },
+    updateProcessOutput() {
+      this.disabled = true; //disable buttons
+      const formData = {
+        id: this.outputId,
+        documentation: this.processDocumentation.id,
+        name: this.name,
+        description: this.description,
+      };
+      this.$store
+        .dispatch("processDocumentation/editProcessOutput", formData)
+        .then(() => {
+          this.outputId = "";
+          this.name = "";
+          this.description = "";
+          this.v$.$reset();
+        });
     },
     removeProcessOutput(selectedProcessOutput) {
       const formData = {
