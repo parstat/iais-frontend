@@ -36,7 +36,7 @@
           v-model.trim="valueDomainName"
         />
         <span class="text-danger" v-if="v$.valueDomainName.$error">
-          {{ $t("structural.validations.value_domain") }}
+          {{ $t("structural.validations.value_domain_name") }}
         </span>
       </CForm>
       <CForm class="mb-3">
@@ -82,18 +82,18 @@
           :options="nodeSetTypes"
           v-model="nodeSetType"
           :class="{ 'is-invalid': v$.nodeSetType?.$error }"
-          :placeholder="'Select the enumeration'"
+          :placeholder="$t('structural.selection.enumeration')"
           @input="resetNodeSetAndLevels"
           :disabled="isEdit"
         ></v-select>
         <span class="text-danger" v-if="v$.nodeSetType?.$error">
-          Please select the enumeration for the value domain.
+          {{ $t("structural.validations.value_domain_enumeration") }}
         </span>
       </CForm>
       <CForm class="mb-3" v-if="valueDomainType === 'DESCRIBED'">
         <CFormLabel for="expression">
-          <span
-            >Expression
+          <span>
+            {{ $t("structural.expression") }}
             {{ valueDomainType === "DESCRIBED" ? "*" : "" }}
           </span>
         </CFormLabel>
@@ -102,17 +102,17 @@
           type="text"
           class="form-control"
           :class="{ 'is-invalid': v$.valueDomainExpresion?.$error }"
-          :placeholder="'Value domain expression'"
+          :placeholder="$t('structural.value_domain_expression')"
           v-model.trim="valueDomainExpresion"
           :disabled="isEdit"
         />
         <span class="text-danger" v-if="v$.valueDomainExpresion?.$error">
-          Please enter a name for the Value Domain.
+          {{ $t("structural.validations.value_domain") }}
         </span>
       </CForm>
       <CForm class="mb-3">
         <CFormLabel for="dataType">
-          <span>Value domain data type*</span>
+          <span>{{ $t("structural.value_domain_data_type") }}*</span>
         </CFormLabel>
         <v-select
           id="dataType"
@@ -124,12 +124,12 @@
           :disabled="isEdit"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainDataType.$error">
-          Please select the data type for the value domain.
+          {{ $t("structural.validations.value_domain_data_type") }}
         </span>
       </CForm>
       <CForm class="mb-3" v-if="measurementUnits">
         <CFormLabel for="measurementUnit">
-          <span>Measurement unit*</span>
+          <span>{{ $t("structural.measurementUnit_title") }}*</span>
         </CFormLabel>
         <v-select
           id="measurementUnit"
@@ -137,11 +137,11 @@
           :options="measurementUnits"
           v-model="valueDomainMeasurementUnit"
           :class="{ 'is-invalid': v$.valueDomainMeasurementUnit.$error }"
-          :placeholder="'Select a measurement unit'"
+          :placeholder="$t('structural.selection.measurement_unit')"
           :disabled="isEdit"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainMeasurementUnit.$error">
-          Please select a measurement unit
+          {{ $t("structural.validations.measurement_unit") }}
         </span>
       </CForm>
       <CForm
@@ -150,10 +150,9 @@
           valueDomainType === 'ENUMERATED' &&
           (codeLists || statisticalClassifications)
         "
-      >
-        <CFormLabel for="nodeSet">
+        ><CFormLabel for="nodeSet">
           <span>
-            Node set
+            {{ $t("structural.node_set") }}
             {{
               this.valueDomainType === "ENUMERATED" &&
               this.selectedValueDomainScope === "SUBSTANTIVE"
@@ -175,11 +174,11 @@
           @search="searchNodeSet"
           @input="setNodeSet"
           v-model="valueDomainNodeSet"
-          :placeholder="'Select node set'"
+          :placeholder="$t('structural.selection.node_set')"
           :disabled="isEdit || valueDomainType === 'DESCRIBED'"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainNodeSet?.$error">
-          Please select the node set.
+          {{ $t("structural.validations.node_set") }}
         </span>
       </CForm>
       <CForm
@@ -189,7 +188,7 @@
           statisticalClassificationLevels?.length
         "
         ><CFormLabel for="levels">
-          <span>Level*</span>
+          <span>{{ $t("structural.level") }}*</span>
         </CFormLabel>
         <v-select
           id="levels"
@@ -197,11 +196,11 @@
           :filterable="false"
           :options="statisticalClassificationLevels"
           v-model="valueDomainLevel"
-          :placeholder="'Select level'"
+          :placeholder="$t('structural.selection.level')"
           :disabled="isEdit || valueDomainType === 'DESCRIBED'"
         ></v-select>
         <span class="text-danger" v-if="v$.valueDomainLevel?.$error">
-          Please select the level.
+          {{ $t("structural.validations.level") }}
         </span>
       </CForm>
     </CModalBody>
