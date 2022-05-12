@@ -46,8 +46,9 @@
             color="primary"
             size="sm"
             style="margin-right: 0.3rem"
-            @click="addProcessDocument"
-            ><span>{{ $t("referential.add") }}</span>
+            @click="handleSave"
+            ><span v-if="isEdit">{{ $t("referential.update") }}</span>
+            <span v-else> {{ $t("referential.add") }}</span>
           </CButton>
         </div>
         <CRow>
@@ -65,6 +66,11 @@
                   </CCol>
                   <CCol class="col-3">
                     <CNav class="justify-content-end">
+                      <CNavItem>
+                        <span v-on:click="editProcessDocument(processDocument)">
+                          <CIcon name="cil-pencil" />
+                        </span>
+                      </CNavItem>
                       <CNavItem>
                         <span
                           v-on:click="removeProcessDocument(processDocument)"
@@ -112,10 +118,12 @@ export default {
   data() {
     return {
       v$: useValidate(),
+      documentId: "",
       name: "",
       description: "",
       link: "",
       disabled: false,
+      isEdit: false,
     };
   },
   computed: {
@@ -130,6 +138,20 @@ export default {
     },
   },
   methods: {
+    editProcessDocument(selectedProcessDocument) {
+      this.isEdit = true;
+      this.name = selectedProcessDocument.name;
+      this.description = selectedProcessDocument.description;
+      this.documentId = selectedProcessDocument.id;
+      this.link = selectedProcessDocument.externalLink;
+    },
+    handleSave() {
+      if (this.isEdit) {
+        this.updateProcessDocument();
+      } else {
+        this.addProcessDocument();
+      }
+    },
     addProcessDocument() {
       this.v$.$touch();
       if (!this.v$.$invalid) {
@@ -144,12 +166,32 @@ export default {
         this.$store
           .dispatch("processDocumentation/addProcessDocument", formData)
           .then(() => {
+            this.documentId = "";
             this.name = "";
             this.description = "";
             this.link = "";
             this.v$.$reset();
           });
       }
+    },
+    updateProcessDocument() {
+      this.disabled = true; //disable buttons
+      const formData = {
+        id: this.documentId,
+        documentation: this.processDocumentation.id,
+        name: this.name,
+        link: this.link,
+        description: this.description,
+      };
+      this.$store
+        .dispatch("processDocumentation/editProcessDocument", formData)
+        .then(() => {
+          this.documentId = "";
+          this.name = "";
+          this.description = "";
+          this.link = "";
+          this.v$.$reset();
+        });
     },
     removeProcessDocument(selectedProcessDocument) {
       const formData = {

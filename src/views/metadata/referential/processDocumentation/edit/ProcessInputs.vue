@@ -170,7 +170,8 @@ export default {
       this.$store
         .dispatch("processDocumentation/editProcessInput", formData)
         .then(() => {
-          (this.inputId = ""), (this.name = "");
+          this.inputId = "";
+          this.name = "";
           this.description = "";
           this.v$.$reset();
         });

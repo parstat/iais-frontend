@@ -36,8 +36,9 @@
             color="primary"
             size="sm"
             style="margin-right: 0.3rem"
-            @click="addProcessQuality"
-            ><span>{{ $t("referential.add") }}</span>
+            @click="handleSave"
+            ><span v-if="isEdit">{{ $t("referential.update") }}</span>
+            <span v-else> {{ $t("referential.add") }}</span>
           </CButton>
         </div>
         <CRow>
@@ -55,6 +56,11 @@
                   </CCol>
                   <CCol class="col-3">
                     <CNav class="justify-content-end">
+                      <CNavItem>
+                        <span v-on:click="editProcessQuality(processQuality)">
+                          <CIcon name="cil-pencil" />
+                        </span>
+                      </CNavItem>
                       <CNavItem>
                         <span v-on:click="removeProcessQuality(processQuality)">
                           <CIcon name="cil-trash" />
@@ -103,9 +109,11 @@ export default {
   data() {
     return {
       v$: useValidate(),
+      qualityId: "",
       name: "",
       description: "",
       disabled: false,
+      isEdit: false,
     };
   },
   computed: {
@@ -120,6 +128,36 @@ export default {
     },
   },
   methods: {
+    editProcessQuality(selectedProcessQuality) {
+      this.isEdit = true;
+      this.name = selectedProcessQuality.name;
+      this.description = selectedProcessQuality.description;
+      this.qualityId = selectedProcessQuality.id;
+    },
+    handleSave() {
+      if (this.isEdit) {
+        this.updateProcessQuality();
+      } else {
+        this.addProcessQuality();
+      }
+    },
+    updateProcessQuality() {
+      this.disabled = true; //disable buttons
+      const formData = {
+        id: this.qualityId,
+        documentation: this.processDocumentation.id,
+        name: this.name,
+        description: this.description,
+      };
+      this.$store
+        .dispatch("processDocumentation/editProcessQuality", formData)
+        .then(() => {
+          this.qualityId = "";
+          this.name = "";
+          this.description = "";
+          this.v$.$reset();
+        });
+    },
     addProcessQuality() {
       this.v$.$touch();
       if (!this.v$.$invalid) {
