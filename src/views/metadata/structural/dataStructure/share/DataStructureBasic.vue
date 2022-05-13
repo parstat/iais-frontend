@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style scoped>
-  .capitalize {
+.capitalize {
   text-transform: uppercase;
 }
 </style>
