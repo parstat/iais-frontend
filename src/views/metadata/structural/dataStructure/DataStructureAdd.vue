@@ -57,12 +57,12 @@
 </template>
 
 <script>
-import DatastructureBasic from "./share/DataStructureBasic.vue";
+import DataStructureBasic from "./share/DataStructureBasic.vue";
 
 export default {
   name: "DataStructureAdd",
   components: {
-    "app-data-structure-add-component": DatastructureBasic,
+    "app-data-structure-add-component": DataStructureBasic,
   },
   data() {
     return {
@@ -73,9 +73,6 @@ export default {
 </script>
 
 <style scoped>
-.capitalize {
-  text-transform: uppercase;
-}
 .nav-item {
   width: 100%;
 }

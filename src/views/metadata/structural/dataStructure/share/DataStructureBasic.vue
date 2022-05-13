@@ -10,7 +10,7 @@
           <input
             id="localId"
             type="text"
-            class="form-control"
+            class="form-control capitalize"
             :class="{
               'is-invalid': v$.localId.$error,
               'mb-3': !v$.localId.$error,
@@ -40,7 +40,7 @@
           </div>
         </CForm>
         <CForm>
-          <label for="description">Description*</label>
+          <label for="description">Description</label>
           <textarea
             rows="5"
             id="description"
@@ -57,7 +57,7 @@
             type="text"
             class="form-control mb-3"
             placeholder="Data structure version"
-            v-model.trim="definition"
+            v-model.trim="version"
           />
         </CForm>
         <CForm>
@@ -99,6 +99,7 @@ export default {
   name: "DatastructureBasic",
   props: [
     "isEdit",
+    "isDelete",
     "selectedLocalId",
     "selectedName",
     "selectedDescription",
@@ -132,7 +133,7 @@ export default {
       if (!this.v$.$invalid) {
         this.disabled = true; //disable buttons
         const formData = {
-          localId: this.localId,
+          localId: this.localId.toUpperCase(),
           name: this.name,
           description: this.description,
           version: this.version,
@@ -149,3 +150,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .capitalize {
+  text-transform: uppercase;
+}
+</style>
