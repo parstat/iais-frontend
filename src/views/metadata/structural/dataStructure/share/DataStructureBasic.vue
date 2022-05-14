@@ -17,7 +17,7 @@
             }"
             placeholder="Local id"
             v-model.trim="localId"
-            :disabled="isEdit"
+            :disabled="isEdit || isDelete"
           />
           <div class="text-danger mb-3" v-if="v$.localId.$error">
             Please specify the local id.
@@ -35,6 +35,7 @@
             }"
             placeholder="Data structure name"
             v-model.trim="name"
+            :disabled="isDelete"
           />
           <div class="text-danger mb-3" v-if="v$.name.$error">
             Please enter a name for the data structure.
@@ -49,6 +50,7 @@
             class="form-control mb-3"
             placeholder="Data structure description"
             v-model.trim="description"
+            :disabled="isDelete"
           />
         </CForm>
         <CForm>
@@ -59,6 +61,7 @@
             class="form-control mb-3"
             placeholder="Data structure version"
             v-model.trim="version"
+            :disabled="isDelete"
           />
         </CForm>
         <CForm>
@@ -76,6 +79,7 @@
             placeholder="Unit data set version rationale"
             v-model.trim="versionRationale"
             rows="5"
+            :disabled="isDelete"
           ></textarea>
         </CForm>
       </CCardText>

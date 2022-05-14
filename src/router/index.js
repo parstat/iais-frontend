@@ -836,14 +836,23 @@ const routes = [
         name: "DataStructureAdd",
         component: () =>
           import("@/views/metadata/structural/dataStructure/DataStructureAdd"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       {
         path: "metadata/structural/dataStructures/edit/:id",
         name: "DataStructureEdit",
         component: () =>
           import("@/views/metadata/structural/dataStructure/DataStructureEdit"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
+      {
+        path: "metadata/structural/dataStructures/delete/:id",
+        name: "DataStructureDelete",
+        component: () =>
+          import(
+            "@/views/metadata/structural/dataStructure/DataStructureDelete"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
       },
     ],
   },

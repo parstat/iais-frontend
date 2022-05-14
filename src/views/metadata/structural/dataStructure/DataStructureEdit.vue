@@ -112,7 +112,7 @@ import DataStructureRecords from "./share/DataStructureRecords.vue";
 import DataStructureComponents from "./share/DataStructureComponents.vue";
 
 export default {
-  name: "DataStructureAdd",
+  name: "DataStructureEdit",
   components: {
     "app-data-structure-add-component": DatastructureBasic,
     "app-data-structure-records-component": DataStructureRecords,
