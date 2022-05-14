@@ -45,7 +45,7 @@
                       <CIcon name="cil-check-alt" />
                     </span>
                   </template>
-                  <app-data-structure-add-component @next="handleBasic" />
+                  <app-data-structure-add-component />
                 </CTabPane>
               </CTabContent>
             </CCol>

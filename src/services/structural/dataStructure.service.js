@@ -78,30 +78,15 @@ function update(formData) {
         "Content-Type": "application/json",
       },
     };
-
-    const requestBody = {
-      name: formData.name,
-      description: formData.description,
-      definition: formData.definition,
-      localId: formData.localId,
-      version: formData.version ? formData.version : "",
-    };
-
-    axiosIais
-      .put(
-        "structural/ClosedDataStructures/" + formData.id,
-        requestBody,
-        config
-      )
-      .then(
-        (response) => {
-          //console.log(response.data);
-          resolve(response.data);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
+    axiosIais.put("structural/ClosedDataStructures/", formData, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 }
 

@@ -80,18 +80,21 @@ const actions = {
     );
   },
   update({ dispatch }, formData) {
-    dataStructureService.update(formData).then(
-      (data) => {
-        console.log(data);
-        dispatch("message/success", "Data Structure updated!", {
-          root: true,
-        });
-        router.push("/metadata/structural/dataStructures");
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    return new Promise((resolve, reject) => {
+      dataStructureService.update(formData).then(
+        (data) => {
+          console.log(data);
+          dispatch("message/success", "Data Structure updated!", {
+            root: true,
+          });
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
   },
 };
 

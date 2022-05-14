@@ -17,6 +17,7 @@
             }"
             placeholder="Local id"
             v-model.trim="localId"
+            :disabled="isEdit"
           />
           <div class="text-danger mb-3" v-if="v$.localId.$error">
             Please specify the local id.
@@ -107,6 +108,7 @@ export default {
     "selectedVersionDate",
     "selectedVersionRationale",
   ],
+  emits: ["next"],
   data() {
     return {
       disabled: false,
@@ -143,7 +145,14 @@ export default {
               : this.versionDate,
           versionRationale: this.versionRationale,
         };
-        this.$store.dispatch("dataStructure/save", formData);
+        if (this.isEdit) {
+          formData.id = this.$route.params.id;
+          this.$store.dispatch("dataStructure/update", formData).then(() => {
+            this.$emit("next");
+          });
+        } else {
+          this.$store.dispatch("dataStructure/save", formData);
+        }
         console.log(formData);
       }
     },

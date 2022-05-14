@@ -62,7 +62,7 @@
                         tag="a"
                         title="Edit"
                         :to="{
-                          name: 'UnitDataSetEdit',
+                          name: 'DataStructureEdit',
                           params: { id: item.id },
                         }"
                       >

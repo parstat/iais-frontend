@@ -1,5 +1,5 @@
 <template>
-  <CRow>
+  <CRow v-if="dataStructure">
     <CCol class="col-12">
       <CCard>
         <CCardHeader class="bg-white" component="h5">
@@ -22,12 +22,28 @@
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink href="javascript:void(0);" disabled>
+                  <CNavLink
+                    href="javascript:void(0);"
+                    :active="activeTab === 1"
+                    @click="
+                      () => {
+                        activeTab = 1;
+                      }
+                    "
+                  >
                     <span>Records</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink href="javascript:void(0);" disabled>
+                  <CNavLink
+                    href="javascript:void(0);"
+                    :active="activeTab === 2"
+                    @click="
+                      () => {
+                        activeTab = 2;
+                      }
+                    "
+                  >
                     <span>Components</span>
                   </CNavLink>
                 </CNavItem>
@@ -45,7 +61,37 @@
                       <CIcon name="cil-check-alt" />
                     </span>
                   </template>
-                  <app-data-structure-add-component @next="handleBasic" />
+                  <app-data-structure-add-component
+                    :isEdit="true"
+                    :selectedLocalId="dataStructure.localId"
+                    :selectedName="dataStructure.name"
+                    :selectedDescription="dataStructure.description"
+                    :selectedVersion="dataStructure.version"
+                    :selectedVersionDate="dataStructure.versionDate"
+                    :selectedVersionRationale="dataStructure.versionRationale"
+                    @next="next"
+                  />
+                </CTabPane>
+              </CTabContent>
+              <CTabContent>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="activeTab === 1"
+                >
+                  <app-data-structure-records-component
+                    :records="dataStructure.records"
+                    @next="next"
+                  />
+                </CTabPane>
+              </CTabContent>
+              <CTabContent>
+                <CTabPane
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                  :visible="activeTab === 2"
+                >
+                  <!-- <app-data-structure-records-component :records="records" /> -->
                 </CTabPane>
               </CTabContent>
             </CCol>
@@ -57,17 +103,31 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import DatastructureBasic from "./share/DataStructureBasic.vue";
+import DataStructureRecords from "./share/DataStructureRecords.vue";
 
 export default {
   name: "DataStructureAdd",
   components: {
     "app-data-structure-add-component": DatastructureBasic,
+    "app-data-structure-records-component": DataStructureRecords,
   },
   data() {
     return {
       activeTab: 0,
     };
+  },
+  methods: {
+    next() {
+      this.activeTab++;
+    },
+  },
+  computed: {
+    ...mapGetters("dataStructure", ["dataStructure"]),
+  },
+  created() {
+    this.$store.dispatch("dataStructure/findById", this.$route.params.id);
   },
 };
 </script>
