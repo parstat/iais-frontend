@@ -236,16 +236,22 @@ export default {
         };
         if (this.isEdit) {
           formData.id = this.recordId;
-          // this.$store.dispatch("dataStructure/update", formData).then(() => {
-          // });
+          this.$store
+            .dispatch("dataStructure/updateRecord", formData)
+            .then(this.reloadDataStructure);
         } else {
-          // this.$store.dispatch("dataStructure/save", formData);
+          this.$store
+            .dispatch("dataStructure/save", formData)
+            .then(this.reloadDataStructure);
         }
         console.log(formData);
       }
     },
     next() {
       this.$emit("next");
+    },
+    reloadDataStructure() {
+      this.$store.dispatch("dataStructure/findById", this.$route.params.id);
     },
   },
   validations: {

@@ -8,6 +8,12 @@ export const dataStructureService = {
   save,
   update,
   delete: _delete,
+  addRecord,
+  updateRecord,
+  removeRecord,
+  addComponent,
+  updateComponent,
+  removeComponent,
 };
 
 function findAll() {
@@ -92,6 +98,116 @@ function update(formData) {
 
 function _delete(id) {
   return new Promise((resolve, reject) => {
+    axiosIais.delete("structural/ClosedDataStructures/" + id).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function addRecord(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    // TODO: Add the correct path!
+    axiosIais.post("structural/ClosedDataStructures", formData, config).then(
+      (response) => {
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function updateRecord(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    // TODO: Add the correct path!
+    axiosIais.put("structural/ClosedDataStructures/", formData, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function removeRecord(id) {
+  return new Promise((resolve, reject) => {
+    // TODO: Add the correct path!
+    axiosIais.delete("structural/ClosedDataStructures/" + id).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function addComponent(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    // TODO: Add the correct path!
+    axiosIais.post("structural/ClosedDataStructures", formData, config).then(
+      (response) => {
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function updateComponent(formData) {
+  return new Promise((resolve, reject) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    // TODO: Add the correct path!
+    axiosIais.put("structural/ClosedDataStructures/", formData, config).then(
+      (response) => {
+        //console.log(response.data);
+        resolve(response.data);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function removeComponent(id) {
+  return new Promise((resolve, reject) => {
+    // TODO: Add the correct path!
     axiosIais.delete("structural/ClosedDataStructures/" + id).then(
       (response) => {
         //console.log(response.data);

@@ -96,6 +96,108 @@ const actions = {
       );
     });
   },
+  addRecord({ dispatch }, formData) {
+    return new Promise((resolve, reject) => {
+      dataStructureService.save(formData).then(
+        (data) => {
+          console.log(data);
+          dispatch("message/success", "Record added!", {
+            root: true,
+          });
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
+  },
+  updateRecord({ dispatch }, formData) {
+    return new Promise((resolve, reject) => {
+      dataStructureService.update(formData).then(
+        (data) => {
+          console.log(data);
+          dispatch("message/success", "Record updated!", {
+            root: true,
+          });
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
+  },
+  removeRecord({ dispatch }, id) {
+    return new Promise((resolve, reject) => {
+      dataStructureService.delete(id).then(
+        (data) => {
+          console.log(data);
+          dispatch("message/success", "Record deleted!", {
+            root: true,
+          });
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
+  },
+  addComponent({ dispatch }, formData) {
+    return new Promise((resolve, reject) => {
+      dataStructureService.save(formData).then(
+        (data) => {
+          console.log(data);
+          dispatch("message/success", "Component added!", {
+            root: true,
+          });
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
+  },
+  updateComponent({ dispatch }, formData) {
+    return new Promise((resolve, reject) => {
+      dataStructureService.update(formData).then(
+        (data) => {
+          console.log(data);
+          dispatch("message/success", "Component updated!", {
+            root: true,
+          });
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
+  },
+  removeComponent({ dispatch }, id) {
+    return new Promise((resolve, reject) => {
+      dataStructureService.delete(id).then(
+        (data) => {
+          console.log(data);
+          dispatch("message/success", "Component deleted!", {
+            root: true,
+          });
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
+  },
 };
 
 const getters = {
