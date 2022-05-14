@@ -12,3 +12,4 @@ export * from "./dataType";
 export * from "./valueDomainType";
 export * from "./exchangeChannel";
 export * from "./exchangeDirection";
+export * from "./dataStructureComponentTypes";

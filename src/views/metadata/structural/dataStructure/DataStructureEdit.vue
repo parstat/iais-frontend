@@ -91,7 +91,10 @@
                   aria-labelledby="home-tab"
                   :visible="activeTab === 2"
                 >
-                  <!-- <app-data-structure-records-component :records="records" /> -->
+                  <app-data-structure-components-component
+                    :components="dataStructure.components"
+                    :records="dataStructure.records"
+                  />
                 </CTabPane>
               </CTabContent>
             </CCol>
@@ -106,12 +109,14 @@
 import { mapGetters } from "vuex";
 import DatastructureBasic from "./share/DataStructureBasic.vue";
 import DataStructureRecords from "./share/DataStructureRecords.vue";
+import DataStructureComponents from "./share/DataStructureComponents.vue";
 
 export default {
   name: "DataStructureAdd",
   components: {
     "app-data-structure-add-component": DatastructureBasic,
     "app-data-structure-records-component": DataStructureRecords,
+    "app-data-structure-components-component": DataStructureComponents,
   },
   data() {
     return {

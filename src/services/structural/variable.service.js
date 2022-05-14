@@ -5,6 +5,7 @@ import { axiosIais } from "@/http";
 export const variableService = {
   findAll,
   findById,
+  findByName,
   save,
   update,
   delete: _delete,
@@ -33,6 +34,21 @@ function findById(id) {
         resolve(data);
         //console.log(response.data.variable);
         //resolve(response.data.variable);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+
+function findByName(name) {
+  var queryString = "?name=" + name ?? "";
+  return new Promise((resolve, reject) => {
+    axiosIais.get("/structural/OpenVariables" + queryString).then(
+      (response) => {
+        console.log(response);
+        resolve(response.data.variables);
       },
       (error) => {
         reject(error);
