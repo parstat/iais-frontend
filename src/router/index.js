@@ -630,7 +630,7 @@ const routes = [
         name: "UnitTypeAdd",
         component: () =>
           import("@/views/metadata/structural/unitType/UnitTypeAdd"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User] },
       },
       // Unit Type edit
       {
@@ -638,7 +638,7 @@ const routes = [
         name: "UnitTypeEdit",
         component: () =>
           import("@/views/metadata/structural/unitType/UnitTypeEdit"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User] },
       },
       // Unit Type delete
       {
@@ -646,7 +646,7 @@ const routes = [
         name: "UnitTypeDelete",
         component: () =>
           import("@/views/metadata/structural/unitType/UnitTypeDelete"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       //Concept Types List
       {
@@ -668,21 +668,21 @@ const routes = [
         name: "ConceptAdd",
         component: () =>
           import("@/views/metadata/structural/concept/ConceptAdd"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User] },
       },
       {
         path: "metadata/structural/concepts/edit/:id",
         name: "ConceptEdit",
         component: () =>
           import("@/views/metadata/structural/concept/ConceptEdit"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User] },
       },
       {
         path: "metadata/structural/concepts/delete/:id",
         name: "ConceptDelete",
         component: () =>
           import("@/views/metadata/structural/concept/ConceptDelete"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
 
       {
@@ -800,21 +800,21 @@ const routes = [
         name: "UnitDataSetAdd",
         component: () =>
           import("@/views/metadata/structural/unitDataSet/UnitDataSetAdd"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User] },
       },
       {
         path: "metadata/structural/unitDataSets/edit/:id",
         name: "UnitDataSetEdit",
         component: () =>
           import("@/views/metadata/structural/unitDataSet/UnitDataSetEdit"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User] },
       },
       {
         path: "metadata/structural/unitDataSets/delete/:id",
         name: "UnitDataSetDelete",
         component: () =>
           import("@/views/metadata/structural/unitDataSet/UnitDataSetDelete"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       //DataStructure
       {
@@ -822,28 +822,28 @@ const routes = [
         name: "DataStructureList",
         component: () =>
           import("@/views/metadata/structural/dataStructure/DataStructureList"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User] },
       },
       {
         path: "metadata/structural/dataStructures/view/:id",
         name: "DataStructureView",
         component: () =>
           import("@/views/metadata/structural/dataStructure/DataStructureView"),
-        meta: { authorize: [] },
+        meta: { authorize: [Role.User] },
       },
       {
         path: "metadata/structural/dataStructures/add/",
         name: "DataStructureAdd",
         component: () =>
           import("@/views/metadata/structural/dataStructure/DataStructureAdd"),
-        meta: { authorize: [Role.User, Role.Admin] },
+        meta: { authorize: [Role.User] },
       },
       {
         path: "metadata/structural/dataStructures/edit/:id",
         name: "DataStructureEdit",
         component: () =>
           import("@/views/metadata/structural/dataStructure/DataStructureEdit"),
-        meta: { authorize: [Role.User, Role.Admin] },
+        meta: { authorize: [Role.User] },
       },
       {
         path: "metadata/structural/dataStructures/delete/:id",
