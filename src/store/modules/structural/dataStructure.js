@@ -205,21 +205,23 @@ const actions = {
       );
     });
   },
-  removeComponent({ dispatch }, id) {
+  removeComponent({ dispatch }, data) {
     return new Promise((resolve, reject) => {
-      dataStructureService.removeComponent(id).then(
-        (data) => {
-          console.log(data);
-          dispatch("message/success", "Component deleted!", {
-            root: true,
-          });
-          resolve();
-        },
-        (error) => {
-          console.log(error);
-          reject();
-        }
-      );
+      dataStructureService
+        .removeComponent(data.dataStructureId, data.componentId)
+        .then(
+          (data) => {
+            console.log(data);
+            dispatch("message/success", "Component deleted!", {
+              root: true,
+            });
+            resolve();
+          },
+          (error) => {
+            console.log(error);
+            reject();
+          }
+        );
     });
   },
 };

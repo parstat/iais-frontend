@@ -275,7 +275,7 @@ export default {
       this.description = "";
       this.selectedUnitType = null;
       this.selectedParentRecord = null;
-    }
+    },
   },
   validations: {
     localId: {

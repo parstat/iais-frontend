@@ -17,6 +17,7 @@
             }"
             placeholder="Local id"
             v-model.trim="localId"
+            :disabled="isEdit"
           />
           <div class="text-danger mb-3" v-if="v$.localId.$error">
             Please specify the local id.
@@ -266,14 +267,19 @@ export default {
       this.showDeleteDialog = true;
     },
     handleDelete() {
+      const data = {
+        dataStructureId: this.$route.params.id,
+        componentId: this.componentId,
+      };
       this.$store
-        .dispatch("dataStructure/removeComponent", this.componentId)
+        .dispatch("dataStructure/removeComponent", data)
         .then(this.reloadDataStructure);
     },
     handleSave() {
       this.v$.$validate();
       if (!this.v$.$invalid) {
         const formData = {
+          dataStructureId: this.$route.params.id,
           localId: this.localId.toUpperCase(),
           name: this.name,
           description: this.description,
@@ -281,9 +287,10 @@ export default {
           isIdentifierUnique: this.isIdentifierUnique,
           isIdetifierComposite: this.isIdentifierUnique,
           identifierRole: this.identifierRole,
+          records: this.records.map((record) => record.id),
         };
         if (this.isEdit) {
-          formData.id = this.componentId;
+          formData.componentId = this.componentId;
           this.$store
             .dispatch("dataStructure/updateComponent", formData)
             .then(this.reloadDataStructure);
@@ -314,6 +321,22 @@ export default {
     },
     reloadDataStructure() {
       this.$store.dispatch("dataStructure/findById", this.$route.params.id);
+      this.resetForm();
+      this.disabled = false;
+    },
+    resetForm() {
+      this.v$.$reset();
+      this.isEdit = true;
+      this.componentId = null;
+      this.localId = "";
+      this.name = "";
+      this.description = "";
+      this.selectedRepresentation = null;
+      this.selectedRecords = [];
+      this.selectedType = "";
+      this.isIdentifierUnique = null;
+      this.isIdetifierComposite = null;
+      this.identifierRole = IdentifierRole.entity;
     },
   },
   validations: {
