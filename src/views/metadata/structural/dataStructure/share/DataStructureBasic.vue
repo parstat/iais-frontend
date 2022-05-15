@@ -99,6 +99,7 @@
 <script>
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import { DataSetType } from "@/common";
 
 export default {
   name: "DatastructureBasic",
@@ -148,6 +149,7 @@ export default {
               ? this.versionDate.toISOString()
               : this.versionDate,
           versionRationale: this.versionRationale,
+          type: DataSetType.unit,
         };
         if (this.isEdit) {
           formData.id = this.$route.params.id;

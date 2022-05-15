@@ -13,3 +13,5 @@ export * from "./valueDomainType";
 export * from "./exchangeChannel";
 export * from "./exchangeDirection";
 export * from "./dataStructureComponentTypes";
+export * from "./identifierRole";
+export * from "./dataSetType";

@@ -200,6 +200,8 @@
 
 <script>
 import { DataStructureComponentTypes } from "@/common";
+import { IdentifierRole } from "@/common";
+
 import { mapGetters } from "vuex";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
@@ -222,6 +224,9 @@ export default {
       selectedVariable: null,
       selectedRepresentation: null,
       selectedRecords: [],
+      isIdentifierUnique: null,
+      isIdetifierComposite: null,
+      identifierRole: null,
       showDeleteDialog: false,
       columns: [
         {
@@ -249,9 +254,12 @@ export default {
       this.localId = item.localId;
       this.name = item.name;
       this.description = item.description;
-      this.selectedVariable = item.selectedVariable ?? null; // TODO: This is not in the data structure object
       this.selectedRepresentation = item.representation;
       this.selectedRecords = item.records;
+      this.selectedType = item.type;
+      this.isIdentifierUnique = item.isIdentifierUnique;
+      this.isIdetifierComposite = item.isIdetifierComposite;
+      this.identifierRole = IdentifierRole.entity;
     },
     deleteComponent(item) {
       this.componentId = item.id;
@@ -269,6 +277,10 @@ export default {
           localId: this.localId.toUpperCase(),
           name: this.name,
           description: this.description,
+          type: this.selectedType,
+          isIdentifierUnique: this.isIdentifierUnique,
+          isIdetifierComposite: this.isIdentifierUnique,
+          identifierRole: this.identifierRole,
         };
         if (this.isEdit) {
           formData.id = this.componentId;

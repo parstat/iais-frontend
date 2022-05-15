@@ -25,7 +25,7 @@
       <v-select
         label="name"
         :options="dataStructures"
-        :getOptionLabel="ds => ds.name"
+        :getOptionLabel="(ds) => ds.name"
         v-model="dataStructure"
         class="mb-3"
         :class="{ 'is-invalid': v$.structureId.$error }"
@@ -234,6 +234,7 @@
 <script>
 import { ExchangeChannel } from "@/common";
 import { ExchangeDirection } from "@/common";
+import { DataSetType } from "@/common";
 import { mapGetters } from "vuex";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
@@ -430,6 +431,7 @@ export default {
           reportingEnd: this.reportingEnd,
           connection: this.connection,
           filterExpression: this.filterExpression,
+          type: DataSetType.unit,
         };
         if (this.isEdit && this.$route.params.id) {
           formData.id = this.$route.params.id;
