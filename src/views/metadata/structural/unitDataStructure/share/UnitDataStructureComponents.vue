@@ -156,9 +156,9 @@
         color="primary"
         size="sm"
         style="margin-right: 0.3rem"
-        @click="next()"
+        @click="finish()"
         :disabled="disabled"
-        >Next
+        >{{ $t("referential.finish") }}
       </CButton>
     </CCardBody>
     <CModal
@@ -316,8 +316,8 @@ export default {
         loading(false);
       }
     }, 500),
-    next() {
-      this.$emit("next");
+    finish() {
+      this.$router.push("/metadata/structural/unitDataStructures");
     },
     reloadDataStructure() {
       this.$store.dispatch("unitDataStructure/findById", this.$route.params.id);

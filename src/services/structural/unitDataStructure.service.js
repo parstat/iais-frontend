@@ -122,9 +122,8 @@ function addRecord(formData) {
       },
     };
 
-    // TODO: Add the correct path!
     axiosIais
-      .post("structural/ClosedUnitDataStructures", formData, config)
+      .put("structural/ClosedUnitDataStructures/records", formData, config)
       .then(
         (response) => {
           resolve(response.data);
@@ -143,9 +142,8 @@ function updateRecord(formData) {
         "Content-Type": "application/json",
       },
     };
-    // TODO: Add the correct path!
     axiosIais
-      .put("structural/ClosedUnitDataStructures/", formData, config)
+      .patch("structural/ClosedUnitDataStructures/records", formData, config)
       .then(
         (response) => {
           //console.log(response.data);
@@ -187,9 +185,8 @@ function addComponent(formData) {
       },
     };
 
-    // TODO: Add the correct path!
     axiosIais
-      .post("structural/ClosedUnitDataStructures", formData, config)
+      .put("structural/ClosedUnitDataStructures/components", formData, config)
       .then(
         (response) => {
           resolve(response.data);
