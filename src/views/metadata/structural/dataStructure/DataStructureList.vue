@@ -132,7 +132,7 @@ export default {
   },
   methods: {},
   created() {
-    this.$store.dispatch("dataStructure/findAll");
+    this.$store.dispatch("dataStructure/findByType", "UNIT");
     this.$store.dispatch("coreui/setContext", Context.Structural);
   },
 };

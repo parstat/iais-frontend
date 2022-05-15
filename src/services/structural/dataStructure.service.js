@@ -5,6 +5,8 @@ export const dataStructureService = {
   findAll,
   findById,
   findByName,
+  findByType,
+  findByNameAndType,
   save,
   update,
   delete: _delete,
@@ -46,6 +48,35 @@ function findById(id) {
 }
 function findByName(name) {
   var queryString = "?name=" + name ?? "";
+  return new Promise((resolve, reject) => {
+    axiosIais.get("/structural/OpenDataStructures" + queryString).then(
+      (response) => {
+        console.log(response);
+        resolve(response.data.dataStructures);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+function findByType(type) {
+  var queryString = "?type=" + type ?? "";
+  return new Promise((resolve, reject) => {
+    axiosIais.get("/structural/OpenDataStructures" + queryString).then(
+      (response) => {
+        console.log(response);
+        resolve(response.data.dataStructures);
+      },
+      (error) => {
+        reject(error);
+      }
+    );
+  });
+}
+function findByNameAndType(formData) {
+  var queryString = "?name=" + formData.name ?? "";
+  queryString += "&type=" + formData.type ?? "";
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenDataStructures" + queryString).then(
       (response) => {

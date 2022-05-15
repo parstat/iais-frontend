@@ -40,8 +40,30 @@ const actions = {
       }
     );
   },
-  findByName({ commit }, id) {
-    dataStructureService.findByName(id).then(
+  findByName({ commit }, name) {
+    dataStructureService.findByName(name).then(
+      (data) => {
+        commit("SET_DATASTRUCTURES", data);
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  findByNameAndType({ commit }, formData) {
+    dataStructureService.findByNameAndType(formData).then(
+      (data) => {
+        commit("SET_DATASTRUCTURES", data);
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
+  findByType({ commit }, type) {
+    dataStructureService.findByType(type).then(
       (data) => {
         commit("SET_DATASTRUCTURES", data);
         console.log(data);

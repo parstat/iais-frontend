@@ -25,6 +25,7 @@
       <v-select
         label="name"
         :options="dataStructures"
+        :getOptionLabel="ds => ds.name"
         v-model="dataStructure"
         class="mb-3"
         :class="{ 'is-invalid': v$.structureId.$error }"
@@ -357,7 +358,10 @@ export default {
     doSearchDataStructure: _.debounce((name, loading, vm) => {
       if (name.length > 0) {
         vm.$store
-          .dispatch("dataStructure/findByName", escape(name))
+          .dispatch("dataStructure/findByNameAndType", {
+            name: name,
+            type: "UNIT",
+          })
           .then(() => {
             loading(false);
           });
