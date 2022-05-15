@@ -17,6 +17,7 @@
             }"
             placeholder="Local id"
             v-model.trim="localId"
+            :disabled="isEdit"
           />
           <div class="text-danger mb-3" v-if="v$.localId.$error">
             Please specify the local id.
@@ -224,22 +225,28 @@ export default {
       this.showDeleteDialog = true;
     },
     handleDelete() {
+      const data = {
+        dataStructureId: this.$route.params.id,
+        recordId: this.recordId,
+      };
       this.$store
-        .dispatch("unitDataStructure/removeRecord", this.recordId)
+        .dispatch("unitDataStructure/removeRecord", data)
         .then(this.reloadDataStructure);
     },
     handleSave() {
       this.v$.$validate();
       if (!this.v$.$invalid) {
+        this.disabled = true;
         const formData = {
           localId: this.localId.toUpperCase(),
           name: this.name,
           description: this.description,
-          parentId: this.selectedParentRecord?.id ?? "",
-          unitTypeId: this.selectedUnitType?.id ?? "",
+          dataStructureId: this.$route.params.id,
+          unitTypeId: this.selectedUnitType?.id,
+          parentId: this.selectedParentRecord?.id,
         };
         if (this.isEdit) {
-          formData.id = this.recordId;
+          formData.recordId = this.recordId;
           this.$store
             .dispatch("unitDataStructure/updateRecord", formData)
             .then(this.reloadDataStructure);
@@ -256,6 +263,18 @@ export default {
     },
     reloadDataStructure() {
       this.$store.dispatch("unitDataStructure/findById", this.$route.params.id);
+      this.resetForm();
+      this.disabled = false;
+    },
+    resetForm() {
+      this.v$.$reset();
+      this.isEdit = false;
+      this.recordId = null;
+      this.localId = "";
+      this.name = "";
+      this.description = "";
+      this.selectedUnitType = null;
+      this.selectedParentRecord = null;
     },
   },
   validations: {

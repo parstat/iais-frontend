@@ -158,18 +158,24 @@ function updateRecord(formData) {
   });
 }
 
-function removeRecord(id) {
+function removeRecord(dataStructureId, recordId) {
   return new Promise((resolve, reject) => {
-    // TODO: Add the correct path!
-    axiosIais.delete("structural/ClosedUnitDataStructures/" + id).then(
-      (response) => {
-        //console.log(response.data);
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .delete(
+        "structural/ClosedUnitDataStructures/" +
+          dataStructureId +
+          "/records/" +
+          recordId
+      )
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 
@@ -202,9 +208,8 @@ function updateComponent(formData) {
         "Content-Type": "application/json",
       },
     };
-    // TODO: Add the correct path!
     axiosIais
-      .put("structural/ClosedUnitDataStructures/", formData, config)
+      .patch("structural/ClosedUnitDataStructures/components", formData, config)
       .then(
         (response) => {
           //console.log(response.data);
@@ -217,17 +222,23 @@ function updateComponent(formData) {
   });
 }
 
-function removeComponent(id) {
+function removeComponent(dataStructureId, componentId) {
   return new Promise((resolve, reject) => {
-    // TODO: Add the correct path!
-    axiosIais.delete("structural/ClosedUnitDataStructures/" + id).then(
-      (response) => {
-        //console.log(response.data);
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .delete(
+        "structural/ClosedUnitDataStructures/" +
+          dataStructureId +
+          "/componets/" +
+          componentId
+      )
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }

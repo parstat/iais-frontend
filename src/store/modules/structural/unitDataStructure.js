@@ -120,7 +120,7 @@ const actions = {
   },
   addRecord({ dispatch }, formData) {
     return new Promise((resolve, reject) => {
-      unitDataStructureService.save(formData).then(
+      unitDataStructureService.addRecord(formData).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Record added!", {
@@ -137,7 +137,7 @@ const actions = {
   },
   updateRecord({ dispatch }, formData) {
     return new Promise((resolve, reject) => {
-      unitDataStructureService.update(formData).then(
+      unitDataStructureService.updateRecord(formData).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Record updated!", {
@@ -152,26 +152,28 @@ const actions = {
       );
     });
   },
-  removeRecord({ dispatch }, id) {
+  removeRecord({ dispatch }, data) {
     return new Promise((resolve, reject) => {
-      unitDataStructureService.delete(id).then(
-        (data) => {
-          console.log(data);
-          dispatch("message/success", "Record deleted!", {
-            root: true,
-          });
-          resolve();
-        },
-        (error) => {
-          console.log(error);
-          reject();
-        }
-      );
+      unitDataStructureService
+        .removeRecord(data.dataStructureId, data.recordId)
+        .then(
+          (data) => {
+            console.log(data);
+            dispatch("message/success", "Record deleted!", {
+              root: true,
+            });
+            resolve();
+          },
+          (error) => {
+            console.log(error);
+            reject();
+          }
+        );
     });
   },
   addComponent({ dispatch }, formData) {
     return new Promise((resolve, reject) => {
-      unitDataStructureService.save(formData).then(
+      unitDataStructureService.addComponent(formData).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Component added!", {
@@ -188,7 +190,7 @@ const actions = {
   },
   updateComponent({ dispatch }, formData) {
     return new Promise((resolve, reject) => {
-      unitDataStructureService.update(formData).then(
+      unitDataStructureService.updateComponent(formData).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Component updated!", {
@@ -203,21 +205,23 @@ const actions = {
       );
     });
   },
-  removeComponent({ dispatch }, id) {
+  removeComponent({ dispatch }, data) {
     return new Promise((resolve, reject) => {
-      unitDataStructureService.delete(id).then(
-        (data) => {
-          console.log(data);
-          dispatch("message/success", "Component deleted!", {
-            root: true,
-          });
-          resolve();
-        },
-        (error) => {
-          console.log(error);
-          reject();
-        }
-      );
+      unitDataStructureService
+        .removeComponent(data.dataStructureId, data.componentId)
+        .then(
+          (data) => {
+            console.log(data);
+            dispatch("message/success", "Component deleted!", {
+              root: true,
+            });
+            resolve();
+          },
+          (error) => {
+            console.log(error);
+            reject();
+          }
+        );
     });
   },
 };
