@@ -1,24 +1,24 @@
 //import router from "@/router";
-import { dataStructureService } from "@/services";
+import { unitDataStructureService } from "@/services";
 import router from "@/router";
 
 const state = {
-  dataStructures: [],
-  dataStructure: null,
+  unitDataStructures: [],
+  unitDataStructure: null,
 };
 
 const mutations = {
-  SET_DATASTRUCTURES(state, dataStructures) {
-    state.dataStructures = dataStructures ? dataStructures : [];
+  SET_DATASTRUCTURES(state, unitDataStructures) {
+    state.unitDataStructures = unitDataStructures ? unitDataStructures : [];
   },
-  SET_DATASTRUCTURE(state, dataStructure) {
-    state.dataStructure = dataStructure;
+  SET_DATASTRUCTURE(state, unitDataStructure) {
+    state.unitDataStructure = unitDataStructure;
   },
 };
 
 const actions = {
   findAll({ commit }) {
-    dataStructureService.findAll().then(
+    unitDataStructureService.findAll().then(
       (data) => {
         commit("SET_DATASTRUCTURES", data);
         commit("SET_DATASTRUCTURE", null); //clear datastructure
@@ -30,7 +30,7 @@ const actions = {
     );
   },
   findById({ commit }, id) {
-    dataStructureService.findById(id).then(
+    unitDataStructureService.findById(id).then(
       (data) => {
         commit("SET_DATASTRUCTURE", data);
         console.log(data);
@@ -41,7 +41,7 @@ const actions = {
     );
   },
   findByName({ commit }, name) {
-    dataStructureService.findByName(name).then(
+    unitDataStructureService.findByName(name).then(
       (data) => {
         commit("SET_DATASTRUCTURES", data);
         console.log(data);
@@ -52,7 +52,7 @@ const actions = {
     );
   },
   findByNameAndType({ commit }, formData) {
-    dataStructureService.findByNameAndType(formData).then(
+    unitDataStructureService.findByNameAndType(formData).then(
       (data) => {
         commit("SET_DATASTRUCTURES", data);
         console.log(data);
@@ -63,7 +63,7 @@ const actions = {
     );
   },
   findByType({ commit }, type) {
-    dataStructureService.findByType(type).then(
+    unitDataStructureService.findByType(type).then(
       (data) => {
         commit("SET_DATASTRUCTURES", data);
         console.log(data);
@@ -74,13 +74,13 @@ const actions = {
     );
   },
   save({ dispatch }, formData) {
-    dataStructureService.save(formData).then(
+    unitDataStructureService.save(formData).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Data Structure saved!", {
           root: true,
         });
-        router.push("/metadata/structural/dataStructures/edit/" + data);
+        router.push("/metadata/structural/unitDataStructures/edit/" + data);
       },
       (error) => {
         console.log(error);
@@ -88,7 +88,7 @@ const actions = {
     );
   },
   delete({ dispatch }, id) {
-    dataStructureService.delete(id).then(
+    unitDataStructureService.delete(id).then(
       (data) => {
         console.log(data);
         dispatch("message/success", "Data Structure deleted!", {
@@ -103,7 +103,7 @@ const actions = {
   },
   update({ dispatch }, formData) {
     return new Promise((resolve, reject) => {
-      dataStructureService.update(formData).then(
+      unitDataStructureService.update(formData).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Data Structure updated!", {
@@ -120,7 +120,7 @@ const actions = {
   },
   addRecord({ dispatch }, formData) {
     return new Promise((resolve, reject) => {
-      dataStructureService.save(formData).then(
+      unitDataStructureService.save(formData).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Record added!", {
@@ -137,7 +137,7 @@ const actions = {
   },
   updateRecord({ dispatch }, formData) {
     return new Promise((resolve, reject) => {
-      dataStructureService.update(formData).then(
+      unitDataStructureService.update(formData).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Record updated!", {
@@ -154,7 +154,7 @@ const actions = {
   },
   removeRecord({ dispatch }, id) {
     return new Promise((resolve, reject) => {
-      dataStructureService.delete(id).then(
+      unitDataStructureService.delete(id).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Record deleted!", {
@@ -171,7 +171,7 @@ const actions = {
   },
   addComponent({ dispatch }, formData) {
     return new Promise((resolve, reject) => {
-      dataStructureService.save(formData).then(
+      unitDataStructureService.save(formData).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Component added!", {
@@ -188,7 +188,7 @@ const actions = {
   },
   updateComponent({ dispatch }, formData) {
     return new Promise((resolve, reject) => {
-      dataStructureService.update(formData).then(
+      unitDataStructureService.update(formData).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Component updated!", {
@@ -205,7 +205,7 @@ const actions = {
   },
   removeComponent({ dispatch }, id) {
     return new Promise((resolve, reject) => {
-      dataStructureService.delete(id).then(
+      unitDataStructureService.delete(id).then(
         (data) => {
           console.log(data);
           dispatch("message/success", "Component deleted!", {
@@ -223,15 +223,15 @@ const actions = {
 };
 
 const getters = {
-  dataStructures: (state) => {
-    return state.dataStructures;
+  unitDataStructures: (state) => {
+    return state.unitDataStructures;
   },
-  dataStructure: (state) => {
-    return state.dataStructure;
+  unitDataStructure: (state) => {
+    return state.unitDataStructure;
   },
 };
 
-export const dataStructure = {
+export const unitDataStructure = {
   namespaced: true,
   state,
   mutations,

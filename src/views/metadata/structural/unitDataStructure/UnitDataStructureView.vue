@@ -184,7 +184,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "DataStructureView",
+  name: "UnitDataStructureView",
   data() {
     return {
       columns: [
@@ -219,12 +219,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("dataStructure", ["dataStructure"]),
+    ...mapGetters("unitDataStructure", ["unitDataStructure"]),
   },
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/dataStructures");
+      this.$router.push("/metadata/structural/unitDataStructures");
     },
     toggleDetails(item) {
       if (this.details.includes(item.localId)) {
@@ -237,7 +237,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("dataStructure/findById", this.$route.params.id);
+    this.$store.dispatch("unitDataStructure/findById", this.$route.params.id);
   },
 };
 </script>

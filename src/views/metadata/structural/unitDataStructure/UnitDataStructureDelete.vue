@@ -94,7 +94,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "DataStructureEdit",
+  name: "UnitDataStructureEdit",
   data() {
     return {
       disabled: false,
@@ -104,14 +104,14 @@ export default {
   methods: {
     handleDelete() {
       this.disabled = true;
-      this.$store.dispatch("dataStructure/delete", this.$route.params.id);
+      this.$store.dispatch("unitDataStructure/delete", this.$route.params.id);
     },
   },
   computed: {
-    ...mapGetters("dataStructure", ["dataStructure"]),
+    ...mapGetters("unitDataStructure", ["unitDataStructure"]),
   },
   created() {
-    this.$store.dispatch("dataStructure/findById", this.$route.params.id);
+    this.$store.dispatch("unitDataStructure/findById", this.$route.params.id);
   },
 };
 </script>

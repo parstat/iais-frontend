@@ -3,7 +3,7 @@
     <CCardBody>
       <CCardText>
         <CCardTitle>
-          <span>Data structure components</span>
+          <span>Data structure records</span>
         </CCardTitle>
         <CForm>
           <label for="localId">Local id*</label>
@@ -32,11 +32,11 @@
               'is-invalid': v$.name.$error,
               'mb-3': !v$.name.$error,
             }"
-            placeholder="Component name"
+            placeholder="Record name"
             v-model.trim="name"
           />
           <div class="text-danger mb-3" v-if="v$.name.$error">
-            Please enter a name for the component.
+            Please enter a name for the record.
           </div>
         </CForm>
         <CForm>
@@ -46,64 +46,39 @@
             id="description"
             type="text"
             class="form-control mb-3"
-            placeholder="Component description"
+            placeholder="Record description"
             v-model.trim="description"
           />
         </CForm>
-        <CForm>
-          <CFormLabel for="type">
-            <span>Type</span>
+        <CForm v-if="records">
+          <CFormLabel for="parent-record">
+            <span>Parent record</span>
           </CFormLabel>
           <v-select
-            id="type"
+            id="parent-record"
             class="mb-3"
             label="name"
-            :options="types"
-            v-model="selectedType"
-            :placeholder="'Select the type of the component'"
-          ></v-select>
-        </CForm>
-        <CForm>
-          <CFormLabel for="variable">
-            <span>Variable</span>
-          </CFormLabel>
-          <v-select
-            id="variable"
-            class="mb-3"
-            label="name"
-            :options="variables"
-            v-model="selectedVariable"
-            @search="searchVariable"
-            :placeholder="'Select the variable'"
-          ></v-select>
-        </CForm>
-        <CForm v-if="selectedVariable?.representations?.length">
-          <CFormLabel for="variable-representation">
-            <span>Representation</span>
-          </CFormLabel>
-          <v-select
-            id="variable-representation"
-            class="mb-3"
-            label="name"
-            :options="electedVariable.representations"
-            v-model="selectedRepresentation"
-            :placeholder="'Select the variable representation'"
-          ></v-select>
-        </CForm>
-        <CForm>
-          <CFormLabel for="records">
-            <span>Records</span>
-          </CFormLabel>
-          <v-select
-            id="records"
-            class="mb-3"
-            label="name"
-            multi
-            multiple
             :options="records"
-            v-model="selectedRecords"
-            :placeholder="'Select records'"
+            v-model="selectedParentRecord"
+            :placeholder="'Select the parent record'"
           ></v-select>
+        </CForm>
+        <CForm v-if="unitTypes">
+          <CFormLabel for="unitTypes">
+            <span>Unit type*</span>
+          </CFormLabel>
+          <v-select
+            id="unitTypes"
+            class="mb-3"
+            label="name"
+            :options="unitTypes"
+            v-model="selectedUnitType"
+            :class="{ 'is-invalid': v$.selectedUnitType.$error }"
+            :placeholder="'Select a unit type'"
+          ></v-select>
+          <span class="text-danger" v-if="v$.selectedUnitType.$error">
+            {{ $t("structural.validations.unit_type") }}
+          </span>
         </CForm>
       </CCardText>
       <div>
@@ -117,29 +92,25 @@
         </CButton>
       </div>
       <hr />
-      <CRow v-if="components?.length">
-        <CCol
-          class="col-6 col-md-4"
-          v-for="component in components"
-          :key="component.id"
-        >
+      <CRow v-if="records?.length">
+        <CCol class="col-6 col-md-4" v-for="record in records" :key="record.id">
           <CCard class="mb-3">
             <CCardBody>
               <CRow>
                 <CCol class="col-9">
                   <CCardTitle>
-                    <span>{{ component.name }}</span>
+                    <span>{{ record.name }}</span>
                   </CCardTitle>
                 </CCol>
                 <CCol class="col-3">
                   <CNav class="justify-content-end">
                     <CNavItem class="clickable-button">
-                      <span v-on:click="editComponent(component)"
+                      <span v-on:click="editRecord(record)"
                         ><CIcon name="cil-pencil" />
                       </span>
                     </CNavItem>
                     <CNavItem class="clickable-button">
-                      <span v-on:click="deleteComponent(component)"
+                      <span v-on:click="deleteRecord(record)"
                         ><CIcon name="cil-trash" />
                       </span>
                     </CNavItem>
@@ -170,14 +141,14 @@
       "
       ><CModalHeader>
         <CModalTitle>
-          <span>Delete component</span>
+          <span>Delete record</span>
         </CModalTitle>
       </CModalHeader>
       <CModalBody>
         <span
-          >This action will remove the component from the data structure. This
+          >This action will remove the record from the data structure. This
           action cannot be undone. Are you sure you want to delete this
-          component?</span
+          record?</span
         >
       </CModalBody>
       <CModalFooter>
@@ -199,17 +170,13 @@
 </template>
 
 <script>
-import { DataStructureComponentTypes } from "@/common";
-import { IdentifierRole } from "@/common";
-
 import { mapGetters } from "vuex";
 import useValidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
-import _ from "lodash";
 
 export default {
-  name: "ComponentRecords",
-  props: ["components", "records"],
+  name: "UnitDataStructureRecords",
+  props: ["records"],
   emits: ["next"],
   data() {
     return {
@@ -218,15 +185,10 @@ export default {
       localId: "",
       name: "",
       description: "",
+      selectedUnitType: null,
+      selectedParentRecord: null,
       isEdit: false,
-      componentId: null,
-      selectedType: null,
-      selectedVariable: null,
-      selectedRepresentation: null,
-      selectedRecords: [],
-      isIdentifierUnique: null,
-      isIdetifierComposite: null,
-      identifierRole: null,
+      recordId: null,
       showDeleteDialog: false,
       columns: [
         {
@@ -235,7 +197,7 @@ export default {
         },
         {
           key: "name",
-          label: "Component Name",
+          label: "Data Structure Name",
         },
         {
           key: "actions",
@@ -248,26 +210,22 @@ export default {
     };
   },
   methods: {
-    editComponent(item) {
+    editRecord(item) {
       this.isEdit = true;
-      this.componentId = item.id;
+      this.recordId = item.id;
       this.localId = item.localId;
       this.name = item.name;
       this.description = item.description;
-      this.selectedRepresentation = item.representation;
-      this.selectedRecords = item.records;
-      this.selectedType = item.type;
-      this.isIdentifierUnique = item.isIdentifierUnique;
-      this.isIdetifierComposite = item.isIdetifierComposite;
-      this.identifierRole = IdentifierRole.entity;
+      this.selectedUnitType = item.unitType;
+      this.selectedParentRecord = item.parent;
     },
-    deleteComponent(item) {
-      this.componentId = item.id;
+    deleteRecord(item) {
+      this.recordId = item.id;
       this.showDeleteDialog = true;
     },
     handleDelete() {
       this.$store
-        .dispatch("dataStructure/removeComponent", this.componentId)
+        .dispatch("unitDataStructure/removeRecord", this.recordId)
         .then(this.reloadDataStructure);
     },
     handleSave() {
@@ -277,43 +235,27 @@ export default {
           localId: this.localId.toUpperCase(),
           name: this.name,
           description: this.description,
-          type: this.selectedType,
-          isIdentifierUnique: this.isIdentifierUnique,
-          isIdetifierComposite: this.isIdentifierUnique,
-          identifierRole: this.identifierRole,
+          parentId: this.selectedParentRecord?.id ?? "",
+          unitTypeId: this.selectedUnitType?.id ?? "",
         };
         if (this.isEdit) {
-          formData.id = this.componentId;
+          formData.id = this.recordId;
           this.$store
-            .dispatch("dataStructure/updateComponent", formData)
+            .dispatch("unitDataStructure/updateRecord", formData)
             .then(this.reloadDataStructure);
         } else {
           this.$store
-            .dispatch("dataStructure/addComponent", formData)
+            .dispatch("unitDataStructure/addRecord", formData)
             .then(this.reloadDataStructure);
         }
         console.log(formData);
       }
     },
-    searchVariable(name, loading) {
-      loading(true);
-      this.search(name, loading, this);
-    },
-    search: _.debounce((name, loading, vm) => {
-      if (name.length > 0) {
-        // TODO: This should also return the representations
-        vm.$store.dispatch("variable/findByName", escape(name)).then(() => {
-          loading(false);
-        });
-      } else {
-        loading(false);
-      }
-    }, 500),
     next() {
       this.$emit("next");
     },
     reloadDataStructure() {
-      this.$store.dispatch("dataStructure/findById", this.$route.params.id);
+      this.$store.dispatch("unitDataStructure/findById", this.$route.params.id);
     },
   },
   validations: {
@@ -323,19 +265,17 @@ export default {
     name: {
       required,
     },
+    selectedUnitType: {
+      required,
+    },
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("variable", ["variables"]),
-    types() {
-      var types = [];
-      for (const key of Object.keys(DataStructureComponentTypes)) {
-        types.push(DataStructureComponentTypes[key]);
-      }
-      return types;
-    },
+    ...mapGetters("unitType", ["unitTypes"]),
   },
-  created() {},
+  created() {
+    this.$store.dispatch("unitType/findAll", this.$route.params.id);
+  },
 };
 </script>
 <style scoped>

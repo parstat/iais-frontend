@@ -18,4 +18,4 @@ export * from "./structural/measurementUnit.service";
 export * from "./structural/measurementType.service";
 export * from "./structural/unitDataSet.service";
 export * from "./structural/valueDomain.service";
-export * from "./structural/dataStructure.service";
+export * from "./structural/unitDataStructure.service";

@@ -1,12 +1,10 @@
 import { axiosIais } from "@/http";
 //
 
-export const dataStructureService = {
+export const unitDataStructureService = {
   findAll,
   findById,
   findByName,
-  findByType,
-  findByNameAndType,
   save,
   update,
   delete: _delete,
@@ -20,9 +18,9 @@ export const dataStructureService = {
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenDataStructures").then(
+    axiosIais.get("/structural/OpenUnitDataStructures").then(
       (response) => {
-        resolve(response.data.dataStructures);
+        resolve(response.data.unitDataStructures);
       },
       (error) => {
         reject(error);
@@ -32,10 +30,10 @@ function findAll() {
 }
 function findById(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenDataStructures/" + id).then(
+    axiosIais.get("/structural/OpenUnitDataStructures/" + id).then(
       (response) => {
-        var data = response.data.dataStructure
-          ? response.data.dataStructure
+        var data = response.data.unitDataStructures
+          ? response.data.unitDataStructure
           : null;
         //console.log(data);
         resolve(data);
@@ -49,39 +47,10 @@ function findById(id) {
 function findByName(name) {
   var queryString = "?name=" + name ?? "";
   return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenDataStructures" + queryString).then(
+    axiosIais.get("/structural/OpenUnitDataStructures" + queryString).then(
       (response) => {
         console.log(response);
-        resolve(response.data.dataStructures);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
-  });
-}
-function findByType(type) {
-  var queryString = "?type=" + type ?? "";
-  return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenDataStructures" + queryString).then(
-      (response) => {
-        console.log(response);
-        resolve(response.data.dataStructures);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
-  });
-}
-function findByNameAndType(formData) {
-  var queryString = "?name=" + formData.name ?? "";
-  queryString += "&type=" + formData.type ?? "";
-  return new Promise((resolve, reject) => {
-    axiosIais.get("/structural/OpenDataStructures" + queryString).then(
-      (response) => {
-        console.log(response);
-        resolve(response.data.dataStructures);
+        resolve(response.data.unitDataStructures);
       },
       (error) => {
         reject(error);
@@ -97,14 +66,16 @@ function save(formData) {
       },
     };
 
-    axiosIais.post("structural/ClosedDataStructures", formData, config).then(
-      (response) => {
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .post("structural/ClosedUnitDataStructures", formData, config)
+      .then(
+        (response) => {
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 
@@ -115,21 +86,23 @@ function update(formData) {
         "Content-Type": "application/json",
       },
     };
-    axiosIais.put("structural/ClosedDataStructures/", formData, config).then(
-      (response) => {
-        //console.log(response.data);
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .put("structural/ClosedUnitDataStructures/", formData, config)
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 
 function _delete(id) {
   return new Promise((resolve, reject) => {
-    axiosIais.delete("structural/ClosedDataStructures/" + id).then(
+    axiosIais.delete("structural/ClosedUnitDataStructures/" + id).then(
       (response) => {
         //console.log(response.data);
         resolve(response.data);
@@ -150,14 +123,16 @@ function addRecord(formData) {
     };
 
     // TODO: Add the correct path!
-    axiosIais.post("structural/ClosedDataStructures", formData, config).then(
-      (response) => {
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .post("structural/ClosedUnitDataStructures", formData, config)
+      .then(
+        (response) => {
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 
@@ -169,22 +144,24 @@ function updateRecord(formData) {
       },
     };
     // TODO: Add the correct path!
-    axiosIais.put("structural/ClosedDataStructures/", formData, config).then(
-      (response) => {
-        //console.log(response.data);
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .put("structural/ClosedUnitDataStructures/", formData, config)
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 
 function removeRecord(id) {
   return new Promise((resolve, reject) => {
     // TODO: Add the correct path!
-    axiosIais.delete("structural/ClosedDataStructures/" + id).then(
+    axiosIais.delete("structural/ClosedUnitDataStructures/" + id).then(
       (response) => {
         //console.log(response.data);
         resolve(response.data);
@@ -205,14 +182,16 @@ function addComponent(formData) {
     };
 
     // TODO: Add the correct path!
-    axiosIais.post("structural/ClosedDataStructures", formData, config).then(
-      (response) => {
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .post("structural/ClosedUnitDataStructures", formData, config)
+      .then(
+        (response) => {
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 
@@ -224,22 +203,24 @@ function updateComponent(formData) {
       },
     };
     // TODO: Add the correct path!
-    axiosIais.put("structural/ClosedDataStructures/", formData, config).then(
-      (response) => {
-        //console.log(response.data);
-        resolve(response.data);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+    axiosIais
+      .put("structural/ClosedUnitDataStructures/", formData, config)
+      .then(
+        (response) => {
+          //console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
   });
 }
 
 function removeComponent(id) {
   return new Promise((resolve, reject) => {
     // TODO: Add the correct path!
-    axiosIais.delete("structural/ClosedDataStructures/" + id).then(
+    axiosIais.delete("structural/ClosedUnitDataStructures/" + id).then(
       (response) => {
         //console.log(response.data);
         resolve(response.data);

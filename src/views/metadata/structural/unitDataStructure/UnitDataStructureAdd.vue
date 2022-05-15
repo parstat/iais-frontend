@@ -57,10 +57,10 @@
 </template>
 
 <script>
-import DataStructureBasic from "./share/DataStructureBasic.vue";
+import DataStructureBasic from "./share/UnitDataStructureBasic.vue";
 
 export default {
-  name: "DataStructureAdd",
+  name: "UnitDataStructureAdd",
   components: {
     "app-data-structure-add-component": DataStructureBasic,
   },

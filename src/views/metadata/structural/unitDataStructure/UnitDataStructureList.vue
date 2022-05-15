@@ -15,7 +15,7 @@
                   <router-link
                     v-if="isAuthenticated"
                     tag="a"
-                    to="/metadata/structural/dataStructures/add"
+                    to="/metadata/structural/unitDataStructures/add"
                     class="text-decoration-none text-primary"
                   >
                     <CIcon name="cil-plus" />
@@ -28,8 +28,8 @@
           <CCardText>
             <div class="table-responsive" v-if="!isLoading">
               <CSmartTable
-                v-if="dataStructures.length"
-                :items="dataStructures"
+                v-if="unitDataStructures.length"
+                :items="unitDataStructures"
                 :activePage="1"
                 header
                 :columns="columns"
@@ -50,7 +50,7 @@
                         tag="a"
                         title="View"
                         :to="{
-                          name: 'DataStructureView',
+                          name: 'UnitDataStructureView',
                           params: { id: item.id },
                         }"
                       >
@@ -62,7 +62,7 @@
                         tag="a"
                         title="Edit"
                         :to="{
-                          name: 'DataStructureEdit',
+                          name: 'UnitDataStructureEdit',
                           params: { id: item.id },
                         }"
                       >
@@ -99,7 +99,7 @@ import { mapGetters } from "vuex";
 import { Context } from "@/common";
 
 export default {
-  name: "DataStructureList",
+  name: "UnitDataStructureList",
   data() {
     return {
       columns: [
@@ -128,11 +128,11 @@ export default {
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
     ...mapGetters("coreui", ["isLoading"]),
-    ...mapGetters("dataStructure", ["dataStructures"]),
+    ...mapGetters("unitDataStructure", ["unitDataStructures"]),
   },
   methods: {},
   created() {
-    this.$store.dispatch("dataStructure/findByType", "UNIT");
+    this.$store.dispatch("unitDataStructure/findAll");
     this.$store.dispatch("coreui/setContext", Context.Structural);
   },
 };

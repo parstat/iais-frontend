@@ -1,5 +1,5 @@
 <template>
-  <div v-if="dataStructures">
+  <div v-if="unitDataStructures">
     <CForm>
       <label for="localId">Local id*</label>
       <input
@@ -19,14 +19,14 @@
       </div>
     </CForm>
     <CForm>
-      <CFormLabel for="dataStructure">
+      <CFormLabel for="unitDataStructure">
         <span>Data structure*</span>
       </CFormLabel>
       <v-select
         label="name"
-        :options="dataStructures"
+        :options="unitDataStructures"
         :getOptionLabel="(ds) => ds.name"
-        v-model="dataStructure"
+        v-model="unitDataStructure"
         class="mb-3"
         :class="{ 'is-invalid': v$.structureId.$error }"
         :placeholder="'Select data structure'"
@@ -285,7 +285,7 @@ export default {
       connection: this.selectedConnection ?? "",
       filterExpression: this.selectedFilterExpression ?? "",
 
-      dataStructure: this.selectedStructure ?? null,
+      unitDataStructure: this.selectedStructure ?? null,
       statisticalProgramHolder: null,
       dummyDateHolder:
         this.selectedReportingBegin && this.selectedReportingEnd
@@ -358,14 +358,9 @@ export default {
     },
     doSearchDataStructure: _.debounce((name, loading, vm) => {
       if (name.length > 0) {
-        vm.$store
-          .dispatch("dataStructure/findByNameAndType", {
-            name: name,
-            type: "UNIT",
-          })
-          .then(() => {
-            loading(false);
-          });
+        vm.$store.dispatch("unitDataStructure/findByName", name).then(() => {
+          loading(false);
+        });
       } else {
         loading(false);
       }
@@ -447,7 +442,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("dataStructure", ["dataStructures"]),
+    ...mapGetters("unitDataStructure", ["unitDataStructures"]),
     ...mapGetters("statisticalProgram", [
       "statisticalPrograms",
       "statisticalProgram",

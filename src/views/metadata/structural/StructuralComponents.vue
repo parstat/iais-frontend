@@ -157,7 +157,7 @@
           <CButton>
             <router-link
               tag="a"
-              :to="{ name: 'DataStructureList' }"
+              :to="{ name: 'UnitDataStructureList' }"
               class="text-decoration-none text-primary"
               ><span class="icon-span">
                 {{ $t("structural.data_structures_link") }}&nbsp;

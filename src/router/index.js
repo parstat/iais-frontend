@@ -818,39 +818,47 @@ const routes = [
       },
       //DataStructure
       {
-        path: "metadata/structural/dataStructures/",
-        name: "DataStructureList",
-        component: () =>
-          import("@/views/metadata/structural/dataStructure/DataStructureList"),
-        meta: { authorize: [] },
-      },
-      {
-        path: "metadata/structural/dataStructures/view/:id",
-        name: "DataStructureView",
-        component: () =>
-          import("@/views/metadata/structural/dataStructure/DataStructureView"),
-        meta: { authorize: [] },
-      },
-      {
-        path: "metadata/structural/dataStructures/add/",
-        name: "DataStructureAdd",
-        component: () =>
-          import("@/views/metadata/structural/dataStructure/DataStructureAdd"),
-        meta: { authorize: [Role.User, Role.Admin] },
-      },
-      {
-        path: "metadata/structural/dataStructures/edit/:id",
-        name: "DataStructureEdit",
-        component: () =>
-          import("@/views/metadata/structural/dataStructure/DataStructureEdit"),
-        meta: { authorize: [Role.User, Role.Admin] },
-      },
-      {
-        path: "metadata/structural/dataStructures/delete/:id",
-        name: "DataStructureDelete",
+        path: "metadata/structural/unitDataStructures/",
+        name: "UnitDataStructureList",
         component: () =>
           import(
-            "@/views/metadata/structural/dataStructure/DataStructureDelete"
+            "@/views/metadata/structural/unitDataStructure/UnitDataStructureList"
+          ),
+        meta: { authorize: [] },
+      },
+      {
+        path: "metadata/structural/unitDataStructures/view/:id",
+        name: "UnitDataStructureView",
+        component: () =>
+          import(
+            "@/views/metadata/structural/unitDataStructure/UnitDataStructureView"
+          ),
+        meta: { authorize: [] },
+      },
+      {
+        path: "metadata/structural/unitDataStructures/add/",
+        name: "UnitDataStructureAdd",
+        component: () =>
+          import(
+            "@/views/metadata/structural/unitDataStructure/UnitDataStructureAdd"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
+      {
+        path: "metadata/structural/unitDataStructures/edit/:id",
+        name: "UnitDataStructureEdit",
+        component: () =>
+          import(
+            "@/views/metadata/structural/unitDataStructure/UnitDataStructureEdit"
+          ),
+        meta: { authorize: [Role.User, Role.Admin] },
+      },
+      {
+        path: "metadata/structural/unitDataStructures/delete/:id",
+        name: "UnitDataStructureDelete",
+        component: () =>
+          import(
+            "@/views/metadata/structural/unitDataStructure/UnitDataStructureDelete"
           ),
         meta: { authorize: [Role.User, Role.Admin] },
       },

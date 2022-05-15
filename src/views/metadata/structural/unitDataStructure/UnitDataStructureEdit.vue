@@ -107,12 +107,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-import DatastructureBasic from "./share/DataStructureBasic.vue";
-import DataStructureRecords from "./share/DataStructureRecords.vue";
-import DataStructureComponents from "./share/DataStructureComponents.vue";
+import DatastructureBasic from "./share/UnitDataStructureBasic.vue";
+import DataStructureRecords from "./share/UnitDataStructureRecords.vue";
+import DataStructureComponents from "./share/UnitDataStructureComponents.vue";
 
 export default {
-  name: "DataStructureEdit",
+  name: "UnitDataStructureEdit",
   components: {
     "app-data-structure-add-component": DatastructureBasic,
     "app-data-structure-records-component": DataStructureRecords,
@@ -129,10 +129,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("dataStructure", ["dataStructure"]),
+    ...mapGetters("unitDataStructure", ["unitDataStructure"]),
   },
   created() {
-    this.$store.dispatch("dataStructure/findById", this.$route.params.id);
+    this.$store.dispatch("unitDataStructure/findById", this.$route.params.id);
   },
 };
 </script>

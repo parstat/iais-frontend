@@ -102,7 +102,7 @@ import { required } from "@vuelidate/validators";
 import { DataSetType } from "@/common";
 
 export default {
-  name: "DatastructureBasic",
+  name: "UnitDatastructureBasic",
   props: [
     "isEdit",
     "isDelete",
@@ -153,11 +153,13 @@ export default {
         };
         if (this.isEdit) {
           formData.id = this.$route.params.id;
-          this.$store.dispatch("dataStructure/update", formData).then(() => {
-            this.$emit("next");
-          });
+          this.$store
+            .dispatch("unitDataStructure/update", formData)
+            .then(() => {
+              this.$emit("next");
+            });
         } else {
-          this.$store.dispatch("dataStructure/save", formData);
+          this.$store.dispatch("unitDataStructure/save", formData);
         }
         console.log(formData);
       }
