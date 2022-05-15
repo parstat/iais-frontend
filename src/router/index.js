@@ -800,14 +800,14 @@ const routes = [
         name: "UnitDataSetAdd",
         component: () =>
           import("@/views/metadata/structural/unitDataSet/UnitDataSetAdd"),
-        meta: { authorize: [Role.User] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       {
         path: "metadata/structural/unitDataSets/edit/:id",
         name: "UnitDataSetEdit",
         component: () =>
           import("@/views/metadata/structural/unitDataSet/UnitDataSetEdit"),
-        meta: { authorize: [Role.User] },
+        meta: { authorize: [Role.User, Role.Admin] },
       },
       {
         path: "metadata/structural/unitDataSets/delete/:id",

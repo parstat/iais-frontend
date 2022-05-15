@@ -1,27 +1,28 @@
 <template>
-  <CRow v-if="dataStructure">
+  <CRow v-if="unitDataStructure">
     <div
       class="jumbotron jumbotron-fluid col-lg-12 p-2 mb-3"
-      v-if="dataStructure"
+      v-if="unitDataStructure"
     >
       <div class="p-3">
         <h2 class="display-5">
-          <span>{{ dataStructure.name }}</span>
+          <span>{{ unitDataStructure.name }}</span>
           <span class="lead">
-            ({{ dataStructure.localId }} {{ dataStructure.version }} )</span
+            ({{ unitDataStructure.localId }}
+            {{ unitDataStructure.version }} )</span
           >
         </h2>
 
-        <p class="lead" v-if="dataStructure.description">
+        <p class="lead" v-if="unitDataStructure.description">
           <span>
             <strong>{{ $t("structural.description") }}:</strong>
-            {{ dataStructure.description }}
+            {{ unitDataStructure.description }}
           </span>
         </p>
-        <p class="lead" v-if="dataStructure.group">
+        <p class="lead" v-if="unitDataStructure.group">
           <span>
             <strong>{{ $t("structural.dataset.group") }}:</strong>
-            {{ dataStructure.group }}
+            {{ unitDataStructure.group }}
           </span>
         </p>
       </div>
@@ -37,7 +38,7 @@
               <CRow>
                 <CCol
                   :sm="6"
-                  v-for="record in dataStructure.records"
+                  v-for="record in unitDataStructure.records"
                   :key="record.id"
                 >
                   <CCard class="mb-3 mt-3" color="light">
@@ -108,8 +109,8 @@
             <CCardText>
               <div class="table-responsive">
                 <CSmartTable
-                  v-if="dataStructure.components"
-                  :items="dataStructure.components"
+                  v-if="unitDataStructure.components"
+                  :items="unitDataStructure.components"
                   :activePage="1"
                   header
                   :columns="columns"

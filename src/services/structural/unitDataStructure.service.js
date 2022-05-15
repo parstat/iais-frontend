@@ -32,7 +32,7 @@ function findById(id) {
   return new Promise((resolve, reject) => {
     axiosIais.get("/structural/OpenUnitDataStructures/" + id).then(
       (response) => {
-        var data = response.data.unitDataStructures
+        var data = response.data.unitDataStructure
           ? response.data.unitDataStructure
           : null;
         //console.log(data);

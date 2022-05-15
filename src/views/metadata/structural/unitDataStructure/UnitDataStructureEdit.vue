@@ -1,5 +1,5 @@
 <template>
-  <CRow v-if="dataStructure">
+  <CRow v-if="unitDataStructure">
     <CCol class="col-12">
       <CCard>
         <CCardHeader class="bg-white" component="h5">
@@ -63,12 +63,14 @@
                   </template>
                   <app-data-structure-add-component
                     :isEdit="true"
-                    :selectedLocalId="dataStructure.localId"
-                    :selectedName="dataStructure.name"
-                    :selectedDescription="dataStructure.description"
-                    :selectedVersion="dataStructure.version"
-                    :selectedVersionDate="dataStructure.versionDate"
-                    :selectedVersionRationale="dataStructure.versionRationale"
+                    :selectedLocalId="unitDataStructure.localId"
+                    :selectedName="unitDataStructure.name"
+                    :selectedDescription="unitDataStructure.description"
+                    :selectedVersion="unitDataStructure.version"
+                    :selectedVersionDate="unitDataStructure.versionDate"
+                    :selectedVersionRationale="
+                      unitDataStructure.versionRationale
+                    "
                     @next="next"
                   />
                 </CTabPane>
@@ -80,7 +82,7 @@
                   :visible="activeTab === 1"
                 >
                   <app-data-structure-records-component
-                    :records="dataStructure.records"
+                    :records="unitDataStructure.records"
                     @next="next"
                   />
                 </CTabPane>
@@ -92,8 +94,8 @@
                   :visible="activeTab === 2"
                 >
                   <app-data-structure-components-component
-                    :components="dataStructure.components"
-                    :records="dataStructure.records"
+                    :components="unitDataStructure.components"
+                    :records="unitDataStructure.records"
                   />
                 </CTabPane>
               </CTabContent>
@@ -107,16 +109,16 @@
 
 <script>
 import { mapGetters } from "vuex";
-import DatastructureBasic from "./share/UnitDataStructureBasic.vue";
-import DataStructureRecords from "./share/UnitDataStructureRecords.vue";
-import DataStructureComponents from "./share/UnitDataStructureComponents.vue";
+import UnitDatastructureBasic from "./share/UnitDataStructureBasic.vue";
+import UnitDataStructureRecords from "./share/UnitDataStructureRecords.vue";
+import UnitDataStructureComponents from "./share/UnitDataStructureComponents.vue";
 
 export default {
   name: "UnitDataStructureEdit",
   components: {
-    "app-data-structure-add-component": DatastructureBasic,
-    "app-data-structure-records-component": DataStructureRecords,
-    "app-data-structure-components-component": DataStructureComponents,
+    "app-data-structure-add-component": UnitDatastructureBasic,
+    "app-data-structure-records-component": UnitDataStructureRecords,
+    "app-data-structure-components-component": UnitDataStructureComponents,
   },
   data() {
     return {

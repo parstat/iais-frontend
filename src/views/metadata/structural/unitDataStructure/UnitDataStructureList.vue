@@ -6,7 +6,7 @@
           <CRow>
             <CCol class="col-9">
               <CCardTitle>
-                <span>Data Structures</span>
+                <span>Unit Data Structures</span>
               </CCardTitle>
             </CCol>
             <CCol class="col-3">

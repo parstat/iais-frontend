@@ -3,7 +3,7 @@
     <CCardBody>
       <CCardText>
         <CCardTitle>
-          <span>Data structure components</span>
+          <span>Unit Data structure components</span>
         </CCardTitle>
         <CForm>
           <label for="localId">Local id*</label>
@@ -86,7 +86,7 @@
             id="variable-representation"
             class="mb-3"
             label="name"
-            :options="electedVariable.representations"
+            :options="selectedVariable.representations"
             v-model="selectedRepresentation"
             :placeholder="'Select the variable representation'"
           ></v-select>

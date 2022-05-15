@@ -1,5 +1,5 @@
 <template>
-  <CRow v-if="dataStructure" class="mb-4">
+  <CRow v-if="unitDataStructure" class="mb-4">
     <CCol class="col-12">
       <CCard>
         <CCardHeader class="bg-white" component="h5">
@@ -13,7 +13,7 @@
               type="text"
               class="form-control capitalize"
               placeholder="Local id"
-              v-model.trim="dataStructure.localId"
+              v-model.trim="unitDataStructure.localId"
               disabled
             />
           </CForm>
@@ -24,7 +24,7 @@
               type="text"
               class="form-control"
               placeholder="Data structure name"
-              v-model.trim="dataStructure.name"
+              v-model.trim="unitDataStructure.name"
               disabled
             />
           </CForm>
@@ -36,7 +36,7 @@
               type="text"
               class="form-control mb-3"
               placeholder="Data structure description"
-              v-model.trim="dataStructure.description"
+              v-model.trim="unitDataStructure.description"
               disabled
             />
           </CForm>
@@ -47,7 +47,7 @@
               type="text"
               class="form-control mb-3"
               placeholder="Data structure version"
-              v-model.trim="dataStructure.version"
+              v-model.trim="unitDataStructure.version"
               disabled
             />
           </CForm>
@@ -58,7 +58,7 @@
             <Datepicker
               id="versionDate"
               class="mb-3"
-              v-model="dataStructure.versionDate"
+              v-model="unitDataStructure.versionDate"
               disabled
             />
           </CForm>
@@ -69,7 +69,7 @@
               type="text"
               class="form-control mb-3"
               placeholder="Unit data set version rationale"
-              v-model.trim="dataStructure.versionRationale"
+              v-model.trim="unitDataStructure.versionRationale"
               rows="5"
               disabled
             ></textarea>
@@ -94,7 +94,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "UnitDataStructureEdit",
+  name: "UnitDataStructureDelete",
   data() {
     return {
       disabled: false,
