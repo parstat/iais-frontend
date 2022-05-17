@@ -75,10 +75,11 @@
             :options="variables"
             v-model="selectedVariable"
             @search="searchVariable"
+            @input="getVariable"
             :placeholder="'Select the variable'"
           ></v-select>
         </CForm>
-        <CForm v-if="selectedVariable?.representations?.length">
+        <CForm v-if="selectedVariable && variable?.representations?.length">
           <CFormLabel for="variable-representation">
             <span>Representation</span>
           </CFormLabel>
@@ -86,7 +87,7 @@
             id="variable-representation"
             class="mb-3"
             label="name"
-            :options="selectedVariable.representations"
+            :options="variable.representations"
             v-model="selectedRepresentation"
             :placeholder="'Select the variable representation'"
           ></v-select>
@@ -308,7 +309,6 @@ export default {
     },
     search: _.debounce((name, loading, vm) => {
       if (name.length > 0) {
-        // TODO: This should also return the representations
         vm.$store.dispatch("variable/findByName", escape(name)).then(() => {
           loading(false);
         });
@@ -316,6 +316,11 @@ export default {
         loading(false);
       }
     }, 500),
+    getVariable(variable) {
+      if (variable?.id) {
+        this.$store.dispatch("variable/findById", variable.id);
+      }
+    },
     finish() {
       this.$router.push("/metadata/structural/unitDataStructures");
     },
@@ -326,6 +331,7 @@ export default {
     },
     resetForm() {
       this.v$.$reset();
+      this.showDeleteDialog = false;
       this.isEdit = true;
       this.componentId = null;
       this.localId = "";
@@ -349,7 +355,7 @@ export default {
   },
   computed: {
     ...mapGetters("auth", ["isAuthenticated", "isAdmin"]),
-    ...mapGetters("variable", ["variables"]),
+    ...mapGetters("variable", ["variables", "variable"]),
     types() {
       var types = [];
       for (const key of Object.keys(DataStructureComponentTypes)) {
