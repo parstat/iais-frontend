@@ -52,15 +52,19 @@ const actions = {
   },
 
   findByName({ commit }, name) {
-    variableService.findByName(name).then(
-      (data) => {
-        commit("SET_VARIABLES", data);
-        //commit("SET_BUSINESS_FUNCTION", null); //clear business function
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    return new Promise((resolve, reject) => {
+      variableService.findByName(name).then(
+        (data) => {
+          commit("SET_VARIABLES", data);
+          resolve(data);
+          //commit("SET_BUSINESS_FUNCTION", null); //clear business function
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
   },
   save({ dispatch }, formData) {
     variableService.save(formData).then(

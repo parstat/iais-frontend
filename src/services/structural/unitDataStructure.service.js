@@ -225,7 +225,7 @@ function removeComponent(dataStructureId, componentId) {
       .delete(
         "structural/ClosedUnitDataStructures/" +
           dataStructureId +
-          "/componets/" +
+          "/components/" +
           componentId
       )
       .then(

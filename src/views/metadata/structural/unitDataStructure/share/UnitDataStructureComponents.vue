@@ -57,20 +57,56 @@
           </CFormLabel>
           <v-select
             id="type"
-            class="mb-3"
+            :class="{
+              'is-invalid': v$.selectedType.$error,
+              'mb-3': !v$.selectedType.$error,
+            }"
             label="name"
             :options="types"
             v-model="selectedType"
             :placeholder="'Select the type of the component'"
           ></v-select>
+          <div class="text-danger mb-3" v-if="v$.selectedType.$error">
+            Please select a type.
+          </div>
+        </CForm>
+        <CFormCheck
+          v-if="selectedType === dataStructureComponentTypes?.identifier"
+          id="isIdentifierUnique"
+          class="mb-3"
+          v-model="isIdentifierUnique"
+          label="Is identifier unique?"
+        />
+        <CFormCheck
+          v-if="selectedType === dataStructureComponentTypes?.identifier"
+          id="isIdentifierComposite"
+          class="mb-3"
+          v-model="isIdentifierComposite"
+          label="Is identifier composite?"
+        />
+        <CForm v-if="selectedType === dataStructureComponentTypes?.identifier">
+          <CFormLabel for="identifierRole">
+            <span>Role</span>
+          </CFormLabel>
+          <v-select
+            id="identifierRole"
+            class="mb-3"
+            label="name"
+            :options="roles"
+            v-model="identifierRole"
+            :placeholder="'Select the role'"
+          ></v-select>
         </CForm>
         <CForm>
           <CFormLabel for="variable">
-            <span>Variable</span>
+            <span>Variable*</span>
           </CFormLabel>
           <v-select
             id="variable"
-            class="mb-3"
+            :class="{
+              'is-invalid': v$.selectedVariable.$error,
+              'mb-3': !v$.selectedVariable.$error,
+            }"
             label="name"
             :options="variables"
             v-model="selectedVariable"
@@ -78,6 +114,9 @@
             @input="getVariable"
             :placeholder="'Select the variable'"
           ></v-select>
+          <div class="text-danger mb-3" v-if="v$.selectedVariable.$error">
+            Please select a variable.
+          </div>
         </CForm>
         <CForm v-if="selectedVariable && variable?.representations?.length">
           <CFormLabel for="variable-representation">
@@ -85,12 +124,18 @@
           </CFormLabel>
           <v-select
             id="variable-representation"
-            class="mb-3"
+            :class="{
+              'is-invalid': v$.selectedRepresentation.$error,
+              'mb-3': !v$.selectedRepresentation.$error,
+            }"
             label="name"
             :options="variable.representations"
             v-model="selectedRepresentation"
             :placeholder="'Select the variable representation'"
           ></v-select>
+          <div class="text-danger mb-3" v-if="v$.selectedRepresentation.$error">
+            Please select a variable representation.
+          </div>
         </CForm>
         <CForm>
           <CFormLabel for="records">
@@ -117,6 +162,13 @@
           :disabled="disabled"
           >{{ isEdit ? "Update" : "Save" }}
         </CButton>
+        <CButton
+          color="danger"
+          size="sm"
+          @click="resetForm()"
+          :disabled="disabled"
+          >{{ $t("referential.reset") }}</CButton
+        >
       </div>
       <hr />
       <CRow v-if="components?.length">
@@ -227,26 +279,10 @@ export default {
       selectedRepresentation: null,
       selectedRecords: [],
       isIdentifierUnique: null,
-      isIdetifierComposite: null,
+      isIdentifierComposite: null,
       identifierRole: null,
       showDeleteDialog: false,
-      columns: [
-        {
-          key: "localId",
-          label: "Id",
-        },
-        {
-          key: "name",
-          label: "Component Name",
-        },
-        {
-          key: "actions",
-          label: "",
-          _style: "",
-          sorter: false,
-          filter: false,
-        },
-      ],
+      dataStructureComponentTypes: DataStructureComponentTypes,
     };
   },
   methods: {
@@ -260,8 +296,26 @@ export default {
       this.selectedRecords = item.records;
       this.selectedType = item.type;
       this.isIdentifierUnique = item.isIdentifierUnique;
-      this.isIdetifierComposite = item.isIdetifierComposite;
-      this.identifierRole = IdentifierRole.entity;
+      this.isIdentifierComposite = item.isIdentifierComposite;
+      this.identifierRole = item.identifierRole
+        ? {
+            name: item.identifierRole,
+            value: item.identifierRole,
+          }
+        : null;
+      if (item?.representation?.variableName) {
+        this.$store
+          .dispatch(
+            "variable/findByName",
+            escape(item?.representation?.variableName)
+          )
+          .then((data) => {
+            if (data?.length > 0) {
+              this.selectedVariable = data[0];
+              this.getVariable(data[0]);
+            }
+          });
+      }
     },
     deleteComponent(item) {
       this.componentId = item.id;
@@ -286,9 +340,10 @@ export default {
           description: this.description,
           type: this.selectedType,
           isIdentifierUnique: this.isIdentifierUnique,
-          isIdetifierComposite: this.isIdentifierUnique,
-          identifierRole: this.identifierRole,
-          records: this.records.map((record) => record.id),
+          isIdentifierComposite: this.isIdentifierComposite,
+          identifierRole: this.identifierRole?.value ?? null,
+          records: this.selectedRecords.map((record) => record.id),
+          representedVariableId: this.selectedRepresentation?.id ?? null,
         };
         if (this.isEdit) {
           formData.componentId = this.componentId;
@@ -332,16 +387,17 @@ export default {
     resetForm() {
       this.v$.$reset();
       this.showDeleteDialog = false;
-      this.isEdit = true;
+      this.isEdit = false;
       this.componentId = null;
       this.localId = "";
       this.name = "";
       this.description = "";
+      this.selectedVariable = null;
       this.selectedRepresentation = null;
       this.selectedRecords = [];
       this.selectedType = "";
       this.isIdentifierUnique = null;
-      this.isIdetifierComposite = null;
+      this.isIdentifierComposite = null;
       this.identifierRole = IdentifierRole.entity;
     },
   },
@@ -350,6 +406,15 @@ export default {
       required,
     },
     name: {
+      required,
+    },
+    selectedType: {
+      required,
+    },
+    selectedVariable: {
+      required,
+    },
+    selectedRepresentation: {
       required,
     },
   },
@@ -362,6 +427,13 @@ export default {
         types.push(DataStructureComponentTypes[key]);
       }
       return types;
+    },
+    roles() {
+      var roles = [];
+      for (const key of Object.keys(IdentifierRole)) {
+        roles.push(IdentifierRole[key]);
+      }
+      return roles;
     },
   },
   created() {},
