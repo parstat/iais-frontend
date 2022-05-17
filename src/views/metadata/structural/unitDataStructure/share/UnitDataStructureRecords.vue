@@ -268,6 +268,7 @@ export default {
     },
     resetForm() {
       this.v$.$reset();
+      this.showDeleteDialog = false;
       this.isEdit = false;
       this.recordId = null;
       this.localId = "";
