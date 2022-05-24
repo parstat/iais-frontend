@@ -2,12 +2,14 @@
   <CCard>
     <CCardBody>
       <CCardText v-if="sourceCodeList && targetCodeList">
-        <CCardTitle> Add/Remove Mappings </CCardTitle>
+        <CCardTitle>
+          <span>{{ $t("structural.add/remove_mappings") }}</span>
+        </CCardTitle>
         <CRow>
           <CCol class="col-6">
             <CForm>
               <CFormLabel for="sourceId">
-                <span>Source item</span>
+                <span>{{ $t("structural.source_item") }}</span>
               </CFormLabel>
               <v-select
                 id="sourceId"
@@ -15,14 +17,13 @@
                 label="code"
                 :options="sourceCodeList.codeItems"
                 v-model="sourceCodeItem"
-              >
-              </v-select>
+              ></v-select>
             </CForm>
           </CCol>
           <CCol class="col-6">
             <CForm>
               <CFormLabel for="sourceId">
-                <span>Target item</span>
+                <span>{{ $t("structural.target_item") }}</span>
               </CFormLabel>
               <v-select
                 id="sourceId"
@@ -30,8 +31,7 @@
                 label="code"
                 :options="targetCodeList.codeItems"
                 v-model="targetCodeItem"
-              >
-              </v-select>
+              ></v-select>
             </CForm>
           </CCol>
         </CRow>
@@ -49,7 +49,7 @@
           style="margin-right: 0.3rem"
           @click="addMapping"
           :disabled="disabled"
-          ><span>Add mapping</span>
+          ><span>{{ $t("structural.add_mapping") }}</span>
         </CButton>
       </CCardText>
       <div class="table-responsive" v-if="correspondence">
@@ -64,15 +64,13 @@
           :itemsPerPage="5"
           columnSorter
           pagination
-        >
-          <template #actions="{ item }">
+          ><template #actions="{ item }">
             <td style="text-align: right; width: 10%; padding-right: 20px">
               <span
                 v-if="isAuthenticated"
                 class="pl-2 clickable"
                 @click="openDeleteDialog(item)"
-              >
-                <CIcon name="cil-trash" />
+                ><CIcon name="cil-trash" />
               </span>
             </td>
           </template>
@@ -110,29 +108,25 @@
       backdrop="static"
       :visible="showDeleteDialog"
       @close="showDeleteDialog = false"
-    >
-      <CModalHeader>
-        <CModalTitle
-          >Delete mapping: {{ mapping?.sourceCode }} -
-          {{ mapping.targetCode }}?</CModalTitle
-        >
+      ><CModalHeader>
+        <CModalTitle>
+          <span>{{ $t("structural.delete_mapping") }}:</span>
+          {{ mapping?.sourceCode }} - {{ mapping.targetCode }}?
+        </CModalTitle>
       </CModalHeader>
-      <CModalBody
-        >This action will remove the mapping form the correspondence. This
-        action can not be undone. Are you sure you want to delete this
-        mapping?</CModalBody
-      >
+      <CModalBody>
+        <span>{{ $t("structural.mapping_text") }}</span>
+      </CModalBody>
       <CModalFooter>
         <CButton
           color="secondary"
           @click="() => (showDeleteDialog = false)"
           :disabled="disabled"
-        >
-          Close
+          ><span>{{ $t("structural.close") }}</span>
         </CButton>
-        <CButton color="danger" @click="removeMapping()" :disabled="disabled"
-          >Delete mapping</CButton
-        >
+        <CButton color="danger" @click="removeMapping()" :disabled="disabled">
+          <span>{{ $t("structural.delete_mapping") }}</span>
+        </CButton>
       </CModalFooter>
     </CModal>
   </CCard>
@@ -155,15 +149,15 @@ export default {
       correspondenceColumns: [
         {
           key: "sourceCode",
-          label: "Source Code",
+          label: this.$i18n.t("structural.source_code"),
         },
         {
           key: "targetCode",
-          label: "Target Code",
+          label: this.$i18n.t("structural.target_code"),
         },
         {
           key: "actions",
-          label: "Actions",
+          label: this.$i18n.t("structural.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,

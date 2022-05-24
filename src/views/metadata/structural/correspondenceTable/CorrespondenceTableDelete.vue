@@ -49,7 +49,7 @@
         style="margin-right: 0.3rem"
         @click="deleteCorrespondence"
         :disabled="disabled"
-        ><span>{{ $t("referential.delete") }}</span>
+        ><span>{{ $t("structural.delete") }}</span>
       </CButton>
     </CCardBody>
   </CCard>

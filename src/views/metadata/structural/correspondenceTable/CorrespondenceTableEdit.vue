@@ -3,11 +3,12 @@
     <CCol class="col-12">
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          <span
-            >Edit Correspondence Table between
-            {{ correspondence.source.name }} and
-            {{ correspondence.target.name }}</span
-          >
+          <span>
+            {{ $t("structural.edit_correspondance_table_between") }}
+            {{ correspondence.source.name }}
+            {{ $t("structural.and") }}
+            {{ correspondence.target.name }}
+          </span>
         </CCardHeader>
         <CCardBody>
           <CRow>
@@ -22,8 +23,7 @@
                         activeTab = 0;
                       }
                     "
-                  >
-                    <span>{{ $t("referential.basic") }}</span>
+                    ><span>{{ $t("structural.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -35,8 +35,7 @@
                         activeTab = 1;
                       }
                     "
-                  >
-                    <span>{{
+                    ><span>{{
                       $t("structural.correspondence_table_mappings")
                     }}</span>
                   </CNavLink>
@@ -49,9 +48,8 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 0"
-                >
-                  <template #title>
-                    <span>{{ $t("referential.basic") }}</span>
+                  ><template #title>
+                    <span>{{ $t("structural.basic") }}</span>
                     <span class="float-right" v-if="editedBasic">
                       <CIcon name="cil-check-alt" />
                     </span>
@@ -69,8 +67,7 @@
                   role="tabpanel"
                   aria-labelledby="mappings-tab"
                   :visible="activeTab === 1"
-                >
-                  <app-correspondence-mappings
+                  ><app-correspondence-mappings
                     :sourceId="correspondence.source?.id"
                     :targetId="correspondence.target?.id"
                   ></app-correspondence-mappings>

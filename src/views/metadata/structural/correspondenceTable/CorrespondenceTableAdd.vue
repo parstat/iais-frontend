@@ -3,7 +3,7 @@
     <CCol class="col-12">
       <CCard>
         <CCardHeader class="bg-white" component="h5">
-          <span>Create a Correspondence Table</span>
+          <span>{{ $t("structural.create_correspondance_table") }}</span>
         </CCardHeader>
         <CCardBody>
           <CRow>
@@ -18,8 +18,7 @@
                         activeTab = 0;
                       }
                     "
-                  >
-                    <span>{{ $t("referential.basic") }}</span>
+                    ><span>{{ $t("referential.basic") }}</span>
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
@@ -37,9 +36,8 @@
                   role="tabpanel"
                   aria-labelledby="home-tab"
                   :visible="activeTab === 0"
-                >
-                  <template #title>
-                    <span>{{ $t("referential.basic") }}</span>
+                  ><template #title>
+                    <span>{{ $t("structural.basic") }}</span>
                     <span class="float-right" v-if="editedBasic">
                       <CIcon name="cil-check-alt" />
                     </span>

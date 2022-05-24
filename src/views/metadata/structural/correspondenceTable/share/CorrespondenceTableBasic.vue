@@ -2,7 +2,9 @@
   <CCard>
     <CCardBody>
       <CCardText v-if="codeLists && statisticalClassifications">
-        <CCardTitle> Correspondence </CCardTitle>
+        <CCardTitle>
+          <span>{{ $t("structural.correspondence") }}</span>
+        </CCardTitle>
         <CForm>
           <CFormLabel for="nodesetType">
             <span>{{
@@ -14,8 +16,7 @@
             :options="nodeSetTypes"
             v-model="selectedNodeSetType"
             :disabled="isEdit"
-          >
-          </v-select>
+          ></v-select>
         </CForm>
         <CForm>
           <CFormLabel for="source">
@@ -65,8 +66,7 @@
             :options="relationships"
             v-model="selectedRelationship"
             :disabled="isEdit"
-          >
-          </v-select>
+          ></v-select>
         </CForm>
       </CCardText>
       <CButton
@@ -75,7 +75,7 @@
         style="margin-right: 0.3rem"
         @click="next"
         :disabled="disabled"
-        ><span>{{ $t("referential.next") }}</span>
+        ><span>{{ $t("structural.next") }}</span>
       </CButton>
     </CCardBody>
   </CCard>

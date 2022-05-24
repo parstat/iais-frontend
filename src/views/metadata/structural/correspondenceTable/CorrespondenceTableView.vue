@@ -6,7 +6,7 @@
     >
       <div class="p-3">
         <h3>
-          Source:
+          <span>{{ $t("structural.source") }}:</span>
           <i>
             {{ correspondence.source.name }}
             ({{ correspondence.source.version }})
@@ -14,20 +14,23 @@
         </h3>
 
         <h3>
-          Target:
+          <span>{{ $t("structural.target") }}:</span>
           <i>
             {{ correspondence.target.name }}
             ({{ correspondence.target.version }})
           </i>
         </h3>
         <div class="display-5">
-          Relationship: <i>{{ correspondence.relationship }}</i>
+          <span>{{ $t("structural.relationship") }}:</span>
+          <i>{{ correspondence.relationship }}</i>
         </div>
       </div>
     </div>
     <CCard v-if="correspondence">
       <CCardBody>
-        <CCardTitle> Mappings </CCardTitle>
+        <CCardTitle>
+          <span>{{ $t("structural.correspondence_table_mappings") }}</span>
+        </CCardTitle>
         <CCardText>
           <div class="table-responsive">
             <CSmartTable
@@ -39,8 +42,7 @@
               hover
               sorter
               pagination
-            >
-            </CSmartTable>
+            ></CSmartTable>
           </div>
         </CCardText>
         <CButton
@@ -48,8 +50,8 @@
           size="sm"
           @click="handleBack()"
           :disabled="disabled"
-          >Back</CButton
-        >
+          ><span>{{ $t("structural.back") }}</span>
+        </CButton>
       </CCardBody>
     </CCard>
   </CRow>
@@ -67,11 +69,11 @@ export default {
       columns: [
         {
           key: "sourceCode",
-          label: "Source Code",
+          label: this.$i18n.t("structural.source_code"),
         },
         {
           key: "targetCode",
-          label: "Target Code",
+          label: this.$i18n.t("structural.target_code"),
         },
       ],
     };

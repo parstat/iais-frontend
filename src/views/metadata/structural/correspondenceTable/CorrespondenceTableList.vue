@@ -6,7 +6,7 @@
           <CRow>
             <CCol class="col-9">
               <CCardTitle>
-                <span>Correspondence Tables</span>
+                <span>{{ $t("structural.correspondance_tables") }}</span>
               </CCardTitle>
             </CCol>
             <CCol class="col-3">
@@ -17,9 +17,10 @@
                     tag="a"
                     to="/metadata/structural/correspondences/add"
                     class="text-decoration-none text-primary"
-                  >
-                    <CIcon name="cil-plus" />
-                    <span class="icon-span">New Correspondence</span>
+                    ><CIcon name="cil-plus" />
+                    <span class="icon-span">
+                      {{ $t("structural.new_correspondance") }}
+                    </span>
                   </router-link>
                 </CNavItem>
               </CNav>
@@ -36,8 +37,7 @@
                 itemsPerPageSelect
                 :itemsPerPage="5"
                 pagination
-              >
-                <template #sourcename="{ item }">
+                ><template #sourcename="{ item }">
                   <td>
                     {{ item.source.name }}
                   </td>
@@ -69,8 +69,7 @@
                           name: 'CorrespondenceTableView',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-magnifying-glass" />
+                        ><CIcon name="cil-magnifying-glass" />
                       </router-link>
                     </span>
                     <span v-if="isAuthenticated" class="pl-2">
@@ -81,24 +80,21 @@
                           name: 'CorrespondenceTableEdit',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-pencil" />
+                        ><CIcon name="cil-pencil" />
                       </router-link>
                     </span>
                     <span
                       v-if="isAuthenticated && isAdmin"
                       class="pl-2"
                       v-c-tooltip="'Delete'"
-                    >
-                      <router-link
+                      ><router-link
                         tag="a"
                         title="Delete"
                         :to="{
                           name: 'CorrespondenceTableDelete',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-trash" />
+                        ><CIcon name="cil-trash" />
                       </router-link>
                     </span>
                   </td>
@@ -124,27 +120,27 @@ export default {
       columns: [
         {
           key: "sourcename",
-          label: "Source Name",
+          label: this.$i18n.t("structural.source_name"),
         },
         {
           key: "sourceversion",
-          label: "Source Version",
+          label: this.$i18n.t("structural.source_version"),
         },
         {
           key: "targetname",
-          label: "Target Name",
+          label: this.$i18n.t("structural.target_name"),
         },
         {
           key: "targetversion",
-          label: "Target Version",
+          label: this.$i18n.t("structural.target_version"),
         },
         {
           key: "relationship",
-          label: "Relationship",
+          label: this.$i18n.t("structural.relationship"),
         },
         {
           key: "actions",
-          label: "",
+          label: this.$i18n.t("structural.actions"),
           _style: { width: "1%" },
           sorter: false,
           filter: false,
