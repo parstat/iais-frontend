@@ -70,33 +70,24 @@
             Please select a type.
           </div>
         </CForm>
-        <CFormCheck
+        <CFormSwitch
           v-if="selectedType === dataStructureComponentTypes?.identifier"
           id="isIdentifierUnique"
+          size="lg"
           class="mb-3"
           v-model="isIdentifierUnique"
-          label="Is identifier unique?"
+          :checked="isIdentifierUnique"
+          label="Unique"
         />
-        <CFormCheck
+        <CFormSwitch
           v-if="selectedType === dataStructureComponentTypes?.identifier"
+          size="lg"
           id="isIdentifierComposite"
           class="mb-3"
           v-model="isIdentifierComposite"
-          label="Is identifier composite?"
+          :checked="isIdentifierComposite"
+          label="Composite"
         />
-        <CForm v-if="selectedType === dataStructureComponentTypes?.identifier">
-          <CFormLabel for="identifierRole">
-            <span>Role</span>
-          </CFormLabel>
-          <v-select
-            id="identifierRole"
-            class="mb-3"
-            label="name"
-            :options="roles"
-            v-model="identifierRole"
-            :placeholder="'Select the role'"
-          ></v-select>
-        </CForm>
         <CForm>
           <CFormLabel for="variable">
             <span>Variable*</span>
@@ -171,8 +162,58 @@
         >
       </div>
       <hr />
-      <CRow v-if="components?.length">
-        <CCol
+      <CRow>
+        <CSmartTable
+          v-if="components?.length"
+          :items="components"
+          :activePage="1"
+          header
+          :columns="columns"
+          columnFilter
+          cleaner
+          itemsPerPageSelect
+          :itemsPerPage="5"
+          columnSorter
+          :sorterValue="{ column: 'localId', state: 'asc' }"
+          pagination
+        >
+          <template #isIdentifierUnique="{ item }">
+            <td style="text-align: center">
+              <CFormCheck
+                id="flexCheckDefault"
+                disabled
+                v-model="item.isIdentifierUnique"
+              />
+            </td>
+          </template>
+          <template #isIdentifierComposite="{ item }">
+            <td style="text-align: center">
+              <CFormCheck
+                id="flexCheckDefault"
+                disabled
+                v-model="item.isIdentifierComposite"
+              />
+            </td>
+          </template>
+          <template #actions="{ item }">
+            <td style="text-align: right; width: 10%; padding-right: 20px">
+              <span v-if="isAuthenticated" class="pl-2">
+                <span v-on:click="editComponent(item)" class="clickable-button"
+                  ><CIcon name="cil-pencil" />
+                </span>
+              </span>
+
+              <span v-if="isAuthenticated && isAdmin" class="pl-2">
+                <span
+                  v-on:click="deleteComponent(item)"
+                  class="clickable-button"
+                  ><CIcon name="cil-trash" />
+                </span>
+              </span>
+            </td>
+          </template>
+        </CSmartTable>
+        <!-- <CCol
           class="col-6 col-md-4"
           v-for="component in components"
           :key="component.id"
@@ -202,7 +243,7 @@
               </CRow>
             </CCardBody>
           </CCard>
-        </CCol>
+        </CCol> -->
       </CRow>
       <hr />
       <CButton
@@ -280,9 +321,47 @@ export default {
       selectedRecords: [],
       isIdentifierUnique: null,
       isIdentifierComposite: null,
-      identifierRole: null,
+      identifierRole: {
+        name: IdentifierRole.entity,
+        value: IdentifierRole.entity,
+      },
       showDeleteDialog: false,
       dataStructureComponentTypes: DataStructureComponentTypes,
+      columns: [
+        {
+          key: "localId",
+          label: "Id",
+        },
+        {
+          key: "name",
+          label: "Component name",
+        },
+        {
+          key: "type",
+          label: "Component type",
+        },
+        {
+          key: "isIdentifierUnique",
+          label: "Unique",
+          _style: "",
+          sorter: false,
+          filter: false,
+        },
+        {
+          key: "isIdentifierComposite",
+          label: "Composite",
+          _style: "",
+          sorter: false,
+          filter: false,
+        },
+        {
+          key: "actions",
+          label: "",
+          _style: "",
+          sorter: false,
+          filter: false,
+        },
+      ],
     };
   },
   methods: {
@@ -318,6 +397,7 @@ export default {
       }
     },
     deleteComponent(item) {
+      console.log(item);
       this.componentId = item.id;
       this.showDeleteDialog = true;
     },
