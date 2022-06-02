@@ -163,56 +163,60 @@
       </div>
       <hr />
       <CRow>
-        <CSmartTable
-          v-if="components?.length"
-          :items="components"
-          :activePage="1"
-          header
-          :columns="columns"
-          columnFilter
-          cleaner
-          itemsPerPageSelect
-          :itemsPerPage="5"
-          columnSorter
-          :sorterValue="{ column: 'localId', state: 'asc' }"
-          pagination
-        >
-          <template #isIdentifierUnique="{ item }">
-            <td style="text-align: center">
-              <CFormCheck
-                id="flexCheckDefault"
-                disabled
-                v-model="item.isIdentifierUnique"
-              />
-            </td>
-          </template>
-          <template #isIdentifierComposite="{ item }">
-            <td style="text-align: center">
-              <CFormCheck
-                id="flexCheckDefault"
-                disabled
-                v-model="item.isIdentifierComposite"
-              />
-            </td>
-          </template>
-          <template #actions="{ item }">
-            <td style="text-align: right; width: 10%; padding-right: 20px">
-              <span v-if="isAuthenticated" class="pl-2">
-                <span v-on:click="editComponent(item)" class="clickable-button"
-                  ><CIcon name="cil-pencil" />
+        <div class="table-responsive">
+          <CSmartTable
+            v-if="components?.length"
+            :items="components"
+            :activePage="1"
+            header
+            :columns="columns"
+            columnFilter
+            cleaner
+            itemsPerPageSelect
+            :itemsPerPage="5"
+            columnSorter
+            :sorterValue="{ column: 'localId', state: 'asc' }"
+            pagination
+          >
+            <template #isIdentifierUnique="{ item }">
+              <td style="text-align: center">
+                <CFormCheck
+                  id="flexCheckDefault"
+                  disabled
+                  v-model="item.isIdentifierUnique"
+                />
+              </td>
+            </template>
+            <template #isIdentifierComposite="{ item }">
+              <td style="text-align: center">
+                <CFormCheck
+                  id="flexCheckDefault"
+                  disabled
+                  v-model="item.isIdentifierComposite"
+                />
+              </td>
+            </template>
+            <template #actions="{ item }">
+              <td style="text-align: right; width: 10%; padding-right: 20px">
+                <span v-if="isAuthenticated" class="pl-2">
+                  <span
+                    v-on:click="editComponent(item)"
+                    class="clickable-button"
+                    ><CIcon name="cil-pencil" />
+                  </span>
                 </span>
-              </span>
 
-              <span v-if="isAuthenticated && isAdmin" class="pl-2">
-                <span
-                  v-on:click="deleteComponent(item)"
-                  class="clickable-button"
-                  ><CIcon name="cil-trash" />
+                <span v-if="isAuthenticated && isAdmin" class="pl-2">
+                  <span
+                    v-on:click="deleteComponent(item)"
+                    class="clickable-button"
+                    ><CIcon name="cil-trash" />
+                  </span>
                 </span>
-              </span>
-            </td>
-          </template>
-        </CSmartTable>
+              </td>
+            </template>
+          </CSmartTable>
+        </div>
         <!-- <CCol
           class="col-6 col-md-4"
           v-for="component in components"
@@ -522,5 +526,8 @@ export default {
 <style scoped>
 .clickable-button {
   cursor: pointer;
+}
+.capitalize {
+  text-transform: uppercase;
 }
 </style>
