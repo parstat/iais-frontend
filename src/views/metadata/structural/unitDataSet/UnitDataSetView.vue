@@ -7,9 +7,9 @@
       <div class="p-3">
         <h2 class="display-5">
           <span>{{ unitDataSet.name }}</span>
-          <span class="lead"
-            >({{ unitDataSet.localId }} {{ unitDataSet.version }} )</span
-          >
+          <span class="lead">
+            ({{ unitDataSet.localId }} {{ unitDataSet.version }} )
+          </span>
         </h2>
         <p class="lead" v-if="unitDataSet.description">
           <span>
@@ -23,15 +23,17 @@
       <CCol class="mb-3">
         <CCard>
           <CCardHeader class="bg-white">
-            <CCardTitle> Dataset Infromation </CCardTitle>
+            <CCardTitle>
+              <span>{{ $t("structural.data_set_information") }}</span>
+            </CCardTitle>
           </CCardHeader>
           <CCardBody>
             <CCardText>
               <CRow>
                 <CCol class="col-md-6 col-sm-12 col-12">
-                  <CFormLabel for="exchangeChannel" class="col-form-label">{{
-                    $t("structural.dataset.exchange_channel")
-                  }}</CFormLabel>
+                  <CFormLabel for="exchangeChannel" class="col-form-label">
+                    <span>{{ $t("structural.dataset.exchange_channel") }}</span>
+                  </CFormLabel>
                   <CFormInput
                     type="text"
                     id="exchangeChannel"
@@ -40,9 +42,11 @@
                   />
                 </CCol>
                 <CCol class="col-md-6 col-sm-12 col-12">
-                  <CFormLabel for="exchangeDirection" class="col-form-label">{{
-                    $t("structural.dataset.exchange_direction")
-                  }}</CFormLabel>
+                  <CFormLabel for="exchangeDirection" class="col-form-label">
+                    <span>{{
+                      $t("structural.dataset.exchange_direction")
+                    }}</span>
+                  </CFormLabel>
                   <CFormInput
                     type="text"
                     id="exchangeDirection"
@@ -53,9 +57,9 @@
               </CRow>
               <CRow>
                 <CCol class="col-md-6 col-sm-12 col-12">
-                  <CFormLabel for="type" class="col-form-label">{{
-                    $t("structural.type")
-                  }}</CFormLabel>
+                  <CFormLabel for="type" class="col-form-label">
+                    <span>{{ $t("structural.type") }}</span>
+                  </CFormLabel>
                   <CFormInput
                     type="text"
                     id="type"
@@ -64,9 +68,9 @@
                   />
                 </CCol>
                 <CCol class="col-md-6 col-sm-12 col-12">
-                  <CFormLabel for="connection" class="col-form-label">{{
-                    $t("structural.dataset.connection")
-                  }}</CFormLabel>
+                  <CFormLabel for="connection" class="col-form-label">
+                    <span>{{ $t("structural.dataset.connection") }}</span>
+                  </CFormLabel>
                   <CFormInput
                     type="text"
                     id="connection"
@@ -77,9 +81,11 @@
               </CRow>
               <CRow>
                 <CCol class="col-md-6 col-sm-12 col-12">
-                  <CFormLabel for="filterExpression" class="col-form-label">{{
-                    $t("structural.dataset.filter_expression")
-                  }}</CFormLabel>
+                  <CFormLabel for="filterExpression" class="col-form-label">
+                    <span>{{
+                      $t("structural.dataset.filter_expression")
+                    }}</span>
+                  </CFormLabel>
                   <CFormInput
                     type="text"
                     id="filterExpression"
@@ -90,9 +96,9 @@
               </CRow>
               <CRow>
                 <CCol class="col-md-6 col-sm-12 col-12">
-                  <CFormLabel for="reportingPeriod" class="col-form-label">{{
-                    $t("structural.dataset.reporting_period")
-                  }}</CFormLabel>
+                  <CFormLabel for="reportingPeriod" class="col-form-label">
+                    <span>{{ $t("structural.dataset.reporting_period") }}</span>
+                  </CFormLabel>
                   <Datepicker
                     v-model="rangeDate"
                     range
@@ -111,14 +117,16 @@
       <CCol class="col-12">
         <CCard>
           <CCardHeader class="bg-white">
-            <CCardTitle> Dataset Structure </CCardTitle>
+            <CCardTitle>
+              <span>{{ $t("structural.data_set_structure") }}</span>
+            </CCardTitle>
           </CCardHeader>
           <CCardBody>
             <CCardText>
               <CRow>
                 <CCol class="col-md-6 col-sm-12 col-12 mb-3">
                   <CFormLabel for="structureName" class="col-form-label">
-                    {{ $t("structural.name") }}
+                    <span>{{ $t("structural.name") }}</span>
                   </CFormLabel>
                   <CFormInput
                     type="text"
@@ -132,7 +140,7 @@
                   v-if="unitDataSet.structure.description"
                 >
                   <CFormLabel for="structureDescription" class="col-form-label">
-                    {{ $t("structural.description") }}
+                    <span>{{ $t("structural.description") }}</span>
                   </CFormLabel>
                   <CFormInput
                     type="text"
@@ -146,9 +154,8 @@
                 <CCol
                   class="col-md-6 col-sm-12 mb-3"
                   v-if="unitDataSet.structure.group"
-                >
-                  <CFormLabel for="structureGroup" class="col-form-label">
-                    {{ $t("structural.dataset.group") }}
+                  ><CFormLabel for="structureGroup" class="col-form-label">
+                    <span>{{ $t("structural.dataset.group") }}</span>
                   </CFormLabel>
                   <CFormInput
                     type="text"
@@ -158,23 +165,26 @@
                   />
                 </CCol>
               </CRow>
-              <CCardTitle> Records </CCardTitle>
+              <CCardTitle>
+                <span>{{ $t("structural.records") }}</span>
+              </CCardTitle>
               <CRow>
                 <CCol
                   :sm="6"
                   v-for="record in unitDataSet.structure.logicalRecords"
                   :key="record.id"
-                >
-                  <CCard class="mb-3 mt-3" color="light">
+                  ><CCard class="mb-3 mt-3" color="light">
                     <CCardBody>
                       <CCardTitle>
-                        <span> {{ record.name }}</span>
+                        <span>{{ record.name }}</span>
                       </CCardTitle>
                       <CCardText>
                         <CRow class="mb-3">
                           <CCol class="col-sm-12">
                             <CFormLabel for="tableName" class="col-form-label">
-                              {{ $t("structural.dataset.record.table_name") }}
+                              <span>{{
+                                $t("structural.dataset.record.table_name")
+                              }}</span>
                             </CFormLabel>
                             <CFormInput
                               type="text"
@@ -189,8 +199,9 @@
                             <CFormLabel
                               for="parentRecord"
                               class="col-form-label"
-                            >
-                              {{ $t("structural.dataset.record.parent") }}
+                              ><span>{{
+                                $t("structural.dataset.record.parent")
+                              }}</span>
                             </CFormLabel>
                             <CFormInput
                               type="text"
@@ -203,7 +214,9 @@
                         <CRow class="mb-3">
                           <CCol class="col-sm-12">
                             <CFormLabel for="unitType" class="col-form-label">
-                              {{ $t("structural.dataset.record.unit_type") }}
+                              <span>{{
+                                $t("structural.dataset.record.unit_type")
+                              }}</span>
                             </CFormLabel>
                             <CFormInput
                               type="text"
@@ -216,7 +229,9 @@
                         <CRow>
                           <CCol class="col-sm-12">
                             <CFormLabel for="columns" class="col-form-label">
-                              {{ $t("structural.dataset.record.columns") }}
+                              <span>{{
+                                $t("structural.dataset.record.columns")
+                              }}</span>
                             </CFormLabel>
                             <div class="table-responsive">
                               <CSmartTable
@@ -234,8 +249,7 @@
                                   state: 'asc',
                                 }"
                                 pagination
-                              >
-                                <template #show_representation="{ item }">
+                                ><template #show_representation="{ item }">
                                   <td class="py-2">
                                     <CButton
                                       color="primary"
@@ -243,8 +257,7 @@
                                       square
                                       size="sm"
                                       @click="showRepresentation(item)"
-                                    >
-                                      Show
+                                      ><span>{{ $t("structural.show") }}</span>
                                     </CButton>
                                   </td>
                                 </template>
@@ -263,8 +276,8 @@
               size="sm"
               @click="handleBack()"
               :disabled="disabled"
-              >Back</CButton
-            >
+              ><span>{{ $t("structural.back") }}</span>
+            </CButton>
           </CCardBody>
         </CCard>
       </CCol>
@@ -293,19 +306,19 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Column",
+          label: this.$i18n.t("structural.column"),
         },
         {
           key: "name",
-          label: "Name",
+          label: this.$i18n.t("structural.name"),
         },
         {
           key: "type",
-          label: "Type",
+          label: this.$i18n.t("structural.type"),
         },
         {
           key: "show_representation",
-          label: "Representation",
+          label: this.$i18n.t("structural.representation"),
           _style: { width: "1%" },
           filter: false,
           sorter: false,

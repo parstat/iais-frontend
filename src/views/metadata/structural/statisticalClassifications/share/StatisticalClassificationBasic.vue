@@ -55,7 +55,7 @@
           />
           <span class="text-danger" v-if="v$.localVersion.$error">
             {{
-              $t("structural.validations.statistical_classification_veresion")
+              $t("structural.validations.statistical_classification_version")
             }}
           </span>
         </CForm>

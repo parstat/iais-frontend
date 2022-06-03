@@ -1,7 +1,9 @@
 <template>
   <div v-if="unitDataStructures">
     <CForm>
-      <label for="localId">Local id*</label>
+      <CFormLabel for="localId">
+        <span>{{ $t("structural.local_ID") }}*</span>
+      </CFormLabel>
       <input
         id="localId"
         type="text"
@@ -10,17 +12,17 @@
           'is-invalid': v$.localId.$error,
           'mb-3': !v$.localId.$error,
         }"
-        placeholder="Local ID"
+        :placeholder="$t('structural.local_ID')"
         v-model.trim="localId"
         :disabled="isEdit || isDelete"
       />
-      <div class="text-danger mb-3" v-if="v$.name.$error">
-        Please enter a local ID.
-      </div>
+      <span class="text-danger mb-3" v-if="v$.name.$error">
+        {{ $t("structural.validations.local_ID") }}
+      </span>
     </CForm>
     <CForm>
       <CFormLabel for="unitDataStructure">
-        <span>Data structure*</span>
+        <span>{{ $t("structural.data_structure") }}*</span>
       </CFormLabel>
       <v-select
         label="name"
@@ -40,7 +42,7 @@
     </CForm>
     <CForm>
       <CFormLabel for="type">
-        <span>Statsitcal program*</span>
+        <span>Statistical program*</span>
       </CFormLabel>
       <v-select
         label="name"
@@ -58,7 +60,9 @@
       </span>
     </CForm>
     <CForm>
-      <label for="name">Name*</label>
+      <CFormLabel for="name">
+        <span>{{ $t("structural.data_set_structure") }}*</span>
+      </CFormLabel>
       <input
         id="name"
         type="text"
@@ -67,44 +71,50 @@
           'is-invalid': v$.name.$error,
           'mb-3': !v$.name.$error,
         }"
-        placeholder="Unit data set name"
+        :placeholder="$t('structural.unit_data_set_name')"
         v-model.trim="name"
         :disabled="isDelete"
       />
-      <div class="text-danger mb-3" v-if="v$.name.$error">
-        Please enter a name for the unit data set.
-      </div>
+      <span class="text-danger mb-3" v-if="v$.name.$error">
+        {{ $t("structural.validations.unit_data_set_name") }}
+      </span>
     </CForm>
     <CForm>
-      <label for="description">Description</label>
+      <CFormLabel for="description">
+        <span>{{ $t("structural.description") }}</span>
+      </CFormLabel>
       <textarea
         id="description"
         type="text"
         class="form-control mb-3"
-        placeholder="Unit data set description"
+        :placeholder="$t('structural.unit_data_set_description')"
         v-model.trim="description"
         rows="5"
         :disabled="isDelete"
       ></textarea>
     </CForm>
     <CForm>
-      <label for="version">Version</label>
+      <CFormLabel for="version">
+        <span>{{ $t("structural.version") }}</span>
+      </CFormLabel>
       <input
         id="version"
         type="text"
         class="form-control mb-3"
-        placeholder="Unit data set version"
+        :placeholder="$t('structural.unit_data_set_version')"
         v-model.trim="version"
         :disabled="isDelete"
       />
     </CForm>
     <CForm>
-      <label for="versionRationale">Version rationale</label>
+      <CFormLabel for="versionRationale">
+        <span>{{ $t("structural.version_rationale") }}</span>
+      </CFormLabel>
       <textarea
         id="versionRationale"
         type="text"
         class="form-control mb-3"
-        placeholder="Unit data set version rationale"
+        :placeholder="$t('structural.unit_data_set_version_rationale')"
         v-model.trim="versionRationale"
         rows="5"
         :disabled="isDelete"
@@ -112,7 +122,7 @@
     </CForm>
     <CForm>
       <CFormLabel for="versionDate">
-        <span>Version date</span>
+        <span>{{ $t("structural.version_date") }}</span>
       </CFormLabel>
       <Datepicker
         id="versionDate"
@@ -171,7 +181,7 @@
       />
     </CForm>
     <CForm>
-      <label for="connection">Connection*</label>
+      <CFormLabel for="connection">Connection*</CFormLabel>
       <input
         id="connection"
         type="text"
@@ -184,12 +194,12 @@
         v-model.trim="connection"
         :disabled="isDelete"
       />
-      <div class="text-danger mb-3" v-if="v$.connection.$error">
+      <span class="text-danger mb-3" v-if="v$.connection.$error">
         Please enter a connection for the unit data set.
-      </div>
+      </span>
     </CForm>
     <CForm>
-      <label for="filterExpression">Filter Expression</label>
+      <CFormLabel for="filterExpression">Filter Expression</CFormLabel>
       <input
         id="filterExpression"
         type="text"
@@ -199,7 +209,9 @@
         :disabled="isDelete"
       />
     </CForm>
-    <div class="form-mandatory" :hidden="isDelete">*Mandatory fields</div>
+    <div class="form-mandatory" :hidden="isDelete">
+      <span>*{{ $t("structural.mandatory_fields") }}</span>
+    </div>
     <div style="margin-top: 20px">
       <CButton
         v-if="isDelete"
@@ -208,8 +220,8 @@
         style="margin-right: 0.3rem"
         @click="handleDelete()"
         :disabled="disabled"
-        >Delete</CButton
-      >
+        ><span>{{ $t("structural.delete") }}</span>
+      </CButton>
       <CButton
         v-if="!isDelete"
         color="primary"
@@ -217,16 +229,16 @@
         style="margin-right: 0.3rem"
         @click="handleSave()"
         :disabled="disabled"
-        >Save</CButton
-      >
+        ><span>{{ $t("structural.save") }}</span>
+      </CButton>
       <CButton
         color="danger"
         size="sm"
         @click="handleReset()"
         :disabled="disabled"
         :hidden="isDelete"
-        >Reset</CButton
-      >
+        ><span>{{ $t("structural.reset") }}</span>
+      </CButton>
     </div>
   </div>
 </template>

@@ -6,7 +6,7 @@
           <CRow>
             <CCol class="col-9">
               <CCardTitle>
-                <span>Unit Datasets</span>
+                <span>{{ $t("structural.unit_data_sets") }}</span>
               </CCardTitle>
             </CCol>
             <CCol class="col-3">
@@ -17,9 +17,10 @@
                     tag="a"
                     to="/metadata/structural/unitDataSets/add"
                     class="text-decoration-none text-primary"
-                  >
-                    <CIcon name="cil-plus" />
-                    <span class="icon-span">New Unit Dataset</span>
+                    ><CIcon name="cil-plus" />
+                    <span class="icon-span">
+                      {{ $t("structural.new_unit_data_sets") }}
+                    </span>
                   </router-link>
                 </CNavItem>
               </CNav>
@@ -49,8 +50,7 @@
                       square
                       size="sm"
                       @click="showProgram(item)"
-                    >
-                      Show
+                      ><span>{{ $t("structural.show") }}</span>
                     </CButton>
                   </td>
                 </template>
@@ -66,8 +66,7 @@
                           name: 'UnitDataSetView',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-magnifying-glass" />
+                        ><CIcon name="cil-magnifying-glass" />
                       </router-link>
                     </span>
                     <span v-if="isAuthenticated" class="pl-2">
@@ -78,8 +77,7 @@
                           name: 'UnitDataSetEdit',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-pencil" />
+                        ><CIcon name="cil-pencil" />
                       </router-link>
                     </span>
 
@@ -91,8 +89,7 @@
                           name: 'UnitDataSetDelete',
                           params: { id: item.id },
                         }"
-                      >
-                        <CIcon name="cil-trash" />
+                        ><CIcon name="cil-trash" />
                       </router-link>
                     </span>
                   </td>
@@ -118,35 +115,35 @@ export default {
       columns: [
         {
           key: "localId",
-          label: "Id",
+          label: this.$i18n.t("structural.ID"),
         },
         {
           key: "name",
-          label: "Unit Dataset Name",
+          label: this.$i18n.t("structural.unit_data_set_name"),
         },
         {
           key: "type",
-          label: "Type",
+          label: this.$i18n.t("structural.type"),
         },
         {
           key: "exchangeChannel",
-          label: "Channel",
+          label: this.$i18n.t("structural.channel"),
         },
         {
           key: "exchangeDirection",
-          label: "Direction",
+          label: this.$i18n.t("structural.direction"),
         },
         {
           key: "show_program",
-          label: "Program",
+          label: this.$i18n.t("structural.program"),
           _style: { width: "1%" },
           filter: false,
           sorter: false,
         },
         {
           key: "actions",
-          label: "",
-          _style: "",
+          label: this.$i18n.t("structural.actions"),
+          _style: { width: "1%" },
           sorter: false,
           filter: false,
         },
