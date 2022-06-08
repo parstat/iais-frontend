@@ -4,7 +4,7 @@
       <CCard>
         <CCardBody>
           <CCardTitle>
-            <span>Unit data sets</span>
+            <span>{{ $t("structural.unit_data_sets") }}</span>
           </CCardTitle>
           <CCardText>
             <app-unit-data-set-basic-component></app-unit-data-set-basic-component>
