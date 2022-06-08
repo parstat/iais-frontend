@@ -66,7 +66,7 @@ function save(formData) {
       name: formData.name,
       description: formData.description,
       localId: formData.localId,
-      isSentinel: formData.isSentinel,
+      isSentinel: formData.sentinel,
     };
 
     axiosIais.post("/structural/ClosedCodeLists/", requestBody, config).then(
@@ -93,6 +93,7 @@ function update(formData) {
       name: formData.name,
       description: formData.description,
       localId: formData.localId,
+      isSentinel: formData.sentinel,
     };
 
     axiosIais.put("/structural/ClosedCodeLists", requestBody, config).then(

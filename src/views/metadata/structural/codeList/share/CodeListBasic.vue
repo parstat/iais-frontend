@@ -63,7 +63,15 @@
             {{ $t("structural.validations.description") }}
           </span>
         </CForm>
-
+        <CFormSwitch
+          id="isSentinel"
+          size="lg"
+          class="mb-3"
+          v-model="localSentinel"
+          :checked="localSentinel"
+          label="Sentinel (special code list)"
+          @change="fieldChanged = true"
+        />
         <div class="form-mandatory">
           <span>*{{ $t("structural.mandatory_fields") }}</span>
         </div>

@@ -58,11 +58,11 @@ export default {
       this.disabled = true; //disable buttons
       const formData = {
         name: basic.name.trim(),
-        description: basic.description ? basic.description.trim : "",
+        description: basic.description ? basic.description.trim() : "",
         localId: basic.localId.trim().toUpperCase(),
         isSentinel: basic.sentinel,
       };
-      this.$store.dispatch("code/save", formData);
+      this.$store.dispatch("codeList/save", formData);
       console.log(formData);
     },
   },

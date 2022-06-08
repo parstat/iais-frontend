@@ -48,7 +48,7 @@
                     :name="codeList.name"
                     :description="codeList.description"
                     :localId="codeList.localId"
-                    :sentinel="codeList.sentinel"
+                    :sentinel="codeList.nodeSetType == sentinelCodeList"
                     @next="handleSubmit"
                   ></app-code-list-basic>
                 </CTabPane>
@@ -70,6 +70,7 @@
   </CRow>
 </template>
 <script>
+import { NodeSetType } from "@/common";
 import CodeListBasic from "./share/CodeListBasic.vue";
 import CodeListItems from "./share/CodeListItems.vue";
 import { mapGetters } from "vuex";
@@ -78,9 +79,14 @@ export default {
   name: "CodeListEdit",
   computed: {
     ...mapGetters("codeList", ["codeList"]),
+    sentinelCodeList() {
+      console.log(NodeSetType.SentinelCodeList);
+      return NodeSetType.SentinelCodeList;
+    },
   },
   data() {
     return {
+      nodeSetType: "",
       activeTab: 0,
     };
   },
@@ -94,8 +100,8 @@ export default {
         this.disabled = true; //disable buttons
         const formData = {
           id: this.codeList.id,
-          name: basic.name,
-          description: basic.description ? basic.description : "",
+          name: basic.name.trim(),
+          description: basic.description ? basic.description.trim() : "",
           localId: basic.localId,
           sentinel: basic.sentinel,
         };
@@ -113,6 +119,7 @@ export default {
       this.activeTab--;
     },
   },
+
   created() {
     this.$store.dispatch("codeList/findById", this.$route.params.id);
     this.activeTab = this.$route.query.step ? this.$route.query.step - 1 : 0;
