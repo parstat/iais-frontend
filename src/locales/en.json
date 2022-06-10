@@ -337,6 +337,7 @@
         "statistical_classification_version_date": "Statistical classification date",
         "statistical_classification_version_rationale": "Statistical classification version description",
         "statistical_classification_aggregation_type": "Aggregation type",
+        "statistical_program": "Statistical program",
         "new_code": "New code",
         "parent_code": "Parent code",
         "code": "Code",
@@ -379,6 +380,8 @@
         "unit_data_set_description": "Unit data set description",
         "unit_data_set_version": "Unit data set version",
         "unit_data_set_version_rationale": "Unit data set version rationale",
+        "unit_data_set_connection": "Unit data set connection",
+        "unit_data_set_filter_expression": "Unit data set filter expression",
         "unit_type_description": "Unit type description",
         "unit_types_title": "Unit types",
         "unit_types_text": "A Unit type is a class of objects of interest. A Unit type is used to describe a class or group of units based on a single characteristic, but with no specification of time and geography. For example, the unit type of “Person” groups together a set of units based on the characteristic that they are Persons.",
@@ -459,7 +462,12 @@
             "measurement_unit": "Please select a measurement unit.",
             "node_set": "Please select the node set.",
             "level": "Please select the level.",
-            "unit_data_set_name": "Please enter a name for the unit data set."
+            "unit_data_set_name": "Please enter a name for the unit data set.",
+            "data_structure": "Please select a data structure.",
+            "statistical_program": "Please select a statistical program.",
+            "exchange_channel": "Please select an exchange channel.",
+            "exchange_direction": "Please select an exchange direction.",
+            "unit_data_set_connection": "Please enter a connection for the unit data set."
         },
         "selection": {
             "unit_type": "Select a unit type",
@@ -468,7 +476,9 @@
             "enumeration": "Select the enumeration",
             "measurement_unit": "Select a measurement unit",
             "node_set": "Select node set",
-            "level": "Select level"
+            "level": "Select level",
+            "data_structure": "Select data structure",
+            "statistical_program": "Select a statistical program"
         },
         "dataset": {
             "reporting_period": "Reporting period",
@@ -479,6 +489,7 @@
             "group": "Group",
             "reporting_begin": "Reporting Begin",
             "reporting_end": "Reporting End",
+            "reporting_date_from-to": "Reporting date from-to",
             "record": {
                 "parent": "Parent record",
                 "unit_type": "Unit type",

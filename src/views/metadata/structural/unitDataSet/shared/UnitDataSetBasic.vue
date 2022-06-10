@@ -31,18 +31,18 @@
         v-model="unitDataStructure"
         class="mb-3"
         :class="{ 'is-invalid': v$.structureId.$error }"
-        :placeholder="'Select data structure'"
+        :placeholder="$t('structural.selection.data_structure')"
         @search="searchDataStructure"
         @input="setStructure"
         :disabled="isEdit || isDelete"
       ></v-select>
       <span class="text-danger" v-if="v$.structureId.$error">
-        Please select a data structure
+        {{ $t("structural.validations.data_structure") }}
       </span>
     </CForm>
     <CForm>
       <CFormLabel for="type">
-        <span>Statistical program*</span>
+        <span>{{ $t("structural.statistical_program") }}*</span>
       </CFormLabel>
       <v-select
         label="name"
@@ -50,13 +50,13 @@
         v-model="statisticalProgramHolder"
         class="mb-3"
         :class="{ 'is-invalid': v$.statisticalProgramId.$error }"
-        :placeholder="'Select a statistical program'"
+        :placeholder="$t('structural.selection.statistical_program')"
         @search="searchStatisticalProgram"
         @input="setStatisticalProgram"
         :disabled="isEdit || isDelete"
       ></v-select>
       <span class="text-danger" v-if="v$.statisticalProgramId.$error">
-        Please select a statistical program
+        {{ $t("structural.validations.statistical_program") }}
       </span>
     </CForm>
     <CForm>
@@ -133,7 +133,7 @@
     </CForm>
     <CForm>
       <CFormLabel for="exchangeChannel">
-        <span>Exchange Channel*</span>
+        <span>{{ $t("structural.dataset.exchange_channel") }}*</span>
       </CFormLabel>
       <v-select
         id="exchangeChannel"
@@ -142,16 +142,16 @@
         v-model="exchangeChannel"
         class="mb-3"
         :class="{ 'is-invalid': v$.exchangeChannel.$error }"
-        :placeholder="'Select data structure'"
+        :placeholder="$t('structural.selection.data_structure')"
         :disabled="isDelete"
       ></v-select>
       <span class="text-danger" v-if="v$.exchangeChannel.$error">
-        Please select an exchange channel.
+        {{ $t("structural.validations.exchange_channel") }}
       </span>
     </CForm>
     <CForm>
       <CFormLabel for="exchangeDirection">
-        <span>Exchange Direction*</span>
+        <span>{{ $t("structural.dataset.exchange_direction") }}*</span>
       </CFormLabel>
       <v-select
         label="label"
@@ -159,16 +159,16 @@
         v-model="exchangeDirection"
         class="mb-3"
         :class="{ 'is-invalid': v$.exchangeDirection.$error }"
-        :placeholder="'Select data structure'"
+        :placeholder="$t('structural.selection.data_structure')"
         :disabled="isDelete"
       ></v-select>
       <span class="text-danger" v-if="v$.exchangeDirection.$error">
-        Please select an exchange direction.
+        {{ $t("structural.validations.exchange_direction") }}
       </span>
     </CForm>
     <CForm>
       <CFormLabel for="reportingDateRange">
-        <span>Reporting date from-to*</span>
+        <span>{{ $t("structural.dataset.reporting_date_from-to") }}*</span>
       </CFormLabel>
       <Datepicker
         id="reportingDateRange"
@@ -181,7 +181,9 @@
       />
     </CForm>
     <CForm>
-      <CFormLabel for="connection">Connection*</CFormLabel>
+      <CFormLabel for="connection">
+        <span>{{ $t("structural.dataset.connection") }}*</span>
+      </CFormLabel>
       <input
         id="connection"
         type="text"
@@ -190,21 +192,23 @@
           'is-invalid': v$.connection.$error,
           'mb-3': !v$.connection.$error,
         }"
-        placeholder="Unit data set connection"
+        :placeholder="$t('structural.unit_data_set_connection')"
         v-model.trim="connection"
         :disabled="isDelete"
       />
       <span class="text-danger mb-3" v-if="v$.connection.$error">
-        Please enter a connection for the unit data set.
+        {{ $t("structural.validations.unit_data_set_connection") }}
       </span>
     </CForm>
     <CForm>
-      <CFormLabel for="filterExpression">Filter Expression</CFormLabel>
+      <CFormLabel for="filterExpression">
+        <span>{{ $t("structural.dataset.filter_expression") }}</span>
+      </CFormLabel>
       <input
         id="filterExpression"
         type="text"
         class="form-control mb-3"
-        placeholder="Unit data set filter expression"
+        :placeholder="$t('structural.unit_data_set_filter_expression')"
         v-model.trim="filterExpression"
         :disabled="isDelete"
       />

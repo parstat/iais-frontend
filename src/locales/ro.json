@@ -337,6 +337,7 @@
         "statistical_classification_version_date": "Data clasificarii statistice",
         "statistical_classification_version_rationale": "Descrierea versiunii clasificării statistice",
         "statistical_classification_aggregation_type": "Tipul de agregare",
+        "statistical_program": "Program statistic",
         "new_code": "Cod nou",
         "parent_code": "Codul sursă",
         "code": "Cod",
@@ -379,6 +380,8 @@
         "unit_data_set_description": "Descrierea setului de date de unitate",
         "unit_data_set_version": "Versiunea setului de date unitate",
         "unit_data_set_version_rationale": "Justificarea versiunii setului de date al unității",
+        "unit_data_set_connection": "Conexiune la setul de date al unității",
+        "unit_data_set_filter_expression": "Expresia filtrului pentru setul de date unitare",
         "unit_type_description": "Descrierea tipului de unitate",
         "unit_types_title": "Tipuri de unități",
         "unit_types_text": "Un Tip de unitate este o clasă de obiecte de interes. Un Tip de unitate este folosit pentru a descrie o clasă sau un grup de unități bazate pe o singură caracteristică, dar fără specificații de timp și geografie. De exemplu, tipul de unitate „Persoană” grupează un set de unități în funcție de caracteristica că acestea sunt Persoane.",
@@ -459,7 +462,12 @@
             "measurement_unit": "Vă rugăm să selectați o unitate de măsură.",
             "node_set": "Vă rugăm să selectați setul de noduri.",
             "level": "Vă rugăm să selectați nivelul.",
-            "unit_data_set_name": "Vă rugăm să introduceți un nume pentru setul de date al unității."
+            "unit_data_set_name": "Vă rugăm să introduceți un nume pentru setul de date al unității.",
+            "data_structure": "Vă rugăm să selectați o structură de date.",
+            "statistical_program": "Vă rugăm să selectați un program statistic.",
+            "exchange_channel": "Vă rugăm să selectați un canal de schimb.",
+            "exchange_direction": "Vă rugăm să selectați o direcție de schimb.",
+            "unit_data_set_connection": "Vă rugăm să introduceți o conexiune pentru setul de date al unității."
         },
         "selection": {
             "unit_type": "Selectați un tip de unitate",
@@ -468,7 +476,9 @@
             "enumeration": "Selectați enumerarea",
             "measurement_unit": "Selectați o unitate de măsură",
             "node_set": "Selectați setul de noduri",
-            "level": "Selectați nivelul"
+            "level": "Selectați nivelul",
+            "data_structure": "Selectați structura datelor",
+            "statistical_program": "Selectați un program statistic"
         },
         "dataset": {
             "reporting_period": "Perioada de raportare",
@@ -479,6 +489,7 @@
             "group": "Grup",
             "reporting_begin": "Începe raportarea",
             "reporting_end": "Sfârșitul raportării",
+            "reporting_date_from-to": "Data raportării de la-la",
             "record": {
                 "parent": "Dosarul sursei",
                 "unit_type": "Tip de unitate",
