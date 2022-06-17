@@ -237,6 +237,27 @@
         </CCardBody>
       </CCard>
     </CCol>
+    <CCol xs>
+      <CCard v-if="isAuthenticated">
+        <CCardBody>
+          <CCardTitle>
+            <span>Dimensional data set</span>
+          </CCardTitle>
+          <CCardText>
+            <span>This is the new Dimensional data set</span>
+          </CCardText>
+          <CButton>
+            <router-link
+              tag="a"
+              :to="{ name: 'DimensionalDataSetList' }"
+              class="text-decoration-none text-primary"
+              ><span class="icon-span"> Go to dimensional data set </span>
+              <CIcon name="cil-arrow-right" />
+            </router-link>
+          </CButton>
+        </CCardBody>
+      </CCard>
+    </CCol>
 
     <!--
     <div class="col-sm-6 col-md-4">

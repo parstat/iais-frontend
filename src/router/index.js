@@ -862,6 +862,24 @@ const routes = [
           ),
         meta: { authorize: [Role.User, Role.Admin] },
       },
+      {
+        path: "metadata/structural/dimensionalDataSets/",
+        name: "DimensionalDataSetList",
+        component: () =>
+          import(
+            "@/views/metadata/structural/dimensionalDataSet/DimensionalDataSetList"
+          ),
+        meta: { authorize: [] },
+      },
+      {
+        path: "metadata/structural/dimensionalDataSet/view/:id",
+        name: "DimensionalDataSetView",
+        component: () =>
+          import(
+            "@/views/metadata/structural/dimensionalDataSet/DimensionalDataSetView"
+          ),
+        meta: { authorize: [] },
+      },
     ],
   },
 ];
