@@ -117,7 +117,7 @@ export default {
   methods: {
     handleBack() {
       this.disabled = true; //disable button
-      this.$router.push("/metadata/structural/variable");
+      this.$router.push("/metadata/structural/variables");
     },
   },
   created() {

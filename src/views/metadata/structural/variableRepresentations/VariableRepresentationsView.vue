@@ -326,7 +326,7 @@ export default {
     handleBack() {
       this.disabled = true; //disable button
       this.$router.push(
-        "/metadata/structural/variable/view/" +
+        "/metadata/structural/variables/view/" +
           this.variableRepresentation.variable.id
       );
     },
